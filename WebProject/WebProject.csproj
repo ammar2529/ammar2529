@@ -1,0 +1,2104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BA3374FF-012B-49A0-A699-1189DFD5B3F7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebProject</RootNamespace>
+    <AssemblyName>WebProject</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44348</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="dotnetCHARTING">
+      <HintPath>..\..\..\WebProject\WebProject\bin\dotnetCHARTING.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Base, Version=23.2.34.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Essential Objects\EO.Total 2023\Samples\CS\Web\EOWebDemo_CS\bin\EO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Web, Version=23.2.34.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Essential Objects\EO.Total 2023\Samples\CS\Web\EOWebDemo_CS\bin\EO.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.WebEngine, Version=23.2.34.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Essential Objects\EO.Total 2023\Samples\CS\Web\EOWebDemo_CS\bin\EO.WebEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="ephtmltopdf">
+      <HintPath>..\..\..\WebProject\WebProject\bin\ephtmltopdf.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\WebProject\WebProject\bin\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="InfoSoftGlobal">
+      <HintPath>..\..\..\WebProject\WebProject\bin\InfoSoftGlobal.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\WebProject\WebProject\bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminPages\eForms\eForms_Footer.ascx" />
+    <Content Include="AdminPages\eForms\eForms_Header.ascx" />
+    <Content Include="AdminPages\eForms\eForms_Header_Login.ascx" />
+    <Content Include="AdminPages\eForms\eForms_Header_Menu.ascx" />
+    <Content Include="AdminPages\eForms\eForms_Search.ascx" />
+    <Content Include="AsyncWidgets\eFormsAdmin.aspx" />
+    <Content Include="AsyncWidgets\Forms\EPG\EmployeeInfo.ascx" />
+    <Content Include="AsyncWidgets\Forms\EPG\frmNewStudentInvoice.ascx" />
+    <Content Include="AsyncWidgets\Forms\EPG\frmUpdateStudentInvoice.ascx" />
+    <Content Include="AsyncWidgets\Forms\frmOrgDetails.ascx" />
+    <Content Include="AsyncWidgets\Forms\frmSearchOrg.ascx" />
+    <Content Include="AsyncWidgets\Forms\frmSearchOrgUnit.ascx" />
+    <Content Include="AsyncWidgets\Forms\frmSearchRoles.ascx" />
+    <Content Include="AsyncWidgets\Forms\Organization\frmNewOrg.ascx" />
+    <Content Include="AsyncWidgets\Forms\Organization\frmNewOrgUnit.ascx" />
+    <Content Include="AsyncWidgets\Forms\Organization\frmSearchOrg.ascx" />
+    <Content Include="AsyncWidgets\Forms\Organization\frmSearchOrgUnit.ascx" />
+    <Content Include="AsyncWidgets\Forms\Organization\frmUpdateOrg.ascx" />
+    <Content Include="AsyncWidgets\Forms\Organization\frmUpdateOrgUnit.ascx" />
+    <Content Include="AsyncWidgets\Forms\ProcessManagment\frmschPRM.ascx" />
+    <Content Include="AsyncWidgets\Forms\ProcessManagment\frmSearchProcessManagment.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\EmailConfiguration.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmAddEditAssignRoles.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmAddQuickView.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmDocumentLib.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmNewDocLibType.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmProcessGS.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmProcessLeftSideGS.ascx" />
+    <Content Include="AsyncWidgets\Forms\Process\frmSubmission.ascx" />
+    <Content Include="AsyncWidgets\Forms\UserManagment\frmAddUser.ascx" />
+    <Content Include="AsyncWidgets\Forms\UserManagment\frmSearchUsers.ascx" />
+    <Content Include="AsyncWidgets\Scripts\Custom-Ext.js" />
+    <Content Include="AsyncWidgets\Scripts\jquery.alphanumeric.js" />
+    <Content Include="AsyncWidgets\Scripts\jquery.autocomplete.js" />
+    <Content Include="AsyncWidgets\Scripts\jquery.jclock.js" />
+    <Content Include="AsyncWidgets\Scripts\jquery.js" />
+    <Content Include="AsyncWidgets\Scripts\jQueryUI\jquery-ui.js" />
+    <Content Include="AsyncWidgets\Scripts\WidgetBase.js" />
+    <Content Include="AsyncWidgets\WebServices\RemoteActions.asmx" />
+    <Content Include="AsyncWidgets\Widgets\Container.ascx" />
+    <Content Include="AsyncWidgets\Widgets\DataGrid.ascx" />
+    <Content Include="AsyncWidgets\Widgets\Form.ascx" />
+    <Content Include="AsyncWidgets\Widgets\ItemRepeater.ascx" />
+    <Content Include="AsyncWidgets\Widgets\Logout.ascx" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\AccordionMenu.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\common.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\common.eForms.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\common.standard.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery-ui\ui-lightness\jquery-ui.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\jquery.autocomplete.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\panel-title-light-bg.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\Widgets\ItemRepeater.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\Widgets\TabPanel-jQueryUI-Gray.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\Widgets\TabPanel-jQueryUI.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\Widgets\TabPanel-org.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\Widgets\TabPanel.css" />
+    <Content Include="AsyncWidgets\Widgets\resources\EditAble\Accordion_Menu_ScrollArrow.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\EditAble\Architecture Diagram.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\AccHeadBack.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\bg_tableheader.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\calendar.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ChildGrid.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ChildGrid1.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Collapse.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Copy of ScrollDown.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Copy of ScrollTop.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\CustomIcons.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\DatePicker.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\DatePicker_1.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\DisableUsers.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\DisableUsers.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\DownArrow.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\DownArrowYellow.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Expand.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Flagg_0.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Flagg_1.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\grid-action-delete.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\grid-action-new.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\GridPanelHead.JPG" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\GridRowCollapsed.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\GridRowEdit.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\GridRowexpanded.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\HeadGradient.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\HeadGradientdown.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\loading.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Minus.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\OpenDetails.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\plus.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\RightArrowYellow.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\RowEditForm.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\RowEditForm_Disabled.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\row_header.JPG" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ScrollDown.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ScrollDown_Old.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ScrollTop.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ScrollTop_old.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\spacer.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ui-icons_ef8c08_256x2401.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ui-icons_ef8c08_256x240_m.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ui-icons_ef8c08_256x240_org.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\UpArrow.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\w-grid-bottom-buttons-back.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\w-panel-head.png" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-l-0.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-l-1.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-le-0.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-le-1.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-r-0.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-r-1.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-re-0.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\arrow-re-1.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\hdiv.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\corners-sprite.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\left-right.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\scroll-left-jQueryUI-Gray.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\scroll-left-jQueryUI.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\scroll-left.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\scroll-Right-jQueryUI-Gray.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\scroll-Right-jQueryUI.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\scroll-right.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tab-close.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tab-strip-bg.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabDivBack-jQueryUI.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite-jQueryUI-Gray.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite-jQueryUI.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite-jQueryUI1.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite.gif" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs.gif" />
+    <Content Include="AsyncWidgets\Widgets\TabPanel.ascx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="AdminPages\eForms\vssver.scc" />
+    <Content Include="AsyncWidgets\BAL\vssver.scc" />
+    <Content Include="AsyncWidgets\DAL\vssver.scc" />
+    <Content Include="AsyncWidgets\Forms\EPG\vssver.scc" />
+    <Content Include="AsyncWidgets\Forms\Organization\vssver.scc" />
+    <Content Include="AsyncWidgets\Forms\ProcessManagment\vssver.scc" />
+    <Content Include="AsyncWidgets\Forms\Process\vssver.scc" />
+    <Content Include="AsyncWidgets\Forms\UserManagment\vssver.scc" />
+    <Content Include="AsyncWidgets\Forms\vssver.scc" />
+    <Content Include="AsyncWidgets\Scripts\jQueryUI\vssver.scc" />
+    <Content Include="AsyncWidgets\Scripts\vssver.scc" />
+    <Content Include="AsyncWidgets\Utility\vssver.scc" />
+    <Content Include="AsyncWidgets\vssver.scc" />
+    <Content Include="AsyncWidgets\WebServices\vssver.scc" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\vssver.scc" />
+    <Content Include="AsyncWidgets\Widgets\resources\css\Widgets\vssver.scc" />
+    <Content Include="AsyncWidgets\Widgets\resources\EditAble\vssver.scc" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\vssver.scc" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\ItemRepeater\vssver.scc" />
+    <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\vssver.scc" />
+    <Content Include="JQuery\AutoComplete\vssver.scc" />
+    <Content Include="JQuery\UI\vssver.scc" />
+    <Content Include="JQuery\vssver.scc" />
+    <Content Include="Logout.aspx" />
+    <Content Include="MasterPages\DummyMaster.master" />
+    <Content Include="MasterPages\eForms.Master" />
+    <Content Include="MasterPages\vssver.scc" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Pages\eForms\iRental\Modules\RentalContracts.ascx" />
+    <Content Include="Pages\Common\Administration\Modules\vssver.scc" />
+    <Content Include="Pages\Common\Administration\vssver.scc" />
+    <Content Include="Pages\Common\iDashboard\vssver.scc" />
+    <Content Include="Pages\Common\vssver.scc" />
+    <Content Include="Pages\eForms\Employee\Modules\vssver.scc" />
+    <Content Include="Pages\eForms\Employee\vssver.scc" />
+    <Content Include="Pages\eForms\iRental\Modules\vssver.scc" />
+    <Content Include="Pages\eForms\iRental\Reports\vssver.scc" />
+    <Content Include="Pages\eForms\iRental\vssver.scc" />
+    <Content Include="Pages\eForms\ITSSD\Modules\vssver.scc" />
+    <Content Include="Pages\eForms\ITSSD\vssver.scc" />
+    <Content Include="ReportsEngine\FusionCharts\vssver.scc" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_World8.swf_FromAsif" />
+    <Content Include="ReportsEngine\FusionMaps\FusionMaps.js_FromAsif" />
+    <Content Include="ReportsEngine\FusionMaps\vssver.scc" />
+    <Content Include="ReportsEngine\FusionWidgets\vssver.scc" />
+    <Content Include="ReportsEngine\ReportLayouts\vssver.scc" />
+    <Content Include="ReportsEngine\ReportWidgetControls\vssver.scc" />
+    <Content Include="ReportsEngine\Temp\vssver.scc" />
+    <Content Include="ReportsEngine\vssver.scc" />
+    <Content Include="ReportsEngine\WebServices\vssver.scc" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="JQuery\AjaxJS.js" />
+    <Content Include="JQuery\AutoComplete\AutoComplete.aspx" />
+    <Content Include="JQuery\AutoComplete\jquery.autocomplete.css" />
+    <Content Include="JQuery\AutoComplete\jquery.autocomplete.js" />
+    <Content Include="JQuery\AutoComplete\loading.gif" />
+    <Content Include="JQuery\dock-example1.js" />
+    <Content Include="JQuery\DomElemAbsPosition.js" />
+    <Content Include="JQuery\Ext.js" />
+    <Content Include="JQuery\fisheye-iutil.js" />
+    <Content Include="JQuery\jquery.1.3.js" />
+    <Content Include="JQuery\jquery.1.6.2.js" />
+    <Content Include="JQuery\jquery.autocomplete.js" />
+    <Content Include="JQuery\jquery.autocompletepre.js" />
+    <Content Include="JQuery\jquery.CITPGADFunGroupMem.js" />
+    <Content Include="JQuery\jquery.CITPGADUsersAutoFill.js" />
+    <Content Include="JQuery\jquery.EMautocomplete.js" />
+    <Content Include="JQuery\jquery.GICTautocomplete.js" />
+    <Content Include="JQuery\jquery.GITautocomplete.js" />
+    <Content Include="JQuery\jquery.jclock.js" />
+    <Content Include="JQuery\jquery.js" />
+    <Content Include="JQuery\jquery.tabify.js" />
+    <Content Include="JQuery\jquery1.js" />
+    <Content Include="JQuery\jqueryf.js" />
+    <Content Include="JQuery\Plugins.js" />
+    <Content Include="JQuery\SessionExpired.js" />
+    <Content Include="JQuery\swfobject.js" />
+    <Content Include="JQuery\tip_centerwindow.js" />
+    <Content Include="JQuery\tip_followscroll.js" />
+    <Content Include="JQuery\UI\effects.blind.js" />
+    <Content Include="JQuery\UI\effects.bounce.js" />
+    <Content Include="JQuery\UI\effects.clip.js" />
+    <Content Include="JQuery\UI\effects.core.js" />
+    <Content Include="JQuery\UI\effects.drop.js" />
+    <Content Include="JQuery\UI\effects.explode.js" />
+    <Content Include="JQuery\UI\effects.fold.js" />
+    <Content Include="JQuery\UI\effects.highlight.js" />
+    <Content Include="JQuery\UI\effects.pulsate.js" />
+    <Content Include="JQuery\UI\effects.scale.js" />
+    <Content Include="JQuery\UI\effects.shake.js" />
+    <Content Include="JQuery\UI\effects.slide.js" />
+    <Content Include="JQuery\UI\effects.transfer.js" />
+    <Content Include="JQuery\UI\jquery-ui-1.7.2.custom-dev.js" />
+    <Content Include="JQuery\UI\jquery-ui-1.7.2.custom.js" />
+    <Content Include="JQuery\UI\ui.core.js" />
+    <Content Include="JQuery\wz_tooltip.js" />
+    <Content Include="Pages\Common\AccessDenied.ascx" />
+    <Content Include="Pages\Common\Administration\AddNewBoutton.ascx" />
+    <Content Include="Pages\Common\Administration\AddNewButtonChild.ascx" />
+    <Content Include="Pages\Common\Administration\Administration_Menu.ascx" />
+    <Content Include="Pages\Common\Administration\CommonComments_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\CommonLOVChild_FrUc_New.ascx" />
+    <Content Include="Pages\Common\Administration\CommonLOVChild_FrUc_Update.ascx" />
+    <Content Include="Pages\Common\Administration\CommonLOVParent_FrUc_New.ascx" />
+    <Content Include="Pages\Common\Administration\CommonLOVParent_FrUc_Update.ascx" />
+    <Content Include="Pages\Common\Administration\KPI_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\Modules\Administration.ascx" />
+    <Content Include="Pages\Common\Administration\MyProfile_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\MyProfile_Proxy_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\Organizations_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\Organizations_Units_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\Roles_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\SimpleMenu_Child_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\SimpleMenu_Parent_FrUc.ascx" />
+    <Content Include="Pages\Common\ChangePassword.ascx" />
+    <Content Include="Pages\Common\ComingSoon.ascx" />
+    <Content Include="Pages\Common\Home.ascx" />
+    <Content Include="Pages\Common\iDashboard\Home_iDashboard.ascx" />
+    <Content Include="Pages\Common\iDashboard\KPI_iDashboard.ascx" />
+    <Content Include="Pages\Common\Inbox.ascx" />
+    <Content Include="Pages\Common\Logout.ascx" />
+    <Content Include="Pages\Common\Privacy.ascx" />
+    <Content Include="Pages\Common\Terms.ascx" />
+    <Content Include="Pages\eForms\Employee\EmployeeDatabase_FrUc.ascx" />
+    <Content Include="Pages\eForms\Employee\EmployeeDatabase_ShUc.ascx" />
+    <Content Include="Pages\eForms\Employee\Modules\EmployeeDatabase.ascx" />
+    <Content Include="Pages\eForms\iRental\CarDetails_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarDetails_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarRateDetails_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarRateDetails_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarTransfers_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarTransfers_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CustomerDetails_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CustomerDetails_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\LeaseContracts_CS_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\LeaseContracts_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\LeaseContracts_OC_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\LeaseContracts_PD_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\LeaseContracts_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\CarDetails.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\CarRateDetails.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\CarTransfers.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\CustomerDetails.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\LeaseContracts.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\RentalContracts.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_Cars_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_CS_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_Cust_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_OC_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_PD_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\RentalContracts_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintOpenContractFrPg.aspx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintReceiptVoucherFrPg.aspx" />
+    <Content Include="Pages\eForms\ITSSD\ITSSDProjects_FrUc.ascx" />
+    <Content Include="Pages\eForms\ITSSD\ITSSDProjects_ShUc.ascx" />
+    <Content Include="Pages\eForms\ITSSD\ITSSDTasks_Efforts_FrUc.ascx" />
+    <Content Include="Pages\eForms\ITSSD\ITSSDTasks_FrUc.ascx" />
+    <Content Include="Pages\eForms\ITSSD\ITSSDTasks_ShUc.ascx" />
+    <Content Include="Pages\eForms\ITSSD\Modules\ITSSDProjects.ascx" />
+    <Content Include="Pages\eForms\ITSSD\Modules\ITSSDTasks.ascx" />
+    <Content Include="ReportsEngine\ChartFacade.aspx" />
+    <Content Include="ReportsEngine\Dashboard_eFormsUserDetails.aspx" />
+    <Content Include="ReportsEngine\Dashboard_ManagementProjects.aspx" />
+    <Content Include="ReportsEngine\Dashboard_ProcessUsage.aspx" />
+    <Content Include="ReportsEngine\Dashboard_ProjectDetails.aspx" />
+    <Content Include="ReportsEngine\Dashboard_SSDTeamDetails.aspx" />
+    <Content Include="ReportsEngine\ExportData.aspx" />
+    <Content Include="ReportsEngine\FormHistoryChart.aspx" />
+    <Content Include="ReportsEngine\FusionChartDataFacade.aspx" />
+    <Content Include="ReportsEngine\FusionCharts\Area2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Bar2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Bubble.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Column2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Column3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\default.js" />
+    <Content Include="ReportsEngine\FusionCharts\Doughnut2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Doughnut3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\FCExporter.swf" />
+    <Content Include="ReportsEngine\FusionCharts\FusionCharts.js" />
+    <Content Include="ReportsEngine\FusionCharts\Line.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSArea.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSBar2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSBar3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSColumn2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSColumn3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSColumn3DLineDY.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSColumn3DLineDYDemo.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSColumnLine3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSCombi2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSCombi3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSCombiDY2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSLine.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSStackedColumn2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\MSStackedColumn2DLineDY.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Pie2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Pie3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\Scatter.swf" />
+    <Content Include="ReportsEngine\FusionCharts\ScrollArea2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\ScrollColumn2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\ScrollCombi2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\ScrollCombiDY2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\ScrollLine2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\ScrollStackedColumn2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\SSGrid.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedArea2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedBar2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedBar3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedColumn2D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedColumn2DLine.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedColumn3D.swf" />
+    <Content Include="ReportsEngine\FusionCharts\StackedColumn3DLineDY.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCExporter.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Afghanistan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Africa.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Alabama.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Alaska.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Albania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Alberta.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Algeria.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Andorra.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Angola.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Antigua.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Argentina.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Arizona.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Arkansas.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Armenia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Asia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Asia3.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_AsiaGeorgia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Australia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Australia2.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Austria.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Azerbaijan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Bahamas.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Bahrain.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Bangladesh.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Barbados.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Belarus.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Belgium.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Belize.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Benin.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Bhutan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Bolivia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_BosniaHerzegovina.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Botswana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Brazil.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_BrazilRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_BritishColumbia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Brunei.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Bulgaria.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_BurkinaFaso.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Burma.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Burundi.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_California.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Cambodia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Cameroon.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Canada.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CapeVerde.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CaymanIslands.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CentralAfricanRepublic.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CentralAmerica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CentralAmerica2.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CentralAmericawithCaribbean.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CentralEuropeanRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Chad.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Chile.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_China.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_China2.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Colombia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Colorado.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Comoros.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Congo.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Connecticut.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CostaRica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CoteDivoire.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Croatia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Cuba.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Cyprus.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Cyprus2.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_CzechRepublic.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Delaware.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_DemocraticRepublicofCongo.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Denmark.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_DenmarkRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_DistrictofColumbia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Djibouti.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Dominica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_DominicanRepublic.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_EastEuropeanRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_EastTimor.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ecuador.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Egypt.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_ElSalvador.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_England.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_EnglandRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_EquatorialGuinea.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Eritrea.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Estonia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ethiopia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Europe.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Europe2.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_EuropeRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Europewithcountries.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_FalklandIsland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Fiji.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Finland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Florida.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_France.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_FranceDepartment.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_FrenchGuiana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Gabon.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Gambia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Georgia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Germany.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ghana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Greece.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Greenland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Grenada.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Guatemala.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Guinea.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_GuineaBissau.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Guyana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Haiti.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Hawaii.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Honduras.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_HongKong.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Hungary.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_HungaryRegions.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Iceland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Idaho.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Illinois.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_India.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Indiana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Indonesia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Iowa.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Iran.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Iraq.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ireland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Israel.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Italy.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Jamaica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Japan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Jordan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kansas.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kazakhstan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kentucky.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kenya.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kiribati.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kuwait.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Kyrgyzstan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Laos.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Latvia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Lebanon.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Lesotho.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Liberia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Libya.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Liechtenstein.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Lithuania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Louisiana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Luxembourg.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Macau.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Macedonia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Madagascar.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_MadagascarRegions.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Maine.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Malawi.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Malaysia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mali.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Malta.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Manitoba.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_MarshallIsland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Maryland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Massachusetts.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mauritania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mauritius.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mexico.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Michigan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Micronesia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_MiddleEast.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Minnesota.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mississippi.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Missouri.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Moldova.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Monaco.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mongolia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Montana.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Montenegro.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Morocco.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Mozambique.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Namibia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nauru.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nebraska.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nepal.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Netherland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nevada.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewBrunswick.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewCaledonia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewfoundlandandLabrador.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewHampshire.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewJersey.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewMexico.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewYork.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NewZealand.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nicaragua.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Niger.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nigeria.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthAmerica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthAmerica_WOCentral.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthCarolina.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthDakota.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthEuropeanRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthIreland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthKorea.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorthWestTerritories.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Norway.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NorwayRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_NovaScotia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Nunavut.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Oceania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ohio.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Oklahoma.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Oman.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ontario.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Oregon.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Pakistan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Palau.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Panama.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_PapuaNewGuinea.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Paraguay.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Pennsylvania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Peru.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Philippines.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Poland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_PolandCounties.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Portugal.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_PrinceEdwardIsland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_PuertoRico.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Qatar.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Quebec.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_RhodeIsland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Romania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Russia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Rwanda.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SaintKittsandNevis.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SaintLucia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SaintVincentandtheGrenadines.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Samoa.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SanMarino.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SaoTomeandPrincipe.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Saskatchewan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SaudiArabia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Scotland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_ScotlandRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Senegal.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Serbia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Seychelles.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SierraLeone.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Singapore.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Slovakia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Slovenia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SolomonIsland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Somalia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SouthAfrica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SouthAmerica.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SouthCarolina.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SouthDakota.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SouthEuropeanRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SouthKorea.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Spain.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SpainProvinces.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_SriLanka.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Sudan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Suriname.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Swaziland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Sweden.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Switzerland.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Syria.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Taiwan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tajikistan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tanzania.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tennessee.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Texas.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Thailand.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tibet.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Togo.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tonga.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_TrinidadandTobago.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tunisia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Turkey.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Turkmenistan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Tuvalu.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_UAE.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Uganda.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_UK.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_UK7.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Ukraine.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Uruguay.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USA.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USACentralRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USANorthEastRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USANorthWestRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USARegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USASouthEastRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_USASouthWestRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Utah.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Uzbekistan.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Vanuatu.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_VaticanCity.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Venezuela.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Vermont.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Vietnam.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Virginia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Wales.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Washington.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_WesternSahara.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_WestEuropeanRegion.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_WestVirginia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Wisconsin.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_World.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_World8.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_WorldwithCountries.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Wyoming.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Yemen.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_YukonTerritory.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Zambia.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FCMap_Zimbabwe.swf" />
+    <Content Include="ReportsEngine\FusionMaps\FusionMaps.js" />
+    <Content Include="ReportsEngine\FusionWidgets\AngularGauge.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\Bulb.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\Cylinder.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\DrawingPad.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\FCExporter.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\Funnel.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\Gantt.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\HBullet.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\HLED.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\HLinearGauge.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\Pyramid.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\RealTimeArea.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\RealTimeColumn.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\RealTimeLine.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\RealTimeLineDY.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\RealTimeStackedArea.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\RealTimeStackedColumn.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\SparkColumn.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\SparkLine.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\SparkWinLoss.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\Thermometer.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\VBullet.swf" />
+    <Content Include="ReportsEngine\FusionWidgets\VLED.swf" />
+    <Content Include="ReportsEngine\GridViewer.aspx" />
+    <Content Include="ReportsEngine\Home.aspx" />
+    <Content Include="ReportsEngine\iDashboard.aspx" />
+    <Content Include="ReportsEngine\iFrameDashboard.aspx" />
+    <Content Include="ReportsEngine\iFrameGridReports.aspx" />
+    <Content Include="ReportsEngine\iFrameHome.aspx" />
+    <Content Include="ReportsEngine\Layout_SS_B_B.aspx" />
+    <Content Include="ReportsEngine\MultipleGraph.aspx" />
+    <Content Include="ReportsEngine\RenderUserControlsFacade.aspx" />
+    <Content Include="ReportsEngine\ReportDesigner.aspx" />
+    <Content Include="ReportsEngine\ReportLayouts\EPGLayout.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\EPGManagementDashboard.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\EPGPPExpiry.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\Layout_1_2.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\Layout_2_2.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\Layout_2_3.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\Layout_3_2.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\Layout_3_3.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\Lout_3_3.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\SSDTracking.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\StudentDashboard.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\StudentFinancial.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\TestLayout.ascx" />
+    <Content Include="ReportsEngine\ReportLayouts\WebUserControl.ascx" />
+    <Content Include="ReportsEngine\ReportWidgetControls\ASPGridWidget.ascx" />
+    <Content Include="ReportsEngine\ReportWidgetControls\HTMLLabelWidget.ascx" />
+    <Content Include="ReportsEngine\ReportWidgetControls\HTMLPanelWidget.ascx" />
+    <Content Include="ReportsEngine\ReportWidgetControls\MapIds.xml" />
+    <Content Include="ReportsEngine\ReportWidgetControls\SubMenu.ascx" />
+    <Content Include="ReportsEngine\ReportWidgetControls\WoldMAPWidget.ascx" />
+    <Content Include="ReportsEngine\SimpleSingleGraph.aspx" />
+    <Content Include="ReportsEngine\Temp\dnc-1ju4b125.png" />
+    <Content Include="ReportsEngine\WebServices\QueryWidgetsData.asmx" />
+    <Content Include="ReportsEngine\WebServices\SimpleSingleGraphWS.aspx" />
+    <Content Include="ReportsEngine\XmlHttpPanelWebService.asmx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Skins\Defalut.EO.Calendar.ascx" />
+    <Content Include="Skins\WindowsStyle.EO.Calendar.ascx" />
+    <Content Include="testpage.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminPages\eForms\eForms_Footer.ascx.cs">
+      <DependentUpon>eForms_Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Footer.ascx.designer.cs">
+      <DependentUpon>eForms_Footer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Header.ascx.cs">
+      <DependentUpon>eForms_Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Header.ascx.designer.cs">
+      <DependentUpon>eForms_Header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Header_Login.ascx.cs">
+      <DependentUpon>eForms_Header_Login.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Header_Login.ascx.designer.cs">
+      <DependentUpon>eForms_Header_Login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Header_Menu.ascx.cs">
+      <DependentUpon>eForms_Header_Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Header_Menu.ascx.designer.cs">
+      <DependentUpon>eForms_Header_Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Search.ascx.cs">
+      <DependentUpon>eForms_Search.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\eForms\eForms_Search.ascx.designer.cs">
+      <DependentUpon>eForms_Search.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AsyncWidgets\BAL\Authentication.cs" />
+    <Compile Include="AsyncWidgets\BAL\BALExecuter.cs" />
+    <Compile Include="AsyncWidgets\Containers.cs" />
+    <Compile Include="AsyncWidgets\DAL\Authentication.cs" />
+    <Compile Include="AsyncWidgets\DAL\DataAccess.cs" />
+    <Compile Include="AsyncWidgets\DAL\ParamDictionary.cs" />
+    <Compile Include="AsyncWidgets\eFormsAdmin.aspx.cs">
+      <DependentUpon>eFormsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\eFormsAdmin.aspx.designer.cs">
+      <DependentUpon>eFormsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Enums.cs" />
+    <Compile Include="AsyncWidgets\Forms\EPG\EmployeeInfo.ascx.cs">
+      <DependentUpon>EmployeeInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\EPG\EmployeeInfo.ascx.designer.cs">
+      <DependentUpon>EmployeeInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\EPG\frmNewStudentInvoice.ascx.cs">
+      <DependentUpon>frmNewStudentInvoice.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\EPG\frmNewStudentInvoice.ascx.designer.cs">
+      <DependentUpon>frmNewStudentInvoice.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\EPG\frmUpdateStudentInvoice.ascx.cs">
+      <DependentUpon>frmUpdateStudentInvoice.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\EPG\frmUpdateStudentInvoice.ascx.designer.cs">
+      <DependentUpon>frmUpdateStudentInvoice.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmOrgDetails.ascx.cs">
+      <DependentUpon>frmOrgDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmOrgDetails.ascx.designer.cs">
+      <DependentUpon>frmOrgDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmSearchOrg.ascx.cs">
+      <DependentUpon>frmSearchOrg.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmSearchOrg.ascx.designer.cs">
+      <DependentUpon>frmSearchOrg.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmSearchOrgUnit.ascx.cs">
+      <DependentUpon>frmSearchOrgUnit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmSearchOrgUnit.ascx.designer.cs">
+      <DependentUpon>frmSearchOrgUnit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmSearchRoles.ascx.cs">
+      <DependentUpon>frmSearchRoles.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\frmSearchRoles.ascx.designer.cs">
+      <DependentUpon>frmSearchRoles.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmNewOrg.ascx.cs">
+      <DependentUpon>frmNewOrg.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmNewOrg.ascx.designer.cs">
+      <DependentUpon>frmNewOrg.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmNewOrgUnit.ascx.cs">
+      <DependentUpon>frmNewOrgUnit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmNewOrgUnit.ascx.designer.cs">
+      <DependentUpon>frmNewOrgUnit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmSearchOrg.ascx.cs">
+      <DependentUpon>frmSearchOrg.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmSearchOrg.ascx.designer.cs">
+      <DependentUpon>frmSearchOrg.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmSearchOrgUnit.ascx.cs">
+      <DependentUpon>frmSearchOrgUnit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmSearchOrgUnit.ascx.designer.cs">
+      <DependentUpon>frmSearchOrgUnit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmUpdateOrg.ascx.cs">
+      <DependentUpon>frmUpdateOrg.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmUpdateOrg.ascx.designer.cs">
+      <DependentUpon>frmUpdateOrg.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmUpdateOrgUnit.ascx.cs">
+      <DependentUpon>frmUpdateOrgUnit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Organization\frmUpdateOrgUnit.ascx.designer.cs">
+      <DependentUpon>frmUpdateOrgUnit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\ProcessManagment\frmschPRM.ascx.cs">
+      <DependentUpon>frmschPRM.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\ProcessManagment\frmschPRM.ascx.designer.cs">
+      <DependentUpon>frmschPRM.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\ProcessManagment\frmSearchProcessManagment.ascx.cs">
+      <DependentUpon>frmSearchProcessManagment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\ProcessManagment\frmSearchProcessManagment.ascx.designer.cs">
+      <DependentUpon>frmSearchProcessManagment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\EmailConfiguration.ascx.cs">
+      <DependentUpon>EmailConfiguration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\EmailConfiguration.ascx.designer.cs">
+      <DependentUpon>EmailConfiguration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmAddEditAssignRoles.ascx.cs">
+      <DependentUpon>frmAddEditAssignRoles.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmAddEditAssignRoles.ascx.designer.cs">
+      <DependentUpon>frmAddEditAssignRoles.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmAddQuickView.ascx.cs">
+      <DependentUpon>frmAddQuickView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmAddQuickView.ascx.designer.cs">
+      <DependentUpon>frmAddQuickView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmDocumentLib.ascx.cs">
+      <DependentUpon>frmDocumentLib.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmDocumentLib.ascx.designer.cs">
+      <DependentUpon>frmDocumentLib.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmNewDocLibType.ascx.cs">
+      <DependentUpon>frmNewDocLibType.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmNewDocLibType.ascx.designer.cs">
+      <DependentUpon>frmNewDocLibType.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmProcessGS.ascx.cs">
+      <DependentUpon>frmProcessGS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmProcessGS.ascx.designer.cs">
+      <DependentUpon>frmProcessGS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmProcessLeftSideGS.ascx.cs">
+      <DependentUpon>frmProcessLeftSideGS.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmProcessLeftSideGS.ascx.designer.cs">
+      <DependentUpon>frmProcessLeftSideGS.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmSubmission.ascx.cs">
+      <DependentUpon>frmSubmission.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\Process\frmSubmission.ascx.designer.cs">
+      <DependentUpon>frmSubmission.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\UserManagment\frmAddUser.ascx.cs">
+      <DependentUpon>frmAddUser.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\UserManagment\frmAddUser.ascx.designer.cs">
+      <DependentUpon>frmAddUser.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\UserManagment\frmSearchUsers.ascx.cs">
+      <DependentUpon>frmSearchUsers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Forms\UserManagment\frmSearchUsers.ascx.designer.cs">
+      <DependentUpon>frmSearchUsers.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Utility\Encryption.cs" />
+    <Compile Include="AsyncWidgets\Utility\StaticCache.cs" />
+    <Compile Include="AsyncWidgets\Utility\Utility.cs" />
+    <Compile Include="AsyncWidgets\WebServices\RemoteActions.asmx.cs">
+      <DependentUpon>RemoteActions.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\WidgetHelpers.cs" />
+    <Compile Include="AsyncWidgets\Widgets\Container.ascx.cs">
+      <DependentUpon>Container.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\Container.ascx.designer.cs">
+      <DependentUpon>Container.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\DataGrid.ascx.cs">
+      <DependentUpon>DataGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\DataGrid.ascx.designer.cs">
+      <DependentUpon>DataGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\Form.ascx.cs">
+      <DependentUpon>Form.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\Form.ascx.designer.cs">
+      <DependentUpon>Form.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\ItemRepeater.ascx.cs">
+      <DependentUpon>ItemRepeater.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\ItemRepeater.ascx.designer.cs">
+      <DependentUpon>ItemRepeater.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\Logout.ascx.cs">
+      <DependentUpon>Logout.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\Logout.ascx.designer.cs">
+      <DependentUpon>Logout.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\TabPanel.ascx.cs">
+      <DependentUpon>TabPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsyncWidgets\Widgets\TabPanel.ascx.designer.cs">
+      <DependentUpon>TabPanel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Constants.cs" />
+    <Compile Include="CUtilityWeb.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="eForms\Web\UI\BlockTags.cs" />
+    <Compile Include="eForms\Web\UI\PWCLightPage.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="JQuery\AutoComplete\AutoComplete.aspx.cs">
+      <DependentUpon>AutoComplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JQuery\AutoComplete\AutoComplete.aspx.designer.cs">
+      <DependentUpon>AutoComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\DummyMaster.master.cs">
+      <DependentUpon>DummyMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\eForms.Master.cs">
+      <DependentUpon>eForms.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\eForms.Master.designer.cs">
+      <DependentUpon>eForms.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\AccessDenied.ascx.cs">
+      <DependentUpon>AccessDenied.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\AccessDenied.ascx.designer.cs">
+      <DependentUpon>AccessDenied.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\AddNewBoutton.ascx.cs">
+      <DependentUpon>AddNewBoutton.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\AddNewBoutton.ascx.designer.cs">
+      <DependentUpon>AddNewBoutton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\AddNewButtonChild.ascx.cs">
+      <DependentUpon>AddNewButtonChild.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\AddNewButtonChild.ascx.designer.cs">
+      <DependentUpon>AddNewButtonChild.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Administration_Menu.ascx.cs">
+      <DependentUpon>Administration_Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Administration_Menu.ascx.designer.cs">
+      <DependentUpon>Administration_Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonComments_FrUc.ascx.cs">
+      <DependentUpon>CommonComments_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonComments_FrUc.ascx.designer.cs">
+      <DependentUpon>CommonComments_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVChild_FrUc_New.ascx.cs">
+      <DependentUpon>CommonLOVChild_FrUc_New.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVChild_FrUc_New.ascx.designer.cs">
+      <DependentUpon>CommonLOVChild_FrUc_New.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVChild_FrUc_Update.ascx.cs">
+      <DependentUpon>CommonLOVChild_FrUc_Update.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVChild_FrUc_Update.ascx.designer.cs">
+      <DependentUpon>CommonLOVChild_FrUc_Update.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVParent_FrUc_New.ascx.cs">
+      <DependentUpon>CommonLOVParent_FrUc_New.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVParent_FrUc_New.ascx.designer.cs">
+      <DependentUpon>CommonLOVParent_FrUc_New.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVParent_FrUc_Update.ascx.cs">
+      <DependentUpon>CommonLOVParent_FrUc_Update.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\CommonLOVParent_FrUc_Update.ascx.designer.cs">
+      <DependentUpon>CommonLOVParent_FrUc_Update.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\KPI_FrUc.ascx.cs">
+      <DependentUpon>KPI_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\KPI_FrUc.ascx.designer.cs">
+      <DependentUpon>KPI_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Modules\Administration.ascx.cs">
+      <DependentUpon>Administration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Modules\Administration.ascx.designer.cs">
+      <DependentUpon>Administration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\MyProfile_FrUc.ascx.cs">
+      <DependentUpon>MyProfile_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\MyProfile_FrUc.ascx.designer.cs">
+      <DependentUpon>MyProfile_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\MyProfile_Proxy_FrUc.ascx.cs">
+      <DependentUpon>MyProfile_Proxy_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\MyProfile_Proxy_FrUc.ascx.designer.cs">
+      <DependentUpon>MyProfile_Proxy_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Organizations_FrUc.ascx.cs">
+      <DependentUpon>Organizations_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Organizations_FrUc.ascx.designer.cs">
+      <DependentUpon>Organizations_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Organizations_Units_FrUc.ascx.cs">
+      <DependentUpon>Organizations_Units_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Organizations_Units_FrUc.ascx.designer.cs">
+      <DependentUpon>Organizations_Units_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Roles_FrUc.ascx.cs">
+      <DependentUpon>Roles_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\Roles_FrUc.ascx.designer.cs">
+      <DependentUpon>Roles_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\SimpleMenu_Child_FrUc.ascx.cs">
+      <DependentUpon>SimpleMenu_Child_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\SimpleMenu_Child_FrUc.ascx.designer.cs">
+      <DependentUpon>SimpleMenu_Child_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\SimpleMenu_Parent_FrUc.ascx.cs">
+      <DependentUpon>SimpleMenu_Parent_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\SimpleMenu_Parent_FrUc.ascx.designer.cs">
+      <DependentUpon>SimpleMenu_Parent_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\ChangePassword.ascx.cs">
+      <DependentUpon>ChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\ChangePassword.ascx.designer.cs">
+      <DependentUpon>ChangePassword.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\ComingSoon.ascx.cs">
+      <DependentUpon>ComingSoon.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\ComingSoon.ascx.designer.cs">
+      <DependentUpon>ComingSoon.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Home.ascx.cs">
+      <DependentUpon>Home.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Home.ascx.designer.cs">
+      <DependentUpon>Home.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\iDashboard\Home_iDashboard.ascx.cs">
+      <DependentUpon>Home_iDashboard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\iDashboard\Home_iDashboard.ascx.designer.cs">
+      <DependentUpon>Home_iDashboard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\iDashboard\KPI_iDashboard.ascx.cs">
+      <DependentUpon>KPI_iDashboard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\iDashboard\KPI_iDashboard.ascx.designer.cs">
+      <DependentUpon>KPI_iDashboard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Inbox.ascx.cs">
+      <DependentUpon>Inbox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Inbox.ascx.designer.cs">
+      <DependentUpon>Inbox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Logout.ascx.cs">
+      <DependentUpon>Logout.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Logout.ascx.designer.cs">
+      <DependentUpon>Logout.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Privacy.ascx.cs">
+      <DependentUpon>Privacy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Privacy.ascx.designer.cs">
+      <DependentUpon>Privacy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Terms.ascx.cs">
+      <DependentUpon>Terms.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Terms.ascx.designer.cs">
+      <DependentUpon>Terms.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Employee\EmployeeDatabase_FrUc.ascx.cs">
+      <DependentUpon>EmployeeDatabase_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\Employee\EmployeeDatabase_FrUc.ascx.designer.cs">
+      <DependentUpon>EmployeeDatabase_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Employee\EmployeeDatabase_ShUc.ascx.cs">
+      <DependentUpon>EmployeeDatabase_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\Employee\EmployeeDatabase_ShUc.ascx.designer.cs">
+      <DependentUpon>EmployeeDatabase_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Employee\Modules\EmployeeDatabase.ascx.cs">
+      <DependentUpon>EmployeeDatabase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\Employee\Modules\EmployeeDatabase.ascx.designer.cs">
+      <DependentUpon>EmployeeDatabase.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarDetails_FrUc.ascx.cs">
+      <DependentUpon>CarDetails_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarDetails_FrUc.ascx.designer.cs">
+      <DependentUpon>CarDetails_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarDetails_ShUc.ascx.cs">
+      <DependentUpon>CarDetails_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarDetails_ShUc.ascx.designer.cs">
+      <DependentUpon>CarDetails_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarRateDetails_FrUc.ascx.cs">
+      <DependentUpon>CarRateDetails_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarRateDetails_FrUc.ascx.designer.cs">
+      <DependentUpon>CarRateDetails_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarRateDetails_ShUc.ascx.cs">
+      <DependentUpon>CarRateDetails_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarRateDetails_ShUc.ascx.designer.cs">
+      <DependentUpon>CarRateDetails_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarTransfers_FrUc.ascx.cs">
+      <DependentUpon>CarTransfers_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarTransfers_FrUc.ascx.designer.cs">
+      <DependentUpon>CarTransfers_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarTransfers_ShUc.ascx.cs">
+      <DependentUpon>CarTransfers_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarTransfers_ShUc.ascx.designer.cs">
+      <DependentUpon>CarTransfers_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CustomerDetails_FrUc.ascx.cs">
+      <DependentUpon>CustomerDetails_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CustomerDetails_FrUc.ascx.designer.cs">
+      <DependentUpon>CustomerDetails_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CustomerDetails_ShUc.ascx.cs">
+      <DependentUpon>CustomerDetails_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CustomerDetails_ShUc.ascx.designer.cs">
+      <DependentUpon>CustomerDetails_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_CS_FrUc.ascx.cs">
+      <DependentUpon>LeaseContracts_CS_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_CS_FrUc.ascx.designer.cs">
+      <DependentUpon>LeaseContracts_CS_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_FrUc.ascx.cs">
+      <DependentUpon>LeaseContracts_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_FrUc.ascx.designer.cs">
+      <DependentUpon>LeaseContracts_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_OC_FrUc.ascx.cs">
+      <DependentUpon>LeaseContracts_OC_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_OC_FrUc.ascx.designer.cs">
+      <DependentUpon>LeaseContracts_OC_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_PD_FrUc.ascx.cs">
+      <DependentUpon>LeaseContracts_PD_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_PD_FrUc.ascx.designer.cs">
+      <DependentUpon>LeaseContracts_PD_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_ShUc.ascx.cs">
+      <DependentUpon>LeaseContracts_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\LeaseContracts_ShUc.ascx.designer.cs">
+      <DependentUpon>LeaseContracts_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarDetails.ascx.cs">
+      <DependentUpon>CarDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarDetails.ascx.designer.cs">
+      <DependentUpon>CarDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarRateDetails.ascx.cs">
+      <DependentUpon>CarRateDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarRateDetails.ascx.designer.cs">
+      <DependentUpon>CarRateDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarTransfers.ascx.cs">
+      <DependentUpon>CarTransfers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarTransfers.ascx.designer.cs">
+      <DependentUpon>CarTransfers.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CustomerDetails.ascx.cs">
+      <DependentUpon>CustomerDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CustomerDetails.ascx.designer.cs">
+      <DependentUpon>CustomerDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\LeaseContracts.ascx.cs">
+      <DependentUpon>LeaseContracts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\LeaseContracts.ascx.designer.cs">
+      <DependentUpon>LeaseContracts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\RentalContracts.ascx.cs">
+      <DependentUpon>RentalContracts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\RentalContracts.ascx.designer.cs">
+      <DependentUpon>RentalContracts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_Cars_ShUc.ascx.cs">
+      <DependentUpon>RentalContracts_Cars_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_Cars_ShUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_Cars_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_CS_FrUc.ascx.cs">
+      <DependentUpon>RentalContracts_CS_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_CS_FrUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_CS_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_Cust_ShUc.ascx.cs">
+      <DependentUpon>RentalContracts_Cust_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_Cust_ShUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_Cust_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_FrUc.ascx.cs">
+      <DependentUpon>RentalContracts_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_FrUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_OC_FrUc.ascx.cs">
+      <DependentUpon>RentalContracts_OC_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_OC_FrUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_OC_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_PD_FrUc.ascx.cs">
+      <DependentUpon>RentalContracts_PD_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_PD_FrUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_PD_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_ShUc.ascx.cs">
+      <DependentUpon>RentalContracts_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\RentalContracts_ShUc.ascx.designer.cs">
+      <DependentUpon>RentalContracts_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\Old_PrintOpenContract1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Old_PrintOpenContract.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenContract1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintOpenContract.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenContractFrPg.aspx.cs">
+      <DependentUpon>PrintOpenContractFrPg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenContractFrPg.aspx.designer.cs">
+      <DependentUpon>PrintOpenContractFrPg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintReceiptVoucher1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintReceiptVoucher.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintReceiptVoucherFrPg.aspx.cs">
+      <DependentUpon>PrintReceiptVoucherFrPg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintReceiptVoucherFrPg.aspx.designer.cs">
+      <DependentUpon>PrintReceiptVoucherFrPg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDProjects_FrUc.ascx.cs">
+      <DependentUpon>ITSSDProjects_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDProjects_FrUc.ascx.designer.cs">
+      <DependentUpon>ITSSDProjects_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDProjects_ShUc.ascx.cs">
+      <DependentUpon>ITSSDProjects_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDProjects_ShUc.ascx.designer.cs">
+      <DependentUpon>ITSSDProjects_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDTasks_Efforts_FrUc.ascx.cs">
+      <DependentUpon>ITSSDTasks_Efforts_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDTasks_Efforts_FrUc.ascx.designer.cs">
+      <DependentUpon>ITSSDTasks_Efforts_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDTasks_FrUc.ascx.cs">
+      <DependentUpon>ITSSDTasks_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDTasks_FrUc.ascx.designer.cs">
+      <DependentUpon>ITSSDTasks_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDTasks_ShUc.ascx.cs">
+      <DependentUpon>ITSSDTasks_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\ITSSDTasks_ShUc.ascx.designer.cs">
+      <DependentUpon>ITSSDTasks_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\Modules\ITSSDProjects.ascx.cs">
+      <DependentUpon>ITSSDProjects.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\Modules\ITSSDProjects.ascx.designer.cs">
+      <DependentUpon>ITSSDProjects.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\Modules\ITSSDTasks.ascx.cs">
+      <DependentUpon>ITSSDTasks.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\ITSSD\Modules\ITSSDTasks.ascx.designer.cs">
+      <DependentUpon>ITSSDTasks.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportsEngine\ChartFacade.aspx.cs">
+      <DependentUpon>ChartFacade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ChartFacade.aspx.designer.cs">
+      <DependentUpon>ChartFacade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\CustomChart.cs" />
+    <Compile Include="ReportsEngine\Dashboard_eFormsUserDetails.aspx.cs">
+      <DependentUpon>Dashboard_eFormsUserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_eFormsUserDetails.aspx.designer.cs">
+      <DependentUpon>Dashboard_eFormsUserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_ManagementProjects.aspx.cs">
+      <DependentUpon>Dashboard_ManagementProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_ManagementProjects.aspx.designer.cs">
+      <DependentUpon>Dashboard_ManagementProjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_ProcessUsage.aspx.cs">
+      <DependentUpon>Dashboard_ProcessUsage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_ProcessUsage.aspx.designer.cs">
+      <DependentUpon>Dashboard_ProcessUsage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_ProjectDetails.aspx.cs">
+      <DependentUpon>Dashboard_ProjectDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_ProjectDetails.aspx.designer.cs">
+      <DependentUpon>Dashboard_ProjectDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_SSDTeamDetails.aspx.cs">
+      <DependentUpon>Dashboard_SSDTeamDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Dashboard_SSDTeamDetails.aspx.designer.cs">
+      <DependentUpon>Dashboard_SSDTeamDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\DataGeneration.cs" />
+    <Compile Include="ReportsEngine\ExportData.aspx.cs">
+      <DependentUpon>ExportData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ExportData.aspx.designer.cs">
+      <DependentUpon>ExportData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\Field.cs" />
+    <Compile Include="ReportsEngine\FormHistoryChart.aspx.cs">
+      <DependentUpon>FormHistoryChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\FormHistoryChart.aspx.designer.cs">
+      <DependentUpon>FormHistoryChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\FusionChartDataFacade.aspx.cs">
+      <DependentUpon>FusionChartDataFacade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\FusionChartDataFacade.aspx.designer.cs">
+      <DependentUpon>FusionChartDataFacade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\FusionChartWidget.cs" />
+    <Compile Include="ReportsEngine\GridViewer.aspx.cs">
+      <DependentUpon>GridViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\GridViewer.aspx.designer.cs">
+      <DependentUpon>GridViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\HolderPropertyMapper.cs" />
+    <Compile Include="ReportsEngine\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\iDashboard.aspx.cs">
+      <DependentUpon>iDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\iDashboard.aspx.designer.cs">
+      <DependentUpon>iDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\iFrameDashboard.aspx.cs">
+      <DependentUpon>iFrameDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\iFrameDashboard.aspx.designer.cs">
+      <DependentUpon>iFrameDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\iFrameGridReports.aspx.cs">
+      <DependentUpon>iFrameGridReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\iFrameGridReports.aspx.designer.cs">
+      <DependentUpon>iFrameGridReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\iFrameHome.aspx.cs">
+      <DependentUpon>iFrameHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\iFrameHome.aspx.designer.cs">
+      <DependentUpon>iFrameHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\IndexedDictionary.cs" />
+    <Compile Include="ReportsEngine\IReportLayout.cs" />
+    <Compile Include="ReportsEngine\Layout_SS_B_B.aspx.cs">
+      <DependentUpon>Layout_SS_B_B.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\Layout_SS_B_B.aspx.designer.cs">
+      <DependentUpon>Layout_SS_B_B.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\MultipleGraph.aspx.cs">
+      <DependentUpon>MultipleGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\MultipleGraph.aspx.designer.cs">
+      <DependentUpon>MultipleGraph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\PortalConfiguration.cs" />
+    <Compile Include="ReportsEngine\PropertyMapper.cs" />
+    <Compile Include="ReportsEngine\RenderUserControlsFacade.aspx.cs">
+      <DependentUpon>RenderUserControlsFacade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\RenderUserControlsFacade.aspx.designer.cs">
+      <DependentUpon>RenderUserControlsFacade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportDesigner.aspx.cs">
+      <DependentUpon>ReportDesigner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportDesigner.aspx.designer.cs">
+      <DependentUpon>ReportDesigner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\EPGLayout.ascx.cs">
+      <DependentUpon>EPGLayout.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\EPGLayout.ascx.designer.cs">
+      <DependentUpon>EPGLayout.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\EPGManagementDashboard.ascx.cs">
+      <DependentUpon>EPGManagementDashboard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\EPGManagementDashboard.ascx.designer.cs">
+      <DependentUpon>EPGManagementDashboard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\EPGPPExpiry.ascx.cs">
+      <DependentUpon>EPGPPExpiry.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\EPGPPExpiry.ascx.designer.cs">
+      <DependentUpon>EPGPPExpiry.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_1_2.ascx.cs">
+      <DependentUpon>Layout_1_2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_1_2.ascx.designer.cs">
+      <DependentUpon>Layout_1_2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_2_2.ascx.cs">
+      <DependentUpon>Layout_2_2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_2_2.ascx.designer.cs">
+      <DependentUpon>Layout_2_2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_2_3.ascx.cs">
+      <DependentUpon>Layout_2_3.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_2_3.ascx.designer.cs">
+      <DependentUpon>Layout_2_3.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_3_2.ascx.cs">
+      <DependentUpon>Layout_3_2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_3_2.ascx.designer.cs">
+      <DependentUpon>Layout_3_2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_3_3.ascx.cs">
+      <DependentUpon>Layout_3_3.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Layout_3_3.ascx.designer.cs">
+      <DependentUpon>Layout_3_3.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Lout_3_3.ascx.cs">
+      <DependentUpon>Lout_3_3.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\Lout_3_3.ascx.designer.cs">
+      <DependentUpon>Lout_3_3.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\SSDTracking.ascx.cs">
+      <DependentUpon>SSDTracking.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\SSDTracking.ascx.designer.cs">
+      <DependentUpon>SSDTracking.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\StudentDashboard.ascx.cs">
+      <DependentUpon>StudentDashboard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\StudentDashboard.ascx.designer.cs">
+      <DependentUpon>StudentDashboard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\StudentFinancial.ascx.cs">
+      <DependentUpon>StudentFinancial.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\StudentFinancial.ascx.designer.cs">
+      <DependentUpon>StudentFinancial.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\TestLayout.ascx.cs">
+      <DependentUpon>TestLayout.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\TestLayout.ascx.designer.cs">
+      <DependentUpon>TestLayout.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\WebUserControl.ascx.cs">
+      <DependentUpon>WebUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportLayouts\WebUserControl.ascx.designer.cs">
+      <DependentUpon>WebUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportsSecurity.cs" />
+    <Compile Include="ReportsEngine\ReportWidgetControls\ASPGridWidget.ascx.cs">
+      <DependentUpon>ASPGridWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\ASPGridWidget.ascx.designer.cs">
+      <DependentUpon>ASPGridWidget.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\HTMLLabelWidget.ascx.cs">
+      <DependentUpon>HTMLLabelWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\HTMLLabelWidget.ascx.designer.cs">
+      <DependentUpon>HTMLLabelWidget.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\HTMLPanelWidget.ascx.cs">
+      <DependentUpon>HTMLPanelWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\HTMLPanelWidget.ascx.designer.cs">
+      <DependentUpon>HTMLPanelWidget.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\SubMenu.ascx.cs">
+      <DependentUpon>SubMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\SubMenu.ascx.designer.cs">
+      <DependentUpon>SubMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\WoldMAPWidget.ascx.cs">
+      <DependentUpon>WoldMAPWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\ReportWidgetControls\WoldMAPWidget.ascx.designer.cs">
+      <DependentUpon>WoldMAPWidget.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\SearchPanel.cs" />
+    <Compile Include="ReportsEngine\SimpleSingleGraph.aspx.cs">
+      <DependentUpon>SimpleSingleGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\SimpleSingleGraph.aspx.designer.cs">
+      <DependentUpon>SimpleSingleGraph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\StoredProcInvoker.cs" />
+    <Compile Include="ReportsEngine\WebServices\QueryWidgetsData.asmx.cs">
+      <DependentUpon>QueryWidgetsData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\WebServices\QueryWidgetsData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\WebServices\SimpleSingleGraphWS.aspx.cs">
+      <DependentUpon>SimpleSingleGraphWS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportsEngine\WebServices\SimpleSingleGraphWS.aspx.designer.cs">
+      <DependentUpon>SimpleSingleGraphWS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsEngine\XMLDataAdapter.cs" />
+    <Compile Include="ReportsEngine\XmlHttpPanelWebService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Skins\Defalut.EO.Calendar.ascx.cs">
+      <DependentUpon>Defalut.EO.Calendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Skins\Defalut.EO.Calendar.ascx.designer.cs">
+      <DependentUpon>Defalut.EO.Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="testpage.aspx.cs">
+      <DependentUpon>testpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testpage.aspx.designer.cs">
+      <DependentUpon>testpage.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AdminPages\Common\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="AsyncWidgets\Widgets\resources\images\Widgets\Grid\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Skins\vssver.scc" />
+    <Content Include="Skins\WindowsStyle.EO.Calendar.old.ascxold" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\eForms\iRental\Reports\Old_PrintOpenContract.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Old_PrintOpenContract1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenContract.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintOpenContract1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintReceiptVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintReceiptVoucher1.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52617</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44348/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

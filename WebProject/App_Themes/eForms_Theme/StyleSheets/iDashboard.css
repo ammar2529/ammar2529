@@ -1,0 +1,806 @@
+.PWCEPMOReportImageItem
+{
+	text-align: center;
+}
+
+.PWCEPMOReportImage
+{
+	width: 15px;
+	height:15px;	
+}
+
+.imgClick
+{
+	cursor: hand;	
+}
+
+
+.PWCReportGrid
+{ 
+	PADDING-LEFT: 5px;  
+	PADDING-RIGHT: 10px;  
+
+    FONT-SIZE: 7.5pt; 
+    COLOR: black;
+    FONT-STYLE: normal;
+    FONT-FAMILY: verdana;
+    FONT-VARIANT: normal; 
+    /* BACKGROUND-COLOR: #deebf7; */ 
+    BACKGROUND-COLOR:#E1ECFC;
+    
+    border-bottom: lightsteelblue 1px solid;
+    border-right: lightsteelblue 1px solid;
+    border-left: lightsteelblue 1px solid;
+    border-top: lightsteelblue 1px solid;
+    
+}
+
+.BGAFormLabel
+{
+	COLOR: black;
+	FONT: 7.5pt/20px Verdana; 
+}
+
+.PWCFormLabel
+{
+	COLOR: black;
+	FONT: 7.5pt/20px Verdana; 
+	
+	/*FONT-WEIGHT: normal; 
+	FONT-SIZE: 11px;
+	COLOR: black; 
+	FONT-FAMILY: Arial,Verdana, Arial;
+	BACKGROUND-COLOR: white;*/
+}
+
+.SubPanelHeader
+{
+
+    /*font: bold 8pt/20px Tahoma;
+    color: #A0522D;
+    background: burlywood;
+    text-transform: capitalize;
+    vertical-align: top;
+    filter: progid:DXImageTransform.Microsoft.Alpha( Opacity=100, FinishOpacity=50, Style=1, StartX=100,  FinishX=100, StartY=60, FinishY=0);
+*/
+    
+    font: bold 8pt/20px Verdana;
+	color:Black;
+	
+    padding-left: 5px;
+    BACKGROUND-IMAGE: url(/App_Themes/Silver/TemplateImages/cellback_sectionHeading.gif); 
+    /*BACKGROUND-IMAGE: url(" + CommonUtils.GetTemplateImagePath('cellback_sectionHeading.gif') + ");*/
+    HEIGHT: 24px;
+    
+}
+
+.InformationTableBG
+{
+    padding-left: 5px;
+    padding-right: 10px;
+    background-color: #EEEEEE;
+    border-right: silver 1px solid;
+    border-top: silver 1px solid;
+    border-left: silver 1px solid;
+    border-bottom: silver 1px solid;
+}
+
+.PWCHighLightedRow
+{
+   
+    
+    color: black;
+    FONT:  7.5pt/20px Verdana;
+
+    background-color: #FFFFAA;
+}
+
+.view-text
+{
+	/*PADDING-LEFT: 5px;
+    COLOR: black;
+	FONT: 8pt/20px verdana;
+	BACKGROUND-COLOR: white;
+	*/
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #003399; FONT-FAMILY: Arial,Verdana, Arial
+
+}
+
+.PWCSearchTableBG
+{
+    padding-left: 5px;
+    padding-right: 10px; /*FONT-SIZE: 7pt;
+    COLOR: black;
+    FONT-STYLE: normal;
+    FONT-FAMILY: verdana;
+    FONT-VARIANT: normal;
+    BACKGROUND-COLOR: #f7f0d6;*/
+    background-color: #EEEEEE;
+    border-bottom: #8298B0 1px solid;
+    border-right: #8298B0 1px solid;
+    border-left: #8298B0 1px solid;
+    border-top: #8298B0 1px solid;
+}
+.PWCSearchLabel
+{
+	PADDING-TOP: 5px;
+	FONT-SIZE: 7.5pt;
+	FONT-FAMILY: verdana;
+	FONT: bold ;
+	COLOR: black;
+}
+
+
+.PWCNoDataMessage
+{	
+	font-family: Verdana;
+	font-size: 11px;
+	color:black;
+	background-color: white;	
+}
+.PWCRowSeparator
+{
+     BACKGROUND-COLOR: #94bee7;
+}
+.PWCListTextContent
+{
+	PADDING-LEFT: 5px;	
+    FONT-SIZE: 7.5pt;
+    COLOR: black;
+    FONT-STYLE: normal;
+    FONT-FAMILY: verdana;
+    FONT-VARIANT: normal;  
+}
+.PWCTableCell
+{
+    BACKGROUND-COLOR: #94bee7;
+}
+.PWCListTitle
+{
+    /* padding-left: 5px; */
+    FONT: bold 8pt/20px Tahoma;
+    COLOR: white;
+    BACKGROUND-COLOR: white;
+    padding-right:10px;
+}
+.PWCListHeader
+{
+   PADDING-LEFT: 5px;
+   FONT: bold 8pt/20px Tahoma;
+   COLOR: white;
+   BACKGROUND-COLOR: #31699C;
+}
+
+.PWCTemplateTable
+{
+    /*border-bottom: 1px solid #f7f0d6;
+	border-right: tan 1px solid;
+	border-left: tan 1px solid;
+	border-top:tan 1px solid;*/
+    border-bottom: #8298B0 1px solid;
+    border-right: #8298B0 1px solid;
+    border-left: #8298B0 1px solid;
+    border-top: #8298B0 1px solid;
+    border-bottom: #8298B0 1px solid;
+}
+
+.PWCTextBox
+{
+	/*	font-size : 7.5pt;
+	font-family: verdana;
+	font-weight:normal;
+	color:Black;
+	background-color:White;*/
+ border-right : silver 1px solid; 
+ BORDER-TOP: silver 1px solid; 
+ FONT-SIZE: 11px;
+ BORDER-LEFT: silver 1px solid;
+ COLOR: black; 
+ BORDER-BOTTOM: silver 1px solid;
+ FONT-FAMILY: verdana
+	
+}
+
+.BGATextBox
+{
+	/*	font-size : 7.5pt;
+	font-family: verdana;
+	font-weight:normal;
+	color:Black;
+	background-color:White;*/
+ border-right : silver 1px solid; 
+ BORDER-TOP: silver 1px solid; 
+ FONT-SIZE: 11px;
+ BORDER-LEFT: silver 1px solid;
+ COLOR: black; 
+ BORDER-BOTTOM: silver 1px solid;
+ FONT-FAMILY: verdana
+	
+}
+.PWCFlatButton 
+{
+	margin:0 10px 0 0; 
+	font-family:verdana,sans-serif;
+	font-size:10px;  
+	background: #cde0f3;
+	border-bottom: 1px solid #104A7B;
+	border-right: 1px solid #104A7B;
+	border-left: 1px solid #AFC4D5;
+	border-top:1px solid #AFC4D5;
+	color:black;
+	height:19px;
+	text-decoration:none;
+	cursor: hand;	
+	
+}
+
+.PopupImage
+{
+	background: url(/App_Themes/Silver/Images/Popup.gif) no-repeat left center;
+	/*background: url(" + CommonUtils.GetImagePath('Popup.gif') + ") no-repeat left center;*/
+    BORDER-TOP: silver 1px solid; 
+	BORDER-LEFT: silver 1px solid; 
+	BORDER-BOTTOM: silver 1px solid; 
+	BORDER-right: White 0px solid; 
+    cursor: hand;
+}
+
+.PWCPopupTextBox
+{
+ border-right : silver 1px solid; 
+ BORDER-TOP: silver 1px solid; 
+ FONT-SIZE: 11px;
+ BORDER-LEFT: White 1px solid;
+ COLOR: black; 
+ BORDER-BOTTOM: silver 1px solid;
+ FONT-FAMILY: verdana;
+}
+
+.ImageButton  
+{
+	margin:0 5px 0 0; 
+    background: #EBE3CD url(/App_Themes/Silver/Images/ImageButton.gif) repeat;
+    /*background: #EBE3CD url(" + CommonUtils.GetImagePath('ImageButton.gif') + ") repeat;*/
+    line-height: 14px;
+    padding: 0px 0 0 0;
+    font: bold 7.5pt verdana, arial, sans-serif;
+    color:ThreeDDarkShadow;
+    height: 20px;
+    BORDER-RIGHT: silver 1px solid;
+    BORDER-LEFT: silver 1px solid; 
+    BORDER-TOP: silver 1px solid;
+    BORDER-BOTTOM: silver 1px solid; 
+}
+
+.PWCButton
+{
+	/*
+	margin:0 10px 0 0; 
+	BORDER-RIGHT: silver 1px solid; 
+	BORDER-TOP: silver 1px solid; 
+	FONT-SIZE: 11px; 
+	BORDER-LEFT: silver 1px solid; 
+	COLOR: black; 
+	BORDER-BOTTOM: silver 1px solid; 
+	FONT-FAMILY: verdana;	
+	BACKGROUND-COLOR:  gainsboro;
+*/
+	margin:0 5px 0 0; 
+    background: #EBE3CD url(/App_Themes/Silver/Images/ImageButton.gif) repeat ;
+    /*background: #EBE3CD url(" + CommonUtils.GetImagePath('ImageButton.gif') + ") repeat;*/
+    
+    line-height: 14px;
+    padding: 0px 0 0 0;
+    font: bold 7.5pt verdana, arial, sans-serif;
+    color:ThreeDDarkShadow;
+    height: 20px;
+    BORDER-RIGHT: silver 1px solid;
+    BORDER-LEFT: silver 1px solid; 
+    BORDER-TOP: silver 1px solid;
+    BORDER-BOTTOM: silver 1px solid; 
+}
+ .PWCListSummaryButton {
+	BORDER-RIGHT: silver 1px solid; 
+	BORDER-TOP: silver 1px solid;
+	FONT-SIZE: 11px;
+	BORDER-LEFT: silver 1px solid; 
+	COLOR: black; BORDER-BOTTOM: silver 1px solid; 
+	FONT-FAMILY: verdana; 
+	BACKGROUND-COLOR: gainsboro
+}
+
+.PWCListBox 
+{
+    BACKGROUND-COLOR: white;
+    BORDER-BOTTOM: #006699 1px solid;
+    BORDER-LEFT: #006699 1px solid;
+    BORDER-RIGHT: #006699 1px solid;
+    BORDER-TOP: #006699 1px solid;
+    COLOR: black;
+    font-family:verdana,sans-serif;
+    FONT-WEIGHT:normal;
+    FONT-SIZE: 7.5pt;
+}
+
+.PWCDropDownList 
+{
+    BACKGROUND-COLOR: white;
+    BORDER-BOTTOM: #006699 1px solid;
+    BORDER-LEFT: #006699 1px solid;
+    BORDER-RIGHT: #006699 1px solid;
+    BORDER-TOP: #006699 1px solid;
+    COLOR: black;
+    FONT-WEIGHT:normal;
+    FONT-SIZE: 7.5pt;
+}
+
+.PWCLabel
+{
+	COLOR: black;
+	FONT:  7.5pt/20px Verdana; 
+	padding-right:10px;
+ }
+ 
+ .BGALabel
+{
+	COLOR: black;
+	FONT:  7.5pt/20px Verdana; 
+	padding-right:10px;
+}
+
+.BGALabelValue
+{
+    FONT: bold 7.5pt/20px Verdana;
+    COLOR: navy;
+}
+ 
+ .PWCLabelValue
+{
+    FONT: bold 7.5pt/20px Verdana;
+    COLOR: navy;
+}
+
+ .BGALabelValueRed
+{
+    FONT: bold 7.5pt/20px Verdana;
+    COLOR: Red;
+}
+ 
+ .PWCLabelValueRed
+{
+    FONT: bold 7.5pt/20px Verdana;
+    COLOR: Red;
+}
+
+ .PWCLabelValueGreen
+{
+    FONT: bold 7.5pt/20px Verdana;
+    COLOR: Green;
+}
+
+.PWCHyperLinkLabel
+{
+color:Navy; text-decoration:none;font-family:Verdana; font-size:11px;
+cursor:pointer
+}
+
+.PWCLanguagePanel 
+{
+    BACKGROUND-COLOR: White;
+    BORDER-BOTTOM: #006699 1px solid;
+    BORDER-LEFT: #006699 1px solid;
+    BORDER-RIGHT: #006699 1px solid;
+    BORDER-TOP: #006699 1px solid;
+    COLOR: black;
+    FONT-WEIGHT:normal;
+    FONT-SIZE: 7.5pt;
+}
+.PWCViewTextPad
+{
+   PADDING-LEFT: 5px;
+   FONT: bold 8pt/20px Tahoma;
+   COLOR: white;
+   BACKGROUND-COLOR: #31699C;
+}
+.PWCViewText
+{
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #003399; FONT-FAMILY: Arial,Verdana, Arial
+}
+
+.PWCSubTitleHeader{
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: Verdana,Arial
+	
+	/*FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #A0522D; FONT-FAMILY: Arial,Verdana,Arial*/
+}
+
+.PWCSiteMapNode{
+	/*FONT-WEIGHT: bold; FONT-SIZE: 0.8em; FONT-FAMILY: Verdana,Arial */
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; FONT-FAMILY: Arial,Verdana, Arial
+}
+
+.PWCSiteMapSeparator{
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; FONT-FAMILY: Verdana,Arial
+}
+
+.PWCListSummaryLabel {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; FONT-FAMILY: Arial,Verdana, Arial
+}
+.PWCListSummaryTextBox {
+	BORDER-RIGHT: silver 1px solid;
+	 BORDER-TOP: silver 1px solid; 
+	 FONT-SIZE: 11px; 
+	 BORDER-LEFT: silver 1px solid; 
+	 COLOR: black; BORDER-BOTTOM: silver 1px solid; FONT-FAMILY: verdana
+}
+
+.PWCSearchTextBold {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: black; FONT-FAMILY: Arial,Verdana, Arial
+}
+
+.PWCListButton 
+{
+	margin:0 10px 0 0; 
+	BORDER-RIGHT: silver 1px solid; 
+	BORDER-TOP: silver 1px solid; 
+	FONT-SIZE: 11px; 
+	BORDER-LEFT: silver 1px solid; 
+	COLOR: black; 
+	BORDER-BOTTOM: silver 1px solid; 
+	FONT-FAMILY: verdana;
+}  
+.PWCPageTitleHeader
+{
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: yellow;padding-right:10px; FONT-FAMILY: Arial,Verdana, Arial
+}
+
+A.PWCHyperLink:link    {color:Navy; text-decoration:none;font-family:Verdana; font-size:11px;padding-right:10px;}
+A.PWCHyperLink:active  {color:Navy; text-decoration:none;font-family:Verdana; font-size:11px;padding-right:10px;}
+A.PWCHyperLink:visited {color:Navy; text-decoration:none;font-family:Verdana; font-size:11px;padding-right:10px;}
+A.PWCHyperLink:hover   {color:#ff6355;text-decoration:underline;font-family:Verdana; font-size:11px;padding-right:10px;}
+
+.PWCListLink {FONT-WEIGHT:bolder; COLOR: #000066}
+
+.PWCTitledPanelTable
+{
+	border-collapse:collapse;
+}
+.PWCTitledPanelTitle
+{
+	background-color:#94bee7;
+	border-collapse:collapse;
+}
+.PWCTitledPanelBody
+{
+	border-collapse:collapse;
+}
+
+.PWCOddRow
+{
+    /*background-color: #f3f6fb;*/
+    font-weight: normal;
+    font-size: 11px;
+    color: black;
+    font-family: Arial,Verdana, Helvetica, sans-serif;
+    background-color: #F6F6F6;
+}
+.PWCEvenRow
+{
+    font-weight: normal;
+    font-size: 11px;
+    color: black;
+    font-family: Arial,Verdana, Helvetica, sans-serif; /*BACKGROUND-COLOR: #f6f7f8;*/
+    background-color: #faebd7;
+    background-color: #FFFEFB; 
+}
+
+.PWCTabCell 
+{
+	border-width:1;
+	/*border-color:Black;*/
+	padding:0 5 0 5;
+}
+.PWCTabCellSelected
+{
+	border-top-style:ridge;
+	border-left-style:ridge;
+	border-right-style:ridge;
+	border-bottom-style:none;
+	background-color:darkgray;
+	cursor:hand;
+	font-weight:bold;
+}
+
+.PWCTabCellTail
+{
+	border-top-style:groove;
+	border-left-style:groove;
+	border-right-style:groove;
+	border-bottom-style:solid;
+	cursor:hand;
+	background-color:gainsboro;
+}
+
+.PWCTabCellEmpty
+{
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	background-color:Transparent;
+	border-bottom-style: solid;
+}
+
+.PWCTabCellBody
+{
+	border-top-style:none;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-bottom-style:solid;
+	padding:5 5 5 5;
+	background-color:darkgray;
+}
+.PWCTabCellInnerBody 
+{
+	background-color:White;
+	width:100%;
+	height:100%;
+	border-width:1;
+	border-style:ridge;
+	border-color:Silver;
+	padding:5 5 5 5;
+}
+
+.PWCLabelValueGreen
+{
+    FONT: bold 7.5pt/20px Verdana;
+    COLOR: Green;
+}
+
+.PWCHelpImageLink
+{
+    cursor: hand;
+}
+
+/* New Values */
+
+.tab {
+	BACKGROUND-COLOR: #eeeeee; FONT-WEIGHT: bolder; FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: MS Sans Serif; PADDING: 8px; BORDER: #FFFFFF 1px solid;
+}
+.tabselected {
+	BACKGROUND-COLOR: #FFFFFF; FONT-WEIGHT: bolder; FONT-SIZE: 9pt; COLOR: black; FONT-FAMILY: MS Sans Serif; PADDING: 8px; BORDER: #FFFFFF 1px solid;
+}
+.bordertop {
+	BORDER-TOP: #eeeeee 1px solid;
+}
+
+.AgilityTemplateTableBG
+{
+	BACKGROUND-COLOR: #EEEEEE;
+    border-bottom: #8298B0 1px solid;
+    border-right: #8298B0 1px solid;
+    border-left: #8298B0 1px solid;
+    border-top: #8298B0 1px solid;    
+}
+
+ .AgilityTableSpacer
+ {
+	height : 10px;
+ }
+ 
+ .AgilityRowSpacerTop
+ {	
+	height : 6px;
+ }
+ 
+ .AgilityRowSpacer
+ {	
+	height : 12px;
+ }
+ 
+ .AgilityCellPadding
+ {
+	padding-left: 5px;
+	FONT: 7.5pt/20px Verdana; 
+ }
+ 
+ .AgilitySubPanelHeader
+{
+	 background:url(../Images/row_header.JPG") repeat-x scroll -2px 0 #F2F2F2;
+     border-top:1px solid #D0D0D0;
+     height : 30px;
+	
+	/*padding-left: 5px;
+	height : 22px;
+	
+	BACKGROUND-IMAGE: url(/App_Themes/Silver/Images/cellback_subsectionHead1.gif);*/
+
+/*	BACKGROUND-IMAGE: url(" + CommonUtils.GetImagePath('cellback_subsectionHead1.gif') + ");*/
+}
+
+
+     .GridHead
+      {
+        color:Navy; 
+        text-decoration:none;
+        font-family:Verdana; 
+        font-size:11px;
+        padding-left:3px 
+      }
+     
+
+/* For Reports*/
+
+.DataGridHeader_BGImage
+{
+    /*
+    font-family: Arial,Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+         
+    */
+    font-weight:bold;
+    /*background-image: url(" + CommonUtils.GetImagePath('cellback_SubSectionHead1.gif') +");       
+    */
+        background-image: url(/App_Themes/Silver/Images/cellback_SubSectionHead1.gif);
+
+ }
+.DataGridHeader_BGImage a,a:active,a:visited{text-decoration:none;font-family:Verdana; font-size:11px;  }
+.DataGridHeader_BGImage  a:hover{text-decoration:underline;font-family:Verdana; font-size:11px; }
+              
+
+Body
+{
+    margin-left : 0;
+    margin-top : 0;
+    margin-right : 0;
+    background-color: white;
+}
+.SearchText1
+{
+    font-family: Arial,Verdana, Arial;
+    font-size:11px;
+    font-weight:bold;
+    color :Black;      
+}
+
+.SearchText2
+{
+    font-family: Arial,Verdana, Arial;
+    font-size:11px;
+    font-weight:normal;  
+    color : #757575;
+    text-decoration: none;
+}
+.SearchText3
+{
+    font-family: Arial,Verdana, Arial;
+    font-size:11px;
+    font-weight:bold;
+    color :#003399;      
+}
+
+.SearchTextBold
+{
+    color :Black ;
+    font-family: Arial,Verdana, Arial;
+    font-size:11px;
+    font-weight:bold ;   
+}
+.RemovePadding
+{
+    padding:-1px;
+   
+}
+
+.PWCGIButton
+{
+	margin :0 10px 0 0; 
+	BORDER-RIGHT: silver 1px solid; 
+	BORDER-TOP: silver 1px solid; 
+	FONT-SIZE: 11px; 
+	BORDER-LEFT: silver 1px solid; 
+	COLOR: black; 
+	BORDER-BOTTOM: silver 1px solid; 
+	FONT-FAMILY: verdana;	
+	BACKGROUND-COLOR:  gainsboro;
+}
+/* For Service Desk*/
+
+.SRRLabel
+{
+	COLOR: black;
+	FONT:  10pt/20px Verdana; 
+	padding-right:10px;
+ }
+ 
+ .SRRBlueLabel
+{
+	COLOR: #101080;
+	FONT:  10pt/25px Verdana; 
+	font-weight:bold;
+	padding-right:10px;
+ }
+ 
+  .SRRBULabel
+{
+	COLOR: #808000;
+	FONT:  10pt/20px Verdana; 
+	font-weight:bold;
+	padding-right:10px;
+ }
+ 
+   .SRRBGLabel
+{
+	COLOR: #008080;
+	FONT:  10pt/20px Verdana; 
+	font-weight:bold;
+	padding-right:10px;
+	
+ }
+ 
+  .SRROpenLabel
+{
+	COLOR: Red;
+	FONT:  10pt/20px Verdana; 
+	font-weight:bold;
+	padding-right:10px;
+ }
+ 
+ .SRRReslovedLabel
+{
+	COLOR: #008000;
+	FONT:  10pt/20px Verdana; 
+	font-weight:bold;
+	padding-right:10px;
+ }
+ 
+ .SRRAcknowledgedLabel
+{
+	COLOR: #602010;
+	FONT:  10pt/20px Verdana; 
+	font-weight:bold;
+	padding-right:10px;
+ }
+ 
+ A.SRRHyperLink:link    {color:Blue; text-decoration:none;FONT:  10pt/20px Verdana;font-weight:bold; padding-right:10px;}
+A.SRRHyperLink:active  {color:Red; text-decoration:none;FONT:  10pt/20px Verdana;font-weight:bold;padding-right:10px;}
+A.SRRHyperLink:visited {color:Navy; text-decoration:none;FONT:  10pt/20px Verdana;font-weight:bold;padding-right:10px;}
+A.SRRHyperLink:hover   {color:#ff6355;text-decoration:underline;FONT:  10pt/20px Verdana;font-weight:bold;padding-right:10px;}
+
+
+.SRRListHeader
+{
+   PADDING-LEFT: 5px;
+   FONT: bold 8pt/20px Tahoma;
+   COLOR: white;
+   BACKGROUND-COLOR: #31699C;
+}
+.SRRImage
+{
+	padding-right:5px;
+}
+
+.SRROddRow
+{
+    /*background-color: #f3f6fb;*/
+    font-weight: normal;
+    font-size: 11px;
+    color: White;
+    font-family: Arial,Verdana, Helvetica, sans-serif;
+    background-color: #fffcf5;
+}
+.SRREvenRow
+{
+    font-weight: normal;
+    font-size: 11px;
+    color: #D3D3D3;
+    font-family: Arial,Verdana, Helvetica, sans-serif; /*BACKGROUND-COLOR: #f6f7f8;*/
+    background-color: #faebd7;
+    background-color: #fffae9;
+}
+
+.SBanner
+{
+	padding-bottom:5px;
+	color:White;
+	font-family:Verdana;font-size:12px; 
+	letter-spacing: 1px;
+}

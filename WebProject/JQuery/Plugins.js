@@ -1,0 +1,15 @@
+﻿//---------JQuery Mask Plugin------------------------//
+(function(a) { a.fn.mask = function(c, b) { a(this).each(function() { if (b !== undefined && b > 0) { var d = a(this); d.data("_mask_timeout", setTimeout(function() { a.maskElement(d, c) }, b)) } else { a.maskElement(a(this), c) } }) }; a.fn.unmask = function() { a(this).each(function() { a.unmaskElement(a(this)) }) }; a.fn.isMasked = function() { return this.hasClass("masked") }; a.maskElement = function(d, c) { if (d.data("_mask_timeout") !== undefined) { clearTimeout(d.data("_mask_timeout")); d.removeData("_mask_timeout") } if (d.isMasked()) { a.unmaskElement(d) } if (d.css("position") == "static") { d.addClass("masked-relative") } d.addClass("masked"); var e = a('<div class="loadmask"></div>'); if (navigator.userAgent.toLowerCase().indexOf("msie") > -1) { e.height(d.height() + parseInt(d.css("padding-top")) + parseInt(d.css("padding-bottom"))); e.width(d.width() + parseInt(d.css("padding-left")) + parseInt(d.css("padding-right"))) } if (navigator.userAgent.toLowerCase().indexOf("msie 6") > -1) { d.find("select").addClass("masked-hidden") } d.append(e); if (c !== undefined) { var b = a('<div class="loadmask-msg" style="display:none;"></div>'); b.append("<div>" + c + "</div>"); d.append(b); b.css("top", Math.round(d.height() / 2 - (b.height() - parseInt(b.css("padding-top")) - parseInt(b.css("padding-bottom"))) / 2) + "px"); b.css("left", Math.round(d.width() / 2 - (b.width() - parseInt(b.css("padding-left")) - parseInt(b.css("padding-right"))) / 2) + "px"); b.show() } }; a.unmaskElement = function(b) { if (b.data("_mask_timeout") !== undefined) { clearTimeout(b.data("_mask_timeout")); b.removeData("_mask_timeout") } b.find(".loadmask-msg,.loadmask").remove(); b.removeClass("masked"); b.removeClass("masked-relative"); b.find("select").removeClass("masked-hidden") } })(jQuery);
+
+//---------Ext.apply and createDelegate Functions------------------------//
+//Ext = { version: "2.3.0" }; window["undefined"] = window["undefined"]; Ext.apply = function(d, e, b) { if (b) { Ext.apply(d, b) } if (d && e && typeof e == "object") { for (var a in e) { d[a] = e[a] } } return d }; Ext.apply(Function.prototype, { createDelegate: function(c, b, a) { var d = this; return function() { var f = b || arguments; if (a === true) { f = Array.prototype.slice.call(arguments, 0); f = f.concat(b) } else { if (typeof a == "number") { f = Array.prototype.slice.call(arguments, 0); var e = [a, 0].concat(b); Array.prototype.splice.apply(f, e) } } return d.apply(c || window, f) } } });
+//Ext.apply(Function.prototype, {
+//    defer: function(millis, obj, args, appendArgs) {
+//        var fn = this.createDelegate(obj, args, appendArgs);
+//        if (millis) {
+//            return setTimeout(fn, millis);
+//        }
+//        fn();
+//        return 0;
+//    } 
+//});

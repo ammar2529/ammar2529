@@ -1,0 +1,86 @@
+
+
+.picture-slides-container {
+	PADDING-LEFT: 0px; WIDTH: 432px; HEIGHT: 165px; MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px; PADDING-TOP: 0px
+}
+
+.nivoSlider {
+	POSITION: relative
+}
+.nivoSlider IMG {
+	POSITION: absolute; TOP: 0px; LEFT: 0px
+}
+.nivoSlider A.nivo-imageLink {
+	Z-INDEX: 60; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 432px; PADDING-RIGHT: 0px; DISPLAY: none; HEIGHT: 100%; BORDER-TOP: 0px; TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px; LEFT: 0px
+}
+.nivo-slice {
+	Z-INDEX: 50; POSITION: absolute; DISPLAY: block; HEIGHT: 100%
+}
+.nivo-caption {
+	Z-INDEX: 89; POSITION: absolute; WIDTH: 100%; BOTTOM: 0px; BACKGROUND: #000; COLOR: #fff; LEFT: 0px; opacity: 0.8
+}
+.nivo-caption P {
+	PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+.nivo-directionNav A {
+	Z-INDEX: 99; POSITION: absolute; TOP: 45%; CURSOR: pointer
+}
+.nivo-prevNav {
+	LEFT: 0px
+}
+.nivo-nextNav {
+	RIGHT: 0px
+}
+.nivo-controlNav A {
+	Z-INDEX: 99; POSITION: relative; CURSOR: pointer
+}
+.nivo-controlNav A.active {
+	FONT-WEIGHT: bold
+}
+
+
+#slider {
+	POSITION: relative; MIN-HEIGHT: 165px; WIDTH: 432px
+}
+#slider IMG {
+	POSITION: absolute; DISPLAY: none; TOP: 0px; LEFT: 0px
+}
+#slider A {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.nivo-controlNav {
+	Z-INDEX: 500; POSITION: absolute; BOTTOM: -30px; MARGIN-LEFT: 150px; LEFT: 45%
+}
+.nivo-controlNav A {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; TEXT-INDENT: -9999px; WIDTH: 10px; DISPLAY: block; BACKGROUND: url('/App_Themes/eForms_Theme/images/Slider/bullets.png') no-repeat; FLOAT: left; HEIGHT: 48px; BORDER-TOP: 0px; MARGIN-RIGHT: 3px; BORDER-RIGHT: 0px
+}
+.nivo-controlNav A.active {
+	BACKGROUND-POSITION: -10px 0px
+}
+.nivo-directionNav A {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; MARGIN-TOP: 69px; TEXT-INDENT: -9999px; WIDTH: 17px; DISPLAY: block; BACKGROUND: url('/App_Themes/eForms_Theme/images/Slider/arrows.png') no-repeat; HEIGHT: 17px; MARGIN-LEFT: 308px; BORDER-TOP: 0px; MARGIN-RIGHT: 3px; BORDER-RIGHT: 0px
+}
+.nivo-directionNav A:hover {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; MARGIN-TOP: 69px; TEXT-INDENT: -9999px; WIDTH: 17px; DISPLAY: block; BACKGROUND: url('/App_Themes/eForms_Theme/images/Slider/arrows_over.png') no-repeat; HEIGHT: 17px; MARGIN-LEFT: 308px; BORDER-TOP: 0px; MARGIN-RIGHT: 3px; BORDER-RIGHT: 0px
+}
+A.nivo-nextNav:hover {
+	BACKGROUND-POSITION: -17px 0px; RIGHT: 15px
+}
+A.nivo-nextNav {
+	BACKGROUND-POSITION: -17px 0px; RIGHT: 15px
+}
+A.nivo-prevNav {
+	LEFT: 15px
+}
+.clear {
+	CLEAR: both
+}
+.pointer {
+	CURSOR: pointer
+}
+IMG {
+	-MS-INTERPOLATION-MODE: bicubic
+}
+
+
+

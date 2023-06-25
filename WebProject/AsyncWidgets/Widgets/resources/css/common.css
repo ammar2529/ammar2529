@@ -1,0 +1,277 @@
+﻿html {
+	height: 100%;
+	overflow:visible;
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	min-height: 100%;
+	overflow:visible;
+}
+/*
+html {
+scrollbar-arrow-color: #000000;
+scrollbar-base-color: #00CCFF;
+scrollbar-face-color: #0099FF;
+scrollbar-highlight-color: #00CCFF;
+scrollbar-shadow-color: #00CCFF;
+scrollbar-3dlight-color: #00CCFF;
+scrollbar-track-color: #00CCFF;
+scrollbar-darkshadow-color: #00CCFF;}
+*/
+form
+{	
+	height: 100%;
+    
+    }
+#content {
+	background: #EEE;
+	
+
+	margin: auto;
+	font: 1.5em arial, verdana, sans-serif;
+	width: 100%;
+	height: 100%;
+}
+sizefiter
+{
+width:100%;
+height:100%;    
+}        
+.clear
+{
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+       
+        
+        /***************************************************/
+        .w-tab-tabWrap
+        {
+            border: 1px solid #8DB2E3;
+            padding-bottom: 2px;
+            background-color:#DEECFD;
+            overflow:hidden;
+        }
+        .w-tab-tabBar
+        {
+            position: relative;
+            width:100%;
+            overflow:hidden;
+        }
+        .w-tab-tabCon
+        {
+            margin-left: 18px;
+            margin-right: 18px;
+            overflow: hidden;
+            position: relative;
+        }
+        .w-tab-tabsList
+        {
+            width: 5000px;
+            padding: 0px;
+            margin: 0px;
+            list-style: none outside none;
+            border-bottom: 1px solid;
+            padding-top: 1px;
+        }
+        .w-tab-tabitem
+        {
+            margin-left: 2px;
+            float: left;
+            position: relative;
+            
+        }
+        .w-tab-close
+        {
+            background-image: url("../Images/Widgets/TabPanel/tab-close.gif");
+            background-repeat: no-repeat;
+            cursor: pointer;
+            display: block;
+            height: 11px;
+            opacity: 0.6;
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 11px;
+            z-index: 2;
+            outline: medium none;
+            text-decoration: none !important;
+        }
+        .w-tab-leftCorner
+        {
+            background: none no-repeat scroll 0 -51px transparent;
+        }
+        .w-tab-leftCorner
+        {
+            padding-left: 6px;
+            background-image: url("../Images/Widgets/TabPanel/tabs-sprite.gif");
+            cursor: pointer;
+            outline: medium none;
+            text-decoration: none !important;
+            display: block;
+        }
+        .w-tab-rightCorner
+        {
+            background: none no-repeat scroll right -351px transparent;
+        }
+        .w-tab-rightCorner
+        {
+            background-image: url("../Images/Widgets/TabPanel/tabs-sprite.gif");
+            padding-right: 19px;
+            display: block;
+            font-style: normal;
+            font-weight: normal;
+        }
+        .w-tab-center
+        {
+            background: none repeat-x scroll 0 -201px transparent;
+        }
+        .w-tab-center
+        {
+            width: 90px;
+            background-image: url("../Images/Widgets/TabPanel/tabs-sprite.gif");
+            display: block;
+            overflow: hidden;
+        }
+        .w-tab-caption
+        {
+            display: block;
+            cursor: pointer;
+            padding: 4px 0;
+            white-space: nowrap;
+            color: #416AA3;
+            font: 11px tahoma,arial,helvetica;
+        }
+        .w-tab-icon
+        {
+            background-image: url("tabs.gif") !important;
+            background-position: 0 3px;
+            background-repeat: no-repeat;
+            padding-left: 20px;
+        }
+        .clear
+        {
+            clear: both;
+            font-size: 0;
+            height: 0;
+            line-height: 0;
+            overflow: hidden;
+        }
+        .w-tab-scorll
+        {
+            position: absolute;
+            top: 0px;
+            cursor: pointer;
+            width: 18px;
+            height: 22px;
+            border-bottom: 1px solid #8DB2E3;
+            z-index: 10;
+            background-repeat: no-repeat;
+        }
+        .w-tab-LScorll
+        {
+        
+        background:none no-repeat scroll -18px 0 transparent
+        }
+        .w-tab-LScorll-over
+        {
+            background-position:0 0;
+        }
+
+        .w-tab-LScorll
+        {
+            left: 0px;
+            background-image: url('../Images/Widgets/TabPanel/scroll-left.gif');
+            
+        }
+        .w-tab-RScorll-over
+        {
+             background-position: -18px 0;
+        }
+        .w-tab-RScorll
+        {
+            right: 0px;
+            background-image: url('../Images/Widgets/TabPanel/scroll-right.gif');
+        }
+        .w-tab-pnlBody
+        {
+         overflow:hidden;position:relative;border: 1px solid   
+        }
+/************************* </TabPanel widget>      **********************************/
+/************************* <Mask>      **********************************/
+
+    .loadmask {
+        z-index: 100;
+        position: absolute;
+        top:0;
+        left:0;
+        -moz-opacity: 0.5;
+        opacity: .50;
+        filter: alpha(opacity=50);
+        background-color: #CCC;
+        width: 100%;
+        height: 100%;
+        zoom: 1;
+    }
+    .loadmask-msg {
+        z-index: 20001;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border:1px solid #6593cf;
+        background: #c3daf9;
+        padding:2px;
+    }
+    .loadmask-msg div {
+        padding:5px 10px 5px 25px;
+        background: #fbfbfb url('../Images/loading.gif') no-repeat 5px 5px;
+        line-height: 16px;
+	    border:1px solid #a3bad9;
+        color:#222;
+        font:normal 11px tahoma, arial, helvetica, sans-serif;
+        cursor:wait;
+    }
+    .masked {
+        overflow: hidden !important;
+    }
+    .masked-relative {
+        position: relative !important;
+    }
+    .masked-hidden {
+        visibility: hidden !important;
+    }
+/************************* </Mask>  background-position: 0 3px;    padding-left: 20px;  **********************************/
+
+
+.RowEditForm
+{
+    background-image: url("../Images/RowEditForm.png") ;
+   
+    background-repeat: no-repeat;
+   background-position:center center;
+
+}
+.ChildGrid
+{
+    background-image: url("../Images/Expand.png") ;
+   
+    background-repeat: no-repeat;
+   background-position:center center;
+
+}
+.ChildGridExpanded
+{
+    background-image: url("../Images/Collapse.png") ;
+}
+.DataGridHead
+{
+    background-image: url("../../../../App_Themes/Silver/Images/cellback_SubSectionHead1.gif") ;
+    background-repeat: repeat;
+    background-position:left top;
+
+}
