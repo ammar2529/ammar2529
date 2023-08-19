@@ -1,5 +1,13 @@
 ﻿Ext.namespace('AsyncWidgets.WidgetScripts');
 //AsyncWidgets.WidgetScripts
+
+if (location.protocol=="https:")
+{
+	if(ROOT_PATH.indexOf("https")!=0){
+		ROOT_PATH=ROOT_PATH||"/";
+		ROOT_PATH =location.protocol+"//"+location.host+ ROOT_PATH;
+	}
+} 
 RES_PATH = ROOT_PATH + "AsyncWidgets/Widgets/resources/";
 MSGWAIT = 'Please wait while loading ...';
 Number.prototype.fix = function (prec) {
@@ -7,6 +15,29 @@ Number.prototype.fix = function (prec) {
     var f = Math.pow(10, prec);
     return (Math.floor(this * f) / f).toFixed(prec);
 };
+Number.prototype.numberWithCommas = function () {
+    var x = this;
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+String.prototype.numberWithCommas = function () {
+    var x = this;
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+String.prototype.toNumber = function (cf) {
+    cf = cf || {};
+    _cf = { WhenNaN: 0 };
+    Ext.apply(_cf, cf);
+    var x = this;
+    var con = Number(x.replace(/[, ]/g, '')); //remove commas and space form the number;
+    if (isNaN(con)) {
+        return _cf.WhenNaN;
+    }
+    return con;
+}
 Ext.apply(Ext.util.Format, {
     nullSP: function (v) {
         return v !== null ? v : '&nbsp;'; 
@@ -14,8 +45,23 @@ Ext.apply(Ext.util.Format, {
     nullNSTR: function (v) {
         return v !== null ? v : '';
     },
-    fix: function (v, x) {
-        return v.fix(x);
+    fix: function (v, x, cf) {
+       
+        try {
+            var cf = cf || {};
+            if (v == null) {
+                return '';
+            }
+            else if (!!cf.Comma) {
+                return v.fix(x).numberWithCommas();
+            }
+            else
+                return v.fix(x);
+
+        }
+        catch (ex) {
+            debugger;
+        }
     }
 });
 Ext.applyIf(String, {
@@ -41,11 +87,15 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
         conf = conf || {};
         Ext.apply(t, {
             facade: 'DoAction',
-            facadePath: ROOT_PATH + 'AsyncWidgets/WebServices/RemoteActions.asmx'
+			facadePath: ROOT_PATH + 'AsyncWidgets/WebServices/RemoteActions.asmx',
+            xhr: {}				   
         }, conf);
         t.addEvents({ 'onSuccess': true, 'afterSuccess': true, 'onFailure': true });
 
         AsyncWidgets.RAInvoker.superclass.constructor.call(t, conf);
+    },
+    abort: function () {
+        if (!!this.xhr.abort) this.xhr.abort();
     },
     invokeRA: function (op) {
         var t = this;
@@ -66,8 +116,11 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
     , failure: function (res) {
         res = res.d || res;
         var t = this;
+		console.log(`RAInvoker faild for url:(${t.facadePath})
+		response: ${JSON.stringify(res)}
+		`);
         t.fireEvent('onFailure', res);
-        //  $(t.el).unmask();
+        
     }
     ,
     callWS: function (webMethod, parameters, successFn, errorFN) {
@@ -82,7 +135,7 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
         // var errHnadler = errorFN || function (msg) { alert("Error Occured While Executing web service\t\n" + msg.responseText); };
         successFn = successFn || this.success.createDelegate(this);
         errorFN = errorFN || this.failure.createDelegate(this);
-        $.ajax({
+        this.xhr =$.ajax({
             type: "POST",
             url: webMethod,
             contentType: "application/json; charset=utf-8",
@@ -456,7 +509,7 @@ $(document).ready(function () {
     //  setCommonEvents();
 
     //*********************************Show Time in the Application*************************//
-      $('.jclock').jclock();
+    //  $('.jclock').jclock();
     //****End****//
 
     $('.unselectable').live('selectstart', function (e) {
@@ -613,10 +666,12 @@ AsyncWidgets.Widgets = function () {
                 _count--;
             }
         },
+        
         getWidget: function (widgetId) {
+          //  debugger;
             if (typeof _widgets[widgetId] == 'undefined') {
 
-                alert("Widget '" + widgetId + "' not found!");
+                console.log("Widget '" + widgetId + "' not found!");
             }
             else
                 return _widgets[widgetId].widget;
@@ -655,7 +710,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
         t.State = {};
         t.loaded = false;
         Ext.apply(t.State, config, t.DefaultState);
-        $(t.el).attr('widgetid', t.State.WidgetId);
+        $(t.el).attr('widgetid', t.State.WidgetId).attr('wtype', t.State.WidgetType);
         t.addEvents({ 'onLoad': true, 'onValidate': true, 'show': true, 'hide': true, 'refresh': true });
         AsyncWidgets.widgetContainer.superclass.constructor.call(t, config);
     },
@@ -1022,7 +1077,7 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
             var s, fn;
 //            s = $(t.el).children('pre[template="script"]');
 			s = $('pre[template="script"][wid="'+t.State.WidgetId+'"]', t.el);
-            if (s.length) {
+            if (s.length>0) {
                 var ss = s[0].textContent || s[0].innerText || s[0].text;
                 try {
                     eval(ss);
@@ -1361,7 +1416,32 @@ function GetArgVal(ArgId, GroupId, ctx) {
     }
 }
 function val(elem, ctx) {
+    if (!ctx) { //if ctx is not given,
+        if (!!val._ctx) {//if ctx is saved
+            ctx = val._ctx; //restore ctx
+        }
+    }
+    else {//if ctx is given save it
+        val._ctx = ctx;
+    }
+    if (elem instanceof jQuery) {
+        if (elem.length > 0) {
+            elem = elem[0];
+        }
+    }
+    else if (typeof elem == 'string') {
 
+        var $elem = $(`[argumentid="${elem}"]`, ctx);
+        if ($elem.length > 0) {
+            elem = $elem[0];
+        }
+        else {
+            var msg = `ArgumentId(${elem}) not found`;
+            console.log(msg);
+            $.showMessage(msg);
+            return "";
+        }
+    }
     var text = $(elem).attr('valtype') == 'text' ? true : false;
     if (elem.tagName.toLowerCase() == 'select') {
         if (elem.selectedIndex > -1)
@@ -1372,7 +1452,7 @@ function val(elem, ctx) {
         return $(elem).val();
     }
     else if (elem.tagName.toLowerCase() == 'input') {
-        if ("textareapassword".indexOf(elem.type.toLowerCase()) > -1)
+        if ("textareapasswordhidden".indexOf(elem.type.toLowerCase()) > -1)
             return $(elem).val();
         else if (elem.type.toLowerCase() == 'radio') {
          //   var rdo = elem.name.toLowerCase(), grpid = elem.getAttribute('groupid');
@@ -1397,14 +1477,22 @@ function val(elem, ctx) {
         return $.trim($(elem).text());
     }
 }
-var SetDateFormat = function (date) {
+
+
+function SetDateFormat(date, returnType) {
+    returnType = returnType||"string"
     var dttmAr = date.split(' '), dt, tm, nDate;
     dt = dttmAr[0].split('/');
     if (dttmAr.length > 1) {
         tm = dttmAr[1].split(':');
         return new Date(dt[2], dt[1] - 1, dt[0], tm[0], tm[1], tm[2]);
     }
-    return dt[2] + "-" + dt[1] + "-" + dt[0];
+    if (returnType == "string") {
+        return dt[2] + "-" + dt[1] + "-" + dt[0];
+    }
+    else {
+        return new Date(dt[2] , dt[1] - 1 , dt[0]);
+    }
 }
 function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
     //DALInfo might be DBObject or key value pair to add to Info form
@@ -1518,6 +1606,17 @@ function addAttr(obj, conf) {
 }
 var setField = function (ctl, param, ctx) {
     var tag, val;
+
+    if (!ctx) { //if ctx is not given,
+        if (!!setField._ctx) {//if ctx is saved
+            ctx = setField._ctx; //restore ctx
+        }
+    }
+    else {//if ctx is given save it
+         setField._ctx = ctx;
+    }
+
+
     if (Ext.isObject(param)) {
         val = param.val
     }
@@ -1525,12 +1624,23 @@ var setField = function (ctl, param, ctx) {
         val = param;
         param = { val: val };
     }
-    if (!ctl.tagName) {
+
+    if (typeof ctl == "string") { //if argumentid is passed, find it's control
+        var $ctl = $(`[argumentid='${ctl}']`);
+        if ($ctl.length > 0) {
+            ctl = $ctl[0];
+        }
+        else {
+            console.log(`Set field error! controlid is ${ctl}`);
+        }
+
+    }
+    else if (!ctl.tagName) { // if not DOM object
         if (ctl.length > 0) {
             ctl = ctl[0];
         }
         else {
-            alert('Set field error!');
+            console.log('Set field error!');
             return;
         }
     }
@@ -1571,7 +1681,7 @@ var setField = function (ctl, param, ctx) {
         }
         var ch = $(ctl).attr('childcombo'), sid = $(ctl).attr('storeinfo');
         if (ctl.selectedIndex < 0 && !param.isRow)
-            alert('value "' + val + '" not found in the list!');
+            console.log('value "' + val + '" not found in the list!');
         if (ctl.selectedIndex <= 0 && !!param.isRow && !!sid) {
             $(ctl).attr('rowvaluetoset', val);
         }
@@ -1582,7 +1692,7 @@ var setField = function (ctl, param, ctx) {
     }
 
     else if (tag == 'INPUT') {
-        if ('textareapassword'.indexOf(ctl.type) > -1) {
+        if ('textareapasswordhidden'.indexOf(ctl.type) > -1) {
             $(ctl).val(val);
         }
         else if (ctl.type == 'radio') {
@@ -1617,6 +1727,7 @@ var setField = function (ctl, param, ctx) {
         ctl.src = ctl.getAttribute('path') + param.val + (ctl.getAttribute('ext') || '');
     }
 }
+/******************************Form Widget class */
 AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     constructor: function (el, config) {
         var t = this;
@@ -1628,6 +1739,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.base.constructor.call(this, el, config);
         t.addEvents({ 'actionSuccess': true, 'widgetAction': true, 'onActionClicked': true, 'afterActionClicked': true, 'onComboFilled': true,
             'beforeComboFill': true, 'onParentCobmoChanged': true, 'AutocompleteResult': true, 'onLoadingValues': true, 'beforeLoadingValues': true
+            ,'LOVPopupShown': true
+            , 'LOVPopupClose': true
         });
         AsyncWidgets.Widgets.on('initialized', function () {
             if (t.State.Hidden) {
@@ -1643,6 +1756,104 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         //        t.bindEvents();
         //        t.validator = new AsyncWidgets.Validater(t.el);
     },
+    showPopup: function (cf) {
+            //cf=>{ popupId: '-div-tag-id-of the popup', searchFormId: 'optional for row select popup', resultGridId: 'optional for row select popup', top:'top of the popup div',left:'' } //row select popup configuration
+            //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
+
+        var t = this;
+        var popId , searchForm, searchFormId, resGrd, resGrdId ,
+            popup ,top,left,
+            autoShowControls, popupControls = []; // comma separated controls which has to be shown automatically
+
+        left = cf.left || '8%';
+        if (!!cf.ctrl) {// if control is given then
+            var ctrl = cf.ctrl;
+            popId = $(ctrl).attr('lovpopupid');
+            popup = $(`div.LOVPopup[lovpopupid="${popId}"]`);
+            autoShowControls = $(ctrl).attr('auto-show-popup-controls');
+            searchFormId = $(ctrl).attr('lovsearchformid');
+            resGrdId = $(ctrl).attr('lovresultgridid');
+            top = cf.top|| $(ctrl).offset().top;
+
+        }
+        else { // if control is not give
+            //{ popupId: '-div-tag-id-of the popup', searchFormId: 'searchFormId', resultGridId: 'resultGridId', top:'top of the popup div',left:'' } //row select popup configuration
+            //{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
+
+            popId = cf.popupId;
+            popup = $(`div.LOVPopup[lovpopupid="${popId}"]`);
+            autoShowControls = cf.autoShowControls;
+            searchFormId = cf.searchFormId;
+            resGrdId = cf.resultGridId;
+            top = cf.top|| '20%';
+         }
+
+
+        if (popup.length < 1) {
+            $.showMessage('A LOV popup with id:"' + popId + '" not found!');
+            return;
+        }
+
+        popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', 'background': '#628296', width:'80%' }).show();
+        if (!autoShowControls) { //row select grid with a search panel and datagrid
+
+            searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
+            searchForm = AsyncWidgets.get(searchFormId);
+            if (!searchForm) {
+                $.showMessage('LOV popup must contain at least a form - "' + popId + '"');
+                return;
+            }
+            resGrdId = !!resGrdId ? resGrdId : $('[wtype="DataGrid"]', popup).attr('widgetid');
+            resGrd = AsyncWidgets.get(resGrdId);
+            if (resGrd.length < 1) {
+                $.showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
+                return;
+            }
+            resGrd.on('rowClicked', function HandleRowClick(args) {
+                args.canceled = false;
+                popup.hide();
+                t.fireEvent('LOVPopupClosed', args);
+                $(t.el).unmask();
+                resGrd.removeListener('rowClicked', HandleRowClick);
+            });
+            $(t.el).mask("");
+            $('.loadmask-msg', t.el).hide();
+          //  popup.css({ position: 'absolute', top: top, left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
+            searchForm.show();
+
+            resGrd.show();
+            searchForm.search();
+
+        }
+        else {
+            let ctrls = autoShowControls.split(',');
+
+            for (var i = 0; i < ctrls.length; i++) {
+                let ctrl = AsyncWidgets.get(ctrls[i]);
+                if (!ctrl) {
+                    console.log(`control(${ctrls[i]}) in LOV popup not found, popupid: ${popId}`);
+                }
+                else {
+                    ctrl.show();
+                    popupControls.push(ctrl);
+                }
+            }
+            $(t.el).mask("");
+            $('.loadmask-msg', t.el).hide();
+           
+            t.fireEvent('LOVPopupShown', popup);
+
+        }
+
+        $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
+            popup.hide();
+            $(t.el).unmask();
+            $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
+            t.fireEvent('LOVPopupClosed');
+        });
+
+    },//end of show popup function of form widget
+
     bindEvents: function () { //form widget
         var t = this, nestChilds = $('div[conf] *', t.el);
         $('.submit', t.el).not(nestChilds).click(function () { t.submit(this); return false; });
@@ -1686,6 +1897,19 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             return false;
 
         });
+
+
+		//textbox which will show popup on focus
+        $('.LOVPopup', t.el).focus(function () {//form widget inside bindEvents()
+            //this is textbox control
+            //debugger;
+            var cf = { ctrl: this };
+            t.showPopup(cf);
+
+            //var popId = $(this).attr('lovpopupid'), searchForm, searchFormId = $(this).attr('lovsearchformid'), resGrd, resGrdId = $(this).attr('lovresultgridid'),
+            //    popup = $(`div.LOVPopup[lovpopupid="${popId}"]`),
+            //    autoShowControls = $(this).attr('auto-show-popup-controls'),popupControls=[]; // comma separated controls which has to be shown automatically
+        });//end of focus event
         t.AutoComplete();
     },
     AutoComplete: function (ctx) {
@@ -1777,13 +2001,13 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     }
     ,
     ActionClicked: function (t, btn, cf) { //form widget
-        try {
+        //try {
 
             cf.cancel = false;
             t.fireEvent('onActionClicked', cf);
 
 
-            if (!(cf.Action in t)) {
+            if (!(cf.Action in t)) {//if action function exists int this form object
                 //  alert('Button action not found!');
                 return;
             }
@@ -1791,14 +2015,15 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 t[cf.Action](t, cf, btn);
             t.fireEvent('afterActionClicked', cf);
 
-        } catch (ex) {
-            alert(ex.Message);
-        }
+        //} catch (ex) {
+        //    console.log(ex);
+        //}
 
     }
     , GetArgVal: function (ArgId, GroupId, ctx) {
         return GetArgVal(ArgId, GroupId, (ctx || this.el))
     },
+    // read field values either by , separated names or by jquery object of fields selected
     GetArgs: function (params, ctx) {
         var values = {}, pn, t = this;
         ctx = ctx || t.el;
@@ -1856,7 +2081,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         return $(arg, ctx);
     },
+    
     LoadCombo: function (t, cbo, ParentKey, cf) {
+      //  debugger;
         var ch = cbo.filter('select'), sInfo = ch.attr('storeinfo');
         if (!sInfo) {
             console.log('Store info not found for: ' + ch.attr('argumentid'));
@@ -1870,7 +2097,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             Ext.apply(sInfo, t.GetArgs(sInfo.Params, t.el));
             delete sInfo.Params;
         }
-        if (!!cf.params) { // cf.params is the object which can contain key:value pairs as params
+        if (!!cf.params) { // cf.params is the object which can contain key:value pairs as paramsvis
             Ext.apply(sInfo, cf.params);
         }
         var inv = new AsyncWidgets.RAInvoker();
@@ -1999,6 +2226,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             }
 
         }
+        //form widget template settings
+
         if (!!AsyncWidgets.WidgetScripts[t.State.WidgetId]) {
 
             AsyncWidgets.WidgetScripts[t.State.WidgetId](t);
@@ -2024,7 +2253,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             }
             if (!!fn) {
                 t.fn = fn;
-                fn();
+                fn(t);
             }
         }
         //s = $('pre[template="WidgetConfig"]', t.el);
@@ -2072,7 +2301,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
         setDatePicker(t.el);
         t.bindEvents();
-        t.validator = new AsyncWidgets.Validater(t.el,'',t);
+        t.validator = new AsyncWidgets.Validater(t.el,'', { widget: t });
         t.HtmlLoaded = true;
         t.fireEvent('TemplateLoaded');
     },
@@ -2198,21 +2427,20 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var t = this, ctx = cf.ctx || t.el;
         ctx = ctx instanceof jQuery ? ctx : $(ctx);
         if (!!cf.reset) {
-            $('[argumentid]', ctx).each(function () {
-                setField(this, '', ctx);
-                //                if (!!cf.setDefault)
-                //                    if (!!this.type)
-                //                        if (this.type.toLowerCase() == 'radio' && !!this.getAttribute('default')) 
-                //                            this.checked = true;
+            $('[argumentid]:not(.noautoreset)', ctx).each(function (idx, elem) {
+                
+                setField(elem, '', ctx);
+                $(elem).removeAttr("primaryKeyValue");
             });
 
-            $('[argumentid][type="radio"][default="default"]', ctx).each(function () {
-                this.checked = true;
+            $('[argumentid][type="radio"][default="default"]', ctx).each(function (idx, elem) {
+                elem.checked = true;
             });
         }
         if (!!cf.params) {
             for (var param in cf.params) {
-                var fld = ctx.find('[argumentid="' + param + '"]')[0];
+                var $fld = ctx.find('[argumentid="' + param + '"]'),
+                    fld=$fld[0];
                 if (!fld) {
                     if (dbg())
                         alert("Field '" + param + "' not found in the form! ");
@@ -2225,6 +2453,20 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 else {
 
                     setField(fld, cf.params[param], t.$el);
+                }
+                var primarykey = $fld.attr('primaryKey'),
+                    argumentid = $fld.attr('argumentid');
+
+                if (!!primarykey) { // this field is either primarykey or uniquekey, save original pmk values
+                    $fld.attr("primaryKeyValue", val(fld, t.el));
+
+                    if (primarykey.toLowerCase().indexOf(argumentid.toLowerCase()) > -1) {//if this is primary key field not just a unique field
+                        var pkOrg = $(`[argumentid="${argumentid}_Original"]`, t.el);
+                        if (pkOrg.length < 1) {
+                            $(`<input type='hidden' value='' name='${argumentid}_Original' argumentid='${argumentid}_Original' groupid='${$fld.attr('groupid')}' >`).appendTo(t.el);
+                        }
+                        pkOrg.val(val(fld, t.el));
+                    }
                 }
             }
         }
@@ -2256,10 +2498,11 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     submit: function (btn) {//form widget
         var t = this;
         var cf = decJSON($(btn).attr('conf'));
-
+        btn.cf = cf; 
         if (!!cf.GroupId) {
-            t.validator = new AsyncWidgets.Validater(t.el, '[groupid="' + cf.GroupId + '"]',t);
+            t.validator = new AsyncWidgets.Validater(t.el, '[groupid="' + cf.GroupId + '"]', { widget: t });
         }
+        $('span[errmsg]', t.el).hide();									   
         if (!t.validator.isValid({btn:$(btn)})) {
             t.showInvalid(t);
             return false;
@@ -2310,15 +2553,18 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         });
         inv.on('onFailure', function (res) {
             $(t.el).unmask();
-            alert('Problem occured while connection to web server');
+            alert('Problem occured while connecting to web server');
         });
 
-
         var params = { Command: cf.Command, cancel: false };
+        if (!!t.FormMode) {
+            params.Action = t.FormMode;
+        }
+        Ext.apply(params, t.WCF.DataActionParams);
         if (!!cf.Params) {
             Ext.apply(params, cf.Params);
         }
-        Ext.apply(params, t.WCF.DataActionParams);
+        params.btn = btn;						 
         t.fireEvent('beforeDataAction', params);
         if (params.cancel) return;
         t.$el.mask('Please wait while loading ...');
@@ -2401,9 +2647,11 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             if (res.status == 'OK') {
                 if (res.Response.Rows.length > 0) {
                     t.setParams({ params: res.Response.Rows[0], isRow: true });
+
                 }
                 else {
                     t.setParams({ reset: true });
+
                 }
             }
             t.fireEvent('onLoadedValues', { res: res });
@@ -2454,7 +2702,10 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         t.State.PgLen = 5;
         t.SingleEditForm = true;
         t.colFMT = false;
-        t.addEvents({ 'rowsRendered': true, 'rowClicked': true, 'beforeSearchGetForm': true, 'beforeRowDelete': true, 'afterRowDelete': true, 'onNoRecords': true, 'onFetchRecords': true, 'onItemColGenerated': true, 'onActionClicked': true, 'afterActionClicked': true });
+        t.addEvents({ 'rowsRendered': true, 'rowClicked': true, 'beforeSearchGetForm': true, 'beforeRowDelete': true, 'afterRowDelete': true, 
+		'onNoRecords': true, 'onFetchRecords': true, 'onItemColGenerated': true, 'onActionClicked': true, 'afterActionClicked': true,
+		'afterDataAction': true, 'beforeDataAction': true		
+		});
         AsyncWidgets.Widgets.on('initialized', function () {
             if (t.State.Hidden) {
 
@@ -2472,16 +2723,6 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         var t = this;
         $('>.GridContainer>table>tbody>tr:first .w-head-text', t.el).text(header);
     },
-
-    setTimes: function (a, b) {
-        var t = this
-
-     
-        $('>.GridContainer>table>tbody>tr:first [buttonId="new"] a ', t.el).hide(a).show(b)
-
-    
-    },
-
     setPage: function (pageNo) {
         var t = this;
         t.State.PageNo = pageNo;
@@ -2516,7 +2757,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
     },
     ActionClicked: function (t, btn, cf) { //Datagrid widget
-        try {
+        //try {
             //debugger;
             cf.cancel = false;
             t.fireEvent('onActionClicked', cf);
@@ -2531,9 +2772,9 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 t[cf.Action](t, cf, btn);
             t.fireEvent('afterActionClicked', cf);
 
-        } catch (ex) {
-            alert(ex.Message);
-        }
+        //} catch (ex) {
+        //    alert(ex.Message);
+        //}
 
     },
     HideGridForm: function (t, cf) {
@@ -2575,7 +2816,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             if (!!rowsToDelete) {
                 Ext.apply(cf, t.GridConf.DataActionParams);
                 t.fireEvent('beforeRowDelete', { cf: cf, flags: flags });
-                if (!flags.queryDelete) return;
+                if (!flags.queryDelete) return;0
                 var ServiceInfo = getForm(null, null, Ext.apply(cf, { RowsToDelete: rowsToDelete })); // "<root>" + $("<dummyform></dummyform>") + "</root>";
                 t.$el.mask('Please wait while loading ...');
                 var inv = new AsyncWidgets.RAInvoker();
@@ -2618,6 +2859,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         if (!!frms.NewFormId) {
             wFrm = AsyncWidgets.get(frms.NewFormId);
             wFrm.isGridFrom = true;
+            wFrm.FormMode = "new";
             var onHide = function (arg) {
                 arg = arg || {};
                 wFrm.removeListener("hide", onHide);
@@ -2636,6 +2878,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
                 t.Requery();
             };
+
             if (!!wFrm) {
                 wFrm.on('hide', onHide);
                 $('.validateunique', wFrm.el).attr('isvalid', 'false');
@@ -2738,8 +2981,10 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         if (!!t.sortCol) {
             Ext.apply(t1, { SortBy: t.sortCol + ' ' + t.sortDir });
         }
+        
         Ext.apply(t1, t.GridConf.DataActionParams);
-        t.fireEvent('beforeSearchGetForm', t1);
+       
+          t.fireEvent('beforeSearchGetForm', t1);
         if (!!wg) {
             //            t.LastSF = wg;
             ServiceInfo = getForm(wg.el, null, t1);
@@ -2760,6 +3005,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 r = Res.Response;
 
             t.rowCount = r.Rows.length;
+			t.rows = r.Rows;				   
             if (r.Rows.length > 0) {
 
                 t.fireEvent("onFetchRecords");
@@ -2865,29 +3111,40 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                         }
                         var _t = t.ColumnTemplates.templates;
                         if (!!t.ColumnTemplates.templates) {
-
+                            var cl, colid, colCap, colCF;
+                            t.colFMT = true;
                             for (iLoop = 0; iLoop < _t.length; iLoop++) {
 
-                                var cl = colid = _t[iLoop].getAttribute('columnid'), colCap;
+                                cl = colid = _t[iLoop].getAttribute('columnid');
 
-                                colCap = t.GridConf.cols[cl] || {}
-                                colCap = colCap.caption == undefined ? cl.splitCamel() : colCap.caption;
+                                colCF = t.GridConf.cols[cl] || {};
+                                colCap = colCF.caption == undefined ? cl.splitCamel() : colCF.caption;
                                 tt = $('<TD  class="w-grid-head-cell w-grid-head-back w-grid-cell-border" ><DIV><SPAN class="w-grid-head ColName sort"></SPAN></DIV></TD>');
                                 t2 = $('<TD  class="w-grid-cell-border"><DIV  class="ColValue w-grid-label"></DIV></TD>');
+                                if (!!colCF.ColTDStyle) {
+                                    if (!!t.GridConf.styles[colCF.ColTDStyle])
+                                        t2.css(t.GridConf.styles[colCF.ColTDStyle]);
+                                }														 
 
                                 tt.addClass('colIndex-' + i).attr('colindex', i).attr('colid', cl);
                                 $('.ColName', tt).html(colCap);
 
                                 t2.addClass('colIndex-' + i).attr('colindex', i).attr('colid', cl);
-                                $('.ColValue', t2).html($(_t[iLoop]).html());
+                                var colTemp = $(_t[iLoop]).html();																  
+                                var itemCol = $('.ColValue', t2).html(colTemp).parent();
                                 t.Header.repCon.append(tt);
+                                t.fireEvent('onItemColGenerated', { colId: cl, itemCol: itemCol });
                                 t.Item.repCon.append(t2);
                                 i++;
                             }
                             break;
                         }
                         else {
-                            var colCF = t.GridConf.cols[col] || {}, colCap, colFMT = !!colCF.format ? ':' + colCF.format : '';
+                            var colCF = t.GridConf.cols[col] || {}, colCap, colFMT;
+                            colFMT = !!colCF.format ? ':' + colCF.format : '';
+
+                            if (!t.colFMT)
+                                t.colFMT = !!colCF.format;												  
                             if (!t.colFMT) t.colFMT = !!colCF.format;
                             colCap = colCF.caption == undefined ? col.splitCamel() : colCF.caption;
                             t.Header.repCon.append(
@@ -3099,7 +3356,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 }).mouseleave(function () {
                     $(this).removeClass('w-grid-row-hover');
                 }).click(function (e) {
-                    if ($(e.target).hasClass('ColValue') || $(e.target).attr('colid'))
+                    if ($(e.target).hasClass('ColValue') || $(e.target).attr('colid') || $(e.target).closest('.ColValue').length)
                         t.fireEvent('rowClicked', { rowData: r.Rows[$(this).attr('itemno') - 1], e: e, row: this });
                     if (!!t.highLightedRow) {
                         t.highLightedRow.removeClass('w-grid-row-highlighted');
@@ -3108,6 +3365,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     $(this).addClass('w-grid-row-highlighted');
                     t.highLightedRow = $(this);
                 });
+
                 var nestWG = $('div[conf] *', t.el);
                 if (t.hasListener('rowclicked')) {
                     var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).not(nestWG).css('cursor', 'pointer');
@@ -3138,7 +3396,17 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
 
                 t.setColWidth(t);
-                t.bindEvents();
+                (function () {
+                    var lastCol = $('td:visible:last', t.Header.repCon), LCId, cols;
+                    LCId = $('td:visible:last', t.Header.repCon).removeClass('w-grid-cell-border').addClass('w-grid-cell-border-last').attr('colindex');
+                    cols = $('.colIndex-' + LCId, t.Repeater);
+                    for (var i = 0; i < cols.length; i++) {
+                        var tc = $(cols[i]);
+                        tc.css('border-left', '1px solid ' + (tc.css('background-color') || 'transparent'));
+                        tc.removeClass('w-grid-cell-border').addClass('w-grid-cell-border-last');
+                    }
+                }).defer(1);
+                t.bindEvents();							  
                 /********************************Row Detail**************************************/
                 delete t.RowDetail.detail;
                 t.RowDetail.detail = {};
@@ -3410,6 +3678,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 else {
                     heads = arrHead[i];
                 }
+                heads.css({ 'padding-left': '0px', 'padding-right': '0px' });
 
                 if (!!t._arrHeads) { t._arrHeads = arrHead }
                 var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
@@ -3436,7 +3705,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 else
                     w = heads.width();
 
-                if (__IE8 && $.boxModel)
+               // if (__IE8 && $.boxModel)
                     heads.width(w);
                 var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
                 $('.ColName', heads).closest('div')
@@ -3498,13 +3767,20 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 else
                     w = heads.width() + (parseInt(heads.css('paddingLeft')) || 0) +
                                         (parseInt(heads.css('paddingRight')) || 0);
+                if (!!b.NoToolTip) $('.ColValue', col).addClass('NoTooltip');
                 $('.ColValue', col).css({ 'overflow': 'hidden', 'margin-left': LMmargin + 'px' }).width(w - (LMmargin + 10)).mouseenter(
                 function () {
                     var e = this, $e = $(this), sl = $('.smartLable'), lf, wd;
                     if ($e.hasClass('NoTooltip') || $.trim($e.text()) == '') return;
                     //  if ($e.width() + LMmargin < e.scrollWidth) {
                     if ($e.width() < e.scrollWidth) {
-                        sl.html($e.text());
+                        if ($($e.html()).length > 0) {
+                            sl.html($($e.html()));
+                        }
+                        else
+						{							
+							sl.html($e.text());
+						}
                         lf = $e.offset().left, wd = sl.width();
                         if ($('body').width() < (lf + wd + 14)) {
                             lf = lf - (lf + wd - $('body').width()) - 14;
@@ -3529,8 +3805,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         return t;
     },
     submit: function () { //grid control
-        var t = this;
-        t.fireEvent('onSubmitting');
+        var t = this, params;
+        t.fireEvent('onSubmitting'); //DEPRECATE 
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
             var res = decJSON(res);
@@ -3548,7 +3824,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         });
         inv.on('onFailure', function (res) {
             t.status = "err";
-            alert('Problem occured while connection to web server');
+            console.log('Problem occured while connection to web server');
 
         });
         t.status = "sav"; //saving
@@ -3619,7 +3895,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         //  Ext.apply(params, t.WCF.DataActionParams);
         //  t.fireEvent('beforeDataAction', params);
         //debugger;
-        t.$el.mask('Please wait while loading ...');
+        $(t.el).mask('Please wait while loading ...');
         //ServiceInfo = getForm(t.el, cf.GroupId || null, params, null, null, { filter: cf.filter });
         ServiceInfo = getForm(null, null, params);
         inv.invokeRA({ params: ["ActorId", cf.ActorId, "ActionId", cf.ActionId, "ServiceInfo",
@@ -3630,6 +3906,21 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         var t = this, s, fn, cbos, el = t.el;
 
         //s = $(t.el).children('pre[template="script"]');
+      //  console.log(t.State.WidgetId);
+        if (!!AsyncWidgets.WidgetScripts[t.State.WidgetId]) {
+            
+            AsyncWidgets.WidgetScripts[t.State.WidgetId](t);
+        }
+        else {
+            setTimeout(() => {
+                if (!!AsyncWidgets.WidgetScripts[t.State.WidgetId]) {
+
+                    AsyncWidgets.WidgetScripts[t.State.WidgetId](t);
+                }
+            }, 2000);
+
+        }
+
         s = $('pre[template="script"][wid="' + t.State.WidgetId + '"]', t.el);
         if (s.length > 0) {
             var ss = s[0].textContent || s[0].innerText || s[0].text;
@@ -3641,7 +3932,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             }
             if (!!fn) {
                 t.fn = fn;
-                fn();
+                fn(t);
             }
         }
         /////////////////// Setting Templates ////////////////////////////////
@@ -3651,7 +3942,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             t.Top = $('<div class="w-panel-head w-top-corner"> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td class="w-head-text"> </td> </tr> </table> </td> <td style="width:100%">&nbsp;</td> <td> <span style="" class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon">&nbsp;</span> </td> </tr> </table> </div>');
             t.Repeater = $('<div class="GridContainer"> <table cellspacing="0" cellpadding="0" border="0" style="width:100%;text-align:left"> <tbody> <tr class="TopTR"> <td class="Top"> </td> </tr> <tr class="HeaderTR"> <td class="Header w-grid-border"> </td> </tr> <tr class="ItemTR"> <td class="Item w-grid-border"> </td> </tr><tr class="NoRecordsTR" style="display:none;"><td class="NoRecords w-grid-norecords-msg" ></td></tr> <tr class="BottomTR"> <td class="Bottom"> </td> </tr> </tbody> </table> </div>');
             t.Header = $('<table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header"> <tbody> <tr class="w-grid-head-back"> <td class=" ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border"> <div> <span href="#" class="w-grid-head ColName sort"></span> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="width:32px;padding:0;overflow:hidden;margin:0" class="w-grid-cell-border w-grid-head-back"> <div style="width:19px;overflow:hidden;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px;overflow:hidden" class="w-grid-head-back w-grid-cell-border"> <div style="overflow:hidden" class="PWCLabel ColName"></div> </td><td templateid="RowEditForm" style="width: 40px;overflow:hidden;"  class="RowEditForm w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td><td templateid="RowDetail" style="width: 40px;overflow:hidden;"  class=" RowDetail w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td></tr> </tbody> </table>');
-            t.Item = $('<table cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed"> <tbody> <tr style="white-space:nowrap" EvenRowCSS="w-grid-row-odd" OddRowCSS="w-grid-row-odd" HoverRowCSS=""> <td class="ColTemplate w-grid-cell-border" style="white-space:nowrap;overflow:hidden"> <div class="ColValue w-grid-label" style="white-space:nowrap"> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="margin:0;width:32px;overflow:hidden" class="w-grid-cell-border"> <div style="width:19px;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px" class="w-grid-cell-border"> <div style="overflow:hidden" class="w-grid-label ColValue"></div> </td><td templateid="RowEditForm"   class="RowEditForm w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td><td templateid="RowDetail"   class=" RowDetail w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td></tr> </tbody> </table>');
+            t.Item = $('<table cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed"> <tbody> <tr class="ItemTableRow" style="white-space:nowrap" EvenRowCSS="w-grid-row-odd" OddRowCSS="w-grid-row-odd" HoverRowCSS=""> <td class="ColTemplate w-grid-cell-border" style="white-space:nowrap;overflow:hidden"> <div class="ColValue w-grid-label" style="white-space:nowrap"> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="margin:0;width:32px;overflow:hidden" class="w-grid-cell-border"> <div style="width:19px;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px" class="w-grid-cell-border"> <div style="overflow:hidden" class="w-grid-label ColValue"></div> </td><td templateid="RowEditForm"   class="RowEditForm w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td><td templateid="RowDetail"   class=" RowDetail w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td></tr> </tbody> </table>');
             t.Pager = $('<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:White;padding:2px;table-layout:auto" class="w-grid-border-bottom" > <tbody> <tr> <td align="left" style="width:50%;height:26px"> <table border="0" cellpadding="0" cellspacing="0"> <tbody> <tr class="w-grid-buttons-bottom-container"> </tr> </tbody> </table> </td> <td align="center" class="NoRecsHide"> <table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;white-space:nowrap"> <tbody> <tr> <td class="w-all-corner w-grid-button First"> <span class="w-ui-icon-yellow w-grid-icon-first"></span></td> <td class="w-all-corner w-grid-button Back"> <span class="w-ui-icon-yellow w-grid-icon-pre"></span></td> <td style="padding-left:5px;padding-right:5px;width:4px;cursor:default" class="w-all-corner w-elem-disabled"> <div class="w-icon-separator"></div></td> <td dir="ltr" class="w-grid-pg-text PWCLabel" style="white-space:nowrap;vertical-align:middle;padding:0px">&nbsp;Page&nbsp;&nbsp;<input type="text" maxlength="7" size="2" class="PWCTextBox PageNoToGo PageNo">&nbsp;&nbsp;of&nbsp; <span class="TotalPages">&nbsp;2&nbsp;</span></td> <td style="padding-left:5px;padding-right:5px;width:4px;cursor:default" class="w-all-corner w-elem-disabled"> <div class="w-icon-separator"></div></td> <td class="w-all-corner w-grid-button Next"> <span class="w-ui-icon-yellow w-grid-icon-next"></span></td> <td class="w-all-corner w-grid-button Last"> <span class="w-ui-icon-yellow w-grid-icon-last"></span></td><td dir="ltr" style="padding-left:5px"> <select class="PWCDropDownList PageSize PageSize-Dropdown" style="display:none"> <option selected="" value="10" role="option">10</option> <option value="20" role="option">20</option><option value="30" role="option">30</option></select> </td></tr></tbody> </table> </td> <td align="right" style="width:50%" class="NoRecsHide"> <table border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody> <tr> <td align="right"> <span><span class="PWCLabel PageSize-NumberList" style="padding-right:0px;display:none">Items per page : <span class="PageSize">10</span>, <span class="PageSize">20</span>, <span class="PageSize">30</span></span><span class="PWCLabel PageSize-NumberList" style="display:none;padding-left:10px;padding-right:10px">|</span> <span class="PWCLabel" Class="w-grid-item-startend" style="padding-right:5px">View <span class="ItemStart"></span> - <span class="ItemEnd">&nbsp;</span>&nbsp;of <span class="Count"></span></span> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table>');
             t.Bottom = $('<span class="Pager"></span>');
             t.NoRecords = $('<div style="padding:10px;background-color:transparent" class="PWCNoDataMessage">No records available.</div>')
@@ -3782,7 +4073,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         for (key in t.buttons) { //iterate through all the buttons;
             var btn = t.buttons[key], btnEl, topPanelAdded;
             btn.location = btn.location || 'both'
-            Ext.applyIf(btn, { text: btn.conf.text || '', containers: '.w-grid-buttons-bottom-container', 'CSSclass': 'ActionButton', visible: true, conf: '{}', icon: 'w-ui-icon-' + key, iconImage: 'w-ui-icon-yellow' });
+            Ext.applyIf(btn, { text: btn.conf.text || '&nbsp;', containers: '.w-grid-buttons-bottom-container', 'CSSclass': 'ActionButton', visible: true, conf: '{}', icon: 'w-ui-icon-' + key, iconImage: 'w-ui-icon-yellow' });
             if (btn.location == 'bottom' || btn.location == 'both') {
                 var cons = $(btn.containers, t.Pager);
 
@@ -3804,7 +4095,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 btnCount++;
                 if (!topPanelAdded) {
                     topPanelAdded = true;
-                    topBtnPnl = $('<div class="w-grid-buttons-top-container" style=" background: none repeat scroll 0 0 #E1E9EC;margin: 0;padding: 0;border-top: 1px solid #E6ECEF;border-left: 1px solid #D0D0D0;border-right: 1px solid #D0D0D0;height: 30px;padding-top: 2px;vertical-align: middle;"><ul style="list-style: none outside none;margin: 1px 0 0;padding: 0;" class="buttonsCon" ></ul><br clear="all"></div>');
+                    topBtnPnl = $('<div class="w-grid-buttons-top-container" style=" background: none repeat scroll 0 0 #E1E9EC;margin: 0;padding: 0;width: 100%;border-top: 1px solid #E6ECEF;border-left: 1px solid #D0D0D0;border-right: 1px solid #D0D0D0;height: 30px;padding-top: 2px;vertical-align: middle;"><ul style="list-style: none outside none;margin: 1px 0 0;padding: 0;" class="buttonsCon" ></ul><br clear="all"></div>');
                 }
                 if (btn.text == "Delete") { btn.text = "Delete Selected Item(s)"; }
                 btnEl = $('<li style="display:block;float:left;cursor:pointer;margin-bottom:0px" class="ActionButton unselectable" ><a class="w-grid-top-buttons" style="color: #105678;display: block;font-size: 11px;padding: 5px 5px 5px 28px;background: url(' + RES_PATH + 'images/' + iconImg + '.gif) no-repeat scroll 8px center transparent; text-decoration:none;"  >' + btn.text + '</a></li>')
@@ -3833,22 +4124,22 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         var pnl = $('.w-ui-panel-icon', t.el);
 
         if (pnl.length > 0) {
-            pnl.live('mouseleave', function () {
+            pnl.bind('mouseleave', function () {
                 $(this).addClass('w-ui-icon').removeClass('w-ui-icon-hover');
             });
-            pnl.live('mouseenter', function () {
+            pnl.bind('mouseenter', function () {
                 $(this).addClass('w-ui-icon-hover').removeClass('w-ui-icon');
             });
-            pnl.live('click', function () {
+            pnl.bind('click', function () {
 
                 if ($(this).hasClass('w-ui-panel-icon-opened')) {
 
                     $(this).addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
-                    $('.Header, .Pager, .Item,Top *:not(.w-panel-head)').hide();
+                    $('.w-grid-buttons-top-container,.Header, .Pager, .Item,Top *:not(.w-panel-head)',t.el).hide();
                 }
                 else {
                     $(this).addClass('w-ui-panel-icon-opened').removeClass('w-ui-panel-icon-closed');
-                    $('.Header, .Pager,.Item,Top > *:not(.w-panel-head)').show();
+                    $('.w-grid-buttons-top-container,.Header, .Pager,.Item,Top > *:not(.w-panel-head)',t.el).show();
                 }
             });
         }
@@ -3866,12 +4157,17 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             t.ActionClicked(t, this, cf);
 
         });
+        //called on when edit form is opened (non-row edit)
         $('.EditForm.ColValue', t.el).click(function () {
             var frms = t.GridConf.forms, wFrm;
             frms.EditFormId = frms.EditFormId || frms.NewFormId;
-
+            
             wFrm = AsyncWidgets.get(frms.EditFormId);
+            wFrm.FormMode = "update";
             wFrm.isGridFrom = true;
+
+/******************************************on hide handler**************************************************************/
+
             var onHide = function (arg) {
                 arg = arg || {};
                 
@@ -3895,6 +4191,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 
                 t.Requery();
             };
+/******************************************end: on hide handler**************************************************************/
             //Grid EditForm
             if (!!wFrm) {
                 $(t.el).mask(MSGWAIT);
@@ -3989,8 +4286,27 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         else
             onLoad();
         return t;
-
     },
+    hideButtons: function () {
+        var t = this, arg = args = Array.prototype.slice.call(arguments, 0);
+        (function () { // deffered call so if the widget is not loaded let it get loaded first and the hide the button
+            for (var iLoop = 0; iLoop < arg.length; iLoop++)
+            {
+                $('[buttonid="' + arg[iLoop] + '"]', t.Repeater).hide();
+            }
+        }).defer("100");
+        return t;
+    },
+    showButtons: function () {
+        var t = this, arg = args = Array.prototype.slice.call(arguments, 0);
+        (function () { // deffered call so if the widget is not loaded let it get loaded first and the hide the button
+
+            for (var iLoop = 0; iLoop < arg.length; iLoop++) {
+                $('[buttonid="' + arg[iLoop] + '"]', t.Repeater).show();
+            }
+        }).defer("100");
+        return t;
+    }, 
     refresh: function () {
         var t = this;
         if ($('.form', t.el).length < 1) {
@@ -4030,6 +4346,22 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
             if (!((tval - 0) == tval && tval.length > 0)) {
                 this.showErr(t, ' Invalid Number');
                 return false;
+            }
+														               if (typeof t.attr('minvalue') != 'undefined') {
+                var minval=parseFloat(t.attr('minvalue')) ||0 ;
+                if(parseFloat(tval) < minval ){
+                    this.showErr(t, "Value must be greater than or equal to " + t.attr('minvalue'));
+                    return false;
+                   
+                }
+            }
+            if (typeof t.attr('maxvalue') != 'undefined') {
+                var maxvalue = parseFloat(t.attr('maxvalue')) || 0;
+                if (parseFloat(tval) < maxvalue) {
+                    this.showErr(t, "Value must be less than or equal to " + t.attr('maxvalue'));
+                    return false;
+
+                }
             }
         }
         if (typeof t.attr('[minlen]') != 'undefined') {
@@ -4151,7 +4483,10 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
 
             if (!vld) {
                 this.showErr(t, " *");
-                $.showMessage(t.attr('deperr'), { delay: 5000 });
+                if (!!t.attr('deperr'))
+				{					
+					$.showMessage(t.attr('deperr'), { delay: 5000 });
+				}
                 return false;
             };
         }
@@ -4234,9 +4569,9 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
 
             }
         });
-        var pcf = { isValid: valid };
+        var pcf = { isValid: valid, groupId: groupid };
         if (!!cf.widget) {
-            widget.fireEvent('onValidate', pcf);
+            cf.widget.fireEvent('onValidate', pcf);
         }
         return pcf.isValid;
     }
@@ -4314,7 +4649,9 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
             if (!!t.attr('primarykey')) { // to exclude the current record from unique check in edit mode.
                 var PMKeyVl, elm = $('[argumentid="' + t.attr('primarykey') + '"]', ctx);
                 if (elm.length > 0) {
-                    PMKeyVl = val(elm[0], ctx);
+                    // PMKeyVl = val(elm[0], ctx);
+                    PMKeyVl = elm.attr("primarykeyValue");
+
                     if (!!PMKeyVl) {
                         vls["primarykey"] = t.attr('primarykey');
                         vls["primarykeyvalue"] = PMKeyVl;
@@ -4338,7 +4675,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
         $('input:not([type="submit"])' + groupid + ',textarea' + groupid + ',select' + groupid, ctx).blur(function () {
             //        $('input:not([type="submit"]),select', ctx).blur(function () {
             var t = $(this);
-            if (t.attr('BlurValidate') == 'false') {
+            if (t.attr('blurvalidate') == 'false') {
                 me.hideErr(t);
             }
             else {
@@ -4346,13 +4683,20 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
                     me.hideErr(t)
                 };
             }
+            if (t.hasClass('number') && !!t.attr('fix')) {
+                if (parseFloat(t.attr('fix'))) {
+                    if (!!parseFloat(t.val())) {
+                        t.val(parseFloat(t.val()).fix(parseInt(t.attr('fix'))));
+                    }
+                }
+            }
         });
 
         $('input:not([type="submit"])' + groupid + ',select' + groupid, ctx).keyup(function (event) {
 
             if (event.keyCode == '9' || event.keyCode == '16' || this.type == 'checkbox') return;
             var t = $(this);
-            if (t.attr('BlurValidate') == 'false') {
+            if (t.attr('blurvalidate') == 'false') {
                 me.hideErr(t);
             }
             else {
@@ -4371,7 +4715,9 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
     }
 
     this.val = function (elem) {
-
+        //if (!elem) {
+        //    return "";
+        //}
         var text = $(elem).attr('valtype') == 'text' ? true : false;
         if (elem.tagName.toLowerCase() == 'select') {
             return text ? $('option:selected', elem).text() : $('option:selected', elem).val();
@@ -4392,6 +4738,9 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
                 return $(elem).attr('checked') ? "1" : "";
             }
 
+        }
+        else if (elem.tagName == 'SPAN' || elem.tagName == 'DIV') {
+            return $.trim($(elem).text());
         }
     }
 

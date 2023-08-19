@@ -9,9 +9,9 @@ namespace WebProject.Pages.eForms.iRental
 {
     public partial class RentalContracts_ShUc : System.Web.UI.UserControl
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

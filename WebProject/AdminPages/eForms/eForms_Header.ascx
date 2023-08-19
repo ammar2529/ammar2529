@@ -75,6 +75,7 @@
                                         <script>
 
                                             var fn = function () {
+                                                
                                                 AsyncWidgets.user.isLogged({
                                                     callBack: function (isLogged) {
                                                         if (isLogged) {
@@ -126,8 +127,17 @@
                                                                 AsyncWidgets.user.conf = res.Response.Conf;
                                                                 var frmMH = AsyncWidgets.get('frmMenu_Header').show(); //LoggedUser
                                                                 $('.LoggedUser', frmMH.el).html(res.Response.Name);
-                                                                AsyncWidgets.get('frmInbox').hide();
-                                                                AsyncWidgets.get('frmInbox').show();
+                                                                
+                                                                if (!window.StartupWidgetId ) {
+                                                                    StartupWidgetId = "frmInbox";
+                                                                }
+                                                                else if (!AsyncWidgets.has(StartupWidgetId)) {
+                                                                    StartupWidgetId = "frmInbox";
+                                                                }
+
+                                                                AsyncWidgets.get(StartupWidgetId).hide();
+                                                                AsyncWidgets.get(StartupWidgetId).show();
+
                                                                 AsyncWidgets.user.login();
 
                                                                 //****Enabled Session Resume Option On Log In*****//
@@ -180,6 +190,7 @@
                                                     t.$el.mask('Please wait while loading ...');
                                                     //$('body').mask('Please wait while loading ...');
                                                     ServiceInfo = getForm(t.el, null, null);
+                                                    //debugger;
                                                     inv.invokeRA({
                                                         params: ["ActorId", cf.ActorId, "ActionId", cf.ActionId, "ServiceInfo", ServiceInfo]
                                                     });
@@ -312,7 +323,7 @@
                                             };
                                             var fn = function () {
                                                 $('.logout', t.el).click(function () {
-
+                                                   // debugger;
                                                     var inv = new AsyncWidgets.RAInvoker();
                                                     inv.invokeRA({
                                                         params: ["ActorId", "Authentication", "ActionId", "LogoutUser", "ServiceInfo", "<root><dummy></dummy></root>"]
@@ -320,7 +331,7 @@
 
                                                     AsyncWidgets.user.logout();
 
-                                                    window.location.pathname = BASE_PATH + "Logout.aspx";
+                                                    window.location.pathname = BASE_PATH +"default" ; //"Logout.aspx";
                                                 });
                                                 var getMenu = function (rws) {
                                                     var i, j, mnuHTML = "&lt;ul id='jsddm' style='z-index:999'>";
@@ -331,7 +342,10 @@
                                                         else
                                                             mnuHTML += String.format("&lt;li>&lt;a href='javascript:void(0);' >{0}&lt;/a>&lt;ul style='z-index:1000'>", rws[i].MenuName);
                                                         for (j = 0; j < rws.length; j++) {
-                                                            if (rws[j].ParentMenuId == 0 || prntId != rws[j].ParentMenuId) continue;
+                                                            if (rws[j].ParentMenuId == 0 || prntId != rws[j].ParentMenuId)
+                                                            {
+                                                                continue;
+                                                            }
                                                             mnuHTML += String.format("&lt;li style='text-align:left'>&lt;a showwidget='{1}' returntype='true' href='javascript:void(0);'>{0}&lt;/a>&lt;/li>", rws[j].MenuName, rws[j].ShowWidget);
                                                         }
                                                         mnuHTML += "&lt;/ul>&lt;/li>";

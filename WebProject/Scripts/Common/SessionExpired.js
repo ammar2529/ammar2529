@@ -28,7 +28,7 @@ function ($) {
             surl = location.href.substring(0, location.href.indexOf("logout"));
         // End To Get the Root
 
-        var timeoutUrl = surl + 'Logout.aspx';
+        var timeoutUrl = surl + 'default';
         var SessionAliveUrl = surl + 'KeepSessionAlive.aspx';
         var defaults = {
             timeoutInSeconds: 1140, //60, //1140,         

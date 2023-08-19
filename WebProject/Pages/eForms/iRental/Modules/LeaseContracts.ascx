@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LeaseContracts.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.Modules.LeaseContracts" %>
 
-<%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="uc6" %>
-<%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="uc8" %>
-<%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="uc5" %>
+<%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
+<%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
+<%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 
 <style>
 .ElemDisabled
@@ -11,9 +11,9 @@
 	}
 </style>
 
-           <uc5:Container ID="conLeaseContracts" Hidden="true" Caption="Lease Contracts" runat="server">
+           <AW:Container ID="conLeaseContracts" Hidden="true" Caption="Lease Contracts" runat="server">
               <Childern>
-                <uc8:Form ID="frmLeaseContracts_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Lease_Contracts" AsyncForm="~/Pages/eForms/iRental/LeaseContracts_ShUc.ascx" >
+                <AW:Form ID="frmLeaseContracts_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Lease_Contracts" AsyncForm="~/Pages/eForms/iRental/LeaseContracts_ShUc.ascx" >
                 <WidgetConfig>
                 <script>
                   var  cf = { 
@@ -42,8 +42,8 @@
                             }
                         </script>
                     </Scripts>--%>
-                </uc8:Form>
-                <uc6:DataGrid ID="grdLeaseContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_ShUc"
+                </AW:Form>
+                <AW:DataGrid ID="grdLeaseContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
             PageSize="10" DataSource="SEL_iRental_Lease_Contracts" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
             GridHeadText="Lease Contracts"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_Lease_Contracts\',KeysCol:\'RecId\'}}}">
@@ -51,13 +51,13 @@
                                 <pre columnid="ContractDetails" class="w-grid-head" >
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}&nbsp;-&nbsp;{Model}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#00AW0AW0">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}&nbsp;-&nbsp;{Model}</div>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
                                 <pre columnid="CustomerDetails" >
                                 <center>
-                                     <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>
+                                     <div class="ftitle" style="font-size:16px;color:#1010AW0">{CustomerName}</div>
                                      <div style="font-size:11px;">ID: {NationalIDNo}&nbsp;-&nbsp;{Nationality}</div>
                                       <div style="font-size:11px;">{MobileTelephone1}&nbsp;&nbsp;{MobileTelephone2}</div>
                                 </center>
@@ -70,8 +70,8 @@
                                    
                                 </pre>
                                  <pre columnid="CreationDetails" >
-                                     <div class="ftitle" style="color:#808000">{OutLocation}</div>
-                                     <div class="ftitle" style="color:#101080">{CreatedBy}</div>
+                                     <div class="ftitle" style="color:#AW0AW000">{OutLocation}</div>
+                                     <div class="ftitle" style="color:#1010AW0">{CreatedBy}</div>
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                 </pre>
 
@@ -147,14 +147,14 @@
                     };
                 </script>
             </Scripts>
-            </uc6:DataGrid>
+            </AW:DataGrid>
             <br />
            </Childern>
-            </uc5:Container>
-
-           <uc5:Container ID="conLeaseContracts_Cust" Hidden="true" Caption="Customer Management" runat="server">
+            </AW:Container>
+<script src="Scripts/eForms/iRental/ConLeaseContracts.js"></script>
+           <AW:Container ID="conLeaseContracts_Cust" Hidden="true" Caption="Customer Management" runat="server">
               <Childern>
-                <uc8:Form ID="frmLeaseContracts_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx" >
+                <AW:Form ID="frmLeaseContracts_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx" >
 
                 <WidgetConfig>
                 <script>
@@ -182,8 +182,8 @@
                         }
                     </script>
                 </Scripts>
-                </uc8:Form>
-                <uc6:DataGrid ID="grdLeaseContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_Cust_ShUc"
+                </AW:Form>
+                <AW:DataGrid ID="grdLeaseContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_Cust_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="false" 
             PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
             GridHeadText="Select Customer"  GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
@@ -212,93 +212,14 @@
                 };
             </script>
             </GridConfig>
-            <Scripts>
-                <script>
-                    var fn = function () {//CustomerRecCode
-                        var conGrd = AsyncWidgets.get("_Cust");
-                        t.on('rowsRendered', function () {
-                            $('table[itemno]', t.el).click(function () {
-                                var f = conGrd._frm;
-                                $('[argumentid="CustomerRecCode"]', f.el).val($('[colid="RecCode"] .ColValue', this).text());
-                                $('[argumentid="CustomerName"]', f.el).text($('[colid="CustomerName"] .ColValue', this).text());
-                                $('[argumentid="CustomerType"]', f.el).text($('[colid="CustomerType"] .ColValue', this).text());
-                                $('[argumentid="Nationality"]', f.el).text($('[colid="Nationality"] .ColValue', this).text());
-                                $('[argumentid="Gender"]', f.el).text($('[colid="Gender"] .ColValue', this).text());
-                                $('[argumentid="PassportNo"]', f.el).text($('[colid="PassportNo"] .ColValue', this).text());
-                                $('[argumentid="PassportExpiry"]', f.el).text($('[colid="PassportExpiry"] .ColValue', this).text());
-                                $('[argumentid="NationalIDNo"]', f.el).text($('[colid="NationalIDNo"] .ColValue', this).text());
-                                $('[argumentid="NationalIDExpiryDate"]', f.el).text($('[colid="NationalIDExpiryDate"] .ColValue', this).text());
-                                $('[argumentid="DrivingLicenseNo"]', f.el).text($('[colid="DrivingLicenseNo"] .ColValue', this).text());
-                                $('[argumentid="DrivingLicenseExpiry"]', f.el).text($('[colid="DrivingLicenseExpiry"] .ColValue', this).text());
-                                $('[argumentid="WorkTelephone"]', f.el).text($('[colid="WorkTelephone"] .ColValue', this).text());
-                                $('[argumentid="ResidenceTelephone"]', f.el).text($('[colid="ResidenceTelephone"] .ColValue', this).text());
-                                $('[argumentid="MobileTelephone1"]', f.el).text($('[colid="MobileTelephone1"] .ColValue', this).text());
-                                $('[argumentid="MobileTelephone2"]', f.el).text($('[colid="MobileTelephone2"] .ColValue', this).text());
-
-                                //Load Commas if both numbers are there
-                                if (!!$('[argumentid="WorkTelephone"]', f.el).text() && !!$('[argumentid="ResidenceTelephone"]', f.el).text()) {
-                                    $('.CommaWR', f.el).show();
-                                }
-                                else {
-                                    $('.CommaWR', f.el).hide();
-                                }
-
-                                if (!!$('[argumentid="MobileTelephone1"]', f.el).text() && !!$('[argumentid="MobileTelephone2"]', f.el).text()) {
-                                    $('.CommaM12', f.el).show();
-                                }
-                                else {
-                                    $('.CommaM12', f.el).hide();
-                                }
-                                //End Commas if both numbers are there
-
-                                // Date Difference Function
-                                var cDate = function (date) {
-                                    var dttmAr = date.split(' '), dt, tm, nDate;
-                                    dt = dttmAr[0].split('/');
-                                    if (dttmAr.length > 1) {
-                                        tm = dttmAr[1].split(':');
-                                        return new Date(dt[2], dt[1] - 1, dt[0], tm[0], tm[1], tm[2]);
-                                    }
-                                    return new Date(dt[2], dt[1] - 1, dt[0]);
-                                };
-                                var dateDiff = function (d1, d2) {
-                                    return (d1 - d2) / (3600000 * 24);
-                                };
-                                // End
-
-                                $('span[argumentid="CustomerName"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', f.el).css('color', '#628296'); //Change Color to Normal on every click
-
-                                // Highlight dates as red which have expired
-                                var HLD = function (arg) {
-                                    var expDate = f.GetArgVal(arg).replace(/3rd - /g, '').replace(/Full - /g, '');
-                                    if ($.trim(expDate) != '') {
-                                        if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
-                                            $('span[argumentid="' + arg + '"]', f.el).css('color', 'red');
-                                            $('span[argumentid="CustomerName"]', f.el).css('color', 'red');
-                                        }
-                                    }
-                                    return HLD;
-                                };
-                                HLD('PassportExpiry')('NationalIDExpiryDate')('DrivingLicenseExpiry');
-                                // End of Highlight of expired dates
-
-                                f._LOVCon.hide();
-                                $('[argumentid="CustomerRecCode"]', f.el).trigger('keyup'); //This is to remove the required validation issue
-                                conGrd._Masked.unmask();
-                                conGrd._frm = conGrd._Masked = null;
-                            })
-                            $('table[itemno] td,table[itemno] div').css('cursor', 'pointer');
-                        });
-                    };
-                </script>
-            </Scripts>
-            </uc6:DataGrid>
+          
+            </AW:DataGrid>
            </Childern>
-            </uc5:Container>
+            </AW:Container>
            
-           <uc5:Container ID="conLeaseContracts_Cars" Hidden="true" Caption="Car Details" runat="server">
+           <AW:Container ID="conLeaseContracts_Cars" Hidden="true" Caption="Car Details" runat="server">
               <Childern>
-                <uc8:Form ID="frmLeaseContracts_Cars_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Lease_Contracts_Cars" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cars_ShUc.ascx" >
+                <AW:Form ID="frmLeaseContracts_Cars_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Lease_Contracts_Cars" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cars_ShUc.ascx" >
                 <WidgetConfig>
                 <script>
                     var cf = {
@@ -325,8 +246,8 @@
                         }
                     </script>
                 </Scripts>
-                </uc8:Form>
-                <uc6:DataGrid ID="grdLeaseContracts_Cars" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_Cars_ShUc"
+                </AW:Form>
+                <AW:DataGrid ID="grdLeaseContracts_Cars" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_Cars_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="false" 
             PageSize="10" DataSource="SEL_iRental_Lease_Contracts_Cars" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
             GridHeadText="Select Car"  GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
@@ -339,12 +260,12 @@
                         RecId: { width: '0px' },
                         RecCode: { width: '0px' },
                         ChassisNo: { width: '0px' },
-                        CarNumber: { caption: 'Car No.', width: '80px' },
+                        CarNumber: { caption: 'Car No.', width: 'AW0px' },
                         BrandId: { caption: 'Brand', width: '120px' },
                         ModelId: { caption: 'Model', width: '140px' },
-                        TypeId: { caption: 'Type', width: '80px' },
-                        CarYear: { caption: 'Year', width: '80px' },
-                        ColorId: { caption: 'Color', width: '80px' },
+                        TypeId: { caption: 'Type', width: 'AW0px' },
+                        CarYear: { caption: 'Year', width: 'AW0px' },
+                        ColorId: { caption: 'Color', width: 'AW0px' },
                         InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
                         FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
                         CurrentMileage: { caption: 'Mileage', width: '100px' },
@@ -358,8 +279,10 @@
                 };
             </script>
             </GridConfig>
+		<%--	
             <Scripts>
                 <script>
+
                     var fn = function () {//CustomerRecCode
                         var conCar = AsyncWidgets.get("conLeaseContracts_Cars");
                         var f = conCar._frm;
@@ -412,7 +335,7 @@
                                 };
                                 // End
 
-                                $('span[argumentid="ChassisNo"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"]', f.el).css('color', '#628296'); //Change Color to Normal on every click
+                                $('span[argumentid="ChassisNo"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"]', f.el).css('color', '#62AW296'); //Change Color to Normal on every click
 
                                 // Highlight dates as red which have expired
                                 var HLD = function (arg) {
@@ -441,13 +364,16 @@
                             $('table[itemno] td,table[itemno] div').css('cursor', 'pointer');
                         });
                     };
+
                 </script>
             </Scripts>
-            </uc6:DataGrid>
+           --%>
+
+		   </AW:DataGrid>
            </Childern>
-            </uc5:Container>
+            </AW:Container>
            <script type="text/javascript" src="/Scripts/eForms/iRental/frmLeaseContracts.js" ></script>
-           <uc8:Form ID="frmLeaseContracts" Hidden="true" DataSource="SEL_iRental_Lease_Contracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/LeaseContracts_FrUc.ascx" >
+           <AW:Form ID="frmLeaseContracts" Hidden="true" DataSource="SEL_iRental_Lease_Contracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/LeaseContracts_FrUc.ascx" >
              <WidgetConfig>
                 <script>
                     cf = {
@@ -470,4 +396,4 @@
                           }
                       </script>
                           </Scripts>
-            </uc8:Form>
+            </AW:Form>

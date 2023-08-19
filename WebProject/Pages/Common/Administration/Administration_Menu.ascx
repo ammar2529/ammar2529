@@ -29,7 +29,7 @@
                                         <li> <a class="SitePageMenuLink" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Organization Setup</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}" href="javascript:void(0);">User Management</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Menu Configuration</a></li>
-                                        <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Ammar Menu Configuration</a></li>
+<%--                                        <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Ammar Menu Configuration</a></li>--%>
 
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Role Management</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdListofValues',parentId:'conAdministration_Controls'}" href="javascript:void(0);">List of Values</a></li>

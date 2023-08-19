@@ -17,14 +17,14 @@
                                      </div>
 
                                      <div style="float:right">
-                                              <a href="javascript:void(0);"  class="ClosePopup">
+                                              <a href="javascript:void(0);"  class="ClosePopup CloseLOVPopup">
                                      <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/Close.gif" border="0" /></a>
                                    </div>
                                      </td>
 
            
                               
-
+                
 
             </tr>
             </table>

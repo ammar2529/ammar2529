@@ -29,39 +29,22 @@
              if (parseInt(nvalue) == 0) {
                  clearInterval(timeInterval);
                  CloseForm();
+                 window.location = `${location.protocol}//${location.host}`;
+
              }
              nvalue = parseInt(nvalue) - 1;
          }
 
          function CloseForm() {
 
-             var ver = getInternetExplorerVersion();
-
-             if (ver >= 7.0) {
-                 window.open('', '_self', '');
-                 window.close();
-             }
-             else {
-                 window.opener = null;
-                 window.close();
-             }
+             //let win =  window.open('', '_self');
+             //  win.close();
+             //open(location, '_self').close();
+             window.location = `${location.protocol}//${location.host}`;
 
          }
 
-         function getInternetExplorerVersion()
-         // Returns the version of Windows Internet Explorer or a -1
-         // (indicating the use of another browser).
-         {
-             var rv = -1; // Return value assumes failure.
-             if (navigator.appName == 'Microsoft Internet Explorer') {
-                 var ua = navigator.userAgent;
-                 var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-                 if (re.exec(ua) != null)
-                     rv = parseFloat(RegExp.$1);
-             }
-             return rv;
-         }
-
+        
      </script>
     <div>
         <table id="Table1" cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
@@ -80,9 +63,9 @@
                                              
                                             <p align="center">
                                             
-                                                <span id="sp1" style="text-align: center;">Thank you for using the system, </span><span class="SLabel" style="color: #BF2e1A;font-weight: bold;">this window will close in </span><span class="SLabel" id="sp2" style="color: #BF2e1A;font-weight: bold;"></span>
+                                                <span id="sp1" style="text-align: center;">Thank you for using the system, </span><span class="SLabel" style="color: #BF2e1A;font-weight: bold;">this page will be redirected to home page in </span><span class="SLabel" id="sp2" style="color: #BF2e1A;font-weight: bold;"></span>
                                                 <span><a href="javascript:CloseForm()" id="A3" style="font: 10pt/20px Verdana;
-                                                                            padding-right: 10px;padding-left: 10px;">Close Now</a></span>  </p>
+                                                                            padding-right: 10px;padding-left: 10px;"></a></span>  </p>
                                             <br />
                                             <strong><font face="Arial">
                                                 <img src="App_Themes/eForms_Theme/Images/workflow.jpg" /></font></strong>

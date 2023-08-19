@@ -13,21 +13,26 @@
     <meta name="Description" content="Welcome to eForms - Paperless Office" />
     <meta name="Keywords" content="eForms, iDashboard" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
-
+     
  
     <link id="layoutStylesheet" href="../App_Themes/eForms_Theme/StyleSheets/StyleSheet_eng.css" type="text/css" rel="stylesheet" /> 
     <link id="Link1" href="../AsyncWidgets/Widgets/resources/css/common.standard.css" type="text/css" rel="stylesheet" />
     <link id="Link2" href="../AsyncWidgets/Widgets/resources/css/jquery-ui/ui-lightness/jquery-ui.css" type="text/css" rel="stylesheet" />
-    <script language='javascript' type='text/javascript' > ROOT_PATH = '';</script>
+    <script language='javascript' type='text/javascript' > ROOT_PATH = ''; BASE_PATH = "";</script>
     <script src="AsyncWidgets/Scripts/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../JQuery/Common.js"></script>
     <script src="AsyncWidgets/Scripts/Custom-Ext.js" type="text/javascript" ></script>
     <script src="AsyncWidgets/Scripts/jquery.alphanumeric.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/WidgetBase.js" type="text/javascript"></script>
+	<%--
     <script src="AsyncWidgets/Scripts/jquery.jclock.js" type="text/javascript"></script>
+	--%>
     <script src="AsyncWidgets/Scripts/jQueryUI/jquery-ui.js" type="text/javascript"></script>
     <script src="AsyncDashboards/FusionCharts/FusionCharts.js" type="text/javascript"></script>
     <script src="Scripts/Common/SessionExpired.js" type="text/javascript"></script>
+    
 
+    <asp:Literal ID="ltrScrpt" runat="server"></asp:Literal>
         <%--Below script is for Google Analytics--%>
 <script type="text/javascript">
 
@@ -93,6 +98,7 @@
 <body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #dae2e3; overflow:scroll;overflow-x:visible">
 
     <form id="frmMain" runat="server">
+       
     <center>
         <table cellspacing="0" cellpadding="0" width="973" border="0">
             <tbody>
@@ -102,6 +108,7 @@
                     </td>
                     <td>
                         <div id="MainContainer">
+                             
                              <WP:eForms_Header ID="eForms_Header" runat="server" />
 
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -135,8 +142,7 @@
                     <td>
                         <img height="37" width="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
                     </td>
-                    <td align="center" dir="ltr">
-                    Copyright © 2013. All rights reserved.
+                    <td align="center" dir="ltr" class="CopyRight">
                     </td>
                     <td>
                         <img height="37" width="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
@@ -152,5 +158,11 @@
         </table>
     </center>
     </form>
+	<script>
+	$().ready(function(){
+
+		$('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);;
+	});
+	</script>
 </body>
 </html>

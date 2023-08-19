@@ -528,10 +528,13 @@
                                 P.ParentRecId = frm.GetArgVal('RecId');
                             });
                             t.on('beforeRowDelete', function (P) {
+                                /*debugger*/;
+                               
                                 var fRow = $('td.Item table .chkRowSelect:first', t.Repeater).closest('tr'), pVal;
                                 pVal = $('[colid="ParentRecId"] .ColValue', fRow).text();
                                 P.cf['ParentRecId'] = pVal;
-                            });
+                            //    P.flags.queryDelete = false;
+                            }); 
                             t.on('rowsRendered', function () {
 
                                 var frm = AsyncWidgets.get('frmRentalContracts');

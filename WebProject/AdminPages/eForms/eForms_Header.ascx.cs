@@ -12,7 +12,7 @@ namespace WebProject.AdminPages.eForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            MenuData.Mode = LiteralMode.PassThrough;
             if (Session["UserId"] != null)//user logged in
             {
                 frmMenu_Header.Hidden = false;
@@ -23,16 +23,24 @@ namespace WebProject.AdminPages.eForms
                 frmMenu_Header.Hidden = true;
                 frmLogin_Header.Hidden = false;
             }
-
+            var jsConfiguration = "";
             if (Session["MenuData"] != null)
             {
-                MenuData.Text = System.Environment.NewLine + "<script>window.MenuData=" + Session["MenuData"].ToString() + System.Environment.NewLine;
+                jsConfiguration = $@"
+            window.MenuData={ Session["MenuData"].ToString()};
+";
             }
             if (Session["UserConf"] != null)
             {
-                MenuData.Text += @"AsyncWidgets.user.conf=" + Session["UserConf"].ToString() +
-                        @"<" + '/' + "script> ";
+                jsConfiguration += $@"
+            AsyncWidgets.user.conf={ Session["UserConf"].ToString()};
+";
+                       ;
             }
+            MenuData.Text = $@"<script type='text/javascript'>
+{jsConfiguration}
+</script>";
+            jsConfiguration = "";
         }
 
         protected override void CreateChildControls()

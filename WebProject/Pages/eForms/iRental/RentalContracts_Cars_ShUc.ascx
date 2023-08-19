@@ -51,8 +51,9 @@
                                      <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
 <a href="javascript:void(0);"  class="reset ClearButton"><img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
 
- <a href="javascript:void(0);"  class="ClosePopup">
+ <a href="javascript:void(0);"  class="ClosePopup CloseLOVPopup">
                                      <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/Close.gif" border="0" /></a>
+
 </td>
             </tr>
              </table>

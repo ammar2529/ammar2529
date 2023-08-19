@@ -392,7 +392,10 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
                 DataRow[] drs = dtColumns.Select("COLUMN_NAME = '" + PRMKey + "'");
                 if (drs.Length > 0)
                 {
-                    ColumnsInfo.Add(PRMKey, drs[0]["TYPE_NAME"].ToString());
+                    if (!ColumnsInfo.ContainsKey(PRMKey))
+                    {
+                        ColumnsInfo.Add(PRMKey, drs[0]["TYPE_NAME"].ToString());
+                    }
                 }
 
                 if (recid != "") {

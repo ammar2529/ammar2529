@@ -1,4 +1,6 @@
-﻿AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) { 
+﻿/// <reference path="/JQuery/Common.js" />
+
+AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
     var t = obj;
     var conGrd = AsyncWidgets.get("conLeaseContracts_Cust");
     var conCar = AsyncWidgets.get("conLeaseContracts_Cars");

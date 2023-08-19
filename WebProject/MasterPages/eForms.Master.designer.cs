@@ -42,6 +42,15 @@ namespace WebProject.MasterPages
         protected global::System.Web.UI.HtmlControls.HtmlLink Link2;
 
         /// <summary>
+        /// ltrScrpt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrScrpt;
+
+        /// <summary>
         /// mainPageBody control.
         /// </summary>
         /// <remarks>

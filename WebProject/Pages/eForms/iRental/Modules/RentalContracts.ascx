@@ -6,7 +6,7 @@
 
 <style>
 .ElemDisabled
-{
+ {
 	background:#F1F1F1 !important;
 	}
 </style>
@@ -619,7 +619,7 @@
                                   $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).val(0);
                               });
                               //End On Change of Location Out Empty Car Details
-
+                               /*
                               var getDate = function (iParam) {
                                   var x = iParam.split("/");
                                   day = x[0];
@@ -629,6 +629,7 @@
                                   return myDate;
                               };
 
+                             */
                               // On Start & Expiry Date Selection Get Day Time and Days
                               var GetDays = function (e, vl, dt) {
 
@@ -649,7 +650,7 @@
                                           $('[argumentid="ContractStartTime"]', t.el).val(cH + ':' + cM);
                                       }
                                   }
-
+                                  
                                   eDate = getDate($('[argumentid="ContractExpiryDate"]', t.el).val());
                                   if ($(e).attr('argumentid') == 'ContractExpiryDate') {
                                       if (eDate.toString() == 'NaN') {

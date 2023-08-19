@@ -24,24 +24,6 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Container conRentalContracts;
 
         /// <summary>
-        /// frmRentalContracts_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmRentalContracts_ShUc;
-
-        /// <summary>
-        /// grdRentalContracts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdRentalContracts;
-
-        /// <summary>
         /// conRentalContracts_Cust control.
         /// </summary>
         /// <remarks>
@@ -51,24 +33,6 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Container conRentalContracts_Cust;
 
         /// <summary>
-        /// frmRentalContracts_Cust_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmRentalContracts_Cust_ShUc;
-
-        /// <summary>
-        /// grdRentalContracts_Cust control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdRentalContracts_Cust;
-
-        /// <summary>
         /// conRentalContracts_Cars control.
         /// </summary>
         /// <remarks>
@@ -76,24 +40,6 @@ namespace WebProject.Pages.eForms.iRental.Modules
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.Container conRentalContracts_Cars;
-
-        /// <summary>
-        /// frmRentalContracts_Cars_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmRentalContracts_Cars_ShUc;
-
-        /// <summary>
-        /// grdRentalContracts_Cars control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdRentalContracts_Cars;
 
         /// <summary>
         /// frmRentalContracts control.

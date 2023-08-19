@@ -14,6 +14,8 @@
 <%@ Register Src="Pages/eForms/iRental/Modules/CarTransfers.ascx" TagName="CarTransfers" TagPrefix="AW" %>
 <%@ Register Src="Pages/eForms/iRental/Modules/RentalContracts.ascx" TagName="RentalContracts" TagPrefix="AW" %>
 <%@ Register Src="Pages/eForms/iRental/Modules/LeaseContracts.ascx" TagName="LeaseContracts" TagPrefix="AW" %>
+<%@ Register Src="~/Pages/eForms/iRental/Modules/SalesContracts.ascx" TagPrefix="AW" TagName="SalesContracts" %>
+
 
 <%--<script runat="server">
     protected void Page_Load(object sender, EventArgs e)
@@ -46,6 +48,8 @@
                 AsyncForm="~/Pages/Common/iDashboard/Home_iDashboard.ascx">
                 <Scripts>
                     <script>
+                        const { on } = require("modernizr");
+
                         fn = function () {
                             t.on('show', function () {
                                 //$(t.el).mask('Please wait while loading ...');
@@ -55,15 +59,11 @@
                                 //$(t.el).unmask('Please wait while loading ...');
                             });
                         }
-                    </script>
-                </Scripts>
-            </AW:Form>
-         
-            <AW:Form ID="frmLogout" Hidden="true" runat="server" AsyncForm="~/Pages/Common/Logout.ascx" />
+                    
+/* END EXTERNAL SOURCE */
 
-            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx">
-                        <Scripts>
-                      <script>
+/* BEGIN EXTERNAL SOURCE */
+
                           fn = function () {
 
                               var cDate = function (date) {
@@ -137,15 +137,11 @@
                                   }
                               });
                           }
-                              </script>
-                        </Scripts>
-              
-            </AW:Form>
-           
+                              
+/* END EXTERNAL SOURCE */
 
-            <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
-            <Scripts>
-                <script>
+/* BEGIN EXTERNAL SOURCE */
+
                     fn = function () {
                         t.on('afterDataAction', function () {
                             $('.form', t.el).hide();
@@ -158,7 +154,38 @@
 
                         });
                     };
-                </script>
+                
+/* END EXTERNAL SOURCE */
+
+/* BEGIN EXTERNAL SOURCE */
+
+    var onReady = () => {
+        //console.log("finding menu...");
+        if ($('[showwidget="conLeaseContracts"]').length > 0) {
+            $('[showwidget="conLeaseContracts"]').trigger('click');
+        }
+
+        else {
+            //var outterFun = arguments.callee;
+            setTimeout(onReady, 3000);
+        }
+    }</script>
+                </Scripts>
+            </AW:Form>
+         
+            <AW:Form ID="frmLogout" Hidden="true" runat="server" AsyncForm="~/Pages/Common/Logout.ascx" />
+
+            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx">
+                        <Scripts>
+                      <script></script>
+                        </Scripts>
+              
+            </AW:Form>
+           
+
+            <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
+            <Scripts>
+                <script></script>
             </Scripts>
             
             </AW:Form>
@@ -172,9 +199,27 @@
             <AW:CarTransfers ID="CarTransfers" runat="server" />
             <AW:RentalContracts ID="RentalContracts" runat="server" />
             <AW:LeaseContracts ID="LeaseContracts" runat="server" />
-
+            <AW:SalesContracts runat="server" ID="SalesContracts" />
         </div>
     </div>
 
+<%--<script type="text/javascript">
+    var onReady = () => {
+        //console.log("finding menu...");
+        if ($('[showwidget="conLeaseContracts"]').length > 0) {
+            $('[showwidget="conLeaseContracts"]').trigger('click');
+        }
+
+        else {
+            //var outterFun = arguments.callee;
+            setTimeout(onReady, 3000);
+        }
+    };
+
+
+
+    $().ready(onReady);
+
+</script>--%>
 </asp:Content>
 
