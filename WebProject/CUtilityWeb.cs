@@ -20,7 +20,7 @@ using WebProject.ReportsEngine;
 /// </summary>
 public class CUtilityWeb
 {
-    public enum ConnType
+    public enum ConnType // test git commit
     {
         eFormsDB,
         eFormsDevDB,
