@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts.ascx.cs" Inheri                     * 
-                    ts="WebProject.Pages.eForms.iRental.Modules.SalesContracts" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.Modules.SalesContracts" %>
 
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
