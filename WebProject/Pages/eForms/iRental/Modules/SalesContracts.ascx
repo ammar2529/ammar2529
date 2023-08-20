@@ -12,6 +12,7 @@
         <AW:Form ID="frmSalesContracts_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SalesContracts" AsyncForm="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx">
             <WidgetConfig>
                 <script>
+                    /** changes from dastoor */
                   var  cf = {
                         header: {
                             Style: {},
