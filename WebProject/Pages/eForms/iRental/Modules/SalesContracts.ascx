@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.Modules.SalesContracts" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts.ascx.cs" Inheri                     * 
+                    ts="WebProject.Pages.eForms.iRental.Modules.SalesContracts" %>
 
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
@@ -12,7 +13,9 @@
         <AW:Form ID="frmSalesContracts_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SalesContracts" AsyncForm="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx">
             <WidgetConfig>
                 <script>
-                    /** changes from dastoor */
+                    /** changes from
+                            Main another change 
+                    */
                   var  cf = {
                         header: {
                             Style: {},
