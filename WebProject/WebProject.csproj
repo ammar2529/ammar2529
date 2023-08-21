@@ -1252,6 +1252,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="test2.aspx" />
     <Content Include="TestForm.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="WebForm1.aspx" />
@@ -3001,6 +3002,13 @@
     </Compile>
     <Compile Include="Skins\Defalut.EO.Calendar.ascx.designer.cs">
       <DependentUpon>Defalut.EO.Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="test2.aspx.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test2.aspx.designer.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestForm.aspx.cs">
       <DependentUpon>TestForm.aspx</DependentUpon>
