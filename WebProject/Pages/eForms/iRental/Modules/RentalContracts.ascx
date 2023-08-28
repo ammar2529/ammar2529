@@ -619,7 +619,7 @@
                                   $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).val(0);
                               });
                               //End On Change of Location Out Empty Car Details
-                               /*
+                               
                               var getDate = function (iParam) {
                                   var x = iParam.split("/");
                                   day = x[0];
@@ -629,10 +629,11 @@
                                   return myDate;
                               };
 
-                             */
+                             
                               // On Start & Expiry Date Selection Get Day Time and Days
                               var GetDays = function (e, vl, dt) {
 
+                                
                                   var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                                   var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
 

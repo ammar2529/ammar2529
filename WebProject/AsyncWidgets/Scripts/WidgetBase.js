@@ -1410,8 +1410,9 @@ function GetArgVal(ArgId, GroupId, ctx) {
     if (e.length > 0) {
         return val(e[0], ctx);
     }
-    else {
-        alert("Argument ID '" + ArgId + "' Not found!");
+    else
+    {
+        console.log("Argument ID '" + ArgId + "' Not found!");
         return "Argument ID '" + ArgId + "' Not found!";
     }
 }
@@ -1604,9 +1605,11 @@ function addAttr(obj, conf) {
         obj.attr(key, conf[key]);
     }
 }
-var setField = function (ctl, param, ctx) {
+var setField = function (ctl, param, ctx)
+{
+    
     var tag, val;
-
+    
     if (!ctx) { //if ctx is not given,
         if (!!setField._ctx) {//if ctx is saved
             ctx = setField._ctx; //restore ctx
@@ -1626,7 +1629,7 @@ var setField = function (ctl, param, ctx) {
     }
 
     if (typeof ctl == "string") { //if argumentid is passed, find it's control
-        var $ctl = $(`[argumentid='${ctl}']`);
+        var $ctl = $(`[argumentid='${ctl}']`,ctx);
         if ($ctl.length > 0) {
             ctl = $ctl[0];
         }

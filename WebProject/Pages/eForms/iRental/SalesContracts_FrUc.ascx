@@ -1,36 +1,48 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts_FrUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_FrUc" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
-<%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %> 
+<%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
+
+<style type="text/css">
+    .auto-style1 {
+        height: 21px;
+    }
+    .auto-style2 {
+        width: 275px;
+    }
+</style>
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
     <tr>
-    <td style="padding-top: 10px; padding-left: 2px;">
-      <ul class="SimpleTab" style="margin: 0px;">
-        <li class="active" tabid="ContractDetails">
-          <div> Contract Details </div>
-        </li><%--                
+        <td style="padding-top: 10px; padding-left: 2px;">
+            <ul class="SimpleTab" style="margin: 0px;">
+                <li class="active" tabid="ContractDetails">
+                    <div>Contract Details </div>
+                </li>
+                <%--                
 				<li tabid="AdditionalDrivers" >
 					<div>
           Additional Drivers</div>
-				</li> --%> <li tabid="PaymentDetails">
-          <div> Payment Details </div>
-        </li>
-        <li tabid="OtherCharges">
-          <div> Other Charges </div>
-        </li>
-        <li tabid="ContractComments" style="border-right: 1px solid #8298B0;">
-          <div> Comments </div>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr tabid="ContractDetails">
-    <td style="padding-top: 1px;">
-      <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
-        <tr id="trNote">
-          <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-        </tr><%--    
+				</li> --%>
+                <li tabid="PaymentDetails">
+                    <div>Payment Details </div>
+                </li>
+                <li tabid="OtherCharges">
+                    <div>Other Charges </div>
+                </li>
+                <li tabid="ContractComments" style="border-right: 1px solid #8298B0;">
+                    <div>Comments </div>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr tabid="ContractDetails">
+        <td style="padding-top: 1px;">
+            <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+                <tr id="trNote">
+                    <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
+                </tr>
+                <%--    
 				<tr class="OnNewHide">
 					<td class="ftitle" width="18%">
 						<nobr>Contract No.</nobr>
@@ -44,267 +56,288 @@
 					<td class="ftitle" width="30%">
 						<span class="ftitle" groupid="SalesContractsForm" argumentid="StateName"></span>
 					</td>
-				</tr>--%> 
-          
-          <tr>
-          <td colspan="4">
-            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
-          </td>
-        </tr>
-         
-          <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
-<tr>
-        <td class="ftitle" >
-            <nobr>Car Number*:</nobr>
-        </td>
-        <td>
-                            <input type="hidden" name="RecId"  groupid="SalesContractsForm" argumentid="RecId" />
+				</tr>--%>
 
-                <div style="display:none"><span groupid="SalesContractsForm" argumentid="RecId"></span><span groupid="SalesContractsForm" argumentid="StateId"></span></div>
-                <div><input type="text" style="text-align:center;width:150px; font-weight:bold;color:red"  maxlength="10" class="LOVPopup text required CommonDisable"
-                groupid="SalesContractsForm" lovpopupid="mypopup" argumentid="CarNumber" /></div>
-        </td> 
-        <td class="ftitle">
-                <nobr>Customer Code*:</nobr></td> 
-        <td>
-                <input type="text" style="text-align:center;width:150px; font-weight:bold;color:red"  maxlength="10" class="LOVPopup text required CommonDisable"
-                groupid="SalesContractsForm" lovpopupid="mypopupp" argumentid="CustomerRecCode" />
-                                                <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float:right; padding-right:0px;height:15px;cursor:pointer;">&nbsp;</div>
-              </td> 
-    </tr>
-      
-          <%--///////////////////// End: Select Car and Customer popup ///////////////////////////////////////--%> 
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    </td>
+                </tr>
 
-          
-                    
-       
-            
-          <tr>
-          <td class="ftitle">
-            <nobr>Chassis Number</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="ChassisNo"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Name</nobr>
-          </td>
-          <td style="text-align: center">
-            <span class="ftitle" style="font-size: 16px;" groupid="SalesContractsForm" argumentid="CustomerName"></span>
-          </td>
-        </tr>
-        <tr>
-          <td class="ftitle">
-            <nobr>Brand</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="BrandId"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Type</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="CustomerType"></span>
-          </td>
-        </tr>
-        <tr>
-          <td class="ftitle">
-            <nobr>Model</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="ModelId"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Nationality</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="Nationality"></span>
-          </td>
-        </tr>
-        <tr class="OnLoadHideCarCust">
-          <td class="ftitle">
-            <nobr>Year</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="CarYear"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Gender</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="Gender"></span>
-          </td>
-        </tr>
-        <tr class="OnLoadHideCarCust">
-          <td class="ftitle">
-            <nobr>Color</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="Color"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Passport No.</nobr>
-          </td>
-          <td>
-            <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="PassportNo"></div>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="PassportExpiry"></span>
-          </td>
-        </tr>
-        <tr class="OnLoadHideCarCust">
-          <td class="ftitle">
-            <nobr>Type</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="TypeId"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>National ID No.</nobr>
-          </td>
-          <td>
-            <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="NationalIDNo"></div>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="NationalIDExpiryDate"></span>
-          </td>
-        </tr>
-        <tr class="OnLoadHideCarCust">
-          <td class="ftitle">
-            <nobr>Price</nobr>
-          </td>
-          <td class="ftitle">
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="Price"></span>
-           
-          </td>
-          <td class="ftitle">
-            <nobr>Driving License No.</nobr>
-          </td>
-          <td>
-            <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="DrivingLicenseNo"></div>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="DrivingLicenseExpiry"></span>
-          </td>
-        </tr>
-        <tr class="OnLoadHideCarCust">
-          <td class="ftitle">
-            <nobr>Additional Amount</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="AdditionalAmount"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Work & Res. Telephone</nobr>
-          </td>
-          <td class="ftitle">
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="WorkTelephone"></span>
-            <nobr class="CommaWR">, </nobr>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="ResidenceTelephone"></span>
-          </td>
-        </tr>
-        <tr>
-          <td class="ftitle">
-            <nobr>Discount:</nobr>
-          </td>
-          <td>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
-          </td>
-          <td class="ftitle">
-            <nobr>Mobile Telephone</nobr>
-          </td>
-          <td class="ftitle">
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone1"></span>
-            <nobr class="CommaM12">, </nobr>
-            <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone2"></span>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4">
-            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
-          </td>
-        </tr>
-          
-						<tr>
-							<td class="ftitle">
-								<nobr>Contract Start Date*:</nobr>
-							</td>
-							<td>
-								<input type="text" groupid="SalesContractsForm" maxlength="10"
+                <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
+                <tr>
+                    <td>
+                        <nobr>Car Number*:</nobr>
+                    </td>
+                    <td>
+                        <input type="hidden" name="RecId" groupid="SalesContractsForm" argumentid="RecId" />
+
+                        <div style="display: none"><span groupid="SalesContractsForm" argumentid="RecId"></span><span groupid="SalesContractsForm" argumentid="StateId"></span></div>
+                        <div>
+                            <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
+                                groupid="SalesContractsForm" lovpopupid="mypopup" argumentid="CarNumber" />
+                        </div>
+                    </td>
+                    <td>
+                        <nobr>Customer Code*:</nobr></td>
+                    <td>
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
+                            groupid="SalesContractsForm" lovpopupid="mypopupp" argumentid="CustomerRecCode" />
+                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>
+                    </td>
+                </tr>
+
+                <%--///////////////////// End: Select Car and Customer popup ///////////////////////////////////////--%>
+
+
+
+
+
+                <tr>
+                    <td>
+                        <nobr>Chassis Number</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="ChassisNo"></span>
+                    </td>
+                    <td>
+                        <nobr>Name</nobr>
+                    </td>
+                    <td style="text-align: center">
+                        <span class="ftitle" style="font-size: 16px;" groupid="SalesContractsForm" argumentid="CustomerName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <nobr>Brand</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="BrandId"></span>
+                    </td>
+                    <td>
+                        <nobr>Type</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="CustomerType"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <nobr>Model</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="ModelId"></span>
+                    </td>
+                    <td>
+                        <nobr>Nationality</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Nationality"></span>
+                    </td>
+                </tr>
+                <tr class="OnLoadHideCarCust">
+                    <td>
+                        <nobr>Year</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="CarYear"></span>
+                    </td>
+                    <td>
+                        <nobr>Gender</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Gender"></span>
+                    </td>
+                </tr>
+                <tr class="OnLoadHideCarCust">
+                    <td>
+                        <nobr>Color</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Color"></span>
+                    </td>
+                    <td>
+                        <nobr>Passport No.</nobr>
+                    </td>
+                    <td>
+                        <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="PassportNo"></div>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="PassportExpiry"></span>
+                    </td>
+                </tr>
+                <tr class="OnLoadHideCarCust">
+                    <td>
+                        <nobr>Type</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="TypeId"></span>
+                    </td>
+                    <td>
+                        <nobr>National ID No.</nobr>
+                    </td>
+                    <td>
+                        <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="NationalIDNo"></div>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="NationalIDExpiryDate"></span>
+                    </td>
+                </tr>
+                <tr class="OnLoadHideCarCust">
+                    <td>
+                        <nobr>Price</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Price"></span>
+
+                    </td>
+                    <td>
+                        <nobr>Driving License No.</nobr>
+                    </td>
+                    <td>
+                        <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="DrivingLicenseNo"></div>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="DrivingLicenseExpiry"></span>
+                    </td>
+                </tr>
+                <tr class="OnLoadHideCarCust">
+                    <td>
+                        <nobr>Additional Amount</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="AdditionalAmount"></span>
+                    </td>
+                    <td>
+                        <nobr>Work & Res. Telephone</nobr>
+                    </td>
+                    <td class="ftitle">
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="WorkTelephone"></span>
+                        <nobr class="CommaWR">, </nobr>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="ResidenceTelephone"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <nobr>Discount:</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
+                    </td>
+                    <td>
+                        <nobr>Mobile Telephone</nobr>
+                    </td>
+                    <td class="ftitle">
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone1"></span>
+                        <nobr class="CommaM12">, </nobr>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone2"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <nobr>Contract Start Date*:</nobr>
+                    </td>
+                    <td>
+                        <input type="text" groupid="SalesContractsForm" maxlength="10"
                             style="width: 75px;" class="text required date CommonDisable" requirederr=' *' argumentid="ContractStartDate" />
-								
-							</td>
 
-                            	<td class="ftitle">
-								<nobr>Reservation Date:</nobr>
-							</td>
-							<td>
-								<input type="text" groupid="SalesContractsForm" maxlength="10"
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="ContractStartDay" />
+
+                        <input type="text" style="text-align: center; width: 40px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="ContractStartTime" />
+
+                    </td>
+
+                    <td>
+                        <nobr>Reservation Date:</nobr>
+                    </td>
+                    <td>
+                        <input type="text" groupid="SalesContractsForm" maxlength="10"
                             style="width: 75px;" class="text required date DisableOnClose" requirederr=' Reservation Date Required' argumentid="ReservationDate" />
-								
-								
-							</td>
-							
-						
-						</tr>
-						<tr>
-						
-						
-						</tr>
-					
-          <%--  
-						<tr class="MileageType">
-							<td class="ftitle">
-								<nobr></nobr>
-							</td>
-							<td>&nbsp;</td>
-							<td class="ftitle">
-								<nobr class="MileageType">Rate/KM (Extra Mileage)*:</nobr>
-							</td>
-							<td>
-								<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number MileageType AlwaysDisable"
-                            groupid="SalesContractsForm" alphconf="{allow:'.'}" argumentid="CarExtraKMRate" />
-							</td>
-						</tr>--%>
-          
-          <tr class="OnLoadHide">
-          <td colspan="4">
-            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
-          </td>
-        </tr>
-        <tr>
-          <td class="ftitle">
-            <nobr>Reserve Days:*:</nobr>
-          </td>
-          <td>
-            <input type="text" groupid="SalesContractsForm" maxlength="10" style="width: 150px;" class="text number CommonDisable" readonly requirederr=' *' argumentid="ReservationDays" />
-          </td>
-           <td class="ftitle">
-            <nobr>Paid Amount*:</nobr>
-          </td>
-          <td>
-            <input type="text" groupid="SalesContractsForm" maxlength="10" style="width: 150px;" class="text number CommonDisable" readonly requirederr=' *' argumentid="PaymentAmount" />
-          </td>                                             
-        </tr>
 
-        <tr>
-          <td>
-            <div style="padding-top: 10px; padding-bottom: 10px"> &nbsp;</div>
-          </td>
-        </tr>
-       
-        <tr>
-          <td colspan="4" style="text-align: center;">
-            <div style="padding-top: 10px; padding-bottom: 10px">
-              <input type="button" value="  Save  " ignorevalidate="ReservationDate" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false}" />
-                <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:true,Params:{DBAction:'SCReserved'}}" />
-<%--              <input type="button" value="  Print  " class="ButtonStyle btn_9" />--%>
-              <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
-            </div>
-          </td>
-        </tr>
-      
-      </table>
-    </td>
-  </tr>
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="ContractExpiryDay" />
 
-     <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
+                        <input type="text" style="text-align: center; width: 40px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="ContractExpiryTime" />
+
+                        <input type="text" style="text-align: center; width: 30px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="ReservationDays" />
+
+                    </td>
+
+
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"> </td>
+                </tr>
+
+
+
+                <tr class="OnLoadHide">
+                    <td colspan="4" class="auto-style1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3">Comments</td>
+                    <td rowspan="3">
+
+                        <textarea class="auto-style2" style="width:100%" rows="5" wrap="1" argumentid="Description" groupid="Rental_OtherCharges" name="S1" cols="20"></textarea></td>
+                    <td></td>
+                    <td class="ftitle"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="ftitle"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="ftitle"></td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        <nobr>Paid Amount*:</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
+                    </td>
+                    <td>
+                        <nobr>Mobile Telephone</nobr>
+                    </td>
+                    <td class="ftitle">
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone1"></span>
+                        <nobr class="CommaM12">, </nobr>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone2"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" style="text-align: center;">
+                        <div style="padding-top: 10px; padding-bottom: 10px">
+                            <input type="button" value="  Save  " ignorevalidate="ReservationDate" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false}" />
+                            <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:true,Params:{DBAction:'SCReserved'}}" />
+                            <%--              <input type="button" value="  Print  " class="ButtonStyle btn_9" />--%>
+                            <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+
+    <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
     <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
-  <tr tabid="PaymentDetails" style="display: none;">
+    <tr tabid="PaymentDetails" style="display: none;">
         <td style="padding-top: 1px;">
 
             <AW:DataGrid ID="grdPaymentDetails" LoadOnInit="true" ShowOnLoad="false" runat="server"
@@ -339,9 +372,9 @@
                     </script>
                 </GridConfig>
                 <Scripts>
-              <script>
-                  var fn = Sales.SalesContracts.grdPaymentDetails;
-              </script>
+                    <script>
+                        var fn = Sales.SalesContracts.grdPaymentDetails;
+                    </script>
                 </Scripts>
                 <RowDetail>
                     <pre class="" colindex="4">
@@ -370,38 +403,38 @@
                                 CreatedBy: { caption: 'Action By', width: '132px' }
                             }
                         };
-                    </script>
-                </GridConfig>
+                    </script></GridConfig>
                     <Scripts>
                     <script>
-                      var fn = function () {
-                            t.on('rowsRendered', function () {
-                                $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function () {
+                        var fn = function ()
+                        {
+                            t.on('rowsRendered', function ()
+                            {
+                                $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function ()
+                                {
                                     var ptr = $(this).closest('tr');
-                                    if ($(this).text().toLowerCase() == "return") {
+                                    if ($(this).text().toLowerCase() == "return")
+                                    {
                                         $('[colid="PaymentAmount"] div', ptr).css({ 'font-weight': 'bold', 'color': 'red' });
                                         $('[colid="PaymentAmount"] div', ptr).text('-' + $('[colid="PaymentAmount"] div', ptr).text());
                                     }
                                     $('[colid="PaymentAmount"] div', ptr).text(parseFloat($('[colid="PaymentAmount"] div', ptr).text()).fix(3));
                                 });
                             });
-                            t.on('onNoRecords', function () {
+                            t.on('onNoRecords', function ()
+                            {
                                 $('.BottomTR', t.Repeater).hide();
                             });
                         }
-                   </script>
-                </Scripts>
-                </AW:DataGrid>
-                </div>
-                    </Childern>
-                    </AW:container>
+                   </script></Scripts></AW:DataGrid>
+                </div></Childern></AW:container>
                      </pre>
                 </RowDetail>
 
             </AW:DataGrid>
 
             <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
-                  <WidgetConfig>
+                <WidgetConfig>
                     <script>
                         cf = {
 
@@ -416,50 +449,50 @@
                 </WidgetConfig>
                 <Scripts>
                     <script>
-                        
+
                         var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
 
                     </script>
                 </Scripts>
             </AW:Form>
-        
+
         </td>
     </tr>
 
-             <tr tabid="OtherCharges" style="display: none;">
+    <tr tabid="OtherCharges" style="display: none;">
         <td style="padding-top: 1px;">
-        <AW:DataGrid ID="grdOtherCharges" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
-            EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
-            PageSize="10" DataSource="SEL_iRental_SalesContracts_OtherCharges" ContainerMargin="2px" GridTemplate="jQueryUI"
-            GridHeadText="Other Charges"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_OtherCharges\',KeysCol:\'RecId\'}}}">
-          
-            <GridConfig>
-            <script>
-                cf = {
-                    cols: {
-                        Sequence: { width: '0px' },
-                        RecId: { width: '70px', caption: 'ID' },
-                        ParentRecId: { width: '0px' },
-                        Description: { caption: 'Description' },
-                        Charges: { caption: 'Amount', width: '90px' },
-                        DateCreated: { caption: 'Date Created', width: '130px' },
-                        CreatedBy: { caption: 'Created By', width: '150px' },
-                        StateId: { width: '0px' }
-                    },
-                    forms: {
-                        NewFormId: 'frmOtherCharges',
-                        EditFormId: 'frmOtherCharges',
-                        Keys: 'RecId'
-                    }
-                };
-            </script>
-            </GridConfig>
-            <Scripts>
-                <script>
-                    var fn = Sales.SalesContracts.grdOtherCharges;
-                </script>
-            </Scripts>
-            <RowDetail>
+            <AW:DataGrid ID="grdOtherCharges" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
+                EmptyHeight="201px" AllowNew="true" SelectableRow="true"
+                PageSize="10" DataSource="SEL_iRental_SalesContracts_OtherCharges" ContainerMargin="2px" GridTemplate="jQueryUI"
+                GridHeadText="Other Charges" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_OtherCharges\',KeysCol:\'RecId\'}}}">
+
+                <GridConfig>
+                    <script>
+                        cf = {
+                            cols: {
+                                Sequence: { width: '0px' },
+                                RecId: { width: '70px', caption: 'ID' },
+                                ParentRecId: { width: '0px' },
+                                Description: { caption: 'Description' },
+                                Charges: { caption: 'Amount', width: '90px' },
+                                DateCreated: { caption: 'Date Created', width: '130px' },
+                                CreatedBy: { caption: 'Created By', width: '150px' },
+                                StateId: { width: '0px' }
+                            },
+                            forms: {
+                                NewFormId: 'frmOtherCharges',
+                                EditFormId: 'frmOtherCharges',
+                                Keys: 'RecId'
+                            }
+                        };
+                    </script>
+                </GridConfig>
+                <Scripts>
+                    <script>
+                        var fn = Sales.SalesContracts.grdOtherCharges;
+                    </script>
+                </Scripts>
+                <RowDetail>
                     <pre class="" colindex="3">
                     <AW:container id="conOtherCharges_Audit" hidden="true" runat="server">
                     <childern>
@@ -482,32 +515,31 @@
                                 CreatedBy: { caption: 'Created By', width: '132px' }
                             }
                         };
-                    </script>
-                </GridConfig>
+                    </script></GridConfig>
                                 <Scripts>
                     <script>
-                        var fn = function () {
-                            t.on('rowsRendered', function () {
-                                $('[colid="Charges"]:not(".w-grid-head-cell")').each(function () {
+                        var fn = function ()
+                        {
+                            t.on('rowsRendered', function ()
+                            {
+                                $('[colid="Charges"]:not(".w-grid-head-cell")').each(function ()
+                                {
                                     var ptr = $(this).closest('tr');
                                     $('[colid="Charges"] div', ptr).text(parseFloat($('[colid="Charges"] div', ptr).text()).fix(3));
                                 });
                             });
-                            t.on('onNoRecords', function () {
+                            t.on('onNoRecords', function ()
+                            {
                                 $('.BottomTR', t.Repeater).hide();
                             });
                         }
-                    </script>
-                </Scripts>
-                </AW:DataGrid>
-                </div>
-                    </Childern>
-                    </AW:container>
+                    </script></Scripts></AW:DataGrid>
+                </div></Childern></AW:container>
                      </pre>
                 </RowDetail>
             </AW:DataGrid>
 
-                        <AW:Form ID="frmOtherCharges" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+            <AW:Form ID="frmOtherCharges" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
                 AsyncForm="~/Pages/eForms/iRental/SalesContracts_OC_FrUc.ascx">
                 <WidgetConfig>
                     <script>
@@ -524,9 +556,11 @@
                 </WidgetConfig>
                 <Scripts>
                     <script>
-                        var fn = function () {
+                        var fn = function ()
+                        {
 
-                            t.on('show', function (args) {
+                            t.on('show', function (args)
+                            {
                                 var frm = AsyncWidgets.get('frmSalesContracts');
                                 $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
                             });
@@ -535,10 +569,10 @@
                 </Scripts>
             </AW:Form>
 
-                      </td>
-                    </tr>
+        </td>
+    </tr>
 
-         <tr tabid="ContractComments" style="display: none;">
+    <tr tabid="ContractComments" style="display: none;">
         <td style="padding-top: 1px;">
 
             <AW:DataGrid ID="grdContractComments" LoadOnInit="true" ShowOnLoad="false" runat="server"
@@ -566,8 +600,10 @@
                 </GridConfig>
                 <Scripts>
                     <script>
-                        var fn = function () {
-                            t.on('beforeSearchGetForm', function (P) {
+                        var fn = function ()
+                        {
+                            t.on('beforeSearchGetForm', function (P)
+                            {
                                 var frm = AsyncWidgets.get('frmSalesContracts');
                                 P.ParentRecId = frm.GetArgVal('RecId');
                             });
@@ -593,9 +629,11 @@
                 </WidgetConfig>
                 <Scripts>
                     <script>
-                        var fn = function () {
+                        var fn = function ()
+                        {
 
-                            t.on('show', function (args) {
+                            t.on('show', function (args)
+                            {
                                 var frm = AsyncWidgets.get('frmSalesContracts');
                                 $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
                             });
@@ -603,7 +641,7 @@
                     </script>
                 </Scripts>
             </AW:Form>
-        
+
         </td>
     </tr>
 

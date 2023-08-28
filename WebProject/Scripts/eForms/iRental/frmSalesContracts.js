@@ -4,9 +4,24 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
 
+       
 
-     var CalculateDays = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays;
-        $('[argumentid="ContractStartDate"], [argumentid="ReservationDate"]', t.el).blur(CalculateDays);
+        var CalculateDays = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays;
+        $('[argumentid="ContractStartDate"], [argumentid="ReservationDate"]', t.el).on('blur', function ()
+        {
+
+            CalculateDays();
+        });
+
+        var CalculateDayOfWeek = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek;
+        $('[argumentid="ContractStartDate"]').on('blur', function ()
+        {
+            var csDate = val('ContractStartDate',t.el);
+
+            var dow = CalculateDayOfWeek(csDate);
+            setField('ContractStartDay', dow,t.el);
+
+        });
     //lines marked by Qasim
   
     //On Click Plus Sign to Show hide More details of Customer & Cars
@@ -546,6 +561,8 @@
        // $('[argumentid="CarRateType"] option:not(:first)', t.el).remove(); //Clear Car Rate Type
 
         var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
+        //var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate.convertDate());
+        var setTime = AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime(CurrentDate);
         var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
         var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
         var cY = CurrentDate.getFullYear();
@@ -556,6 +573,9 @@
             $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9', t.el).attr('disabled', 'disabled');
             $('.Button_Edit', t.el).hide();
             $('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
+            $('[argumentid="ContractStartDay"]', t.el).val(CurrentDate.getDay());
+            $('[argumentid="ContractStartTime"]', t.el).val(setTime);
+
        }
 
         $('.btn_10', t.el).hide();
@@ -763,9 +783,11 @@
 
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+   
+
     var sDate = new Date();
     var eDate = new Date();
-    
+  
     if (sDate > eDate) {
 
         return 0;
@@ -773,7 +795,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
 
         sDate = val('ContractStartDate', t.el).convertDate(); // getDate($('[argumentid="ContractStartDate"]', t.el).val());
         eDate = val('ReservationDate').convertDate();//getDate($('[argumentid="ContractExpiryDate"]'));
-        
+
+
+
         setField('ReservationDays', sDate.getDateDiffInDays(eDate), t.el);
        // $('[argumentid="ReservationDays"]', t.el).val(ReserveDays);
     }
@@ -781,3 +805,55 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
 
 
 
+///set time function 
+AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime = function (date)
+{
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours %= 12;
+    hours = hours || 12; // 0 should be displayed as 12
+    return hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + ampm;
+};
+
+//calculate weekdays
+
+//AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date) {
+//    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+//    return weekdays[date.getDay()];
+//}
+
+//AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek = function ()
+//{
+//    debugger;
+//    sDate = new Date();
+//    sDate = val('ContractStartDate', t.el).convertDate();
+
+//    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+//     var weekDay = weekdays[selectedDate.getDay()];
+
+//    setField('ContractStartDate');
+     
+//}
+
+AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek = function (csDate)
+{
+
+    debugger;
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+    if (!!csDate)
+    {
+        var oDate = csDate.convertDate();
+        if (!isNaN(oDate))
+        {
+            var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return weekdays[oDate.getDay()];
+
+            
+
+        }
+        return "";
+    }
+}
