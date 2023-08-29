@@ -561,7 +561,7 @@
        // $('[argumentid="CarRateType"] option:not(:first)', t.el).remove(); //Clear Car Rate Type
 
         var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
-        //var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate.convertDate());
+        var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate);
         var setTime = AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime(CurrentDate);
         var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
         var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
@@ -820,29 +820,16 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime = function (date)
 
 //calculate weekdays
 
-//AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date) {
-//    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-//    return weekdays[date.getDay()];
-//}
+AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date) {
+    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return weekdays[date.getDay()];
+}
 
-//AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek = function ()
-//{
-//    debugger;
-//    sDate = new Date();
-//    sDate = val('ContractStartDate', t.el).convertDate();
 
-//    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-//     var weekDay = weekdays[selectedDate.getDay()];
-
-//    setField('ContractStartDate');
-     
-//}
 
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek = function (csDate)
 {
 
-    debugger;
-    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
     if (!!csDate)
     {
         var oDate = csDate.convertDate();

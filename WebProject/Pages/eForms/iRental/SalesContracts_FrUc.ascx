@@ -244,7 +244,7 @@
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ContractStartDay" />
 
-                        <input type="text" style="text-align: center; width: 40px;" maxlength="10" class="text AlwaysDisable"
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ContractStartTime" />
 
                     </td>
@@ -259,7 +259,7 @@
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ContractExpiryDay" />
 
-                        <input type="text" style="text-align: center; width: 40px;" maxlength="10" class="text AlwaysDisable"
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ContractExpiryTime" />
 
                         <input type="text" style="text-align: center; width: 30px;" maxlength="10" class="text AlwaysDisable"
