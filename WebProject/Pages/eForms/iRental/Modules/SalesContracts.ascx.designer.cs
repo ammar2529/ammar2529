@@ -23,32 +23,32 @@ namespace WebProject.Pages.eForms.iRental.Modules
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.Container conSalesContracts;
 
-        /// <summary>
-        /// frmSalesContracts_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmSalesContracts_ShUc;
+/// <summary>
+/// frmSalesContracts_ShUc control.
+/// </summary>
+/// <remarks>
+/// Auto-generated field.
+/// To modify move field declaration from designer file to code-behind file.
+/// </remarks>
+protected global::WebProject.AsyncWidgets.Widgets.Form frmSalesContracts_ShUc;
 
-        /// <summary>
-        /// grdSalesContracts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSalesContracts;
+/// <summary>
+/// grdSalesContracts control.
+/// </summary>
+/// <remarks>
+/// Auto-generated field.
+/// To modify move field declaration from designer file to code-behind file.
+/// </remarks>
+protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSalesContracts;
 
-        /// <summary>
-        /// frmRentalContracts_Cust_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmRentalContracts_Cust_ShUc;
+/// <summary>
+/// frmRentalContracts_Cust_ShUc control.
+/// </summary>
+/// <remarks>
+/// Auto-generated field.
+/// To modify move field declaration from designer file to code-behind file.
+/// </remarks>
+protected global::WebProject.AsyncWidgets.Widgets.Form frmRentalContracts_Cust_ShUc;
 
         /// <summary>
         /// grdContracts_Cust control.
