@@ -7,6 +7,7 @@
     .auto-style1 {
         height: 21px;
     }
+
     .auto-style2 {
         width: 275px;
     }
@@ -180,13 +181,7 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                    <td>
-                        <nobr>Price</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Price"></span>
-
-                    </td>
+                  
                     <td>
                         <nobr>Driving License No.</nobr>
                     </td>
@@ -196,12 +191,7 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                    <td>
-                        <nobr>Additional Amount</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="AdditionalAmount"></span>
-                    </td>
+                   
                     <td>
                         <nobr>Work & Res. Telephone</nobr>
                     </td>
@@ -212,12 +202,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <nobr>Discount:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
-                    </td>
+                   
                     <td>
                         <nobr>Mobile Telephone</nobr>
                     </td>
@@ -272,7 +257,8 @@
 
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"> </td>
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    </td>
                 </tr>
 
 
@@ -284,41 +270,86 @@
                 </tr>
 
                 <tr>
-                    <td rowspan="3">Comments</td>
-                    <td rowspan="3">
+                    <td rowspan="4">Comments</td>
+                    <td rowspan="4">
 
-                        <textarea class="auto-style2" style="width:100%" rows="5" wrap="1" argumentid="Description" groupid="Rental_OtherCharges" name="S1" cols="20"></textarea></td>
-                    <td></td>
-                    <td class="ftitle"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="ftitle"></td>
-                </tr>
-
-                <tr>
-                    <td></td>
-                    <td class="ftitle"></td>
-                </tr>
+                        <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="Description" groupid="Rental_OtherCharges" name="S1" cols="20"></textarea></td>
 
 
-
-                <tr>
-                    <td>
-                        <nobr>Paid Amount*:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
-                    </td>
-                    <td>
-                        <nobr>Mobile Telephone</nobr>
-                    </td>
                     <td class="ftitle">
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone1"></span>
-                        <nobr class="CommaM12">, </nobr>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone2"></span>
+                        <nobr>Price</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Price"></span>
+
                     </td>
                 </tr>
+                <tr>
+
+                    <td class="ftitle">
+
+                        <nobr>Additional Amount</nobr>
+
+                        <td>
+                            <span class="ftitle" groupid="SalesContractsForm" argumentid="AdditionalAmount"></span>
+                        </td>
+                </tr>
+
+                <tr>
+
+                    <td class="ftitle">
+
+                        <nobr>Discount:</nobr>
+
+                        <td>
+                            <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
+                        </td>
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+                        <nobr>Grand Total*:</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="GrandTotal"></span>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    </td>
+                </tr>
+
+                
+
+       
+            <tr >
+                <td class="ftitle">
+                    <nobr style="color: Green; font-size: 12px">Amount Received (KD)</nobr>
+                </td>
+                <td style="text-align: center;">
+                    <span class="ftitle" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
+                </td>
+                <td class="ftitle">
+
+                    <nobr style="color: Red; font-size: 12px">Amount Due</nobr>
+                </td>
+                <td style="text-align: center;">
+                    <span class="ftitle" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
+                </td>
+            </tr>
+            
+
+            <tr>
+                <td colspan="4">
+                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                </td>
+            </tr>
 
                 <tr>
                     <td colspan="4" style="text-align: center;">

@@ -5,7 +5,7 @@
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
 
        
-
+       //
         var CalculateDays = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays;
         $('[argumentid="ContractStartDate"], [argumentid="ReservationDate"]', t.el).on('blur', function ()
         {
@@ -13,15 +13,24 @@
             CalculateDays();
         });
 
-        var CalculateDayOfWeek = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek;
+        var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate;
         $('[argumentid="ContractStartDate"]').on('blur', function ()
         {
             var csDate = val('ContractStartDate',t.el);
 
-            var dow = CalculateDayOfWeek(csDate);
-            setField('ContractStartDay', dow,t.el);
+            var dow = CalculateDayOfWeekCsDate(csDate);
+            setField('ContractStartDay', dow, t.el);
 
         });
+
+        var CalculateDayOfWeekRsDate = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate;
+        $('[argumentid="ReservationDate"]').on('blur', function ()
+        {
+            var rsDate = val('ReservationDate', t.el);
+            var dow = CalculateDayOfWeekRsDate(rsDate);
+            setField('ContractExpiryDay', dow, t.el);
+        });
+
     //lines marked by Qasim
   
     //On Click Plus Sign to Show hide More details of Customer & Cars
@@ -573,8 +582,10 @@
             $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9', t.el).attr('disabled', 'disabled');
             $('.Button_Edit', t.el).hide();
             $('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
-            $('[argumentid="ContractStartDay"]', t.el).val(CurrentDate.getDay());
+            $('[argumentid="ContractStartDay"]', t.el).val(WeekDay);
             $('[argumentid="ContractStartTime"]', t.el).val(setTime);
+
+            $('[argumentid="ContractExpiryTime"]', t.el).val(setTime);
 
        }
 
@@ -823,14 +834,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime = function (date)
 AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date) {
     var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return weekdays[date.getDay()];
-}
+}  
 
 
 
-AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek = function (csDate)
+AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate = function (csDate)
 {
-
-    if (!!csDate)
+    
+    if (!!csDate )
     {
         var oDate = csDate.convertDate();
         if (!isNaN(oDate))
@@ -839,6 +850,25 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeek = function (csDa
             return weekdays[oDate.getDay()];
 
             
+
+        }
+        return "";
+    }
+}
+
+
+AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function (rsDate)
+{
+
+    if (!!rsDate)
+    {
+        var oDate = rsDate.convertDate();
+        if (!isNaN(oDate))
+        {
+            var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return weekdays[oDate.getDay()];
+
+
 
         }
         return "";
