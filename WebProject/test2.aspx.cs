@@ -18,6 +18,7 @@ namespace WebProject
         [System.Web.Services.WebMethod]
         public static string UploadFile()
         {
+            UploadFileToServer();
             return SaveToDb();
 
         }
@@ -32,15 +33,15 @@ namespace WebProject
                 {
                     var postedFile = httpRequest.Files[0];
                     var savePath = HttpContext.Current.Server.MapPath(uploadPath);
-                    var filePath = System.IO.Path.Combine(savePath, postedFile.FileName);
-                    postedFile.SaveAs(filePath);
-                    return "File upload successfully";
+                    if (postedFile != null)
+                    {
+                        var filePath = System.IO.Path.Combine(savePath, postedFile.FileName);
+                        postedFile.SaveAs(filePath);
+                        return "File upload successfully";
+                    }
                 }
-
-                else
-                {
-                    return "No file upload";
-                }
+                return "No file upload";
+                
             }
             catch (Exception e)
             {

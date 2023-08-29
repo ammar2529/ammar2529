@@ -1191,6 +1191,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="JQuery\Common.js" />
+    <Content Include="JQuery\jquery.form.js" />
     <Content Include="KeepSessionAlive.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="MasterPages\DummyMaster.master" />
