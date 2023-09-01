@@ -1191,6 +1191,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="JQuery\Common.js" />
+    <Content Include="JQuery\jquery.form.js" />
     <Content Include="KeepSessionAlive.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="MasterPages\DummyMaster.master" />
@@ -1252,6 +1253,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="test2.aspx" />
     <Content Include="TestForm.aspx" />
     <Content Include="test\index.html" />
     <Content Include="test\one.js" />
@@ -3004,6 +3006,13 @@
     </Compile>
     <Compile Include="Skins\Defalut.EO.Calendar.ascx.designer.cs">
       <DependentUpon>Defalut.EO.Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="test2.aspx.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test2.aspx.designer.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestForm.aspx.cs">
       <DependentUpon>TestForm.aspx</DependentUpon>
