@@ -28,7 +28,7 @@
         {
             var rsDate = val('ReservationDate', t.el);
             var dow = CalculateDayOfWeekRsDate(rsDate);
-            setField('ContractExpiryDay', dow, t.el);
+            setField('ReservationWeekDays', dow, t.el);
         });
 
     //lines marked by Qasim
@@ -585,7 +585,7 @@
             $('[argumentid="ContractStartDay"]', t.el).val(WeekDay);
             $('[argumentid="ContractStartTime"]', t.el).val(setTime);
 
-            $('[argumentid="ContractExpiryTime"]', t.el).val(setTime);
+            $('[argumentid="ReservationExpireTime"]', t.el).val(setTime);
 
        }
 

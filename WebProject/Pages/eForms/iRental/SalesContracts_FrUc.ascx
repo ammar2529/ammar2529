@@ -242,10 +242,10 @@
                             style="width: 75px;" class="text required date DisableOnClose" requirederr=' Reservation Date Required' argumentid="ReservationDate" />
 
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="ContractExpiryDay" />
+                            groupid="SalesContractsForm" argumentid="ReservationWeekDays" />
 
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="ContractExpiryTime" />
+                            groupid="SalesContractsForm" argumentid="ReservationExpireTime" />
 
                         <input type="text" style="text-align: center; width: 30px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ReservationDays" />
@@ -273,7 +273,7 @@
                     <td rowspan="4">Comments</td>
                     <td rowspan="4">
 
-                        <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="Description" groupid="Rental_OtherCharges" name="S1" cols="20"></textarea></td>
+                        <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="fComments" groupid="SalesContractsForm-" name="S1" cols="20"></textarea></td>
 
 
                     <td class="ftitle">
@@ -314,7 +314,7 @@
                         <nobr>Grand Total*:</nobr>
                     </td>
                     <td>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="GrandTotal"></span>
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="TotalAmount"></span>
                     </td>
 
                 </tr>
