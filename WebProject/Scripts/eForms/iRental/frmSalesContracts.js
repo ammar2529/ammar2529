@@ -4,8 +4,12 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
 
-       
-       //
+    ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
+      
+        AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile(t);
+       ///////////////////////////////////////////////////////////////////////////////////////////////
+
+       //calculate days
         var CalculateDays = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays;
         $('[argumentid="ContractStartDate"], [argumentid="ReservationDate"]', t.el).on('blur', function ()
         {
@@ -13,6 +17,7 @@
             CalculateDays();
         });
 
+        //calculate weekday on start date
         var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate;
         $('[argumentid="ContractStartDate"]').on('blur', function ()
         {
@@ -23,6 +28,7 @@
 
         });
 
+        //calculate weekday on end date
         var CalculateDayOfWeekRsDate = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate;
         $('[argumentid="ReservationDate"]').on('blur', function ()
         {
@@ -874,3 +880,100 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
         return "";
     }
 }
+
+AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
+{
+    var guid = generateGuid();
+    $('.FileGuid',t.el).val(guid);
+    $(".upload-button",t.el).click(function (e)
+    {
+        e.preventDefault();
+        var fileInput = $(".file-input",t.el)[0];
+        var files = fileInput.files;
+
+        if (files.length === 0)
+        {
+            $(".message",t.el).html("Please select a file.");
+            return;
+        }
+
+
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++)
+        {
+            
+            formData.append("file" + i, files[i]);
+        }
+
+        formData.append("FileGuid", $('.FileGuid',t.el).val());
+
+        $.ajax({
+            type: "POST",
+            url: "UploadFile/UploadFiles", // Replace with your server-side handler URL
+            data: formData,
+            dataType : 'text',
+            processData: false,
+            contentType: false,
+            xhr: function ()
+            {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function (evt)
+                {
+                    if (evt.lengthComputable)
+                    {
+                        var percentComplete = (evt.loaded / evt.total) * 100;
+                        $(".progress-bar",t.el).width(percentComplete + "%");
+                    }
+                }, false);
+                return xhr;
+            },
+            success: function (response)
+            {
+                objRes = JSON.parse(response)
+                $(".message", t.el).html("File(s) uploaded successfully.");
+                $('.message', t.el).text(response);
+            },
+            error: function (error)
+            {
+                $(".message", t.el).html("Error uploading file(s): " + error.statusText);
+            }
+        });
+    });
+
+    // Remove a file from the list
+    $(document).on("click", ".remove-file", function ()
+    {
+        $(this).closest(".file-item").remove();
+    });
+
+    // Handle file selection and display in the list
+    $(".file-input", t.el).change(function ()
+    {
+        var fileList = $(".file-list",t.el);
+        //fileList.empty();
+
+        var files = this.files;
+        for (var i = 0; i < files.length; i++)
+        {
+            var fileItem = $("<div class='file-item'></div>");
+            var fileName = $("<div class='file-name'></div>").text(files[i].name);
+            var removeButton = $("<div class='remove-file'>X</div>");
+
+            fileItem.append(fileName);
+            fileItem.append(removeButton);
+            fileList.append(fileItem);
+        }
+    });
+
+    function generateGuid()
+    {
+
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c)
+        {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+
+    }
+};

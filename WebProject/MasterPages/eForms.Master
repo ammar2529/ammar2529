@@ -14,7 +14,7 @@
     <meta name="Keywords" content="eForms, iDashboard" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
      
- 
+    <link href="../App_Themes/Upload.css" rel="stylesheet" />
     <link id="layoutStylesheet" href="../App_Themes/eForms_Theme/StyleSheets/StyleSheet_eng.css" type="text/css" rel="stylesheet" /> 
     <link id="Link1" href="../AsyncWidgets/Widgets/resources/css/common.standard.css" type="text/css" rel="stylesheet" />
     <link id="Link2" href="../AsyncWidgets/Widgets/resources/css/jquery-ui/ui-lightness/jquery-ui.css" type="text/css" rel="stylesheet" />

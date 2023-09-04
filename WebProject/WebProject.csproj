@@ -1217,6 +1217,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />
+    <Content Include="Scripts\eForms\iRental\scripts.js" />
+    <Content Include="App_Themes\Upload.css" />
     <Content Include="Scripts\eForms\iRental\TestForm.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1258,6 +1260,7 @@
     <Content Include="test\index.html" />
     <Content Include="test\one.js" />
     <Content Include="test\Two.js" />
+    <Content Include="UploadFile.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
@@ -3027,6 +3030,13 @@
     </Compile>
     <Compile Include="testpage.aspx.designer.cs">
       <DependentUpon>testpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadFile.aspx.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadFile.aspx.designer.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

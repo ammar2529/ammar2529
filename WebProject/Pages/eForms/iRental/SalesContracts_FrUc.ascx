@@ -3,6 +3,8 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 
+<link href="../../../App_Themes/Upload.css" rel="stylesheet" />
+
 <style type="text/css">
     .auto-style1 {
         height: 21px;
@@ -345,6 +347,36 @@
             </tr>
             
 
+            <tr>
+                <td colspan="4">
+                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="4">
+                    <div class="file-upload-container">
+                        <div id="file-list" class="file-list">
+                            <!-- File list will be displayed here -->
+                        </div>
+                        <div class="file-upload-drop-area">
+                            <p>Drag and drop files here or click to select files.</p>
+                            <input type="file" class="file-input" multiple />
+                        </div>
+   
+                        <button class="upload-button">Upload</button>
+                        <div class="progress-bar"></div>
+                        <div class="message"></div>
+    
+                        <input type="text" class="FileGuid" name="FileGuid" readonly ="readonly" />
+
+
+                    </div>
+
+                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                
+                </td>
+            </tr>
             <tr>
                 <td colspan="4">
                     <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
