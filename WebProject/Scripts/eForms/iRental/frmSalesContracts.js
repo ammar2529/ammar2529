@@ -4,41 +4,13 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
 
-        t.on('onLoadedValues', function (params)
-        {
-            debugger;
-            console.log(params);
-            //var grd = AsyncWidgets.get('GrdUser');
-            //$('.CloseForm', t.el).trigger('click');
-            //grd.sortCol = 'DateCreated';
-            //grd.sortDir = 'Desc';
-            //grd.RequeryGrid();
-
-            var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.le), DBAction: 'GetUploadedFiles' };
-
-            SInfo = getForm(null, null, params);
-            var inv = new AsyncWidgets.RAInvoker();
-            inv.on('onSuccess', function (res)
-            {
-                var res = decJSON(res);
-                if (res.status == 'OK')
-                {
-                    if (res.Response.Rows.length > 0)
-                    {
-
-                        res.Response.Rows;
-                        console.log(rows);
-                    }
-                }
-                $(t.el).unmask();
-            });
-            inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
-
-        });
+      
 
     ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
       
-        AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile(t);
+        AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile(t); //to db
+        AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile(t);
+       // AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile();
        ///////////////////////////////////////////////////////////////////////////////////////////////
 
        //calculate days
@@ -739,97 +711,7 @@
     // End of On Loaded Values
 }
 
-//AsyncWidgets.WidgetScripts.frmSalesContracts.getDate = function (iParam) {
-//    if (!iParam) {
-//        console.log("Date not convert to string");
-//        return;
-//    } else {
-//        console.log("date coverted")
-//    }
-//    var x = iParam.split("/");
-//    day = x[0];
-//    mon = x[1];
-//    year = x[2];
-//    var myDate = new Date(year, mon - 1, day);
-//    return myDate;
-//};
-
-
-//AsyncWidgets.WidgetScripts.frmSalesContracts.GetDays = function (e, vl, dt) {
-//    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
-//    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-//    var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
-
-//    cH = cH < 10 ? '0' + cH : cH;
-//    cM = cM < 10 ? '0' + cM : cM;
-
-    
-
-//    sDate = getDate($('[argumentid="ContractStartDate"]', t.el).val());
-//    if ($(e).attr('argumentid') == 'ContractStartDate') {
-//        if (sDate.toString() == 'NaN') {
-//            $('[argumentid="ContractStartDay"],[argumentid="ContractStartTime"]', t.el).val('');
-//            sts = 1;
-//        }
-//        else {
-//            $('[argumentid="ContractStartDay"]', t.el).val(weekday[sDate.getDay()]);
-//            $('[argumentid="ContractStartTime"]', t.el).val(cH + ':' + cM);
-//        }
-//    }
-//    console.log(sDate)
-
-//    eDate = getDate($('[argumentid="ContractExpiryDate"]', t.el).val());
-//    if ($(e).attr('argumentid') == 'ContractExpiryDate') {
-//        if (eDate.toString() == 'NaN') {
-//            $('[argumentid="ContractExpiryDay"],[argumentid="ContractExpiryTime"],[argumentid="ContractDays"]', t.el).val('');
-//            sts = 1;
-//        }
-
-//        else {
-//            $('[argumentid="ContractExpiryDay"]', t.el).val(weekday[eDate.getDay()]);
-//            $('[argumentid="ContractExpiryTime"]', t.el).val(cH + ':' + cM);
-//        }
-//        console.log(eDate)
-
-//    }
-
-
-//    if (sts) {
-//        return false;
-//    }
-
-//    if (sDate > eDate) {
-//        if ($(e).attr('argumentid') == 'ContractStartDate') {
-//            console.log('Contract Start Date has to be less than Contract Expiry Date');
-//            $('[argumentid="ContractStartDate"],[argumentid="ContractStartDay"],[argumentid="ContractStartTime"],[argumentid="ContractDays"]', t.el).val('');
-
-//        }
-//        else {
-//            console.log('Contract Expiry Date has to be greater than Contract Start Date');
-//            $('[argumentid="ContractExpiryDate"],[argumentid="ContractExpiryDay"],[argumentid="ContractExpiryTime"],[argumentid="ContractDays"]', t.el).val('');
-//        }
-//        return false;
-//    }
-
-//    diff = new Date();
-
-//    diff.setTime(Math.abs(sDate.getTime() - eDate.getTime()));
-//    days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1; 
-
-//    if (days.toString() == 'NaN') {
-//        days = '';
-//    }
-//    else if (days > 1) {
-//        days = days - 1;
-//    }
-
-//    $('[argumentid="ContractDays"]', t.el).val(days);
-
-//    GetActualDays();
-//    CalculateRentalContractChargesOnSuperEdit();
-
-//};
-
+/// Calculate reserve days
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
    
@@ -867,19 +749,20 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime = function (date)
     return hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + ampm;
 };
 
-//calculate weekdays
+//set weekdays function
 
-AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date) {
+AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date)
+{
     var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return weekdays[date.getDay()];
-}  
+};
 
 
-
+//calculate weekday of start date
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate = function (csDate)
 {
-    
-    if (!!csDate )
+
+    if (!!csDate)
     {
         var oDate = csDate.convertDate();
         if (!isNaN(oDate))
@@ -887,14 +770,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate = function
             var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             return weekdays[oDate.getDay()];
 
-            
+
 
         }
         return "";
     }
-}
+};
 
-
+//calculate weekday of reserve date
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function (rsDate)
 {
 
@@ -911,11 +794,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
         }
         return "";
     }
-}
+};
 
+//Upload file to db
 AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
 {
-    updateGUIDDisplay();
 
     var guid = generateGuid();
     $('[argumentid="FileGuid"]',t.el).val(guid);
@@ -1000,23 +883,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
         }
     });
 
-    var isNewMode = true;
-    var existingGUID = "";
-    function updateGUIDDisplay()
-    {
-        var guidInput = $('[argumentid="FileGuid"]', t.el);
-
-        if (isNewMode)
-        {
-            // In "new" mode, generate a new GUID and set it in the input field
-            var newGUID = generateGuid();
-            guidInput.val(newGUID);
-        } else
-        {
-            // In "edit" mode, set the existing GUID in the input field
-            guidInput.val(existingGUID);
-        }
-    }
+   
+  
 
     function generateGuid()
     {
@@ -1030,3 +898,108 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
 
     }
 };
+
+//show  upload file on SC form
+AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile = function (t)
+{
+    t.on('onLoadedValues', function (params)
+    {
+
+        console.log(params);
+        //var grd = AsyncWidgets.get('GrdUser');
+        //$('.CloseForm', t.el).trigger('click');
+        //grd.sortCol = 'DateCreated';
+        //grd.sortDir = 'Desc';
+        //grd.RequeryGrid();
+
+        var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.le), DBAction: 'GetUploadedFiles' };
+
+        SInfo = getForm(null, null, params);
+        var inv = new AsyncWidgets.RAInvoker();
+        inv.on('onSuccess', function (res)
+        {
+            var res = decJSON(res);
+            if (res.status == 'OK')
+            {
+                if (res.Response.Rows.length > 0)
+                {
+
+                    var rows = res.Response.Rows;
+                    console.log("Rows:" + rows);
+
+                    var $fileList = $(".file-list", t.el);
+
+                    for (var i = 0; i < rows.length; i++)
+                    {
+                        var row = rows[i];
+                        //console.log(row);
+                        var fileName = row.FileName;
+                        console.log("FileName: " + fileName);
+                        var recId = row.RecId;
+                        console.log("RecId: " + recId);
+
+                        var fileContainer = $("<div class='file-container'></div>");
+                        var fileLink = $("<a class='file-link'></a>")
+                            .text(fileName)
+                            .attr({
+                                href: '/path/to/your/file/' + fileName, // Specify the file download URL
+                                download: fileName // Specify the file name
+                            });
+
+                        var fileItem = $('<div class="file-item"></div>');
+                        var fileNameElement = $('<span class="file-name">' + fileName + '</span>');
+                        var removeButton = $('<span class="remove-button">X</span>');
+
+                        // Attach a click event to the remove button to handle removal
+                        removeButton.on('click', function ()
+                        {
+                            var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
+                            $('.file-item').remove();
+                            DeleteUploadFile(t, recId);
+                            console.log('Remove button clicked for file: ' + fileName);
+                        });
+
+                        // Append elements to the file item
+                        fileItem.append(fileNameElement);
+                        fileItem.append(removeButton);
+
+                        // Append the file item to the "file-list" element
+                        $fileList.append(fileItem);
+
+                        fileContainer.append(fileLink);
+
+
+                        $("#uploaded-file-list").append(fileContainer);
+                    }
+                }
+            }
+            $(t.el).unmask();
+        });
+        inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
+
+    });
+};
+
+//Delete  upload file on SC form and db
+AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, recId)
+{
+
+    var params = { Command: 'FX_UPD_FileUpload', RecId: recId, DBAction: 'DeleteFile' };
+    SInfo = getForm(null, null, params);
+    var inv = new AsyncWidgets.RAInvoker();
+    inv.on('onSuccess', function (res)
+    {
+        var res = decJSON(res);
+        if (res.status == 'OK')
+        {
+           
+
+        } else
+        {
+            console.log("File not Delete ");
+
+        }
+        $(t.el).unmask();
+    });
+    inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
+}

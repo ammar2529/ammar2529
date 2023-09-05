@@ -1216,9 +1216,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
+    <Content Include="Scripts\eForms\iRental\RemoveButton.css" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />
     <Content Include="Scripts\eForms\iRental\scripts.js" />
-    <Content Include="App_Themes\Upload.css" />
+    <Content Include="Scripts\eForms\iRental\Upload.css" />
     <Content Include="Scripts\eForms\iRental\TestForm.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -2,8 +2,8 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
-
-<link href="../../../App_Themes/Upload.css" rel="stylesheet" />
+<link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
+<link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
 <style type="text/css">
     .auto-style1 {
@@ -355,6 +355,7 @@
             
             <tr>
                 <td colspan="4">
+                    <div class="uploaded-file-list"></div>
                     <div class="file-upload-container">
                         <div id="file-list" class="file-list">
                             <!-- File list will be displayed here -->
