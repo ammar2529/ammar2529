@@ -4,6 +4,38 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
 
+        t.on('onLoadedValues', function (params)
+        {
+            debugger;
+            console.log(params);
+            //var grd = AsyncWidgets.get('GrdUser');
+            //$('.CloseForm', t.el).trigger('click');
+            //grd.sortCol = 'DateCreated';
+            //grd.sortDir = 'Desc';
+            //grd.RequeryGrid();
+
+            var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.le), DBAction: 'GetUploadedFiles' };
+
+            SInfo = getForm(null, null, params);
+            var inv = new AsyncWidgets.RAInvoker();
+            inv.on('onSuccess', function (res)
+            {
+                var res = decJSON(res);
+                if (res.status == 'OK')
+                {
+                    if (res.Response.Rows.length > 0)
+                    {
+
+                        res.Response.Rows;
+                        console.log(rows);
+                    }
+                }
+                $(t.el).unmask();
+            });
+            inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
+
+        });
+
     ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
       
         AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile(t);
@@ -801,7 +833,7 @@
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
    
-
+    
     var sDate = new Date();
     var eDate = new Date();
   
@@ -883,8 +915,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
 
 AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
 {
+    updateGUIDDisplay();
+
     var guid = generateGuid();
-    $('.FileGuid',t.el).val(guid);
+    $('[argumentid="FileGuid"]',t.el).val(guid);
     $(".upload-button",t.el).click(function (e)
     {
         e.preventDefault();
@@ -905,7 +939,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
             formData.append("file" + i, files[i]);
         }
 
-        formData.append("FileGuid", $('.FileGuid',t.el).val());
+        formData.append("FileGuid", $('[argumentid="FileGuid"]',t.el).val());
+
 
         $.ajax({
             type: "POST",
@@ -937,7 +972,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
             {
                 $(".message", t.el).html("Error uploading file(s): " + error.statusText);
             }
-        });
+        }); //end of Ajax
     });
 
     // Remove a file from the list
@@ -964,6 +999,24 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
             fileList.append(fileItem);
         }
     });
+
+    var isNewMode = true;
+    var existingGUID = "";
+    function updateGUIDDisplay()
+    {
+        var guidInput = $('[argumentid="FileGuid"]', t.el);
+
+        if (isNewMode)
+        {
+            // In "new" mode, generate a new GUID and set it in the input field
+            var newGUID = generateGuid();
+            guidInput.val(newGUID);
+        } else
+        {
+            // In "edit" mode, set the existing GUID in the input field
+            guidInput.val(existingGUID);
+        }
+    }
 
     function generateGuid()
     {

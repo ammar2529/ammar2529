@@ -368,7 +368,7 @@
                         <div class="progress-bar"></div>
                         <div class="message"></div>
     
-                        <input type="text" class="FileGuid" name="FileGuid" readonly ="readonly" />
+                        <input type="text" argumentid="FileGuid" readonly ="readonly" />
 
 
                     </div>
