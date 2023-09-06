@@ -2,6 +2,7 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
+
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
@@ -355,8 +356,9 @@
             
             <tr>
                 <td colspan="4">
-                    <div class="uploaded-file-list"></div>
                     <div class="file-upload-container">
+                        <div class="uploaded-file-list"></div>
+
                         <div id="file-list" class="file-list">
                             <!-- File list will be displayed here -->
                         </div>

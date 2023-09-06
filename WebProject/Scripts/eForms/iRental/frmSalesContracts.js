@@ -822,8 +822,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
             formData.append("file" + i, files[i]);
         }
 
-        formData.append("FileGuid", $('[argumentid="FileGuid"]',t.el).val());
-
+        formData.append("FileGuid", $('[argumentid="FileGuid"]', t.el).val());
 
         $.ajax({
             type: "POST",
@@ -868,7 +867,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
     $(".file-input", t.el).change(function ()
     {
         var fileList = $(".file-list",t.el);
-        //fileList.empty();
+        /*fileList.empty();*/
 
         var files = this.files;
         for (var i = 0; i < files.length; i++)
@@ -954,7 +953,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile = function (t)
                         removeButton.on('click', function ()
                         {
                             var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
-                            $('.file-item').remove();
                             DeleteUploadFile(t, recId);
                             console.log('Remove button clicked for file: ' + fileName);
                         });
@@ -992,8 +990,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, rec
         var res = decJSON(res);
         if (res.status == 'OK')
         {
-           
-
+            var response = res.Response || '';
+            var msg = response.split('||');
+            $.showMessage(msg[2]);
         } else
         {
             console.log("File not Delete ");
