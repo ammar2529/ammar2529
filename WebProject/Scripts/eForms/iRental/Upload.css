@@ -45,7 +45,11 @@
     color: #fff;
     font-weight: bold;
 }
-
+span.file-name > a{
+    color: #fff;
+    text-decoration: none !important;
+    font-weight: bold;
+}
 .remove-file {
     cursor: pointer;
     color: red;

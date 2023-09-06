@@ -1215,6 +1215,7 @@
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\preview.jsp" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\eForms\iRental\frmiRentalPaymentsDetail.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
     <Content Include="Scripts\eForms\iRental\RemoveButton.css" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />
@@ -1262,6 +1263,10 @@
     <Content Include="test\one.js" />
     <Content Include="test\Two.js" />
     <Content Include="UploadFile.aspx" />
+    <Content Include="Uploads\%2721_1f4f1195-e127-43be-8a00-bfe7384bace1_GACBrowser.exe" />
+    <Content Include="Uploads\%2722_1f4f1195-e127-43be-8a00-bfe7384bace1_GACBrowser.exe" />
+    <Content Include="Uploads\%2723_1f4f1195-e127-43be-8a00-bfe7384bace1_GACBrowser.exe" />
+    <Content Include="Uploads\%2724_1f4f1195-e127-43be-8a00-bfe7384bace1_AnyDesk.exe" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
@@ -3079,6 +3084,9 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="Uploads\%2720_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
+    <Content Include="Uploads\%2725_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
+    <Content Include="Uploads\%2726_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

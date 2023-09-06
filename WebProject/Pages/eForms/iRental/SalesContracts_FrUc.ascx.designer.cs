@@ -15,13 +15,13 @@ namespace WebProject.Pages.eForms.iRental
     {
 
         /// <summary>
-        /// grdPaymentDetails control.
+        /// grdSalesContractsPaymentDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdPaymentDetails;
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSalesContractsPaymentDetails;
 
         /// <summary>
         /// frmSalesContactsPaymentDetails control.
@@ -33,39 +33,39 @@ namespace WebProject.Pages.eForms.iRental
         protected global::WebProject.AsyncWidgets.Widgets.Form frmSalesContactsPaymentDetails;
 
         /// <summary>
-        /// grdOtherCharges control.
+        /// grdSalesOtherCharges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdOtherCharges;
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSalesOtherCharges;
 
         /// <summary>
-        /// frmOtherCharges control.
+        /// frmSalesOtherCharges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmOtherCharges;
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmSalesOtherCharges;
 
         /// <summary>
-        /// grdContractComments control.
+        /// grdSalesContractComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdContractComments;
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSalesContractComments;
 
         /// <summary>
-        /// frmComments control.
+        /// frmSalesComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmComments;
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmSalesComments;
     }
 }

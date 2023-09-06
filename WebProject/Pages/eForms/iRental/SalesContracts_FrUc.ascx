@@ -391,7 +391,7 @@
                         <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" value="  Save  " ignorevalidate="ReservationDate" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false}" />
                             <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:true,Params:{DBAction:'SCReserved'}}" />
-                            <%--              <input type="button" value="  Print  " class="ButtonStyle btn_9" />--%>
+                            <%--              <input type="button" value="  Print  " clafss="ButtonStyle btn_9" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
                         </div>
                     </td>
@@ -406,7 +406,7 @@
     <tr tabid="PaymentDetails" style="display: none;">
         <td style="padding-top: 1px;">
 
-            <AW:DataGrid ID="grdPaymentDetails" LoadOnInit="true" ShowOnLoad="false" runat="server"
+            <AW:DataGrid ID="grdSalesContractsPaymentDetails" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Payments\',KeysCol:\'RecId\'}}}">
@@ -444,10 +444,10 @@
                 </Scripts>
                 <RowDetail>
                     <pre class="" colindex="4">
-                    <AW:container id="conPaymentDetails_Audit" hidden="true" runat="server">
+                    <AW:container id="conSalesPaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
-                         <AW:DataGrid ID="grdPaymentDetails_Audit" LoadOnInit="true" ShowOnLoad="false" runat="server"
+                         <AW:DataGrid ID="grdSalesPaymentDetails_Audit" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="false" RelativeKeys="RecId"
                 PageSize="30" DataSource="SEL_iRental_SalesContracts_Payments_Audit" ContainerMargin="2px"  ShowGridHead="false"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{visible:false},\'new\':{visible:false}}" >
@@ -527,7 +527,7 @@
 
     <tr tabid="OtherCharges" style="display: none;">
         <td style="padding-top: 1px;">
-            <AW:DataGrid ID="grdOtherCharges" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
+            <AW:DataGrid ID="grdSalesOtherCharges" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
                 EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="10" DataSource="SEL_iRental_SalesContracts_OtherCharges" ContainerMargin="2px" GridTemplate="jQueryUI"
                 GridHeadText="Other Charges" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_OtherCharges\',KeysCol:\'RecId\'}}}">
@@ -546,8 +546,8 @@
                                 StateId: { width: '0px' }
                             },
                             forms: {
-                                NewFormId: 'frmOtherCharges',
-                                EditFormId: 'frmOtherCharges',
+                                NewFormId: 'frSalesOtherCharges',
+                                EditFormId: 'frSalesOtherCharges',
                                 Keys: 'RecId'
                             }
                         };
@@ -560,10 +560,10 @@
                 </Scripts>
                 <RowDetail>
                     <pre class="" colindex="3">
-                    <AW:container id="conOtherCharges_Audit" hidden="true" runat="server">
+                    <AW:container id="conSalesOtherCharges_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
-                         <AW:DataGrid ID="grdOtherCharges_Audit" LoadOnInit="true" ShowOnLoad="false" runat="server"
+                         <AW:DataGrid ID="grdSalesOtherCharges_Audit" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="false" RelativeKeys="RecId"
                 PageSize="30" DataSource="SEL_iRental_SalesContracts_OtherCharges_Audit" ContainerMargin="2px"  ShowGridHead="false"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{visible:false},\'new\':{visible:false}}" >
@@ -605,7 +605,7 @@
                 </RowDetail>
             </AW:DataGrid>
 
-            <AW:Form ID="frmOtherCharges" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+            <AW:Form ID="frmSalesOtherCharges" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
                 AsyncForm="~/Pages/eForms/iRental/SalesContracts_OC_FrUc.ascx">
                 <WidgetConfig>
                     <script>
@@ -641,7 +641,7 @@
     <tr tabid="ContractComments" style="display: none;">
         <td style="padding-top: 1px;">
 
-            <AW:DataGrid ID="grdContractComments" LoadOnInit="true" ShowOnLoad="false" runat="server"
+            <AW:DataGrid ID="grdSalesContractComments" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="10" DataSource="SEL_iRental_SalesContracts_Comments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Comments" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Comments\',KeysCol:\'RecId\'}}}">
@@ -657,8 +657,8 @@
                                 CreatedBy: { caption: 'Created By', width: '150px' }
                             },
                             forms: {
-                                NewFormId: 'frmComments',
-                                EditFormId: 'frmComments',
+                                NewFormId: 'frmSalesComments',
+                                EditFormId: 'frmSalesComments',
                                 Keys: 'RecId'
                             }
                         };
@@ -678,7 +678,7 @@
                 </Scripts>
             </AW:DataGrid>
 
-            <AW:Form ID="frmComments" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+            <AW:Form ID="frmSalesComments" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
                 AsyncForm="~/Pages/eForms/iRental/SalesContracts_CS_FrUc.ascx">
                 <WidgetConfig>
                     <script>

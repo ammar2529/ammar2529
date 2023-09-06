@@ -72,7 +72,7 @@ namespace WebProject
             }
             catch (Exception ex)
             {
-                return $@"{{""status"":""Error"",""response"":{{message:""{firstError} - {ex.Message}""}}}}";
+                return $@"{{""Status"":""Error"",""Response"":{{message:""{firstError} - {ex.Message}""}}}}";
             }
         }
         private static string SaveFileToDb(string fileName)
@@ -80,7 +80,7 @@ namespace WebProject
             var PD = GetParamsFromPost();
             PD.Add("FileName", new QueryParameter(fileName));
             PD.Add("DBAction", new QueryParameter("AddUploadedFile")); // Add DBAction parameter
-            return "'" + DBHelper.InvokeSP("FX_UPD_FileUpload_SP", PD).ToString() + "'";
+            return  DBHelper.InvokeSP("FX_UPD_FileUpload_SP", PD).ToString();
 
             // DBHelper.GetDataTableProc("SPName", PD);
         }
@@ -116,7 +116,7 @@ namespace WebProject
                 var obj = new
                 {
                     status = "OK",
-                    response = new { rows = ds.Tables[0], count = ds.Tables[0].Rows.Count }
+                    Response = new { Rows = ds.Tables[0], Count = ds.Tables[0].Rows.Count }
                 };
 
 

@@ -1,5 +1,6 @@
 ﻿/// <reference path="/JQuery/Common.js" />
 
+
     AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     var t = obj;
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
@@ -711,6 +712,7 @@
     // End of On Loaded Values
 }
 
+
 /// Calculate reserve days
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
@@ -847,8 +849,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
             success: function (response)
             {
                 objRes = JSON.parse(response)
+                AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(objRes, t);
                 $(".message", t.el).html("File(s) uploaded successfully.");
-                $('.message', t.el).text(response);
+               // $('.message', t.el).text(response);
             },
             error: function (error)
             {
@@ -858,21 +861,23 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
     });
 
     // Remove a file from the list
-    $(document).on("click", ".remove-file", function ()
-    {
-        $(this).closest(".file-item").remove();
-    });
+    //$(document).on("click", ".remove-file", function ()
+    //{
+    //    $(this).closest(".file-item").remove();
+    //});
 
     // Handle file selection and display in the list
     $(".file-input", t.el).change(function ()
     {
         var fileList = $(".file-list",t.el);
-        /*fileList.empty();*/
+        //fileList.empty();
 
         var files = this.files;
         for (var i = 0; i < files.length; i++)
         {
-            var fileItem = $("<div class='file-item'></div>");
+            var RfileName = files[i].name.replace(/[ .]/g, '_');
+
+            var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(files[i].name);
             var removeButton = $("<div class='remove-file'>X</div>");
 
@@ -918,65 +923,70 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile = function (t)
         inv.on('onSuccess', function (res)
         {
             var res = decJSON(res);
-            if (res.status == 'OK')
-            {
-                if (res.Response.Rows.length > 0)
-                {
-
-                    var rows = res.Response.Rows;
-                    console.log("Rows:" + rows);
-
-                    var $fileList = $(".file-list", t.el);
-
-                    for (var i = 0; i < rows.length; i++)
-                    {
-                        var row = rows[i];
-                        //console.log(row);
-                        var fileName = row.FileName;
-                        console.log("FileName: " + fileName);
-                        var recId = row.RecId;
-                        console.log("RecId: " + recId);
-
-                        var fileContainer = $("<div class='file-container'></div>");
-                        var fileLink = $("<a class='file-link'></a>")
-                            .text(fileName)
-                            .attr({
-                                href: '/path/to/your/file/' + fileName, // Specify the file download URL
-                                download: fileName // Specify the file name
-                            });
-
-                        var fileItem = $('<div class="file-item"></div>');
-                        var fileNameElement = $('<span class="file-name">' + fileName + '</span>');
-                        var removeButton = $('<span class="remove-button">X</span>');
-
-                        // Attach a click event to the remove button to handle removal
-                        removeButton.on('click', function ()
-                        {
-                            var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
-                            DeleteUploadFile(t, recId);
-                            console.log('Remove button clicked for file: ' + fileName);
-                        });
-
-                        // Append elements to the file item
-                        fileItem.append(fileNameElement);
-                        fileItem.append(removeButton);
-
-                        // Append the file item to the "file-list" element
-                        $fileList.append(fileItem);
-
-                        fileContainer.append(fileLink);
-
-
-                        $("#uploaded-file-list").append(fileContainer);
-                    }
-                }
-            }
+            AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(res,t);
             $(t.el).unmask();
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
 
     });
 };
+AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res,t)
+{
+
+            if (res.status == 'OK')
+            {
+                if (res.Response.Rows.length > 0)
+                {
+
+                    var rows = res.Response.Rows;
+
+                    var $fileList = $(".file-list", t.el);
+
+
+                    for (var i = 0; i < rows.length; i++)
+                    {
+                        var row = rows[i];
+                        var fileName = row.FileName;
+                        var recId = row.RecId;
+                        var fileGuid = row.FileGuid;
+                        var RfileName = row.FileName.replace(/[ .]/g, '_');
+
+                        $("." + RfileName, t.el).remove();
+
+                        var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
+                            
+
+                        var fileItem = $('<div class="file-item"></div>');
+
+                        var fileNameElement = `<span class="file-name">${fileLink}</span>`;
+                        var removeButton = $('<span class="remove-button">X</span>');
+
+                        // Attach a click event to the remove button to handle removal
+                        removeButton.data('recId', recId);
+                        removeButton.on('click', function ()
+                        {
+                            var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
+                            var clickedRecId = $(this).data('recId'); // Get the recId from the data attribute
+
+                            DeleteUploadFile(t, clickedRecId);
+                            $(this).closest('.file-item').remove();
+
+                            console.log('Remove button clicked for file: ' + fileName);
+                        });
+
+                        // Append elements to the file item
+                        fileItem.append(fileNameElement);
+                        fileItem.append(removeButton);
+                        // Append the file item to the "file-list" element
+                        $fileList.append(fileItem);
+
+                      
+
+
+                    }
+                }
+            }
+}
 
 //Delete  upload file on SC form and db
 AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, recId)
@@ -995,10 +1005,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, rec
             $.showMessage(msg[2]);
         } else
         {
-            console.log("File not Delete ");
+            $.showMessage("File not Delete ");
 
         }
         $(t.el).unmask();
     });
     inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
-}
+};
