@@ -255,7 +255,9 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
                          if (iRow == 0) { iRow++; continue; }
                          string ParamValue;
                          string ParamName = DR["Column_Name"].ToString();
-                         SqlDbType ParamDBType = (SqlDbType)Enum.Parse(typeof(SqlDbType), DR["Type_Name"].ToString().Replace("numeric","Decimal"), true); // GetSQLDataType(DR["Type_Name"].ToString());
+
+                         SqlDbType ParamDBType = (SqlDbType)Enum.Parse(typeof(SqlDbType), 
+                             DR["Type_Name"].ToString().Replace("numeric","Decimal"), true); // GetSQLDataType(DR["Type_Name"].ToString());
                          int ParamLen = Convert.ToInt32(DR["Length"]);
                          ParameterDirection ParamDirection = (Convert.ToInt32(DR["COLUMN_TYPE"]) == 1 ? ParameterDirection.Input : ParameterDirection.InputOutput);
                          if (ParamName.Substring(1).Equals("Status", StringComparison.CurrentCultureIgnoreCase))
@@ -291,7 +293,19 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
              {
                  return DBNull.Value;
              }
-             else if (Value == "@EV" )
+             else if (ParamDBType == SqlDbType.UniqueIdentifier)
+             {
+                 if (Value == "@EV" || Value == "@EA")
+                 {
+                     return DBNull.Value;
+                 }
+                 else
+                 {
+                     return Guid.Parse(Value);
+
+                 }
+             }
+            else if (Value == "@EV" )
              {
                  return DBNull.Value;
              }
@@ -308,6 +322,7 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
                  else
                      return true;
              }
+
              else
                  return Value;
          }

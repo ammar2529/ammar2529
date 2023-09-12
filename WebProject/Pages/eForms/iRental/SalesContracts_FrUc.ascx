@@ -20,7 +20,7 @@
     <tr>
         <td style="padding-top: 10px; padding-left: 2px;">
             <ul class="SimpleTab" style="margin: 0px;">
-                <li class="active" tabid="ContractDetails">
+                <li class="active" tabid="SalesContractDetails">
                     <div>Contract Details </div>
                 </li>
                 <%--                
@@ -28,19 +28,19 @@
 					<div>
           Additional Drivers</div>
 				</li> --%>
-                <li tabid="PaymentDetails">
+                <li tabid="SalesPaymentDetails">
                     <div>Payment Details </div>
                 </li>
-                <li tabid="OtherCharges">
+                <li tabid="SalesOtherCharges">
                     <div>Other Charges </div>
                 </li>
-                <li tabid="ContractComments" style="border-right: 1px solid #8298B0;">
+                <li tabid="SalesContractComments" style="border-right: 1px solid #8298B0;">
                     <div>Comments </div>
                 </li>
             </ul>
         </td>
     </tr>
-    <tr tabid="ContractDetails">
+    <tr tabid="SalesContractDetails">
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
                 <tr id="trNote">
@@ -76,7 +76,10 @@
                     <td>
                         <input type="hidden" name="RecId" groupid="SalesContractsForm" argumentid="RecId" />
 
-                        <div style="display: none"><span groupid="SalesContractsForm" argumentid="RecId"></span><span groupid="SalesContractsForm" argumentid="StateId"></span></div>
+                        <div style="display: none"><span groupid="SalesContractsForm" argumentid="RecId1"></span><span groupid="SalesContractsForm" argumentid="StateId"></span>
+                            
+
+                        </div>
                         <div>
                             <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
                                 groupid="SalesContractsForm" lovpopupid="mypopup" argumentid="CarNumber" />
@@ -265,48 +268,49 @@
                 </tr>
 
 
+                
+           <tr>
+               <td colspan="2">Comments</td>
+             
+               <td>
+                   <nobr>Car Price</nobr>
+               </td>
+               <td class="ftitle">
+                   <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align:center;"></span>
 
-                <tr class="OnLoadHide">
-                    <td colspan="4" class="auto-style1">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
-                    </td>
-                </tr>
-
+               </td>
+           </tr>
+            
                 <tr>
-                    <td rowspan="4">Comments</td>
-                    <td rowspan="4">
+                    <td rowspan="3" colspan="2">
 
                         <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="fComments" groupid="SalesContractsForm-" name="S1" cols="20"></textarea></td>
 
-
-                    <td class="ftitle">
-                        <nobr>Price</nobr>
-                    </td>
                     <td>
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Price"></span>
-
-                    </td>
-                </tr>
-                <tr>
-
-                    <td class="ftitle">
 
                         <nobr>Additional Amount</nobr>
+                    </td>
+                    <td class="ftitle">
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number CommonDisable"
+                               groupid="SalesContractsForm" argumentid="AdditionalAmount" />
 
-                        <td>
-                            <span class="ftitle" groupid="SalesContractsForm" argumentid="AdditionalAmount"></span>
-                        </td>
+                    </td>
+
                 </tr>
+              
 
                 <tr>
 
-                    <td class="ftitle">
+                    <td >
 
                         <nobr>Discount:</nobr>
 
-                        <td>
-                            <span class="ftitle" groupid="SalesContractsForm" argumentid="Discount"></span>
-                        </td>
+                       
+                    <td class="ftitle">
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number CommonDisable"
+                               groupid="SalesContractsForm" argumentid="Discount" />
+                    </td>
+
                 </tr>
 
 
@@ -363,7 +367,7 @@
                             <!-- File list will be displayed here -->
                         </div>
                         <div class="file-upload-drop-area">
-                            <p>Drag and drop files here or click to select files.</p>
+                            <p> click to select files.</p>
                             <input type="file" class="file-input" multiple />
                         </div>
    
@@ -371,7 +375,7 @@
                         <div class="progress-bar"></div>
                         <div class="message"></div>
     
-                        <input type="text" argumentid="FileGuid" readonly ="readonly" />
+                        <input type="hidden" argumentid="FileGuid" readonly ="readonly" />
 
 
                     </div>
@@ -403,7 +407,7 @@
 
     <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
     <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
-    <tr tabid="PaymentDetails" style="display: none;">
+    <tr tabid="SalesPaymentDetails" style="display: none;">
         <td style="padding-top: 1px;">
 
             <AW:DataGrid ID="grdSalesContractsPaymentDetails" LoadOnInit="true" ShowOnLoad="false" runat="server"

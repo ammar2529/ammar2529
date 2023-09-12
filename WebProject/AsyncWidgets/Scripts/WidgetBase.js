@@ -1431,12 +1431,19 @@ function val(elem, ctx) {
         }
     }
     else if (typeof elem == 'string') {
-
-        var $elem = $(`[argumentid="${elem}"]`, ctx);
+       
+        //var $elem = $(`[argumentid="${elem}"]`, ctx);
+        var $elem = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).filter(`[argumentid="${elem}"]`);
+        if ($elem <1)
+        {
+            var $elem = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).find(`[argumentid="${elem}"]`);
+        }
         if ($elem.length > 0) {
             elem = $elem[0];
         }
-        else {
+        else
+        {
+           
             var msg = `ArgumentId(${elem}) not found`;
             console.log(msg);
             $.showMessage(msg);
@@ -1629,7 +1636,13 @@ var setField = function (ctl, param, ctx)
     }
 
     if (typeof ctl == "string") { //if argumentid is passed, find it's control
-        var $ctl = $(`[argumentid='${ctl}']`,ctx);
+        var $ctl = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).filter(`[argumentid='${ctl}']`);
+        if ($ctl.length < 1)
+        {
+            $ctl=$('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).find(`[argumentid='${ctl}']`);
+        }
+
+        //$(`[argumentid='${ctl}']`, ctx);
         if ($ctl.length > 0) {
             ctl = $ctl[0];
         }
@@ -1638,6 +1651,7 @@ var setField = function (ctl, param, ctx)
         }
 
     }
+
     else if (!ctl.tagName) { // if not DOM object
         if (ctl.length > 0) {
             ctl = ctl[0];
@@ -1647,7 +1661,7 @@ var setField = function (ctl, param, ctx)
             return;
         }
     }
-
+    console.log(`setting value: ${$(ctl).attr("argumentid")}-${param.val}`);
     tag = ctl.tagName;
     if (tag == 'SELECT') {
         if (val == '') {
@@ -2440,22 +2454,42 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 elem.checked = true;
             });
         }
-        if (!!cf.params) {
-            for (var param in cf.params) {
-                var $fld = ctx.find('[argumentid="' + param + '"]'),
-                    fld=$fld[0];
-                if (!fld) {
+        var fld;
+        if (!!cf.params)
+        {
+           // debugger;
+            for (var param in cf.params)
+            {
+
+                //var $fld = ctx.find('[argumentid="' + param + '"]'),
+                fld = null;
+                var $fld = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).filter('[argumentid="' + param + '"]');
+                if ($fld.length < 1)
+                {
+                    $fld = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).find('[argumentid="' + param + '"]')
+                }
+                if ($fld.length > 0)
+                {
+                    fld = $fld[0];
+                }
+                if (!fld)
+                {
+                    // debugger;
                     if (dbg())
+                    {
                         alert("Field '" + param + "' not found in the form! ");
+                    }
+                    console.log("Field '" + param + "' not found in the form! ");
                     continue;
+                   
                 };
                 if (!!cf.isRow) {
                     var pr = { val: cf.params[param], isRow: true };
-                    setField(fld, pr, t.$el);
+                    setField(fld, pr, ctx);
                 }
                 else {
 
-                    setField(fld, cf.params[param], t.$el);
+                    setField(fld, cf.params[param],ctx);
                 }
                 var primarykey = $fld.attr('primaryKey'),
                     argumentid = $fld.attr('argumentid');
@@ -2638,14 +2672,14 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     Requery: function (cf) {
         this.loadValues(cf);
     },
-    loadValues: function (cf) {
+    loadValues: function (cf,success) {
         var t = this, st = t.State, ServiceInfo;
         cf = cf || {};
         $(t.el).mask(MSGWAIT);
-        Ext.applyIf(cf, { Command: st.DALInfo, GroupId: null, ActorId: 'DataHelper', ActionId: 'Search', Params: {} });
+        Ext.applyIf(cf, { Command: st.DALInfo, GroupId: null, ActorId: 'DataHelper', ActionId: 'Search', readFormValues:true, Params: {} });
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
-            var res = decJSON(res);
+            res = decJSON(res);
             t.fireEvent('onLoadingValues', { res: res });
             if (res.status == 'OK') {
                 if (res.Response.Rows.length > 0) {
@@ -2658,6 +2692,10 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
             }
             t.fireEvent('onLoadedValues', { res: res });
+            if (!!success)
+            {
+                success(res);
+            }
             $(t.el).unmask();
         });
 
@@ -2666,7 +2704,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             alert('Problem occured while connection to web server');
         });
         t.fireEvent('beforeLoadedValues', { cf: cf });
-        ServiceInfo = getForm(t.el, cf.GroupId, Ext.apply({ Command: cf.Command, PageSize: -1 }, cf.Params));
+        var formEl = cf.readFormValues ? t.el : null; //when null then form values are retrieved
+
+        ServiceInfo = getForm(formEl, cf.GroupId, Ext.apply({ Command: cf.Command, PageSize: -1 }, cf.Params));
         inv.invokeRA({ params: ["ActorId", cf.ActorId, "ActionId", cf.ActionId, "ServiceInfo",
             ServiceInfo]
         });

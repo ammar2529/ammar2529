@@ -53,48 +53,7 @@ Sales.SalesContracts.grdSalesContracts = function (t) {
 /**
  * *******************************Sales Contract main form Script***********************************************
  */
-Sales.SalesContracts.frmSalesContractsInit = 
-     function (t) {
-      
-        t.on('beforeDataAction', function (params) {
 
-          // Ext.apply(params, frmProcGS.GetArgs([{ Name: 'FormType' }, { Name: 'FormNameCode' }]));
-
-        });
-        t.on('LOVPopupClosed', (args) => {
-          //  debugger;
-
-            t.setParams({ params: args.rowData, isRow: true });
-            //for (var key in args.rowData) {
-            //    console.log(`${key}:${args.rowData[key]}`);
-            //   //debugger;
-            //    var targetElement = $(`[argumentid='${key}']`, t.el);
-            //    if (targetElement.is('input')) {
-            //        targetElement.val(args.rowData[key]);
-            //        alert('element not found')
-            //        return
-            //    }
-            //    else {
-
-            //        targetElement.text(args.rowData[key]);
-            //    }
-
-
-            //}
-
-        });
-        t.on('LOVPopupShown', (popup) => {
-           // debugger;
-            $(t.el).mask("");
-            $('.loadmask-msg', t.el).hide();
-            popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
-            t.fireEvent('LOVPopupShown', popup);
-        });
-
-        
-
-          
-    }
 
 /**
  * *******************************Sales Contract Payment Details Init Script***********************************************

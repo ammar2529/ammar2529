@@ -9,14 +9,14 @@
     padding: 20px;
 }
 
-#file-upload-drop-area {
+.file-upload-drop-area {
     border: 2px dashed #ccc;
     padding: 20px;
     cursor: pointer;
     border-radius: 5px;
 }
 
-    #file-upload-drop-area p {
+    .file-upload-drop-area p {
         margin: 0;
     }
 
@@ -57,7 +57,7 @@ span.file-name > a{
 }
 
 /* Styles for the progress bar */
-#progress-bar {
+.progress-bar {
     background-color: #007bff;
     height: 20px;
     width: 0;
@@ -67,7 +67,7 @@ span.file-name > a{
 }
 
 /* Styles for the message area */
-#message {
+.message {
     font-weight: bold;
     margin-top: 10px;
 }

@@ -240,7 +240,7 @@
     </AW:DataGrid>
 </div>
 
-<AW:Form ID="frmSalesContracts" Hidden="true" DataSource="SEL_iRental_CarsForSale" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_FrUc.ascx">
+<AW:Form ID="frmSalesContracts" Hidden="true" DataSource="SEL_iRental_SalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_FrUc.ascx">
     <WidgetConfig>
         <script>
             cf = {
@@ -254,13 +254,6 @@
             }
         </script>
     </WidgetConfig>
-    <Scripts>
-        <script>
-
-            var fn = Sales.SalesContracts.frmSalesContractsInit;
-
-        </script>
-    </Scripts>
 </AW:Form>
 
 <div class='LOVPopup' lovpopupid='mypopup' style="display: none">
