@@ -112,7 +112,7 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
 
         if (li.attr('tabid') == 'PaymentDetails')
         {
-            debugger;
+          
             AsyncWidgets.get('grdLeasePaymentDetails').show().Requery();
         }
 

@@ -203,11 +203,11 @@
         </div>
     </div>
 
-<%--<script type="text/javascript">
+<script type="text/javascript">
     var onReady = () => {
         //console.log("finding menu...");
-        if ($('[showwidget="conLeaseContracts"]').length > 0) {
-            $('[showwidget="conLeaseContracts"]').trigger('click');
+        if ($('[showwidget="conSalesContracts"]').length > 0) {
+            $('[showwidget="conSalesContracts"]').trigger('click');
         }
 
         else {
@@ -220,6 +220,6 @@
 
     $().ready(onReady);
 
-</script>--%>
+</script>
 </asp:Content>
 

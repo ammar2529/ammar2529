@@ -2,15 +2,37 @@
 
 
     AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
-    var t = obj;
+        var t = obj;
+       
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
 
-      
+        t.on('beforeDataAction', function (params)
+        {
 
-    ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
+            // Ext.apply(params, frmProcGS.GetArgs([{ Name: 'FormType' }, { Name: 'FormNameCode' }]));
+
+        });
+        t.on('LOVPopupClosed', (args) =>
+        {
+            //  debugger;
+
+            t.setParams({ params: args.rowData, isRow: true });
+        });
+        t.on('LOVPopupShown', (popup) =>
+        {
+            // debugger;
+            $(t.el).mask("");
+            $('.loadmask-msg', t.el).hide();
+            popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
+            t.fireEvent('LOVPopupShown', popup);
+        });
+
+
+        ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
+        $('.file-list', t.el).html("");
       
-        AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile(t); //to db
-        AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile(t);
+        AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers(t); //to db
+       // AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile(t);
        // AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile();
        ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,6 +63,15 @@
             var dow = CalculateDayOfWeekRsDate(rsDate);
             setField('ReservationWeekDays', dow, t.el);
         });
+
+        //calculate setTime on start date
+        //var SetTimeFromSelectedDate = AsyncWidgets.WidgetScripts.frmSalesContracts.SetTimeFromSelectedDate;
+        //$('[argumentid="ContractStartDate"]').on('blur', function ()
+        //{
+        //    var csDate = val('ContractStartDate', t.el);
+        //    var setTime = SetTimeFromSelectedDate(csDate);
+        //    setField('ContractStartTime', setTime, t.el);
+        //});
 
     //lines marked by Qasim
   
@@ -83,23 +114,27 @@
         tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
         $('.tabid', t.el).val(li.attr('tabid'));
 
-        if (li.attr('tabid') == 'ContractDetails') {
-            AsyncWidgets.get('frmSalesContracts').loadValues();
+        if (li.attr('tabid') == 'SalesContractDetails')
+        {
+            var wg = AsyncWidgets.get('frmSalesContracts');
+            
+            var cf = {
+                ActionId: "GetData", GroupId: null, readFormValues: false,
+                Params: { RecId: val('RecId', wg.el), Command: 'SEL_iRental_SalesContracts' }
+
+            }
+            wg.loadValues(cf, function ()
+            {
+                wg.show();
+            });
+            
         }
 
-        if (li.attr('tabid') == 'AdditionalDrivers') {
-            AsyncWidgets.get('grdAdditionalDrivers').show().Requery();
+        else if (li.attr('tabid') == 'SalesPaymentDetails') {
+            AsyncWidgets.get('grdSalesContractsPaymentDetails').show().Requery();
         }
 
-        if (li.attr('tabid') == 'OtherCharges') {
-            AsyncWidgets.get('grdOtherCharges').show().Requery();
-        }
-
-        if (li.attr('tabid') == 'PaymentDetails') {
-            AsyncWidgets.get('grdPaymentDetails').show().Requery();
-        }
-
-        if (li.attr('tabid') == 'ContractComments') {
+        else if (li.attr('tabid') == 'ContractComments') {
             AsyncWidgets.get('grdContractComments').show().Requery();
         }
 
@@ -252,7 +287,7 @@
     // Check if Payment Cleared to Enable Disable Payment Clear Button
     function CheckPaymentCleared() {
 
-        //Disable Button Close Contract - Payment Cleared if the Contract Due Amount is > 0, currently apply only for Rental Contract later apply for lease
+        //Disable Button Close Contract - Payment Cleared if the Contract Due  is > 0, currently apply only for Rental Contract later apply for lease
 
         if ($('[argumentid="ContractType"]:checked', t.el).val() == 'Rental') {
 
@@ -543,9 +578,12 @@
     });
     //End On Click of Edit Button by Super User
 
-    // On Form Show
-    t.on('show', function (args) {
-
+    // On Form Show file-list
+        t.on('show', function (args)
+        {
+            console.log($('.file-list', t.el).length);
+            $('.file-list', t.el).html('');
+            console.log($('.file-list', t.el).length);
         //Always Move to First Tab on Show
         var li = $('li[tabid="ContractDetails"]', t.el), tbl;
         li.parent().children('li.active').removeClass('active');
@@ -575,6 +613,7 @@
 
 
         $('.SimpleTab', t.el).attr('disabled', 'disabled');
+      
 
         SHMileageType(); // This function is called to hide show Mileage Type Related Fields on Value Loaded
 
@@ -606,15 +645,13 @@
         $('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
         $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
         $('span[argumentid="ChassisNo"],span[argumentid="CustomerName"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', t.el).css('color', '#628296'); //Change Color to Normal on form show
-         
+        AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
  
     });
     // End On Form Show
 
     // On Start of Onloaded Values
     t.on('onLoadedValues', function (args) {
-
-        t.fireEvent('show');
 
         $('.btn_11', t.el).show();
         $('.btn_10', t.el).show();
@@ -687,8 +724,7 @@
             $('[argumentid="ContractStartDate"]', t.el).next('img').show();
             $('[argumentid="ContractExpiryDate"]', t.el).next('img').show();
 
-          
-
+           
 
             CalculateRentalContractCharges(); // Calculate Rental Charges on Value Loaded
             CheckPaymentCleared(); // Check if Payment Cleared to Enable Disable Payment Clear Button
@@ -707,6 +743,9 @@
             //                                      RRCContractClosed
             //                                      RRCContractCancelled
 
+
+            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+
         }
     });
     // End of On Loaded Values
@@ -716,8 +755,14 @@
 /// Calculate reserve days
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
-   
-    
+    var cDate = new Date();
+    var cH = cDate.getHours();
+    var cM = cDate.getMinutes();
+
+    cH = cH < 10 ? '0' + cH : cH;
+    cM = cM < 10 ? '0' + cM : cM;
+
+
     var sDate = new Date();
     var eDate = new Date();
   
@@ -733,6 +778,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays =  function () {
 
         setField('ReservationDays', sDate.getDateDiffInDays(eDate), t.el);
        // $('[argumentid="ReservationDays"]', t.el).val(ReserveDays);
+       
+        $('[argumentid="ContractStartTime"]', t.el).val(cH + ':' + cM);
+        $('[argumentid="ReservationExpireTime"]', t.el).val(cH + ':' + cM);
     }
 };
 
@@ -798,16 +846,43 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
     }
 };
 
+//calculte setTime on contract start date 
+//AsyncWidgets.WidgetScripts.frmSalesContracts.SetTimeFromSelectedDate = function (csDate)
+//{
+//    var oDate = csDate.convertDate();
+//    if (!isNaN(oDate))
+//    {
+//        var hours = oDate.getHours();
+//        var minutes = oDate.getMinutes();
+
+//        var formattedTime = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
+//        return formattedTime
+
+//    }
+//    return  "Invalid Date";
+//};
+
 //Upload file to db
-AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
+AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 {
 
-    var guid = generateGuid();
-    $('[argumentid="FileGuid"]',t.el).val(guid);
+ 
     $(".upload-button",t.el).click(function (e)
     {
+        var isGUIDUpdateNeeded = false;
+        if (val('FileGuid',t.el).trim() == "")
+        {
+            var guid = generateGuid();
+            setField('FileGuid', guid, t.el);
+            if (t.FormMode == 'update')
+            {
+                isGUIDUpdateNeeded = true;
+            }
+        }
+
         e.preventDefault();
-        var fileInput = $(".file-input",t.el)[0];
+        var fileInput = $(".file-input", t.el)[0];
+       
         var files = fileInput.files;
 
         if (files.length === 0)
@@ -824,9 +899,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
             formData.append("file" + i, files[i]);
         }
 
-        formData.append("FileGuid", $('[argumentid="FileGuid"]', t.el).val());
-
+        formData.append("FileGuid",val("FileGuid", t.el));
+        if (isGUIDUpdateNeeded)
+        {
+            formData.append("SalesRecId", val("RecId"));
+        }
+        $('.progress-bar', t.el).show();
         $.ajax({
+
             type: "POST",
             url: "UploadFile/UploadFiles", // Replace with your server-side handler URL
             data: formData,
@@ -841,16 +921,32 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
                     if (evt.lengthComputable)
                     {
                         var percentComplete = (evt.loaded / evt.total) * 100;
-                        $(".progress-bar",t.el).width(percentComplete + "%");
+                        $(".progress-bar", t.el).width(percentComplete + "%");
+
+                        if (percentComplete >95)
+                        {
+                            setTimeout(function () { $('.progress-bar', t.el).hide(); }, 3000);
+                        }
                     }
                 }, false);
                 return xhr;
+               
             },
             success: function (response)
             {
                 objRes = JSON.parse(response)
+                var rows = objRes.Response.Rows;
+                for (var i = 0; i < rows.length; i++)
+                {
+                    var row = rows[i];
+                    var fileName = row.FileName;
+                    var msg = $(".message", t.el).html(`File [${fileName}] uploaded successfully.`);
+
+                }
+                
                 AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(objRes, t);
-                $(".message", t.el).html("File(s) uploaded successfully.");
+                $.showMessage(msg)
+                
                // $('.message', t.el).text(response);
             },
             error: function (error)
@@ -861,16 +957,17 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
     });
 
     // Remove a file from the list
-    //$(document).on("click", ".remove-file", function ()
-    //{
-    //    $(this).closest(".file-item").remove();
-    //});
+    $(document).on("click", ".remove-file", function ()
+    {
+        $(this).closest(".file-item").remove();
+    });
 
-    // Handle file selection and display in the list
+  //   Handle file selection and display in the list
+
     $(".file-input", t.el).change(function ()
     {
         var fileList = $(".file-list",t.el);
-        //fileList.empty();
+        fileList.empty();
 
         var files = this.files;
         for (var i = 0; i < files.length; i++)
@@ -887,8 +984,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
         }
     });
 
-   
-  
 
     function generateGuid()
     {
@@ -901,95 +996,96 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.UploadFile = function (t)
         });
 
     }
-};
 
-//show  upload file on SC form
-AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile = function (t)
-{
     t.on('onLoadedValues', function (params)
     {
 
         console.log(params);
-        //var grd = AsyncWidgets.get('GrdUser');
-        //$('.CloseForm', t.el).trigger('click');
-        //grd.sortCol = 'DateCreated';
-        //grd.sortDir = 'Desc';
-        //grd.RequeryGrid();
-
-        var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.le), DBAction: 'GetUploadedFiles' };
+         var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
 
         SInfo = getForm(null, null, params);
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res)
         {
             var res = decJSON(res);
-            AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(res,t);
+            AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(res, t);
             $(t.el).unmask();
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
 
     });
 };
-AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res,t)
+
+
+//GenerateUploadFiles
+AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res, t)
 {
+    if (res.status == 'OK')
+    {
+        if (res.Response.Rows.length > 0)
+        {
+            var rows = res.Response.Rows;
 
-            if (res.status == 'OK')
+            var $fileList = $(".file-list", t.el);
+            for (var i = 0; i < rows.length; i++)
             {
-                if (res.Response.Rows.length > 0)
+                var row = rows[i];
+                var fileName = row.FileName;
+                var recId = row.RecId;
+                var fileGuid = row.FileGuid;
+                var RfileName = row.FileName.replace(/[ .]/g, '_');
+
+                $("." + RfileName, t.el).remove();
+
+                var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
+
+
+                var fileItem = $('<div class="file-item"></div>');
+
+                var fileNameElement = `<span class="file-name">${fileLink}</span>`;
+                var removeButton = $('<span class="remove-button">X</span>');
+
+                // Attach a click event to the remove button to handle removal
+                removeButton.data('recId', recId);
+
+                removeButton.data('fileName', fileName); // Store the file name in a data attribute
+
+                removeButton.on('click', function ()
                 {
+                    var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
+                    var clickedRecId = $(this).data('recId'); // Get the recId from the data attribute
+                    var clickedFileName = $(this).data('fileName'); // Get the file name from the data attribute
 
-                    var rows = res.Response.Rows;
+                    DeleteUploadFile(t, clickedRecId, clickedFileName);
+                    $(this).closest('.file-item').remove();
 
-                    var $fileList = $(".file-list", t.el);
+                    console.log('Remove button clicked for file: ' + fileName);
+                });
 
-
-                    for (var i = 0; i < rows.length; i++)
-                    {
-                        var row = rows[i];
-                        var fileName = row.FileName;
-                        var recId = row.RecId;
-                        var fileGuid = row.FileGuid;
-                        var RfileName = row.FileName.replace(/[ .]/g, '_');
-
-                        $("." + RfileName, t.el).remove();
-
-                        var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
-                            
-
-                        var fileItem = $('<div class="file-item"></div>');
-
-                        var fileNameElement = `<span class="file-name">${fileLink}</span>`;
-                        var removeButton = $('<span class="remove-button">X</span>');
-
-                        // Attach a click event to the remove button to handle removal
-                        removeButton.data('recId', recId);
-                        removeButton.on('click', function ()
-                        {
-                            var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
-                            var clickedRecId = $(this).data('recId'); // Get the recId from the data attribute
-
-                            DeleteUploadFile(t, clickedRecId);
-                            $(this).closest('.file-item').remove();
-
-                            console.log('Remove button clicked for file: ' + fileName);
-                        });
-
-                        // Append elements to the file item
-                        fileItem.append(fileNameElement);
-                        fileItem.append(removeButton);
-                        // Append the file item to the "file-list" element
-                        $fileList.append(fileItem);
-
-                      
+                // Append elements to the file item
+                fileItem.append(fileNameElement);
+                fileItem.append(removeButton);
+                // Append the file item to the "file-list" element
+                $fileList.append(fileItem);
 
 
-                    }
-                }
+
+
             }
-}
+        }
+    }
+    function isFileNameDuplicate(fileName)
+    {
+        // Check if the file name already exists in the list
+        return $fileList.find(".file-list .file-link").filter(function ()
+        {
+            return $(this).text() === fileName;
+        }).length > 0;
+    }
+};
 
 //Delete  upload file on SC form and db
-AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, recId)
+AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, recId, fileName)
 {
 
     var params = { Command: 'FX_UPD_FileUpload', RecId: recId, DBAction: 'DeleteFile' };
@@ -1002,13 +1098,98 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, rec
         {
             var response = res.Response || '';
             var msg = response.split('||');
-            $.showMessage(msg[2]);
+            $.showMessage(`[${fileName}] ${msg[2]}`);
         } else
         {
-            $.showMessage("File not Delete ");
+            $.showMessage(`File [${fileName}] not Delete `);
 
         }
         $(t.el).unmask();
     });
     inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
 };
+
+
+//convert to decimal 
+AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
+{
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+
+    //convert to decimal
+    var decCarPrice = parseFloat($('[argumentid="Price"]',t.el).text());
+    if (isNaN(decCarPrice))
+    {
+        $('[argumentid="Price"]').text('0.000')
+    }
+    else
+    {
+     $('[argumentid="Price"]', t.el).text(decCarPrice.toFixed(3));
+    }
+
+
+    var decAdditionalAmount = parseFloat($('[argumentid="AdditionalAmount"]', t.el).val());
+    if (isNaN(decAdditionalAmount))
+    {
+        $('[argumentid="AdditionalAmount"]', t.el).val('0.000')
+    }
+    else
+    {
+        $('[argumentid="AdditionalAmount"]',t.el).val(decAdditionalAmount.toFixed(3));
+    }
+
+    var decDiscount = parseFloat($('[argumentid="Discount"]', t.el).val());
+    if (isNaN(decDiscount))
+    {
+        ($('[argumentid="Discount"]', t.el).val('0.000'));
+    } else
+    {
+        $('[argumentid="Discount"]', t.el).val(decDiscount.toFixed(3));
+    }
+
+    //if (isNaN(parseFloat($('[argumentid="ContractDiscount"]', t.el).val())))
+    //{
+    //    $('[argumentid="ContractDiscount"]', t.el).val('0.000');
+    //    decContractDiscount = 0;
+    //}
+    //else
+    //{
+    //    decContractDiscount = parseFloat($('[argumentid="ContractDiscount"]', t.el).val());
+    //    $('[argumentid="ContractDiscount"]', t.el).val(decContractDiscount.toFixed(3));
+    //}
+
+
+    var decTotalAmount = parseFloat($('[argumentid="TotalAmount"]',t.el).text());
+    if (isNaN(decTotalAmount))
+    {
+        $('[argumentid="TotalAmount"]', t.el).text('0.000');
+    }
+    else
+    {
+        $('[argumentid="TotalAmount"]',t.el).text(decTotalAmount.toFixed(3));
+    }
+
+    var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
+
+    var decAmountReceived = parseFloat(val( 'PaymentAmount', SalesContractTab));
+    if (isNaN(decAmountReceived))
+    {
+        setField('PaymentAmount','0.000', SalesContractTab);
+        //$('[argumentid="PaymentAmount"]', t.el).text('0.000');
+    }
+    else
+    {
+        setField('PaymentAmount', decAmountReceived.toFixed(3), SalesContractTab);
+       // $('[argumentid="PaymentAmount"]',t.el).text();
+    }
+
+    var decAmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text());
+    if (isNaN(decAmountDue))
+    {
+        $('[argumentid="AmountDue"]', t.el).text('0.000');
+    }
+    else
+    {
+        $('[argumentid="AmountDue"]', t.el).text(decAmountDue.toFixed(3));
+    }
+};
+     
