@@ -31,9 +31,9 @@
                 <li tabid="SalesPaymentDetails">
                     <div>Payment Details </div>
                 </li>
-                <li tabid="SalesOtherCharges">
+              <%--  <li tabid="SalesOtherCharges">
                     <div>Other Charges </div>
-                </li>
+                </li>--%>
                 <li tabid="SalesContractComments" style="border-right: 1px solid #8298B0;">
                     <div>Comments </div>
                 </li>
@@ -375,7 +375,7 @@
                         <div class="progress-bar"></div>
                         <div class="message"></div>
     
-                        <input type="hidden" argumentid="FileGuid" readonly ="readonly" />
+                        <input type="text" groupid="SalesContractsForm" argumentid="FileGuid" readonly ="readonly" />
 
 
                     </div>

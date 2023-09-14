@@ -941,6 +941,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
                     var row = rows[i];
                     var fileName = row.FileName;
                     var msg = $(".message", t.el).html(`File [${fileName}] uploaded successfully.`);
+                    $(".file-input", t.el).val('');
 
                 }
                 
@@ -967,7 +968,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     $(".file-input", t.el).change(function ()
     {
         var fileList = $(".file-list",t.el);
-        fileList.empty();
 
         var files = this.files;
         for (var i = 0; i < files.length; i++)
@@ -977,7 +977,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(files[i].name);
             var removeButton = $("<div class='remove-file'>X</div>");
-
+            fileItem.css('background-color', 'lightcoral'); 
             fileItem.append(fileName);
             fileItem.append(removeButton);
             fileList.append(fileItem);
@@ -1192,4 +1192,4 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
         $('[argumentid="AmountDue"]', t.el).text(decAmountDue.toFixed(3));
     }
 };
-     
+
