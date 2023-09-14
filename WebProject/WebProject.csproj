@@ -1263,8 +1263,7 @@
     <Content Include="test\one.js" />
     <Content Include="test\Two.js" />
     <Content Include="UploadFile.aspx" />
-<<<<<<< HEAD
-=======
+
     <Content Include="Uploads\%2710_1f4f1195-e127-43be-8a00-bfe7384bace1_ERD_Joings.png" />
     <Content Include="Uploads\%2711_1f4f1195-e127-43be-8a00-bfe7384bace1_Capture.PNG" />
     <Content Include="Uploads\%2713_1f4f1195-e127-43be-8a00-bfe7384bace1_ERD_Joings.png" />
@@ -1344,7 +1343,7 @@
     <Content Include="Uploads\96_1f4f1195-e127-43be-8a00-bfe7384bace1_grepWin-x64-2.0.13_portable.exe" />
     <Content Include="Uploads\97_1f4f1195-e127-43be-8a00-bfe7384bace1_grepWin-x64-2.0.13_portable.exe" />
     <Content Include="Uploads\99_1f4f1195-e127-43be-8a00-bfe7384bace1_new 43.txt" />
->>>>>>> 064a1e9208a2330712bc3ce6c9f13ffe9d0deff9
+
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
@@ -3162,8 +3161,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Site.Mobile.Master" />
-<<<<<<< HEAD
-=======
+
     <Content Include="Uploads\%2712_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
     <Content Include="Uploads\%2715_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
     <Content Include="Uploads\%2719_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
@@ -3204,7 +3202,7 @@
     <Content Include="Uploads\91_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
     <Content Include="Uploads\94_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
     <Content Include="Uploads\98_1f4f1195-e127-43be-8a00-bfe7384bace1_bookmarks.pdf" />
->>>>>>> 064a1e9208a2330712bc3ce6c9f13ffe9d0deff9
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
