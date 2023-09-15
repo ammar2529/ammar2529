@@ -187,6 +187,9 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
+                    
+                    <td></td>
+                    <td></td>
                   
                     <td>
                         <nobr>Driving License No.</nobr>
@@ -197,7 +200,8 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                   
+                    <td></td>
+                    <td></td>
                     <td>
                         <nobr>Work & Res. Telephone</nobr>
                     </td>
@@ -208,7 +212,8 @@
                     </td>
                 </tr>
                 <tr>
-                   
+                    <td></td>
+                    <td></td>
                     <td>
                         <nobr>Mobile Telephone</nobr>
                     </td>
