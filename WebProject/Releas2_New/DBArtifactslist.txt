@@ -1,0 +1,41 @@
+Tables:
+	 iRental_CarsForSale
+	 iRental_SalesContracts
+	 iRental_SalesContracts_Payments
+	 iRental_SalesCarPrice
+	 iRental_SalesContracts_Comments
+	 iRental_SalesContracts_OtherCharges
+	 iRental_SalesContracts_OtherCharges_Audit
+	 iRental_SalesContracts_Payments_Audit
+	 Fx_FileUpload	
+Views:
+	VW_SEL_iRental_SalesContracts 
+	VW_iRental_CarsForSale 
+	VW_FX_Workflow_States_Sales_Contracts
+	VW_iRental_CarsForSale_Available 
+	VW_SEL_iRental_SalesContracts_Details 
+	VW_Brands 
+	VW_CarColor
+	VW_CarYear
+	VW_Type 
+	VW_Models
+	VW_iRental_SalesContracts_Payments
+	 
+update SP:
+	SEL_iRental_Contracts_Customers_SP 
+	iRental_CarsForSale_SP
+	SEL_iRental_CarsForSale_SP
+	SEL_iRental_SalesContracts_SP 
+	UPD_iRental_CarsForSales_SP  
+	UPD_iRental_SalesContracts_SP 
+	SEL_iRental_SalesContracts_Payments_SP
+	UPD_iRental_SalesContracts_Payments_SP  
+	SEL_iRental_SalesCarPrice_SP 
+	SEL_iRental_SalesContracts_Comments_SP
+	SEL_iRental_SalesContracts_OtherCharges_Audit_SP
+	SEL_iRental_SalesContracts_OtherCharges_SP
+	SEL_iRental_SalesContracts_Payments_Audit_SP 
+	UPD_iRental_SalesCarPrice_SP  
+	UPD_iRental_SalesContracts_Comments_SP 
+	UPD_iRental_SalesContracts_OtherCharges_SP 
+	UPD_Fx_FileUpload
