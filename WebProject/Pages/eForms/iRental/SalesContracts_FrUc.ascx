@@ -70,7 +70,7 @@
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Car Number*:</nobr>
                     </td>
                     <td>
@@ -85,7 +85,7 @@
                                 groupid="SalesContractsForm" lovpopupid="mypopup" argumentid="CarNumber" />
                         </div>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Customer Code*:</nobr></td>
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
@@ -101,13 +101,13 @@
 
 
                 <tr>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Chassis Number</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="ChassisNo"></span>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Name</nobr>
                     </td>
                     <td style="text-align: center">
@@ -115,13 +115,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Brand</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="BrandId"></span>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Type</nobr>
                     </td>
                     <td>
@@ -129,13 +129,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Model</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="ModelId"></span>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Nationality</nobr>
                     </td>
                     <td>
@@ -143,13 +143,13 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                    <td>
+                    <td class="ftitle">
                         <nobr>Year</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="CarYear"></span>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Gender</nobr>
                     </td>
                     <td>
@@ -157,13 +157,13 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                    <td>
+                    <td class="ftitle">
                         <nobr>Color</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Color"></span>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Passport No.</nobr>
                     </td>
                     <td>
@@ -172,13 +172,13 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                    <td>
+                    <td class="ftitle">
                         <nobr>Type</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="TypeId"></span>
                     </td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>National ID No.</nobr>
                     </td>
                     <td>
@@ -191,7 +191,7 @@
                     <td></td>
                     <td></td>
                   
-                    <td>
+                    <td class="ftitle">
                         <nobr>Driving License No.</nobr>
                     </td>
                     <td>
@@ -202,7 +202,7 @@
                 <tr class="OnLoadHideCarCust">
                     <td></td>
                     <td></td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Work & Res. Telephone</nobr>
                     </td>
                     <td class="ftitle">
@@ -214,7 +214,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Mobile Telephone</nobr>
                     </td>
                     <td class="ftitle">
@@ -230,7 +230,7 @@
                 </tr>
 
                 <tr>
-                    <td>
+                    <td class="ftitle">
                         <nobr>Contract Start Date*:</nobr>
                     </td>
                     <td>
@@ -245,7 +245,7 @@
 
                     </td>
 
-                    <td>
+                    <td class="ftitle">
                         <nobr>Reservation Date:</nobr>
                     </td>
                     <td>
@@ -275,10 +275,10 @@
 
                 
            <tr>
-               <td colspan="2">Comments</td>
+               <td colspan="2" class="ftitle">Comments</td>
              
                <td>
-                   <nobr>Car Price</nobr>
+                   <nobr class="ftitle">Car Price</nobr>
                </td>
                <td class="ftitle">
                    <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align:center;"></span>
@@ -291,7 +291,7 @@
 
                         <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="fComments" groupid="SalesContractsForm-" name="S1" cols="20"></textarea></td>
 
-                    <td>
+                    <td class="ftitle">
 
                         <nobr>Additional Amount</nobr>
                     </td>
@@ -306,7 +306,7 @@
 
                 <tr>
 
-                    <td >
+                    <td class="ftitle">
 
                         <nobr>Discount:</nobr>
 
@@ -322,7 +322,7 @@
 
                 <tr>
 
-                    <td>
+                    <td class="ftitle">
                         <nobr>Grand Total*:</nobr>
                     </td>
                     <td>
@@ -372,7 +372,7 @@
                             <!-- File list will be displayed here -->
                         </div>
                         <div class="file-upload-drop-area">
-                            <p> click to select files.</p>
+                            <p class="ftitle"> Click to select files.</p>
                             <input type="file" class="file-input" multiple />
                         </div>
    
