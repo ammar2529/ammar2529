@@ -887,7 +887,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
         if (files.length === 0)
         {
-            $(".message",t.el).html("Please select a file.");
+            var errorMsg = $(".message", t.el).html("Please select a file.");
+            $.showMessage(errorMsg);
             return;
         }
 
@@ -961,18 +962,22 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     $(document).on("click", ".remove-file", function ()
     {
         $(this).closest(".file-item").remove();
+        $(".file-input", t.el).val('');
     });
 
   //   Handle file selection and display in the list
 
     $(".file-input", t.el).change(function ()
     {
-        var fileList = $(".file-list",t.el);
+        var fileList = $(".file-list", t.el);
+      
 
         var files = this.files;
         for (var i = 0; i < files.length; i++)
         {
             var RfileName = files[i].name.replace(/[ .]/g, '_');
+
+        
 
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(files[i].name);
@@ -1025,7 +1030,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
         if (res.Response.Rows.length > 0)
         {
             var rows = res.Response.Rows;
-
+            var currentFileList = $('.file-list .file-item', t.el);
+            var anchorFileList = $('.file-list .file-link', t.el);
             var $fileList = $(".file-list", t.el);
             for (var i = 0; i < rows.length; i++)
             {
@@ -1039,6 +1045,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
                 var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
 
+            
 
                 var fileItem = $('<div class="file-item"></div>');
 
