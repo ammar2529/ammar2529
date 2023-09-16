@@ -1,4 +1,12 @@
+USE [OnlineSolutions]
+GO
 
+/****** Object:  View [dbo].[VW_SEL_iRental_SalesContracts_Details]    Script Date: 9/15/2023 6:07:23 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 /*  
 select * from iRental_CarsForSaleForSale      
@@ -6,7 +14,7 @@ select * from iRental_CarsForSale
 select * from iRental_SalesContracts  
   
 */  
-CREATE VIEW [dbo].[VW_SEL_iRental_SalesContracts_Details]  
+aLTER VIEW [dbo].[VW_SEL_iRental_SalesContracts_Details]  
 AS  
 SELECT        dbo.iRental_SalesContracts.RecId, dbo.iRental_SalesContracts.RecCode, dbo.iRental_SalesContracts.CustomerRecCode, dbo.iRental_SalesContracts.ChassisNo, dbo.iRental_SalesContracts.CarRateType,   
                          dbo.iRental_SalesContracts.CarRate, dbo.iRental_SalesContracts.CarAllowedKM, dbo.iRental_SalesContracts.CarExtraKMRate, dbo.iRental_SalesContracts.fComments, dbo.iRental_SalesContracts.ContractExpiryTime,   
@@ -38,5 +46,6 @@ FROM            dbo.VW_FX_Workflow_States_Sales_Contracts RIGHT OUTER JOIN
                          dbo.VW_Models ON dbo.VW_iRental_CarsForSale_Available.ModelId = dbo.VW_Models.ModelId  
 
 GO
+
 
 

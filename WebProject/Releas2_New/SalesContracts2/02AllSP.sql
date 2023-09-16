@@ -1,9 +1,20 @@
+USE [OnlineSolutions]
+GO
+
+/****** Object:  StoredProcedure [dbo].[FX_UPD_FileUpload_SP]    Script Date: 9/15/2023 6:02:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 
 /****** Object:  StoredProcedure [dbo].
 
  [FX_UPD_FileUpload_SP] null, null,'file.jpg','AddUploadedFile','amirza','ok'
   [FX_UPD_FileUpload_SP] 2,null,null,'DeleteFile',null,null,null
+  [FX_UPD_FileUpload_SP] null,'BF8FA44A-1944-4941-889E-3257884788CB',null,'GetUploadedFiles',null,null
+
  
  truncate table FX_FileUpload 
   
@@ -11,9 +22,9 @@
 Script Date: 8/27/2023 10:20:23 AM ******/
 
 -- select newid()
-ALTER proc [dbo].[FX_UPD_FileUpload_SP]
+Alter proc [dbo].[FX_UPD_FileUpload_SP]
 	@RecId bigint,
-	@FileGuid varchar(1000),
+	@FileGuid uniqueidentifier,
 	@FileName varchar(500),
 	@DBAction varchar(500),
 	@__UserId varchar(50),
@@ -64,19 +75,25 @@ end
 			set @Status=isnull(cast(@Rid as varchar(10)),'-1')+  '||NoAction|| No Action Taken'  
 
 return
-
 GO
 
 
+USE [OnlineSolutions]
+GO
 
+/****** Object:  StoredProcedure [dbo].[SEL_iRental_SalesContracts_SP]    Script Date: 9/15/2023 6:05:44 PM ******/
+SET ANSI_NULLS ON
+GO
 
+SET QUOTED_IDENTIFIER ON
+GO
 
   
   
 --[SEL_iRental_SalesContracts_SP] 3, null,null,null,null, null,null,null,null,null,null,null  
 --select * from iRental_SalesContracts  
   
-ALTER PROCEDURE [dbo].[SEL_iRental_SalesContracts_SP]     
+ALTER  PROCEDURE [dbo].[SEL_iRental_SalesContracts_SP]     
  @RecId int,  
  @__UserId nvarchar(50),  
  @RecCode varchar(20),  
@@ -206,24 +223,30 @@ where (iRental_Cars_Rates.RateTypeId= @RateTypeId or @RateTypeId is null) and
 order by RecId Desc  
 */  
 END  
-
 GO
 
 
+USE [OnlineSolutions]
+GO
 
+/****** Object:  StoredProcedure [dbo].[UPD_iRental_SalesContracts_SP]    Script Date: 9/15/2023 6:04:41 PM ******/
+SET ANSI_NULLS ON
+GO
 
+SET QUOTED_IDENTIFIER ON
+GO
 
 /*  
    
 exec [UPD_iRental_SalesContracts_SP] 'test',2,null,null,null,'5O83','RCD-131',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null  
 exec [UPD_iRental_SalesContracts_SP] 'test',2,null,'RCD-132',null,5083,23232,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null  
 exec [UPD_iRental_SalesContracts_SP] 'new ',null,null,'RCD-44',null,5003,23232,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null  
-  
+  [UPD_iRental_SalesContracts_SP]null, null,'Rec-0001','RCC-002','002255',null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null, null, null, null,  null,  null, null, null, null, null, null, null, null, null, null, null, null, 'TODAY',  'BF8FA44A-1944-4941-889E-3257884788CE', 'new',  null, null,  null,  null 	
          
   
- select * from iRental_SalesContracts where CarNumber = '5O84'  
+ select * from iRental_SalesContracts where FileGuid = 'BF8FA44A-1944-4941-889E-3257884788CE'  
 */  
-ALTER Procedure [dbo].[UPD_iRental_SalesContracts_SP]  
+Alter   Procedure [dbo].[UPD_iRental_SalesContracts_SP]  
  @__UserId varchar(50),  
   
  @RecId int,  
@@ -333,42 +356,43 @@ BEGIN
  Update iRental_SalesContracts  
  SET  
    
- --ContractType=@ContractType,   
- --ContractTypeOL=@ContractTypeOL,   
- CustomerRecCode=@CustomerRecCode,   
- ChassisNo=@ChassisNo,   
- CarPreviousKM=@CarPreviousKM,   
- ContractKMOut=@ContractKMOut,   
- OutLocationId=@OutLocationId,   
- ContractStartDate=@ContractStartDate,   
- ContractStartDay=@ContractStartDay,   
- ContractStartTime=@ContractStartTime,   
- ContractExpiryDate = @ContractExpiryDate,   
- ContractExpiryDay = @ContractExpiryDay,   
- ContractExpiryTime = @ContractExpiryTime,   
- ReservationDate = @ReservationDate,  
- ContractDays = @ContractDays,  
- ContractEndDate=@ContractEndDate,  
- ContractEndDay=@ContractEndDay,  
- ContractEndTime=@ContractEndTime,  
- ActualContractDays=@ActualContractDays,  
- CarRateType= @CarRateType,   
- CarRate = @CarRate,  
- CarAllowedKM = @CarAllowedKM,   
- CarExtraKMRate=@CarExtraKMRate,  
- ContractKMIn = @ContractKMIn,  
- InLocationId = @InLocationId,  
- ContractPeriodCharges = @ContractPeriodCharges,  
- ContractExtraKM = @ContractExtraKM,  
- ContractExtraKMCharges = @ContractExtraKMCharges,  
- ContractOtherCharges = @ContractOtherCharges,  
- ContractDiscount = @ContractDiscount,  
- ContractTotalCharges = @ContractTotalCharges,  
- TotalPaidByCustomer = @TotalPaidByCustomer,  
- fComments = @fComments,  
- [$StateId] = @NewStateId,  
- [$ModifiedBy] = @__UserId,   
- [$DateModified] = getdate()  
+	 --ContractType=@ContractType,   
+	 --ContractTypeOL=@ContractTypeOL,   
+	 CustomerRecCode=@CustomerRecCode,   
+	 ChassisNo=@ChassisNo,   
+	 CarPreviousKM=@CarPreviousKM,   
+	 ContractKMOut=@ContractKMOut,   
+	 OutLocationId=@OutLocationId,   
+	 ContractStartDate=@ContractStartDate,   
+	 ContractStartDay=@ContractStartDay,   
+	 ContractStartTime=@ContractStartTime,   
+	 ContractExpiryDate = @ContractExpiryDate,   
+	 ContractExpiryDay = @ContractExpiryDay,   
+	 ContractExpiryTime = @ContractExpiryTime,   
+	 ReservationDate = @ReservationDate,  
+	 ContractDays = @ContractDays,  
+	 ContractEndDate=@ContractEndDate,  
+	 ContractEndDay=@ContractEndDay,  
+	 ContractEndTime=@ContractEndTime,  
+	 ActualContractDays=@ActualContractDays,  
+	 CarRateType= @CarRateType,   
+	 CarRate = @CarRate,  
+	 CarAllowedKM = @CarAllowedKM,   
+	 CarExtraKMRate=@CarExtraKMRate,  
+	 ContractKMIn = @ContractKMIn,  
+	 InLocationId = @InLocationId,  
+	 ContractPeriodCharges = @ContractPeriodCharges,  
+	 ContractExtraKM = @ContractExtraKM,  
+	 ContractExtraKMCharges = @ContractExtraKMCharges,  
+	 ContractOtherCharges = @ContractOtherCharges,  
+	 ContractDiscount = @ContractDiscount,  
+	 ContractTotalCharges = @ContractTotalCharges,  
+	 TotalPaidByCustomer = @TotalPaidByCustomer,  
+	 fComments = @fComments,  
+	 FileGuid=@FileGuid,
+	 [$StateId] = @NewStateId,  
+	 [$ModifiedBy] = @__UserId,   
+	 [$DateModified] = getdate()  
   
  where RecId= @RecId  
  set @NewRecId = @@RowCount  
@@ -435,9 +459,7 @@ BEGIN
 END  
   
   
-
 GO
-
 
 
 

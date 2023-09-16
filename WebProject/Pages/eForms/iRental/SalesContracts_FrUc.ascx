@@ -372,7 +372,7 @@
                             <!-- File list will be displayed here -->
                         </div>
                         <div class="file-upload-drop-area">
-                            <p class="ftitle"> Click to select files.</p>
+                            <p class="ftitle">Drag and Drop or click to select files .</p>
                             <input type="file" class="file-input" multiple />
                         </div>
    

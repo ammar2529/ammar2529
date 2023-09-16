@@ -1,11 +1,19 @@
+USE [OnlineSolutions]
+GO
 
+/****** Object:  StoredProcedure [dbo].[SEL_iRental_SalesContracts_SP]    Script Date: 9/15/2023 6:05:44 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
   
   
 --[SEL_iRental_SalesContracts_SP] 3, null,null,null,null, null,null,null,null,null,null,null  
 --select * from iRental_SalesContracts  
   
-CREATE  PROCEDURE [dbo].[SEL_iRental_SalesContracts_SP]     
+ALTER  PROCEDURE [dbo].[SEL_iRental_SalesContracts_SP]     
  @RecId int,  
  @__UserId nvarchar(50),  
  @RecCode varchar(20),  
@@ -135,8 +143,6 @@ where (iRental_Cars_Rates.RateTypeId= @RateTypeId or @RateTypeId is null) and
 order by RecId Desc  
 */  
 END  
-
 GO
-
 
 

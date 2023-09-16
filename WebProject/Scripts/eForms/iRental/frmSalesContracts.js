@@ -64,14 +64,7 @@
             setField('ReservationWeekDays', dow, t.el);
         });
 
-        //calculate setTime on start date
-        //var SetTimeFromSelectedDate = AsyncWidgets.WidgetScripts.frmSalesContracts.SetTimeFromSelectedDate;
-        //$('[argumentid="ContractStartDate"]').on('blur', function ()
-        //{
-        //    var csDate = val('ContractStartDate', t.el);
-        //    var setTime = SetTimeFromSelectedDate(csDate);
-        //    setField('ContractStartTime', setTime, t.el);
-        //});
+     
 
     //lines marked by Qasim
   
@@ -846,29 +839,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
     }
 };
 
-//calculte setTime on contract start date 
-//AsyncWidgets.WidgetScripts.frmSalesContracts.SetTimeFromSelectedDate = function (csDate)
-//{
-//    var oDate = csDate.convertDate();
-//    if (!isNaN(oDate))
-//    {
-//        var hours = oDate.getHours();
-//        var minutes = oDate.getMinutes();
 
-//        var formattedTime = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
-//        return formattedTime
-
-//    }
-//    return  "Invalid Date";
-//};
-
-//Upload file to db
 AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 {
 
  
     $(".upload-button",t.el).click(function (e)
     {
+        debugger;
         var isGUIDUpdateNeeded = false;
         if (val('FileGuid',t.el).trim() == "")
         {
@@ -963,6 +941,55 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     {
         $(this).closest(".file-item").remove();
         $(".file-input", t.el).val('');
+    });
+
+    // Handle Drag drop file selection and display in the list
+    $(".file-input", t.el).on("dragover", function (e)
+    {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).addClass("drag-over");
+    });
+
+    $(".file-input", t.el).on("dragleave", function (e)
+    {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).removeClass("drag-over");
+    });
+
+    $(".file-input", t.el).on("drop", function (e)
+    {
+        var isGUIDUpdateNeeded = false;
+        if (val('FileGuid', t.el).trim() == "")
+        {
+            var guid = generateGuid();
+            setField('FileGuid', guid, t.el);
+            if (t.FormMode == 'update')
+            {
+                isGUIDUpdateNeeded = true;
+            }
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).removeClass("drag-over");
+
+        var fileList = $(".file-list", t.el);
+
+        var files = e.originalEvent.dataTransfer.files;
+     
+        for (var i = 0; i < files.length; i++)
+        {
+            var RfileName = files[i].name.replace(/[ .]/g, '_');
+
+            var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
+            var fileName = $("<div class='file-name'></div>").text(files[i].name);
+            var removeButton = $("<div class='remove-file'>X</div>");
+            fileItem.css('background-color', 'lightcoral');
+            fileItem.append(fileName);
+            fileItem.append(removeButton);
+            fileList.append(fileItem);
+        }
     });
 
   //   Handle file selection and display in the list
