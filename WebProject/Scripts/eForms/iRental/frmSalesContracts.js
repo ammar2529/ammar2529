@@ -968,8 +968,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             if (t.FormMode == 'update')
             {
                 isGUIDUpdateNeeded = true;
-            }
+            } 
         }
+
         e.preventDefault();
         e.stopPropagation();
         $(this).removeClass("drag-over");
