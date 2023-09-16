@@ -1308,6 +1308,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="test2.aspx" />
     <Content Include="TestForm.aspx" />
+    <Content Include="test\DevBranchScript.js" />
     <Content Include="test\index.html" />
     <Content Include="test\one.js" />
     <Content Include="test\Two.js" />
