@@ -82,14 +82,14 @@
                         </div>
                         <div>
                             <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
-                                groupid="SalesContractsForm" lovpopupid="mypopup" argumentid="CarNumber" />
+                                groupid="SalesContractsForm" lovpopupid="carPopup" argumentid="CarNumber" />
                         </div>
                     </td>
                     <td class="ftitle">
                         <nobr>Customer Code*:</nobr></td>
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
-                            groupid="SalesContractsForm" lovpopupid="mypopupp" argumentid="CustomerRecCode" />
+                            groupid="SalesContractsForm" lovpopupid="coustomerPopup" argumentid="CustomerRecCode" />
                         <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>
                     </td>
                 </tr>
