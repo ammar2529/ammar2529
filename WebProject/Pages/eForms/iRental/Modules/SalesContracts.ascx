@@ -94,7 +94,7 @@
 </AW:Container>
 
 
-<div class='LOVPopup' lovpopupid='mypopupp' style="display: none">
+<div class='LOVPopup' lovpopupid='customerPopup' style="display: none">
     <AW:Form ID="frmRentalContracts_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
 
         <WidgetConfig>
@@ -256,7 +256,7 @@
     </WidgetConfig>
 </AW:Form>
 
-<div class='LOVPopup' lovpopupid='mypopup' style="display: none">
+<div class='LOVPopup' lovpopupid='carPopup' style="display: none">
     <AW:Form ID="frmSalesContracts_Cars" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cars_ShUc.ascx">
         <WidgetConfig>
             <script>
