@@ -14,9 +14,9 @@
         });
         t.on('LOVPopupClosed', (args) =>
         {
-            //  debugger;
+              //debugger;
 
-            t.setParams({ params: args.rowData, isRow: true });
+            
         });
         t.on('LOVPopupShown', (popup) =>
         {
@@ -1003,7 +1003,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
         for (var i = 0; i < files.length; i++)
         {
             var orignalFileName = files[i].name;
-            var RfileName = files[i].name.replace(/[ .]/g, '_');
+            var RfileName = files[i].name.replace(/[^a-zA-Z0-9]/g, '-');
+
 
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(orignalFileName);
@@ -1094,10 +1095,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                 var fileName = row.FileName;
                 var recId = row.RecId;
                 var fileGuid = row.FileGuid;
-                var RfileName = row.FileName.replace(/[ .]/g, '_');
+                var RfileName = row.FileName.replace(/[^a-zA-Z0-9]/g, '-');
 
                 $("." + RfileName, t.el).remove();
 
+                if ($(`.file-list a:contains("${fileName}")`).length > 0)
+                {
+                    continue;
+                }
                 var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
 
             

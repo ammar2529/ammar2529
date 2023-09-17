@@ -289,7 +289,7 @@
                 <tr>
                     <td rowspan="3" colspan="2">
 
-                        <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="fComments" groupid="SalesContractsForm-" name="S1" cols="20"></textarea></td>
+                        <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea></td>
 
                     <td class="ftitle">
 
@@ -398,8 +398,8 @@
                 <tr>
                     <td colspan="4" style="text-align: center;">
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" value="  Save  " ignorevalidate="ReservationDate" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false}" />
-                            <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:true,Params:{DBAction:'SCReserved'}}" />
+                            <input type="button" value="  Save  " ignorevalidate="ReservationDate" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
+                            <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
                             <%--              <input type="button" value="  Print  " clafss="ButtonStyle btn_9" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
                         </div>

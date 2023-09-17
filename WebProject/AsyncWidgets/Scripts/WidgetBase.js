@@ -1519,8 +1519,9 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
         // containerId = !!containerId ? "#" + containerId + " " : "";  // container which can contain groups(each group for different table) of fields 
         ContainerGroup = !!ContainerGroup ? "='" + ContainerGroup + "']" : "]";
         var UniqueKeys = null, UniqueKeysWithVal = null;
+        var flds = $(`[groupid${ContainerGroup}:not(div[widgetid] div[widgetid] [groupid]`, container);
 
-        var fields = !cf.filter ? $("[groupid" + ContainerGroup, container) : $("[groupid" + ContainerGroup, container).filter(cf.filter);
+        var fields = !cf.filter ? flds : flds.filter(cf.filter);
 
         fields.each(function () { // iterate throug each field of the container group(if specified else iterate through all fields in all groups in the container)
 
@@ -1661,7 +1662,7 @@ var setField = function (ctl, param, ctx)
             return;
         }
     }
-    console.log(`setting value: ${$(ctl).attr("argumentid")}-${param.val}`);
+    //console.log(`setting value: ${$(ctl).attr("argumentid")}-${param.val}`);
     tag = ctl.tagName;
     if (tag == 'SELECT') {
         if (val == '') {
@@ -1828,6 +1829,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             }
             resGrd.on('rowClicked', function HandleRowClick(args) {
                 args.canceled = false;
+                t.setParams({ params: args.rowData, isRow: true });
                 popup.hide();
                 t.fireEvent('LOVPopupClosed', args);
                 $(t.el).unmask();
