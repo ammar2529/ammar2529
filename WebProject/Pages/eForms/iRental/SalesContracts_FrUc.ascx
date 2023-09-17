@@ -5,38 +5,19 @@
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
-
-<style type="text/css">
-    .auto-style1 {
-        height: 21px;
-    }
-
-    .auto-style2 {
-        width: 275px;
-    }
-</style>
-
+    <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
+    <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
     <tr>
-        <td style="padding-top: 10px; padding-left: 2px;">
+        <td style="padding-top: 0px; padding-left: 2px;">
             <ul class="SimpleTab" style="margin: 0px;">
                 <li class="active" tabid="SalesContractDetails">
                     <div>Contract Details </div>
                 </li>
-                <%--                
-				<li tabid="AdditionalDrivers" >
-					<div>
-          Additional Drivers</div>
-				</li> --%>
-                <li tabid="SalesPaymentDetails">
+                <li tabid="SalesPaymentDetails" style="border-right: 1px solid #8298B0;">
                     <div>Payment Details </div>
                 </li>
-              <%--  <li tabid="SalesOtherCharges">
-                    <div>Other Charges </div>
-                </li>--%>
-                <li tabid="SalesContractComments" style="border-right: 1px solid #8298B0;">
-                    <div>Comments </div>
-                </li>
+
             </ul>
         </td>
     </tr>
@@ -46,25 +27,9 @@
                 <tr id="trNote">
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>
-                <%--    
-				<tr class="OnNewHide">
-					<td class="ftitle" width="18%">
-						<nobr>Contract No.</nobr>
-					</td>
-					<td class="ftitle" width="32%">
-						<span class="ftitle" style="color: red;" groupid="SalesContractsForm" argumentid="RecCode">New contract no. will be generated on saving</span>
-					</td>
-					<td class="ftitle" width="20%">
-						<nobr>Contract Status</nobr>
-					</td>
-					<td class="ftitle" width="30%">
-						<span class="ftitle" groupid="SalesContractsForm" argumentid="StateName"></span>
-					</td>
-				</tr>--%>
-
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
 
@@ -225,7 +190,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
 
@@ -268,7 +233,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
 
@@ -289,7 +254,7 @@
                 <tr>
                     <td rowspan="3" colspan="2">
 
-                        <textarea class="auto-style2" style="width: 100%" rows="5" wrap="1" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea></td>
+                        <textarea  style="width: 100%" rows="5" wrap="hard" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea></td>
 
                     <td class="ftitle">
 
@@ -310,7 +275,7 @@
 
                         <nobr>Discount:</nobr>
 
-                       
+                     </td>
                     <td class="ftitle">
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number CommonDisable"
                                groupid="SalesContractsForm" argumentid="Discount" />
@@ -333,7 +298,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
 
@@ -359,7 +324,7 @@
 
             <tr>
                 <td colspan="4">
-                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                 </td>
             </tr>
             
@@ -373,7 +338,7 @@
                         </div>
                         <div class="file-upload-drop-area">
                             <p class="ftitle">Drag and Drop or click to select files .</p>
-                            <input type="file" class="file-input" multiple />
+                            <input type="file" class="file-input" multiple="multiple" />
                         </div>
    
                         <button class="upload-button">Upload</button>
@@ -385,13 +350,13 @@
 
                     </div>
 
-                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                 
                 </td>
             </tr>
             <tr>
                 <td colspan="4">
-                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                 </td>
             </tr>
 
@@ -410,8 +375,6 @@
         </td>
     </tr>
 
-    <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
-    <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
     <tr tabid="SalesPaymentDetails" style="display: none;">
         <td style="padding-top: 1px;">
 
@@ -527,192 +490,6 @@
 
                         var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
 
-                    </script>
-                </Scripts>
-            </AW:Form>
-
-        </td>
-    </tr>
-
-    <tr tabid="OtherCharges" style="display: none;">
-        <td style="padding-top: 1px;">
-            <AW:DataGrid ID="grdSalesOtherCharges" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
-                EmptyHeight="201px" AllowNew="true" SelectableRow="true"
-                PageSize="10" DataSource="SEL_iRental_SalesContracts_OtherCharges" ContainerMargin="2px" GridTemplate="jQueryUI"
-                GridHeadText="Other Charges" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_OtherCharges\',KeysCol:\'RecId\'}}}">
-
-                <GridConfig>
-                    <script>
-                        cf = {
-                            cols: {
-                                Sequence: { width: '0px' },
-                                RecId: { width: '70px', caption: 'ID' },
-                                ParentRecId: { width: '0px' },
-                                Description: { caption: 'Description' },
-                                Charges: { caption: 'Amount', width: '90px' },
-                                DateCreated: { caption: 'Date Created', width: '130px' },
-                                CreatedBy: { caption: 'Created By', width: '150px' },
-                                StateId: { width: '0px' }
-                            },
-                            forms: {
-                                NewFormId: 'frSalesOtherCharges',
-                                EditFormId: 'frSalesOtherCharges',
-                                Keys: 'RecId'
-                            }
-                        };
-                    </script>
-                </GridConfig>
-                <Scripts>
-                    <script>
-                        var fn = Sales.SalesContracts.grdOtherCharges;
-                    </script>
-                </Scripts>
-                <RowDetail>
-                    <pre class="" colindex="3">
-                    <AW:container id="conSalesOtherCharges_Audit" hidden="true" runat="server">
-                    <childern>
-                    <div style="padding:15px">
-                         <AW:DataGrid ID="grdSalesOtherCharges_Audit" LoadOnInit="true" ShowOnLoad="false" runat="server"
-                Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="false" RelativeKeys="RecId"
-                PageSize="30" DataSource="SEL_iRental_SalesContracts_OtherCharges_Audit" ContainerMargin="2px"  ShowGridHead="false"
-                GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{visible:false},\'new\':{visible:false}}" >
-                           <GridConfig>
-                    <script>
-                        cf = {
-                            cols: {
-                                AuditTrailId: { width: '0px', caption: 'Audit ID' },
-                                StateId: { caption: 'Status', width: '111px' },
-                                RecId: { width: '0px' },
-                                ParentRecId: { width: '0px' },
-                                Description: { caption: 'Description' },
-                                Charges: { caption: 'Amount', width: '90px' },
-                                DateCreated: { caption: 'Date Created', width: '130px' },
-                                CreatedBy: { caption: 'Created By', width: '132px' }
-                            }
-                        };
-                    </script></GridConfig>
-                                <Scripts>
-                    <script>
-                        var fn = function ()
-                        {
-                            t.on('rowsRendered', function ()
-                            {
-                                $('[colid="Charges"]:not(".w-grid-head-cell")').each(function ()
-                                {
-                                    var ptr = $(this).closest('tr');
-                                    $('[colid="Charges"] div', ptr).text(parseFloat($('[colid="Charges"] div', ptr).text()).fix(3));
-                                });
-                            });
-                            t.on('onNoRecords', function ()
-                            {
-                                $('.BottomTR', t.Repeater).hide();
-                            });
-                        }
-                    </script></Scripts></AW:DataGrid>
-                </div></Childern></AW:container>
-                     </pre>
-                </RowDetail>
-            </AW:DataGrid>
-
-            <AW:Form ID="frmSalesOtherCharges" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
-                AsyncForm="~/Pages/eForms/iRental/SalesContracts_OC_FrUc.ascx">
-                <WidgetConfig>
-                    <script>
-                        cf = {
-
-                            header: {
-                                Style: {},
-                                Visible: true,
-                                Collapsed: false,
-                                HeadText: 'Other Charges'
-                            }
-                        }
-                    </script>
-                </WidgetConfig>
-                <Scripts>
-                    <script>
-                        var fn = function ()
-                        {
-
-                            t.on('show', function (args)
-                            {
-                                var frm = AsyncWidgets.get('frmSalesContracts');
-                                $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
-                            });
-                        }
-                    </script>
-                </Scripts>
-            </AW:Form>
-
-        </td>
-    </tr>
-
-    <tr tabid="ContractComments" style="display: none;">
-        <td style="padding-top: 1px;">
-
-            <AW:DataGrid ID="grdSalesContractComments" LoadOnInit="true" ShowOnLoad="false" runat="server"
-                Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
-                PageSize="10" DataSource="SEL_iRental_SalesContracts_Comments" ContainerMargin="2px"
-                GridTemplate="jQueryUI" GridHeadText="Comments" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Comments\',KeysCol:\'RecId\'}}}">
-                <GridConfig>
-                    <script>
-                        cf = {
-                            cols: {
-                                Sequence: { width: '0px' },
-                                RecId: { width: '0px' },
-                                ParentRecId: { width: '0px' },
-                                Comments: { caption: 'Comments' },
-                                DateCreated: { caption: 'Date Created', width: '130px' },
-                                CreatedBy: { caption: 'Created By', width: '150px' }
-                            },
-                            forms: {
-                                NewFormId: 'frmSalesComments',
-                                EditFormId: 'frmSalesComments',
-                                Keys: 'RecId'
-                            }
-                        };
-                    </script>
-                </GridConfig>
-                <Scripts>
-                    <script>
-                        var fn = function ()
-                        {
-                            t.on('beforeSearchGetForm', function (P)
-                            {
-                                var frm = AsyncWidgets.get('frmSalesContracts');
-                                P.ParentRecId = frm.GetArgVal('RecId');
-                            });
-                        }
-                    </script>
-                </Scripts>
-            </AW:DataGrid>
-
-            <AW:Form ID="frmSalesComments" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
-                AsyncForm="~/Pages/eForms/iRental/SalesContracts_CS_FrUc.ascx">
-                <WidgetConfig>
-                    <script>
-                        cf = {
-
-                            header: {
-                                Style: {},
-                                Visible: true,
-                                Collapsed: false,
-                                HeadText: 'Comments'
-                            }
-                        }
-                    </script>
-                </WidgetConfig>
-                <Scripts>
-                    <script>
-                        var fn = function ()
-                        {
-
-                            t.on('show', function (args)
-                            {
-                                var frm = AsyncWidgets.get('frmSalesContracts');
-                                $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
-                            });
-                        }
                     </script>
                 </Scripts>
             </AW:Form>

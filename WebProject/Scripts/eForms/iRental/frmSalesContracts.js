@@ -98,11 +98,13 @@
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function () {
         var li = $(this), tbl;
-        if (!!$(this).parent().attr('disabled')) return;
-        if (li.parent().children('li.active').attr('tabid') == li.attr('tabid')) return false;
-        li.parent().children('li.active').removeClass('active');
-        li.addClass('active');
-        tbl = li.closest('table').children();
+        if (!!$(this).parent().attr('disabled'))
+            return;
+        if (li.parent().children('li.active').attr('tabid') == li.attr('tabid'))
+            return false;
+        li.parent().children('li.active').removeClass('active'); //make all tabs inactive
+        li.addClass('active'); // make current tabe active
+        tbl = li.closest('table').children(); // get table container which contains the tabs and table pages
         tbl.children('tr:not(:first)').hide();
         tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
         $('.tabid', t.el).val(li.attr('tabid'));
@@ -116,19 +118,15 @@
                 Params: { RecId: val('RecId', wg.el), Command: 'SEL_iRental_SalesContracts' }
 
             }
-            wg.loadValues(cf, function ()
-            {
-                wg.show();
-            });
+            wg.loadValues(cf);
+            //, function () {
+            //    wg.show();
+            //}
             
         }
 
         else if (li.attr('tabid') == 'SalesPaymentDetails') {
             AsyncWidgets.get('grdSalesContractsPaymentDetails').show().Requery();
-        }
-
-        else if (li.attr('tabid') == 'ContractComments') {
-            AsyncWidgets.get('grdContractComments').show().Requery();
         }
 
         return false;
@@ -578,7 +576,7 @@
             $('.file-list', t.el).html('');
             console.log($('.file-list', t.el).length);
         //Always Move to First Tab on Show
-        var li = $('li[tabid="ContractDetails"]', t.el), tbl;
+        var li = $('li[tabid="SalesContractDetails"]', t.el), tbl;
         li.parent().children('li.active').removeClass('active');
         li.addClass('active');
         tbl = li.closest('table').children();
@@ -604,9 +602,9 @@
         $('[argumentid="ContractEndDate"]', t.el).next('img').hide().addClass('AlwaysDisable').addClass('OnLoadHide');
         $('.contDetailsIcon', t.el).addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
 
-
-        $('.SimpleTab', t.el).attr('disabled', 'disabled');
-      
+            if (t.FormMode == "new") {
+                $('.SimpleTab', t.el).attr('disabled', 'disabled');
+            }
 
         SHMileageType(); // This function is called to hide show Mileage Type Related Fields on Value Loaded
 
