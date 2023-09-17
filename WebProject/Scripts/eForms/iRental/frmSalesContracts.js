@@ -846,7 +846,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
  
     $(".upload-button",t.el).click(function (e)
     {
-        debugger;
         var isGUIDUpdateNeeded = false;
         if (val('FileGuid',t.el).trim() == "")
         {
@@ -998,22 +997,50 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     $(".file-input", t.el).change(function ()
     {
         var fileList = $(".file-list", t.el);
-      
-
+        var linkFile = $('.file-list .file-link', t.el);
+        var fileName = $('.file-list .file-item > .file-name', t.el);
         var files = this.files;
         for (var i = 0; i < files.length; i++)
         {
+            var orignalFileName = files[i].name;
             var RfileName = files[i].name.replace(/[ .]/g, '_');
 
-        
-
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
-            var fileName = $("<div class='file-name'></div>").text(files[i].name);
+            var fileName = $("<div class='file-name'></div>").text(orignalFileName);
             var removeButton = $("<div class='remove-file'>X</div>");
-            fileItem.css('background-color', 'lightcoral'); 
-            fileItem.append(fileName);
-            fileItem.append(removeButton);
-            fileList.append(fileItem);
+           
+
+
+            for (var i = 0; i < fileName.length; i++) {
+
+                var findToFile = $(fileName[i]);
+                console.log("file: "+findToFile.text());
+                for (var j = 0; j < linkFile.length; j++) {
+
+
+                    var findToLinkFile = $(linkFile[j]);
+                    console.log("Link Files: " + findToLinkFile.text());
+
+                    if (findToFile.text() == findToLinkFile.text()) {
+                        console.log("dublicate file found");
+                        $.showMessage(`File [${orignalFileName}] is already uploaded`);
+                        findToFile.remove();
+                        $('.file-input', t.el).val('');
+                        return;
+                    } else
+                    {
+                        console.log("not dublicate");
+                    }
+                }
+
+
+            }
+                fileItem.css('background-color', 'lightcoral');
+                fileItem.append(fileName);
+                fileItem.append(removeButton);
+                fileList.append(fileItem);
+            
+           
         }
     });
 
@@ -1085,6 +1112,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
                 removeButton.data('fileName', fileName); // Store the file name in a data attribute
 
+                ///Remove File 
                 removeButton.on('click', function ()
                 {
                     var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
@@ -1133,7 +1161,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile = function (t, rec
         {
             var response = res.Response || '';
             var msg = response.split('||');
-            $.showMessage(`[${fileName}] ${msg[2]}`);
+            $.showMessage(`File [${fileName}] ${msg[2]}`);
         } else
         {
             $.showMessage(`File [${fileName}] not Delete `);
