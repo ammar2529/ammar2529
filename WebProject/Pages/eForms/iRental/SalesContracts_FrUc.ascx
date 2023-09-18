@@ -345,7 +345,7 @@
                         <div class="progress-bar"></div>
                         <div class="message"></div>
     
-                        <input type="text" groupid="SalesContractsForm" argumentid="FileGuid" readonly ="readonly" />
+                        <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly ="readonly" />
 
 
                     </div>

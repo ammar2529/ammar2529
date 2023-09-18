@@ -1519,7 +1519,15 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
         // containerId = !!containerId ? "#" + containerId + " " : "";  // container which can contain groups(each group for different table) of fields 
         ContainerGroup = !!ContainerGroup ? "='" + ContainerGroup + "']" : "]";
         var UniqueKeys = null, UniqueKeysWithVal = null;
-        var flds = $(`[groupid${ContainerGroup}:not(div[widgetid] div[widgetid] [groupid]`, container);
+        var flds;
+        if ($('div[widgetid]', container).length < 1) {
+            flds = $(`[groupid${ContainerGroup}`, container);
+        }
+        else {
+            flds = $(`[groupid${ContainerGroup}:not(div[widgetid] div[widgetid] [groupid]`, container);
+        }
+
+        
 
         var fields = !cf.filter ? flds : flds.filter(cf.filter);
 
@@ -2437,8 +2445,10 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         $('[forms~=' + t.State.WidgetId + ']').each(function () {
             //debugger;
             var id = this.getAttribute('widgetid');
-            if (!!id)
-                AsyncWidgets.get(this.getAttribute('widgetid')).search({ wg: t, reset: true });
+            if (!!id) {
+                var sWG = AsyncWidgets.get(this.getAttribute('widgetid'));
+                sWG.search({ wg: t, reset: true });
+            }
         });
         return t;
     },
