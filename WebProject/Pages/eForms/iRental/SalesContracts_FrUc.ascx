@@ -2,11 +2,13 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
+<%@ Register Src="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx" TagPrefix="AW" TagName="CustomerDetails_FrUc" %>
+
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
-    <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
-    <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
+<script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
+<script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
@@ -41,8 +43,9 @@
                     <td>
                         <input type="hidden" name="RecId" groupid="SalesContractsForm" argumentid="RecId" />
 
-                        <div style="display: none"><span groupid="SalesContractsForm" argumentid="RecId1"></span><span groupid="SalesContractsForm" argumentid="StateId"></span>
-                            
+                        <div style="display: none">
+                            <span groupid="SalesContractsForm" argumentid="RecId1"></span><span groupid="SalesContractsForm" argumentid="StateId"></span>
+
 
                         </div>
                         <div>
@@ -56,6 +59,8 @@
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
                             groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" />
                         <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>
+                        <%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>--%>
+
                     </td>
                 </tr>
 
@@ -67,13 +72,13 @@
 
                 <tr>
                     <td class="ftitle">
-                        <nobr>Chassis Number</nobr>
+                        <nobr>Chassis Number:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="ChassisNo"></span>
                     </td>
                     <td class="ftitle">
-                        <nobr>Name</nobr>
+                        <nobr>Name:</nobr>
                     </td>
                     <td style="text-align: center">
                         <span class="ftitle" style="font-size: 16px;" groupid="SalesContractsForm" argumentid="CustomerName"></span>
@@ -81,13 +86,13 @@
                 </tr>
                 <tr>
                     <td class="ftitle">
-                        <nobr>Brand</nobr>
+                        <nobr>Brand:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="BrandId"></span>
                     </td>
                     <td class="ftitle">
-                        <nobr>Type</nobr>
+                        <nobr>Type:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="CustomerType"></span>
@@ -95,13 +100,13 @@
                 </tr>
                 <tr>
                     <td class="ftitle">
-                        <nobr>Model</nobr>
+                        <nobr>Model:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="ModelId"></span>
                     </td>
                     <td class="ftitle">
-                        <nobr>Nationality</nobr>
+                        <nobr>Nationality:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Nationality"></span>
@@ -109,13 +114,13 @@
                 </tr>
                 <tr class="OnLoadHideCarCust">
                     <td class="ftitle">
-                        <nobr>Year</nobr>
+                        <nobr>Year:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="CarYear"></span>
                     </td>
                     <td class="ftitle">
-                        <nobr>Gender</nobr>
+                        <nobr>Gender:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Gender"></span>
@@ -123,13 +128,13 @@
                 </tr>
                 <tr class="OnLoadHideCarCust">
                     <td class="ftitle">
-                        <nobr>Color</nobr>
+                        <nobr>Color:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Color"></span>
                     </td>
                     <td class="ftitle">
-                        <nobr>Passport No.</nobr>
+                        <nobr>Passport No.:</nobr>
                     </td>
                     <td>
                         <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="PassportNo"></div>
@@ -144,7 +149,7 @@
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="TypeId"></span>
                     </td>
                     <td class="ftitle">
-                        <nobr>National ID No.</nobr>
+                        <nobr>National ID No.:</nobr>
                     </td>
                     <td>
                         <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="NationalIDNo"></div>
@@ -152,12 +157,12 @@
                     </td>
                 </tr>
                 <tr class="OnLoadHideCarCust">
-                    
+
                     <td></td>
                     <td></td>
-                  
+
                     <td class="ftitle">
-                        <nobr>Driving License No.</nobr>
+                        <nobr>Driving License No.:</nobr>
                     </td>
                     <td>
                         <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="DrivingLicenseNo"></div>
@@ -168,7 +173,7 @@
                     <td></td>
                     <td></td>
                     <td class="ftitle">
-                        <nobr>Work & Res. Telephone</nobr>
+                        <nobr>Work & Res. Telephone:</nobr>
                     </td>
                     <td class="ftitle">
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="WorkTelephone"></span>
@@ -180,7 +185,7 @@
                     <td></td>
                     <td></td>
                     <td class="ftitle">
-                        <nobr>Mobile Telephone</nobr>
+                        <nobr>Mobile Telephone:</nobr>
                     </td>
                     <td class="ftitle">
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone1"></span>
@@ -211,7 +216,7 @@
                     </td>
 
                     <td class="ftitle">
-                        <nobr>Reservation Date:</nobr>
+                        <nobr>Reservation Date*:</nobr>
                     </td>
                     <td>
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
@@ -238,36 +243,36 @@
                 </tr>
 
 
-                
-           <tr>
-               <td colspan="2" class="ftitle">Comments</td>
-             
-               <td>
-                   <nobr class="ftitle">Car Price</nobr>
-               </td>
-               <td class="ftitle">
-                   <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align:center;"></span>
 
-               </td>
-           </tr>
-            
+                <tr>
+                    <td colspan="2" class="ftitle">Comments:</td>
+
+                    <td>
+                        <nobr class="ftitle">Car Price:</nobr>
+                    </td>
+                    <td class="ftitle">
+                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align: center;" requirederr=' Car Price  Required'></span>
+
+                    </td>
+                </tr>
+
                 <tr>
                     <td rowspan="3" colspan="2">
 
-                        <textarea  style="width: 100%" rows="5" wrap="hard" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea></td>
+                        <textarea style="width: 100%" rows="5" wrap="hard" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea></td>
 
                     <td class="ftitle">
 
-                        <nobr>Additional Amount</nobr>
+                        <nobr>Additional Amount:</nobr>
                     </td>
                     <td class="ftitle">
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number CommonDisable"
-                               groupid="SalesContractsForm" argumentid="AdditionalAmount" />
+                            groupid="SalesContractsForm" argumentid="AdditionalAmount" />
 
                     </td>
 
                 </tr>
-              
+
 
                 <tr>
 
@@ -275,10 +280,10 @@
 
                         <nobr>Discount:</nobr>
 
-                     </td>
+                    </td>
                     <td class="ftitle">
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number CommonDisable"
-                               groupid="SalesContractsForm" argumentid="Discount" />
+                            groupid="SalesContractsForm" argumentid="Discount" />
                     </td>
 
                 </tr>
@@ -288,7 +293,7 @@
                 <tr>
 
                     <td class="ftitle">
-                        <nobr>Grand Total*:</nobr>
+                        <nobr>Grand Total:</nobr>
                     </td>
                     <td>
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="TotalAmount"></span>
@@ -302,63 +307,91 @@
                     </td>
                 </tr>
 
-                
 
-       
-            <tr >
-                <td class="ftitle">
-                    <nobr style="color: Green; font-size: 12px">Amount Received (KD)</nobr>
-                </td>
-                <td style="text-align: center;">
-                    <span class="ftitle" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
-                </td>
-                <td class="ftitle">
 
-                    <nobr style="color: Red; font-size: 12px">Amount Due</nobr>
-                </td>
-                <td style="text-align: center;">
-                    <span class="ftitle" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
-                </td>
-            </tr>
-            
 
-            <tr>
-                <td colspan="4">
-                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                </td>
-            </tr>
-            
-            <tr>
-                <td colspan="4">
-                    <div class="file-upload-container">
-                        <div class="uploaded-file-list"></div>
+                <tr>
+                    <td class="ftitle">
+                        <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="ftitle" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
+                    </td>
+                    <td class="ftitle">
 
-                        <div id="file-list" class="file-list">
-                            <!-- File list will be displayed here -->
+                        <nobr style="color: Red; font-size: 12px">Amount Due:</nobr>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="ftitle" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <div class="file-upload-container">
+                            <div class="uploaded-file-list"></div>
+
+                            <div id="file-list" class="file-list">
+                                <!-- File list will be displayed here -->
+                            </div>
+                            <div class="file-upload-drop-area">
+                                <p class="ftitle">Drag and Drop or click to select files .</p>
+                                <input type="file" class="file-input" multiple="multiple" />
+                                  <p id="fileSize"></p>
+                            </div>
+
+                            <button class="upload-button">Upload</button>
+                            <div class="progress-bar"></div>
+                            <div class="message"></div>
+
+                            <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly="readonly" />
+                            <%-- Data Grid --%>
+
+                            <AW:DataGrid ID="grdSalesFileUpload" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1"
+                                EmptyHeight="201px" AllowNew="true" SelectableRow="false"
+                                PageSize="10" DataSource="FX_UPD_FileUpload" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
+                                GridHeadText="Upload File List" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
+
+                              <GridConfig>
+                                <script>
+                                    var cf = {
+                                        cols: {
+                                            Sequence: { width: '0px' },
+                                            FileName: { width: '0px' },
+                                            FileSize: { width: '0px' },
+                                            $CreatedBy: { width: '0px' },
+                     
+
+                                        }
+                    
+                                    };
+                                </script>
+
+
+                            </GridConfig>
+
+                            </AW:DataGrid>
+
+                            <%-- End Data Grid --%>
                         </div>
-                        <div class="file-upload-drop-area">
-                            <p class="ftitle">Drag and Drop or click to select files .</p>
-                            <input type="file" class="file-input" multiple="multiple" />
-                        </div>
-   
-                        <button class="upload-button">Upload</button>
-                        <div class="progress-bar"></div>
-                        <div class="message"></div>
-    
-                        <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly ="readonly" />
 
 
-                    </div>
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
 
-                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                </td>
-            </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                    </td>
+                </tr>
 
                 <tr>
                     <td colspan="4" style="text-align: center;">
@@ -444,23 +477,18 @@
                     </script></GridConfig>
                     <Scripts>
                     <script>
-                        var fn = function ()
-                        {
-                            t.on('rowsRendered', function ()
-                            {
-                                $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function ()
-                                {
+                        var fn = function () {
+                            t.on('rowsRendered', function () {
+                                $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function () {
                                     var ptr = $(this).closest('tr');
-                                    if ($(this).text().toLowerCase() == "return")
-                                    {
+                                    if ($(this).text().toLowerCase() == "return") {
                                         $('[colid="PaymentAmount"] div', ptr).css({ 'font-weight': 'bold', 'color': 'red' });
                                         $('[colid="PaymentAmount"] div', ptr).text('-' + $('[colid="PaymentAmount"] div', ptr).text());
                                     }
                                     $('[colid="PaymentAmount"] div', ptr).text(parseFloat($('[colid="PaymentAmount"] div', ptr).text()).fix(3));
                                 });
                             });
-                            t.on('onNoRecords', function ()
-                            {
+                            t.on('onNoRecords', function () {
                                 $('.BottomTR', t.Repeater).hide();
                             });
                         }

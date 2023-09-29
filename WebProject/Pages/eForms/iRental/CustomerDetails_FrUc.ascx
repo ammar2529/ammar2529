@@ -237,7 +237,7 @@
                                 <img src="App_Themes/eForms_Theme/Images/spacer.gif">
                             </td>
                             <td>
-                      <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true}">
+                      <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true,Requery:false}">
                       <input type="button" value="  Cancel  " class="CloseForm ButtonStyle">
                             </td>
                         </tr>

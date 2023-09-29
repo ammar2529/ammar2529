@@ -19,6 +19,7 @@ Views:
 	VW_CarYear
 	VW_Type 
 	VW_Models
+	
 	VW_iRental_SalesContracts_Payments
 	 
 update SP:
@@ -39,3 +40,19 @@ update SP:
 	UPD_iRental_SalesContracts_Comments_SP 
 	UPD_iRental_SalesContracts_OtherCharges_SP 
 	UPD_Fx_FileUpload
+	
+	UPD_Fx_FileUpload  not change in asif bhai server
+	
+	17/09/023
+	[UPD_iRental_SalesContracts_SP]
+	[SEL_iRental_CarsForSale_SP]
+	[SEL_iRental_SalesContracts_SP]
+	VW_FX_Workflow_States_Sales_Contracts
+	SEL_iRental_SalesContracts_SP
+	
+	19/09/2023 not change in asif bhai server
+	INS_iRental_CarsForSales_SP
+	UPD_iRental_CarsForSales_SP
+	SEL_iRental_CarsForSales_SP
+	UPD_iRental_SalesCarPrice_SP
+	SEL_iRental_SalesCarPrice_SP

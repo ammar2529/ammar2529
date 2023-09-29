@@ -42,6 +42,15 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdContracts_Cust;
 
         /// <summary>
+        /// frmSalesCustomerDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmSalesCustomerDetails;
+
+        /// <summary>
         /// frmSalesContracts control.
         /// </summary>
         /// <remarks>

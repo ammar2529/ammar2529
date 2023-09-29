@@ -24,7 +24,7 @@
 <%--            <AW:RentalContracts runat="server" ID="RentalContracts" />--%>
 
 <%--          <AW:SalesContracts runat="server" id="SalesContracts" />--%>
-            <AW:CarForSales runat="server" id="CarForSales" />
+<%--            <AW:CarForSales runat="server" id="CarForSales" />--%>
 
 
 

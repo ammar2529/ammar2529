@@ -24,15 +24,6 @@ namespace WebProject
         protected global::System.Web.UI.WebControls.TextBox RndNo;
 
         /// <summary>
-        /// CarForSales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.Pages.eForms.iRental.Modules.CarForSales CarForSales;
-
-        /// <summary>
         /// SalesCarPrice control.
         /// </summary>
         /// <remarks>

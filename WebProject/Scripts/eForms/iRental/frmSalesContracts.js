@@ -36,6 +36,8 @@
        // AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile();
        ///////////////////////////////////////////////////////////////////////////////////////////////
 
+       
+
        //calculate days
         var CalculateDays = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays;
         $('[argumentid="ContractStartDate"], [argumentid="ReservationDate"]', t.el).on('blur', function ()
@@ -64,9 +66,6 @@
             setField('ReservationWeekDays', dow, t.el);
         });
 
-     
-
-    //lines marked by Qasim
   
     //On Click Plus Sign to Show hide More details of Customer & Cars
     $('.contDetailsIcon', t.el).click(function () {
@@ -133,442 +132,6 @@
     });
     // End
 
-    // End
-
-    // Function to Show Hide Mileage Type Related Fields
-    var SHMileageType = function () {
-        if ($('[argumentid="ContractTypeOL"]:checked', t.el).val() == 'Open') {
-            $('.MileageType', t.el).hide();
-            $('.MileageTypeCharges', t.el).hide();
-        }
-        else { //if check value is 'Limited'
-            $('.MileageType', t.el).show();
-
-            if ($('[argumentid="StateId"]', t.el).text() != '' && $('[argumentid="StateId"]', t.el).text() != 'RRCStartState' && $('[argumentid="StateId"]', t.el).text() != 'RRCCreatedState') {
-                $('.MileageTypeCharges', t.el).show();
-            }
-
-        }
-    };
-    $('[argumentid="ContractTypeOL"]', t.el).change(SHMileageType);
-    // End of Show Hide Mileage Type Related Fields
-
-    //On Change of Location Out Empty Car Details
-    $('[argumentid="OutLocationId"]', t.el).change(function () {
-        $('[argumentid="CarNumber"]', t.el).val('');
-        $('[argumentid="ChassisNo"]', t.el).text('');
-        $('[argumentid="Brand"]', t.el).text('');
-        $('[argumentid="Model"]', t.el).text('');
-        $('[argumentid="CarYear"]', t.el).text('');
-        $('[argumentid="Color"]', t.el).text('');
-        $('[argumentid="Type"]', t.el).text('');
-        $('[argumentid="InsuranceExpiry"]', t.el).text('');
-        $('[argumentid="FullInsuranceExpiry"]', t.el).text('');
-        $('[argumentid="CarPreviousKM"]', t.el).text('');
-        $('[argumentid="ContractKMOut"]', t.el).val('');
-        $('[argumentid="CarRateType"] option:not(:first)', t.el).remove(); //Clear Car Rate Type
-        $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).val(0);
-    });
-    //End On Change of Location Out Empty Car Details
-
-    // On End Date Selection Get Day Time and Days
-    var GetActualDays = function (e, vl, dt) {
-
-        var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
-
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
-
-        sDate = getDate($('[argumentid="ContractStartDate"]', t.el).val());
-        if (sDate.toString() == 'NaN') {
-            sts = 1;
-        }
-
-        eDate = getDate($('[argumentid="ContractEndDate"]', t.el).val());
-        if (eDate.toString() == 'NaN') {
-            $('[argumentid="ContractEndDay"],[argumentid="ContractEndTime"],[argumentid="ActualContractDays"]', t.el).val('');
-            sts = 1;
-        }
-        else {
-            $('[argumentid="ContractEndDay"]', t.el).val(weekday[eDate.getDay()]);
-            $('[argumentid="ContractEndTime"]', t.el).val(cH + ':' + cM);
-        }
-
-        if (sts) {
-            return false;
-        }
-
-        if (sDate > eDate) {
-            alert('Contract End Date has to be greater than Contract Start Date');
-            $('[argumentid="ContractEndDate"],[argumentid="ContractEndDay"],[argumentid="ContractEndTime"],[argumentid="ActualContractDays"]', t.el).val('');
-            return false;
-        }
-
-        diff = new Date();
-        diff.setTime(Math.abs(sDate.getTime() - eDate.getTime()));
-        days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
-
-        if (days.toString() == 'NaN') {
-            days = '';
-        }
-        else if (days > 1) {
-            days = days - 1;
-        }
-        $('[argumentid="ActualContractDays"]', t.el).val(days);
-    };
-
-    //lines marked by Qasim
-    $('[argumentid="CarRateType"],[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"],[argumentid="ContractKMOut"],[argumentid="ContractKMIn"],[argumentid="ContractDiscount"],[argumentid="ContractTypeOL"]', t.el).change(CalculateRentalContractChargesOnSuperEdit);
-    //End On Change of Controls Calculate Rental Charges Again
-
-    //Calculate Extra KM
-    function CalculateExtraKMCharges() {
-
-        if ($('[argumentid="ContractTypeOL"]:checked', t.el).val() == 'Limited') {
-
-            var intCarRatePerExtraKM = $('[argumentid="CarExtraKMRate"]', t.el).val();
-
-            if (isNaN(parseFloat(intCarRatePerExtraKM))) {
-                intCarRatePerExtraKM = 0;
-                $('[argumentid="CarExtraKMRate"]', t.el).val('0.000');
-            }
-
-            var intActualContractDays = $('[argumentid="ActualContractDays"]', t.el).val();
-            if (isNaN(parseFloat(intActualContractDays)))
-                intActualContractDays = 0;
-
-            var intContractKMOut = $('[argumentid="ContractKMOut"]', t.el).val();
-            if (isNaN(parseFloat(intContractKMOut)))
-                intContractKMOut = 0;
-
-            var intContractKMIn = $('[argumentid="ContractKMIn"]', t.el).val();
-            if (isNaN(parseFloat(intContractKMIn)))
-                intContractKMIn = 0;
-
-            var intCarAllowedKMPerDay = $('[argumentid="CarAllowedKM"]', t.el).val();
-            if (isNaN(parseFloat(intCarAllowedKMPerDay))) {
-                intCarAllowedKMPerDay = 0;
-                $('[argumentid="CarAllowedKM"]', t.el).val('0');
-
-            }
-            intKMDifference = intContractKMIn - intContractKMOut;
-
-            intExtraKM = intKMDifference - (intCarAllowedKMPerDay * intActualContractDays);
-
-            if (intExtraKM > 0) {
-
-                $('[argumentid="ContractExtraKM"]', t.el).text(intExtraKM);
-                decContractExtraKMCharges = parseFloat(intCarRatePerExtraKM) * parseFloat(intExtraKM);
-                $('[argumentid="ContractExtraKMCharges"]', t.el).text(decContractExtraKMCharges.toFixed(3));
-
-            }
-            else {
-                $('[argumentid="ContractExtraKM"]', t.el).text('0');
-                $('[argumentid="ContractExtraKMCharges"]', t.el).text('0.000');
-            }
-        }
-        else {
-            $('[argumentid="ContractExtraKM"]', t.el).text('0');
-            $('[argumentid="ContractExtraKMCharges"]', t.el).text('0.000');
-        }
-    }
-    //End Calculate Extra KM
-
-    // Check if Payment Cleared to Enable Disable Payment Clear Button
-    function CheckPaymentCleared() {
-
-        //Disable Button Close Contract - Payment Cleared if the Contract Due  is > 0, currently apply only for Rental Contract later apply for lease
-
-        if ($('[argumentid="ContractType"]:checked', t.el).val() == 'Rental') {
-
-            var strStatus = $('[argumentid="StateName"]', t.el).text();
-
-            if (strStatus != '' && strStatus != 'Start State' && strStatus != 'Created - Reservation' && strStatus != 'Contract Closed - Payment Cleared' && strStatus != 'With Legal - Contract Open - Car In' && strStatus != 'With Legal - Contract Open - Car Out' && strStatus != 'With Legal - Contract Closed - Pending Payment') {
-
-                decRentalCurrentDueAmount = parseFloat($('[argumentid="TotalAmountDue"]', t.el).text());
-                if (decRentalCurrentDueAmount > 0) {
-                    $('.btn_4', t.el).attr('disabled', 'disabled');
-                    $('.btn_4', t.el).removeClass('ElemDisabled');
-                    $('.btn_4', t.el).addClass('ElemDisabled');
-                }
-                else {
-                    $('.btn_4', t.el).removeAttr('disabled');
-                    $('.btn_4', t.el).removeClass('ElemDisabled');
-                }
-            }
-        }
-    }
-    // End Check if Payment Cleared to Enable Disable Payment Clear Button
-
-    // Calculate Rental Charges On Edit
-    function CalculateRentalContractChargesOnSuperEdit() {
-
-        // Calculate Rental Charges On Load, Check if Contract Type = Rental 
-        if ($('[argumentid="ContractType"]:checked', t.el).val() == 'Rental') {
-
-            // Calculate Actual Contract Days and Update the Form
-            GetActualDays();
-
-            var intCarRatePerDay = $('[argumentid="CarRate"]', t.el).val();
-            var intActualContractDays = $('[argumentid="ActualContractDays"]', t.el).val();
-
-            if (isNaN(parseFloat(intCarRatePerDay))) {
-                intCarRatePerDay = 0;
-                $('[argumentid="CarRate"]', t.el).val(0);
-            }
-
-            if (isNaN(parseFloat(intActualContractDays))) {
-                intActualContractDays = 0;
-            }
-
-            // Calculate Contract Period Charges based on the Rate Per Day
-            decContractPeriodCharges = parseFloat(intCarRatePerDay) * parseFloat(intActualContractDays);
-            $('[argumentid="ContractPeriodCharges"]', t.el).text(decContractPeriodCharges.toFixed(3));
-
-            // Calculate Extra KM Charges, logically performed on Contract Closing, but added here as same function used on any changes       
-            CalculateExtraKMCharges();
-
-            decContractExtraKMCharges = parseFloat($('[argumentid="ContractExtraKMCharges"]', t.el).text());
-
-            if (isNaN(parseFloat(decContractExtraKMCharges)))
-                decContractExtraKMCharges = 0;
-
-            // Get Other Charges Amount in variable to use later and perform 3 decimal places fix 
-            if (isNaN(parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text()))) {
-                $('[argumentid="ContractOtherCharges"]', t.el).text('0.000');
-                decContractOtherCharges = 0;
-            }
-            else {
-                decContractOtherCharges = parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text());
-                $('[argumentid="ContractOtherCharges"]', t.el).text(decContractOtherCharges.toFixed(3));
-            }
-
-            // Get Discount Charges Amount in variable to use later and perform 3 decimal places fix 
-            if (isNaN(parseFloat($('[argumentid="ContractDiscount"]', t.el).val()))) {
-                $('[argumentid="ContractDiscount"]', t.el).val('0.000');
-                decContractDiscount = 0;
-            }
-            else {
-                decContractDiscount = parseFloat($('[argumentid="ContractDiscount"]', t.el).val());
-                $('[argumentid="ContractDiscount"]', t.el).val(decContractDiscount.toFixed(3));
-            }
-
-            // If Total Paid by Customer returns NAN then update the value on the form to 0.000
-            if (isNaN(parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()))) {
-                $('[argumentid="TotalPaidByCustomer"]', t.el).text('0.000');
-            }
-            else {
-                decTotalPaidByCustomer = parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text());
-                $('[argumentid="TotalPaidByCustomer"]', t.el).text(decTotalPaidByCustomer.toFixed(3));
-            }
-
-            // Calculate Total Rental Charges and perform 3 decimal places fix
-            decContractTotalCharges = parseFloat(decContractPeriodCharges) + parseFloat(decContractExtraKMCharges) + parseFloat(decContractOtherCharges) - parseFloat(decContractDiscount)
-            $('[argumentid="ContractTotalCharges"]', t.el).text(decContractTotalCharges.toFixed(3));
-
-            // Calculate Due Amount and perform 3 decimal places fix 
-
-            $('[argumentid="TotalAmountDue"]', t.el).text(parseFloat($('[argumentid="ContractTotalCharges"]', t.el).text()) - parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()));
-            decRentalCurrentDueAmount = parseFloat($('[argumentid="TotalAmountDue"]', t.el).text());
-            $('[argumentid="TotalAmountDue"]', t.el).text(decRentalCurrentDueAmount.toFixed(3));
-
-            //If Due Payment < 1 then Enable Clear Button
-            CheckPaymentCleared();
-        }
-    }
-    //End Calculate Rental Charges On Edit
-
-
-    //Calculate Rental Charges
-
-    function CalculateRentalContractCharges() {
-
-        // Calculate Rental Charges On Load, Check if Contract Type = Rental 
-        if ($('[argumentid="ContractType"]:checked', t.el).val() == 'Rental') {
-
-            var strStatus = $('[argumentid="StateName"]', t.el).text();
-
-            // Calculate Rental Charges and Due Amount, Check if the Contract is Still Open, If Open then need to calculate Days with Current Date
-
-            if (strStatus == 'Contract Open - Car Out' || strStatus == 'Contract Open - Car In' || strStatus == 'With Legal - Contract Open - Car Out' || strStatus == 'With Legal - Contract Open - Car In') {
-
-                // Calculate Actual Contract Days and Update the Form
-                GetActualDays();
-
-                var intCarRatePerDay = $('[argumentid="CarRate"]', t.el).val();
-                var intActualContractDays = $('[argumentid="ActualContractDays"]', t.el).val();
-
-                if (isNaN(parseFloat(intCarRatePerDay))) {
-                    intCarRatePerDay = 0;
-                }
-
-                if (isNaN(parseFloat(intActualContractDays))) {
-                    intActualContractDays = 0;
-                }
-
-                // Calculate Contract Period Charges based on the Rate Per Day
-                decContractPeriodCharges = parseFloat(intCarRatePerDay) * parseFloat(intActualContractDays);
-                $('[argumentid="ContractPeriodCharges"]', t.el).text(decContractPeriodCharges.toFixed(3));
-
-                // Calculate Extra KM Charges, logically performed on Contract Closing, but added here as same function used on any changes       
-                CalculateExtraKMCharges();
-
-                decContractExtraKMCharges = parseFloat($('[argumentid="ContractExtraKMCharges"]', t.el).text());
-
-                if (isNaN(parseFloat(decContractExtraKMCharges)))
-                    decContractExtraKMCharges = 0;
-
-                // Get Other Charges Amount in variable to use later and perform 3 decimal places fix 
-                if (isNaN(parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text()))) {
-                    $('[argumentid="ContractOtherCharges"]', t.el).text('0.000');
-                    decContractOtherCharges = 0;
-                }
-                else {
-                    decContractOtherCharges = parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text());
-                    $('[argumentid="ContractOtherCharges"]', t.el).text(decContractOtherCharges.toFixed(3));
-                }
-
-                // Get Discount Charges Amount in variable to use later and perform 3 decimal places fix 
-                if (isNaN(parseFloat($('[argumentid="ContractDiscount"]', t.el).val()))) {
-                    $('[argumentid="ContractDiscount"]', t.el).val('0.000');
-                    decContractDiscount = 0;
-                }
-                else {
-                    decContractDiscount = parseFloat($('[argumentid="ContractDiscount"]', t.el).val());
-                    $('[argumentid="ContractDiscount"]', t.el).val(decContractDiscount.toFixed(3));
-                }
-
-                // If Total Paid by Customer returns NAN then update the value on the form to 0.000
-                if (isNaN(parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()))) {
-                    $('[argumentid="TotalPaidByCustomer"]', t.el).text('0.000');
-                }
-                else {
-                    decTotalPaidByCustomer = parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text());
-                    $('[argumentid="TotalPaidByCustomer"]', t.el).text(decTotalPaidByCustomer.toFixed(3));
-                }
-
-                // Calculate Total Rental Charges and perform 3 decimal places fix
-                decContractTotalCharges = parseFloat(decContractPeriodCharges) + parseFloat(decContractExtraKMCharges) + parseFloat(decContractOtherCharges) - parseFloat(decContractDiscount)
-                $('[argumentid="ContractTotalCharges"]', t.el).text(decContractTotalCharges.toFixed(3));
-
-                // Calculate Due Amount and perform 3 decimal places fix 
-
-                $('[argumentid="TotalAmountDue"]', t.el).text(parseFloat($('[argumentid="ContractTotalCharges"]', t.el).text()) - parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()));
-                decRentalCurrentDueAmount = parseFloat($('[argumentid="TotalAmountDue"]', t.el).text());
-                $('[argumentid="TotalAmountDue"]', t.el).text(decRentalCurrentDueAmount.toFixed(3));
-
-            }
-            else {
-                // Calculate Due Amount, as the Contract is Closed, Due Amount is not a Data Member Field but Calculated on Load and other values
-
-                decContractPeriodCharges = parseFloat($('[argumentid="ContractPeriodCharges"]', t.el).text());
-                if (isNaN(parseFloat(decContractPeriodCharges))) {
-                    $('[argumentid="ContractPeriodCharges"]', t.el).text('0.000');
-                    decContractPeriodCharges = 0;
-                }
-                else {
-                    decContractPeriodCharges = parseFloat($('[argumentid="ContractPeriodCharges"]', t.el).text());
-                    $('[argumentid="ContractPeriodCharges"]', t.el).text(decContractPeriodCharges.toFixed(3));
-                }
-
-
-                decContractExtraKMCharges = parseFloat($('[argumentid="ContractExtraKMCharges"]', t.el).text());
-                if (isNaN(parseFloat(decContractExtraKMCharges))) {
-                    $('[argumentid="ContractExtraKMCharges"]', t.el).text('0.000');
-                    decContractExtraKMCharges = 0;
-                }
-                else {
-                    decContractExtraKMCharges = parseFloat($('[argumentid="ContractExtraKMCharges"]', t.el).text());
-                    $('[argumentid="ContractExtraKMCharges"]', t.el).text(decContractExtraKMCharges.toFixed(3));
-                }
-
-                // Get Other Charges Amount in variable to use later and perform 3 decimal places fix 
-                if (isNaN(parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text()))) {
-                    $('[argumentid="ContractOtherCharges"]', t.el).text('0.000');
-                    decContractOtherCharges = 0;
-                }
-                else {
-                    decContractOtherCharges = parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text());
-                    $('[argumentid="ContractOtherCharges"]', t.el).text(decContractOtherCharges.toFixed(3));
-                }
-
-                // Get Discount Charges Amount in variable to use later and perform 3 decimal places fix 
-                if (isNaN(parseFloat($('[argumentid="ContractDiscount"]', t.el).val()))) {
-                    $('[argumentid="ContractDiscount"]', t.el).val('0.000');
-                    decContractDiscount = 0;
-                }
-                else {
-                    decContractDiscount = parseFloat($('[argumentid="ContractDiscount"]', t.el).val());
-                    $('[argumentid="ContractDiscount"]', t.el).val(decContractDiscount.toFixed(3));
-                }
-
-
-                // Calculate Total Rental Charges and perform 3 decimal places fix
-                decContractTotalCharges = parseFloat(decContractPeriodCharges) + parseFloat(decContractExtraKMCharges) + parseFloat(decContractOtherCharges) - parseFloat(decContractDiscount)
-                $('[argumentid="ContractTotalCharges"]', t.el).text(decContractTotalCharges.toFixed(3));
-
-
-                // If Total Paid by Customer returns NAN then update the value on the form to 0.000
-                if (isNaN(parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()))) {
-                    $('[argumentid="TotalPaidByCustomer"]', t.el).text('0.000');
-                }
-                else {
-                    decTotalPaidByCustomer = parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text());
-                    $('[argumentid="TotalPaidByCustomer"]', t.el).text(decTotalPaidByCustomer.toFixed(3));
-                }
-
-
-                // Calculate Due Amount and perform 3 decimal places fix 
-                $('[argumentid="TotalAmountDue"]', t.el).text(parseFloat($('[argumentid="ContractTotalCharges"]', t.el).text()) - parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()));
-                decRentalCurrentDueAmount = parseFloat($('[argumentid="TotalAmountDue"]', t.el).text());
-                $('[argumentid="TotalAmountDue"]', t.el).text(decRentalCurrentDueAmount.toFixed(3));
-
-            }
-
-            //If Due Payment < 1 then Enable Clear Button
-            CheckPaymentCleared();
-        }
-    }
-    //End Calculate Rental Charges
-
-    //On Selection of CarRateType
-    $('[argumentid="CarRateType"]', t.el).change(function () {
-
-
-        if (this.selectedIndex < 1)
-            $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).val(0);
-        else {
-
-            var itm = this.options[this.selectedIndex];
-            t.SetArgsVal([{ Name: 'CarRate', Value: $(itm).attr('CarRate') }, { Name: 'CarAllowedKM', Value: $(itm).attr('CarAllowedKM') }, { Name: 'CarExtraKMRate', Value: $(itm).attr('CarExtraKMRate') }]);
-        }
-
-        if ($('[argumentid="CarRateType"]', t.el).val() == 1) {
-            $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-            $('[argumentid="CarRate"]').val('').focus();
-        }
-        else {
-            $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
-        }
-    });
-    //End On Selection of CarRateType
-
-
-    //On Click of Edit Button by Super User
-    $('.Button_Edit', t.el).click(function () {
-
-        $('.CommonDisable,.DisableOnClose,.SuperUserEdit,.btn_1,.btn_2,.btn_10', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-        $('[argumentid="ContractEndDate"]', t.el).next('img').show().removeAttr('disabled').removeClass('ElemDisabled');
-        $('[argumentid="ContractStartDate"]', t.el).next('img').show().removeAttr('disabled').removeClass('ElemDisabled');
-        $('[argumentid="ContractExpiryDate"]', t.el).next('img').show().removeAttr('disabled').removeClass('ElemDisabled');
-
-        if ($('[argumentid="CarRateType"]', t.el).val() == 1) {
-            $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-        }
-    });
-    //End On Click of Edit Button by Super User
-
     // On Form Show file-list
         t.on('show', function (args)
         {
@@ -585,12 +148,12 @@
         $('.tabid', t.el).val(li.attr('tabid'));
         //End Always Move to First Tab on Show
 
-        //// Hide Edit For Normal Users
-        //$('[roles]', t.el).hide().each(function () {
-        //    if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1) {
-        //        $(this).show();
-        //    }
-        //});
+        // Hide Edit For Normal Users
+        $('[roles]', t.el).hide().each(function () {
+            if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1) {
+                $(this).show();
+            }
+        });
 
         $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
         $('.ElemDisabled', t.el).removeClass('ElemDisabled');
@@ -606,9 +169,6 @@
                 $('.SimpleTab', t.el).attr('disabled', 'disabled');
             }
 
-        SHMileageType(); // This function is called to hide show Mileage Type Related Fields on Value Loaded
-
-       // $('[argumentid="CarRateType"] option:not(:first)', t.el).remove(); //Clear Car Rate Type
 
         var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
         var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate);
@@ -620,8 +180,6 @@
         if ($('[argumentid="StateId"]', t.el).text() == '') {
             $('[argumentid="StateId"]', t.el).text('SCSCreatedState');
             $('[argumentid="StateName"]', t.el).text('Created State');
-            $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9', t.el).attr('disabled', 'disabled');
-            $('.Button_Edit', t.el).hide();
             $('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
             $('[argumentid="ContractStartDay"]', t.el).val(WeekDay);
             $('[argumentid="ContractStartTime"]', t.el).val(setTime);
@@ -644,9 +202,6 @@
     // On Start of Onloaded Values
     t.on('onLoadedValues', function (args) {
 
-        $('.btn_11', t.el).show();
-        $('.btn_10', t.el).show();
-
         var res = args.res;
 
         if (res.status == 'OK') {
@@ -668,31 +223,6 @@
             $('.OnNewHide', t.el).show();
             $('.SimpleTab', t.el).removeAttr('disabled');
 
-            SHMileageType(); // This function is called to hide show Mileage Type Related Fields on Value Loaded
-
-
-            if (!t.__cboEvnt) {
-                t.__cboEvnt = true;
-                t.on('onComboFilled', function (p) {
-
-                    // This is to enable disabled RateType Field, because the fields are loaded on demand...
-                    if ('RRCCreatedStateRRCStartState'.indexOf($('[argumentid="StateId"]', t.el).text()) < 0) {
-                        $('[argumentid="OutLocationId"],[argumentid="CarRateType"]', t.el).attr('disabled', 'disabled');
-                    }
-                    else {
-                        $('[argumentid="CarRateType"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-
-                        if (p.valueToSet == 1) {
-                            $('[argumentid="CarRate"],[argumentid="CarAllowedKM"],[argumentid="CarExtraKMRate"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-                        }
-                    }
-
-                    $('[argumentid="InLocationId"]', t.el).attr('disabled', 'disabled');
-                });
-
-            }
-            //End Load Car Rate Types
-
             //Load Commas if both numbers are there
             if (!!$('[argumentid="WorkTelephone"]', t.el).text() && !!$('[argumentid="ResidenceTelephone"]', t.el).text()) {
                 $('.CommaWR', t.el).show();
@@ -703,39 +233,22 @@
             }
             //End Commas if both numbers are there
 
-            var CurrentDate = new Date(); //Get Current Date to set End Date On Load for particular states
-            var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
-            var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
-            var cY = CurrentDate.getFullYear();
-
-            //Disable Enable Controls based on StateId
-            $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9,.btn_10 ', t.el).removeAttr('disabled');
-            $('.OnLoadHide', t.el).show();
-            $('[argumentid="ContractEndDate"]', t.el).next('img').show();
-            $('[argumentid="ContractStartDate"]', t.el).next('img').show();
-            $('[argumentid="ContractExpiryDate"]', t.el).next('img').show();
-
            
-
-            CalculateRentalContractCharges(); // Calculate Rental Charges on Value Loaded
-            CheckPaymentCleared(); // Check if Payment Cleared to Enable Disable Payment Clear Button
 
             $('.ElemDisabled', t.el).removeClass('ElemDisabled');
             $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
 
-            //                                      RRCStartState
-            //                                      RRCCreatedState
-            //                                      RRCContractOpen
-            //                                      RRCContractOpenCarIn
-            //                                      RRCWithLegalContractOpenCarOut
-            //                                      RRCWithLegalContractOpenCarIn
-            //                                      RRCWithLegalContractClosedPendingPayment
-            //                                      RRCContractClosedPendingPayment
-            //                                      RRCContractClosed
-            //                                      RRCContractCancelled
 
-
+            //when value on loaded 
             AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+
+            var getFileUploadWidg = AsyncWidgets.get('grdSalesFileUpload');
+            if (!!getFileUploadWidg) {
+                getFileUploadWidg.show();
+            } else {
+
+                $.showMessage(`Widget  not found`);
+            }
 
         }
     });
@@ -997,19 +510,25 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
         var fileList = $(".file-list", t.el);
         var linkFile = $('.file-list .file-link', t.el);
         var fileName = $('.file-list .file-item > .file-name', t.el);
+        const fileSizeElement = $('fileSize',t.el);
+
         var files = this.files;
         for (var i = 0; i < files.length; i++)
         {
             var orignalFileName = files[i].name;
             var RfileName = files[i].name.replace(/[^a-zA-Z0-9]/g, '-');
+            var fileSizeKb = (files[i].size / 1024).toFixed(2); // Convert to KB with two decimal places
+            var fileSizeMB = (files[i].size / (1024 * 1024)).toFixed(2); // Size in MB with two decimal places
 
+            console.log(`File Size in KB: ${fileSizeKb} Kb`);
+            console.log(`File Size in MB: ${fileSizeMB} Mb`);
 
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(orignalFileName);
             var removeButton = $("<div class='remove-file'>X</div>");
            
 
-
+                 // Check for duplicate file names
             for (var i = 0; i < fileName.length; i++) {
 
                 var findToFile = $(fileName[i]);
@@ -1084,8 +603,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
         if (res.Response.Rows.length > 0)
         {
             var rows = res.Response.Rows;
-            var currentFileList = $('.file-list .file-item', t.el);
-            var anchorFileList = $('.file-list .file-link', t.el);
+          
             var $fileList = $(".file-list", t.el);
             for (var i = 0; i < rows.length; i++)
             {
@@ -1127,6 +645,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
                     console.log('Remove button clicked for file: ' + fileName);
                 });
+                fileItem.css('background-color', '#98FB98');
 
                 // Append elements to the file item
                 fileItem.append(fileNameElement);

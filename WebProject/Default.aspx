@@ -204,21 +204,21 @@
     </div>
 
 <script type="text/javascript">
-    //var onReady = () => {
-    //    //console.log("finding menu...");
-    //    if ($('[showwidget="conSalesContracts"]').length > 0) {
-    //        $('[showwidget="conSalesContracts"]').trigger('click');
-    //    }
+    var onReady = () => {
+        //console.log("finding menu...");
+        if ($('[showwidget="conSalesContracts"]').length > 0) {
+            $('[showwidget="conSalesContracts"]').trigger('click');
+        }
 
-    //    else {
-    //        //var outterFun = arguments.callee;
-    //        setTimeout(onReady, 3000);
-    //    }
-    //};
+        else {
+            //var outterFun = arguments.callee;
+            setTimeout(onReady, 3000);
+        }
+    };
 
 
 
-    //$().ready(onReady);
+    $().ready(onReady);
 
 </script>
 </asp:Content>

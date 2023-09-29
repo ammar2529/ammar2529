@@ -20,7 +20,7 @@
                     </script>
                 </WidgetConfig>
                 </uc8:Form>
-                <uc6:DataGrid ID="grdCarRateDetails" LoadOnInit="false" ShowOnLoad="true"  runat="server" Hidden="true" Columns="1" Forms="frmSaleCarPriceDetails_ShUc"
+                <uc6:DataGrid ID="grdCarRatePriceDetails" LoadOnInit="false" ShowOnLoad="true"  runat="server" Hidden="true" Columns="1" Forms="frmSaleCarPriceDetails_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
             PageSize="10" DataSource="SEL_iRental_SalesCarPrice" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
             GridHeadText="Price Management"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesCarPrice\',KeysCol:\'RecId\'}}}">

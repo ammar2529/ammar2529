@@ -64,7 +64,7 @@
     </td>
     <td>
       <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;"
-              groupid="CarsForm" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
+              groupid="CarsForm" argumentid="YearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
         <option value="" selected="selected">Select Year</option>
       </select>
     </td>
