@@ -14,7 +14,7 @@
             <nobr>Brand*:</nobr>
         </td>
         <td>
-            <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SalesCarsRateForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+            <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SalesCarsPriceForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
     <option value="" selected="selected">Select Brand</option>
     </select>
         </td>
@@ -24,7 +24,7 @@
             <nobr>Model*:</nobr>
         </td>
         <td>
-            <select class="dropdownlist required" style="width: 155px;" groupid="SalesCarsRateForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
+            <select class="dropdownlist required" style="width: 155px;" groupid="SalesCarsPriceForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
     <option value="" selected="selected">Select Model</option>
     </select>
         </td>
@@ -34,7 +34,7 @@
             <nobr>Year*:</nobr>
         </td>
         <td>
-            <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SalesCarsRateForm" argumentid="YearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
+            <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SalesCarsPriceForm" argumentid="YearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
     <option value="" selected="selected">Select Year</option>
     </select>
         </td>
@@ -51,33 +51,13 @@
         </td>
         <td>
 
-            <input type="text" style="text-align:center;width:150px;" maxlength="10" class="text required number" groupid="SalesCarsRateForm" alphconf="{allow:'.'}" argumentid="Price" />
+            <input type="text" style="text-align:center;width:150px;" maxlength="10" class="text required number" groupid="SalesCarsPriceForm" alphconf="{allow:'.'}" argumentid="Price" />
 
 
         </td>
     </tr>
 
-<%--    <tr>
-        <td class="ftitle">
-            <nobr>Additional Amounti:</nobr>
-        </td>
-        <td>
 
-            <input type="text" style="text-align:center;width:150px;" maxlength="10" class="text required number" groupid="SalesCarsRateForm" alphconf="{allow:'.'}" argumentid="AdditionalAmount" />
-
-
-        </td>
-    </tr>--%>
-
-  <%--  <tr>
-        <td class="ftitle">
-            <nobr>Discount:</nobr>
-        </td>
-        <td>
-
-            <input type="text" style="text-align:center;width:150px;" maxlength="10" class="text required number" groupid="SalesCarsRateForm" argumentid="Discount" />
-        </td>
-    </tr>--%>
 
     <tr>
         <td class="ftitle">
@@ -85,7 +65,7 @@
         </td>
         <td>
 
-            <textarea class="textarea " rows="6" wrap="1" cols="30" argumentid="Comments" groupid="SalesCarsRateForm"></textarea>
+            <textarea class="textarea " rows="6" wrap="1" cols="30" argumentid="Comments" groupid="SalesCarsPriceForm"></textarea>
         </td>
     </tr>
 

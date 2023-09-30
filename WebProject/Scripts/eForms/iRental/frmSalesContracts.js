@@ -66,6 +66,10 @@
             setField('ReservationWeekDays', dow, t.el);
         });
 
+        //calculatr AdditionalAmount - Discount = TotalAmount
+        var TotalAmount = AsyncWidgets.WidgetScripts.frmSalesContracts.TotalAmount;
+        $('[argumentid="AdditionalAmount"], [argumentid="Discount"]').blur(TotalAmount);
+
   
     //On Click Plus Sign to Show hide More details of Customer & Cars
     $('.contDetailsIcon', t.el).click(function () {
@@ -348,6 +352,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
         }
         return "";
     }
+};
+
+        //calculatr AdditionalAmount - Discount = TotalAmount
+AsyncWidgets.WidgetScripts.frmSalesContracts.TotalAmount = function (t)
+{
+
+
 };
 
 

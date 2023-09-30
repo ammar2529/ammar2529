@@ -20,10 +20,10 @@
                     </script>
                 </WidgetConfig>
                 </uc8:Form>
-                <uc6:DataGrid ID="grdCarRatePriceDetails" LoadOnInit="false" ShowOnLoad="true"  runat="server" Hidden="true" Columns="1" Forms="frmSaleCarPriceDetails_ShUc"
+                <uc6:DataGrid ID="grdSalesCarRatePriceDetails" LoadOnInit="false" ShowOnLoad="true"  runat="server" Hidden="true" Columns="1" Forms="frmSaleCarPriceDetails_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
             PageSize="10" DataSource="SEL_iRental_SalesCarPrice" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
-            GridHeadText="Price Management"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesCarPrice\',KeysCol:\'RecId\'}}}">
+            GridHeadText="Car Price Management"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesCarPrice\',KeysCol:\'RecId\'}}}">
           
             <GridConfig>
             <script>
@@ -31,13 +31,12 @@
                     cols: {
                         Sequence: { width: '0px' },
                         RecId: { width: '0px' },
-                        RateTypeId: { caption: 'Rate Type', width: '130px' },
                         BrandId: { caption: 'Brand', width: '130px' },
                         ModelId: { caption: 'Model', width: '150px' },
-                        CarYear: { caption: 'Year', width: '55px' },
-                        Rate: { caption: 'Daily Rate', width: '95px' },
-                        AllowedKM: { caption: 'Daily KM Limit', width: '125px' },
-                        ExtraKMRate: { caption: 'Rate/KM', width: '85px' }
+                        YearId: { caption: 'Year', width: '55px' },
+                        Price: { caption: 'Price', width: '95px' },
+                        Comments: { caption: 'Comments', width: '95px' },
+                      
                     },
                     forms: {
                         NewFormId: 'frmSaleCarPriceDetails',
@@ -61,7 +60,7 @@
                             Style: {},
                             Visible: true,
                             Collapsed: false,
-                            HeadText: 'Price Management'
+                            HeadText: 'Car Price Management'
                         }
                     }
                 </script>

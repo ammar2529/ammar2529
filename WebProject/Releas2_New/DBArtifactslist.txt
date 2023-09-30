@@ -8,6 +8,8 @@ Tables:
 	 iRental_SalesContracts_OtherCharges_Audit
 	 iRental_SalesContracts_Payments_Audit
 	 Fx_FileUpload	
+	 
+	 iRental_SalesCarPrice  not change
 Views:
 	VW_SEL_iRental_SalesContracts 
 	VW_iRental_CarsForSale 
@@ -20,7 +22,10 @@ Views:
 	VW_Type 
 	VW_Models
 	
+	not change
 	VW_iRental_SalesContracts_Payments
+	VW_SEL_iRental_SalesContracts_Details
+	VW_iRental_CarsForSale_Available
 	 
 update SP:
 	SEL_iRental_Contracts_Customers_SP 
@@ -42,6 +47,10 @@ update SP:
 	UPD_Fx_FileUpload
 	
 	UPD_Fx_FileUpload  not change in asif bhai server
+	SEL_iRental_SalesCarPrice_SP
+	UPD_iRental_SalesCarPrice_SP
+	UPD_iRental_SalesContracts_SP
+	SEL_iRental_CarsForSale_SP
 	
 	17/09/023
 	[UPD_iRental_SalesContracts_SP]
