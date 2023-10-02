@@ -409,19 +409,16 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             return;
         }
 
-
+        var fileType = val('DocType', t.el);
         var formData = new FormData();
         for (var i = 0; i < files.length; i++)
         {
-           
-            var fileSize = files[i].size;
-            var fileSizeMB = (fileSize / (1024 * 1024)).toFixed(2); // Convert to MB with two decimal places
-
+  
             formData.append("file" + i, files[i]);
-            formData.append("fileSize" + i, fileSize); // Append the file size using a unique key
-
+         
         }
-
+     
+        formData.append("DocType", fileType);
         formData.append("FileGuid",val("FileGuid", t.el));
         if (isGUIDUpdateNeeded)
         {
@@ -487,55 +484,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
         $(".file-input", t.el).val('');
     });
 
-    // Handle Drag drop file selection and display in the list
-    $(".file-input", t.el).on("dragover", function (e)
-    {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).addClass("drag-over");
-    });
-
-    $(".file-input", t.el).on("dragleave", function (e)
-    {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).removeClass("drag-over");
-    });
-
-    $(".file-input", t.el).on("drop", function (e)
-    {
-        var isGUIDUpdateNeeded = false;
-        if (val('FileGuid', t.el).trim() == "")
-        {
-            var guid = generateGuid();
-            setField('FileGuid', guid, t.el);
-            if (t.FormMode == 'update')
-            {
-                isGUIDUpdateNeeded = true;
-            } 
-        }
-
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).removeClass("drag-over");
-
-        var fileList = $(".file-list", t.el);
-
-        var files = e.originalEvent.dataTransfer.files;
-     
-        for (var i = 0; i < files.length; i++)
-        {
-            var RfileName = files[i].name.replace(/[ .]/g, '_');
-
-            var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
-            var fileName = $("<div class='file-name'></div>").text(files[i].name);
-            var removeButton = $("<div class='remove-file'>X</div>");
-            fileItem.css('background-color', 'lightcoral');
-            fileItem.append(fileName);
-            fileItem.append(removeButton);
-            fileList.append(fileItem);
-        }
-    });
+  
 
   //   Handle file selection and display in the list
 
@@ -551,11 +500,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
         {
             var orignalFileName = files[i].name;
             var RfileName = files[i].name.replace(/[^a-zA-Z0-9]/g, '-');
-            var fileSizeKb = (files[i].size / 1024).toFixed(2); // Convert to KB with two decimal places
-            var fileSizeMB = (files[i].size / (1024 * 1024)).toFixed(2); // Size in MB with two decimal places
+          
 
-            console.log(`File Size in KB: ${fileSizeKb} Kb`);
-            console.log(`File Size in MB: ${fileSizeMB} Mb`);
 
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(orignalFileName);
@@ -596,10 +542,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 70px;">${i}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 269px;" colid="FileName">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 249px;">${orignalFileName}</div>
+                                                        <div class="ColValue w-grid-label fileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 249px;">${orignalFileName}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 267px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">${fileSizeMB}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">Size</div>
                                                     </td>
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 267px;" colid="Delete">
                                                             <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">
@@ -609,7 +555,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
                                                 </tr>`
 
-            $('.ItemTR tbody', t.el).html(genHtml);
+           
             
    
                 fileItem.css('background-color', 'lightcoral');
@@ -619,7 +565,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             
            
         }
-        $('.ItemTR tbody', t.el).html('');
+    //    $('.ItemTR tbody', t.el).html('');
+        $('.ItemTR tbody', t.el).html(genHtml);
     });
 
 
@@ -673,6 +620,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                 var recId = row.RecId;
                 var fileGuid = row.FileGuid;
                 var fileSize = row.FileSize;
+                var fileType = row.DocType;
+                var createdBy = row.$CreatedBy;
+                /*var dateCreated = row.$DateModified;*/
 
                 var RfileName = row.FileName.replace(/[^a-zA-Z0-9]/g, '-');
 
@@ -708,7 +658,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
                 //    console.log('Remove button clicked for file: ' + fileName);
                 //});
-
                 var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
 
 
@@ -716,10 +665,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px;width: 40px; ">${i + 1}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${fileLink}</div>
+                                                        <div class="ColValue w-grid-label linkFileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${fileLink}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileSize">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${fileSize}</div>
+                                                    </td>
+                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${fileType}</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${createdBy}</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${new Date()}</div>
                                                     </td>
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
                                                             <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
@@ -734,7 +692,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
             }  // for loop;
 
-            var tblUFL = $('table.uploadedFileList', t.el); // get the main table of the HTML
+            var tblUFL = $('table.uploadedFileList', t.el); // get the main table
 
             $('.ItemTR tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
             $('.remove-button', tblUFL).click(function () {

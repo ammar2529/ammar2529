@@ -6,12 +6,12 @@
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    padding: 20px;
+    padding: 5px;
 }
 
 .file-upload-drop-area {
     border: 2px dashed #ccc;
-    padding: 20px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -50,6 +50,11 @@ span.file-name > a{
     text-decoration: none !important;
     font-weight: bold;
 }
+.file-link {
+    color: black;
+    text-decoration: none !important;
+    font-weight: bold;
+}
 .remove-file {
     cursor: pointer;
     color: red;
@@ -66,6 +71,29 @@ span.file-name > a{
     transition: width 0.2s ease-in-out;
 }
 
+
+
+.upload-button {
+    /* Background color */
+    background-color: #3498db;
+    /* Text color */
+    color: #fff;
+    /* Padding */
+    padding: 1px 1x;
+    /* Border radius to make it rounded */
+    border-radius: 5px;
+    /* Box shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Cursor pointer on hover */
+    cursor: pointer;
+    /* Transition for smooth hover effect */
+    transition: background-color 0.3s ease;
+}
+
+    /* Hover effect */
+    .upload-button:hover {
+        background-color: #2980b9;
+    }
 /* Styles for the message area */
 .message {
     font-weight: bold;

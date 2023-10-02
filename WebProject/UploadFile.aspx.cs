@@ -39,6 +39,7 @@ namespace WebProject
                 {
 
                     string FileGuid = httpRequest.Form["FileGuid"];
+                    //string DocType = httpRequest.Form["DocType"];
                     string newFileName = "";
 
                     for (int i = 0; i < files.Count; i++)
@@ -98,6 +99,7 @@ namespace WebProject
             var PD = GetParamsFromPost();
             PD.Add("FileName", new QueryParameter(fileName));
             PD.Add("FileSize", new QueryParameter(FileSize.ToString())); // Add DBAction parameter
+            //PD.Add("DocType", new QueryParameter(DocType));
             PD.Add("DBAction", new QueryParameter("AddUploadedFile"));
             return  DBHelper.InvokeSP("FX_UPD_FileUpload_SP", PD).ToString();
 
