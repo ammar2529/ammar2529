@@ -45,7 +45,25 @@ namespace WebProject
                     {
                         var postedFile = files[i];
                         string OriginalFileName = Path.GetFileName(postedFile.FileName);
-                        var FURecId = SaveFileToDb(postedFile.FileName);
+                        long fileSizeBytes = postedFile.ContentLength;
+                        string fSize = "";
+                        if (fileSizeBytes < 1024)
+                        {
+                            fSize = fileSizeBytes + " Bytes";
+                        }
+                        else if ((fileSizeBytes/1024) < 1024 )
+                        {
+                            fSize = (fileSizeBytes / 1024) + " KBs";
+
+                        }
+                        else //if ((fileSizeBytes / (1024*1024)) < 1024)
+                        {
+                            fSize = (fileSizeBytes / (1024 * 1024)) + " MBs";
+
+                        }
+                        //fileSizeBytes = postedFile.ContentLength /1024;
+
+                        var FURecId = SaveFileToDb(postedFile.FileName, fSize);
                         var arrFURecId = FURecId.Split(new string[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
                         // Combine the prefixes and the original file name
                         if (arrFURecId.Length > 1)
@@ -75,11 +93,12 @@ namespace WebProject
                 return $@"{{""Status"":""Error"",""Response"":{{message:""{firstError} - {ex.Message}""}}}}";
             }
         }
-        private static string SaveFileToDb(string fileName)
+        private static string SaveFileToDb(string fileName,string FileSize)
         {
             var PD = GetParamsFromPost();
             PD.Add("FileName", new QueryParameter(fileName));
-            PD.Add("DBAction", new QueryParameter("AddUploadedFile")); // Add DBAction parameter
+            PD.Add("FileSize", new QueryParameter(FileSize.ToString())); // Add DBAction parameter
+            PD.Add("DBAction", new QueryParameter("AddUploadedFile"));
             return  DBHelper.InvokeSP("FX_UPD_FileUpload_SP", PD).ToString();
 
             // DBHelper.GetDataTableProc("SPName", PD);

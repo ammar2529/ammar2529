@@ -228,7 +228,7 @@
                      
                         <tr>
                             <td colspan="2">
-                                <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                                <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
                             </td>
                         </tr>
                        
@@ -237,8 +237,10 @@
                                 <img src="App_Themes/eForms_Theme/Images/spacer.gif">
                             </td>
                             <td>
-                      <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true,Requery:false}">
-                      <input type="button" value="  Cancel  " class="CloseForm ButtonStyle">
+                      <input type="button" value="  Save  " style="display:none" class="DataAction ButtonStyle btnMainForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true,Requery:false}"/>
+                       <input type="button" value="  Save  "  class="DataAction ButtonStyle btnPopupForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true,Requery:true}"/>
+
+                        <input type="button" value="  Cancel  " class="CloseForm ButtonStyle"/>
                             </td>
                         </tr>
                     </table>

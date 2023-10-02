@@ -37,7 +37,7 @@
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
-                    <td class="ftitle">
+                    <td class="ftitle" style="width:170px">
                         <nobr>Car Number*:</nobr>
                     </td>
                     <td>
@@ -53,7 +53,7 @@
                                 groupid="SalesContractsForm" lovpopupid="carPopup" argumentid="CarNumber" />
                         </div>
                     </td>
-                    <td class="ftitle">
+                    <td class="ftitle"  style="width:140px">
                         <nobr>Customer Code*:</nobr></td>
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
@@ -242,24 +242,26 @@
                     </td>
                 </tr>
 
-
-
-                <tr>
-                    <td colspan="2" class="ftitle">Comments:</td>
-
-                    <td>
-                        <nobr class="ftitle">Car Price:</nobr>
-                    </td>
+                   <tr>
                     <td class="ftitle">
+
+                        <nobr>Car Price:</nobr>
+                    </td>
+                        <td class="ftitle">
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align: center;" requirederr=' Car Price  Required'></span>
 
                     </td>
-                </tr>
+                       <td colspan="2" class="ftitle">
+
+                        <nobr>Comments:</nobr>
+                    </td>
+                        
+
+                  </tr>
+                 
 
                 <tr>
-                    <td rowspan="3" colspan="2">
-
-                        <textarea style="width: 100%" rows="5" wrap="hard" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea></td>
+                
 
                     <td class="ftitle">
 
@@ -271,6 +273,12 @@
 
                     </td>
 
+                     <td rowspan="3" colspan="2">
+
+                        <textarea style="width: 100%" rows="5" wrap="hard" argumentid="fComments" groupid="SalesContractsForm" name="S1" cols="20"></textarea>
+
+                    </td>
+                       
                 </tr>
 
 
@@ -300,6 +308,8 @@
                     </td>
 
                 </tr>
+
+
 
                 <tr>
                     <td colspan="4">
@@ -344,7 +354,7 @@
                             <div class="file-upload-drop-area">
                                 <p class="ftitle">Drag and Drop or click to select files .</p>
                                 <input type="file" class="file-input" multiple="multiple" />
-                                  <p id="fileSize"></p>
+                                <p id="fileSize"></p>
                             </div>
 
                             <button class="upload-button">Upload</button>
@@ -352,44 +362,69 @@
                             <div class="message"></div>
 
                             <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly="readonly" />
-                            <%-- Data Grid --%>
 
-                            <AW:DataGrid ID="grdSalesFileUpload" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1"
-                                EmptyHeight="201px" AllowNew="true" SelectableRow="false"
-                                PageSize="10" DataSource="FX_UPD_FileUpload" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
-                                GridHeadText="Upload File List" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
-
-                              <GridConfig>
-                                <script>
-                                    var cf = {
-                                        cols: {
-                                            Sequence: { width: '0px' },
-                                            FileName: { width: '0px' },
-                                            FileSize: { width: '0px' },
-                                            $CreatedBy: { width: '0px' },
-                     
-
-                                        }
-                    
-                                    };
-                                </script>
-
-
-                            </GridConfig>
-
-                            </AW:DataGrid>
-
-                            <%-- End Data Grid --%>
                         </div>
-
-
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                        <%-- style="margin-left:5%;width: 90%; text-align: left" --%>
+                        <%-- Data Grid --%>
+                        <table cellspacing="0" cellpadding="0" border="0" style="margin-left:5%;width: 90%; text-align: left" class="uploadedFileList">
+                            <tbody>
+                                <tr class="HeaderTR">
+                                    <td class="Header w-grid-border">
+                                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header">
+                                            <tbody>
+                                                <tr class="w-grid-head-back">
+
+                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-2" colindex="2" colid="RecId" style="padding-left: 0px; padding-right: 0px; width: 50px;">
+                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 40px;">
+                                                            <span href="#" class="w-grid-head ColName sort">Sr.</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-3" colindex="3" colid="FileName" style="padding-left: 0px; padding-right: 0px;">
+                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; ">
+                                                            <span href="#" class="w-grid-head ColName sort">File Name</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px;width: 110px;">
+                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
+                                                            <span href="#" class="w-grid-head ColName sort">File Size</span>
+                                                        </div>
+                                                    </td>
+                                                      <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 45px;">
+                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 35px;">
+                                                            <span href="#" class="w-grid-head ColName sort"></span>
+                                                        </div>
+                                                    </td>
+
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="ItemTR">
+                                    <td class="Item w-grid-border">
+                                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; table-layout: fixed" itemno="10" class="w-grid-row-odd">
+                                            <tbody>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="NoRecordsTR" style="display: none;">
+                                    <td class="NoRecords w-grid-norecords-msg">
+                                        <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <%-- End Data Grid --%>
+                   
+                        
                     </td>
                 </tr>
 

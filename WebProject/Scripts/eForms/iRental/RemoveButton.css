@@ -16,9 +16,33 @@
 }
 
 /* CSS for the remove button */
-.remove-button {
+/*.remove-button {
     cursor: pointer;
     font-weight: bold;
     color: red;
+    border: 1px solid red;
 }
+*/
+.remove-button {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border: 1px solid red;
+    padding: 2px 6px; /* Reduced padding around the button text */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 9px; /* Reduced font size */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .remove-button:hover {
+        background-color: darkred;
+        color: white;
+    }
+
+
+
+
+
+
 

@@ -660,7 +660,7 @@ input.PageNoToGo{
  table.w-form-table{
  background:#EEEEFF;
  }
-.w-form-table td {
+.w-form-table > tbody > tr > td {
     border: 1px solid #B4B7D9;
     position: relative;
     text-align: left;

@@ -110,7 +110,7 @@
                 }
             </script>
         </WidgetConfig>
-        <%--<Scripts>
+     <%--   <Scripts>
                     <script>
                         var fn = function () {
                             var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
@@ -125,11 +125,8 @@
                     </script>
                 </Scripts>--%>
     </AW:Form>
-
-
-
     <AW:DataGrid ID="grdContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmRentalContracts_Cust_ShUc"
-        EmptyHeight="201px" AllowNew="true" SelectableRow="false"
+        EmptyHeight="201px" AllowNew="false" SelectableRow="false"
         PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
 
@@ -152,13 +149,12 @@
                         RecCode: { caption: 'Code', width: '90px' },
                         NationalIDNo: { caption: 'National ID No.' },
                         MobileTelephone1: { caption: 'Mobile Telephone' },
-                        CustomerStatus: { caption: 'Status' },
-                        CustomerRecCode: { width: '0px' }
+                        CustomerStatus: { caption: 'Status' }
+                       
 
                     },
                     forms: {
                         NewFormId: 'frmSalesCustomerDetails',
-                        EditFormId: 'frmSalesCustomerDetails',
                         Keys: 'RecId'
                     }
                 };
@@ -169,23 +165,38 @@
 
 
     </AW:DataGrid>
+
+    <AW:Form ID="frmSalesCustomerDetails" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Customers'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function () {
+                    //
+                    t.on("show", function () {
+                     
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </AW:Form>
+
 </div>
 
-<AW:Form ID="frmSalesCustomerDetails" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
-    <WidgetConfig>
-        <script>
-            cf = {
-
-                header: {
-                    Style: {},
-                    Visible: true,
-                    Collapsed: false,
-                    HeadText: 'Add Customers'
-                }
-            }
-        </script>
-    </WidgetConfig>
-</AW:Form>
 
 
 

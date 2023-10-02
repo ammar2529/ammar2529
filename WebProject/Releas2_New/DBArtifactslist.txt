@@ -10,6 +10,9 @@ Tables:
 	 Fx_FileUpload	
 	 
 	 iRental_SalesCarPrice  not change
+	  iRental_SalesContracts
+	  FX_Common_LOV_Parent
+	  FX_Common_LOV_Child
 Views:
 	VW_SEL_iRental_SalesContracts 
 	VW_iRental_CarsForSale 
@@ -51,6 +54,10 @@ update SP:
 	UPD_iRental_SalesCarPrice_SP
 	UPD_iRental_SalesContracts_SP
 	SEL_iRental_CarsForSale_SP
+	UPD_iRental_Customers_sp
+	SEL_iRental_Contracts_Customers_SP
+	UPD_iRental_Customers_sp
+	SEL_iRental_SalesContracts_SP
 	
 	17/09/023
 	[UPD_iRental_SalesContracts_SP]

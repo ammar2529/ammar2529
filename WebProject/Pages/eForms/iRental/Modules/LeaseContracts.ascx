@@ -171,6 +171,7 @@
                 <Scripts>
                     <script>
                         var fn = function () {
+
                             var conGrd = AsyncWidgets.get("conLeaseContracts_Cust");
 
                             $('.ClosePopup', t.el).click(function () {

@@ -14,7 +14,7 @@
         });
         t.on('LOVPopupClosed', (args) =>
         {
-              //debugger;
+              debugger;
 
             
         });
@@ -27,6 +27,23 @@
             t.fireEvent('LOVPopupShown', popup);
         });
 
+
+        ////only test purpose
+        $('[argumentid="Price"],[argumentid="AdditionalAmount"], [argumentid="Discount"]').blur(calculatesum);
+
+        function calculatesum() {
+
+            var carPrice =  parseFloat($('[argumentid="Price"]',t.el).text());
+            var AddAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
+            var Discount = parseFloat($('[argumentid="Discount"]',t.el).val());
+            var carPricetTotal = carPrice + AddAmount;
+
+
+        /*    $('[argumentid="TotalAmount"]',t.el).text(carPricetTotal - Discount);*/
+            setField('TotalAmount', carPricetTotal - Discount, t.el);
+
+        }
+        //////////////////////////////////////////////
 
         ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
         $('.file-list', t.el).html("");
@@ -244,15 +261,16 @@
 
 
             //when value on loaded 
-            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+            ////AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
 
-            var getFileUploadWidg = AsyncWidgets.get('grdSalesFileUpload');
-            if (!!getFileUploadWidg) {
-                getFileUploadWidg.show();
-            } else {
+            //var getFileUploadWidg = AsyncWidgets.get('grdSalesFileUpload');
+            //if (!!getFileUploadWidg) {
+            //    getFileUploadWidg.show();
 
-                $.showMessage(`Widget  not found`);
-            }
+            //} else {
+
+            //    $.showMessage(`Widget  not found`);
+            //}
 
         }
     });
@@ -395,8 +413,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
         var formData = new FormData();
         for (var i = 0; i < files.length; i++)
         {
-            
+           
+            var fileSize = files[i].size;
+            var fileSizeMB = (fileSize / (1024 * 1024)).toFixed(2); // Convert to MB with two decimal places
+
             formData.append("file" + i, files[i]);
+            formData.append("fileSize" + i, fileSize); // Append the file size using a unique key
+
         }
 
         formData.append("FileGuid",val("FileGuid", t.el));
@@ -562,8 +585,33 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
                     }
                 }
 
+               
+
 
             }
+            var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+
+
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-2" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 90px;" colid="RecId">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 70px;">${i}</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 269px;" colid="FileName">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 249px;">${orignalFileName}</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 267px;" colid="FileSize">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">${fileSizeMB}</div>
+                                                    </td>
+                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 267px;" colid="Delete">
+                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">
+                                                             <span class="remove-button">X</span>
+                                                            </div>
+                                                        </td>
+
+                                                </tr>`
+
+            $('.ItemTR tbody', t.el).html(genHtml);
+            
+   
                 fileItem.css('background-color', 'lightcoral');
                 fileItem.append(fileName);
                 fileItem.append(removeButton);
@@ -571,6 +619,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             
            
         }
+        $('.ItemTR tbody', t.el).html('');
     });
 
 
@@ -586,10 +635,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
     }
 
-    t.on('onLoadedValues', function (params)
+    t.on('onLoadedValues', function (p)
     {
 
-        console.log(params);
+        console.log(p);
          var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
 
         SInfo = getForm(null, null, params);
@@ -607,77 +656,117 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
 
 //GenerateUploadFiles
-AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res, t)
-{
-    if (res.status == 'OK')
-    {
-        if (res.Response.Rows.length > 0)
-        {
+AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res, t) {
+    if (res.status == 'OK') {
+        if (res.Response.Rows.length > 0) {
             var rows = res.Response.Rows;
-          
+
             var $fileList = $(".file-list", t.el);
-            for (var i = 0; i < rows.length; i++)
-            {
+
+            var tblRowsHTML = "";
+            $('.ItemTR', tblUFL).show();
+            $('.NoRecordsTR', tblUFL).hide();
+            for (var i = 0; i < rows.length; i++) {
+
                 var row = rows[i];
                 var fileName = row.FileName;
                 var recId = row.RecId;
                 var fileGuid = row.FileGuid;
+                var fileSize = row.FileSize;
+
                 var RfileName = row.FileName.replace(/[^a-zA-Z0-9]/g, '-');
 
                 $("." + RfileName, t.el).remove();
 
-                if ($(`.file-list a:contains("${fileName}")`).length > 0)
-                {
+                if ($(`.file-list a:contains("${fileName}")`).length > 0) {
                     continue;
                 }
                 var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
 
-            
+
 
                 var fileItem = $('<div class="file-item"></div>');
-
+                //
                 var fileNameElement = `<span class="file-name">${fileLink}</span>`;
-                var removeButton = $('<span class="remove-button">X</span>');
+                //var removeButton = $('<span class="remove-button">X</span>');
+                // //var removeButton = $(".remove-button");
 
-                // Attach a click event to the remove button to handle removal
-                removeButton.data('recId', recId);
+                //// Attach a click event to the remove button to handle removal
+                //removeButton.data('recId', recId);
 
-                removeButton.data('fileName', fileName); // Store the file name in a data attribute
+                //removeButton.data('fileName', fileName); // Store the file name in a data attribute
 
-                ///Remove File 
-                removeButton.on('click', function ()
-                {
-                    var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
-                    var clickedRecId = $(this).data('recId'); // Get the recId from the data attribute
-                    var clickedFileName = $(this).data('fileName'); // Get the file name from the data attribute
+                /////Remove File 
+                //removeButton.on('click', function ()
+                //{
+                //    var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
+                //    var clickedRecId = $(this).data('recId'); // Get the recId from the data attribute
+                //    var clickedFileName = $(this).data('fileName'); // Get the file name from the data attribute
 
-                    DeleteUploadFile(t, clickedRecId, clickedFileName);
-                    $(this).closest('.file-item').remove();
+                //    DeleteUploadFile(t, clickedRecId, clickedFileName);
+                //    $(this).closest('.file-item').remove();
 
-                    console.log('Remove button clicked for file: ' + fileName);
-                });
-                fileItem.css('background-color', '#98FB98');
+                //    console.log('Remove button clicked for file: ' + fileName);
+                //});
 
-                // Append elements to the file item
-                fileItem.append(fileNameElement);
-                fileItem.append(removeButton);
-                // Append the file item to the "file-list" element
-                $fileList.append(fileItem);
+                var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
 
 
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-2" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 50px;" colid="RecId">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px;width: 40px; ">${i + 1}</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${fileLink}</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileSize">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${fileSize}</div>
+                                                    </td>
+                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
+                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
+                                                             <span class="remove-button" recid="${recId}" filename="${fileName}">X</span>
+                                                            </div>
+                                                        </td>
+
+                                                </tr>`;
+
+                tblRowsHTML += genHtml;
 
 
-            }
+            }  // for loop;
+
+            var tblUFL = $('table.uploadedFileList', t.el); // get the main table of the HTML
+
+            $('.ItemTR tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
+            $('.remove-button', tblUFL).click(function () {
+                var btn = $(this);
+                var recId = btn.attr("recId");
+                var fileName = btn.attr("fileName");
+
+                var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
+                DeleteUploadFile(t, recId, fileName);
+
+                // Remove the row from the table
+                var curTR = btn.closest('tr');//.remove();
+
+                if ($('tr', curTR.parent()).length == 1) {
+                    // curTR.remove();
+                    $('.ItemTR', tblUFL).hide();
+                    $('.NoRecordsTR', tblUFL).show();
+                    //return;
+                }
+                curTR.remove();
+
+            }); // end of click of close button event
+
+
+        } // if length>0
+        else {
+            var tblUFL = $('table.uploadedFileList', t.el);
+            $('.ItemTR', tblUFL).hide();
+            $('.NoRecordsTR', tblUFL).show();
         }
-    }
-    function isFileNameDuplicate(fileName)
-    {
-        // Check if the file name already exists in the list
-        return $fileList.find(".file-list .file-link").filter(function ()
-        {
-            return $(this).text() === fileName;
-        }).length > 0;
-    }
+    } //  if (res.status == 'OK')
+
 };
 
 //Delete  upload file on SC form and db
@@ -741,17 +830,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
     {
         $('[argumentid="Discount"]', t.el).val(decDiscount.toFixed(3));
     }
-
-    //if (isNaN(parseFloat($('[argumentid="ContractDiscount"]', t.el).val())))
-    //{
-    //    $('[argumentid="ContractDiscount"]', t.el).val('0.000');
-    //    decContractDiscount = 0;
-    //}
-    //else
-    //{
-    //    decContractDiscount = parseFloat($('[argumentid="ContractDiscount"]', t.el).val());
-    //    $('[argumentid="ContractDiscount"]', t.el).val(decContractDiscount.toFixed(3));
-    //}
 
 
     var decTotalAmount = parseFloat($('[argumentid="TotalAmount"]',t.el).text());

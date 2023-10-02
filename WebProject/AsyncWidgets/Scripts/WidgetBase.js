@@ -1790,6 +1790,19 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var popId , searchForm, searchFormId, resGrd, resGrdId ,
             popup ,top,left,
             autoShowControls, popupControls = []; // comma separated controls which has to be shown automatically
+        //console.log(cf.ctrl);
+        if (!!cf.ctrl) {
+
+            var txt = $(cf.ctrl), trow = txt.closest('tr');
+
+
+            let lf = trow.offset().left, rw = trow.width();
+            //t._LOVCon = $('<div style="padding:0px;display:none;position:absolute;border:1px solid #8298B0;background:#EEEEFF;"></div>')
+            //    .css({ 'top': 100, 'width': rw - 2, left: lf });
+            cf.top = trow.offset().top;
+            cf.left = lf;
+            cf.width = rw - 2;
+        }
 
         left = cf.left || '8%';
         if (!!cf.ctrl) {// if control is given then
@@ -1819,8 +1832,10 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             $.showMessage('A LOV popup with id:"' + popId + '" not found!');
             return;
         }
+        
+        //'#628296'
 
-        popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', 'background': '#628296', width:'80%' }).show();
+        popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', border: '1px solid rgb(130, 152, 176)', 'background': 'rgb(238, 238, 255)', width:(cf.width||'900px' )}).show();
         if (!autoShowControls) { //row select grid with a search panel and datagrid
 
             searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
@@ -1865,6 +1880,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     popupControls.push(ctrl);
                 }
             }
+           // $('body').css('overflow', 'clip');
             $(t.el).mask("");
             $('.loadmask-msg', t.el).hide();
            
@@ -1873,6 +1889,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
 
         $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
+           // $('body').css('overflow', 'clip');
             popup.hide();
             $(t.el).unmask();
             $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
@@ -2491,7 +2508,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     {
                         alert("Field '" + param + "' not found in the form! ");
                     }
-                    console.log("Field '" + param + "' not found in the form! ");
+                    //console.log("Field '" + param + "' not found in the form! ");
                     continue;
                    
                 };
