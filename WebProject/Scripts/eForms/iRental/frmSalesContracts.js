@@ -215,7 +215,14 @@
         $('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
         $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
         $('span[argumentid="ChassisNo"],span[argumentid="CustomerName"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', t.el).css('color', '#628296'); //Change Color to Normal on form show
-        AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+
+            //show the no record on file upload table
+            if (t.FormMode == 'new') {
+
+                $('.NoRecordsTR').show();
+
+            }
  
     });
     // End On Form Show
@@ -409,7 +416,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             return;
         }
 
-        var fileType = val('DocType', t.el);
+        
         var formData = new FormData();
         for (var i = 0; i < files.length; i++)
         {
@@ -418,7 +425,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
          
         }
      
-        formData.append("DocType", fileType);
+        formData.append("DocType", val('DocType', t.el));
         formData.append("FileGuid",val("FileGuid", t.el));
         if (isGUIDUpdateNeeded)
         {
@@ -462,6 +469,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
                     var fileName = row.FileName;
                     var msg = $(".message", t.el).html(`File [${fileName}] uploaded successfully.`);
                     $(".file-input", t.el).val('');
+                    $('[argumentid = "DocType"]').val('');
 
                 }
                 
@@ -478,42 +486,43 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     });
 
     // Remove a file from the list
-    $(document).on("click", ".remove-file", function ()
+    $(document).on("click", ".remove-button", function ()
     {
-        $(this).closest(".file-item").remove();
+        $(this).closest('tr').remove();
         $(".file-input", t.el).val('');
+        
+
     });
 
   
 
   //   Handle file selection and display in the list
-
+    var loggedUser = $('.LoggedUser').text();
     $(".file-input", t.el).change(function ()
     {
         var fileList = $(".file-list", t.el);
-        var linkFile = $('.file-list .file-link', t.el);
-        var fileName = $('.file-list .file-item > .file-name', t.el);
-        const fileSizeElement = $('fileSize',t.el);
-
+        var linkFile = $('.ItemTableRow td>.linkFileName', t.el);
+        var fileName = $('.ItemTableRow td>.fileName', t.el);
+       
         var files = this.files;
         for (var i = 0; i < files.length; i++)
         {
             var orignalFileName = files[i].name;
             var RfileName = files[i].name.replace(/[^a-zA-Z0-9]/g, '-');
           
-
-
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(orignalFileName);
             var removeButton = $("<div class='remove-file'>X</div>");
            
 
                  // Check for duplicate file names
-            for (var i = 0; i < fileName.length; i++) {
+            for (var i = 0; i < fileName.length; i++)
+            {
 
                 var findToFile = $(fileName[i]);
                 console.log("file: "+findToFile.text());
-                for (var j = 0; j < linkFile.length; j++) {
+                for (var j = 0; j < linkFile.length; j++)
+                {
 
 
                     var findToLinkFile = $(linkFile[j]);
@@ -529,39 +538,48 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
                     {
                         console.log("not dublicate");
                     }
-                }
+                }//end inner loop
 
                
 
 
-            }
+            }//end forloop for search duplicate files
             var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
 
 
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-2" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 90px;" colid="RecId">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 70px;">${i}</div>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-2" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 50px;" colid="RecId">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px;width: 40px; ">${i + 1}</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 269px;" colid="FileName">
-                                                        <div class="ColValue w-grid-label fileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 249px;">${orignalFileName}</div>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
+                                                        <div class="ColValue w-grid-label fileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${orignalFileName}</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 267px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">Size</div>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileSize">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">size</div>
                                                     </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 267px;" colid="Delete">
-                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 247px;">
-                                                             <span class="remove-button">X</span>
+                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">type</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${loggedUser}y</div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${new Date()}</div>
+                                                    </td>
+                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
+                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
+                                                             <span class="remove-button" >X</span>
                                                             </div>
                                                         </td>
 
-                                                </tr>`
+                                                </tr>`;
 
            
             
    
-                fileItem.css('background-color', 'lightcoral');
-                fileItem.append(fileName);
-                fileItem.append(removeButton);
-                fileList.append(fileItem);
+                //fileItem.css('background-color', 'lightcoral');
+                //fileItem.append(fileName);
+                //fileItem.append(removeButton);
+                //fileList.append(fileItem);
             
            
         }
@@ -609,7 +627,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
             var rows = res.Response.Rows;
 
             var $fileList = $(".file-list", t.el);
-
+            var loggedUser = $('.LoggedUser').text();
             var tblRowsHTML = "";
             $('.ItemTR', tblUFL).show();
             $('.NoRecordsTR', tblUFL).hide();
@@ -622,7 +640,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                 var fileSize = row.FileSize;
                 var fileType = row.DocType;
                 var createdBy = row.$CreatedBy;
-                /*var dateCreated = row.$DateModified;*/
+                var dateCreated = row.DateModified;
 
                 var RfileName = row.FileName.replace(/[^a-zA-Z0-9]/g, '-');
 
@@ -674,10 +692,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${fileType}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${createdBy}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${loggedUser}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${new Date()}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${dateCreated}</div>
                                                     </td>
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
                                                             <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
@@ -711,7 +729,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                     $('.ItemTR', tblUFL).hide();
                     $('.NoRecordsTR', tblUFL).show();
                     //return;
-                }
+                } 
                 curTR.remove();
 
             }); // end of click of close button event

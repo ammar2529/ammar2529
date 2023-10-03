@@ -354,8 +354,8 @@
                             <p class="ftitle">Click to select file .</p>
                             <div class="file-upload-drop-area">
 
-                                <input type="file" class="file-input" />
-                                <select loadon="FirstVisible" class="dropdownlist " style="width: 155px;"
+                                <input type="file" class="file-input" accept=".pdf,.jpg,.png,.txt,.docx"/>
+                                <select loadon="FirstVisible" class="dropdownlist required newdropdownlist" style="width: 155px;"
                                     groupid="SalesContractsForm" argumentid="DocType"  storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
                                     <option value="" selected="selected">Select File Type</option>
                                 </select>
@@ -453,7 +453,7 @@
                 <tr>
                     <td colspan="4" style="text-align: center;">
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" value="  Save  " ignorevalidate="ReservationDate" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
+                            <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
                             <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
                             <%--              <input type="button" value="  Print  " clafss="ButtonStyle btn_9" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle" />

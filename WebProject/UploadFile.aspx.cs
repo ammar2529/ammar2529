@@ -39,7 +39,7 @@ namespace WebProject
                 {
 
                     string FileGuid = httpRequest.Form["FileGuid"];
-                    //string DocType = httpRequest.Form["DocType"];
+                    string DocType = httpRequest.Form["DocType"];
                     string newFileName = "";
 
                     for (int i = 0; i < files.Count; i++)
