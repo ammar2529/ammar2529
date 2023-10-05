@@ -15,6 +15,10 @@
 <%@ Register Src="Pages/eForms/iRental/Modules/RentalContracts.ascx" TagName="RentalContracts" TagPrefix="AW" %>
 <%@ Register Src="Pages/eForms/iRental/Modules/LeaseContracts.ascx" TagName="LeaseContracts" TagPrefix="AW" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SalesContracts.ascx" TagPrefix="AW" TagName="SalesContracts" %>
+<%@ Register Src="~/Pages/eForms/iRental/Modules/CarForSales.ascx" TagPrefix="AW" TagName="CarForSales" %>
+<%@ Register Src="~/Pages/eForms/iRental/Modules/SalesCarPrice.ascx" TagPrefix="AW" TagName="SalesCarPrice" %>
+
+
 
 
 <%--<script runat="server">
@@ -200,6 +204,8 @@
             <AW:RentalContracts ID="RentalContracts" runat="server" />
             <AW:LeaseContracts ID="LeaseContracts" runat="server" />
             <AW:SalesContracts runat="server" ID="SalesContracts" />
+            <AW:CarForSales runat="server" ID="CarForSales" />
+            <AW:SalesCarPrice runat="server" ID="SalesCarPrice" />
         </div>
     </div>
 

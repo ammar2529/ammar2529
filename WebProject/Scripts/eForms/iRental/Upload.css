@@ -11,7 +11,7 @@
 
 .file-upload-drop-area {
     border: 2px dashed #ccc;
-  /*  padding: 5px;*/
+    padding: 5px;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -109,11 +109,11 @@ span.file-name > a{
     font-size: 14px;
     cursor:pointer;
 }
-    .newdropdownlist:hover {
+   /* .newdropdownlist:hover {
         background-color: #3498db;
         color: #fff;
         border-color: #3498db;
-    }
+    }*/
 
 .file-input {
     cursor: pointer;
@@ -126,11 +126,11 @@ span.file-name > a{
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-    .file-input:hover {
+  /*  .file-input:hover {
         background-color: #3498db;
         color: #fff;
         border-color: #3498db;
-    }
+    }*/
 
 
 

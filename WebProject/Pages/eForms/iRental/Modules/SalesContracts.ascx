@@ -47,13 +47,13 @@
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
                                      <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
-                                     <div class="ftitle">Charges:&nbsp;<nobr class="ftitle" style="color:#602010">{ContractTotalCharges:fix(3)}</nobr></div>
-                                     <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmountDue:fix(3)}</nobr></div>
+                                     <div class="ftitle">Charges:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
+                                     <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>
                 <pre columnid="CreationDetails">
-                                     <div class="ftitle" style="color:#808000">{OutLocation}</div>
-                                     <div class="ftitle" style="color:#101080">{CreatedBy}</div>
+<%--                                     <div class="ftitle" style="color:#808000">{OutLocation}</div>--%>
+                                     <div class="ftitle" style="color:#101080">Amirza</div>
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                 </pre>
 

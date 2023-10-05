@@ -348,10 +348,10 @@
                         <div class="file-upload-container">
                             <div class="uploaded-file-list"></div>
 
-                            <div id="file-list" class="file-list">
+                            <%--<div id="file-list" class="file-list">--%>
                                 <!-- File list will be displayed here -->
                             </div>
-                            <p class="ftitle">Click to select file .</p>
+                           <%-- <p class="ftitle">Click to select file .</p>--%>
                             <div class="file-upload-drop-area">
 
                                 <input type="file" class="file-input" accept=".pdf,.jpg,.png,.txt,.docx"/>
@@ -454,7 +454,7 @@
                     <td colspan="4" style="text-align: center;">
                         <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
-                            <input type="button" value="  Reserve  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
+                            <input type="button" value="  Reserve  " ignorevalidate="DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
                             <%--              <input type="button" value="  Print  " clafss="ButtonStyle btn_9" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
                         </div>
