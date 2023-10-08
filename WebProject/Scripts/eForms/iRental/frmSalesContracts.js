@@ -102,17 +102,21 @@
     });
     //End On Click Plus Sign to Show hide More details of Customer & Cars
 
-    //On Click of Print Contract Button
-    $('.btn_9', t.el).click(function () { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenContractFrPg.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
-        console.log(strlink);
-        var width = 920;
-        var height = 600;
-        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
-        var top = parseInt((screen.availHeight / 2) - (height / 2));
-        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
-        return false;
-    });
+        //On Click of Print Contract Button
+        
+            $('.PrintBtn', t.el).click(function () { //
+                var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenSalesContractFrPage1.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+                console.log(strlink);
+                var width = 920;
+                var height = 600;
+                var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+                var top = parseInt((screen.availHeight / 2) - (height / 2));
+                window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+                console.log('Click on Print Button');
+
+                return false;
+            });
+        
     //End On Click of Print Contract Button
 
     // To Select Tabs
@@ -228,7 +232,8 @@
     // End On Form Show
 
     // On Start of Onloaded Values
-    t.on('onLoadedValues', function (args) {
+        t.on('onLoadedValues', function (args)
+        {
 
         var res = args.res;
 
@@ -267,19 +272,10 @@
             $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
 
 
-            //when value on loaded 
-            ////AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+          
 
-            //var getFileUploadWidg = AsyncWidgets.get('grdSalesFileUpload');
-            //if (!!getFileUploadWidg) {
-            //    getFileUploadWidg.show();
+            }
 
-            //} else {
-
-            //    $.showMessage(`Widget  not found`);
-            //}
-
-        }
     });
     // End of On Loaded Values
 }

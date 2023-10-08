@@ -4,12 +4,15 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 <%@ Register Src="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx" TagPrefix="AW" TagName="CustomerDetails_FrUc" %>
 
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
-<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
             <ul class="SimpleTab" style="margin: 0px;">
@@ -371,13 +374,13 @@
 
                             <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly="readonly" />
 
-                        </div>
+                        
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
                         <%-- style="margin-left:5%;width: 90%; text-align: left" --%>
-                        <%-- Data Grid --%>
+                        <%-- Data Grid --%> 
                         <table cellspacing="0" cellpadding="0" border="0" style="margin-left: 5%; width: 90%; text-align: left" class="uploadedFileList">
                             <tbody>
                                 <tr class="HeaderTR">
@@ -455,7 +458,7 @@
                         <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
                             <input type="button" value="  Reserve  " ignorevalidate="DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
-                            <%--              <input type="button" value="  Print  " clafss="ButtonStyle btn_9" />--%>
+                             <input type="button" value="  Print  " class="ButtonStyle PrintBtn" />
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
                         </div>
                     </td>
