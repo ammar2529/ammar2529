@@ -13,6 +13,7 @@ Tables:
 	  iRental_SalesContracts
 	  FX_Common_LOV_Parent
 	  FX_Common_LOV_Child
+	  Fx_FileUpload
 Views:
 	VW_SEL_iRental_SalesContracts 
 	VW_iRental_CarsForSale 
@@ -58,6 +59,8 @@ update SP:
 	SEL_iRental_Contracts_Customers_SP
 	UPD_iRental_Customers_sp
 	SEL_iRental_SalesContracts_SP
+	RNTSalesContract_Print_SalesContract_SP
+	FX_Common_LOV_Parent
 	
 	17/09/023
 	[UPD_iRental_SalesContracts_SP]

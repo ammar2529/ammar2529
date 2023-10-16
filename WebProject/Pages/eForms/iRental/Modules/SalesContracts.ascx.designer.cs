@@ -33,13 +33,13 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Form frmRentalContracts_Cust_ShUc;
 
         /// <summary>
-        /// grdContracts_Cust control.
+        /// grdSalesContracts_Cust control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdContracts_Cust;
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSalesContracts_Cust;
 
         /// <summary>
         /// frmSalesCustomerDetails control.

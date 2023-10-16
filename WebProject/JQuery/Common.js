@@ -72,12 +72,73 @@ function dateDiff(d1, d2) {
     return (d1 - d2) / (3600000 * 24);
 };
 
-Date.prototype.getDateDiffInDays=function ( EndDate) {
+Date.prototype.getDateDiffInDays = function (EndDate) {
     var res = Math.floor(Math.abs(this - EndDate)) / (1000 * 60 * 60 * 24);
     if (!isNaN(res)) {
         return res;
     }
     return 0;
+};
+
+ function ServerCall(serviceInfo, success, actionId, actorId) {
+
+     //var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+
+     actionId = actionId || "DataAction";
+     actorId = actorId || "DataHelper";
+    SInfo = getForm(null, null, serviceInfo);
+    var inv = new AsyncWidgets.RAInvoker();
+     inv.on('onSuccess', success);
+     inv.invokeRA({ params: ["ActorId", actorId, "ActionId", actionId, "ServiceInfo", SInfo] });
+
+};
+
+function checkAllowedFileExtensions(allowedFileExt, fileName) {
+    var modifyAllowedFileExt = allowedFileExt.replace("Allowed Files:", "");
+    var commaOnStartFileExt = "," + modifyAllowedFileExt.trim();
+    console.log(commaOnStartFileExt);
+
+
+    fileName.each(function () {
+        var fileName = $(this).text();
+        var modFileName = fileName.split(".").pop();
+        var addCommaFile = "," + modFileName.trim();
+        console.log("Checking file extension: " + addCommaFile);
+
+        if (commaOnStartFileExt.indexOf(addCommaFile) !== -1) {
+            console.log("Allowed Ext");
+        }
+        else {
+            console.log("Ext Not allowed");
+            $('.file-input').val('');
+            $.showMessage("File Extension Not Allowed");
+        }
+    });
+};
+
+function checkDublicateFiles(fileName, linkFile, orignalFileName,  t) {
+    
+    for (var i = 0; i < fileName.length; i++) {
+        var findToFile = $(fileName[i]);
+        console.log("file: " + findToFile.text());
+        for (var j = 0; j < linkFile.length; j++) {
+            var findToLinkFile = $(linkFile[j]);
+            console.log("Link Files: " + findToLinkFile.text());
+
+            if (findToFile.text() == findToLinkFile.text()) {
+                console.log("dublicate file found");
+                $.showMessage(`File [${orignalFileName}] is already uploaded`);
+                findToFile.remove();
+                $('.file-input', t.el).val('');
+               
+                return;
+            } else {
+                console.log("not dublicate File");
+            }
+        }//end inner loop
+
+    }//end forloop for search duplicate files
 }
+
 
 

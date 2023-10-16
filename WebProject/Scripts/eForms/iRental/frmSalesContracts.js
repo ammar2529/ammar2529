@@ -1,10 +1,14 @@
 ﻿/// <reference path="/JQuery/Common.js" />
 
 
-    AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
+AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
+    
         var t = obj;
        
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
+
+
+    
 
         t.on('beforeDataAction', function (params)
         {
@@ -105,7 +109,7 @@
         //On Click of Print Contract Button
         
             $('.PrintBtn', t.el).click(function () { //
-                var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenSalesContractFrPage1.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+                var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenSalesContract.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
                 var width = 920;
                 var height = 600;
@@ -118,6 +122,40 @@
             });
         
     //End On Click of Print Contract Button
+
+    //On Click of QuotationBtn Contract Button
+
+    $('.QuotationBtn', t.el).click(function () { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenSalesContract.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on QuotationBtn Button');
+
+        return false;
+    });
+
+    //End On Click of QuotationBtn Contract Button
+
+    //On Click of BillsBtn Contract Button
+
+    $('.BillsBtn', t.el).click(function () { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenSalesContract.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on BillsBtn Button');
+
+        return false;
+    });
+
+    //End On Click of BillsBtn Contract Button
 
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function () {
@@ -192,6 +230,11 @@
 
             if (t.FormMode == "new") {
                 $('.SimpleTab', t.el).attr('disabled', 'disabled');
+                //$('.PrintBtn').css('visibility', 'hidden'); // Hide element;
+                $(".PrintBtn").css("opacity", 0.5);
+
+                // Disable the button
+                $(".PrintBtn").prop("disabled", true);
             }
 
 
@@ -227,7 +270,30 @@
                 $('.NoRecordsTR').show();
 
             }
- 
+
+            //for file extension fetch from LOvchild
+            var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "35" };
+            function Success(res) {
+                var res = decJSON(res);
+                if (res.status == 'OK') {
+                    if (res.Response.Rows.length > 0) {
+                        var rows = res.Response.Rows;
+                        console.log(`Rows: ${rows}`);
+                        for (var i = 0; i < rows.length; i++)
+                        {
+
+                            var row = rows[i];
+                            var name = row.Name;
+                            console.log(`Name: ${name}`);
+                            var myTable = $('.myTable', t.el);
+                            $('.allowedFile', myTable).text(`Allowed Files: ${name}`);
+                        }
+                    }
+                }
+            }
+
+            ServerCall(params, Success, "ChildComboRows");
+          
     });
     // End On Form Show
 
@@ -496,9 +562,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     var loggedUser = $('.LoggedUser').text();
     $(".file-input", t.el).change(function ()
     {
-        var fileList = $(".file-list", t.el);
+       /* var fileList = $(".file-list", t.el);*/
         var linkFile = $('.ItemTableRow td>.linkFileName', t.el);
         var fileName = $('.ItemTableRow td>.fileName', t.el);
+        var allowedFileExt = $('.allowedFile').text();
        
         var files = this.files;
         for (var i = 0; i < files.length; i++)
@@ -508,57 +575,40 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
           
             var fileItem = $(`<div class='file-item ${RfileName}'></div>`);
             var fileName = $("<div class='file-name'></div>").text(orignalFileName);
-            var removeButton = $("<div class='remove-file'>X</div>");
+           /* var removeButton = $("<div class='remove-file'>X</div>");*/
+
+
+           //check allowed files function in common.js
+
+            checkAllowedFileExtensions(allowedFileExt, fileName);
+         
+            // End check allowed files
+
+            // Check for duplicate file names
            
 
-                 // Check for duplicate file names
-            for (var i = 0; i < fileName.length; i++)
-            {
+            checkDublicateFiles(fileName, linkFile, orignalFileName, t);
+            
 
-                var findToFile = $(fileName[i]);
-                console.log("file: "+findToFile.text());
-                for (var j = 0; j < linkFile.length; j++)
-                {
+            //End Check for duplicate file names
+
+            var genHtml = ` <tr class="ItemTableRow beforeUplaodFileList" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
 
 
-                    var findToLinkFile = $(linkFile[j]);
-                    console.log("Link Files: " + findToLinkFile.text());
-
-                    if (findToFile.text() == findToLinkFile.text()) {
-                        console.log("dublicate file found");
-                        $.showMessage(`File [${orignalFileName}] is already uploaded`);
-                        findToFile.remove();
-                        $('.file-input', t.el).val('');
-                        return;
-                    } else
-                    {
-                        console.log("not dublicate");
-                    }
-                }//end inner loop
-
-               
-
-
-            }//end forloop for search duplicate files
-            var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
-
-
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-2" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 50px;" colid="RecId">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px;width: 40px; ">${i + 1}</div>
-                                                    </td>
+                                                   
                                                     <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
                                                         <div class="ColValue w-grid-label fileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${orignalFileName}</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileSize">
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="FileSize">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">size</div>
                                                     </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
+                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="FileType">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">type</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${loggedUser}y</div>
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="CreatedBy">
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${loggedUser}</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="DateCreated">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${new Date()}</div>
                                                     </td>
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
@@ -580,7 +630,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
            
         }
     //    $('.ItemTR tbody', t.el).html('');
-        $('.ItemTR tbody', t.el).html(genHtml);
+        $('.ItemTR tbody', t.el).append(genHtml);
+        var curTable = $('tr.beforeUplaodFileList', t.el);
+        curTable.remove();
     });
 
 
@@ -652,32 +704,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                 var fileItem = $('<div class="file-item"></div>');
                 //
                 var fileNameElement = `<span class="file-name">${fileLink}</span>`;
-                //var removeButton = $('<span class="remove-button">X</span>');
-                // //var removeButton = $(".remove-button");
-
-                //// Attach a click event to the remove button to handle removal
-                //removeButton.data('recId', recId);
-
-                //removeButton.data('fileName', fileName); // Store the file name in a data attribute
-
-                /////Remove File 
-                //removeButton.on('click', function ()
-                //{
-                //    var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
-                //    var clickedRecId = $(this).data('recId'); // Get the recId from the data attribute
-                //    var clickedFileName = $(this).data('fileName'); // Get the file name from the data attribute
-
-                //    DeleteUploadFile(t, clickedRecId, clickedFileName);
-                //    $(this).closest('.file-item').remove();
-
-                //    console.log('Remove button clicked for file: ' + fileName);
-                //});
+              
                 var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
 
 
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-2" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 50px;" colid="RecId">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px;width: 40px; ">${i + 1}</div>
-                                                    </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
                                                         <div class="ColValue w-grid-label linkFileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${fileLink}</div>
                                                     </td>

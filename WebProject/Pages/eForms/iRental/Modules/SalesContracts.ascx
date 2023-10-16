@@ -53,7 +53,7 @@
                                 </pre>
                 <pre columnid="CreationDetails">
 <%--                                     <div class="ftitle" style="color:#808000">{OutLocation}</div>--%>
-                                     <div class="ftitle" style="color:#101080">Amirza</div>
+                                     <div class="ftitle" style="color:#101080">{CreatedBy}</div>
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                 </pre>
 
@@ -125,7 +125,7 @@
                     </script>
                 </Scripts>--%>
     </AW:Form>
-    <AW:DataGrid ID="grdContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmRentalContracts_Cust_ShUc"
+    <AW:DataGrid ID="grdSalesContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmRentalContracts_Cust_ShUc"
         EmptyHeight="201px" AllowNew="false" SelectableRow="false"
         PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">

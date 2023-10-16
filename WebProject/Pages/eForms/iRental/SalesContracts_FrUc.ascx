@@ -5,7 +5,7 @@
 <%@ Register Src="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx" TagPrefix="AW" TagName="CustomerDetails_FrUc" %>
 
   
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+      
 
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
@@ -34,7 +34,8 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                        <%--<span class="ftitle" style="color: red;" groupid="SalesContractsForm" argumentid="RecCode"></span>--%>
+                        <input type="hidden"   groupid="SalesContractsForm" argumentid="RecCode" />
                     </td>
                 </tr>
 
@@ -356,17 +357,20 @@
                             </div>
                            <%-- <p class="ftitle">Click to select file .</p>--%>
                             <div class="file-upload-drop-area">
+                                    <select loadon="FirstVisible" class="dropdownlist required newdropdownlist" style="width: 155px;"
+                                    groupid="SalesContractsForm" argumentid="DocType"  storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
+                                    <option value="" selected="selected">Select Doc Type</option>
+                                </select>
+                                
 
                                 <input type="file" class="file-input" accept=".pdf,.jpg,.png,.txt,.docx"/>
-                                <select loadon="FirstVisible" class="dropdownlist required newdropdownlist" style="width: 155px;"
-                                    groupid="SalesContractsForm" argumentid="DocType"  storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
-                                    <option value="" selected="selected">Select File Type</option>
-                                </select>
+                                <span class="allowedFile">Allowed Files</span>
+                                                     
                                 <button class="upload-button">Upload</button>
 
                             </div>
 
-
+                        
 
                             
                             <div class="progress-bar"></div>
@@ -374,14 +378,8 @@
 
                             <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly="readonly" />
 
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <%-- style="margin-left:5%;width: 90%; text-align: left" --%>
-                        <%-- Data Grid --%> 
-                        <table cellspacing="0" cellpadding="0" border="0" style="margin-left: 5%; width: 90%; text-align: left" class="uploadedFileList">
+                        <%-- Data Grid  --%>
+                        <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; width: 100%; text-align: left" class="uploadedFileList">
                             <tbody>
                                 <tr class="HeaderTR">
                                     <td class="Header w-grid-border">
@@ -389,11 +387,6 @@
                                             <tbody>
                                                 <tr class="w-grid-head-back">
 
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-2" colindex="2" colid="RecId" style="padding-left: 0px; padding-right: 0px; width: 50px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 40px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Sr.</span>
-                                                        </div>
-                                                    </td>
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-3" colindex="3" colid="FileName" style="padding-left: 0px; padding-right: 0px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px;">
                                                             <span href="#" class="w-grid-head ColName sort">File Name</span>
@@ -416,7 +409,7 @@
                                                     </td>
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Uploade Date</span>
+                                                            <span href="#" class="w-grid-head ColName sort">Uploade Date & Time</span>
                                                         </div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 45px;">
@@ -447,7 +440,7 @@
                             </tbody>
                         </table>
 
-                        <%-- End Data Grid --%>
+                        <%--<%-- End Data Grid --%>
                    
                         
                     </td>
@@ -456,10 +449,12 @@
                 <tr>
                     <td colspan="4" style="text-align: center;">
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
-                            <input type="button" value="  Reserve  " ignorevalidate="DocType" class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
-                             <input type="button" value="  Print  " class="ButtonStyle PrintBtn" />
-                            <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
+                            <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle btn_11 btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
+                            <input type="button" value="  Reserve  " ignorevalidate="DocType" class="DataAction ButtonStyle btn_11 btnReserve common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
+                             <input type="button" value="  Contract  " class="ButtonStyle PrintBtn common-button" />
+                             <input type="button" value="  Quotation  " class="ButtonStyle QuotationBtn common-button" />
+                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />
+                            <input type="button" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
                     </td>
                 </tr>

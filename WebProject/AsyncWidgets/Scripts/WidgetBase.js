@@ -1784,8 +1784,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     showPopup: function (cf) {
             //cf=>{ popupId: '-div-tag-id-of the popup', searchFormId: 'optional for row select popup', resultGridId: 'optional for row select popup', top:'top of the popup div',left:'' } //row select popup configuration
-            //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
-
+        //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
+        debugger;
         var t = this;
         var popId , searchForm, searchFormId, resGrd, resGrdId ,
             popup ,top,left,

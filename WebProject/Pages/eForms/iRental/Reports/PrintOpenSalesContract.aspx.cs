@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WebProject.Pages.eForms.iRental.Reports
 {
-    public partial class PrintOpenSalesContractFrPage1 : System.Web.UI.Page
+    public partial class PrintOpenSalesContract1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

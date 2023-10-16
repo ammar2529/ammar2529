@@ -161,7 +161,7 @@
                             </td>
                          <td style="padding-left:10px;padding-right:20px;" class="text-align-negative" width="100%" nowrap="nowrap">
                                 <b><a style="display:none" class="blink" href="mailto:SUPPORT@XYZ.com">SUPPORT@XYZ.com</a></b>
-                                <b class="blink" style="color:white"><i>Designed by Asif & Team</i></b> 
+                                <b class="blink" style="color:white"><i></i></b> 
                             </td> 
     
                         </tr>
