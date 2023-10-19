@@ -93,6 +93,7 @@ Date.prototype.getDateDiffInDays = function (EndDate) {
 
 };
 
+//check allowed file extension
 function checkAllowedFileExtensions(allowedFileExt, fileName) {
     var modifyAllowedFileExt = allowedFileExt.replace("Allowed Files:", "");
     var commaOnStartFileExt = "," + modifyAllowedFileExt.trim();
@@ -116,6 +117,7 @@ function checkAllowedFileExtensions(allowedFileExt, fileName) {
     });
 };
 
+//check dublicate file //
 function checkDublicateFiles(fileName, linkFile, orignalFileName,  t) {
     
     for (var i = 0; i < fileName.length; i++) {

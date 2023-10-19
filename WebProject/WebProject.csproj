@@ -2575,6 +2575,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract - Copy.cs">
+      <DependentUpon>PrintOpenSalesContract - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.cs">
       <DependentUpon>PrintQuotationSalesContracts.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3294,6 +3300,10 @@
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintBillsSalesContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintBillsSalesContracts.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintOpenSalesContract - Copy.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
