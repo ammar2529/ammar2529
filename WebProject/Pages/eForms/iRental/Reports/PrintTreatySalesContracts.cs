@@ -16,14 +16,14 @@ namespace WebProject.Pages.eForms.iRental.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PrintOpenSalesContract___Copy : ReportClass {
+    public class PrintTreatySalesContracts : ReportClass {
         
-        public PrintOpenSalesContract___Copy() {
+        public PrintTreatySalesContracts() {
         }
         
         public override string ResourceName {
             get {
-                return "PrintOpenSalesContract - Copy.rpt";
+                return "PrintTreatySalesContracts.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         public override string FullResourceName {
             get {
-                return "WebProject.Pages.eForms.iRental.Reports.PrintOpenSalesContract - Copy.rpt";
+                return "WebProject.Pages.eForms.iRental.Reports.PrintTreatySalesContracts.rpt";
             }
             set {
                 // Do nothing
@@ -82,7 +82,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection5 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,33 +98,17 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section PageFooterSection1 {
             get {
-                return this.ReportDefinition.Sections[8];
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPrintOpenSalesContract___Copy : Component, ICachedReport {
+    public class CachedPrintTreatySalesContracts : Component, ICachedReport {
         
-        public CachedPrintOpenSalesContract___Copy() {
+        public CachedPrintTreatySalesContracts() {
         }
         
         [Browsable(false)]
@@ -161,7 +145,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PrintOpenSalesContract___Copy rpt = new PrintOpenSalesContract___Copy();
+            PrintTreatySalesContracts rpt = new PrintTreatySalesContracts();
             rpt.Site = this.Site;
             return rpt;
         }

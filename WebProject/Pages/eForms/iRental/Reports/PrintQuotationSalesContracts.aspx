@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrintOpenSalesContract.aspx.cs" Inherits="WebProject.Pages.eForms.iRental.Reports.PrintOpenSalesContract1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrintQuotationSalesContracts.aspx.cs" Inherits="WebProject.Pages.eForms.iRental.Reports.PrintQuotationSalesContracts1" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 
@@ -6,19 +6,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Sales Contract</title>
+    <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-       
+        
             <table border="0" width="100%">
-                <a href="PrintOpenSalesContract.aspx">PrintOpenSalesContract.aspx</a>
+               
                 <tr>
                     <td style="height: 21px" align="center" valign="top"">
-                        &nbsp;<CR:CrystalReportViewer ID="SalesContractReport" runat="server" AutoDataBind="true" HasCrystalLogo="False" Height="1039px" 
+                        &nbsp; <CR:CrystalReportViewer  ID="QuotationReport" runat="server" AutoDataBind="true" HasCrystalLogo="False" Height="1039px" 
                             ReportSourceID="CrystalReportSource12" 
                                HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
-                        Width="901px"/>
+                        Width="901px" />
 
                         <asp:SqlDataSource ID="SqlDataSource12" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                             SelectCommand="RNTSalesContract_Print_SalesContract_SP" SelectCommandType="StoredProcedure"  >
@@ -29,7 +29,7 @@
                         </asp:SqlDataSource>
 
                         <CR:CrystalReportSource ID="CrystalReportSource12" runat="server">
-                            <Report FileName="PrintOpenSalesContract.rpt">
+                            <Report FileName="PrintQuotationSalesContracts.rpt">
                                 <DataSources>
                                     <CR:DataSourceRef DataSourceID="SqlDataSource12" TableName="RNTSalesContract_Print_SalesContract_SP"/>
                                     
