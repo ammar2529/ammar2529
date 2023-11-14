@@ -113,6 +113,7 @@ function checkAllowedFileExtensions(allowedFileExt, fileName) {
             console.log("Ext Not allowed");
             $('.file-input').val('');
             $.showMessage("File Extension Not Allowed");
+           
         }
     });
 };

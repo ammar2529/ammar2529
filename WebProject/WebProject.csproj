@@ -1244,6 +1244,9 @@
     <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite.gif" />
     <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs.gif" />
     <Content Include="AsyncWidgets\Widgets\TabPanel.ascx" />
+    <Content Include="a\StyleSheet1.css" />
+    <Content Include="bin\WebProject.dll" />
+    <Content Include="bin\WebProject.pdb" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1334,7 +1337,9 @@
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\preview.jsp" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\eForms\iRental\frmCustomerRentalContracts.js" />
     <Content Include="Scripts\eForms\iRental\frmiRentalPaymentsDetail.js" />
+    <Content Include="Scripts\eForms\iRental\frmRentalContracts.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
     <Content Include="Scripts\eForms\iRental\RemoveButton.css" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />
@@ -1349,6 +1354,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\frmRentalContractst.js" />
     <Content Include="WebForm4.aspx" />
     <Content Include="DataSets\SalesContractDS.xsc">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
@@ -1363,6 +1369,17 @@
     </Content>
     <Content Include="ReportDS\ReportDS.xsc">
       <DependentUpon>ReportDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSets\SalesContractsTestDS.xsc">
+      <DependentUpon>SalesContractsTestDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\SalesContractsTestDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesContractsTestDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSets\SalesContractsTestDS.xss">
+      <DependentUpon>SalesContractsTestDS.xsd</DependentUpon>
     </Content>
     <None Include="ReportDS\ReportDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -2247,6 +2264,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\SalesContractsTestDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesContractsTestDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -3314,42 +3336,42 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\Old_PrintOpenContract.rpt">
+    <Content Include="Pages\eForms\iRental\Reports\Old_PrintOpenContract.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Old_PrintOpenContract1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintBillsSalesContracts.rpt">
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintBillsSalesContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintBillsSalesContracts.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintTreatySalesContracts.rpt">
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintTreatySalesContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintTreatySalesContracts.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.rpt">
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintQuotationSalesContracts.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract.rpt">
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenSalesContract.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenContract.rpt">
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintOpenContract.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenContract1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintReceiptVoucher.rpt">
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintReceiptVoucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintReceiptVoucher1.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesContractsCrysReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\TestCrystalReort.rpt">
+    <Content Include="Pages\eForms\iRental\Reports\TestCrystalReort.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TestCrystalReort.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

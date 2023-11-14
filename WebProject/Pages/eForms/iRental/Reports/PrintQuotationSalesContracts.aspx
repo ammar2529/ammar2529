@@ -31,6 +31,7 @@
                         <CR:CrystalReportSource ID="CrystalReportSource12" runat="server">
                             <Report FileName="PrintQuotationSalesContracts.rpt">
                                 <DataSources>
+                                    
                                     <CR:DataSourceRef DataSourceID="SqlDataSource12" TableName="RNTSalesContract_Print_SalesContract_SP"/>
                                     
                                 </DataSources>

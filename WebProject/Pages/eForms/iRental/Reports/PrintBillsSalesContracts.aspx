@@ -15,7 +15,7 @@
                 <tr>
                     <td style="height: 21px" align="center" valign="top"">
                         &nbsp; <CR:CrystalReportViewer ID="SalesBillReport" runat="server" AutoDataBind="true" HasCrystalLogo="False" Height="1039px" 
-                            ReportSourceID="CrystalReportSource12" 
+                            ReportSourceID="CrystalReportSource13" 
                                HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
                         Width="901px" />
                         <asp:SqlDataSource ID="SqlDataSource12" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
@@ -26,10 +26,10 @@
                             </SelectParameters>
                         </asp:SqlDataSource>
 
-                        <CR:CrystalReportSource ID="CrystalReportSource12" runat="server">
-                            <Report FileName="PrintTreatySalesContracts.rpt">
+                        <CR:CrystalReportSource ID="CrystalReportSource13" runat="server">
+                            <Report FileName="PrintBillsSalesContracts.rpt">
                                 <DataSources>
-                                    <CR:DataSourceRef DataSourceID="SqlDataSource12" TableName="RNTSalesContract_Print_SalesContract_SP"/>
+                                    <CR:DataSourceRef DataSourceID="SqlDataSource13" TableName="RNTSalesContract_Print_SalesContract_SP"/>
                                     
                                 </DataSources>
                             </Report>

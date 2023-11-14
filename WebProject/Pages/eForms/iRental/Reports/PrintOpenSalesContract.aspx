@@ -29,7 +29,8 @@
                         </asp:SqlDataSource>
 
                         <CR:CrystalReportSource ID="CrystalReportSource12" runat="server">
-                            <Report FileName="PrintOpenSalesContract.rpt">
+                         
+                             <Report FileName="PrintOpenSalesContract.rpt">
                                 <DataSources>
                                     <CR:DataSourceRef DataSourceID="SqlDataSource12" TableName="RNTSalesContract_Print_SalesContract_SP"/>
                                     

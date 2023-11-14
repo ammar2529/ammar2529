@@ -118,8 +118,8 @@ var dg = ['zero','one','two','three','four', 'five','six','seven','eight','nine'
                                 <img src="App_Themes/eForms_Theme/Images/spacer.gif">
                             </td>
                             <td>
-                      <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Lease_Contracts_Payments',HideOnSuccess:true}">
-                      <input type="button" value="  Cancel  " class="CloseForm ButtonStyle">
+                      <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Lease_Contracts_Payments',HideOnSuccess:true}"/>
+                      <input type="button" value="  Cancel  " class="CloseForm ButtonStyle"/>
                             </td>
                         </tr>
                     </table>
@@ -171,7 +171,7 @@ var dg = ['zero','one','two','three','four', 'five','six','seven','eight','nine'
                                 <nobr>Customer Name*:</nobr>
                             </td>
                             <td>
-                               <input type="text" ID="txtCustomerName" style="text-align: center; font-size:16px;font-weight:bold; width: 300px;" maxlength="199" class="text required"
+                               <input type="text" id="txtCustomerName" style="text-align: center; font-size:16px;font-weight:bold; width: 300px;" maxlength="199" class="text required"
                                     groupid="CustomersForm"  argumentid="CustomerName" />
 
                             </td> 

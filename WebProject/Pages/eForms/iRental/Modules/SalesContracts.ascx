@@ -23,6 +23,8 @@
                     }
                 </script>
             </WidgetConfig>
+        
+         
         </AW:Form>
 
 
@@ -96,7 +98,7 @@
 
 
 <div class='LOVPopup' lovpopupid='customerPopup' style="display: none">
-    <AW:Form ID="frmRentalContracts_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
+    <AW:Form ID="frmSalesContracts_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
 
         <WidgetConfig>
             <script>
@@ -125,7 +127,7 @@
                     </script>
                 </Scripts>--%>
     </AW:Form>
-    <AW:DataGrid ID="grdSalesContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmRentalContracts_Cust_ShUc"
+    <AW:DataGrid ID="grdSalesContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSalesContracts_Cust_ShUc"
         EmptyHeight="201px" AllowNew="false" SelectableRow="false"
         PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
@@ -264,8 +266,18 @@
         </GridConfig>
         <Scripts>
             <script>
-
-</script>
+                var fn = function () {
+                    
+                    t.on('beforeSearchGetForm', function (p) {
+                        /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
+                        p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);;
+                        p.DBAction = 'popupCars';
+                        console.log(p.CarType);
+                        console.log(p.DBAction);
+                    });
+                  
+                }
+            </script>
         </Scripts>
     </AW:DataGrid>
 </div>

@@ -112,7 +112,7 @@
         <br />
     </Childern>
 </uc5:Container>
-<uc8:Form ID="frmCarDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+<uc8:Form ID="frmCarForSalesDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
     AsyncForm="~/Pages/eForms/iRental/CarDetails_FrUc.ascx">
     <WidgetConfig>
         <script>

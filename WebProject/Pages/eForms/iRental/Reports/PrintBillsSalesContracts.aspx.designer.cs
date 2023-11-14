@@ -42,12 +42,12 @@ namespace WebProject.Pages.eForms.iRental.Reports
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource12;
 
         /// <summary>
-        /// CrystalReportSource12 control.
+        /// CrystalReportSource13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource12;
+        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource13;
     }
 }

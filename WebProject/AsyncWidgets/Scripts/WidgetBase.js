@@ -156,7 +156,9 @@ AsyncWidgets.user = function () {
         on: function (e, fn) {
             Observer.on(e, fn);
         },
+       
         fireEvent: function (e) {
+            debugger;
             Observer.fireEvent(e);
         },
         login: function () {
@@ -904,7 +906,8 @@ AsyncWidgets.Widgets.Container = Ext.extend(Ext.util.Observable, {
                 var id = this.getAttribute('widgetid'), wg;
 
                 if (AsyncWidgets.has(id)) {
-                    wg = AsyncWidgets.get(id), w$ = $(wg.el);
+                    wg = AsyncWidgets.get(id);
+                    var w$ = $(wg.el);
                     //  if (w$.closest('div[wtype="Container"]').attr('widgetid') == t.State.WidgetId) {
                     if (w$.parent().closest('div[wtype="Container"]').attr('widgetid') == t.State.WidgetId) {
                         if (!!wg.load) {
@@ -1765,8 +1768,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.base.constructor.call(this, el, config);
         t.addEvents({ 'actionSuccess': true, 'widgetAction': true, 'onActionClicked': true, 'afterActionClicked': true, 'onComboFilled': true,
             'beforeComboFill': true, 'onParentCobmoChanged': true, 'AutocompleteResult': true, 'onLoadingValues': true, 'beforeLoadingValues': true
-            ,'LOVPopupShown': true
-            , 'LOVPopupClose': true
+            , 'LOVPopupShown': true, 'LOVPopupClose': true, FormClosing: true, FormClosed:true
         });
         AsyncWidgets.Widgets.on('initialized', function () {
             if (t.State.Hidden) {
@@ -1783,9 +1785,10 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         //        t.validator = new AsyncWidgets.Validater(t.el);
     },
     showPopup: function (cf) {
+      
             //cf=>{ popupId: '-div-tag-id-of the popup', searchFormId: 'optional for row select popup', resultGridId: 'optional for row select popup', top:'top of the popup div',left:'' } //row select popup configuration
         //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
-        debugger;
+       
         var t = this;
         var popId , searchForm, searchFormId, resGrd, resGrdId ,
             popup ,top,left,
@@ -1906,7 +1909,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             t.parent.show();
         });
         $('.CloseForm', t.el).not(nestChilds).click(function () {
+            t.fireEvent("FormClosing");
             t.hide();
+            t.fireEvent("FormClosed");
         });
         $('#Next', t.el).click(function () {
             t.showRec(t.RecNo + 1);
@@ -2149,6 +2154,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
             var res = decJSON(res), itemAttrs = "";
             if (res.status == 'OK' && res.Response.Rows.length > 0) {
+
                 if (!!sInfo.ItemExtraAttrs) {
                     var k = "", arr = sInfo.ItemExtraAttrs, i;
                     for (i = 0; i < arr.length; i++) {
@@ -2171,7 +2177,13 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 else
                     ch.html(tt);
                 //  ch.html($(tt));
-                ch[0].disabled = false;
+                //to prevent a combobox from getting enabled automatically, add attribute "no-enable-on-values-loaded" with a value set to "true"
+                var NoEnableOnValuesLoaded = ch.attr("no-enable-on-values-loaded") || "false";
+               // NoEnableOnValuesLoaded = NoEnableOnValuesLoaded.toLowerCase();
+                if (NoEnableOnValuesLoaded.toLowerCase() =="false") {
+                    ch[0].disabled = false;
+                }
+
                 var vl = ch.attr('rowvaluetoset');
                 if (!!vl) {
                     ch.attr('rowvaluetoset', '');
@@ -2318,6 +2330,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         s = $('input.WidgetAction[conf*="ActionId:\'HideForm\'"]', t.el);
         if (!!t.isGridFrom) { // hide close button for New Form (If there is a single form for add/edit) and show the edit button;
             s.hide();
+
             $('.CloseForm', t.el).show();
         }
         else {
@@ -2463,7 +2476,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             //debugger;
             var id = this.getAttribute('widgetid');
             if (!!id) {
-                var sWG = AsyncWidgets.get(this.getAttribute('widgetid'));
+                var sWG = AsyncWidgets.get(id);
                 sWG.search({ wg: t, reset: true });
             }
         });
@@ -2630,7 +2643,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         if (!!cf.Params) {
             Ext.apply(params, cf.Params);
         }
-        params.btn = btn;						 
+        params.btn = btn;
+        
         t.fireEvent('beforeDataAction', params);
         if (params.cancel) return;
         t.$el.mask('Please wait while loading ...');
@@ -3045,6 +3059,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             t.State.PageNo = 1;
         }
         var pgNo = t.State.PageNo, PgSz = t.State.PageSize, pgCols = t.State.Columns;
+        //t1 holds parameters which will be sent to server
         var t1 = { DALInfo: this.State.DALInfo, PageNo: pgNo, PageSize: PgSz * pgCols };
 
         t1 = !!conf.params ? Ext.apply(t1, conf.params) : t1;
@@ -3056,10 +3071,10 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         
         Ext.apply(t1, t.GridConf.DataActionParams);
        
-          t.fireEvent('beforeSearchGetForm', t1);
+          t.fireEvent('beforeSearchGetForm', t1); 
         if (!!wg) {
             //            t.LastSF = wg;
-            ServiceInfo = getForm(wg.el, null, t1);
+            ServiceInfo = getForm(wg.el, null, t1); //  wg is search form widget
         }
         else {
             ServiceInfo = getForm(null, null, t1); // "<root>" + $("<dummyform></dummyform>") + "</root>";

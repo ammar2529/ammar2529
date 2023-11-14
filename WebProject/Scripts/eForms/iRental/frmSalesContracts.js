@@ -2,23 +2,18 @@
 
 
 AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
-    
         var t = obj;
        
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
-
-
     
-
-        t.on('beforeDataAction', function (params)
+        t.on('aftereDataAction', function (params)
         {
 
-            // Ext.apply(params, frmProcGS.GetArgs([{ Name: 'FormType' }, { Name: 'FormNameCode' }]));
-
+        
         });
         t.on('LOVPopupClosed', (args) =>
         {
-              debugger;
+          /*    debugger;*/
 
             
         });
@@ -30,33 +25,59 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
             t.fireEvent('LOVPopupShown', popup);
         });
+        t.on('FormClosed', () => {
+            t.__firstShow = undefined;
+        });
+
+    ////only test purpose
+    $('[argumentid="ChassisNo"]').focus(function () {
+
+        $('[argumentid="AdditionalAmount"]').val(0);
+        $('[argumentid="Discount"]').val(0);
+        
+        $('[argumentid="TotalAmount"]').val(0);
+
+    });
+  
 
 
-        ////only test purpose
-        $('[argumentid="Price"],[argumentid="AdditionalAmount"], [argumentid="Discount"]').blur(calculatesum);
-
-        function calculatesum() {
-
-            var carPrice =  parseFloat($('[argumentid="Price"]',t.el).text());
-            var AddAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
-            var Discount = parseFloat($('[argumentid="Discount"]',t.el).val());
-            var carPricetTotal = carPrice + AddAmount;
 
 
-        /*    $('[argumentid="TotalAmount"]',t.el).text(carPricetTotal - Discount);*/
-            setField('TotalAmount', carPricetTotal - Discount, t.el);
+    $('[argumentid="FinanceCompany"]').prop('disabled', true);
+    $('[argumentid="AdditionalAmount"],[argumentid="Discount"]').blur(function () {
+        debugger;
+        var carPrice = parseFloat($('[argumentid="Price"]',t.el).val());
+        var additionalAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
+        var discount = parseFloat($('[argumentid="Discount"]').val());
+       /* var totalAmount = parseFloat($('[argumentid="TotalAmount"]').val());*/
 
-        }
+        var totalCarPrice = carPrice + additionalAmount;
+        totalAmount = totalCarPrice - discount;
+
+        parseFloat($('[argumentid="TotalAmount"]',t.el).val(totalAmount));
+
+
+
+    })
+
+    
         //////////////////////////////////////////////
 
         ///////////////////////////////////////// File Upload  //////////////////////////////////////////////////////////////////
-        $('.file-list', t.el).html("");
+    $('.file-list', t.el).html("");
+   
       
         AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers(t); //to db
-       // AsyncWidgets.WidgetScripts.frmSalesContracts.ShowUploadFile(t);
-       // AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile();
-       ///////////////////////////////////////////////////////////////////////////////////////////////
-
+       
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    
+    AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
+    AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+    AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+    var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown;
+        $(".cash, .finance").click(function () {
+        toggleDropdown();
+    });
        
 
        //calculate days
@@ -71,12 +92,46 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate;
         $('[argumentid="ContractStartDate"]').on('blur', function ()
         {
+            
             var csDate = val('ContractStartDate',t.el);
 
             var dow = CalculateDayOfWeekCsDate(csDate);
+           
             setField('ContractStartDay', dow, t.el);
+            
+
 
         });
+    $('[argumentid="ContractDate"]').on('blur', function () {
+
+        var nDate = new Date();
+        var cH = nDate.getHours();
+        var cM = nDate.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+        var csDate = val('ContractDate', t.el);
+
+        var dow = CalculateDayOfWeekCsDate(csDate);
+        setField('ContractWeekDay', dow, t.el);
+        $('[argumentid="ContractTime"]', t.el).val(cH + ':' + cM);
+
+    });
+    $('[argumentid="DeliveryDate"]').on('blur', function () {
+
+        var nDate = new Date();
+        var cH = nDate.getHours();
+        var cM = nDate.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+        var csDate = val('DeliveryDate', t.el);
+
+        var dow = CalculateDayOfWeekCsDate(csDate);
+        setField('DeliveryWeekDays', dow, t.el);
+        $('[argumentid="DeliveryTime"]', t.el).val(cH + ':' + cM);
+
+    });
 
         //calculate weekday on end date
         var CalculateDayOfWeekRsDate = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate;
@@ -88,8 +143,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         });
 
         //calculatr AdditionalAmount - Discount = TotalAmount
-        var TotalAmount = AsyncWidgets.WidgetScripts.frmSalesContracts.TotalAmount;
-        $('[argumentid="AdditionalAmount"], [argumentid="Discount"]').blur(TotalAmount);
+        //var TotalAmount = AsyncWidgets.WidgetScripts.frmSalesContracts.TotalAmount;
+        //$('[argumentid="AdditionalAmount"], [argumentid="Discount"]').blur(TotalAmount);
 
   
     //On Click Plus Sign to Show hide More details of Customer & Cars
@@ -108,8 +163,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
         //On Click of Print Contract Button
         
-            $('.PrintBtn', t.el).click(function () { //
-                var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenSalesContract.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
+     $('.PrintBtn', t.el).click(function () { //
+         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/SalesContractsTreatyReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
                 var width = 920;
                 var height = 600;
@@ -231,12 +286,18 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             if (t.FormMode == "new") {
                 $('.SimpleTab', t.el).attr('disabled', 'disabled');
                 //$('.PrintBtn').css('visibility', 'hidden'); // Hide element;
-                $(".PrintBtn").css("opacity", 0.5);
+                //$(".PrintBtn").css("opacity", 0.5);
 
-                // Disable the button
-                $(".PrintBtn").prop("disabled", true);
-            }
+                //// Disable the button
+                //$(".PrintBtn").prop("disabled", true);
 
+                var tblUFL = $('table.uploadedFileList', t.el);
+                $('table.uploadedFileList .ItemTR .ItemTableRow').remove();
+               /* $('.ItemTR > td', tblUFL).empty();*/
+                $('.NoRecordsTR', tblUFL).show();
+
+                
+            } 
 
         var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
         var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate);
@@ -262,13 +323,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
         $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
         $('span[argumentid="ChassisNo"],span[argumentid="CustomerName"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', t.el).css('color', '#628296'); //Change Color to Normal on form show
-            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+           
 
             //show the no record on file upload table
             if (t.FormMode == 'new') {
 
                 $('.NoRecordsTR').show();
-
+                AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
             }
 
             //for file extension fetch from LOvchild
@@ -293,14 +354,34 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
 
             ServerCall(params, Success, "ChildComboRows");
-          
+
+            //if (t.FormMode === "new" && t.FormMode === "update") {
+            //    //debugger;
+            //    //AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+            //    AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+            //}
+
+            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
+
+           
+                
+            if (t.FormMode == "new" && !t.__firstShow)
+            {
+                t.__firstShow = true;
+            AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+            }
+
+            
+            
+
+           
     });
     // End On Form Show
 
     // On Start of Onloaded Values
         t.on('onLoadedValues', function (args)
         {
-
+         
         var res = args.res;
 
         if (res.status == 'OK') {
@@ -338,9 +419,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
 
 
-          
-
+           
+            AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
             }
+            
+            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
 
     });
     // End of On Loaded Values
@@ -441,12 +524,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekRsDate = function
     }
 };
 
-        //calculatr AdditionalAmount - Discount = TotalAmount
-AsyncWidgets.WidgetScripts.frmSalesContracts.TotalAmount = function (t)
-{
-
-
-};
+//calculate contract date of weekday
 
 
 AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
@@ -529,14 +607,15 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
                 {
                     var row = rows[i];
                     var fileName = row.FileName;
-                    var msg = $(".message", t.el).html(`File [${fileName}] uploaded successfully.`);
+                    var msg = (`File [${fileName}] uploaded successfully.`);
                     $(".file-input", t.el).val('');
                     $('[argumentid = "DocType"]').val('');
 
                 }
                 
                 AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(objRes, t);
-                $.showMessage(msg)
+                $.showMessage(msg);
+               
                 
                // $('.message', t.el).text(response);
             },
@@ -592,32 +671,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
             //End Check for duplicate file names
 
-            var genHtml = ` <tr class="ItemTableRow beforeUplaodFileList" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
-
-
-                                                   
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
-                                                        <div class="ColValue w-grid-label fileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${orignalFileName}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">size</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="FileType">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">type</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${loggedUser}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden;  padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${new Date()}</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
-                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                             <span class="remove-button" >X</span>
-                                                            </div>
-                                                        </td>
-
-                                                </tr>`;
+            
 
            
             
@@ -630,9 +684,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
            
         }
     //    $('.ItemTR tbody', t.el).html('');
-        $('.ItemTR tbody', t.el).append(genHtml);
-        var curTable = $('tr.beforeUplaodFileList', t.el);
-        curTable.remove();
+        //$('.ItemTR tbody', t.el).append(genHtml);
+        //var curTable = $('tr.beforeUplaodFileList', t.el);
+        //curTable.remove();
     });
 
 
@@ -648,6 +702,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
     }
 
+  
+        
+   
     t.on('onLoadedValues', function (p)
     {
 
@@ -733,6 +790,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
                 tblRowsHTML += genHtml;
 
+             
 
             }  // for loop;
 
@@ -803,14 +861,15 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
 
     //convert to decimal
-    var decCarPrice = parseFloat($('[argumentid="Price"]',t.el).text());
+    var decCarPrice = parseFloat($('[argumentid="Price"]',t.el).val());
     if (isNaN(decCarPrice))
     {
-        $('[argumentid="Price"]').text('0.000')
+        $('[argumentid="Price"]').val('0.000')
     }
+    
     else
     {
-     $('[argumentid="Price"]', t.el).text(decCarPrice.toFixed(3));
+     $('[argumentid="Price"]', t.el).val(decCarPrice.toFixed(3));
     }
 
 
@@ -834,10 +893,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
     }
 
 
-    var decTotalAmount = parseFloat($('[argumentid="TotalAmount"]',t.el).text());
+    var decTotalAmount = parseFloat($('[argumentid="TotalAmount"]',t.el).val());
     if (isNaN(decTotalAmount))
     {
-        $('[argumentid="TotalAmount"]', t.el).text('0.000');
+        $('[argumentid="TotalAmount"]', t.el).val('0.000');
     }
     else
     {
@@ -867,5 +926,118 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
     {
         $('[argumentid="AmountDue"]', t.el).text(decAmountDue.toFixed(3));
     }
+
+    var engineWarrenty = parseFloat($('[argumentid="EngineWarranty"]', t.el).val());
+    if (isNaN(engineWarrenty)) {
+        $('[argumentid="EngineWarranty"]', t.el).val('0.000');
+    }
+    else {
+        $('[argumentid="EngineWarranty"]', t.el).text(engineWarrenty.toFixed(3));
+    }
+
+
+    var gearWarranty = parseFloat($('[argumentid="GearWarranty"]', t.el).val());
+    if (isNaN(gearWarranty)) {
+        $('[argumentid="GearWarranty"]', t.el).val('0.000');
+    }
+    else {
+        $('[argumentid="GearWarranty"]', t.el).text(gearWarranty.toFixed(3));
+    }
+
+    var carWarranty = parseFloat($('[argumentid="CarWarranty"]', t.el).val());
+    if (isNaN(carWarranty)) {
+        $('[argumentid="CarWarranty"]', t.el).val('0.000');
+    }
+    else {
+        $('[argumentid="CarWarranty"]', t.el).text(carWarranty.toFixed(3));
+    }
 };
+AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN = function ()
+{
+
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+    //convert to decimal
+    var decCarPrice = parseFloat($('[argumentid="Price"]', t.el).val());
+    if (!isNaN(decCarPrice)) {
+        var convDecCarPrice = decCarPrice.toFixed(3);
+        $('[argumentid="Price"]', t.el).val(convDecCarPrice);
+    }
+
+    var deAdditionalAmount = parseFloat($('[argumentid="AdditionalAmount"]', t.el).val());
+    if (!isNaN(deAdditionalAmount)) {
+        var convDecAdditionalAmount = deAdditionalAmount.toFixed(3);
+        $('[argumentid="AdditionalAmount"]', t.el).val(convDecAdditionalAmount);
+    }
+
+    var deDiscount = parseFloat($('[argumentid="Discount"]', t.el).val());
+    if (!isNaN(deDiscount)) {
+        var convDecDiscount = deDiscount.toFixed(3);
+        $('[argumentid="Discount"]', t.el).val(convDecDiscount);
+    }
+
+    var deTotalAmount = parseFloat($('[argumentid="TotalAmount"]', t.el).val());
+    if (!isNaN(deTotalAmount)) {
+        var convDecTotalAmount = deTotalAmount.toFixed(3);
+        $('[argumentid="TotalAmount"]', t.el).val(convDecTotalAmount);
+    }
+
+
+    var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
+
+    var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab));
+    if (isNaN(decAmountReceived)) {
+        setField('PaymentAmount', '0.000', SalesContractTab);
+        //$('[argumentid="PaymentAmount"]', t.el).text('0.000');
+    }
+    else {
+        setField('PaymentAmount', decAmountReceived.toFixed(3), SalesContractTab);
+        // $('[argumentid="PaymentAmount"]',t.el).text();
+    }
+
+    var dePaymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).text());
+    if (!isNaN(dePaymentAmount)) {
+        var convDecPaymentAmount = dePaymentAmount.toFixed(3);
+        $('[argumentid="PaymentAmount"]', t.el).text(convDecPaymentAmount);
+    }
+
+    var deAmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text());
+    if (!isNaN(deAmountDue)) {
+        var convDeAmountDue = deAmountDue.toFixed(3);
+        $('[argumentid="AmountDue"]', t.el).text(convDeAmountDue);
+    }
+    var deEngineWarranty = parseFloat($('[argumentid="EngineWarranty"]', t.el).val());
+    if (!isNaN(deEngineWarranty)) {
+        var convDeEngineWarranty = deEngineWarranty.toFixed(3);
+        $('[argumentid="EngineWarranty"]', t.el).val(convDeEngineWarranty);
+    }
+
+    var deGearWarranty = parseFloat($('[argumentid="GearWarranty"]', t.el).val());
+    if (!isNaN(deGearWarranty)) {
+        var convDeGearWarranty = deGearWarranty.toFixed(3);
+        $('[argumentid="GearWarranty"]', t.el).val(convDeGearWarranty);
+    }
+
+    var deCarWarranty = parseFloat($('[argumentid="CarWarranty"]', t.el).val());
+    if (!isNaN(deCarWarranty)) {
+        var convDCarWarranty = deCarWarranty.toFixed(3);
+        $('[argumentid="CarWarranty"]', t.el).val(convDCarWarranty);
+    }
+};
+
+//cash select or finance 
+AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+    if ($(".cash").is(":checked")) {
+        $('[argumentid="FinanceCompany"]', t.el).prop('disabled', true);
+        $('[argumentid="FinanceCompany"]', t.el).hide();
+        $('[argumentid="FinanceCompany"]', t.el).val('');
+        $(".financeCompany").removeClass("required"); 
+   
+    } else {
+        $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);
+        $('[argumentid="FinanceCompany"]', t.el).show();
+        $(".financeCompany").addClass("required");
+    }
+};
+
 

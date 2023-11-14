@@ -12,7 +12,7 @@
 
 <uc5:Container ID="conCarForSales" Hidden="true" Caption="Cars For Sale" runat="server">
     <Childern>
-        <uc8:Form ID="frmCarsForSale_ShUc" runat="server" Hidden="true" LoadOnInit="false"
+        <uc8:Form ID="frmCarsForSales_ShUc" runat="server" Hidden="true" LoadOnInit="false"
             ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/CarForSales_ShUc.ascx">
             <WidgetConfig>
                 <script>
@@ -27,7 +27,7 @@
                 </script>
             </WidgetConfig>
         </uc8:Form>
-        <uc5:DataGrid ID="grdCarForSales" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarsForSale_ShU"
+        <uc5:DataGrid ID="grdCarForSales" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarsForSales_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_iRental_CarsForSale"
             ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Cars For Sale"
             GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarsForSales\',KeysCol:\'ChassisNo\'}}}">
@@ -40,11 +40,11 @@
                             RecCode: { width: '0px' },
                             CarNumber: { caption: 'Car No.', width: '80px' },
                             CarFor: { width: '70px' },
-                            BrandId: { caption: 'Brand', width: '120px' },
-                            ModelId: { caption: 'Model', width: '140px' },
+                            BrandId: { caption: 'Brand', width: '110px' },
+                            ModelId: { caption: 'Model', width: '110px' },
                             TypeId: { caption: 'Type', width: '80px' },
-                            CarYear: { caption: 'Year', width: '55px' },
-                            CurrentMileage: { caption: 'Mileage', width: '75px' },
+                            YearId: { caption: 'Year', width: '55px' },
+                            //CurrentMileage: { caption: 'Mileage', width: '75px' },
                             CarLocationId: { caption: 'Car Location', width: '105px' },
                             CarStatusId: { caption: 'Status' }
                         },
@@ -56,6 +56,21 @@
                     };
                 </script>
             </GridConfig>
+         <%--     <Scripts>
+            <script>
+                var fn = function () {
+
+                    t.on('beforeSearchGetForm', function (p) {
+                        /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
+                        p.CarType = val('CarType', AsyncWidgets.get('frmCarForSales').el);;
+                        p.DBAction = 'popupCars';
+                        console.log(p.CarType);
+                        console.log(p.DBAction);
+                    });
+
+                }
+            </script>
+        </Scripts>--%>
         </uc5:DataGrid>
        
         <br />
@@ -97,7 +112,10 @@
                                 $('.ElemDisabled', t.el).removeClass('ElemDisabled');
                                 $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
                             });
+
+                          
                         }
+                           
                     </script>
                 </Scripts>
 

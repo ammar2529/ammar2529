@@ -92,6 +92,8 @@
                             <option value="">-----------------------------</option>
 							<option value="RRCContractOpen">Contract Open - Car Out</option>
                             <option value="">-----------------------------</option>
+                            <option value="RRCContractCreated">Contract Created</option>
+                            <option value="">-----------------------------</option>
 							<option value="RRCContractOpenCarIn" style="color:red">Contract Open - Car In</option>
 							<option value="RRCWithLegalContractOpenCarOut" style="color:red">With Legal - Contract Open - Car Out</option>
 							<option value="RRCWithLegalContractOpenCarIn" style="color:red">With Legal - Contract Open - Car In</option>
