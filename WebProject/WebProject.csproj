@@ -1244,7 +1244,6 @@
     <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite.gif" />
     <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs.gif" />
     <Content Include="AsyncWidgets\Widgets\TabPanel.ascx" />
-    <Content Include="a\StyleSheet1.css" />
     <Content Include="bin\WebProject.dll" />
     <Content Include="bin\WebProject.pdb" />
     <Content Include="Content\bootstrap-theme.css" />
