@@ -2,7 +2,7 @@
    
     var t = obj;
 
-    AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
+    AsyncWidgets.WidgetScripts.frmCustomerRentalContracts.t = t;
     var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
     t.on('rowsRendered', function () {
         $('table[itemno]', t.el).click(function () {

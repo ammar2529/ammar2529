@@ -31,7 +31,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     ////only test purpose
     $('[argumentid="ChassisNo"]').focus(function () {
-
+        $('[argumentid="Price"]').val(0);
         $('[argumentid="AdditionalAmount"]').val(0);
         $('[argumentid="Discount"]').val(0);
         
@@ -309,11 +309,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         if ($('[argumentid="StateId"]', t.el).text() == '') {
             $('[argumentid="StateId"]', t.el).text('SCSCreatedState');
             $('[argumentid="StateName"]', t.el).text('Created State');
-            $('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
-            $('[argumentid="ContractStartDay"]', t.el).val(WeekDay);
-            $('[argumentid="ContractStartTime"]', t.el).val(setTime);
+            //$('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
+            //$('[argumentid="ContractStartDay"]', t.el).val(WeekDay);
+            //$('[argumentid="ContractStartTime"]', t.el).val(setTime);
 
-            $('[argumentid="ReservationExpireTime"]', t.el).val(setTime);
+            /*$('[argumentid="ReservationExpireTime"]', t.el).val(setTime);*/
 
        }
 
