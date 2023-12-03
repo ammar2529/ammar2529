@@ -3,8 +3,11 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="uc6" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="uc8" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="uc5" %>
-<script src="../../../../Scripts/eForms/iRental/frmRentalContracts.js"></script>
+
 <script src="../../../../Scripts/eForms/iRental/frmCustomerRentalContracts.js"></script>
+<script src="../../../../Scripts/eForms/iRental/frmiRentalPaymentsDetail.js"></script>
+<script src="../../../../Scripts/eForms/iRental/frmRentalContracts.js"></script>
+
 <style>
 .ElemDisabled
  {

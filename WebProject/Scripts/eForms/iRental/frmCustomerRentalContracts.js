@@ -1,8 +1,8 @@
-﻿AsyncWidgets.WidgetScripts.frmCustomerRentalContracts = function (obj) {
-   
+﻿AsyncWidgets.WidgetScripts.grdRentalContracts_Cust = function (obj) {
+    /*frmCustomerRentalContracts*/
     var t = obj;
 
-    AsyncWidgets.WidgetScripts.frmCustomerRentalContracts.t = t;
+    AsyncWidgets.WidgetScripts.grdRentalContracts_Cust.t = t;
     var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
     t.on('rowsRendered', function () {
         $('table[itemno]', t.el).click(function () {

@@ -209,7 +209,7 @@
         </div>
     </div>
 
-<script type="text/javascript">
+<%--<script type="text/javascript">
     var onReady = () => {
         //console.log("finding menu...");
         if ($('[showwidget="conSalesContracts"]').length > 0) {
@@ -226,6 +226,6 @@
 
     $().ready(onReady);
 
-</script>
+</script>--%>
 </asp:Content>
 

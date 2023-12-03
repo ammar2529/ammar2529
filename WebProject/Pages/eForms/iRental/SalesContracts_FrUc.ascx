@@ -42,7 +42,7 @@
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>
                 <tr>
-                    <td colspan="4" class="auto-style1">
+                    <td colspan="4" class="auto-style1" style="display:none">
                         <%--<span class="ftitle" style="color: red;" groupid="SalesContractsForm" argumentid="RecCode"></span>--%>
                         <input type="hidden" groupid="SalesContractsForm" argumentid="RecCode" />
                     </td>
@@ -57,7 +57,7 @@
                         <input type="radio" class="CommonDisable finance" value="Finance" name="PaymenteMethod" groupid="SalesContractsForm" argumentid="PaymenteMethod" /><label>Finance </label>
                         <%-- CommonDisable default="default" --%>
                     </td>
-                    <td class="ftitle">
+                    <td class="ftitle lb">
                         <nobr>Finance Company*:</nobr>
                     </td>
                     <td>
@@ -291,8 +291,8 @@
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ReservationWeekDays" />
 
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="ReservationExpireTime" />
+                        <%--<input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="ReservationExpireTime" />--%>
 
                         <input type="text" style="text-align: center; width: 30px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ReservationDays" />
@@ -327,8 +327,8 @@
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="DeliveryWeekDays" />
 
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="DeliveryTime" />
+                        <%--<input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
+                            groupid="SalesContractsForm" argumentid="DeliveryTime" />--%>
 
                         <%--<input type="text" style="text-align: center; width: 30px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ReservationDays" />--%>
@@ -410,10 +410,9 @@
                 <tr>
                     <td class="ftitle">48 Hrs Car Replacement:</td>
                     <td class="ftitle" width="32%">
-
-                        <input type="radio" class=" CommonDisable" checked="checked" default="default" value="Yes" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>Yes</label>
-                        <input type="radio" class="CommonDisable " value="No" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>No </label>
-                        <%-- CommonDisable default="default" --%>
+                         <input type="radio" class="CommonDisable " checked="checked" default="default" value="No" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>No </label>
+                        <input type="radio" class=" CommonDisable"  value="Yes" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>Yes</label>
+                                               <%-- CommonDisable default="default" --%>
                     </td>
                     <td colspan="2"></td>
                 </tr>
@@ -534,13 +533,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <div class="file-upload-container">
-                            <div class="uploaded-file-list"></div>
-
-                            <%--<div id="file-list" class="file-list">--%>
-                            <!-- File list will be displayed here -->
-                        </div>
-                        <%-- <p class="ftitle">Click to select file .</p>--%>
+                      
                         <div class="file-upload-drop-area">
                             <select loadon="FirstVisible" class="dropdownlist required " style="width: 155px;"
                                 groupid="SalesContractsForm" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">

@@ -106,10 +106,10 @@
     <tr>
         <td style="text-align: left;">
 
-            <input type="text" style="width: 115px;" class="text" argumentid="CarNumber"  groupid="schCarForSalesDetails" /></td>
+            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo"  groupid="schCarForSalesDetails" /></td>
         <td style="text-align: left;">
 
-            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo"  groupid="schCarForSalesDetails" /></td>
+            <input type="text" style="width: 115px;" class="text" argumentid="CarNumber"  groupid="schCarForSalesDetails" /></td>
         <td style=" text-align: left;">
 
             <select class="dropdownlist" style="width:120px" argumentid="CarType"  groupid="schCarForSalesDetails" name="D1">

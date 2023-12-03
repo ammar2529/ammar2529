@@ -40,12 +40,13 @@
                             RecCode: { width: '0px' },
                             CarNumber: { caption: 'Car No.', width: '80px' },
                             CarFor: { width: '70px' },
-                            BrandId: { caption: 'Brand', width: '110px' },
+                            BrandId: { caption: 'Brand', width: '100px' },
                             ModelId: { caption: 'Model', width: '110px' },
                             TypeId: { caption: 'Type', width: '80px' },
                             YearId: { caption: 'Year', width: '55px' },
+                            ColorId: { caption: 'Color', width: '55px' },
                             //CurrentMileage: { caption: 'Mileage', width: '75px' },
-                            CarLocationId: { caption: 'Car Location', width: '105px' },
+                            CarLocationId: { caption: 'Car Location', width: '100px' },
                             CarStatusId: { caption: 'Status' }
                         },
                         forms: {
@@ -56,21 +57,7 @@
                     };
                 </script>
             </GridConfig>
-         <%--     <Scripts>
-            <script>
-                var fn = function () {
-
-                    t.on('beforeSearchGetForm', function (p) {
-                        /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
-                        p.CarType = val('CarType', AsyncWidgets.get('frmCarForSales').el);;
-                        p.DBAction = 'popupCars';
-                        console.log(p.CarType);
-                        console.log(p.DBAction);
-                    });
-
-                }
-            </script>
-        </Scripts>--%>
+      
         </uc5:DataGrid>
        
         <br />

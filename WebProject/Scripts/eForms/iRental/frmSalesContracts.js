@@ -1005,23 +1005,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN = functi
         var convDeAmountDue = deAmountDue.toFixed(3);
         $('[argumentid="AmountDue"]', t.el).text(convDeAmountDue);
     }
-    var deEngineWarranty = parseFloat($('[argumentid="EngineWarranty"]', t.el).val());
-    if (!isNaN(deEngineWarranty)) {
-        var convDeEngineWarranty = deEngineWarranty.toFixed(3);
-        $('[argumentid="EngineWarranty"]', t.el).val(convDeEngineWarranty);
-    }
 
-    var deGearWarranty = parseFloat($('[argumentid="GearWarranty"]', t.el).val());
-    if (!isNaN(deGearWarranty)) {
-        var convDeGearWarranty = deGearWarranty.toFixed(3);
-        $('[argumentid="GearWarranty"]', t.el).val(convDeGearWarranty);
-    }
-
-    var deCarWarranty = parseFloat($('[argumentid="CarWarranty"]', t.el).val());
-    if (!isNaN(deCarWarranty)) {
-        var convDCarWarranty = deCarWarranty.toFixed(3);
-        $('[argumentid="CarWarranty"]', t.el).val(convDCarWarranty);
-    }
 };
 
 //cash select or finance 
@@ -1032,11 +1016,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('[argumentid="FinanceCompany"]', t.el).hide();
         $('[argumentid="FinanceCompany"]', t.el).val('');
         $(".financeCompany").removeClass("required"); 
+        $('.ftitle.lb nobr').hide();
+       
    
     } else {
         $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);
         $('[argumentid="FinanceCompany"]', t.el).show();
         $(".financeCompany").addClass("required");
+        $('.ftitle.lb nobr').show();
     }
 };
 

@@ -151,7 +151,7 @@
             <br />
            </Childern>
             </AW:Container>
-<script src="Scripts/eForms/iRental/ConLeaseContracts.js"></script>
+             <script src="Scripts/eForms/iRental/ConLeaseContracts.js"></script>
            <AW:Container ID="conLeaseContracts_Cust" Hidden="true" Caption="Customer Management" runat="server">
               <Childern>
                 <AW:Form ID="frmLeaseContracts_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx" >
