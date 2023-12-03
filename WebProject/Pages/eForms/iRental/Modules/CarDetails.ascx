@@ -48,67 +48,17 @@
                             CarStatusId: { caption: 'Status' }
                         },
                         forms: {
-                            NewFormId: 'frmCarDetails',
-                            EditFormId: 'frmCarDetails',
+                            //NewFormId: 'frmCarDetails',
+                            //EditFormId: 'frmCarDetails',
+                            NewFormId: 'frmCarForSalesDetails',
+                            EditFormId: 'frmCarForSalesDetails',
                             Keys: 'RecId'
                         }
                     };
                 </script>
             </GridConfig>
         </uc5:DataGrid>
-        <%--<uc8:Form ID="frmCarDetails_KPIUc" runat="server" Hidden="true" LoadOnInit="false"
-            ShowOnLoad="true" AsyncForm="~/Pages/Common/iDashboard/KPI_iDashboard.ascx">
-            <WidgetConfig>
-                <script>
-                    cf = {
 
-                        header: {
-                            Style: {},
-                            Visible: true,
-                            Collapsed: true,
-                            HeadText: 'KPI - Key Performance Indicator (s)'
-                        }
-                    }
-                </script>
-            </WidgetConfig>
-            <Scripts>
-                <script>
-                    var fn = function () {
-                        var LoadChart = function (msg) {
-                            var strChart;
-                            if (!msg.text) {
-                                if (!!msg.childNodes[0])
-                                    strChart = msg.childNodes[0].textContent;
-                            }
-                            else
-                                strChart = msg.text;
-
-
-                            $('#dvContainer').html('');
-                            $('.dvContainer', t.el).append(strChart);
-
-                        };
-                        var CallAjax = function (param) {
-                            $.ajax({
-                                type: "POST",
-                                url: "AsyncDashboards/WebServices/KPI.asmx/GetKPICharts",
-                                dataType: "",
-                                data: "ContainerName=" + param,
-                                success: function (msg) {
-                                    LoadChart(msg);
-                                }
-                            });
-                        };
-                        $('.w-ui-panel-icon-closed', t.el).click(function () {
-                            if (!this.__ChartsLoaded) {
-                                this.__ChartsLoaded = true;
-                                CallAjax('conCarDetails');
-                            }
-                        });
-                    };
-                </script>
-            </Scripts>
-        </uc8:Form>--%>
         <br />
     </Childern>
 </uc5:Container>
@@ -136,7 +86,7 @@
                             });
 
                             t.on('onLoadedValues', function (args) {
-
+                                $('[argumentid="action"]', t.el).val("update");
                                 if ($('[argumentid="ContractNo"]', t.el).text() != '') {
                                     $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
                                 }

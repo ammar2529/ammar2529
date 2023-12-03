@@ -12,8 +12,8 @@
                                 <nobr>Car For:</nobr>
                             </td>
                             <td width="100%">
-                               <input type="radio" checked="checked" default="default" value="Rental" name="CarFor" groupid="CarsForm" argumentid="CarFor"><label>Rental</label>
-                               <input type="radio" value="Lease" name="CarFor" groupid="CarsForm" argumentid="CarFor"><label>Lease</label>
+                               <input type="radio" checked="checked" default="default" value="Rental" name="CarFor" groupid="CarsForm" argumentid="CarFor" /><label>Rental</label>
+                               <input type="radio" value="Lease" name="CarFor" groupid="CarsForm" argumentid="CarFor" /><label>Lease</label>
                             </td>
                         </tr>
 

@@ -7,6 +7,8 @@
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SalesContracts.ascx" TagPrefix="AW" TagName="SalesContracts" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/CarForSales.ascx" TagPrefix="AW" TagName="CarForSales" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SalesCarPrice.ascx" TagPrefix="AW" TagName="SalesCarPrice" %>
+<%@ Register Src="~/Pages/eForms/iRental/Modules/CarDetails.ascx" TagPrefix="AW" TagName="CarDetails" %>
+
 
 
 
@@ -26,7 +28,7 @@
 <%--          <AW:SalesContracts runat="server" id="SalesContracts" />--%>
 <%--            <AW:CarForSales runat="server" id="CarForSales" />--%>
 
-
+<%--            <AW:CarDetails runat="server" ID="CarDetails" />--%>
 
 <%--            <AW:SalesCarPrice runat="server" ID="SalesCarPrice" />--%>
     </div>
