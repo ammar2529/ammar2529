@@ -66,7 +66,7 @@
                groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
                 <option value="" selected="selected">Select Finance Company</option>
             </select>--%>
-                        <select loadon="FirstVisible" no-enable-on-values-loaded="true" class="dropdownlist required financeCompany" style="width: 155px;" groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
+                        <select loadon="FirstVisible" no-enable-on-values-loaded="true" class="dropdownlist required financeCompany" style="width: 155px;" groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'40'}]}">
                             <option value="" selected="selected">Select Finance Company</option>
                         </select>
 
@@ -254,7 +254,7 @@
                     <td></td>
                     <td class="ftitle">Car Owner Name:</td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  CommonDisable"
+                        <input type="text" style="text-align: center; width: 270px;" maxlength="10" class="text  CommonDisable"
                             groupid="SalesContractsForm" argumentid="CarOwnerName" />
                     </td>
                 </tr>
@@ -359,7 +359,7 @@
                groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible" class="dropdownlist  " style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible"   style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'41'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
                     </td>
@@ -536,7 +536,7 @@
                       
                         <div class="file-upload-drop-area">
                             <select loadon="FirstVisible" class="dropdownlist required " style="width: 155px;"
-                                groupid="SalesContractsForm" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
+                                groupid="SalesContractsForm" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}">
                                 <option value="" selected="selected">Select Doc Type</option>
                             </select>
 
@@ -631,9 +631,10 @@
                         <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle btn_11 btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
                             <input type="button" value="  Reserve  " ignorevalidate="DocType" class="DataAction ButtonStyle btn_11 btnReserve common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:false,Params:{DBAction:'SCReserved'}}" />
-                             <input type="button" value="  Contract  " class="ButtonStyle PrintBtn common-button" />
                              <input type="button" value="  Quotation  " class="ButtonStyle QuotationBtn common-button" />
-                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />
+
+                            <input type="button" value="  Contract  " class="ButtonStyle PrintBtn common-button" />
+<%--                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
                     </td>

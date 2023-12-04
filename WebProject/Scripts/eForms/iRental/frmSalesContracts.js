@@ -333,7 +333,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
 
             //for file extension fetch from LOvchild
-            var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "35" };
+            var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "39" };
             function Success(res) {
                 var res = decJSON(res);
                 if (res.status == 'OK') {

@@ -1,5 +1,5 @@
-﻿AsyncWidgets.WidgetScripts.frmiRentalPaymentDetails = function (obj) { 
-
+﻿AsyncWidgets.WidgetScripts.grdPaymentDetails = function (obj) { 
+    /*frmiRentalPaymentDetails*/
     var t = obj;
 
     t.on('beforeSearchGetForm', function (P)
