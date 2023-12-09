@@ -929,28 +929,28 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
 
     var engineWarrenty = parseFloat($('[argumentid="EngineWarranty"]', t.el).val());
     if (isNaN(engineWarrenty)) {
-        $('[argumentid="EngineWarranty"]', t.el).val('0.000');
+        $('[argumentid="EngineWarranty"]', t.el).val(0);
     }
-    else {
-        $('[argumentid="EngineWarranty"]', t.el).text(engineWarrenty.toFixed(3));
-    }
+    //else {
+    //    $('[argumentid="EngineWarranty"]', t.el).text(engineWarrenty.toFixed(3));
+    //}
 
 
     var gearWarranty = parseFloat($('[argumentid="GearWarranty"]', t.el).val());
     if (isNaN(gearWarranty)) {
-        $('[argumentid="GearWarranty"]', t.el).val('0.000');
+        $('[argumentid="GearWarranty"]', t.el).val(0);
     }
-    else {
-        $('[argumentid="GearWarranty"]', t.el).text(gearWarranty.toFixed(3));
-    }
+    //else {
+    //    $('[argumentid="GearWarranty"]', t.el).text(gearWarranty.toFixed(3));
+    //}
 
     var carWarranty = parseFloat($('[argumentid="CarWarranty"]', t.el).val());
     if (isNaN(carWarranty)) {
-        $('[argumentid="CarWarranty"]', t.el).val('0.000');
+        $('[argumentid="CarWarranty"]', t.el).val(0);
     }
-    else {
-        $('[argumentid="CarWarranty"]', t.el).text(carWarranty.toFixed(3));
-    }
+    //else {
+    //    $('[argumentid="CarWarranty"]', t.el).text(carWarranty.toFixed(3));
+    //}
 };
 AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN = function ()
 {

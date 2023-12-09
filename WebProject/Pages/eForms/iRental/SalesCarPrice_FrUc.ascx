@@ -14,6 +14,7 @@
             <nobr>Brand*:</nobr>
         </td>
         <td>
+            <input type="hidden"  groupid="SalesCarsPriceForm" argumentid="RecId" />
             <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SalesCarsPriceForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
     <option value="" selected="selected">Select Brand</option>
     </select>
@@ -41,7 +42,7 @@
     </tr>
     <tr>
         <td colspan="2">
-            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
     </tr>
 

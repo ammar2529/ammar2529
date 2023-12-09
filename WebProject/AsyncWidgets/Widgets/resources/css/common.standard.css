@@ -418,6 +418,10 @@ height:100%;
     border-right:1px solid #D0D0D0;
     border-bottom:1px solid #D0D0D0;
 }
+.w-grid-cell-border-last {
+    border-right: 1px solid #D0D0D0;
+    border-bottom: 1px solid #D0D0D0;
+}
 .w-grid-border
 {
     border-left:1px solid #D0D0D0;

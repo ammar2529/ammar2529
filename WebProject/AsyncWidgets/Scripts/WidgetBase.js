@@ -3758,7 +3758,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             // hSel = $('> table  > tbody > tr.HeaderTR > td.Header td', t.Repeater
             hSel = $('.Header', t.Repeater);
             for (var i = 0; i < t.noOfCols; i++) {
-                if (!t._arrHeads) {
+                if (!t._arrHeads) { //if header columns is not saved, then construct the array - only first time
                     heads = $('.colIndex-' + i, hSel); //$('table > tbody > tr.HeaderTr > td .colIndex-' + i, t.Repeater);
                     arrHead[i] = heads;
                 }
@@ -3769,12 +3769,13 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 if (!!t._arrHeads) { t._arrHeads = arrHead }
                 var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
-                if (!!b.width) {
+                if (!!b.width) {// if column width is defined in GridConfiguration then
                     w = b.width.replace(/px/g, '');
                     if (w == '0') heads.hide();
                     else {
-                        if (!$.boxModel)
+                        if (!$.boxModel) {
                             w = (parseInt(w) || 0) + (parseInt(heads.css('borderLeftWidth')) || 0) + (parseInt(heads.css('borderRightWidth')) || 0);
+                        }
 
                         $('.ColName', heads).closest('div').css({ 'white-space': 'nowrap', 'overflow': 'hidden', 'margin-left': LMmargin + 'px' }).width(w - LMmargin + "px");
                         heads.width(w);

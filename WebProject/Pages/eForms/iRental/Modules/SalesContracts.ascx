@@ -49,7 +49,7 @@
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
                                      <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
-                                     <div class="ftitle">Charges:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
+                                     <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>

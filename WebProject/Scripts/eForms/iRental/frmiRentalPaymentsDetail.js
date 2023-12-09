@@ -4,6 +4,7 @@
 
     t.on('beforeSearchGetForm', function (P)
     {
+        
         var frm = AsyncWidgets.get('frmRentalContracts');
         P.ParentRecId = frm.GetArgVal('RecId');
     });

@@ -38,7 +38,7 @@
         <td>
             <div style="display: none"><span groupid="SalesCarsForm" argumentid="RecId"></span></div>
             <div>
-                <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text  validateunique" primarykey="ChassisNo"
+                <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text  " primarykey="ChassisNo"
                     storeid="iRental_CarsForSale" uniquenotfound="{en:' Car Number is valid...',color:'green'}"
                     uniquefound="{en:' Duplicate Car Number...',color:'red'}" groupid="SalesCarsForm" argumentid="CarNumber" />
             </div>
