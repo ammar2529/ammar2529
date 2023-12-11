@@ -267,7 +267,8 @@
         <Scripts>
             <script>
                 var fn = function () {
-                    
+                    var conCar = AsyncWidgets.get("conRentalContracts_Cars");
+                    var f = conCar._frm;
                     t.on('beforeSearchGetForm', function (p) {
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
                         p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);;
@@ -275,6 +276,24 @@
                         console.log(p.CarType);
                         console.log(p.DBAction);
                     });
+
+                    //$('table[itemno]', t.el).click(function () {
+
+                    //    $('[argumentid="Price"]', t.el).val($('[colid="Price"] .ColValue', this).text().toFixed(3));
+
+                    //});
+
+                    t.on('rowsRendered', function () {
+                        $('table[itemno]', t.el).click(function () {
+                         
+                            var priceValue = parseFloat($('[colid="Price"]  .ColValue', this).text()).toFixed(3);
+                            parseFloat($('[argumentid="Price"]', f).val(`${priceValue}`));
+                            parseFloat($('[argumentid="TotalAmount"]', f).val(`${priceValue}`));
+                        });
+
+                    });
+                    
+                    
                   
                 }
             </script>

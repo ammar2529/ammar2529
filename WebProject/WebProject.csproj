@@ -1401,6 +1401,17 @@
     <Content Include="DataSets\SalesContractDS.xsc">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSets\SalesContactsDsForUAT.xsc">
+      <DependentUpon>SalesContactsDsForUAT.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\SalesContactsDsForUAT.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesContactsDsForUAT.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSets\SalesContactsDsForUAT.xss">
+      <DependentUpon>SalesContactsDsForUAT.xsd</DependentUpon>
+    </Content>
     <None Include="DataSets\SalesContractDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2299,6 +2310,11 @@
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="CUtilityWeb.cs" />
+    <Compile Include="DataSets\SalesContactsDsForUAT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesContactsDsForUAT.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\SalesContractDS.cs">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
     </Compile>

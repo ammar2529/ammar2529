@@ -432,7 +432,7 @@
                         <%-- <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align: center;" requirederr=' Car Price  Required'></span>--%>
                         <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="Price" disabled="disabled" />--%>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" step="0.01"  requirederr=' * Required' class="text number AlwaysDisable bgr"
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" step="0.01"   class="text number AlwaysDisable required bgr"
                             groupid="SalesContractsForm" argumentid="Price" />
                     </td>
                     <td colspan="2" class="ftitle">

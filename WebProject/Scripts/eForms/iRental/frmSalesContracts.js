@@ -5,7 +5,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var t = obj;
        
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
-    
         t.on('aftereDataAction', function (params)
         {
 
@@ -30,22 +29,26 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         });
 
     ////only test purpose
-    $('[argumentid="ChassisNo"]').focus(function () {
-        $('[argumentid="Price"]').val(0);
-        $('[argumentid="AdditionalAmount"]').val(0);
-        $('[argumentid="Discount"]').val(0);
+    $('[argumentid="ChassisNo"]').blur(function () {
+      
         
-        $('[argumentid="TotalAmount"]').val(0);
+        $('[argumentid="Price"]').val('0.000');
+        $('[argumentid="AdditionalAmount"]').val('0.000');
+        $('[argumentid="Discount"]').val('0.000');
+        $('[argumentid="TotalAmount"]').val('0.000');
 
+      
     });
-  
+
+
+    ///////////////////////////////////////////////////////
 
 
 
 
     $('[argumentid="FinanceCompany"]').prop('disabled', true);
     $('[argumentid="AdditionalAmount"],[argumentid="Discount"]').blur(function () {
-        debugger;
+        
         var carPrice = parseFloat($('[argumentid="Price"]',t.el).val());
         var additionalAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
         var discount = parseFloat($('[argumentid="Discount"]').val());
@@ -54,7 +57,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var totalCarPrice = carPrice + additionalAmount;
         totalAmount = totalCarPrice - discount;
 
-        parseFloat($('[argumentid="TotalAmount"]',t.el).val(totalAmount));
+        parseFloat($('[argumentid="TotalAmount"]', t.el).val(`${totalAmount}.000`));
 
 
 
@@ -1025,6 +1028,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $(".financeCompany").addClass("required");
         $('.ftitle.lb nobr').show();
     }
+};
+
+AsyncWidgets.WidgetScripts.frmSalesContracts.UpdateTotalAmount = function () {
+
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+    var price = parseFloat($('[argumentid="Price"]',t.el).val());
+    var totalAmount = parseFloat($('[argumentid="TotalAmount"]',t.el).val());
+
+    if (!!price) {
+
+        totalAmount.setField(price);
+    }
+
 };
 
 

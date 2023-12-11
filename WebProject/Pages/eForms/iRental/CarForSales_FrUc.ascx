@@ -11,11 +11,11 @@
         </td>
     </tr>
     <tr>
-        <td class="ftitle">Car Type*</td>
+        <td class="ftitle">Car Type*:</td>
         <td  width="32%">
 
-            <input type="radio" class="CommonDisable"   value="N"   checked="checked" name="CarType" groupid="SalesCarsForm" argumentid="CarType" /><label>New Car</label>
-            <input type="radio" class="CommonDisable" value="U" name="CarType" groupid="SalesCarsForm" argumentid="CarType" /><label>Used Car</label>
+            <input type="radio" class="CommonDisable"   value="N"  checked="checked" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required" /><label>New Car</label>
+            <input type="radio" class="CommonDisable" value="U" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required"/><label>Used Car</label>
 
 
         </td>
@@ -148,7 +148,7 @@
         </td>
         <td>
             <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;"
-                groupid="SalesCarsForm" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'9'}]}">
+                groupid="SalesCarsForm" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}">
                 <option value="" selected="selected">Select Status</option>
             </select>
 

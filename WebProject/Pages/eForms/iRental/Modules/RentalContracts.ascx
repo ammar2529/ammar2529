@@ -275,7 +275,8 @@
                         var conCar = AsyncWidgets.get("conRentalContracts_Cars");
                         var f = conCar._frm;
 
-                        t.on('beforeSearchGetForm', function (p) {
+                        t.on('beforeSearchGetForm', function (p)
+                        {
                             p.CarLocationId = f.GetArgVal('OutLocationId');
                         });
 
