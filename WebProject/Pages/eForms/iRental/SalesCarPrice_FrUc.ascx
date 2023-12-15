@@ -84,7 +84,7 @@
         </td>
         <td>
 
-            <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesCarPrice',HideOnSuccess:true}" />
+            <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesPriceCar',HideOnSuccess:true}" />
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
 
         </td>

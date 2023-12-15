@@ -75,19 +75,23 @@ namespace WebProject.ReportsEngine
         protected Table _ContainerTable = null;
         public Table ContainerTable { get { return _ContainerTable; } }
         private string SearchPanelSQL = @"
-SELECT     RPTChartEngineSearchPanel.SearchPanelID, LTRIM(RTRIM(RPTChartEngineSearchPanel.ContainerTableID)) AS ContainerTableID, 
-                      LTRIM(RTRIM(RPTChartEngineSearchPanel.SearchButtonID)) AS SearchButtonID, LTRIM(RTRIM(RPTChartEngineFieldProperty.FieldID)) AS FieldID, 
-                       '_' +LTRIM(RTRIM(RPTChartEngineFieldProperty.FieldProperty)) AS FieldProperty, 
-                      LTRIM(RTRIM(RPTChartEngineFieldProperty.PropertyValue)) AS PropertyValue
+SELECT
+    RPTChartEngineSearchPanel.SearchPanelID,
+    LTRIM(RTRIM(RPTChartEngineSearchPanel.ContainerTableID)) AS ContainerTableID,
+    LTRIM(RTRIM(RPTChartEngineSearchPanel.SearchButtonID)) AS SearchButtonID,
+    LTRIM(RTRIM(RPTChartEngineFieldProperty.FieldID)) AS FieldID,
+    '_' + LTRIM(RTRIM(RPTChartEngineFieldProperty.FieldProperty)) AS FieldProperty,
+    LTRIM(RTRIM(RPTChartEngineFieldProperty.PropertyValue)) AS PropertyValue
+FROM
+    RPTChartEngineFieldProperty
+LEFT JOIN RPTChartEngineSearchField ON RPTChartEngineFieldProperty.FieldID = RPTChartEngineSearchField.FieldID AND
+    RPTChartEngineFieldProperty.SearchPanelID = RPTChartEngineSearchField.SearchPanelID
+LEFT JOIN RPTChartEngineSearchPanel ON RPTChartEngineSearchField.SearchPanelID = RPTChartEngineSearchPanel.SearchPanelID
+WHERE
+    (RPTChartEngineSearchField.SearchPanelID = '{0}')
+ORDER BY
+    RPTChartEngineSearchField.OrderID, RPTChartEngineFieldProperty.FieldID;
 
-FROM         RPTChartEngineFieldProperty INNER JOIN
-
-                      RPTChartEngineSearchField ON RPTChartEngineFieldProperty.FieldID = RPTChartEngineSearchField.FieldID AND 
-                      RPTChartEngineFieldProperty.SearchPanelID = RPTChartEngineSearchField.SearchPanelID INNER JOIN
-                      RPTChartEngineSearchPanel ON RPTChartEngineSearchField.SearchPanelID = RPTChartEngineSearchPanel.SearchPanelID
-
-WHERE     (RPTChartEngineSearchField.SearchPanelID = '{0}')
-ORDER BY RPTChartEngineSearchField.OrderID,PTChartEngineFieldProperty.FieldID
 ";
         public SearchPanel(string SearchPanelID, Page page )
         {

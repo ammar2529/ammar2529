@@ -1086,7 +1086,7 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
                     eval(ss);
                 }
                 catch (ex) {
-                    alert(String.format('Error Evaluating JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
+                    console.log(String.format('Error Evaluating2 JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
                 }
                 if (!!fn) {
                     t.fn = fn;
@@ -1949,7 +1949,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
 
 		//textbox which will show popup on focus
-        $('.LOVPopup', t.el).focus(function () {//form widget inside bindEvents()
+        $('.LOVPopup', t.el).focus(function ()
+        {//form widget inside bindEvents()
             //this is textbox control
             //debugger;
             var cf = { ctrl: this };
@@ -2305,7 +2306,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 eval(ss);
             }
             catch (ex) {
-                alert(String.format('Error Evaluating JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
+                console.log(String.format('Error Evaluating3 JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
             }
             if (!!fn) {
                 t.fn = fn;
@@ -2320,7 +2321,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 eval(ss);
             }
             catch (ex) {
-                alert(String.format('Error Evaluating JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
+                console.log(String.format('Error Evaluating4 JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
             }
             //            if (!!fn) {
             //                t.fn = fn;
@@ -4016,7 +4017,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 eval(ss);
             }
             catch (ex) {
-                alert(String.format('Error Evaluating JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
+                console.log(String.format('Error Evaluating1 JS!\n  - Message:     {0}\n   - Description:  {1}', ex.message, ex.name));
             }
             if (!!fn) {
                 t.fn = fn;

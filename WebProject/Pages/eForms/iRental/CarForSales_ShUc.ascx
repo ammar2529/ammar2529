@@ -66,7 +66,7 @@
         <td style="text-align: left;">
 
             <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                 groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'9'}]}">
+                 groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}">
                 <option value="" selected="selected">Select Status</option>
             </select>
         </td>

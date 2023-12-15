@@ -76,6 +76,9 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
             t.on('show', function (args) {
                 $('.ChequeNo', t.el).hide();
+                $('.BankName', t.el).hide();
+                $('div.a>nobr ').hide();
+                $('[argumentid="BankName"],[argumentid="ChequeNo"]',t.el).removeClass('required');
                 $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
                 $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
 
@@ -90,14 +93,24 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             });
 
             //On Change of Payment Mode  $('option:selected', elem)
-            $('[argumentid="PaymentMode"]', t.el).change(function () {
-                var cbo = $('[argumentid="PaymentMode"] option:selected');
-                if ($.trim(cbo.text()) == 'Cheque') {
-                    $('.ChequeNo', t.el).show();
+        $('[argumentid="PaymentMode"]', t.el).change(function () {
+            
+            var cbo = $('[argumentid="PaymentMode"] option:selected', t.el).text();
+            var extractedCbo = cbo.replace('Select Payment Mode', '').trim(); // Remove 'Select Payment Mode' and trim any extra spaces
+            if ($.trim(extractedCbo) == 'Cheque') {
+                $('.ChequeNo', t.el).show();
+                $('.BankName', t.el).show();
+                $('div.a>nobr ').show();
+                $('[argumentid="BankName"],[argumentid="ChequeNo"]', t.el).addClass('required');
                 }
                 else {
-                    $('.ChequeNo', t.el).hide();
-                    $('[argumentid="ChequeNo"]', t.el).val('');
+                $('.ChequeNo', t.el).hide();
+                $('.BankName', t.el).hide();
+                $('div.a>nobr ').hide()
+                $('[argumentid="ChequeNo"]', t.el).val('');
+                $('[argumentid="BankName"]', t.el).val('');
+                $('[argumentid="BankName"],[argumentid="ChequeNo"]', t.el).removeClass('required');
+                
                 }
             });
             //End On Change of Payment Mode

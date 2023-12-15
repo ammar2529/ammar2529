@@ -85,8 +85,31 @@
 
 
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td class="ftitle" width="18%">
+                        <nobr>Contract Status*:</nobr></td>
+                    <td>
+                       <select class="dropdownlist" style="width: 300px;"
+                            groupid="schContractDetails" argumentid="StateId" name="D4">
+                            <option value="" selected="selected">Select Status</option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCCreatedState">Created - Reservation</option>
+                            <option value="">-----------------------------</option>
+							<option value="RRCContractOpen">Contract Open - Car Out</option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCContractCreated">Contract Created</option>
+                            <option value="">-----------------------------</option>
+							<option value="RRCContractOpenCarIn" style="color:red">Contract Open - Car In</option>
+							<option value="RRCWithLegalContractOpenCarOut" style="color:red">With Legal - Contract Open - Car Out</option>
+							<option value="RRCWithLegalContractOpenCarIn" style="color:red">With Legal - Contract Open - Car In</option>
+							<option value="RRCWithLegalContractClosedPendingPayment" style="color:red">With Legal - Contract Closed - Pending Payment</option>
+                            <option value="RRCContractClosedPendingPayment" style="color:red">Contract Closed - Pending Payment</option>
+                            <option value="">-----------------------------</option>
+							<option value="RRCContractClosed" style="color:Green">Contract Closed - Payment Cleared</option>
+                            <option value="">-----------------------------</option>
+							<option value="RRCContractCancelled">Contract Cancelled</option>
+                            <option value="">-----------------------------</option>
+                    </select>
+                    </td>
                 </tr>
 
 
@@ -95,7 +118,7 @@
                     <td class="ftitle" style="width: 170px">
                         <nobr>Chassis Number:*</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <input type="hidden" name="RecId" groupid="SalesContractsForm" argumentid="RecId" />
 
                         <div style="display: none">
@@ -105,15 +128,15 @@
 
                         </div>
                         <div>
-                            <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
-                                groupid="SalesContractsForm" lovpopupid="carPopup" argumentid="ChassisNo" />
+                            <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisable"
+                                groupid="SalesContractsForm" lovpopupid="carPopup" argumentid="ChassisNo" requirederr=' *Required'  />
                         </div>
                     </td>
                     <td class="ftitle" style="width: 140px">
                         <nobr>Customer Code*:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisable"
-                            groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" />
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisable"
+                            groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
                         <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>
                         <%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>--%>
 
@@ -130,7 +153,7 @@
                     <td class="ftitle">
                         <nobr>Car Number:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="CarNumber"></span>
                     </td>
                     <td class="ftitle">
@@ -144,7 +167,7 @@
                     <td class="ftitle">
                         <nobr>Brand:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="BrandId"></span>
                     </td>
                     <td class="ftitle">
@@ -158,7 +181,7 @@
                     <td class="ftitle">
                         <nobr>Model:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="ModelId"></span>
                     </td>
                     <td class="ftitle">
@@ -172,7 +195,7 @@
                     <td class="ftitle">
                         <nobr>Year:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="CarYear"></span>
                     </td>
                     <td class="ftitle">
@@ -186,7 +209,7 @@
                     <td class="ftitle">
                         <nobr>Color:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Color"></span>
                     </td>
                     <td class="ftitle">
@@ -201,7 +224,7 @@
                     <td class="ftitle">
                         <nobr>Type</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="TypeId"></span>
                     </td>
                     <td class="ftitle">
@@ -215,7 +238,7 @@
                 <tr class="OnLoadHideCarCust">
 
                     <td></td>
-                    <td class="auto-style2"></td>
+                    <td ></td>
 
                     <td class="ftitle">
                         <nobr>Driving License No.:</nobr>
@@ -227,7 +250,7 @@
                 </tr>
                 <tr class="OnLoadHideCarCust">
                     <td></td>
-                    <td class="auto-style2"></td>
+                    <td ></td>
                     <td class="ftitle">
                         <nobr>Work & Res. Telephone:</nobr>
                     </td>
@@ -239,7 +262,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td class="auto-style2"></td>
+                    <td ></td>
                     <td class="ftitle">
                         <nobr>Mobile Telephone:</nobr>
                     </td>
@@ -269,7 +292,7 @@
                     <td class="ftitle">
                         <nobr>Reservation Date*:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
                             style="width: 75px;" class="text required date CommonDisable" requirederr=' *' argumentid="ContractStartDate" />
 
@@ -305,7 +328,7 @@
                     <td class="ftitle">
                         <nobr>Contract Date:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
                             style="width: 75px;" class="text  date CommonDisable" requirederr=' *' argumentid="ContractDate" />
 
@@ -348,7 +371,7 @@
                     <td class="ftitle">
                         <nobr>Engine Warranty:</nobr>
                     </td>
-                    <td class="auto-style2">KM:
+                    <td >KM:
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable"
                             groupid="SalesContractsForm" argumentid="EngineWarranty" />
                     </td>
@@ -368,7 +391,7 @@
                     <td class="ftitle">
                         <nobr>Gear Warranty:</nobr>
                     </td>
-                    <td class="auto-style2">KM:
+                    <td >KM:
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable"
                             groupid="SalesContractsForm" argumentid="GearWarranty" />
                     </td>
@@ -388,7 +411,7 @@
                     <td class="ftitle">
                         <nobr>Car Warranty:</nobr>
                     </td>
-                    <td class="auto-style2">KM:
+                    <td >KM:
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable"
                             groupid="SalesContractsForm" argumentid="CarWarranty" />
                     </td>
@@ -451,7 +474,7 @@
 
                         <nobr>Additional Amount:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable"
                             groupid="SalesContractsForm" argumentid="AdditionalAmount" />
 
@@ -473,7 +496,7 @@
                         <nobr>Discount:</nobr>
 
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable"
                             groupid="SalesContractsForm" argumentid="Discount" />
                     </td>
@@ -487,7 +510,7 @@
                     <td class="ftitle">
                         <nobr>Grand Total:</nobr>
                     </td>
-                    <td class="auto-style2">
+                    <td >
                         <%-- <span class="ftitle" groupid="SalesContractsForm" argumentid="TotalAmount"></span>--%>
                         <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="TotalAmount" disabled="disabled" />--%>
@@ -512,7 +535,7 @@
                     <td class="ftitle">
                         <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
                     </td>
-                    <td style="text-align: center;" class="auto-style2">
+                    <td style="text-align: center;" >
                         <span class="ftitle" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
                     </td>
                     <td class="ftitle">

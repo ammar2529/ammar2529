@@ -273,8 +273,8 @@
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
                         p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);;
                         p.DBAction = 'popupCars';
-                        console.log(p.CarType);
-                        console.log(p.DBAction);
+                        //console.log(p.CarType);
+                        //console.log(p.DBAction);
                     });
 
                     //$('table[itemno]', t.el).click(function () {
@@ -289,6 +289,15 @@
                             var priceValue = parseFloat($('[colid="Price"]  .ColValue', this).text()).toFixed(3);
                             parseFloat($('[argumentid="Price"]', f).val(`${priceValue}`));
                             parseFloat($('[argumentid="TotalAmount"]', f).val(`${priceValue}`));
+                            debugger;
+                            var carNumber = $('[colid="CarNumber"]  .ColValue', this).text();
+                            if (!!carNumber) {
+                                $('[argumentid="CarNumber"]', f).text(carNumber);
+                            }
+                            else {
+
+                                $('[argumentid="CarNumber"]', f).text('');
+                            }
                         });
 
                     });

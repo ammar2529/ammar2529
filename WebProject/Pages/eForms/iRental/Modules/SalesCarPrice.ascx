@@ -23,7 +23,7 @@
                 <uc6:DataGrid ID="grdSalesCarRatePriceDetails" LoadOnInit="false" ShowOnLoad="true"  runat="server" Hidden="true" Columns="1" Forms="frmSaleCarPriceDetails_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
             PageSize="10" DataSource="SEL_iRental_SalesCarPrice" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
-            GridHeadText="Sales Car Price"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesCarPrice\',KeysCol:\'RecId\'}}}">
+            GridHeadText="Sales Car Price"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesPriceCar\',KeysCol:\'RecId\'}}}">
           
             <GridConfig>
             <script>

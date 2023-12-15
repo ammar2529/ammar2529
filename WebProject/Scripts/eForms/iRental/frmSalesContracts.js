@@ -3,7 +3,7 @@
 
 AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var t = obj;
-       
+      
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
         t.on('aftereDataAction', function (params)
         {
@@ -29,13 +29,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         });
 
     ////only test purpose
-    $('[argumentid="ChassisNo"]').blur(function () {
+    $('[argumentid="ChassisNo"]').focus(function () {
       
         
         $('[argumentid="Price"]').val('0.000');
         $('[argumentid="AdditionalAmount"]').val('0.000');
         $('[argumentid="Discount"]').val('0.000');
         $('[argumentid="TotalAmount"]').val('0.000');
+        /*$('[argumentid="CarNumber"]').text("");*/
 
       
     });
