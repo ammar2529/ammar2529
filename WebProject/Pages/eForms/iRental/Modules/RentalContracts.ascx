@@ -298,7 +298,6 @@
                                 }
 
                                 $('[argumentid="CarNumber"]', f.el).val($('[colid="CarNumber"] .ColValue', this).text());
-                                debugger;
                                 $('[argumentid="ChassisNo"]', f.el).text($('[colid="ChassisNo"] .ColValue', this).text());
                                 $('[argumentid="Brand"]', f.el).text($('[colid="BrandId"] .ColValue', this).text());
                                 $('[argumentid="Model"]', f.el).text($('[colid="ModelId"] .ColValue', this).text());
