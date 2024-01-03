@@ -5,6 +5,18 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
     var conGrd = AsyncWidgets.get("conLeaseContracts_Cust");
     var conCar = AsyncWidgets.get("conLeaseContracts_Cars");
 
+    $('.printBtn', t.el).click(function () { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenLeaseContract.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on Print Button');
+
+        return false;
+    });
 
     //On Focus of Customer Code to Get Customer Popup Selection
     $('[argumentid="CustomerRecCode"]', t.el).focus(function () {

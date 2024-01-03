@@ -90,7 +90,7 @@ LEFT JOIN RPTChartEngineSearchPanel ON RPTChartEngineSearchField.SearchPanelID =
 WHERE
     (RPTChartEngineSearchField.SearchPanelID = '{0}')
 ORDER BY
-    RPTChartEngineSearchField.OrderID, RPTChartEngineFieldProperty.FieldID;
+    RPTChartEngineSearchField.OrderID DESC, RPTChartEngineFieldProperty.FieldID DESC;
 
 ";
         public SearchPanel(string SearchPanelID, Page page )

@@ -24,24 +24,6 @@ namespace WebProject.Pages.eForms.iRental
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdLeasePaymentDetails;
 
         /// <summary>
-        /// conLeasePaymentDetails_Audit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Container conLeasePaymentDetails_Audit;
-
-        /// <summary>
-        /// grdLeasePaymentDetails_Audit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdLeasePaymentDetails_Audit;
-
-        /// <summary>
         /// frmLeasePaymentDetails control.
         /// </summary>
         /// <remarks>
@@ -58,24 +40,6 @@ namespace WebProject.Pages.eForms.iRental
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdLeaseOtherCharges;
-
-        /// <summary>
-        /// conLeaseOtherCharges_Audit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Container conLeaseOtherCharges_Audit;
-
-        /// <summary>
-        /// grdLeaseOtherCharges_Audit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdLeaseOtherCharges_Audit;
 
         /// <summary>
         /// frmLeaseOtherCharges control.

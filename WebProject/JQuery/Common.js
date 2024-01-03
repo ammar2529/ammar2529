@@ -146,3 +146,22 @@ function checkDublicateFiles(fileName, linkFile, orignalFileName,  t) {
 
 
 
+var sessionCheckTimeout;
+function setTimer() {
+    console.log('setting timer');
+    if (!!sessionCheckTimeout) {
+        console.log('clearing timer');
+        clearTimeout(sessionCheckTimeout);
+    }
+    sessionCheckTimeout = setTimeout(checkTimeout, 1210000);
+}
+function checkTimeout() {
+
+
+}
+$(document)
+    .keydown(setTimer)
+    .mousedown(setTimer)
+    .mousemove(setTimer);
+setTimer();
+

@@ -455,6 +455,7 @@
                             <input type="button" value="  Save  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Lease_Contracts',HideOnSuccess:true, Requery:false}" />
                             <input type="button" value="  Save  " class="DataAction ButtonStyle btn_10" ignorevalidate="ContractKMIn"
                                 conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Lease_Contracts',HideOnSuccess:false, Requery:false}" />
+                            <input type="button" value="  Print  " class="ButtonStyle printBtn" />
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
                         </div>
                     </td>

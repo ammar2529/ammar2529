@@ -27,11 +27,11 @@ function ($) {
         if (location.href.indexOf("logout") > 0)
             surl = location.href.substring(0, location.href.indexOf("logout"));
         // End To Get the Root
-
+        
         var timeoutUrl = surl + 'Logout.aspx';
         var SessionAliveUrl = surl + 'KeepSessionAlive.aspx';
         var defaults = {
-            timeoutInSeconds: 1140, //60, //1140,         
+            timeoutInSeconds: 60, //60, //1140,         
             timeoutWarningInSeconds: 180, //50, //180,    
             timeoutURL: timeoutUrl,
             SessionAlive: SessionAliveUrl,
@@ -96,7 +96,7 @@ function ($) {
     function timedOut(timer, opts) {
         if (opts.timeoutDebug) { console.log("Fully timed out, redirecting to the timeout page: " + opts.timeoutURL); }
         $('#sessionTimeoutToolbar').remove();
-
+       
         //This is our Framework Logout to clear the session
         var inv = new AsyncWidgets.RAInvoker();
         inv.invokeRA({ params: ["ActorId", "Authentication", "ActionId", "LogoutUser", "ServiceInfo", "<root><dummy></dummy></root>"]

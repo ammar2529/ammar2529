@@ -16,14 +16,14 @@ namespace WebProject.Pages.eForms.iRental.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PrintOpenSalesContract : ReportClass {
+    public class PrintOpenLeaseContract : ReportClass {
         
-        public PrintOpenSalesContract() {
+        public PrintOpenLeaseContract() {
         }
         
         public override string ResourceName {
             get {
-                return "PrintOpenSalesContract.rpt";
+                return "PrintOpenLeaseContract.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         public override string FullResourceName {
             get {
-                return "WebProject.Pages.eForms.iRental.Reports.PrintOpenSalesContract.rpt";
+                return "WebProject.Pages.eForms.iRental.Reports.PrintOpenLeaseContract.rpt";
             }
             set {
                 // Do nothing
@@ -138,9 +138,9 @@ namespace WebProject.Pages.eForms.iRental.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPrintOpenSalesContract : Component, ICachedReport {
+    public class CachedPrintOpenLeaseContract : Component, ICachedReport {
         
-        public CachedPrintOpenSalesContract() {
+        public CachedPrintOpenLeaseContract() {
         }
         
         [Browsable(false)]
@@ -177,7 +177,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PrintOpenSalesContract rpt = new PrintOpenSalesContract();
+            PrintOpenLeaseContract rpt = new PrintOpenLeaseContract();
             rpt.Site = this.Site;
             return rpt;
         }

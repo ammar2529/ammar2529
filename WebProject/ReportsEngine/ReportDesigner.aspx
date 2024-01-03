@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportDesigner.aspx.cs" Inherits="WebProject.ReportsEngine.ReportDesigner" %>
+﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" CodeBehind="ReportDesigner.aspx.cs" Inherits="WebProject.ReportsEngine.ReportDesigner" %>
 
 <!-- SmartNavigation="true" -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -104,7 +104,7 @@
         </asp:GridView>
             <asp:Label ID="Label35" runat="server" Text="New Field ID"></asp:Label><asp:TextBox ID="txtNewFieldID" runat="server"></asp:TextBox><br />
             <asp:Button ID="btnNewFieldTextBox" runat="server" Text="New Textbox" OnClick="btnNewFieldTextBox_Click" />
-            <asp:Button ID="btnNewLookUpCombo" runat="server" Text="New Lookup " OnClick="btnNewLookUpCombo_Click" />
+            <asp:Button ID="btnNewLookUpCombo" runat="server" Text="New Lookup " OnClick="btnNewLookUpCombo_Click" Height="28px" />
             <asp:Button ID="btnNewCaseCade" runat="server" Text="New Casecade " OnClick="btnNewCaseCade_Click" />
             <asp:Button ID="btnNewLOV" runat="server" Text="New LOV" OnClick="btnNewLOV_Click" />
             <asp:Button ID="btnDate" runat="server" Text="New Date Picker" OnClick="btnDate_Click" /></div>

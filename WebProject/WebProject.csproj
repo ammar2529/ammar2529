@@ -1266,6 +1266,7 @@
     <Content Include="Pages\eForms\iRental\CarForSales_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SalesCarPrice.ascx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintBillsSalesContracts.aspx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\SalesContractsTreatyReport.aspx" />
@@ -1433,6 +1434,17 @@
     </None>
     <Content Include="DataSets\SalesContractsTestDS.xss">
       <DependentUpon>SalesContractsTestDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="LeaseContractDataSet\LeaseContractDS.xsc">
+      <DependentUpon>LeaseContractDS.xsd</DependentUpon>
+    </Content>
+    <None Include="LeaseContractDataSet\LeaseContractDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LeaseContractDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="LeaseContractDataSet\LeaseContractDS.xss">
+      <DependentUpon>LeaseContractDS.xsd</DependentUpon>
     </Content>
     <None Include="ReportDS\ReportDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -2361,6 +2373,11 @@
     <Compile Include="KeepSessionAlive.aspx.designer.cs">
       <DependentUpon>KeepSessionAlive.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LeaseContractDataSet\LeaseContractDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LeaseContractDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2661,6 +2678,19 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintBillsSalesContracts.cs">
       <DependentUpon>PrintBillsSalesContracts.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.aspx.cs">
+      <DependentUpon>PrintOpenLeaseContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.aspx.designer.cs">
+      <DependentUpon>PrintOpenLeaseContract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.cs">
+      <DependentUpon>PrintOpenLeaseContract.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -3421,6 +3451,10 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintReceiptVoucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintReceiptVoucher1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintOpenLeaseContract.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -163,17 +163,19 @@
 
 /* BEGIN EXTERNAL SOURCE */
 
-    var onReady = () => {
-        //console.log("finding menu...");
-        if ($('[showwidget="conLeaseContracts"]').length > 0) {
-            $('[showwidget="conLeaseContracts"]').trigger('click');
-        }
+    //var onReady = () => {
+    //    //console.log("finding menu...");
+    //    if ($('[showwidget="conLeaseContracts"]').length > 0) {
+    //        $('[showwidget="conLeaseContracts"]').trigger('click');
+    //    }
 
-        else {
-            //var outterFun = arguments.callee;
-            setTimeout(onReady, 3000);
-        }
-    }</script>
+    //    else {
+    //        //var outterFun = arguments.callee;
+    //        setTimeout(onReady, 3000);
+    //    }
+    //}
+
+                    </script>
                 </Scripts>
             </AW:Form>
          
@@ -208,6 +210,24 @@
             <AW:SalesCarPrice runat="server" ID="SalesCarPrice" />
         </div>
     </div>
+
+   <%-- <script>
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === 'hidden') {
+                // Tab or window is hidden (user switched to a different tab or window)
+                // Perform logout action here
+                logoutUser();
+            }
+        });
+
+        function logoutUser() {
+            // Your logout logic here
+            alert('You have been logged out due to inactivity.');
+            // Redirect to logout page or perform other logout actions
+            window.location.href = `${location.protocol}//${location.host}`; // Replace with your logout URL
+        }
+    </script>--%>
 
 <%--<script type="text/javascript">
     var onReady = () => {

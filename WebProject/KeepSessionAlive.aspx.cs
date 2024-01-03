@@ -15,6 +15,8 @@ namespace WebProject
             if (User.Identity.IsAuthenticated)
             {
                 MetaRefresh.Attributes["content"] = Convert.ToString((Session.Timeout * 60) - 60) + ";url=KeepSessionAlive.aspx?q=" + DateTime.Now.Ticks;
+                //MetaRefresh.Attributes["content"] = "60;url=KeepSessionAlive.aspx?q=" + DateTime.Now.Ticks;
+
                 WindowStatusText = "Last refresh " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
             }
         }
