@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="eForms_Header_Login.ascx.cs" Inherits="WebProject.AdminPages.eForms.eForms_Header_Login" %>
 
+
 <table cellspacing="0" cellpadding="0" width="100%" border="0">
     <tbody>
         <tr>
@@ -31,23 +32,23 @@
                 </div>
             </td>
             <td>
-                <img height="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                <img height="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
             </td>
             <td>
                 <div class="tmp_rtxtb text-align-positive" style="color: #ffffff;">
                     Password:</div>
             </td>
             <td>
-                <img alt="" src="App_Themes/eForms_Theme/Images/spacer.gif">
+                <img alt="" src="App_Themes/eForms_Theme/Images/spacer.gif"/>
             </td>
             <td>
                 <div style="width: 110px; text-align: left">
-                    <input type="Password" value="" style="width: 90px" class="text required" tabindex="2" argumentid="UserPassword"
+                    <input type="password" value="" style="width: 90px" class="text required" tabindex="2" argumentid="UserPassword"
                         groupid="UserLogin" blurvalidate="false" requirederr=' *' />
                 </div>
             </td>
             <td>
-                <img height="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                <img height="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
             </td>
             <td style="padding-right: 10px; padding-top:2px">
                 <asp:Button ID="LoginButton" OnClientClick="return false;" Style="cursor: pointer;

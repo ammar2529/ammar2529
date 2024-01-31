@@ -3,6 +3,9 @@
  <table class="w-form-table" cellspacing="2" style="width:100%">
             <tr>
                 <td style=" text-align: left;" class="ftitle">
+                <span style="white-space:nowrap">Chassis No.</span>
+                </td>
+                <td style=" text-align: left;" class="ftitle">
                 <span style="white-space:nowrap">Car No.</span>
                 </td>
                 <td style=" text-align: left;" class="ftitle">
@@ -17,6 +20,9 @@
                     </td>
             </tr>
             <tr>
+                <td style=" text-align: left;">
+
+                      <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schCarDetails" /></td>
                 <td style=" text-align: left;">
 
                       <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schCarDetails" /></td>

@@ -289,6 +289,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             if (t.FormMode == "new") {
                 $('.SimpleTab', t.el).attr('disabled', 'disabled');
+          
+               /* $('.btnSave',t.el).hide();*/
                 //$('.PrintBtn').css('visibility', 'hidden'); // Hide element;
                 //$(".PrintBtn").css("opacity", 0.5);
 
@@ -321,8 +323,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
        }
 
-        $('.btn_10', t.el).hide();
-        $('.btn_11', t.el).show();
+        $('.btnReserve', t.el).show();
+        $('.btn_11', t.el).hide();
 
         $('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
         $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
@@ -385,10 +387,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     // On Start of Onloaded Values
         t.on('onLoadedValues', function (args)
         {
-         
-        var res = args.res;
+            
+         var res = args.res;
 
-        if (res.status == 'OK') {
+            if (res.status == 'OK')
+            {
+
 
             // Highlight dates as red which have expired
             var HLD = function (arg, arg2) {
@@ -428,6 +432,17 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
             
             AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
+            $('.btn_11', t.el).show();
+            $('.btnReserve', t.el).hide();
+
+            if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractCancelled') {
+                $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9,.btn_10', t.el).attr('disabled', 'disabled');
+                $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
+                $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
+                $('[argumentid="ReservationDate"]', t.el).next('img').hide();
+                $('[argumentid="ContractDate"]', t.el).next('img').hide();
+                $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+            }
 
     });
     // End of On Loaded Values
@@ -758,7 +773,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                 if ($(`.file-list a:contains("${fileName}")`).length > 0) {
                     continue;
                 }
-                var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}'>${fileName}</a>`;
+                //var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}' target='_blank'>${fileName}</a>`;
+
+                var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}' target='_blank' rel='noopener noreferrer'>${fileName}</a>`;
 
 
 

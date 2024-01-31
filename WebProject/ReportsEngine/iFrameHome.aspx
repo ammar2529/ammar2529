@@ -25,7 +25,7 @@
          var lastExpandedImgId = null;
 
          function ShowHidSubCondition(img, tableId) {
-             //debugger
+             
              //alert(img.src)
              // typeof(myFrm) != "undefined"
              if (typeof (document.getElementById(tableId)) && document.getElementById(tableId) != null) {
@@ -53,36 +53,37 @@
          }
          var timeInterval;
          var lastDiv = null;
-         function HideLicenceDiv() {
-             clearInterval(timeInterval);
-             if (lastDiv == null) {
-                 e = document.all.tags('div');
-                 for (i = 0; i < e.length; i++) {
-                     if (e[i].id != 'undefined') {
-                         if (e[i].id.indexOf('_trial') != -1) {
-                             lastDiv = e[i];
-                             //debugger;
-                             lastDiv.style.cssText = "";
-                             lastDiv.innerText = "";
-                             timeInterval = window.setInterval('HideLicenceDiv()', 1000)
-                             // e[i].style.display='none';
-                             // alert('it\' made hidden')
-                             break;
-                         }
-                     }
-                 }
-             }
-             else {
-                 lastDiv.style.display = 'none'
-                 // alert( lastDiv.id);
-             }
-         }
+         //function HideLicenceDiv() {
+         //    clearInterval(timeInterval);
+         //    if (lastDiv == null) {
+         //        e = document.all.tags('div');
+         //        for (i = 0; i < e.length; i++) {
+         //            if (e[i].id != 'undefined') {
+         //                if (e[i].id.indexOf('_trial') != -1) {
+         //                    lastDiv = e[i];
+         //                    //debugger;
+         //                    lastDiv.style.cssText = "";
+         //                    lastDiv.innerText = "";
+         //                    timeInterval = window.setInterval('HideLicenceDiv()', 1000)
+         //                    // e[i].style.display='none';
+         //                    // alert('it\' made hidden')
+         //                    break;
+         //                }
+         //            }
+         //        }
+         //    }
+         //    else {
+         //        lastDiv.style.display = 'none'
+         //        // alert( lastDiv.id);
+         //    }
+         //}
          function setTimer() {
              // clearInterval(timeInterval);
-             timeInterval = window.setInterval('HideLicenceDiv()', 0)
+             //timeInterval = window.setInterval('HideLicenceDiv()', 0)
              //  alert('time is set');
          }
          function ShowNewExportDataPopupOld(Link) {
+            
              //  window.open(Link,null,'left=300, top=150, height=400, width= 600, status=n o, resizable= no, scrollbars= no, toolbar= no,location= no, menubar= no'); return false;
              window.open(Link, null, ''); return false;
 
@@ -107,7 +108,7 @@
                                                                 <td>
                                                                     <table id="Table4" cellspacing="0" cellpadding="1" width="100%">
                                                                         <tr>
-                                                                            <td colspan="2">
+                                                                            <td>
                                                                                 <eo:SlideMenu ID="SlideMenu1" runat="server" ControlSkinID="None" SlidePaneHeight="170"  Width="100%">
                                                                                     <LookItems>
                                                                                         <eo:MenuItem ItemID="_TopGroup">

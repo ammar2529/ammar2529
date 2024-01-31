@@ -1262,6 +1262,8 @@
     <Content Include="Logout.aspx" />
     <Content Include="MasterPages\DummyMaster.master" />
     <Content Include="MasterPages\eForms.Master" />
+    <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
+    <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
     <Content Include="Pages\eForms\iRental\CarForSales_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SalesCarPrice.ascx" />
@@ -1274,6 +1276,7 @@
     <Content Include="Pages\eForms\iRental\Modules\CarForSales.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SalesContracts.ascx" />
     <Content Include="Pages\eForms\iRental\SalesCarPrice_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SalesContracts_Cars_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_CS_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_OC_FrUc.ascx" />
@@ -1398,6 +1401,7 @@
     <Content Include="Scripts_21-11-2023\Views\VW_SEL_iRental_SalesContracts_Base.sql" />
     <Content Include="Scripts_21-11-2023\Views\VW_SEL_iRental_SalesContracts_Details.sql" />
     <Content Include="Scripts_21-11-2023\Views\VW_Type.sql" />
+    <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
     <Content Include="WebForm4.aspx" />
     <Content Include="DataSets\SalesContractDS.xsc">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
@@ -2508,6 +2512,20 @@
     <Compile Include="Pages\Common\Administration\SimpleMenu_Parent_FrUc.ascx.designer.cs">
       <DependentUpon>SimpleMenu_Parent_FrUc.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Common\Administration\UserManagement_FrUc.ascx.cs">
+      <DependentUpon>UserManagement_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\UserManagement_FrUc.ascx.designer.cs">
+      <DependentUpon>UserManagement_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\UserManagement_FrUc.aspx.cs">
+      <DependentUpon>UserManagement_FrUc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\Administration\UserManagement_FrUc.aspx.designer.cs">
+      <DependentUpon>UserManagement_FrUc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Common\ChangePassword.ascx.cs">
       <DependentUpon>ChangePassword.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2682,6 +2700,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContracts - Copy.cs">
+      <DependentUpon>PrintLeaseContracts - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.aspx.cs">
       <DependentUpon>PrintOpenLeaseContract.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2691,6 +2715,12 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.cs">
       <DependentUpon>PrintOpenLeaseContract.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContracts.cs">
+      <DependentUpon>PrintLeaseContracts.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -2877,6 +2907,13 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesCarPrice_ShUc.ascx.designer.cs">
       <DependentUpon>SalesCarPrice_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_Cars_ShUc.ascx.cs">
+      <DependentUpon>SalesContracts_Cars_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_Cars_ShUc.ascx.designer.cs">
+      <DependentUpon>SalesContracts_Cars_ShUc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesContracts_CS_FrUc.ascx.cs">
       <DependentUpon>SalesContracts_CS_FrUc.ascx</DependentUpon>
@@ -3408,7 +3445,6 @@
     <Folder Include="AdminPages\Common\" />
     <Folder Include="App_Data\" />
     <Folder Include="AsyncWidgets\Widgets\resources\images\Widgets\Grid\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Skins\WindowsStyle.EO.Calendar.old.ascxold" />
@@ -3455,6 +3491,14 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenLeaseContract.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContracts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintLeaseContracts.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContracts - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintLeaseContracts - Copy.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

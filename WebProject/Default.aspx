@@ -48,132 +48,18 @@
             <AW:Form ID="frmPrivacy" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/Privacy.ascx" />
             <AW:Form ID="frmAccessDenied" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/AccessDenied.ascx" />
             <AW:Form ID="frmComingSoon" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ComingSoon.ascx" />
-            <AW:Form ID="frmiDashboard" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
-                AsyncForm="~/Pages/Common/iDashboard/Home_iDashboard.ascx">
+            <AW:Form ID="frmiDashboard" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/iDashboard/Home_iDashboard.ascx">
                 <Scripts>
                     <script>
-                        const { on } = require("modernizr");
 
-                        fn = function () {
+
+                       var fn = function () {
                             t.on('show', function () {
-                                //$(t.el).mask('Please wait while loading ...');
-                                $('.iFrameDashboard', t.el).each(function () {
-                                    $(this).attr('src', $(this).attr('src2'));
-                                });
-                                //$(t.el).unmask('Please wait while loading ...');
+                                console.log('showing iframe');
+                                var iframe = $('iframe');
+                                iframe.attr('src', iframe.attr('src2'));
                             });
-                        }
-                    
-/* END EXTERNAL SOURCE */
-
-/* BEGIN EXTERNAL SOURCE */
-
-                          fn = function () {
-
-                              var cDate = function (date) {
-                                  var dttmAr = date.split(' '), dt, tm, nDate;
-                                  dt = dttmAr[0].split('/');
-                                  if (dttmAr.length > 1) {
-                                      tm = dttmAr[1].split(':');
-                                      return new Date(dt[2], dt[1] - 1, dt[0], tm[0], tm[1], tm[2]);
-                                  }
-                                  return new Date(dt[2], dt[1] - 1, dt[0]);
-                              };
-                              var dateDiff = function (d1, d2) {
-                                  return (d1 - d2) / (3600000 * 24);
-                              };
-                              $('.SimpleTab li', t.el).click(function () {
-                                  if (!t.EmpInfo) return false;
-                                  var li = $(this), tbl;
-                                  li.parent().children('li.active').removeClass('active');
-                                  li.addClass('active');
-                                  tbl = li.closest('table').parent().closest('table').children();
-                                  tbl.children('tr:not(:first)').hide();
-                                  tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-                                  $('.tabid', t.el).val(li.attr('tabid'));
-                                  return false;
-                              });
-                              t.on('show', function () {
-
-                                  AsyncWidgets.user.conf = AsyncWidgets.user.conf || {};
-                                  if (!!AsyncWidgets.user.conf.ShowEmpInfo) {
-                                      $('.EmpInfo', t.el).show();
-
-                                      if (!t.__valuesLoaded) {
-                                          $(t.el).mask('Please wait while loading ...');
-                                          t.loadValues();
-                                          $(t.el).unmask('Please wait while loading ...');
-                                          t.__valuesLoaded = true;
-                                      }
-                                  }
-                                  else {
-                                      $('.EmpInfo', t.el).hide();
-                                  }
-
-                              });
-                              AsyncWidgets.user.on('loggedOut', function () {
-                                  t.__valuesLoaded = false;
-                              });
-                              t.on('onLoadedValues', function (args) {
-                                  var res = args.res;
-
-                                  if (res.status == 'OK') {
-                                      t.EmpInfo = true;
-                                      if (res.Response.Rows.length < 1) {
-                                          $('.EMPInfoNotFound', t.el).show().siblings().hide();
-                                          t.EmpInfo = false;
-                                      }
-                                      else {
-
-                                          var expDate = t.GetArgVal("PassportExpiryDate");
-                                          if ($.trim(expDate) != '') {
-                                              if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
-                                                  $('span[argumentid="PassportExpiryDate"]', t.el).css('color', 'red');
-                                              }
-                                          }
-                                          expDate = t.GetArgVal("ResidencyExpiryDate");
-                                          if ($.trim(expDate) != '') {
-                                              if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
-                                                  $('span[argumentid="ResidencyExpiryDate"]', t.el).css('color', 'red');
-                                              }
-                                          }
-                                      }
-                                  }
-                              });
-                          }
-                              
-/* END EXTERNAL SOURCE */
-
-/* BEGIN EXTERNAL SOURCE */
-
-                    fn = function () {
-                        t.on('afterDataAction', function () {
-                            $('.form', t.el).hide();
-                            $('.OnSuccess', t.el).show();
-                        });
-                        t.on('refresh', function () {
-                            t.setParams({ reset: true });
-                            $('.OnSuccess', t.el).hide();
-                            $('.form', t.el).show();
-
-                        });
-                    };
-                
-/* END EXTERNAL SOURCE */
-
-/* BEGIN EXTERNAL SOURCE */
-
-    //var onReady = () => {
-    //    //console.log("finding menu...");
-    //    if ($('[showwidget="conLeaseContracts"]').length > 0) {
-    //        $('[showwidget="conLeaseContracts"]').trigger('click');
-    //    }
-
-    //    else {
-    //        //var outterFun = arguments.callee;
-    //        setTimeout(onReady, 3000);
-    //    }
-    //}
+                        };
 
                     </script>
                 </Scripts>
@@ -181,12 +67,12 @@
          
             <AW:Form ID="frmLogout" Hidden="true" runat="server" AsyncForm="~/Pages/Common/Logout.ascx" />
 
-            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx">
-                        <Scripts>
+            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx"/>
+                   <%--     <Scripts>
                       <script></script>
                         </Scripts>
               
-            </AW:Form>
+            </AW:Form>--%>  
            
 
             <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
@@ -208,6 +94,7 @@
             <AW:SalesContracts runat="server" ID="SalesContracts" />
             <AW:CarForSales runat="server" ID="CarForSales" />
             <AW:SalesCarPrice runat="server" ID="SalesCarPrice" />
+            
         </div>
     </div>
 
@@ -247,5 +134,34 @@
     $().ready(onReady);
 
 </script>--%>
+    <script>
+
+        //setInterval(function () {
+        //    location.reload();
+        //}, 5000);
+        // 5000 milliseconds = 5 seconds
+
+        //if (!sessionStorage.getItem('hasReloaded')) {
+        //    sessionStorage.setItem('hasReloaded', 'true');
+        //    window.location.reload();
+        //}
+
+        //if (sessionStorage.getItem('hasLoggedIn')) {
+        //    sessionStorage.removeItem('hasLoggedIn');
+        //    window.location.reload();
+        //}
+
+        $(document).ready(function () {
+        //    location.reload();
+            $('.LoginButton').click(function () {
+
+                console.log('clicked login button')
+            })
+            AsyncWidgets.Widgets.on("initialized", function () {
+               // alert("Widgets Initialized");
+            });
+        });
+
+    </script>
 </asp:Content>
 

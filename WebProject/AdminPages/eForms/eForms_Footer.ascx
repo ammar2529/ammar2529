@@ -5,7 +5,7 @@
 
 <style>
 .panel_5{width:108px; float:left; position:relative; height:90px; background-color:#fff; border:1px solid #c1c3c8; padding:10px; margin:9px 8px 0 0;}
-.paneltitle_5{font:0.9em Verdana,Arial, Helvetica, sans-serif; color:#595959; padding::0 0 5px 0}
+.paneltitle_5{font:0.9em Verdana,Arial, Helvetica, sans-serif; color:#595959; padding:0 0 5px 0}
 .panelbody_5{text-align:center;}
 .panelbody_5 P{padding:0; margin:0; }
 </style>

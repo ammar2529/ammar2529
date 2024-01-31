@@ -27,7 +27,7 @@
                                         <b class="SitePageMenuLabel" style="color: #0F99CA; display: block; font-size: 10px;">SYSTEM ADMINISTRATION</b>
                                         <ul type="disc">  
                                         <li> <a class="SitePageMenuLink" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Organization Setup</a></li>
-                                        <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}" href="javascript:void(0);">User Management</a></li>
+                                        <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdUserManagement',parentId:'conAdministration_Controls'}" href="javascript:void(0);">User Management</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Menu Configuration</a></li>
 <%--                                        <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Ammar Menu Configuration</a></li>--%>
 
@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <td>
-                <img height="32" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                <img height="32" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
             </td>
         </tr>
     </tbody>

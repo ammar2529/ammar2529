@@ -323,15 +323,17 @@
                                             };
                                             var fn = function () {
                                                 $('.logout', t.el).click(function () {
-                                                   // debugger;
+                                                    // debugger;
                                                     var inv = new AsyncWidgets.RAInvoker();
                                                     inv.invokeRA({
                                                         params: ["ActorId", "Authentication", "ActionId", "LogoutUser", "ServiceInfo", "<root><dummy></dummy></root>"]
                                                     });
 
                                                     AsyncWidgets.user.logout();
-
-                                                    window.location.pathname = BASE_PATH +"default" ; //"Logout.aspx";
+                                                    inv.on('onSuccess', function (res) {
+                                                        window.location.pathname = BASE_PATH + "default"; //"Logout.aspx";
+                                                    });
+                                                   
                                                 });
                                                 var getMenu = function (rws) {
                                                     var i, j, mnuHTML = "&lt;ul id='jsddm' style='z-index:999'>";
@@ -450,10 +452,12 @@
                                                         <%-- Any Images or Logos--%>
                                                         <a href='javascript:void(0);' style="display: none">
                                                             <img height="30" width="30" alt="" title="Alerts" src="App_Themes/eForms_Theme/Images/Alert.png"
-                                                                border="0" /></a> <a id="lnkiDashboard" href='javascript:void(0);' displayroles="Show_iDashboard"
+                                                                border="0" /></a>
+                                                        <a id="lnkiDashboard" href='javascript:void(0);' displayroles="Show_iDashboard"
                                                                     runat="server" showwidget='frmiDashboard'>
                                                                     <img height="40" width="40" alt="" title="iDashboard" src="App_Themes/eForms_Theme/Images/iDashboard.png"
-                                                                        border="0" /></a> <a id="lnkAdministration" href='javascript:void(0);' displayroles="Show_Administration"
+                                                                        border="0" /></a> 
+                                                        <a id="lnkAdministration" href='javascript:void(0);' displayroles="Show_Administration"
                                                                             runat="server" showwidget='conAdministration'>
                                                                             <img height="40" width="40" alt="" title="Administration" src="App_Themes/eForms_Theme/Images/settings-icon.png"
                                                                                 border="0" /></a>
