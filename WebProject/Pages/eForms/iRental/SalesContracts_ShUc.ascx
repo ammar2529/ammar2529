@@ -54,12 +54,12 @@
 
             <tr>
                 <td style=" text-align: left;" class="ftitle">
-                <span style="white-space:nowrap">Out Location</span></td>
-                <td style=" text-align: left;" class="ftitle">
-
                 <span style="white-space:nowrap">National ID No.</span></td>
                 <td style=" text-align: left;" class="ftitle">
-                       <span style="white-space:nowrap">Customer Name</span></td>
+
+                <span style="white-space:nowrap">Customer Name</span></td>
+                <td style=" text-align: left;" class="ftitle">
+                       <span style="white-space:nowrap">Mobile Telephone</span></td>
                 <td style=" text-align: left;" class="ftitle" colspan="2">
                       <span style="white-space:nowrap">Contract Status</span>
                 </td>
@@ -69,18 +69,13 @@
             </tr>
             <tr>
                 <td style="text-align: left;">
-                    <select loadon="FirstVisible" class="dropdownlist" style="width: 135px;"
-                            groupid="schContractDetails" argumentid="OutLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
-                            <option value="" selected="selected">Select Location</option>
-                    </select>
-
-          
-                </td>
-                <td style="text-align: left;">
                    <input type="text"  class="text" argumentid="NationalIDNo" groupid="schContractDetails" /> 
                 </td>
                 <td style="text-align: left;">
-                <input type="text" class="text" argumentid="CustomerName" groupid="schContractDetails" />
+                   <input type="text" class="text" argumentid="CustomerName" groupid="schContractDetails" /> 
+                </td>
+                <td style="text-align: left;">
+                <input type="text" class="text" argumentid="MobileTelephone1" groupid="schContractDetails" />
                 </td>
                 <td style="text-align: left;" colspan="2">
 
@@ -90,7 +85,7 @@
                             <option value="">-----------------------------</option>
                             <option value="RRCCreatedState">Created - Reservation</option>
                             <option value="">-----------------------------</option>
-							<option value="RRCContractOpen">Contract Open - Car Out</option>
+							<%--<option value="RRCContractOpen">Contract Open - Car Out</option>
                             <option value="">-----------------------------</option>
                             <option value="RRCContractCreated">Contract Created</option>
                             <option value="">-----------------------------</option>
@@ -99,7 +94,7 @@
 							<option value="RRCWithLegalContractOpenCarIn" style="color:red">With Legal - Contract Open - Car In</option>
 							<option value="RRCWithLegalContractClosedPendingPayment" style="color:red">With Legal - Contract Closed - Pending Payment</option>
                             <option value="RRCContractClosedPendingPayment" style="color:red">Contract Closed - Pending Payment</option>
-                            <option value="">-----------------------------</option>
+                            <option value="">-----------------------------</option>--%>
 							<option value="RRCContractClosed" style="color:Green">Contract Closed - Payment Cleared</option>
                             <option value="">-----------------------------</option>
 							<option value="RRCContractCancelled">Contract Cancelled</option>

@@ -61,7 +61,8 @@ Sales.SalesContracts.grdSalesContracts = function (t) {
 Sales.SalesContracts.frmSalesContactsPaymentDetails =
     function (t) {
 
-        t.on('beforeDataAction', function (param) {
+        t.on('beforeDataAction', function (param)
+        {
             debugger
 
             // Ext.apply(params, frmProcGS.GetArgs([{ Name: 'FormType' }, { Name: 'FormNameCode' }]));
@@ -69,7 +70,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             param.ParentRecId = frm.GetArgVal('RecId');
         });
 
-        setTimeout(function () {
+        setTimeout(function ()
+        {
             AsyncWidgets.get('frmSalesContactsPaymentDetails').show()
         }, 3000);
 
@@ -80,7 +82,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 return arguments[0].toUpperCase();
             }
         }
-        function getAmountInWords(v) {
+        function getAmountInWords(v)
+        {
 
             if (!v) return '';
             else {
@@ -96,6 +99,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             }
             return des + ' Only';
         }
+        
             t.on('show', function (args) {
                 $('.ChequeNo', t.el).hide();
                 $('.BankName', t.el).hide(); 
@@ -164,6 +168,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
             });
 
+       
+
 
 
        // }
@@ -191,14 +197,17 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
             P.cf['ParentRecId'] = pVal;
             //    P.flags.queryDelete = false;
         });
-        t.on('rowsRendered', function () {
+        t.on('rowsRendered', function ()
+        {
 
             var frm = AsyncWidgets.get('frmSalesContracts');
             var strMainStateId = frm.GetArgVal('StateId');
 
          
 
-            $('[colid="PaymentType"]:not(".w-grid-head-cell")').each(function () {
+            $('[colid="PaymentType"]:not(".w-grid-head-cell")').each(function ()
+            {
+                ;
                 var ptr = $(this).closest('tr');
                 if ($(this).text().toLowerCase() == "return") {
                     $('[colid="PaymentAmount"] div', ptr).css({ 'font-weight': 'bold', 'color': 'red' });
@@ -207,7 +216,8 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
                 $('[colid="PaymentAmount"] div', ptr).text(parseFloat($('[colid="PaymentAmount"] div', ptr).text()).fix(3));
             });
 
-            $('[colid="StateId"]:not(".w-grid-head-cell")').each(function () {
+            $('[colid="StateId"]:not(".w-grid-head-cell")').each(function ()
+            {
                 var ptr = $(this).closest('tr');
                 if ($(this).text().toLowerCase() == "deleted") {
                     ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
@@ -259,7 +269,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
         });
         t.on('rowsRendered', function () {
             $('.PrintReport', t.el).click(function () { //
-                var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintReceiptVoucherFrPg.aspx?FormId=" + $(this).text() + "&ContractType=RNT"; // +'&amp;FormId=' + pm.SelectedKey;
+                var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintSalesPaymentReceiptVoucherFrPg.aspx?FormId=" + $(this).text() + "&ContractType=RNT"; // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
                 var width = 920;
                 var height = 600;

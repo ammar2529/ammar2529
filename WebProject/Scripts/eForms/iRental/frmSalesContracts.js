@@ -168,7 +168,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //On Click of Print Contract Button
         
      $('.PrintBtn', t.el).click(function () { //
-         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/SalesContractsTreatyReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
+         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/SalesContractsTreatyReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
                 var width = 920;
                 var height = 600;
@@ -185,7 +185,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     //On Click of QuotationBtn Contract Button
 
     $('.QuotationBtn', t.el).click(function () { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintQuotationSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintQuotationSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;
@@ -289,7 +289,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             if (t.FormMode == "new") {
                 $('.SimpleTab', t.el).attr('disabled', 'disabled');
-          
+                $('.CloseContract,.CancelContract', t.el).attr('disabled', 'disabled');
                /* $('.btnSave',t.el).hide();*/
                 //$('.PrintBtn').css('visibility', 'hidden'); // Hide element;
                 //$(".PrintBtn").css("opacity", 0.5);
@@ -336,6 +336,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
                 $('.NoRecordsTR').show();
                 AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+               
             }
 
             //for file extension fetch from LOvchild
@@ -395,17 +396,17 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
             // Highlight dates as red which have expired
-            var HLD = function (arg, arg2) {
-                var expDate = t.GetArgVal(arg).replace(/3rd - /g, '').replace(/Full - /g, '');
-                if ($.trim(expDate) != '') {
-                    if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
-                        $('span[argumentid="' + arg + '"]', t.el).css('color', 'red');
-                        $('span[argumentid="' + arg2 + '"]', t.el).css('color', 'red');
-                    }
-                }
-                return HLD;
-            };
-            HLD('PassportExpiry', 'CustomerName')('NationalIDExpiryDate', 'CustomerName')('DrivingLicenseExpiry', 'CustomerName');
+            //var HLD = function (arg, arg2) {
+            //    var expDate = t.GetArgVal(arg).replace(/3rd - /g, '').replace(/Full - /g, '');
+            //    if ($.trim(expDate) != '') {
+            //        if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
+            //            $('span[argumentid="' + arg + '"]', t.el).css('color', 'red');
+            //            $('span[argumentid="' + arg2 + '"]', t.el).css('color', 'red');
+            //        }
+            //    }
+            //    return HLD;
+            //};
+            //HLD('PassportExpiry', 'CustomerName')('NationalIDExpiryDate', 'CustomerName')('DrivingLicenseExpiry', 'CustomerName');
             // End of Highlight of expired dates
 
             $('.OnNewHide', t.el).show();
@@ -436,14 +437,21 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             $('.btnReserve', t.el).hide();
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractCancelled') {
-                $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9,.btn_10', t.el).attr('disabled', 'disabled');
+                $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
                 $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
                 $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                 $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                 $('[argumentid="ContractDate"]', t.el).next('img').hide();
                 $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-            }
+                $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract', t.el).addClass('ElemDisabled');
+            } else {
 
+                $('.CloseContract,.CancelContract', t.el).removeAttr('disabled');
+                $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn', t.el).removeClass('ElemDisabled');
+                $('.btnSave,.QuotationBtn,.PrintBtn', t.el).removeAttr('disabled', 'disabled');
+
+            }
+            
     });
     // End of On Loaded Values
 }
@@ -1038,7 +1046,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('[argumentid="FinanceCompany"]', t.el).val('');
         $(".financeCompany").removeClass("required"); 
         $('.ftitle.lb nobr').hide();
-       
+        $('td.financeCompanyTD span').hide();
    
     } else {
         $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);

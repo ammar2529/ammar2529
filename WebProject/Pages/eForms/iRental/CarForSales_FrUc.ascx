@@ -14,7 +14,7 @@
         <td class="ftitle">Car Type*:</td>
         <td  width="32%">
 
-            <input type="radio" class="CommonDisable"   value="N"  checked="checked" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required" /><label>New Car</label>
+            <input type="radio" class="CommonDisable"   value="N" default="default"  checked="checked" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required" /><label>New Car</label>
             <input type="radio" class="CommonDisable" value="U" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required"/><label>Used Car</label>
 
 

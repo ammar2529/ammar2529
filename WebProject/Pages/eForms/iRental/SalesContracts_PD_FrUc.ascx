@@ -153,7 +153,7 @@ var th = ['','thousand','million', 'billion','trillion'];
             <nobr style="font-style: italic; font-weight: bold;" float="left" class="BankName">&nbsp;Bank*:</nobr>
             
             <select loadon="FirstVisible" class="dropdownlist BankName" style="width: 155px; margin-left: 5px;"
-                groupid="Sales_Payments" requirederr='*' argumentid="BankName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'43'}]}" name="D2">
+                groupid="Sales_Payments" requirederr='*' argumentid="BankName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" name="D2">
                 <option value="" selected="selected"  >Select Bank</option>
                 
             </select><nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">&nbsp; Cheque No*:</nobr> 
@@ -185,7 +185,7 @@ var th = ['','thousand','million', 'billion','trillion'];
         </td>
     </tr>
 
-    <tr>
+<%--    <tr>
          <td class="ftitle">
             <nobr>Payment For:</nobr>
         </td>
@@ -194,7 +194,15 @@ var th = ['','thousand','million', 'billion','trillion'];
                     groupid="Sales_Payments" alphconf="{allow:'.'}"  argumentid="PaymentFor" />
 
         </td>
+    </tr>--%>
+     <tr>
+        <td class="ftitle" valign="top">
+            <nobr>Payment For:</nobr>
+        </td>
+        <td class="auto-style3">
+            <textarea class="textarea" rows="4" wrap="1" style="width: 707px" argumentid="PaymentFor" groupid="Sales_Payments"></textarea></td>
     </tr>
+    
     <tr>
         <td class="ftitle" valign="top">
             <nobr>Comments:</nobr>

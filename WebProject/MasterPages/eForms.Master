@@ -113,9 +113,12 @@
 
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            </asp:ContentPlaceHolder>
                             <table cellspacing="0" cellpadding="0" width="100%" border="0" style="background-image: url(App_Themes/eForms_Theme/Images/i/inbg.gif)">
                                 <tr>
                                     <td valign="top" class="text-align-positive" style="width: 100%;">
+                                        
                                         <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
                                        
                                         </asp:ContentPlaceHolder>

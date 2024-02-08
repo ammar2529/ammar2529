@@ -271,10 +271,11 @@
                     var f = conCar._frm;
                     t.on('beforeSearchGetForm', function (p) {
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
+                        
                         p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);;
                         p.DBAction = 'popupCars';
-                        //console.log(p.CarType);
-                        //console.log(p.DBAction);
+                        console.log(p.CarType);
+                        console.log(p.DBAction);
                     });
 
                     //$('table[itemno]', t.el).click(function () {
@@ -282,14 +283,32 @@
                     //    $('[argumentid="Price"]', t.el).val($('[colid="Price"] .ColValue', this).text().toFixed(3));
 
                     //});
+                    function getAmountInWordsSalesContract(v) {
 
-                    t.on('rowsRendered', function () {
-                        $('table[itemno]', t.el).click(function () {
+                        if (!v) return '';
+                        else {
+                            v = parseFloat(v);
+                        }
+                        var arr = v.fix(3).toString().split('.');
+                        var des = cnvrt2Upper(toWords(arr[0])) + 'KD';
+                        if (arr.length == 2) {
+                            var num = parseInt(arr[1]);
+                            if (num > 0) {
+                                des += ' and ' + cnvrt2Upper(toWords(arr[1])) + 'Fils';
+                            }
+                        }
+                        return des + ' Only';
+                    }
+
+                    t.on('rowsRendered', function ()
+                    {
+                        $('table[itemno]', t.el).click(function ()
+                        {
                          
                             var priceValue = parseFloat($('[colid="Price"]  .ColValue', this).text()).toFixed(3);
                             parseFloat($('[argumentid="Price"]', f).val(`${priceValue}`));
                             parseFloat($('[argumentid="TotalAmount"]', f).val(`${priceValue}`));
-                            debugger;
+                            $('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
                             var carNumber = $('[colid="CarNumber"]  .ColValue', this).text();
                             if (!!carNumber) {
                                 $('[argumentid="CarNumber"]', f).text(carNumber);

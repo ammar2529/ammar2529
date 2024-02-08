@@ -1271,6 +1271,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.aspx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucherFrPg.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\SalesContractsTreatyReport.aspx" />
     <Content Include="Pages\eForms\iRental\SalesCarPrice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\CarForSales.ascx" />
@@ -2725,6 +2726,19 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucher.cs">
+      <DependentUpon>PrintSalesPaymentReceiptVoucher.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucherFrPg.aspx.cs">
+      <DependentUpon>PrintSalesPaymentReceiptVoucherFrPg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucherFrPg.aspx.designer.cs">
+      <DependentUpon>PrintSalesPaymentReceiptVoucherFrPg.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintTreatySalesContracts.cs">
       <DependentUpon>PrintTreatySalesContracts.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3499,6 +3513,10 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContracts - Copy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintLeaseContracts - Copy.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintSalesPaymentReceiptVoucher.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
