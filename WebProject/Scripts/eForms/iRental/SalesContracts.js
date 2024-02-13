@@ -100,30 +100,30 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             return des + ' Only';
         }
         
-            t.on('show', function (args) {
-                $('.ChequeNo', t.el).hide();
-                $('.BankName', t.el).hide(); 
-                $('.ChequeDate', t.el).hide();
-                $('nobr:contains("Cheque No*:")', t.el).hide();
-                $('nobr:contains("Cheque Date*:")', t.el).hide();
-                $('.PaymentMetthodDetails td>.ui-datepicker-trigger').hide();
-                $('div>.ui-datepicker-trigger').hide();
-                $('tr.PaymentMetthodDetails').hide();
-                $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan")
-                $('div.a>nobr ').hide();
-                $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]',t.el).removeClass('required');
-                $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
-                $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+        t.on('show', function (args) {
+            $('.ChequeNo', t.el).hide();
+            $('.BankName', t.el).hide(); 
+            $('.ChequeDate', t.el).hide();
+            $('nobr:contains("Cheque No*:")', t.el).hide();
+            $('nobr:contains("Cheque Date*:")', t.el).hide();
+            $('.PaymentMetthodDetails td>.ui-datepicker-trigger').hide();
+            $('div>.ui-datepicker-trigger').hide();
+            $('tr.PaymentMetthodDetails').hide();
+            $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan")
+            $('div.a>nobr ').hide();
+            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]',t.el).removeClass('required');
+            $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
+            $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
 
-                var frm = AsyncWidgets.get('frmSalesContracts');
-                $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
+            var frm = AsyncWidgets.get('frmSalesContracts');
+            $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
 
-                var dt = new Date();
-                $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+            var dt = new Date();
+            $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
-                $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
-                $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
-            });
+            $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
+            $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+        });
 
             //On Change of Payment Mode  $('option:selected', elem)
         $('[argumentid="PaymentMode"]', t.el).change(function () {
@@ -141,8 +141,9 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('div.a>nobr ').show();
                 $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).addClass('required');
                 $('tr.PaymentMetthodDetails').show();
-                $('tr.PaymentModedd>td.ftitle').attr("rowspan", "2")                }
-                else {
+                $('tr.PaymentModedd>td.ftitle').attr("rowspan", "2")
+            }
+            else {
                 $('.ChequeNo', t.el).hide();
                 $('.BankName', t.el).hide();
                 $('.ChequeDate', t.el).hide();
@@ -153,11 +154,11 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('div.a>nobr ').hide()
                 $('[argumentid="ChequeNo"]', t.el).val('');
                 $('[argumentid="BankName"]', t.el).val('');
-                $('.PaymentMetthodDetails td>.ChequeDate',t.el).val('');
+                $('.PaymentMetthodDetails td>.ChequeDate', t.el).val('');
                 $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
                 $('tr.PaymentMetthodDetails').hide();
                 $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan")
-                }
+            }
             });
             //End On Change of Payment Mode
 

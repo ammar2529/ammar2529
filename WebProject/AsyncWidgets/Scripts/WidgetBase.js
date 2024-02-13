@@ -2498,6 +2498,11 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             });
         }
         var fld;
+        var subWidgetFilter = "";
+        if (ctx.length > 1 && !!ctx.attr('widgetid')) {//if ctx is jquery object with at least one element and is a widget div element
+            let wid = ctx[0].id;
+            subWidgetFilter = `:not(#${wid} div[widgetid] [argumentid])`;
+        }
         if (!!cf.params)
         {
            // debugger;
@@ -2506,10 +2511,12 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 //var $fld = ctx.find('[argumentid="' + param + '"]'),
                 fld = null;
-                var $fld = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).filter('[argumentid="' + param + '"]');
+
+
+                var $fld = $(`[argumentid]${subWidgetFilter}`, ctx).filter('[argumentid="' + param + '"]');
                 if ($fld.length < 1)
                 {
-                    $fld = $('[argumentid]:not(div[widgetid] div[widgetid] [argumentid])', ctx).find('[argumentid="' + param + '"]')
+                    $fld = $(`[argumentid]${subWidgetFilter}`, ctx).find('[argumentid="' + param + '"]')
                 }
                 if ($fld.length > 0)
                 {

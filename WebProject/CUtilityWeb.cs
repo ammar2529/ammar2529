@@ -548,15 +548,25 @@ public class CUtilityWeb
     }
     public  static Control  PageContentPlaceHolder(Page page)
     {
-        string ContentHolderName = page is IReportPortalSettings ? ((IReportPortalSettings)page).ContentHolderName : "ContentPlaceHolder2";
-        if (page.Master != null)
+        try
         {
-            return page.Master.FindControl(ContentHolderName);
+            string s = page.Request.FilePath;
+            string s2 = page.MasterPageFile;
+
+            if (page.Master != null)
+            {
+                string CHName = "";
+                CHName = page is IReportPortalSettings ? ((IReportPortalSettings)page).ContentHolderName : "ContentPlaceHolder2";
+                return page.Master.FindControl(CHName);
+            }
         }
-        else
-        {
+        catch (Exception ex)
+        { 
+        }
+        
+        
             return page;
-        }
+        
     }
     public static Control  PlaceControlInThePage(Control ControlToPlace, Page page, string ContainerId, int RowNo, int ColNo)
     {

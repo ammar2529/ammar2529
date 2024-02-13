@@ -128,7 +128,7 @@
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
                     <td class="ftitle" style="width: 170px">
-                        <nobr>Chassis Number:</nobr>
+                        <nobr>Chassis No.:</nobr>
                     </td>
                     <td >
                         <input type="hidden" name="RecId" groupid="SalesContractsForm" argumentid="RecId" />
@@ -148,7 +148,7 @@
                     <td class="ftitle" style="width: 140px">
                         <nobr>Customer Code*:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisable "
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisable "
                             groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
 <%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>--%>
                         <%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>--%>
@@ -164,7 +164,7 @@
 
                 <tr>
                     <td class="ftitle">
-                        <nobr>Car Number:</nobr>
+                        <nobr>Car No:</nobr>
                     </td>
                     <td >
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="CarNumber"></span>
@@ -261,11 +261,11 @@
 
                 <tr>
                     <td class="ftitle">
-                        <nobr>Reservation Date*:</nobr>
+                        <nobr>Reservation Date:</nobr>
                     </td>
                     <td >
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
-                            style="width: 75px;"  class="text required date CommonDisable ElemDisabled" requirederr=' *' argumentid="ContractStartDate" />
+                            style="width: 75px;"  class="text  date CommonDisable ElemDisabled"  argumentid="ContractStartDate" />
 
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ContractStartDay" />
@@ -276,11 +276,11 @@
                     </td>
 
                     <td class="ftitle">
-                        <nobr>Reservation End Date*:</nobr>
+                        <nobr>Reservation End Date:</nobr>
                     </td>
                     <td>
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
-                            style="width: 75px;" class="text required date DisableOnClose CommonDisable ElemDisabled" requirederr=' *' argumentid="ReservationDate" />
+                            style="width: 75px;" class="text  date DisableOnClose CommonDisable ElemDisabled"  argumentid="ReservationDate" />
 
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="ReservationWeekDays" />
@@ -426,8 +426,14 @@
                         <%-- <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align: center;" requirederr=' Car Price  Required'></span>--%>
                         <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisable ElemDisabled AlwaysDisable"
                             groupid="SalesContractsForm" argumentid="Price" disabled="disabled" />--%>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" step="0.01"   class="text number AlwaysDisable required bgr  ElemDisabled"
+                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" step="0.01"   class="text AlwaysDisable   ElemDisabled number   bgr  "
+                            groupid="SalesContractsForm PriceC" argumentid="Price" requirederr=' *Required' disabled="disabled"/>--%>
+                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10"  class="text PriceC number bgr "
+                            groupid="SalesContractsForm " argumentid="Price" requirederr=' *Required' />--%>
+
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text PriceC number CommonDisable ElemDisabled"
                             groupid="SalesContractsForm" argumentid="Price" />
+                        
                     </td>
                     <td colspan="2" class="ftitle" >
                         
@@ -456,7 +462,7 @@
 
                         
 
-                        <textarea class="textarea" rows="2"  style="width: 437px; height:72px" argumentid="fComments" groupid="Sales_Payments"></textarea>
+                        <textarea class="textarea" rows="2"  style="width: 437px; height:72px" argumentid="fComments" groupid="SalesContractsForm"></textarea>
                                         
                         
 
@@ -512,14 +518,14 @@
                         <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
                     </td>
                     <td style="text-align: center;" >
-                        <span class="ftitle" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
+                        <span class="ftitle PaymentAmountC" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
                     </td>
                     <td class="ftitle">
 
                         <nobr style="color: Red; font-size: 12px">Amount Due:</nobr>
                     </td>
                     <td style="text-align: center;">
-                        <span class="ftitle" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
+                        <span class="ftitle AmountDueC" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
                     </td>
                 </tr>
 

@@ -76,11 +76,11 @@ var th = ['','thousand','million', 'billion','trillion'];
                                      groupid="Sales_Payments" argumentid="ReceiptId" />
            
             
-            <nobr  style="font-style: italic; font-weight: bold;">&nbsp; Manual Receipt Date: </nobr>
+           <%-- <nobr  style="font-style: italic; font-weight: bold;">&nbsp; Manual Receipt Date: </nobr>
            
             
             &nbsp;<input type="text" groupid="Sales_Payments" maxlength="10"
-                            style="width: 75px;" class="text  date ManualReceiptDate CommonDisable"  argumentid="ManualReceiptDate" />
+                            style="width: 75px;" class="text  date ManualReceiptDate CommonDisable"  argumentid="ManualReceiptDate" />--%>
 
             <div style="display: none">
                 <span groupid="Sales_Payments" argumentid="ParentRecId"></span>

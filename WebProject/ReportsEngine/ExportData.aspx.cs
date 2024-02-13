@@ -106,10 +106,8 @@ namespace WebProject.ReportsEngine
                 // UpdGrid.Update();
             }
         }
-
-        protected void Page_LoadComplete(object sender, EventArgs e)
+        protected void Page_Render(object sender, EventArgs e)
         {
-
             if (Request.QueryString["type"] == "pdf")
             {
                 // exportToPDF();
@@ -120,6 +118,11 @@ namespace WebProject.ReportsEngine
                 ExportGridView();
             }
             GC.Collect();
+        }
+            protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+
+           
         }
         private void ExportGridView()
         {

@@ -13,8 +13,8 @@
             <span style="white-space: nowrap">Year</span></td>
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Type</span></td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Car Location</span></td>
+        <%--<td style="text-align: left;" class="ftitle">
+            <span style="white-space: nowrap">Car Location</span></td>--%>
         <td style="text-align: left;" class="ftitle">
             <span>Status</span></td>
         <td style="text-align: left;" class="ftitle">
@@ -56,13 +56,13 @@
             </select>
 
         </td>
-        <td style="text-align: left;">
+       <%-- <td style="text-align: left;">
 
             <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
                  groupid="schCarForSalesDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
                 <option value="" selected="selected">Select Location</option>
             </select>
-        </td>
+        </td>--%>
         <td style="text-align: left;">
 
             <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
@@ -105,7 +105,7 @@
     </tr>
     <tr>
         <td style="text-align: left;">
-
+                        <input type="hidden"  value="SearchChassisNo" groupid="schCarForSalesDetails" argumentid="SearchChassisN" />
             <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo"  groupid="schCarForSalesDetails" /></td>
         <td style="text-align: left;">
 

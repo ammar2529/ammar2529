@@ -28,18 +28,20 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             t.__firstShow = undefined;
         });
 
-    ////only test purpose
+    //only test purpose
     $('[argumentid="ChassisNo"]').focus(function () {
       
         
-        $('[argumentid="Price"]').val('0.000');
+     
         $('[argumentid="AdditionalAmount"]').val('0.000');
         $('[argumentid="Discount"]').val('0.000');
-        $('[argumentid="TotalAmount"]').val('0.000');
+  
         /*$('[argumentid="CarNumber"]').text("");*/
 
       
     });
+
+   
 
 
     ///////////////////////////////////////////////////////
@@ -47,20 +49,27 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
 
-    $('[argumentid="FinanceCompany"]').prop('disabled', true);
-    $('[argumentid="AdditionalAmount"],[argumentid="Discount"]').blur(function () {
-        
+   /* $('[argumentid="FinanceCompany"]').prop('disabled', true);*/
+    $('[argumentid="AdditionalAmount"],[argumentid="Discount"],[argumentid="Price"]').blur(function () {
+        debugger;
         var carPrice = parseFloat($('[argumentid="Price"]',t.el).val());
         var additionalAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
         var discount = parseFloat($('[argumentid="Discount"]').val());
-       /* var totalAmount = parseFloat($('[argumentid="TotalAmount"]').val());*/
-
+        /* var totalAmount = parseFloat($('[argumentid="TotalAmount"]').val());*/
+        var PaymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).text());
+        var roundedAmount = Math.round(PaymentAmount * 1000) / 1000; // Isse .001 ko .000 mein convert kiya jaega
+        var formattedAmount = roundedAmount.toFixed(3);
+        var parsePaymentAmount = parseFloat(formattedAmount);
         var totalCarPrice = carPrice + additionalAmount;
         totalAmount = totalCarPrice - discount;
 
-        parseFloat($('[argumentid="TotalAmount"]', t.el).val(`${totalAmount}.000`));
+        var totalAmountDue = totalAmount - parsePaymentAmount
+        $('[argumentid="TotalAmount"]', t.el).val(`${totalAmount.toFixed(3)}`);
+        $('[argumentid="AmountDue"]', t.el).text(`${totalAmountDue.toFixed(3)}`);
 
-
+        var value = $(this).val();
+        value = parseFloat(value).toFixed(3);
+        $(this).val(value);
 
     })
 
@@ -432,7 +441,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
             }
             
-            AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
+            //AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
             $('.btn_11', t.el).show();
             $('.btnReserve', t.el).hide();
 
@@ -451,7 +460,47 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 $('.btnSave,.QuotationBtn,.PrintBtn', t.el).removeAttr('disabled', 'disabled');
 
             }
+
+            ///decimal
             
+            var CarPrice = $('[argumentid="Price"]', t.el).val();
+            var CarPriceInFloat = parseFloat(CarPrice);
+            $('[argumentid="Price"]', t.el).val(CarPriceInFloat.toFixed(3));
+
+            var AdditionalAmount = $('[argumentid="AdditionalAmount"]', t.el).val();
+            var AdditionalAmountInFloat = parseFloat(AdditionalAmount);
+            $('[argumentid="AdditionalAmount"]', t.el).val(AdditionalAmountInFloat.toFixed(3));
+
+            var Discount = $('[argumentid="Discount"]', t.el).val();
+            var DiscountFloat = parseFloat(Discount);
+            $('[argumentid="Discount"]', t.el).val(DiscountFloat.toFixed(3));
+
+            var TotalAmount = $('[argumentid="TotalAmount"]', t.el).val();
+            var TotalAmountInFloat = parseFloat(TotalAmount);
+            $('[argumentid="TotalAmount"]', t.el).val(TotalAmountInFloat.toFixed(3));
+
+            //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
+            //var PaymentAmountInFloat = parseFloat(PaymentAmount);
+            //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
+
+            var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
+
+            var AmountDueInFloat = parseFloat(AmountDue);
+            $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
+            var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
+
+            var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab));
+            if (isNaN(decAmountReceived)) {
+                setField('PaymentAmount', '0.000', SalesContractTab);
+                //$('[argumentid="PaymentAmount"]', t.el).text('0.000');
+            }
+            else {
+                setField('PaymentAmount', decAmountReceived.toFixed(3), SalesContractTab);
+                // $('[argumentid="PaymentAmount"]',t.el).text();
+            }
+            
+           
+
     });
     // End of On Loaded Values
 }
@@ -933,7 +982,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
     }
 
     var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
-
+    
     var decAmountReceived = parseFloat(val( 'PaymentAmount', SalesContractTab));
     if (isNaN(decAmountReceived))
     {
@@ -1041,7 +1090,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN = functi
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
     if ($(".cash").is(":checked")) {
-        $('[argumentid="FinanceCompany"]', t.el).prop('disabled', true);
+       /* $('[argumentid="FinanceCompany"]', t.el).prop('disabled', true);*/
         $('[argumentid="FinanceCompany"]', t.el).hide();
         $('[argumentid="FinanceCompany"]', t.el).val('');
         $(".financeCompany").removeClass("required"); 
@@ -1049,7 +1098,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('td.financeCompanyTD span').hide();
    
     } else {
-        $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);
+      /*  $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);*/
         $('[argumentid="FinanceCompany"]', t.el).show();
         $(".financeCompany").addClass("required");
         $('.ftitle.lb nobr').show();

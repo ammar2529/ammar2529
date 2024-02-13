@@ -54,9 +54,13 @@
                                    
                                 </pre>
                 <pre columnid="CreationDetails">
-<%--                                     <div class="ftitle" style="color:#808000">{OutLocation}</div>--%>
+                                     <div class="ftitle" style="color:#808000; display:none">{ChassisNo}</div>
                                      <div class="ftitle" style="color:#101080">{CreatedBy}</div>
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
+                                   <div class="ftitle" style="color:#808000">{FinanceCompany}</div>
+
+                    
+                                    
                                 </pre>
 
                 <pre columnid="RecId">
@@ -245,17 +249,18 @@
                         Sequence: { width: '0px' },
                         RecId: { width: '0px' },
                         RecCode: { width: '0px' },
-                        ChassisNo: { width: '100px' },
+                        ChassisNo: { width: '150px' },
                         CarNumber: { caption: 'Car No.', width: '80px' },
-                        BrandId: { caption: 'Brand', width: '120px' },
-                        ModelId: { caption: 'Model', width: '140px' },
-                        TypeId: { caption: 'Type', width: '80px' },
-                        CarYear: { caption: 'Year', width: '80px' },
+                        BrandId: { caption: 'Brand', width: '60px' },
+                        ModelId: { caption: 'Model', width: '90px' },
+                        TypeId: { caption: 'Type', width: '60px' },
+                        CarYear: { caption: 'Year', width: '60px' },
                         ColorId: { caption: 'Color', width: '80px' },
                         InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
                         FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
-                        CurrentMileage: { caption: 'Mileage', width: '100px' },
+                        CurrentMileage: { caption: 'Mileage', width: '70px' },
                         CarLocationId: { width: '0px' },
+                        CarStatusId: { caption: 'Car Status', width: '90px' },
                         Status: { width: '100px' },
                         ContractNo: { caption: 'Contract No.' }
 
@@ -269,7 +274,8 @@
                 var fn = function () {
                     var conCar = AsyncWidgets.get("conRentalContracts_Cars");
                     var f = conCar._frm;
-                    t.on('beforeSearchGetForm', function (p) {
+                    t.on('beforeSearchGetForm', function (p)
+                    {
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
                         
                         p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);;
@@ -299,15 +305,17 @@
                         }
                         return des + ' Only';
                     }
+                 
 
                     t.on('rowsRendered', function ()
                     {
                         $('table[itemno]', t.el).click(function ()
                         {
-                         
-                            var priceValue = parseFloat($('[colid="Price"]  .ColValue', this).text()).toFixed(3);
-                            parseFloat($('[argumentid="Price"]', f).val(`${priceValue}`));
-                            parseFloat($('[argumentid="TotalAmount"]', f).val(`${priceValue}`));
+                            debugger
+                            var priceValue = $('[colid="Price"]  .ColValue', this).text();
+                            var priceInFloat = parseFloat(priceValue);
+                            $('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);
+                            $('[argumentid="TotalAmount"]', f).val(`${priceInFloat.toFixed(3)}`);
                             $('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
                             var carNumber = $('[colid="CarNumber"]  .ColValue', this).text();
                             if (!!carNumber) {
@@ -317,6 +325,26 @@
 
                                 $('[argumentid="CarNumber"]', f).text('');
                             }
+                            
+                            //var floatPrice = parseFloat(priceValue);
+                            var PaymentAmountC = parseFloat($('.PaymentAmountC').text());   
+                            var AmountDueC = parseFloat($('.AmountDueC').text());   
+                            var TotalAmount = parseFloat($('[argumentid="TotalAmount"]').val());
+                            if (priceInFloat == 0 || priceValue == "") {
+                                var calculate = PaymentAmountC + AmountDueC
+                                console.log(calculate);
+                                $('.AmountDueC').text(`${calculate.toFixed(3)}`);
+
+                            }
+                            else {
+                                var calculate = TotalAmount - PaymentAmountC
+                                console.log(calculate);
+                                $('.AmountDueC').text(`${calculate.toFixed(3)}`);
+                            }
+
+                            if (PaymentAmountC == 0) {
+                                $('.AmountDueC').text(`${priceInFloat.toFixed(3)}`);
+                            } 
                         });
 
                     });
