@@ -163,14 +163,14 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             //End On Change of Payment Mode
 
             //On Change of Amount Update Amount in Words
-            $('[argumentid="PaymentAmount"]', t.el).change(function () {
+        $('[argumentid="PaymentAmount"]', t.el).change(function ()
+        {
 
                 $('[argumentid="AmountInWords"]', t.el).val(getAmountInWords($('[argumentid="PaymentAmount"]', t.el).val()));
 
-            });
+        });
 
        
-
 
 
        // }
