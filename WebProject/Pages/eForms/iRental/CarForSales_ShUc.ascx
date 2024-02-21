@@ -137,8 +137,11 @@
         </td>
         <td style="text-align: left; padding-bottom: 0px">
             <a href="javascript:void(0);" class="search ViewButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
+                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" conf="{Params:{DBAction:'SearchChassisNo'}}" />
+            </a>
             <a href="javascript:void(0);" class="reset ClearButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a></td>
+                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" />
+            </a>
+        </td>
     </tr>
 </table>

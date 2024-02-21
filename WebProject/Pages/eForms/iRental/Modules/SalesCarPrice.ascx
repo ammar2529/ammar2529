@@ -34,7 +34,7 @@
                         BrandId: { caption: 'Brand', width: '130px' },
                         ModelId: { caption: 'Model', width: '150px' },
                         YearId: { caption: 'Year', width: '55px' },
-                        Price: { caption: 'Price', width: '95px' },
+                        Price: { caption: 'Car Price', width: '95px' },
                         Comments: { caption: 'Comments', width: '95px' },
                       
                     },
@@ -46,7 +46,29 @@
                 };
             </script>
             </GridConfig>
+                    <Scripts>
+                        <script>
+                            var fn = function ()
+                            {
+                                t.on('rowsRendered', function () 
+                                {
+                                    $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
+                                    {
+                                        
+                                        var ptr = $(this).closest('tr');
+                                        $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
+
+                                    });
+
+                                });
+
+                              
+
+                            }
+                        </script>
+                    </Scripts>
             </uc6:DataGrid>
+                 
             <br />
            </Childern>
             </uc5:Container>
@@ -65,4 +87,44 @@
                     }
                 </script>
                 </WidgetConfig>
+                  <Scripts>
+                      <script>
+                          var fn = function ()
+                          {
+                              t.on('onLoadedValues', function (args)
+                              {
+
+                                  
+                                  var res = args.res;
+
+                                  if (res.status == 'OK')
+                                  {
+                                      var CarPrice = $('[argumentid="Price"]', t.el).val();
+                                      var CarPriceToFixed = parseFloat(CarPrice);
+                                      $('[argumentid="Price"]').val(CarPriceToFixed.toFixed(3));
+
+                                  }
+                              });
+
+
+                              t.on('Show', function (args)
+                              {
+
+                                  
+                                  
+                                 
+                                  
+                              });
+                              $('[argumentid="Price"]').blur(function ()
+                              {
+                                  var value = $(this).val();
+                                  value = parseFloat(value).toFixed(3);
+                                  $(this).val(value);
+
+                              });
+                          }
+
+                       
+                      </script>
+                  </Scripts>
             </uc8:Form>

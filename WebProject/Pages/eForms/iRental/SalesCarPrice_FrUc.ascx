@@ -48,7 +48,7 @@
 
     <tr>
         <td class="ftitle">
-            <nobr>Price*:</nobr>
+            <nobr>Car Price*:</nobr>
         </td>
         <td>
 

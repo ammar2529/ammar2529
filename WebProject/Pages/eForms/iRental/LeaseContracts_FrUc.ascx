@@ -647,8 +647,10 @@
                                     <Scripts>
                                         <script>
                                             var fn = function () {
-                                                t.on('rowsRendered', function () {
-                                                    $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function () {
+                                                t.on('rowsRendered', function () 
+                                                {
+                                                    $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function () 
+                                                    {
                                                         var ptr = $(this).closest('tr');
                                                         if ($(this).text().toLowerCase() == "return") {
                                                             $('[colid="PaymentAmount"] div', ptr).css({ 'font-weight': 'bold', 'color': 'red' });

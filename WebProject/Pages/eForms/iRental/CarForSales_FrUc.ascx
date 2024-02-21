@@ -64,10 +64,10 @@
             <nobr>Model*:</nobr>
         </td>
         <td>
-            <select class="dropdownlist required" style="width: 155px;"
-                groupid="SalesCarsForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
-                <option value="" selected="selected">Select Model</option>
-            </select>
+              <select class="dropdownlist required" style="width: 155px;"
+                  groupid="SalesCarsForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
+                 <option value="" selected="selected">Select Model</option>
+              </select>
         </td>
     </tr>
     <tr>

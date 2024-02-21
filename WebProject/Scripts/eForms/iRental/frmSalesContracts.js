@@ -263,6 +263,24 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     });
     // End
 
+    // To select Edit Button
+    $('.SalesButton_Edit', t.el).click(function ()
+    {
+        $('[argumentid="StateId"]', t.el).text('RRCStartState');
+        $('[argumentid="StateName"]', t.el).text('Start State');
+
+        $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).removeAttr('disabled', 'disabled');
+
+        $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
+        $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass', t.el).removeClass('ElemDisabled');
+        $('[argumentid="ContractStartDate"]', t.el).next('img').show();
+        $('[argumentid="ReservationDate"]', t.el).next('img').show();
+        $('[argumentid="ContractDate"]', t.el).next('img').show();
+        $('[argumentid="DeliveryDate"]', t.el).next('img').show();
+        $('[argumentid="DocType"]', t.el).prop('disabled', false);
+
+    });
+
     // On Form Show file-list
         t.on('show', function (args)
         {
@@ -310,6 +328,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 $('table.uploadedFileList .ItemTR .ItemTableRow').remove();
                /* $('.ItemTR > td', tblUFL).empty();*/
                 $('.NoRecordsTR', tblUFL).show();
+                $('.btnSave ', t.el).hide();
 
                 
             } 
@@ -321,16 +340,23 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
         var cY = CurrentDate.getFullYear();
 
-        if ($('[argumentid="StateId"]', t.el).text() == '') {
-            $('[argumentid="StateId"]', t.el).text('SCSCreatedState');
-            $('[argumentid="StateName"]', t.el).text('Created State');
-            //$('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
-            //$('[argumentid="ContractStartDay"]', t.el).val(WeekDay);
-            //$('[argumentid="ContractStartTime"]', t.el).val(setTime);
+            if ($('[argumentid="StateId"]', t.el).text() == '')
+            {
+                
+                $('[argumentid="StateId"]', t.el).text('RRCStartState');
+                $('[argumentid="StateName"]', t.el).text('Start State');
 
-            /*$('[argumentid="ReservationExpireTime"]', t.el).val(setTime);*/
+                $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).removeAttr('disabled', 'disabled');
 
-       }
+                $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
+                $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass', t.el).removeClass('ElemDisabled');
+                $('[argumentid="ContractStartDate"]', t.el).next('img').show();
+                $('[argumentid="ReservationDate"]', t.el).next('img').show();
+                $('[argumentid="ContractDate"]', t.el).next('img').show();
+                $('[argumentid="DeliveryDate"]', t.el).next('img').show();
+                $('[argumentid="DocType"]', t.el).prop('disabled', false);
+            }
+            
 
         $('.btnReserve', t.el).show();
         $('.btn_11', t.el).hide();
@@ -338,18 +364,26 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
         $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
         $('span[argumentid="ChassisNo"],span[argumentid="CustomerName"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', t.el).css('color', '#628296'); //Change Color to Normal on form show
-           
+
+            //if ($('[argumentid="StateId"]', t.el).text() == 'RRCStartState')
+            //{
+            //    debugger
+            //    $('[argumentid="StateId"]', t.el).text('RRCStartState');
+            //}
 
             //show the no record on file upload table
-            if (t.FormMode == 'new') {
+            if (t.FormMode == 'new') 
+            {
 
                 $('.NoRecordsTR').show();
                 AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
+
+               
                
             }
 
             //for file extension fetch from LOvchild
-            var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "39" };
+            var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "35" };
             function Success(res) {
                 var res = decJSON(res);
                 if (res.status == 'OK') {
@@ -384,7 +418,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             if (t.FormMode == "new" && !t.__firstShow)
             {
                 t.__firstShow = true;
-            AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+                AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+              
             }
 
             
@@ -444,22 +479,83 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
             $('.btn_11', t.el).show();
             $('.btnReserve', t.el).hide();
+            $('.btnSave ', t.el).show();
+            
+         
 
-            if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractCancelled') {
-                $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
-                $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
-                $('[argumentid="ReservationDate"]', t.el).next('img').hide();
-                $('[argumentid="ContractDate"]', t.el).next('img').hide();
-                $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-                $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract', t.el).addClass('ElemDisabled');
-            } else {
 
-                $('.CloseContract,.CancelContract', t.el).removeAttr('disabled');
-                $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn', t.el).removeClass('ElemDisabled');
-                $('.btnSave,.QuotationBtn,.PrintBtn', t.el).removeAttr('disabled', 'disabled');
+            if (t.FormMode == 'update')
+            {
+                
+                if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed')
+                {
+                    $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
+                  
+                    $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
+                    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass', t.el).addClass('ElemDisabled');
+                    $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
+                    $('[argumentid="ReservationDate"]', t.el).next('img').hide();
+                    $('[argumentid="ContractDate"]', t.el).next('img').hide();
+                    $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+                    
+                }
 
+                if ($('[argumentid="StateId"]', t.el).text() == 'RRCCreatedState')
+                {
+                    $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).removeAttr('disabled', 'disabled');
+
+                    $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
+                    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass', t.el).removeClass('ElemDisabled');
+                    $('[argumentid="ContractStartDate"]', t.el).next('img').show();
+                    $('[argumentid="ReservationDate"]', t.el).next('img').show();
+                    $('[argumentid="ContractDate"]', t.el).next('img').show();
+                    $('[argumentid="DeliveryDate"]', t.el).next('img').show();
+                    $('[argumentid="DocType"]', t.el).prop('disabled', false);
+
+                }
+
+                $('[argumentid="CustomerRecCode"]', t.el).prop('disabled', true);
+                $('[argumentid="CustomerRecCode"]', t.el).addClass('ElemDisabled');
+
+                if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractCancelled')
+                {
+                    $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
+
+                    $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
+                    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass', t.el).addClass('ElemDisabled');
+                    $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
+                    $('[argumentid="ReservationDate"]', t.el).next('img').hide();
+                    $('[argumentid="ContractDate"]', t.el).next('img').hide();
+                    $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+                }
+                
             }
+
+             
+                //else
+                //{
+
+                //    $('.CloseContract,.CancelContract', t.el).removeAttr('disabled');
+                //    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn', t.el).removeClass('ElemDisabled');
+                //    $('.btnSave,.QuotationBtn,.PrintBtn', t.el).removeAttr('disabled', 'disabled');
+
+                //}
+
+
+
+            //if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed')
+            //{
+            //    $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
+            //    $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
+            //    $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
+            //    $('[argumentid="ReservationDate"]', t.el).next('img').hide();
+            //    $('[argumentid="ContractDate"]', t.el).next('img').hide();
+            //    $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+            //    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+            //    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract', t.el).addClass('ElemDisabled');
+            //}
 
             ///decimal
             
@@ -1096,12 +1192,22 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $(".financeCompany").removeClass("required"); 
         $('.ftitle.lb nobr').hide();
         $('td.financeCompanyTD span').hide();
+        $('.LPONumberTitle nobr', t.el).hide();
+        $('[argumentid="LPONumber"]', t.el).hide();
+        $('[argumentid="LPODate"]', t.el).hide();
+        $('.LPONumberDateField>img',t.el).hide();
+        /*$(".trOnHideFinaceSelect",t.el).hide();*/
    
     } else {
       /*  $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);*/
         $('[argumentid="FinanceCompany"]', t.el).show();
         $(".financeCompany").addClass("required");
         $('.ftitle.lb nobr').show();
+        $('.LPONumberTitle nobr', t.el).show();
+        $('[argumentid="LPONumber"]', t.el).show();
+        $('[argumentid="LPODate"]', t.el).show();
+        $('.LPONumberDateField>img', t.el).show();
+    //    $(".trOnHideFinaceSelect", t.el).show();
     }
 };
 

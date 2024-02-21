@@ -278,7 +278,7 @@
                     {
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
                         
-                        p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);;
+                        p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);
                         p.DBAction = 'popupCars';
                         console.log(p.CarType);
                         console.log(p.DBAction);
@@ -311,7 +311,7 @@
                     {
                         $('table[itemno]', t.el).click(function ()
                         {
-                            debugger
+                            
                             var priceValue = $('[colid="Price"]  .ColValue', this).text();
                             var priceInFloat = parseFloat(priceValue);
                             $('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);

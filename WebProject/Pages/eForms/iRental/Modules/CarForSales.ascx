@@ -39,25 +39,53 @@
                             RecId: { width: '0px' },
                             RecCode: { width: '0px' },
                             CarNumber: { caption: 'Car No.', width: '80px' },
+                            ChassisNo: { caption: 'ChassisNo.', width: '135px' },
                             CarFor: { width: '70px' },
                             BrandId: { caption: 'Brand', width: '80px' },
-                            ModelId: { caption: 'Model', width: '80px' },
+                            ModelId: { caption: 'Model', width: '100px' },
                             TypeId: { caption: 'Type', width: '80px' },
                             YearId: { caption: 'Year', width: '55px' },
-                            ColorId: { caption: 'Color', width: '55px' },
+                            ColorId: { caption: 'Color', width: '90px' },
                             //CurrentMileage: { caption: 'Mileage', width: '75px' },
+                            /*CarType: { caption: 'CarType', width: '55px' },*/
+                            Price: { caption: 'Car Price.', width: '80px' },
                             CarLocationId: { caption: 'Car Location', width: '100px' },
-                            CarStatusId: { caption: 'Status' }
+                            CarStatusId: { caption: 'Status', width: '75px' }
                         },
                         forms: {
                             NewFormId: 'frmCarForSales',
                             EditFormId: 'frmCarForSales',
                             Keys: 'ChassisNo'
                         }
+                        //,
+                        //DataActionParams: {
+                        //    DBAction : 'SearchChassisNo'
+                        //}
                     };
                 </script>
             </GridConfig>
-      
+            <Scripts>
+                <script>
+
+                    var fn = function ()
+                    {
+                        t.on('rowsRendered', function () 
+                        {
+                            $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
+                            {
+                                debugger;
+                                var ptr = $(this).closest('tr');
+                                $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
+
+                            });
+
+                        });
+
+                       
+                    }
+                   
+                </script>
+            </Scripts>
         </uc5:DataGrid>
        
         <br />
@@ -89,9 +117,17 @@
                             });
 
                             t.on('onLoadedValues', function (args) {
-                                $('[argumentid="action"]', t.el).val("update");
-                                if ($('[argumentid="ContractNo"]', t.el).text() != '') {
-                                    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
+                                //$('[argumentid="action"]', t.el).val("update");
+                                //if ($('[argumentid="ContractNo"]', t.el).text() != '') {
+                                //    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
+                                //}
+                                
+                                var res = args.res;
+
+                                if (res.status == 'OK')
+                                {
+
+
                                 }
                             });
 

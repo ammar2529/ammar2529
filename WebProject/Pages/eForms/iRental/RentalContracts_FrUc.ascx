@@ -79,7 +79,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
                     </td>
                 </tr>
 
@@ -243,7 +243,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
                     </td>
                 </tr>
 
@@ -337,7 +337,7 @@
 
                 <tr class="OnLoadHide">
                     <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
                     </td>
                 </tr>
 
