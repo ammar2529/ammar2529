@@ -1624,6 +1624,31 @@ function addAttr(obj, conf) {
         obj.attr(key, conf[key]);
     }
 }
+var setListValue = function (ctl,val) // can be DOM or jquery
+{
+    ////////////////////////////////////////////
+    if (!ctl.tagName) // if not a DOM object then convert it to DOM object
+    {
+        /////////////////////////////////////////////////////////
+      //  console.log("Converting jquery to DOM");
+        ctl = ctl[ 0 ];
+    }
+
+    ////////////////////////////////////////////
+    val = val || "";
+
+    val = val.toString().toUpperCase();
+    for (var i = 0; i < ctl.options.length; i++)
+    {
+        let ctlVale = ctl.options[ i ].text.toUpperCase();
+        if (ctlVale == val)
+        {
+            ctl.selectedIndex = i;
+            return;
+        }
+    }
+    //////////////////////////////////////////////////////
+};
 var setField = function (ctl, param, ctx)
 {
     
@@ -1695,17 +1720,35 @@ var setField = function (ctl, param, ctx)
             $(ctx).unmask();
             ctl.masked = false;
         }
-        if (param.type == "text") {
-            $("option:contains(" + val + ")", ctl).attr('selected', 'selected');
-            if (ctl.selectedIndex > -1)
-                if ($.trim(ctl.options[ctl.selectedIndex].text).toUpperCase() != $.trim(val).toUpperCase())
+        let valType = $(ctl).attr("valtype") || "value";
+        $(ctl)[ 0 ].selectedIndex = -1;
+        if (param.type == "text" || valType == "text")
+        {
+            if (!!val)
+            {
+               // $("option:contains(" + val + ")", ctl).attr('selected', 'selected');
+                setListValue(ctl,val);
+                if (ctl.selectedIndex < 0)
+                {
                     $(ctl).val(val);
+                    //if ($.trim(ctl.options[ ctl.selectedIndex ].text).toUpperCase() != $.trim(val).toUpperCase())
+                    //{
+                       
+                    //}
+                }
+            }
+
         }
         else {
             $(ctl).val(val);
-            if ($(ctl).val() != val) {
-                if (val == '') { ctl.selectedIndex = -1; return; };
-                $("option:contains(" + val + ")", ctl).attr('selected', 'selected');
+            if ($(ctl).val() != val) { //if value is not set, from previous line
+                if (val == '')
+                {
+                    ctl.selectedIndex = -1;
+                    return;
+                };
+                //$("option:contains(" + val + ")", ctl).attr('selected', 'selected');
+                setListValue(ctl, val);
             }
         }
         var ch = $(ctl).attr('childcombo'), sid = $(ctl).attr('storeinfo');

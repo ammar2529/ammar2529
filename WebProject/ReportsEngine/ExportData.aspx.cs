@@ -20,6 +20,8 @@ using iTextSharp.text.html.simpleparser;
 using System.Xml;
 using ExpertPdf.HtmlToPdf;
 using HtmlAgilityPack;
+using iTextSharp.tool.xml;
+//using iTextSharp.tool.xml;
 
 namespace WebProject.ReportsEngine
 {
@@ -70,6 +72,7 @@ namespace WebProject.ReportsEngine
                 {
                     GRDHolder.QueryData(SPanel);
                     UpdGrid.Update();
+                   
                 }
                 catch (Exception ex)
                 {
@@ -106,11 +109,13 @@ namespace WebProject.ReportsEngine
                 // UpdGrid.Update();
             }
         }
-        protected void Page_Render(object sender, EventArgs e)
+        //protected void Page_Render(object sender, EventArgs e)
+         protected void Page_LoadComplete(object sender, EventArgs e)
+
         {
             if (Request.QueryString["type"] == "pdf")
             {
-                // exportToPDF();
+                //exportToPDF();
                 ConvertHTMLStringToPDF(ControlToHTML(GRDHolder.GridViewControl));
             }
             else
@@ -119,11 +124,11 @@ namespace WebProject.ReportsEngine
             }
             GC.Collect();
         }
-            protected void Page_LoadComplete(object sender, EventArgs e)
-        {
+        //    protected void Page_LoadComplete(object sender, EventArgs e)
+        //{
 
            
-        }
+        //}
         private void ExportGridView()
         {
             //ERROR: Control 'gvPaymentDeptBased' of type 'GridView' must be placed inside a form tag with runat=server
@@ -199,6 +204,7 @@ namespace WebProject.ReportsEngine
         {
 
         }
+
         private void exportToPDF()
         {
             Rectangle Custompagesize;
@@ -231,6 +237,7 @@ namespace WebProject.ReportsEngine
             htmlparser.Parse(sr);
             pdfDoc.Close();
         }
+
         private void ConvertHTMLStringToPDF(string htmlString)
         {
             if (Request.QueryString["NextReportID"] != null && Request.QueryString["NextReportID"] != "")

@@ -16,7 +16,7 @@
         <%--<td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Car Location</span></td>--%>
         <td style="text-align: left;" class="ftitle">
-            <span>Status</span></td>
+            <span>Car Status</span></td>
         <td style="text-align: left;" class="ftitle">
             </td>
 

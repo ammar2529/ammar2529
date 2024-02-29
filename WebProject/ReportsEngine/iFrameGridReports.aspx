@@ -657,7 +657,7 @@
                                                                             <asp:TableCell ID="TableCell2" runat="server"></asp:TableCell>
                                                                         </asp:TableRow>
                                                                   <asp:TableRow ID="TableRow2" runat="server">
-                                                                            <asp:TableCell ID="TableCell3" runat="server" Width="10px">abc</asp:TableCell>
+                                                                            <asp:TableCell ID="TableCell3" runat="server" Width="10px"></asp:TableCell>
                                                                             <asp:TableCell ID="TableCell4" runat="server">xyz</asp:TableCell>
                                                                         </asp:TableRow>
                                                                     </asp:Table>
@@ -876,7 +876,7 @@
             </td>
         </tr>
     </table>
-    <table id="ExportMenu" style="display:none;font-family: verdana; font-size: 11px;width:145px;border:1px solid silver" border="0" cellpadding="0" cellspacing="0" >
+    <table id="ExportMenu" style="display:none;font-family: verdana; font-size: 11px;width:145px;border:1px solid silver; background-color:#E2E2E2;" border="0" cellpadding="0" cellspacing="0" >
     <tr style="">
         <td  style="background-image: url('../../App_Themes/Blue/Images/DashBoard/ExportStartMenuBack.gif');height:26px;width:15px;border-bottom:1px solid silver" >
             <img alt="" src="../../App_Themes/Blue/Images/DashBoard/SubArrow.gif" 
@@ -889,9 +889,9 @@
         <td  style="background-image: url('../../App_Themes/Blue/Images/DashBoard/ExportStartMenuBack.gif');height:25px;width:15px;" >
             <img alt="" src="../../App_Themes/Blue/Images/DashBoard/SubArrow.gif" 
                 style="margin-left: 7px; margin-right: 7px;" /></td>
-        <td export="pdf" style="cursor:pointer;background-image: url('../../App_Themes/Blue/Images/DashBoard/ExportMenuBack.gif'); text-indent: 3px;">
+       <%-- <td export="pdf" style="cursor:pointer;background-image: url('../../App_Themes/Blue/Images/DashBoard/ExportMenuBack.gif'); text-indent: 3px;">
             To PDF
-        </td>
+        </td>--%>
 
     </tr>
     <tr><td colspan="2" >

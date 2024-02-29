@@ -50,17 +50,17 @@
                             /*CarType: { caption: 'CarType', width: '55px' },*/
                             Price: { caption: 'Car Price.', width: '80px' },
                             CarLocationId: { caption: 'Car Location', width: '100px' },
-                            CarStatusId: { caption: 'Status', width: '75px' }
+                            CarStatusId: { caption: 'Car Status', width: '87px' }
                         },
                         forms: {
                             NewFormId: 'frmCarForSales',
                             EditFormId: 'frmCarForSales',
                             Keys: 'ChassisNo'
                         }
-                        //,
-                        //DataActionParams: {
-                        //    DBAction : 'SearchChassisNo'
-                        //}
+                        ,
+                        DataActionParams: {
+                            DBAction : 'SearchChassisNo'
+                        }
                     };
                 </script>
             </GridConfig>
@@ -73,7 +73,7 @@
                         {
                             $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
                             {
-                                debugger;
+                              
                                 var ptr = $(this).closest('tr');
                                 $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
 
@@ -117,18 +117,18 @@
                             });
 
                             t.on('onLoadedValues', function (args) {
-                                //$('[argumentid="action"]', t.el).val("update");
-                                //if ($('[argumentid="ContractNo"]', t.el).text() != '') {
-                                //    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
-                                //}
-                                
-                                var res = args.res;
-
-                                if (res.status == 'OK')
-                                {
-
-
+                                $('[argumentid="action"]', t.el).val("update");
+                                if ($('[argumentid="ContractNo"]', t.el).text() != '') {
+                                    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
                                 }
+                                
+                                //var res = args.res;
+
+                                //if (res.status == 'OK')
+                                //{
+
+
+                                //}
                             });
 
                             t.on('onComboFilled', function () {

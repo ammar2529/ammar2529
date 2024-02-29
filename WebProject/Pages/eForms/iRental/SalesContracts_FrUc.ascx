@@ -94,7 +94,7 @@
                groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
                 <option value="" selected="selected">Select Finance Company</option>
             </select>--%>
-                        <select loadon="FirstVisible"  class="dropdownlist required financeCompany CommonDisableClass  " style="width: 270px;" groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist required financeCompany CommonDisableClass  " style="width: 270px;" groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
                             <option value="" selected="selected">Select Finance Company</option>
                         </select>
 
@@ -376,7 +376,7 @@
                groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible"  class="dropdownlist CommonDisableClass  "   style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible" valtype="value"  class="dropdownlist CommonDisableClass  "   style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
                     </td>
@@ -396,7 +396,7 @@
                groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible"  class="dropdownlist CommonDisableClass   " style="width: 155px;" groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " style="width: 155px;" groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
                     </td>
@@ -416,7 +416,7 @@
                groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible"  class="dropdownlist CommonDisableClass   " style="width: 155px;" groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible" valtype="value"  class="dropdownlist CommonDisableClass   " style="width: 155px;" groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
 
@@ -484,7 +484,7 @@
 
 <%--                        style="width: 367px; height:37px" --%>
 
-                        <textarea class="textarea CommonDisableClass  " style="width: 100%; height: 100%; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                        <textarea class="textarea CommonDisableClass  " style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
                             argumentid="fComments" groupid="SalesContractsForm"></textarea>
                                         
                         
@@ -527,7 +527,7 @@
                         <nobr>Salesman:</nobr>
                     </td>
                     <td>
-                           <select loadon="FirstVisible"  class="dropdownlist CommonDisableClass  "   style="width: 204px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                           <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 204px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
                             <option value="" selected="selected">Select Salesman</option>
                         </select>
                     </td>
@@ -572,7 +572,7 @@
                     <td colspan="4">
                       
                         <div class="file-upload-drop-area">
-                            <select loadon="FirstVisible" class="dropdownlist required CommonDisableClass  " style="width: 155px;"
+                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required CommonDisableClass  " style="width: 155px;"
                                 groupid="SalesContractsForm" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
                                 <option value="" selected="selected">Select Doc Type</option>
                             </select>
@@ -676,7 +676,7 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                             <input type="button"  value="  Edit  " class="ButtonStyle SalesButton_Edit" />
+                             <input type="button" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
                             <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
                              
 <%--                            ,Params:{DBAction:'SCReserved'}--%>

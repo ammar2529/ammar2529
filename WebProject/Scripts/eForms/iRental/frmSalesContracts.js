@@ -266,8 +266,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     // To select Edit Button
     $('.SalesButton_Edit', t.el).click(function ()
     {
-        $('[argumentid="StateId"]', t.el).text('RRCStartState');
-        $('[argumentid="StateName"]', t.el).text('Start State');
+        $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
+       /* $('[argumentid="StateName"]', t.el).text('Start State');*/
 
         $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).removeAttr('disabled', 'disabled');
 
@@ -343,7 +343,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             if ($('[argumentid="StateId"]', t.el).text() == '')
             {
                 
-                $('[argumentid="StateId"]', t.el).text('RRCStartState');
+                $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
                 $('[argumentid="StateName"]', t.el).text('Start State');
 
                 $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).removeAttr('disabled', 'disabled');

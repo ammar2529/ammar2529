@@ -22,7 +22,7 @@
     </tr>
     <tr>
         <td class="ftitle">
-            <nobr>Chassis Number*:</nobr>
+            <nobr>Chassis No.*:</nobr>
         </td>
         <td width="100%">
             <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text required validateunique" primarykey="ChassisNo"
@@ -33,7 +33,7 @@
 
     <tr>
         <td class="ftitle">
-            <nobr>Car Number:</nobr>
+            <nobr>Car No.:</nobr>
         </td>
         <td>
             <div style="display: none"><span groupid="SalesCarsForm" argumentid="RecId"></span></div>
@@ -64,7 +64,7 @@
             <nobr>Model*:</nobr>
         </td>
         <td>
-              <select class="dropdownlist required" style="width: 155px;"
+              <select class="dropdownlist required" style="width: 155px;" valtype="value"
                   groupid="SalesCarsForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
                  <option value="" selected="selected">Select Model</option>
               </select>
