@@ -18,7 +18,7 @@
                             ReportSourceID="CrystalReportSource13" 
                                HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
                         Width="901px" />
-                        <asp:SqlDataSource ID="SqlDataSource12" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                        <asp:SqlDataSource ID="SqlDataSource13" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                             SelectCommand="RNTSalesContract_Print_SalesContract_SP" SelectCommandType="StoredProcedure"  >
                             <SelectParameters>
                                 <asp:QueryStringParameter  DefaultValue="" Name="FormCode" QueryStringField="FormCode"
@@ -27,7 +27,7 @@
                         </asp:SqlDataSource>
 
                         <CR:CrystalReportSource ID="CrystalReportSource13" runat="server">
-                            <Report FileName="PrintBillsSalesContracts.rpt">
+                            <Report FileName="SalesContractsBill.rpt">
                                 <DataSources>
                                     <CR:DataSourceRef DataSourceID="SqlDataSource13" TableName="RNTSalesContract_Print_SalesContract_SP"/>
                                     

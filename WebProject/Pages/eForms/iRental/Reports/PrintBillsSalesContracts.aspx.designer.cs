@@ -33,13 +33,13 @@ namespace WebProject.Pages.eForms.iRental.Reports
         protected global::CrystalDecisions.Web.CrystalReportViewer SalesBillReport;
 
         /// <summary>
-        /// SqlDataSource12 control.
+        /// SqlDataSource13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource12;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource13;
 
         /// <summary>
         /// CrystalReportSource13 control.

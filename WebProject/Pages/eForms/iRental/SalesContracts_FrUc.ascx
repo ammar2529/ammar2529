@@ -683,6 +683,7 @@
                             <input type="button" value="  Quotation  " class="ButtonStyle QuotationBtn common-button" />
 
                             <input type="button" value="  Contract  " class="ButtonStyle PrintBtn common-button" />
+                            <input type="button" value="  Bill  " class="ButtonStyle BillsBtn common-button" />
                             <input type="button"  value="Statement" class=" ButtonStyle Statement" />
 <%--                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />

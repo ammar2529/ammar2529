@@ -14,7 +14,7 @@
               
                 <tr>
                     <td style="height: 21px" align="center" valign="top"">
-                        &nbsp;<CR:CrystalReportViewer ID="SalesContractTreatyReport" runat="server" AutoDataBind="true" HasCrystalLogo="False" Height="1039px" 
+                        &nbsp;<CR:CrystalReportViewer ID="SalesContractReport" runat="server" AutoDataBind="true" HasCrystalLogo="False" Height="1039px" 
                             ReportSourceID="CrystalReportSource12" 
                                HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
                         Width="901px" />
