@@ -144,6 +144,26 @@ function checkDublicateFiles(fileName, linkFile, orignalFileName,  t) {
     }//end forloop for search duplicate files
 }
 
+function getAmountInWordsSalesContract(v)
+{
+
+    if (!v) return '';
+    else
+    {
+        v = parseFloat(v);
+    }
+    var arr = v.fix(3).toString().split('.');
+    var des = cnvrt2Upper(toWords(arr[ 0 ])) + 'KD';
+    if (arr.length == 2)
+    {
+        var num = parseInt(arr[ 1 ]);
+        if (num > 0)
+        {
+            des += ' and ' + cnvrt2Upper(toWords(arr[ 1 ])) + 'Fils';
+        }
+    }
+    return des + ' Only';
+}
 
 
 //var sessionCheckTimeout;

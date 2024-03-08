@@ -317,6 +317,9 @@
                             $('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);
                             $('[argumentid="TotalAmount"]', f).val(`${priceInFloat.toFixed(3)}`);
                             $('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
+                            debugger
+                            $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
+
                             var carNumber = $('[colid="CarNumber"]  .ColValue', this).text();
                             if (!!carNumber) {
                                 $('[argumentid="CarNumber"]', f).text(carNumber);

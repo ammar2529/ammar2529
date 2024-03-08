@@ -1,4 +1,4 @@
-﻿/// <reference path="/JQuery/Common.js" />
+﻿/// <reference path="../../../jquery/common.js" />
 
 
 AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
@@ -62,10 +62,16 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var parsePaymentAmount = parseFloat(formattedAmount);
         var totalCarPrice = carPrice + additionalAmount;
         totalAmount = totalCarPrice - discount;
-
+        
         var totalAmountDue = totalAmount - parsePaymentAmount
         $('[argumentid="TotalAmount"]', t.el).val(`${totalAmount.toFixed(3)}`);
         $('[argumentid="AmountDue"]', t.el).text(`${totalAmountDue.toFixed(3)}`);
+        if (totalAmountDue === 0)
+        {
+            totalAmountDue = "0";
+        }
+        $('[ argumentid = "AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
+        $('[ argumentid = "AmountInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(carPrice));
 
         var value = $(this).val();
         value = parseFloat(value).toFixed(3);

@@ -36,6 +36,7 @@
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
+<script src="../../../JQuery/Common.js"></script>
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
@@ -160,6 +161,7 @@
                             <span groupid="SalesContractsForm" argumentid="RecId1"></span>
                             <span groupid="SalesContractsForm" argumentid="StateId"></span>
                             <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountInWordsSalesContract"  groupid="SalesContractsForm"/>
+                            <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountInWordsGrandSalesContract"  groupid="SalesContractsForm"/>
 
 
                         </div>
@@ -267,7 +269,7 @@
                     </td>
                     <td class="ftitle">Car Owner Name:</td>
                     <td>
-                        <input type="text" style="text-align: center; width: 262px;" maxlength="10" class="text  CommonDisableClass ElemDisabled"
+                        <input type="text" style="text-align: center; width: 262px;" maxlength="100" class="text  CommonDisableClass ElemDisabled"
                             groupid="SalesContractsForm" argumentid="CarOwnerName" />
                     </td>
                 </tr>
@@ -539,6 +541,8 @@
                 <tr>
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                    <%--<input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountInWordsGrandSalesContract"  groupid="SalesContractsForm"/>--%>
+
                     </td>
                 </tr>
 
