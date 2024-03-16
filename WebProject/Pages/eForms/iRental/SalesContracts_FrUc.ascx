@@ -140,7 +140,7 @@
 
                     </td>
                     <td class="LPONumberDateField">
-                   <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text PriceC number CommonDisableClass   "
+                   <input type="text" style="text-align: center; width: 150px;" maxlength="29" class="text PriceC  CommonDisableClass   "
                             groupid="SalesContractsForm" argumentid="LPONumber" />  
                         
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
@@ -269,7 +269,7 @@
                     </td>
                     <td class="ftitle">Car Owner Name:</td>
                     <td>
-                        <input type="text" style="text-align: center; width: 262px;" maxlength="100" class="text  CommonDisableClass ElemDisabled"
+                        <input type="text"   style="text-align: center; width: 262px; font-size: 16px;" maxlength="199" class="text ftitle CommonDisableClass ElemDisabled"
                             groupid="SalesContractsForm" argumentid="CarOwnerName" />
                     </td>
                 </tr>
@@ -681,14 +681,14 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <input type="button" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
-                            <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:false,GroupId:'SalesContractsForm'}" />
+                            <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:false,GroupId:'SalesContractsForm'}" />
                              
 <%--                            ,Params:{DBAction:'SCReserved'}--%>
                             <input type="button" value="  Quotation  " class="ButtonStyle QuotationBtn common-button" />
 
                             <input type="button" value="  Contract  " class="ButtonStyle PrintBtn common-button" />
                             <input type="button" value="  Bill  " class="ButtonStyle BillsBtn common-button" />
-                            <input type="button"  value="Statement" class=" ButtonStyle Statement" />
+                            <input type="button"  value="Statement" class=" ButtonStyle Statement common-button" />
 <%--                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />--%>
                             <input type="button" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>

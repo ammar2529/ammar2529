@@ -47,7 +47,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     ///////////////////////////////////////////////////////
 
 
-
+    ///Calculation of Payments.
 
    /* $('[argumentid="FinanceCompany"]').prop('disabled', true);*/
     $('[argumentid="AdditionalAmount"],[argumentid="Discount"],[argumentid="Price"]').blur(function () {
@@ -66,6 +66,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var totalAmountDue = totalAmount - parsePaymentAmount
         $('[argumentid="TotalAmount"]', t.el).val(`${totalAmount.toFixed(3)}`);
         $('[argumentid="AmountDue"]', t.el).text(`${totalAmountDue.toFixed(3)}`);
+
         if (totalAmountDue === 0)
         {
             totalAmountDue = "0";
@@ -94,7 +95,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
     var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown;
-        $(".cash, .finance").click(function () {
+
+    ///change cash and finance 
+    $(".cash, .finance").click(function ()
+    {
         toggleDropdown();
     });
        
@@ -219,6 +223,21 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     $('.BillsBtn', t.el).click(function ()
     { //
         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on BillsBtn Button');
+
+        return false;
+    });
+
+    //Statement
+    $('.Statement', t.el).click(function ()
+    { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStaementSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;
@@ -537,6 +556,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
                     $('[argumentid="DocType"]', t.el).prop('disabled', true);
                 }
+
+              
+                    
+                    //debugger
+                    //var AmountDue = $('[AmountDueC]', t.el).text();
+                   
+
+                
                 
             }
 
@@ -585,9 +612,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
             //var PaymentAmountInFloat = parseFloat(PaymentAmount);
             //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
-
+            debugger;
             var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
-
+            $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract(AmountDue));
             var AmountDueInFloat = parseFloat(AmountDue);
             $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
             var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);

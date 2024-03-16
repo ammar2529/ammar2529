@@ -316,6 +316,7 @@
                             var priceInFloat = parseFloat(priceValue);
                             $('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);
                             $('[argumentid="TotalAmount"]', f).val(`${priceInFloat.toFixed(3)}`);
+                            var AmountDue =$('.AmountDueC').text();
                             $('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
                             debugger
                             $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));

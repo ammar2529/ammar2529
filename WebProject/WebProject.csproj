@@ -1378,6 +1378,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucherFrPg.aspx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintStaementSalesContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\SalesContractsTreatyReport.aspx" />
     <Content Include="Pages\eForms\iRental\SalesCarPrice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\CarForSales.ascx" />
@@ -2794,6 +2795,31 @@
     <Compile Include="Pages\eForms\iRental\Modules\SalesCarPrice.ascx.designer.cs">
       <DependentUpon>SalesCarPrice.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintStaementSalesContracts.aspx.cs">
+      <DependentUpon>PrintStaementSalesContracts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintStaementSalesContracts.aspx.designer.cs">
+      <DependentUpon>PrintStaementSalesContracts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy %282%29.cs">
+      <DependentUpon>SalesContractsBill - Copy %282%29.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy %283%29.cs">
+      <DependentUpon>SalesContractsBill - Copy %283%29.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy - Copy.cs">
+      <DependentUpon>SalesContractsBill - Copy - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\Testtest.cs">
       <DependentUpon>Testtest.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3649,6 +3675,18 @@
     <Content Include="Pages\eForms\iRental\Reports\SalesContractsBill.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesContractsBill.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy %282%29.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesContractsBill - Copy %282%29.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesContractsBill - Copy - Copy.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy %283%29.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesContractsBill - Copy %283%29.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\TestReort.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
