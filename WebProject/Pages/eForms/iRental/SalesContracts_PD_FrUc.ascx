@@ -124,20 +124,7 @@ var th = ['','thousand','million', 'billion','trillion'];
                 &nbsp;
 
                                    
-               
-           <%-- <nobr style="font-style: italic; font-weight: bold;" float="left" class="BankName">Bank:</nobr><select loadon="FirstVisible" class="dropdownlist BankName" style="width: 155px; margin-left: 5px;"
-                groupid="Sales_Payments" requirederr='*' argumentid="BankName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'43'}]}" name="D1">
-                <option value="" selected="selected"  >Select Bank</option>
-                
-            </select>&nbsp;
-                  <nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">Cheque No:</nobr> 
-                <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text number ChequeNo"
-                                                     groupid="Sales_Payments" argumentid="ChequeNo"  requirederr='*'/>
-                 
-                <nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">Cheque Date:</nobr>
-                <input argumentid="ChequeDate" class="text required date ChequeDate CommonDisable" groupid="Sales_Payments" maxlength="10" requirederr=" *" style="width: 75px;" type="text" />--%>
-
-            </div>
+                  </div>
              
             &nbsp;
            

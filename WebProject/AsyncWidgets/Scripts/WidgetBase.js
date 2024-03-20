@@ -1626,6 +1626,7 @@ function addAttr(obj, conf) {
 }
 var setListValue = function (ctl,val) // can be DOM or jquery
 {
+    
     ////////////////////////////////////////////
     if (!ctl.tagName) // if not a DOM object then convert it to DOM object
     {

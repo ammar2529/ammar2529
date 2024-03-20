@@ -806,7 +806,7 @@
                 </WidgetConfig>
                 <Scripts>
                     <script>
-
+                        
                         var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
 
                     </script>

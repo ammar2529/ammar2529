@@ -127,8 +127,10 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
             //On Change of Payment Mode  $('option:selected', elem)
         $('[argumentid="PaymentMode"]', t.el).change(function () {
+
             
             var cbo = $('[argumentid="PaymentMode"] option:selected', t.el).text();
+            debugger;
             var extractedCbo = cbo.replace('Select Payment Mode', '').trim(); // Remove 'Select Payment Mode' and trim any extra spaces
             if ($.trim(extractedCbo) == 'Cheque') {
                 $('.ChequeNo', t.el).show();

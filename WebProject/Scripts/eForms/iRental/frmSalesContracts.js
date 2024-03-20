@@ -515,10 +515,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed')
                 {
-                    $('.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
+                    $('.btnSave,.QuotationBtn,.PrintBtn,.BillsBtn,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
                   
                     $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass', t.el).addClass('ElemDisabled');
+                    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.PrintBtn,.BillsBtn,.CloseContract,.CancelContract,.CommonDisableClass', t.el).addClass('ElemDisabled');
                     $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                     $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                     $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -612,7 +612,6 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
             //var PaymentAmountInFloat = parseFloat(PaymentAmount);
             //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
-            debugger;
             var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
             $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract(AmountDue));
             var AmountDueInFloat = parseFloat(AmountDue);
