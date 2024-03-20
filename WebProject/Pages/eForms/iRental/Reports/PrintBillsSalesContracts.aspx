@@ -27,10 +27,10 @@
                         </asp:SqlDataSource>
 
                         <CR:CrystalReportSource ID="CrystalReportSource13" runat="server">
-                            <Report FileName="SalesContractsBill.rpt">
+                            <Report FileName="PrintBillSalesContractsReport.rpt">
                                 <DataSources>
                                     <CR:DataSourceRef DataSourceID="SqlDataSource13" TableName="RNTSalesContract_Print_SalesContract_SP"/>
-                                    
+                                    <%--SalesContractsBill--%>
                                 </DataSources>
                             </Report>
                         </CR:CrystalReportSource>

@@ -31,7 +31,8 @@
                             <Report FileName="PrintTreatySalesContracts.rpt">
                                 <DataSources>
                                     <CR:DataSourceRef DataSourceID="SqlDataSource12" TableName="RNTSalesContract_Print_SalesContract_SP"/>
-                                    
+<%--                                    PrintTreatySalesContracts - Copy--%>
+<%--                                    PrintTreatySalesContracts--%>
                                 </DataSources>
                             </Report>
                         </CR:CrystalReportSource>

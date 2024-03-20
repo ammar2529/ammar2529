@@ -30,7 +30,7 @@
                         </asp:SqlDataSource>
 
                         <CR:CrystalReportSource ID="CrystalReportSource13" runat="server">
-                            <Report FileName="SalesContractsBill - Copy - Copy.rpt">
+                            <Report FileName="PrintSalesContractsStatementReport.rpt">
                                 <DataSources>
                                     <CR:DataSourceRef DataSourceID="SqlDataSource13" TableName="RNTSalesContract_Statement_SP"/>
                                     
