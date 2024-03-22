@@ -231,17 +231,20 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
 
     t.on('show', function (args)
     {
-        $('.ChequeNo', t.el).hide();
-        $('.BankName', t.el).hide();
-        $('.ChequeDate', t.el).hide();
-        $('nobr:contains("Cheque No*:")', t.el).hide();
-        $('nobr:contains("Cheque Date*:")', t.el).hide();
-        $('.PaymentMetthodDetailsLease td>.ui-datepicker-trigger').hide();
-        $('div>.ui-datepicker-trigger').hide();
-        $('tr.PaymentMetthodDetailsLease').hide();
-        $('tr.PaymentModeddLease>td.ftitle').removeAttr("rowspan")
-        $('div.a>nobr ').hide();
-        $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+        //$('.ChequeNo', t.el).hide();
+        //$('.BankName', t.el).hide();
+        //$('.ChequeDate', t.el).hide();
+        //$('nobr:contains("Cheque No*:")', t.el).hide();
+        //$('nobr:contains("Cheque Date*:")', t.el).hide();
+        //$('.PaymentMetthodDetailsLease td>.ui-datepicker-trigger').hide();
+        //$('div>.ui-datepicker-trigger').hide();
+        //$('tr.PaymentMetthodDetailsLease').hide();
+        //$('tr.PaymentModeddLease>td.ftitle').removeAttr("rowspan")
+        //$('div.a>nobr ').hide();
+        //$('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+
+        $('.PaymentModeCol', t.el).attr('rowspan', ''); $('.PaymentMetthodDetailsLease', t.el).hide();//show hide the conditional fields rows
+
         $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
         $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
 
@@ -251,23 +254,31 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
         var dt = new Date();
         $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
-        $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
-        $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+       // $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
+        //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
     });
 
     //On Change of Payment Mode  $('option:selected', elem)
     $('[argumentid="PaymentMode"]', t.el).change(function ()
     {
-        var cbo = $('[argumentid="PaymentMode"] option:selected').text();
-        var replace = cbo.replace('Select Payment Mode', '');
-      var  myString = replace.replace(/([a-z])([A-Z])/g, '$1 $2');
-        var replace2 = myString.replace('Select Payment Mode', '');
+        var cbo = $(this).val();
 
-        debugger
+      //  var cbo = $('[argumentid="PaymentMode"] option:selected').text();
+      //  var replace = cbo.replace('Select Payment Mode', '');
+      //var  myString = replace.replace(/([a-z])([A-Z])/g, '$1 $2');
+      //  var replace2 = myString.replace('Select Payment Mode', '');
+      //  //var indexCheck = replace2.indexOf('Cheque')
+      //  debugger;
+      //  var myString2 = replace2.replace(/^(\w+).*$/, '$1');
+       //var a= cbo.text()
 
-        
-        if ($.trim(replace2) == 'Cheque')
+        debugger;
+
+        if ($.trim(cbo) == '29')
         {
+            $('tr.PaymentMetthodDetailsLease', t.el).show();
+            $('.PaymentModeCol',t.el).attr('rowspan', '2'); $('.PaymentMetthodDetailsLease',t.el).show();
+            /*
             $('.ChequeNo', t.el).show();
             $('.BankName', t.el).show();
             $('.ChequeDate', t.el).show();
@@ -279,9 +290,12 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
             $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).addClass('required');
             $('tr.PaymentMetthodDetailsLease').show();
             $('tr.PaymentModeddLease>td.ftitle').attr("rowspan", "2")
+            */
         }
         else
         {
+            $('.PaymentModeCol',t.el).attr('rowspan', ''); $('.PaymentMetthodDetailsLease',t.el).hide();
+             /*
             $('.ChequeNo', t.el).hide();
             $('.BankName', t.el).hide();
             $('.ChequeDate', t.el).hide();
@@ -296,6 +310,7 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
             $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
             $('tr.PaymentMetthodDetailsLease').hide();
             $('tr.PaymentModeddLease>td.ftitle').removeAttr("rowspan")
+            */
         }
     });
     //End On Change of Payment Mode

@@ -79,25 +79,46 @@ var th = ['','thousand','million', 'billion','trillion'];
                                <input type="radio" value="1" name="PaymentType" groupid="Rental_Payments" argumentid="PaymentType"><label>Return</label>
                             </td>
                         </tr>
+         
 
-                        <tr>
-                            <td class="ftitle">
-                                <nobr>Payment Mode*:</nobr>
-                            </td>
-                            <td>
-                             <div style="float:left;width:300px">
-                                        <select loadon="FirstVisible" class="dropdownlist" style="width: 155px;"
-                            groupid="Rental_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
-                            <option value="" selected="selected">Select Payment Mode</option>
-                    </select>
-                     &nbsp;&nbsp;&nbsp;&nbsp;
+ <tr class="PaymentModeddRental">
+        <td class="ftitle" rowspan="2">
+            <nobr>Payment Mode*:</nobr>
+        </td>
+        <td class="auto-style3">
+            <div class="auto-style1 parentDiv">
+                <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 155px;"
+                    groupid="Rental_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
+                    <option value="" selected="selected">Select Payment Mode</option>
+                </select>
+                &nbsp;
 
-                                    <nobr style="font-style:italic; font-weight:bold;float:right" class="ChequeNo">Cheque No:</nobr></div>
-                                     &nbsp;
-                                                 <input type="text" style="text-align:center;width:150px;"  maxlength="50" class="text number ChequeNo"
-                                    groupid="Rental_Payments" argumentid="ChequeNo" />
-                            </td>
-                        </tr>
+                                   
+                  </div>
+             
+            </td>
+    </tr>
+
+     <tr class="PaymentMetthodDetailsRental">
+        <td class="auto-style3">
+
+                                   
+               
+            <nobr style="font-style: italic; font-weight: bold;" float="left" class="BankName">&nbsp;Bank*:</nobr>
+            
+            <select loadon="FirstVisible" class="dropdownlist BankName" style="width: 155px; margin-left: 5px;"
+                groupid="Rental_Payments" requirederr='*' argumentid="BankName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" name="D2">
+                <option value="" selected="selected"  >Select Bank</option>
+                
+            </select><nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">&nbsp; Cheque No*:</nobr> 
+                <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text number ChequeNo"
+                                                     groupid="Rental_Payments" argumentid="ChequeNo"  requirederr='*'/>&nbsp;
+            <nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">Cheque Date*:</nobr>
+                <input argumentid="ChequeDate" class="text required date ChequeDate CommonDisable" groupid="Rental_Payments" maxlength="10" requirederr=" *" style="width: 75px;" type="text" />
+
+            </td>
+    </tr>
+
 
                                                 <tr>
                             <td class="ftitle">

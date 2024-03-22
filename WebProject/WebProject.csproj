@@ -2795,6 +2795,12 @@
     <Compile Include="Pages\eForms\iRental\Modules\SalesCarPrice.ascx.designer.cs">
       <DependentUpon>SalesCarPrice.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintSalesContractsStatementReport - Copy.cs">
+      <DependentUpon>PrintSalesContractsStatementReport - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintSalesContractsStatementReport.cs">
       <DependentUpon>PrintSalesContractsStatementReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2831,6 +2837,12 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\TestReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\Testtest.cs">
       <DependentUpon>Testtest.rpt</DependentUpon>
@@ -3708,10 +3720,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintSalesContractsStatementReport.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintSalesContractsStatementReport - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintSalesContractsStatementReport - Copy.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\TestReort.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TestReort.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="Pages\eForms\iRental\Reports\TestReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TestReport.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesContractsCrysReport.cs</LastGenOutput>

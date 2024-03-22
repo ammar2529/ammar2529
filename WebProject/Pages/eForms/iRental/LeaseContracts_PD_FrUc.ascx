@@ -63,13 +63,13 @@
    
 
  <tr class="PaymentModeddLease">
-        <td class="ftitle" rowspan="2">
+        <td class="ftitle PaymentModeCol" rowspan="2">
             <nobr>Payment Mode*:</nobr>
         </td>
-        <td class="auto-style3">
+        <td >
             <div class="auto-style1 parentDiv">
                 <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 155px;"
-                    groupid="Lease_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
+                    groupid="Lease_Payments" valtype="value" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
                     <option value="" selected="selected">Select Payment Mode</option>
                 </select>
                 &nbsp;
@@ -77,17 +77,11 @@
                                    
                   </div>
              
-            &nbsp;
-           
-             
-            &nbsp;</td>
+            </td>
     </tr>
 
      <tr class="PaymentMetthodDetailsLease">
-        <td class="auto-style3">
-
-                                   
-               
+        <td >
             <nobr style="font-style: italic; font-weight: bold;" float="left" class="BankName">&nbsp;Bank*:</nobr>
             
             <select loadon="FirstVisible" class="dropdownlist BankName" style="width: 155px; margin-left: 5px;"
@@ -125,7 +119,7 @@
         <td class="ftitle" valign="top">
             <nobr>Payment For:</nobr>
         </td>
-        <td class="auto-style3">
+        <td >
             <textarea class="textarea" rows="4" wrap="1" style="width: 707px" argumentid="PaymentFor" groupid="Lease_Payments"></textarea></td>
     </tr>
 

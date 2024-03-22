@@ -1,10 +1,11 @@
-﻿AsyncWidgets.WidgetScripts.grdPaymentDetails = function (obj) { 
+﻿AsyncWidgets.WidgetScripts.grdPaymentDetails = function (obj)
+{
     /*frmiRentalPaymentDetails*/
     var t = obj;
 
     t.on('beforeSearchGetForm', function (P)
     {
-        
+
         var frm = AsyncWidgets.get('frmRentalContracts');
         P.ParentRecId = frm.GetArgVal('RecId');
     });
@@ -14,7 +15,7 @@
 
         var fRow = $('td.Item table .chkRowSelect:first', t.Repeater).closest('tr'), pVal;
         pVal = $('[colid="ParentRecId"] .ColValue', fRow).text();
-        P.cf['ParentRecId'] = pVal;
+        P.cf[ 'ParentRecId' ] = pVal;
         //    P.flags.queryDelete = false;
     });
     t.on('rowsRendered', function ()
@@ -124,4 +125,116 @@
         }
     });
 
+};
+
+AsyncWidgets.WidgetScripts.frmPaymentDetails = function (obj)
+{
+    var t = obj;
+
+
+    function cnvrt2Upper(str)
+    {
+        return str.toLowerCase().replace(/\b[a-z]/g, cnvrt);
+        function cnvrt()
+        {
+            return arguments[ 0 ].toUpperCase();
+        }
     }
+    function getAmountInWords(v)
+    {
+
+        if (!v) return '';
+        else
+        {
+            v = parseFloat(v);
+        }
+        var arr = v.fix(3).toString().split('.');
+        var des = cnvrt2Upper(toWords(arr[ 0 ])) + 'KD';
+        if (arr.length == 2)
+        {
+            var num = parseInt(arr[ 1 ]);
+            if (num > 0)
+            {
+                des += ' and ' + cnvrt2Upper(toWords(arr[ 1 ])) + 'Fils';
+            }
+        }
+        return des + ' Only';
+    }
+
+
+    t.on('show', function (args)
+    {
+        $('.ChequeNo', t.el).hide();
+        $('.BankName', t.el).hide();
+        $('.ChequeDate', t.el).hide();
+        $('nobr:contains("Cheque No*:")', t.el).hide();
+        $('nobr:contains("Cheque Date*:")', t.el).hide();
+        $('.PaymentMetthodDetailsRental td>.ui-datepicker-trigger').hide();
+        $('div>.ui-datepicker-trigger').hide();
+        $('tr.PaymentMetthodDetailsRental').hide();
+        $('tr.PaymentModeddRental>td.ftitle').removeAttr("rowspan")
+        $('div.a>nobr ').hide();
+        $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+        $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
+        $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+
+        var frm = AsyncWidgets.get('frmRentalContracts');
+        $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
+
+        var dt = new Date();
+        $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
+        $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
+        $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+    });
+
+    //On Change of Payment Mode  $('option:selected', elem)
+    $('[argumentid="PaymentMode"]', t.el).change(function ()
+    {
+        debugger;
+        var cbo = $('[argumentid="PaymentMode"] option:selected').text();
+        var replace = cbo.replace('Select Payment Mode', '');
+        var myString = replace.replace(/([a-z])([A-Z])/g, '$1 $2');
+        var replace2 = myString.replace('Select Payment Mode', '');
+       var myString2 = replace2.replace(/^(\w+).*$/, '$1');
+        if ($.trim(myString2) == 'Cheque')
+        {
+            $('.ChequeNo', t.el).show();
+            $('.BankName', t.el).show();
+            $('.ChequeDate', t.el).show();
+            $('nobr:contains("Cheque No*:")', t.el).show();
+            $('nobr:contains("Cheque Date*:")', t.el).show();
+            $('.PaymentMetthodDetailsRental td>.ui-datepicker-trigger').show();
+            $('div>.ui-datepicker-trigger').show();
+            $('div.a>nobr ').show();
+            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).addClass('required');
+            $('tr.PaymentMetthodDetailsRental').show();
+            $('tr.PaymentModeddRental>td.ftitle').attr("rowspan", "2")
+        }
+        else
+        {
+            $('.ChequeNo', t.el).hide();
+            $('.BankName', t.el).hide();
+            $('.ChequeDate', t.el).hide();
+            $('nobr:contains("Cheque No*:")', t.el).hide();
+            $('nobr:contains("Cheque Date*:")', t.el).hide();
+            $('.PaymentMetthodDetailsRental td>.ui-datepicker-trigger').hide();
+            $('div>.ui-datepicker-trigger').hide();
+            $('div.a>nobr ').hide()
+            $('[argumentid="ChequeNo"]', t.el).val('');
+            $('[argumentid="BankName"]', t.el).val('');
+            $('.PaymentMetthodDetailsRental td>.ChequeDate', t.el).val('');
+            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+            $('tr.PaymentMetthodDetailsRental').hide();
+            $('tr.PaymentModeddRental>td.ftitle').removeAttr("rowspan")
+        }
+    });
+    //End On Change of Payment Mode
+
+    //On Change of Amount Update Amount in Words
+    $('[argumentid="PaymentAmount"]', t.el).change(function ()
+    {
+        $('[argumentid="AmountInWords"]', t.el).val(getAmountInWords($('[argumentid="PaymentAmount"]', t.el).val()));
+    });
+
+};

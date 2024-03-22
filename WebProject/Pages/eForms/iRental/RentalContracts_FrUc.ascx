@@ -595,6 +595,8 @@
 
             </AW:DataGrid>
 
+            <script src="../../../Scripts/eForms/iRental/frmiRentalPaymentsDetail.js"></script>
+
             <AW:Form ID="frmPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/RentalContracts_PD_FrUc.ascx">
                 <WidgetConfig>
                     <script>
@@ -614,73 +616,6 @@
                         var fn = function ()
                         {
 
-                            function cnvrt2Upper(str)
-                            {
-                                return str.toLowerCase().replace(/\b[a-z]/g, cnvrt);
-                                function cnvrt()
-                                {
-                                    return arguments[0].toUpperCase();
-                                }
-                            }
-                            function getAmountInWords(v)
-                            {
-
-                                if (!v) return '';
-                                else
-                                {
-                                    v = parseFloat(v);
-                                }
-                                var arr = v.fix(3).toString().split('.');
-                                var des = cnvrt2Upper(toWords(arr[0])) + 'KD';
-                                if (arr.length == 2)
-                                {
-                                    var num = parseInt(arr[1]);
-                                    if (num > 0)
-                                    {
-                                        des += ' and ' + cnvrt2Upper(toWords(arr[1])) + 'Fils';
-                                    }
-                                }
-                                return des + ' Only';
-                            }
-
-
-                            t.on('show', function (args)
-                            {
-                                $('.ChequeNo', t.el).hide();
-                                $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
-                                $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-
-                                var frm = AsyncWidgets.get('frmRentalContracts');
-                                $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
-
-                                var dt = new Date();
-                                $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
-
-                                $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
-                                $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
-                            });
-
-                            //On Change of Payment Mode  $('option:selected', elem)
-                            $('[argumentid="PaymentMode"]', t.el).change(function ()
-                            {
-                                var cbo = $('[argumentid="PaymentMode"] option:selected');
-                                if ($.trim(cbo.text()) == 'Cheque')
-                                {
-                                    $('.ChequeNo', t.el).show();
-                                }
-                                else
-                                {
-                                    $('.ChequeNo', t.el).hide();
-                                    $('[argumentid="ChequeNo"]', t.el).val('');
-                                }
-                            });
-                            //End On Change of Payment Mode
-
-                            //On Change of Amount Update Amount in Words
-                            $('[argumentid="PaymentAmount"]', t.el).change(function ()
-                            {
-                                $('[argumentid="AmountInWords"]', t.el).val(getAmountInWords($('[argumentid="PaymentAmount"]', t.el).val()));
-                            });
                             //On Change of Amount Update Amount in Words
                         }
                     </script>

@@ -16,14 +16,14 @@ namespace WebProject.Pages.eForms.iRental.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PrintReceiptVoucher : ReportClass {
+    public class PrintSalesContractsStatementReport___Copy : ReportClass {
         
-        public PrintReceiptVoucher() {
+        public PrintSalesContractsStatementReport___Copy() {
         }
         
         public override string ResourceName {
             get {
-                return "PrintReceiptVoucher.rpt";
+                return "PrintSalesContractsStatementReport - Copy.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,8 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         public override string FullResourceName {
             get {
-                return "WebProject.Pages.eForms.iRental.Reports.PrintReceiptVoucher.rpt";
+                return "WebProject.Pages.eForms.iRental.Reports.PrintSalesContractsStatementReport - Copy" +
+                    ".rpt";
             }
             set {
                 // Do nothing
@@ -82,7 +83,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection4 {
+        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection3 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +91,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection3 {
+        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection4 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -114,7 +115,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section PageFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[8];
             }
@@ -122,41 +123,17 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[9];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_RecId {
+        public CrystalDecisions.Shared.IParameterField Parameter_FormCode {
             get {
                 return this.DataDefinition.ParameterFields[0];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Type {
-            get {
-                return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter___UserId {
-            get {
-                return this.DataDefinition.ParameterFields[2];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPrintReceiptVoucher : Component, ICachedReport {
+    public class CachedPrintSalesContractsStatementReport___Copy : Component, ICachedReport {
         
-        public CachedPrintReceiptVoucher() {
+        public CachedPrintSalesContractsStatementReport___Copy() {
         }
         
         [Browsable(false)]
@@ -193,7 +170,7 @@ namespace WebProject.Pages.eForms.iRental.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PrintReceiptVoucher rpt = new PrintReceiptVoucher();
+            PrintSalesContractsStatementReport___Copy rpt = new PrintSalesContractsStatementReport___Copy();
             rpt.Site = this.Site;
             return rpt;
         }
