@@ -90,6 +90,18 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
         window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
         return false;
     });
+
+    $('.PrintStatementRental', t.el).click(function ()
+    { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStatementRentalContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        return false;
+    });
     //End On Click of Print Contract Button
 
     // To Select Tabs

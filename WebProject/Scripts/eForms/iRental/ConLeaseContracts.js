@@ -241,7 +241,7 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
         //$('tr.PaymentMetthodDetailsLease').hide();
         //$('tr.PaymentModeddLease>td.ftitle').removeAttr("rowspan")
         //$('div.a>nobr ').hide();
-        //$('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+        $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
 
         $('.PaymentModeCol', t.el).attr('rowspan', ''); $('.PaymentMetthodDetailsLease', t.el).hide();//show hide the conditional fields rows
 
@@ -253,6 +253,7 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
 
         var dt = new Date();
         $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+       
 
        // $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
         //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
@@ -272,12 +273,13 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
       //  var myString2 = replace2.replace(/^(\w+).*$/, '$1');
        //var a= cbo.text()
 
-        debugger;
 
-        if ($.trim(cbo) == '29')
+        if ($.trim(cbo) == '29') // cbo == 'Cheque'
         {
-            $('tr.PaymentMetthodDetailsLease', t.el).show();
-            $('.PaymentModeCol',t.el).attr('rowspan', '2'); $('.PaymentMetthodDetailsLease',t.el).show();
+            //$('tr.PaymentMetthodDetailsLease', t.el).show();
+            $('.PaymentModeCol', t.el).attr('rowspan', '2'); $('.PaymentMetthodDetailsLease', t.el).show();
+            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).addClass('required');
+
             /*
             $('.ChequeNo', t.el).show();
             $('.BankName', t.el).show();
@@ -287,14 +289,15 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
             $('.PaymentMetthodDetailsLease td>.ui-datepicker-trigger').show();
             $('div>.ui-datepicker-trigger').show();
             $('div.a>nobr ').show();
-            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).addClass('required');
             $('tr.PaymentMetthodDetailsLease').show();
             $('tr.PaymentModeddLease>td.ftitle').attr("rowspan", "2")
             */
         }
         else
         {
-            $('.PaymentModeCol',t.el).attr('rowspan', ''); $('.PaymentMetthodDetailsLease',t.el).hide();
+            $('.PaymentModeCol', t.el).attr('rowspan', ''); $('.PaymentMetthodDetailsLease', t.el).hide();
+            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+
              /*
             $('.ChequeNo', t.el).hide();
             $('.BankName', t.el).hide();
@@ -307,7 +310,6 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
             $('[argumentid="ChequeNo"]', t.el).val('');
             $('[argumentid="BankName"]', t.el).val('');
             $('.PaymentMetthodDetails td>.ChequeDate', t.el).val('');
-            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
             $('tr.PaymentMetthodDetailsLease').hide();
             $('tr.PaymentModeddLease>td.ftitle').removeAttr("rowspan")
             */

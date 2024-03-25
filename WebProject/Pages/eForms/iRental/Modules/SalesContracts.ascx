@@ -320,6 +320,7 @@
                             $('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
                             debugger
                             $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
+                            $('[argumentid="AmountDueInWordsSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
 
                             var carNumber = $('[colid="CarNumber"]  .ColValue', this).text();
                             if (!!carNumber) {

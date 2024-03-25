@@ -388,7 +388,7 @@
                     }
                     </script>
                 </WidgetConfig>
-                 <Scripts> 
+               <%--  <Scripts> 
                       <script>
 
                         
@@ -396,5 +396,5 @@
                               
                           }
                       </script>
-                          </Scripts>
+                          </Scripts>--%>
             </AW:Form>

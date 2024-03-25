@@ -67,12 +67,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('[argumentid="TotalAmount"]', t.el).val(`${totalAmount.toFixed(3)}`);
         $('[argumentid="AmountDue"]', t.el).text(`${totalAmountDue.toFixed(3)}`);
 
+        debugger;
         if (totalAmountDue === 0)
         {
-            totalAmountDue = "0";
+            totalAmountDue = "";
         }
         $('[ argumentid = "AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
         $('[ argumentid = "AmountInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(carPrice));
+        $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
 
         var value = $(this).val();
         value = parseFloat(value).toFixed(3);
@@ -237,7 +239,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     //Statement
     $('.Statement', t.el).click(function ()
     { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStaementSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStatementSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;
@@ -613,7 +615,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //var PaymentAmountInFloat = parseFloat(PaymentAmount);
             //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
             var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
-            $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract(AmountDue));
+            $('[argumentid="AmountInWordsGrandSalesContract"]',t.el).val(getAmountInWordsSalesContract(AmountDue));
+            $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
+
             var AmountDueInFloat = parseFloat(AmountDue);
             $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
             var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);

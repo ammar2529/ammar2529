@@ -432,11 +432,12 @@
                             <input type="button" style="width: 225px; color: red" value="To Legal - Contract Closed" class="DataAction ButtonStyle btn_8" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts', Params:{NewStateId:'RRCWithLegalContractClosedPendingPayment'}, HideOnSuccess:false, Requery:true }" />
                         </div>
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle Button_Edit" />
-                            <input type="button" value="  Save  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts',HideOnSuccess:true, Requery:false}" />
-                            <input type="button" value="  Save  " class="DataAction ButtonStyle btn_10" ignorevalidate="ContractKMIn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts',HideOnSuccess:false, Requery:false}" />
-                            <input type="button" value="  Print  " class="ButtonStyle btn_9" />
-                            <input type="button" value="  Close  " class="CloseForm ButtonStyle" />
+                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle Button_Edit" />
+                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle btn_11" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts',HideOnSuccess:true, Requery:false, GroupId:'RentalContractsForm'}" />
+                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle btn_10" ignorevalidate="ContractKMIn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts',HideOnSuccess:false, Requery:false, GroupId:'RentalContractsForm'}" />
+                            <input type="button" style="width: 70px" value="  Print  " class="ButtonStyle btn_9" />
+                            <input type="button" style="width: 70px" value="  Statement  " class="ButtonStyle PrintStatementRental" />
+                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle" />
                         </div>
                     </td>
                 </tr>

@@ -162,8 +162,8 @@
                             <span groupid="SalesContractsForm" argumentid="StateId"></span>
                             <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountInWordsSalesContract"  groupid="SalesContractsForm"/>
                             <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountInWordsGrandSalesContract"  groupid="SalesContractsForm"/>
-
-
+<%--                            <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountDueInWordsSalesContract"  groupid="SalesContractsForm"/>--%>
+                              <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable " argumentid="AmountDueInWordsSalesContract"  groupid="SalesContractsForm"/>
                         </div>
                         <div>
                             <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass  "
@@ -569,6 +569,8 @@
                 <tr>
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                                                    
+
                     </td>
                 </tr>
 
@@ -680,17 +682,17 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                             <input type="button" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
-                            <input type="button" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:false,GroupId:'SalesContractsForm'}" />
+                             <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
+                            <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:false,GroupId:'SalesContractsForm'}" />
                              
 <%--                            ,Params:{DBAction:'SCReserved'}--%>
-                            <input type="button" value="  Quotation  " class="ButtonStyle QuotationBtn common-button" />
+                            <input type="button" value="  Quotation  "style="width: 70px" class="ButtonStyle QuotationBtn common-button" />
 
-                            <input type="button" value="  Contract  " class="ButtonStyle PrintBtn common-button" />
-                            <input type="button" value="  Bill  " class="ButtonStyle BillsBtn common-button" />
-                            <input type="button"  value="Statement" class=" ButtonStyle Statement common-button" />
+                            <input type="button" value="  Contract  " style="width: 70px" class="ButtonStyle PrintBtn common-button" />
+                            <input type="button" value="  Bill  " style="width: 70px" class="ButtonStyle BillsBtn common-button" />
+                            <input type="button"  value="Statement" style="width: 70px" class=" ButtonStyle Statement common-button" />
 <%--                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />--%>
-                            <input type="button" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
+                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
                     </td>
                 </tr>
