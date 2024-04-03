@@ -13,12 +13,11 @@
        <table border="0" width="100%">
          
         <tr>
-          <td style="height: 21px;">
-              &nbsp;</td>
+       
           <td style="height: 21px" align="center" valign="top">
               &nbsp;
 
-              <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True"
+              <CR:CrystalReportViewer ID="PrintLeaseContracts" runat="server" AutoDataBind="True"
                  HasCrystalLogo="False" Height="1039px" ReportSourceID="CrystalReportSource1" HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
                   Width="901px" />
               
@@ -31,7 +30,7 @@
 
               </asp:SqlDataSource>
               <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
-                   <Report FileName="PrintLeaseContracts - Copy.rpt">
+                   <Report FileName="PrintLeaseContracts2.rpt">
                       <DataSources>
                           <CR:DataSourceRef DataSourceID="SqlDataSource1" TableName="RNTLeaseContract_Print_LeaseContract_SP" />
                       </DataSources>

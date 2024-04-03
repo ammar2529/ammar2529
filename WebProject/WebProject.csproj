@@ -1378,7 +1378,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintOpenSalesContract.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintQuotationSalesContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintSalesPaymentReceiptVoucherFrPg.aspx" />
-    <Content Include="Pages\eForms\iRental\Reports\PrintStatementLeaseContracts.aspx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContractsStatement.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintStatementRentalContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintStatementSalesContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\SalesContractsTreatyReport.aspx" />
@@ -2809,6 +2809,36 @@
     <Compile Include="Pages\eForms\iRental\Modules\SalesCarPrice.ascx.designer.cs">
       <DependentUpon>SalesCarPrice.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintBillSalesContractsReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintBillSalesContractsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContractsStatement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintLeaseContractsStatement.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintOpenLeaseContracts.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContracts2.cs">
+      <DependentUpon>PrintLeaseContracts2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintRentalContractsStatement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRentalContractsStatement.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintSalesContractsStatementReport - Copy.cs">
       <DependentUpon>PrintSalesContractsStatementReport - Copy.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2827,6 +2857,12 @@
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintStatementLeaseContracts1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintStatementLeaseContracts.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintStatementRentalContracts.aspx.cs">
       <DependentUpon>PrintStatementRentalContracts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2840,18 +2876,12 @@
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Pages\eForms\iRental\Reports\PrintStatementLeaseContracts.aspx.cs">
-      <DependentUpon>PrintStatementLeaseContracts.aspx</DependentUpon>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContractsStatement.aspx.cs">
+      <DependentUpon>PrintLeaseContractsStatement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\eForms\iRental\Reports\PrintStatementLeaseContracts.aspx.designer.cs">
-      <DependentUpon>PrintStatementLeaseContracts.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\eForms\iRental\Reports\PrintStatementLeaseContracts.cs">
-      <DependentUpon>PrintStatementLeaseContracts.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContractsStatement.aspx.designer.cs">
+      <DependentUpon>PrintLeaseContractsStatement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintStatementSalesContracts.aspx.cs">
       <DependentUpon>PrintStatementSalesContracts.aspx</DependentUpon>
@@ -2859,12 +2889,6 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintStatementSalesContracts.aspx.designer.cs">
       <DependentUpon>PrintStatementSalesContracts.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\eForms\iRental\Reports\PrintBillSalesContractsReport.cs">
-      <DependentUpon>PrintBillSalesContractsReport.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\SalesContractsBill - Copy %282%29.cs">
       <DependentUpon>SalesContractsBill - Copy %282%29.rpt</DependentUpon>
@@ -2915,12 +2939,6 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.aspx.designer.cs">
       <DependentUpon>PrintOpenLeaseContract.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.cs">
-      <DependentUpon>PrintOpenLeaseContract.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintLeaseContracts.cs">
       <DependentUpon>PrintLeaseContracts.rpt</DependentUpon>
@@ -3716,10 +3734,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintReceiptVoucher1.cs</LastGenOutput>
     </Content>
-    <Content Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContract.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PrintOpenLeaseContract.cs</LastGenOutput>
-    </Content>
     <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintLeaseContracts.cs</LastGenOutput>
@@ -3750,7 +3764,7 @@
     </Content>
     <Content Include="Pages\eForms\iRental\Reports\PrintBillSalesContractsReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PrintBillSalesContractsReport.cs</LastGenOutput>
+      <LastGenOutput>PrintBillSalesContractsReport1.cs</LastGenOutput>
     </Content>
     <Content Include="Pages\eForms\iRental\Reports\PrintSalesContractsStatementReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -3766,11 +3780,27 @@
     </Content>
     <Content Include="Pages\eForms\iRental\Reports\PrintStatementLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PrintStatementLeaseContracts.cs</LastGenOutput>
+      <LastGenOutput>PrintStatementLeaseContracts1.cs</LastGenOutput>
     </Content>
     <Content Include="Pages\eForms\iRental\Reports\PrintStatementRentalContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintStatementRentalContracts.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContractsStatement.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintLeaseContractsStatement.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintRentalContractsStatement.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintRentalContractsStatement.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintOpenLeaseContracts.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContracts2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintLeaseContracts2.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

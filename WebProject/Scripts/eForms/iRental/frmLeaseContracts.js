@@ -1,4 +1,6 @@
 ﻿/// <reference path="/JQuery/Common.js" />
+/// <reference path="../../../jquery/common.js" />
+
 
 AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
     var t = obj;
@@ -20,7 +22,7 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
 
     $('.LeaseStatement', t.el).click(function ()
     { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStatementLeaseContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintLeaseContractsStatement.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;

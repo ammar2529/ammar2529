@@ -63,7 +63,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
         t.on('beforeDataAction', function (param)
         {
-            debugger
+            
 
             // Ext.apply(params, frmProcGS.GetArgs([{ Name: 'FormType' }, { Name: 'FormNameCode' }]));
             var frm = AsyncWidgets.get("frmSalesContracts");

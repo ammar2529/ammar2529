@@ -24,13 +24,13 @@ namespace WebProject.Pages.eForms.iRental.Reports
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// CrystalReportViewer1 control.
+        /// PrintLeaseContracts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
+        protected global::CrystalDecisions.Web.CrystalReportViewer PrintLeaseContracts;
 
         /// <summary>
         /// SqlDataSource1 control.
