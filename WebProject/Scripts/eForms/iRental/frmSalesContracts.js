@@ -67,7 +67,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('[argumentid="TotalAmount"]', t.el).val(`${totalAmount.toFixed(3)}`);
         $('[argumentid="AmountDue"]', t.el).text(`${totalAmountDue.toFixed(3)}`);
 
-        debugger;
+        
         if (totalAmountDue === 0)
         {
             totalAmountDue = "";

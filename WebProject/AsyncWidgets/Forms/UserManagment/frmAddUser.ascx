@@ -16,14 +16,34 @@
 </style>
 
 <script>
-    function toggleRoles() {
+  
+    function toggleRoles() 
+    {
         var content = document.getElementById('rolesContent');
         var arrow = document.getElementById('arrowIcon');
 
         content.style.display = content.style.display === 'none' ? 'block' : 'none';
         arrow.classList.toggle('up');
         arrow.classList.toggle('down');
+
+        if (arrow.classList.contains('up'))
+        {
+            arrow.textContent = '▲';
+        } else
+        {
+            arrow.textContent = '▼';
+        }
     }
+
+    //$('.EditForm').click(function ()
+    //{
+    //    debugger;
+    //});
+
+    //t.on('onLoadedValues', function (args)
+    //{
+    //    debugger;
+    //});
 </script>
 
   
@@ -40,7 +60,7 @@
             <nobr>User Id*:</nobr>
         </td>
         <td>
-            <input type="hidden"  groupid="SalesCarsPriceForm" argumentid="UserId" />
+            <input type="hidden" name="RecId" groupid="NewUser" argumentid="RecId" />
           <input type="text" style="text-align: center; width: 175px;" maxlength="50" class="text required validateunique" primarykey="UserId"
                 storeid="FX_Users" uniquenotfound="{en:' User Id is valid...',color:'green'}"
                 uniquefound="{en:' User Id is already exist...',color:'red'}" groupid="NewUser" argumentid="UserId" />
@@ -51,7 +71,7 @@
             <nobr>User Name*:</nobr>
         </td>
         <td>
-            <input type="text" groupid="NewUser" argumentid="UserName" class="PWCTextBox required" style="width:175px" />
+            <input type="text" groupid="NewUser" argumentid="Name" class="PWCTextBox required" style="width:175px" />
         </td>
     </tr>
     <%--<tr>
@@ -95,7 +115,7 @@
 
         </td>
     </tr>--%>
-    <tr>
+    <tr class="UserRoles">
     <td class="ftitle">
         <nobr>User Roles*:</nobr>
     </td>
@@ -110,8 +130,8 @@
             <div id="rolesContent" class="content" style="display: none;">
 
             <!-- Add your roles checkboxes here -->
-            <div>
-                <input type="checkbox" id="showAdministration" name="userRoles" value="Show_Administration"/>
+          <%--  <div>
+                <input type="checkbox" id="showAdministration" name="userRoles" groupid="NewUser" argumentid="Roles" value="Show_Administration"/>
                 <label for="showAdministration">Show Administration</label>
             </div>
             <div>
@@ -153,7 +173,7 @@
             <div>
                 <input type="checkbox" id="salesContractMenu" name="userRoles" value="Sales_Contract_Menu"/>
                 <label for="salesContractMenu">Sales Contract Menu</label>
-            </div>
+            </div>--%>
         </div>
     </td>
 </tr>
@@ -165,7 +185,9 @@
 
             <input type="password" value="" style="width: 175px" class="text required" tabindex="2" argumentid="Password"
                         groupid="NewUser" blurvalidate="false" requirederr=' *' />
-
+            <%-- <asp:TextBox ID="Password" runat="server" name="Password" groupid="NewUser"
+                                    MaxLength="16" Width="110px" class="text required" argumentid="Password"
+                                    InputFormate="NoofChars" minlen="4" TextMode="Password" confirmid='ConfirmPassword' ></asp:TextBox>--%>
         </td>
     </tr>
      <tr>
@@ -213,7 +235,7 @@
         </td>
         <td>
 
-            <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesPriceCar',HideOnSuccess:true}" />
+            <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'FX_UPD_UsersManagement',HideOnSuccess:true}" />
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
 
         </td>

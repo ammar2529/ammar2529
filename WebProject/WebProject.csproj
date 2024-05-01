@@ -1238,6 +1238,7 @@
     <Content Include="AsyncWidgets\Forms\UserManagment\frmAddUser.ascx" />
     <Content Include="AsyncWidgets\Forms\UserManagment\frmSearchUsers.ascx" />
     <Content Include="AsyncWidgets\Scripts\Custom-Ext.js" />
+    <Content Include="AsyncWidgets\Scripts\frmUserManagement.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.alphanumeric.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.autocomplete.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.jclock.js" />
@@ -1365,6 +1366,7 @@
     <Content Include="JQuery\Common.js" />
     <Content Include="JQuery\jquery.form.js" />
     <Content Include="KeepSessionAlive.aspx" />
+    <Content Include="LoginPage.ascx" />
     <Content Include="Logout.aspx" />
     <Content Include="MasterPages\DummyMaster.master" />
     <Content Include="MasterPages\eForms.Master" />
@@ -2503,6 +2505,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LeaseContractDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.ascx.cs">
+      <DependentUpon>LoginPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.ascx.designer.cs">
+      <DependentUpon>LoginPage.ascx</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>

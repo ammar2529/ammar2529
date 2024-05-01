@@ -19,10 +19,10 @@
                                                 <span style="color: White; font-weight: bold; padding-left:10px" class="HeaderTitle">
                                                    Welcome to eForms - Paperless Office
                                                 </span>
-                                                <img height="10px" width="10px" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
+                                                <img height:"10px" width:"10px" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
                                             </td>
                                             <td class="headl">
-                                                <img height="26px" width="35px" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
+                                                <img height:"26px" width:"35px" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
                                             </td>
                                         </tr>
                                     </tbody>

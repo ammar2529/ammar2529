@@ -1,6 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="eForms_Header.ascx.cs" Inherits="WebProject.AdminPages.eForms.eForms_Header" %>
 
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="uc3" %>
+<%@ Register Src="~/LoginPage.ascx" TagPrefix="uc3" TagName="LoginPage" %>
+
 
 <asp:Literal ID="MenuData" runat="server">
 </asp:Literal>
@@ -71,6 +73,9 @@
                             </td>
                             <td style="background-color: #73ABCB" width="100%" class="HeaderMenuPanel"> 
                                 <uc3:Form ID="frmLogin_Header" runat="server" Hidden="false" AsyncForm="AdminPages/eForms/eForms_Header_Login.ascx">
+<%--                              <uc3:Form ID="frmLogin_Header" runat="server" Hidden="false" AsyncForm="LoginPage.ascx">--%>
+
+                                   
                                     <Scripts>
                                         <script>
 

@@ -19,7 +19,7 @@
             </tr>
             <tr>  
                 <td>
-                    <img height="5" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                    <img height="5" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
                 </td> 
             </tr>
             <tr>

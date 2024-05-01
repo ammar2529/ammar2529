@@ -24,9 +24,9 @@
     <script src="AsyncWidgets/Scripts/Custom-Ext.js" type="text/javascript" ></script>
     <script src="AsyncWidgets/Scripts/jquery.alphanumeric.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/WidgetBase.js" type="text/javascript"></script>
-	<%--
-    <script src="AsyncWidgets/Scripts/jquery.jclock.js" type="text/javascript"></script>
-	--%>
+	
+<%--    <script src="AsyncWidgets/Scripts/jquery.jclock.js" type="text/javascript"></script>--%>
+	
     <script src="AsyncWidgets/Scripts/jQueryUI/jquery-ui.js" type="text/javascript"></script>
     <script src="AsyncDashboards/FusionCharts/FusionCharts.js" type="text/javascript"></script>
     <script src="Scripts/Common/SessionExpired.js" type="text/javascript"></script>

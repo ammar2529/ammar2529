@@ -6,8 +6,8 @@
 <%@ Register Src="Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="uc6" %>
 <%@ Register Src="Widgets/Container.ascx" TagName="Container" TagPrefix="uc5" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-</asp:Content>
+<%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <table style="width: 100%; height: 100%" border="0" cellpadding="0" cellspacing="0"
@@ -2044,9 +2044,7 @@
                             >
 
                             </uc6:DataGrid>
-                                             </div>
-                                         </Childern>
-                                     </uc5:Container>
+                                             </div></Childern></uc5:Container>
                                    </pre>
                              </RowDetail>
                         </uc6:DataGrid>

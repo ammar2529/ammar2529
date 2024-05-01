@@ -791,34 +791,34 @@
                <uc6:DataGrid ID="grdUserManagement" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSearchUsers_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="FX_SEL_UsersManagement"
             ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="User Management"
-            GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarsForSales\',KeysCol:\'UserId\'}}}">
+            GridButtons="{\'delete\':{conf:{Command:\'FX_UPD_UsersManagement\',KeysCol:\'RecId\'}}}">
             <GridConfig>
                 <script>
                     cf = {
                         cols: {
                             Sequence: { width: '0px' },
                             RecId: { width: '0px' },
-                            RecCode: { width: '0px' },
-                            CarNumber: { caption: 'Car No.', width: '80px' },
-                            CarFor: { width: '70px' },
-                            BrandId: { caption: 'Brand', width: '100px' },
-                            ModelId: { caption: 'Model', width: '110px' },
-                            TypeId: { caption: 'Type', width: '80px' },
-                            YearId: { caption: 'Year', width: '55px' },
-                            ColorId: { caption: 'Color', width: '55px' },
-                            //CurrentMileage: { caption: 'Mileage', width: '75px' },
-                            CarLocationId: { caption: 'Car Location', width: '100px' },
-                            CarStatusId: { caption: 'Status' }
+                            Name: { width: '120px' },
+                            Roles: { width: '420px' },
+                            DisabledStatus: { caption: 'Disabled', width: '80px' },
+                    
                         },
                         forms: {
                             NewFormId: 'frmUserManagement',
                             EditFormId: 'frmUserManagement',
-                            Keys: 'UserId'
+                            Keys: 'RecId'
                         }
                     };
                 </script>
             </GridConfig>
-      
+      <Scripts>
+          <script>
+              var fn = function ()
+              {
+                
+              }
+          </script>
+      </Scripts>
         </uc6:DataGrid>
 
 
@@ -832,10 +832,11 @@
         </table>
     </Childern>
 </uc5:Container>
-
+<script src="../../../../AsyncWidgets/Scripts/frmUserManagement.js"></script>
 <uc8:Form ID="frmUserManagement" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
     AsyncForm="~/AsyncWidgets/Forms/UserManagment//frmAddUser.ascx">
-<%--    D:\Webproject\WebProject\Pages\Common\Administration\UserManagement_FrUc.ascx--%>
+    
+
     <WidgetConfig>
         <script>
             cf = {
@@ -849,30 +850,10 @@
             }
         </script>
     </WidgetConfig>
-         <Scripts>
-                    <script>
-                        //var fn = function () {
-                        //    t.on('show', function (args) {
-                        //        $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                        //        $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).removeAttr('disabled');
-                        //    });
-
-                        //    t.on('onLoadedValues', function (args) {
-                        //        $('[argumentid="action"]', t.el).val("update");
-                        //        if ($('[argumentid="ContractNo"]', t.el).text() != '') {
-                        //            $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
-                        //        }
-                        //    });
-
-                        //    t.on('onComboFilled', function () {
-                        //        $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                        //        $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
-                        //    });
-
-
-                        //}
-
-                    </script>
-                </Scripts>
+     <Scripts>
+        <script>
+       
+        </script>
+    </Scripts>  
 
 </uc8:Form>
