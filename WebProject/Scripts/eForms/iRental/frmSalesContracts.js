@@ -5,6 +5,23 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var t = obj;
       
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
+    //t.on('onLoad', function ()
+    //{
+    //    debugger
+
+    //});
+
+    //t.on('onComboFilled', function (params)
+    //{
+        
+
+    //    $('[argumentid="EnginYearsWarranty"]').val($('[argumentid="EnginYearsWarranty"] option').eq(15).val());
+    //    $('[argumentid="GearYearsWarranty"]').val($('[argumentid="GearYearsWarranty"] option').eq(6).val());
+    //    $('[argumentid="CarYearsWarranty"]').val($('[argumentid="CarYearsWarranty"] option').eq(3).val());
+
+
+
+    //});
         t.on('aftereDataAction', function (params)
         {
 
@@ -97,13 +114,48 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
     var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown;
+    AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode;
+    var toggleDropdownCarReservationMode = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode;
 
     ///change cash and finance 
     $(".cash, .finance").click(function ()
     {
         toggleDropdown();
     });
+
+    $(".Arrive, .NotArrive",t.el).click(function ()
+    {
+        toggleDropdownCarReservationMode();
+        
+        // Get the value of the input field with attribute 'argumentid' equal to 'ChassisNo'
+        var chassisNo = $('[argumentid="ChassisNo"]').val();
+
        
+            // Find all dropdowns with the class 'DropDownDIV'
+            var dropdowns = $('.DropDownDIV');
+
+            // Iterate over each dropdown and clear its options except the default option
+            
+
+      
+    });
+
+    $('.Arrive', t.el).on('click', function ()
+    {
+        $('.CommonDD',t.el).each(function ()
+        {
+            debugger
+            var a = $(this).val('');
+            console.log(a)
+            // Ya $(this).prop('selectedIndex', 0);
+        });
+
+    });
+
+    
+
+
+
 
        //calculate days
         var CalculateDays = AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDays;
@@ -312,6 +364,17 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     // On Form Show file-list
         t.on('show', function (args)
         {
+
+            $('[argumentid="EngineWarranty"]', t.el).val('1000000');
+            /*document.getElementById("a").selectedIndex = 15;*/
+                 $('[argumentid="EnginYearsWarranty"]').val($('[argumentid="EnginYearsWarranty"] option').eq(15).val());
+   
+          
+            $('[argumentid="GearWarranty"]', t.el).val('200000');
+                 $('[argumentid="GearYearsWarranty"]').val($('[argumentid="GearYearsWarranty"] option').eq(6).val());
+            $('[argumentid="CarWarranty"]', t.el).val('100000');
+                    $('[argumentid="CarYearsWarranty"]').val($('[argumentid="CarYearsWarranty"] option').eq(3).val());
+
             console.log($('.file-list', t.el).length);
             $('.file-list', t.el).html('');
             console.log($('.file-list', t.el).length);
@@ -326,10 +389,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //End Always Move to First Tab on Show
 
         // Hide Edit For Normal Users
-        $('[roles]', t.el).hide().each(function () {
-            if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1) {
+            $('[roles]', t.el).hide().each(function ()
+            {
+                if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1)
+                {
                 $(this).show();
-            }
+                }
         });
 
         $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
@@ -342,7 +407,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('[argumentid="ContractEndDate"]', t.el).next('img').hide().addClass('AlwaysDisable').addClass('OnLoadHide');
         $('.contDetailsIcon', t.el).addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
 
-            if (t.FormMode == "new") {
+            if (t.FormMode == "new") 
+            {
                 $('.SimpleTab', t.el).attr('disabled', 'disabled');
                 $('.CloseContract,.CancelContract', t.el).attr('disabled', 'disabled');
                /* $('.btnSave',t.el).hide();*/
@@ -357,6 +423,21 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                /* $('.ItemTR > td', tblUFL).empty();*/
                 $('.NoRecordsTR', tblUFL).show();
                 $('.btnSave ', t.el).hide();
+                $('[argumentid="CustomerRecCode"]', t.el).prop('disabled', false);
+                $('[argumentid="CustomerRecCode"]', t.el).removeClass('ElemDisabled');
+                //$('[argumentid="EnginYearsWarranty"] option:nth(15)').attr('selected', 'selected');
+
+                t.on('onComboFilled', function (params)
+                {
+
+
+                    $('[argumentid="EnginYearsWarranty"]').val($('[argumentid="EnginYearsWarranty"] option').eq(15).val());
+                    $('[argumentid="GearYearsWarranty"]').val($('[argumentid="GearYearsWarranty"] option').eq(6).val());
+                    $('[argumentid="CarYearsWarranty"]').val($('[argumentid="CarYearsWarranty"] option').eq(3).val());
+
+
+
+                });
                
                 
             } 
@@ -416,7 +497,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             //for file extension fetch from LOvchild
             var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "35" };
-            function Success(res) {
+            function Success(res)
+            {
+                
                 var res = decJSON(res);
                 if (res.status == 'OK') {
                     if (res.Response.Rows.length > 0) {
@@ -451,6 +534,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             {
                 t.__firstShow = true;
                 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+                AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
               
             }
 
@@ -489,7 +573,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             $('.SimpleTab', t.el).removeAttr('disabled');
 
             //Load Commas if both numbers are there
-            if (!!$('[argumentid="WorkTelephone"]', t.el).text() && !!$('[argumentid="ResidenceTelephone"]', t.el).text()) {
+                if (!!$('[argumentid="WorkTelephone"]', t.el).text() && !!$('[argumentid="ResidenceTelephone"]', t.el).text()) 
+           {
                 $('.CommaWR', t.el).show();
             }
 
@@ -505,7 +590,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
            
-            AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+                AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+                debugger
+                AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
             }
             
             //AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
@@ -544,6 +631,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="ContractDate"]', t.el).next('img').show();
                     $('[argumentid="DeliveryDate"]', t.el).next('img').show();
                     $('[argumentid="DocType"]', t.el).prop('disabled', false);
+                    AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
 
                 }
 
@@ -635,7 +723,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 setField('PaymentAmount', decAmountReceived.toFixed(3), SalesContractTab);
                 // $('[argumentid="PaymentAmount"]',t.el).text();
             }
+
             
+
            
 
     });
@@ -762,6 +852,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
        
         var files = fileInput.files;
 
+        
         if (files.length === 0)
         {
             var errorMsg = $(".message", t.el).html("Please select a file.");
@@ -1250,6 +1341,39 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('.LPONumberDateField>img', t.el).show();
     //    $(".trOnHideFinaceSelect", t.el).show();
     }
+};
+AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = function ()
+{
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+    if ($('.Arrive').is(":checked"))
+    {
+
+        $('.CommonDD', t.el).hide().removeClass('required');
+        $('tr.DropDownTR td div.DropDownDIV').hide();
+        $('.CommonSP', t.el).show();
+        $('[argumentid="ChassisNo"]', t.el).prop('disabled', false).removeClass('ElemDisabled');
+        $('[argumentid="ChassisNo"]', t.el).css('display', 'block');
+
+
+    }
+    //else if ($('[argumentid="ChassisNo"]', t.el).val() != '')
+    //{
+    ////    $('.NotArrive', t.el).prop('disabled', true).addClass('ElemDisabled');
+    //}
+
+    else
+    {
+        $('.CommonDD', t.el).show().addClass('required');
+        $('tr.DropDownTR td div.DropDownDIV').show();
+        $('.CommonSP', t.el).hide();
+        $('[argumentid="ChassisNo"]', t.el).prop('disabled', true).addClass('ElemDisabled');
+        //$('[argumentid="ChassisNo"]', t.el).val('');
+        $('[argumentid="ChassisNo"]', t.el).css('display', 'none');
+
+
+    }
+
+
 };
 
 AsyncWidgets.WidgetScripts.frmSalesContracts.UpdateTotalAmount = function () {

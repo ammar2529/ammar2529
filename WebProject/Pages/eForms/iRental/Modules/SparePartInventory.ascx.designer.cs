@@ -7,29 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebProject.Pages.eForms.iRental
+namespace WebProject.Pages.eForms.iRental.Modules
 {
 
 
-    public partial class CarForSales_FrUc
+    public partial class SparePartInventory1
     {
 
         /// <summary>
-        /// FullInsuranceExpiry control.
+        /// conSparePartInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FullInsuranceExpiry;
+        protected global::WebProject.AsyncWidgets.Widgets.Container conSparePartInventory;
 
         /// <summary>
-        /// FullInsurancePolicyNo control.
+        /// frmSparePartInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FullInsurancePolicyNo;
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmSparePartInventory;
     }
 }

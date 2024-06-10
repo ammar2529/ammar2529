@@ -7,10 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace WebProject
+namespace WebProject.Pages.eForms.iRental
 {
-    public partial class Default2
+
+
+    public partial class SparePartInventory_FrUc1
     {
     }
 }

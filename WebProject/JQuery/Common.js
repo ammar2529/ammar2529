@@ -79,20 +79,43 @@ Date.prototype.getDateDiffInDays = function (EndDate) {
     }
     return 0;
 };
+function ServerCallCtx(ctx,params, success,failure, actionId, actorId)
+{
 
- function ServerCall(serviceInfo, success, actionId, actorId) {
+    //var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+
+    actionId = actionId || "DataAction";
+    actorId = actorId || "DataHelper";
+    params = params || {};
+    failure = failure || function(){};
+
+        SInfo = getForm(ctx, null, params);
+
+    var inv = new AsyncWidgets.RAInvoker();
+    inv.on('onSuccess', success);
+    inv.on('onFailure', failure);
+    inv.invokeRA({ params: [ "ActorId", actorId, "ActionId", actionId, "ServiceInfo", SInfo ] });
+
+};
+function ServerCall(serviceInfo, success, actionId, actorId) {
 
      //var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
 
      actionId = actionId || "DataAction";
      actorId = actorId || "DataHelper";
-    SInfo = getForm(null, null, serviceInfo);
+     if (typeof serviceInfo != "string")
+     {
+         SInfo = getForm(null, null, serviceInfo);
+     }
+     else
+     {
+         SInfo = serviceInfo;
+     }
     var inv = new AsyncWidgets.RAInvoker();
      inv.on('onSuccess', success);
      inv.invokeRA({ params: ["ActorId", actorId, "ActionId", actionId, "ServiceInfo", SInfo] });
 
 };
-
 //check allowed file extension
 function checkAllowedFileExtensions(allowedFileExt, fileName) {
     debugger;

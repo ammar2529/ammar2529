@@ -43,10 +43,22 @@
                     uniquefound="{en:' Duplicate Car Number...',color:'red'}" groupid="SalesCarsForm" argumentid="CarNumber" />--%>
                 <input type="text"  style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text" 
                 groupid="SalesCarsForm" argumentid="CarNumber" />
-            </div>
+                <nobr class="ftitle">Registration Date:</nobr>
+            <input type="text" groupid="SalesCarsForm" maxlength="10"
+                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="RegistrationDate" /></div>
         </td>
     </tr>
 
+  <%--  <tr>
+         <td class="ftitle">
+            <nobr>Registration Date:</nobr>
+        </td>
+        <td>
+            <input type="text" groupid="SalesCarsForm" maxlength="10"
+                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="RegistrationDate" />
+        </td>
+
+    </tr>--%>
 
     <tr>
         <td class="ftitle">
@@ -115,11 +127,54 @@
 
 
 
+        
+                                <tr>
+                            <td class="ftitle">
+                                
+                            </td>
+                            <td>
+                                <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="157">
+
+                                    <nobr class="ftitle">Expiry Date (dd/mm/yyyy)</nobr> 
+
+                                    <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="0">
+
+                                    <nobr class="ftitle">Policy No.</nobr> 
+                                  
+                            </td>
+                        </tr>
+
+                        <tr>
+                           
+                           
+                             <td class="ftitle">
+                                <nobr>Full Insurance:</nobr>
+                            </td>
+                            <td>
+                                  <select loadon="FirstVisible" class="dropdownlist" requirederr="&amp;nbsp;*" style="width: 155px;"
+                            groupid="SalesCarsForm" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
+                            <option value="" selected="selected">Select Insurance</option>
+                    </select>
+                                    <asp:TextBox ID="FullInsuranceExpiry" runat="server" groupid="SalesCarsForm" MaxLength="10"
+                                    Width="150px" class="text date" argumentid="FullInsuranceExpiry" /> 
+
+<%--                                           <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="10">--%>
+
+                                    <asp:TextBox ID="FullInsurancePolicyNo" runat="server" groupid="SalesCarsForm" MaxLength="50"
+                                    Width="150px" class="text" style="text-align:center;font-weight:bold;color:red" argumentid="FullInsurancePolicyNo" />
+
+                               
+
+                                     
+                            </td>
+                        </tr>
+
     <tr>
-        <td colspan="2">
-            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-        </td>
-    </tr>
+                            <td colspan="2">
+                                <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1">
+                            </td>
+                        </tr>
+
 
     <tr>
         <td class="ftitle">

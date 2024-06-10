@@ -21,7 +21,8 @@
         <td style="text-align: left;" class="auto-style2" width="20%">
             <span class="ftitle"  style="white-space: nowrap">Finance Company</span><%--            <span style="white-space: nowrap">Year</span>--%></td>
 
-        <td style="text-align: left;" class="ftitle" rowspan="2"></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+            <span style="white-space: nowrap">Salesman</span></td>
     </tr>
     <tr>
         <td style="text-align: left;">
@@ -35,10 +36,17 @@
             <select class="dropdownlist" style="width: 300px;" loadon="FirstVisible"  groupid="schSalesContractDetails" argumentid="FinanceCompany" 
                 storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
                 <option value="" selected="selected">Select Finance Company</option>
-            </select><%--<select loadon="FirstVisible" class="dropdownlist" style="width: 135px;"
+            </select>
+            <%--<select loadon="FirstVisible" class="dropdownlist" style="width: 135px;"
                 groupid="schSalesContractDetails" argumentid="CarYearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
                 <option value="" selected="selected">Select Year</option>
             </select>--%></td>
+
+        <td style="text-align: left;">
+            <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schSalesContractDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                            <option value="" selected="selected">Select Salesman</option>
+                        </select>
+            </td>
     </tr>
     <tr>
 

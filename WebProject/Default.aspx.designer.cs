@@ -202,5 +202,32 @@ namespace WebProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.Pages.eForms.iRental.Modules.SalesCarPrice SalesCarPrice;
+
+        /// <summary>
+        /// SparePartInventory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.Pages.eForms.iRental.Modules.SparePartInventory1 SparePartInventory;
+
+        /// <summary>
+        /// GarageCarServiceDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.Pages.eForms.iRental.Modules.GarageCarServiceDetails GarageCarServiceDetails;
+
+        /// <summary>
+        /// SparePartInventoryInvoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.Pages.eForms.iRental.Modules.SparePartInventoryInvoice SparePartInventoryInvoice;
     }
 }

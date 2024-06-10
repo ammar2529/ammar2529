@@ -13,6 +13,8 @@
                       <span style="white-space:nowrap">Model</span></td>
                        <td style=" text-align: left;" class="ftitle" width="20%">
                       <span style="white-space:nowrap">Year</span></td>
+              <%--  <td style=" text-align: left;" class="ftitle" width="20%">
+                      <span style="white-space:nowrap">Salesman</span></td>--%>
 
                                       <td style=" text-align: left;" class="ftitle" rowspan="2">
      </td>
@@ -36,12 +38,21 @@
                                         storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" 
                                         name="D2">
                             <option value="" selected="selected">Select Model</option>
-                        </select></td>
+                        </select>
+
+                </td>
                                         <td style=" text-align: left;">
                               <select loadon="FirstVisible" class="dropdownlist" style="width: 135px;"
                             groupid="schContractDetails" argumentid="CarYearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
                             <option value="" selected="selected">Select Year</option>
                     </select>
+                </td>
+
+                
+                                        <td style=" text-align: left;">
+                              <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                            <option value="" selected="selected">Select Salesman</option>
+                        </select>--%>
                 </td>
             </tr>
              <tr>

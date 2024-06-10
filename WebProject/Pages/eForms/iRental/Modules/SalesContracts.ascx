@@ -36,7 +36,7 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}&nbsp;-&nbsp;{Model}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}{SalesBrandId}&nbsp;-&nbsp;{Model}{SalesModelId}</div>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -53,9 +53,11 @@
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>
-                <pre columnid="CreationDetails">
+                <pre columnid="CreationDetails"> 
                                      <div class="ftitle" style="color:#808000; display:none">{ChassisNo}</div>
-                                     <div class="ftitle" style="color:#101080">{CreatedBy}</div>
+                                     <div class="ftitle" style="color:#101080">{Salesman}</div>
+                                      
+
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                    <div class="ftitle" style="color:#808000">{FinanceCompany}</div>
 
@@ -136,8 +138,9 @@
         PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
 
-        <GridConfig>
-            <script>
+        
+ <GridConfig>
+ <script>
                 var cf = {
                     cols: {
                         Sequence: { width: '0px' },
@@ -167,10 +170,10 @@
             </script>
 
 
-        </GridConfig>
+ </GridConfig>
 
 
-    </AW:DataGrid>
+ </AW:DataGrid>
 
     <AW:Form ID="frmSalesCustomerDetails" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
         <WidgetConfig>
@@ -242,8 +245,10 @@
         PageSize="10" DataSource="SEL_iRental_CarsForSale" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Car" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
 
-        <GridConfig>
-            <script>
+        
+
+ <GridConfig>
+ <script>
                 var cf = {
                     cols: {
                         Sequence: { width: '0px' },
@@ -268,9 +273,9 @@
                     }
                 };
             </script>
-        </GridConfig>
-        <Scripts>
-            <script>
+ </GridConfig>
+ <Scripts>
+ <script>
                 var fn = function () {
                     var conCar = AsyncWidgets.get("conRentalContracts_Cars");
                     var f = conCar._frm;
@@ -358,8 +363,8 @@
                   
                 }
             </script>
-        </Scripts>
-    </AW:DataGrid>
+ </Scripts>
+ </AW:DataGrid>
 </div>
 
 

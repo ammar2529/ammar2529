@@ -318,6 +318,7 @@
     <Content Include="AdminPages\eForms\eForms_Header_Login.ascx" />
     <Content Include="AdminPages\eForms\eForms_Header_Menu.ascx" />
     <Content Include="AdminPages\eForms\eForms_Search.ascx" />
+    <Content Include="App_Themes\Blue\images\default_image.png" />
     <Content Include="App_Themes\Blue\images\spacer.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-login.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-view.gif" />
@@ -1359,7 +1360,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Default2.ascx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1372,6 +1372,14 @@
     <Content Include="MasterPages\eForms.Master" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
+    <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Invoice_PD_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\GarageCarServiceDetails.ascx" />
+    <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx" />
+    <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SalesCarPrice.ascx" />
@@ -1395,6 +1403,7 @@
     <Content Include="Pages\eForms\iRental\SalesContracts_OC_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_PD_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\TestForm.ascx" />
     <Content Include="Releas2_New\DBArtifactslist.txt" />
     <Content Include="Releas2_New\SalesContracts2\01AllTABLES.sql" />
@@ -1451,12 +1460,17 @@
     <Content Include="ReportsEngine\FusionMaps\FusionMaps.js_FromAsif" />
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\crsmarttag.jsp" />
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\preview.jsp" />
+    <Content Include="SaveLineOfItems.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\eForms\iRental\frmCustomerRentalContracts.js" />
+    <Content Include="Scripts\eForms\iRental\frmInvoicePaymentDetails.js" />
     <Content Include="Scripts\eForms\iRental\frmiRentalPaymentsDetail.js" />
     <Content Include="Scripts\eForms\iRental\frmRentalContracts.js" />
+    <Content Include="Scripts\eForms\iRental\frmSparePartInventoryInvoice.js" />
+    <Content Include="Scripts\eForms\iRental\frmSparePartInventory.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
+    <Content Include="Scripts\eForms\iRental\grdInvoicePaymentDetails.js" />
     <Content Include="Scripts\eForms\iRental\RemoveButton.css" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />
     <Content Include="Scripts\eForms\iRental\scripts.js" />
@@ -1514,6 +1528,10 @@
     <Content Include="Scripts_21-11-2023\Views\VW_SEL_iRental_SalesContracts_Base.sql" />
     <Content Include="Scripts_21-11-2023\Views\VW_SEL_iRental_SalesContracts_Details.sql" />
     <Content Include="Scripts_21-11-2023\Views\VW_Type.sql" />
+    <Content Include="test.asp" />
+    <Content Include="test.html" />
+    <Content Include="UploadSparePartImages.aspx" />
+    <Content Include="UploadSparePartImage\10_6d127f88-948a-4d42-b035-7c7ef731d3ce_headlight.jfif" />
     <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
     <Content Include="WebForm4.aspx" />
     <Content Include="DataSets\SalesContractDS.xsc">
@@ -2204,6 +2222,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AsyncWidgets\BAL\Authentication.cs" />
     <Compile Include="AsyncWidgets\BAL\BALExecuter.cs" />
+    <Compile Include="AsyncWidgets\BAL\HelloWorld.cs" />
     <Compile Include="AsyncWidgets\Containers.cs" />
     <Compile Include="AsyncWidgets\DAL\Authentication.cs" />
     <Compile Include="AsyncWidgets\DAL\DataAccess.cs" />
@@ -2474,13 +2493,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default2.ascx.cs">
-      <DependentUpon>Default2.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default2.ascx.designer.cs">
-      <DependentUpon>Default2.ascx</DependentUpon>
     </Compile>
     <Compile Include="eForms\Web\UI\BlockTags.cs" />
     <Compile Include="eForms\Web\UI\PWCLightPage.cs" />
@@ -2754,6 +2766,62 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\CarDetails_ShUc.ascx.designer.cs">
       <DependentUpon>CarDetails_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx.cs">
+      <DependentUpon>GarageCarServiceDetails_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx.designer.cs">
+      <DependentUpon>GarageCarServiceDetails_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Invoice_PD_FrUc.ascx.cs">
+      <DependentUpon>Invoice_PD_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Invoice_PD_FrUc.ascx.designer.cs">
+      <DependentUpon>Invoice_PD_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\GarageCarServiceDetails.ascx.cs">
+      <DependentUpon>GarageCarServiceDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\GarageCarServiceDetails.ascx.designer.cs">
+      <DependentUpon>GarageCarServiceDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\GarageCarServiceDetails_ShUc.ascx.cs">
+      <DependentUpon>GarageCarServiceDetails_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\GarageCarServiceDetails_ShUc.ascx.designer.cs">
+      <DependentUpon>GarageCarServiceDetails_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx.cs">
+      <DependentUpon>SparePartInventory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx.designer.cs">
+      <DependentUpon>SparePartInventory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx.cs">
+      <DependentUpon>SparePartInventoryInvoice.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx.designer.cs">
+      <DependentUpon>SparePartInventoryInvoice.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx.cs">
+      <DependentUpon>SparePartInventoryInvoice_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx.designer.cs">
+      <DependentUpon>SparePartInventoryInvoice_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx.cs">
+      <DependentUpon>SparePartInventory_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx.designer.cs">
+      <DependentUpon>SparePartInventory_FrUc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\CarForSales_FrUc.ascx.cs">
       <DependentUpon>CarForSales_FrUc.ascx</DependentUpon>
@@ -3242,6 +3310,13 @@
       <DependentUpon>SalesContracts_ShUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx.cs">
+      <DependentUpon>SparePartInventory_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx.designer.cs">
+      <DependentUpon>SparePartInventory_ShUc.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\TestForm.ascx.cs">
       <DependentUpon>TestForm.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3618,6 +3693,13 @@
       <DependentUpon>SalesContractsCrysReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SaveLineOfItems.aspx.cs">
+      <DependentUpon>SaveLineOfItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SaveLineOfItems.aspx.designer.cs">
+      <DependentUpon>SaveLineOfItems.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3659,6 +3741,13 @@
     </Compile>
     <Compile Include="UploadFile.aspx.designer.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadSparePartImages.aspx.cs">
+      <DependentUpon>UploadSparePartImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadSparePartImages.aspx.designer.cs">
+      <DependentUpon>UploadSparePartImages.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

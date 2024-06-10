@@ -667,7 +667,7 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
     //On Click of Edit Button by Super User
     $('.Button_Edit', t.el).click(function () {
 
-        $('.CommonDisable,.DisableOnClose,.SuperUserEdit,.btn_1,.btn_2,.btn_10', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+        $('.CommonDisable,.DisableOnClose,.SuperUserEdit,.btn_1,.btn_2,.btn_3 ,.btn_4,.btn_5,.btn_6 ,.btn_7 ,.btn_10,.btn_8 ', t.el).removeAttr('disabled').removeClass('ElemDisabled');
         $('[argumentid="ContractEndDate"]', t.el).next('img').show().removeAttr('disabled').removeClass('ElemDisabled');
         $('[argumentid="ContractStartDate"]', t.el).next('img').show().removeAttr('disabled').removeClass('ElemDisabled');
         $('[argumentid="ContractExpiryDate"]', t.el).next('img').show().removeAttr('disabled').removeClass('ElemDisabled');

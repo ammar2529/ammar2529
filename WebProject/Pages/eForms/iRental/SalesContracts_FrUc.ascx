@@ -4,6 +4,7 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 <%@ Register Src="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx" TagPrefix="AW" TagName="CustomerDetails_FrUc" %>
 
+
 <script>
     // American Numbering System
     var th = ['', 'thousand', 'million', 'billion', 'trillion'];
@@ -148,6 +149,24 @@
                    </td>
                 </tr>
 
+                <tr>
+                  <td class="ftitle" width="18%">
+                        <nobr>Car Reservation*:</nobr>
+
+                  </td>
+                    <td class="ftitle" width="32%">
+
+                        <input type="radio" class="CommonDisableClass ElemDisabled  Arrive  " checked="checked" default="default" value="CarArrived" name="CarReservationMode" groupid="SalesContractsForm" argumentid="CarReservationMode" /><label>Car Arrived</label>
+                        <input type="radio" class="CommonDisableClass ElemDisabled NotArrive  " value="CarNotArrive" name="CarReservationMode" groupid="SalesContractsForm" argumentid="CarReservationMode" /><label>Car Not Arrive </label>
+                        <%-- CommonDisableClass ElemDisabled default="default" --%>
+                    </td>
+                    <td >
+                        
+                    </td>
+                    <td >
+
+                    </td>
+                </tr>
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
@@ -192,7 +211,7 @@
                         <nobr>Car No:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="CarNumber"></span>
+                        <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="CarNumber"></span>
                     </td>
                     <td class="ftitle">
                         <nobr>Name:</nobr>
@@ -201,12 +220,19 @@
                         <span class="ftitle" style="font-size: 16px;" groupid="SalesContractsForm" argumentid="CustomerName"></span>
                     </td>
                 </tr>
-                <tr>
+                <tr class="DropDownTR">
                     <td class="ftitle">
                         <nobr>Brand:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="BrandId"></span>
+                        <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="BrandId"></span>
+                        <div class="DropDownDIV">
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                groupid="SalesContractsForm" argumentid="SalesBrandId" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+                <option value="" selected="selected">Select Brand</option>
+
+            </select>
+                            </div>
                     </td>
                     <td class="ftitle">
                         <nobr>Nationality:</nobr>
@@ -215,12 +241,18 @@
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Nationality"></span>
                     </td>
                 </tr>
-                <tr>
+                <tr class="DropDownTR">
                     <td class="ftitle">
                         <nobr>Model:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="ModelId"></span>
+                        <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="ModelId"></span>
+                        <div class="DropDownDIV">
+                        <select class="dropdownlist required CommonDD" style="width: 155px;" valtype="value"
+                  groupid="SalesContractsForm" argumentid="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'SalesBrandId'}]}">
+                 <option value="" selected="selected">Select Model</option>
+              </select>
+                        </div>
                     </td>
                    <td class="ftitle">
                         <nobr>National ID No.:</nobr>
@@ -230,12 +262,19 @@
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="NationalIDExpiryDate"></span>
                     </td>
                 </tr>
-                <tr>
+                <tr class="DropDownTR">
                     <td class="ftitle">
                         <nobr>Year:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="CarYear"></span>
+                        <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="CarYear"></span>
+
+                        <div class="DropDownDIV">
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                groupid="SalesContractsForm" argumentid="SalesYearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
+                <option value="" selected="selected">Select Year</option>
+            </select>
+                            </div>
                     </td>
                     <td class="ftitle">
                         <nobr>Gender:</nobr>
@@ -244,12 +283,19 @@
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="Gender"></span>
                     </td>
                 </tr>
-                <tr>
+                <tr class="DropDownTR">
                     <td class="ftitle">
                         <nobr>Color:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="Color"></span>
+                        <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="Color"></span>
+
+                            <div class="DropDownDIV">
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                groupid="SalesContractsForm" argumentid="SalesColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}">
+                <option value="" selected="selected">Select Color</option>
+            </select>
+                                </div>
                     </td>
                      <td class="ftitle">
                         <nobr>Mobile Telephone:</nobr>
@@ -260,12 +306,19 @@
                         <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone2"></span>
                     </td>
                 </tr>
-                <tr>
+                <tr class="DropDownTR">
                     <td class="ftitle">
                         <nobr>Type</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="SalesContractsForm" argumentid="TypeId"></span>
+                        <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="TypeId"></span>
+
+                            <div class="DropDownDIV">
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                groupid="SalesContractsForm" argumentid="SalesTypeId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}">
+                <option value="" selected="selected">Select Type</option>
+            </select>
+                                </div>
                     </td>
                     <td class="ftitle">Car Owner Name:</td>
                     <td>
@@ -378,7 +431,7 @@
                groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible" valtype="value"  class="dropdownlist CommonDisableClass  "   style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible" valtype="value"  class="dropdownlist CommonDisableClass  " id ="a"   style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
                     </td>
@@ -398,7 +451,7 @@
                groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " style="width: 155px;" groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " id="b"  style="width: 155px;" groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
                     </td>
@@ -418,7 +471,7 @@
                groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                 <option value="" selected="selected">Select Years</option>
             </select>--%>
-                        <select loadon="FirstVisible" valtype="value"  class="dropdownlist CommonDisableClass   " style="width: 155px;" groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                        <select loadon="FirstVisible" valtype="value"  class="dropdownlist CommonDisableClass   " id="c" style="width: 155px;" groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                             <option value="" selected="selected">Select Years</option>
                         </select>
 
@@ -519,9 +572,7 @@
                         <nobr>Grand Total:</nobr>
                     </td>
                     <td >
-                        <%-- <span class="ftitle" groupid="SalesContractsForm" argumentid="TotalAmount"></span>--%>
-                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass ElemDisabled AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="TotalAmount" disabled="disabled" />--%>
+                       
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number AlwaysDisable bgr"
                             groupid="SalesContractsForm" argumentid="TotalAmount" />
                     </td>
@@ -683,7 +734,7 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
-                            <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:false,GroupId:'SalesContractsForm'}" />
+                            <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:true,GroupId:'SalesContractsForm'}" />
                              
 <%--                            ,Params:{DBAction:'SCReserved'}--%>
                             <input type="button" value="  Quotation  "style="width: 70px" class="ButtonStyle QuotationBtn common-button" />
@@ -694,6 +745,25 @@
 <%--                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />--%>
                             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
+                    </td>
+                </tr>
+                 
+
+                   <tr>
+                    <td class="ftitle">
+                        <nobr>Contract Created By:</nobr>
+                    </td>
+                    <td style="text-align: center">
+                        <span class="ftitle"  groupid="SalesContractsForm" argumentid="CreatedBy"></span>
+                    </td>
+                   
+                       <td class="ftitle">
+                        <nobr>Contract Date & Time:</nobr>
+                    </td>
+                    <td style="text-align: center">
+<%--                        <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="DateCreated"></div>--%>
+                        <span class="ftitle"  groupid="SalesContractsForm" argumentid="DateCreated"></span>
+                        <span class="ftitle"  groupid="SalesContractsForm" argumentid="DateCreatedTime"></span>
                     </td>
                 </tr>
 
@@ -708,8 +778,9 @@
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Payments\',KeysCol:\'RecId\'}}}">
-                <GridConfig>
-                    <script>
+                
+ <GridConfig>
+ <script>
                         cf = {
                             cols: {
                                 Sequence: { width: '0px' },
@@ -734,14 +805,14 @@
                             }
                         };
                     </script>
-                </GridConfig>
-                <Scripts>
-                    <script>
+ </GridConfig>
+ <Scripts>
+ <script>
                         var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
                     </script>
-                </Scripts>
-                <RowDetail>
-                    <pre class="" colindex="4">
+ </Scripts>
+ <RowDetail>
+ <pre class="" colindex="4">
                     <AW:container id="conSalesPaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -788,9 +859,9 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
-                </RowDetail>
+ </RowDetail>
 
-            </AW:DataGrid>
+ </AW:DataGrid>
 
             <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
                 <WidgetConfig>

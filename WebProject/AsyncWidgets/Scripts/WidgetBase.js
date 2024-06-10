@@ -1628,10 +1628,10 @@ var setListValue = function (ctl,val) // can be DOM or jquery
 {
     
     ////////////////////////////////////////////
-    if (typeof ctl == "string")
-    {
-        ctl = $(ctl);
-    }
+    //if (typeof ctl == "string")
+    //{
+    //    ctl = $(ctl);
+    //}
     if (!ctl.tagName) // if not a DOM object then convert it to DOM object
     {
         /////////////////////////////////////////////////////////
@@ -1656,6 +1656,7 @@ var setListValue = function (ctl,val) // can be DOM or jquery
 };
 var setField = function (ctl, param, ctx)
 {
+
     
     var tag, val;
     
@@ -1731,7 +1732,8 @@ var setField = function (ctl, param, ctx)
         {
             if (!!val)
             {
-               // $("option:contains(" + val + ")", ctl).attr('selected', 'selected');
+                // $("option:contains(" + val + ")", ctl).attr('selected', 'selected');
+                
                 setListValue(ctl,val);
                 if (ctl.selectedIndex < 0)
                 {
