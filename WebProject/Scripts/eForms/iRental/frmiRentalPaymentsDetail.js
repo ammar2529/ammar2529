@@ -191,7 +191,7 @@ AsyncWidgets.WidgetScripts.frmPaymentDetails = function (obj)
     //On Change of Payment Mode  $('option:selected', elem)
     $('[argumentid="PaymentMode"]', t.el).change(function ()
     {
-        debugger;
+       
         var cbo = $('[argumentid="PaymentMode"] option:selected').text();
         var replace = cbo.replace('Select Payment Mode', '');
         var myString = replace.replace(/([a-z])([A-Z])/g, '$1 $2');

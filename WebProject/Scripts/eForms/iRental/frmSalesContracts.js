@@ -68,7 +68,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
    /* $('[argumentid="FinanceCompany"]').prop('disabled', true);*/
     $('[argumentid="AdditionalAmount"],[argumentid="Discount"],[argumentid="Price"]').blur(function () {
-        debugger;
+       
         var carPrice = parseFloat($('[argumentid="Price"]',t.el).val());
         var additionalAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
         var discount = parseFloat($('[argumentid="Discount"]').val());
@@ -144,7 +144,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     {
         $('.CommonDD',t.el).each(function ()
         {
-            debugger
+           
             var a = $(this).val('');
             console.log(a)
             // Ya $(this).prop('selectedIndex', 0);
@@ -591,7 +591,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
            
                 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
-                debugger
+                
                 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
             }
             

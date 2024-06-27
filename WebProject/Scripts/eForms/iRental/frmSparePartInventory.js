@@ -80,8 +80,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
         
         if (files.length === 0)
         {
-            var errorMsg = $(".message", t.el).html("Please select a file.");
-            $.showMessage(errorMsg);
+            //var errorMsg = $(".message", t.el).html("Please select a file.");
+            $.showMessage("Please select a file.");
             return;
         }
 

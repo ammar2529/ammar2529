@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrintSalesPaymentReceiptVoucherFrPg.aspx.cs" Inherits="WebProject.Pages.eForms.iRental.Reports.PrintSalesPaymentReceiptVoucherFrPg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrintInvoicePaymentReceiptVoucher.aspx.cs" Inherits="WebProject.Pages.eForms.iRental.Reports.PrintInvoicePaymentReceiptVoucher1" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 
@@ -9,18 +9,17 @@
     <title></title>
 </head>
 <body>
-    <a href="PrintSalesPaymentReceiptVoucherFrPg.aspx">PrintSalesPaymentReceiptVoucherFrPg.aspx</a>
     <form id="form1" runat="server">
       <table border="0" width="100%">
         <tr>
              <td style="height: 21px;">
               &nbsp;</td>
           <td style="height: 21px" align="center" valign="top">
-              &nbsp;<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True"
+              &nbsp; <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True"
                  HasCrystalLogo="False" Height="1039px" ReportSourceID="CrystalReportSource1" HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
                   Width="901px" />
               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                  SelectCommand="RNTSalesContract_Print_Receipt_Voucher_SP" SelectCommandType="StoredProcedure">
+                  SelectCommand="RNTInvoicePayment_Print_Receipt_Voucher_SP" SelectCommandType="StoredProcedure">
 
                   <SelectParameters>
                         <asp:QueryStringParameter  DefaultValue="" Name="RecId" QueryStringField="FormId"
@@ -34,9 +33,9 @@
               </asp:SqlDataSource>
 
               <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
-                   <Report FileName="PrintSalesPaymentReceiptVoucher.rpt">
+                   <Report FileName="PrintInvoicePaymentReceiptVoucher.rpt">
                       <DataSources>
-                          <CR:DataSourceRef DataSourceID="SqlDataSource1" TableName="RNTSalesContract_Print_Receipt_Voucher_SP" />
+                          <CR:DataSourceRef DataSourceID="SqlDataSource1" TableName="RNTInvoicePayment_Print_Receipt_Voucher_SP" />
                       </DataSources>
                   </Report>
               </CR:CrystalReportSource>
@@ -49,4 +48,3 @@
     </form>
 </body>
 </html>
-

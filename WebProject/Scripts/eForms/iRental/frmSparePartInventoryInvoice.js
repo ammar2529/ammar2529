@@ -29,7 +29,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
             var cf = {
                 ActionId: "GetData", GroupId: null, readFormValues: false,
-                Params: { RecId: val('RecId', wg.el), Command: 'SEL_SparePartCustomerAndInvoiceDetails' }
+                Params: { RecId: val('RecId', wg.el), Command: 'SEL_Invoice' }
 
             }
             wg.loadValues(cf);
@@ -47,13 +47,29 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         return false;
     });
     // End
+
+    t.on('rowsRendered', function ()
+    {
+        debugger;
+        $('.PrintReport', t.el).click(function ()
+        { //
+            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintInvoicePaymentReceiptVoucher.aspx?FormId=" + $(this).text() + "&ContractType=INVOICE_PAYMENT"; // +'&amp;FormId=' + pm.SelectedKey;
+            console.log(strlink);
+            var width = 920;
+            var height = 600;
+            var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+            var top = parseInt((screen.availHeight / 2) - (height / 2));
+            window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+            return false;
+        });
+    });
     t.on('show', function (args)
     {
         
         if (t.FormMode == "new") 
         {
 
-            debugger
+            
             var tblUFL = $('table.uploadedItemList', t.el);
             $('table.uploadedItemList .ItemTR .ItemTableRow',t.el).remove();
             /* $('.ItemTR > td', tblUFL).empty();*/
@@ -92,6 +108,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
          // This will pause execution for debugging if the developer tools are open
         if (params.res.status === 'OK')
         {
+            
 
             var myMessage = "Invoice create Successfully";
             var trimMyMessage = myMessage.trim();
@@ -116,6 +133,56 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
               var inv =   $('[argumentid="InvoicePaymentRecId"]', t.el).val(code);
                 console.log("Setting InvoiceRecId to:", code); // Add this line for debugging
                 console.log("Setting InvoicePaymentRecId to:", inv);
+
+
+                var params = {
+                    Command: 'SEL_Invoice',
+                    RecId: `${code}`,
+              
+
+                };
+
+                // Assuming ServerCall is a function to make an API call
+                ServerCall(params, function (res)
+                {
+
+                    var res = decJSON(res)
+
+
+                    if (res.status === 'OK')
+                    {
+                        if (res.Response.Rows.length > 0)
+                        {
+                            var rows = res.Response.Rows;
+                            for (var i = 0; i < rows.length; i++)
+                            {
+                                var row = rows[ i ];
+                                var recId = row.RecId;
+                                var InvRecCode = row.InvRecCode;
+                                var InvoiceNo = row.InvoiceNo;
+
+
+
+                            }
+
+                            setTimeout(function ()
+                            {
+                           
+                                $('[argumentid="InvRecCode"]', t.el).text(InvRecCode);
+                                $('[argumentid="InvoiceNo"]', t.el).text(InvoiceNo);
+
+
+
+
+                            }, 2000);
+                        }
+
+                    }
+
+
+
+
+                },'GetData');
             } else
             {
                 console.log("Line of item");
@@ -124,6 +191,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         {
             console.error("Unexpected status:", params.res.status);
         }
+
+
     });
 
     
@@ -397,7 +466,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
 {
     $('[argumentid="Discount"]', t.el).on('blur', function ()
     { 
-        debugger
+        
         var discount = $(this).val();
         var resDiscount = parseFloat(discount);
         var subTotal = parseFloat($('[argumentid="SubTotal"]', t.el).val());
@@ -419,7 +488,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
             $('[argumentid="Paid"]', t.el).text('0.000')
         }
 
-        if (isNaN(resDiscount))
+        if (!!isNaN(resDiscount))
         {
             resDiscount = 0;
         } else
@@ -489,43 +558,86 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
 
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = function (t)
 {
+
     $('.SaveBtn').click(function ()
     {
-        
+        var isValid = true;
 
-        var ItemIdInTextBox = $('.ItemIdClass');
-        var ItemIdName = $('.ItemIdName');
-
-        for (var i = 0; i < ItemIdName.length; i++)
+        // Client-side validation
+        $('.trNoDynamic').find('[argumentid]').each(function ()
         {
-            
-            var getItemID = $(ItemIdName[ i ])
+            var $element = $(this);
+            var argumentid = $element.attr('argumentid');
+            var value = $element.val().trim();
 
-            if (ItemIdInTextBox.val() === getItemID.text())
+            if (value === '')
             {
-                $.showMessage("Item is already exist")
-                $('.trNoDynamic input', t.el).val('');
+                isValid = false;
+                console.log('Argument ID:', argumentid, 'is empty');
+                $element.css('border', '1px solid red');
+            } else
+            {
+                $element.css('border', '');
+            }
+        });
+
+        // Additional check to ensure all required fields are filled
+        var requiredFieldsFilled = $('.trNoDynamic').find('[argumentid]').toArray().every(function (element)
+        {
+            return $(element).val().trim() !== '';
+        });
+
+        if (!requiredFieldsFilled)
+        {
+            isValid = false;
+        }
+
+        // If any field is empty, prevent further execution
+        if (!isValid)
+        {
+            console.log('Form validation failed. Please fill all required fields.');
+            return;
+        }
+
+
+        var ItemIdInTextBox = $('.ItemIdClass').val().trim();
+        var ItemIdNames = $('.ItemIdName').toArray();
+
+        for (var i = 0; i < ItemIdNames.length; i++)
+        {
+            var getItemID = $(ItemIdNames[ i ]).text().trim();
+
+            if (ItemIdInTextBox === getItemID)
+            {
+                $.showMessage("Item is already exists.");
+                $('.trNoDynamic input').val('');
                 return;
             }
         }
+        // All fields are valid, proceed with server call
+        executeServerCall();
+    });
 
-      var  InvoiceRecIdVal = $('[argumentid="InvoiceRecId"]', t.el).val();
-       var InvoicePaymentRecId = $('[argumentid="InvoicePaymentRecId"]', t.el).val();
+    function executeServerCall()
+    {
 
-   
-      
-        ServerCallCtx($('.trNoDynamic', t.el)[ 0 ], { DBAction: 'AddUploadedItem', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(),  command: 'UPD_SparePartInventoryInvoiceDetails' }, function (res)
+        var InvoiceRecIdVal = $('[argumentid="InvoiceRecId"]', t.el).val();
+        var InvoicePaymentRecId = $('[argumentid="InvoicePaymentRecId"]', t.el).val();
+
+
+
+        ServerCallCtx($('.trNoDynamic', t.el)[ 0 ], { DBAction: 'AddLineItem', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), command: 'UPD_InvoiceDetails' }, function (res)
         {
             var res = decJSON(res);
             if (res.status === 'OK')
             {
-                debugger
-                
-                var subTotalVal = parseFloat($('[argumentid="SubTotal"]',t.el).val());
-                var Discount = parseFloat($('[argumentid="Discount"]',t.el).val());
-                var GrandTotal = parseFloat($('[argumentid="GrandTotal"]',t.el).val());
-                var Balance = parseFloat($('[argumentid="Balance"]',t.el).text());
-                var Paid = parseFloat($('[argumentid="Paid"]',t.el).text());
+
+
+                var subTotalVal = parseFloat($('[argumentid="SubTotal"]', t.el).val());
+                var Discount = parseFloat($('[argumentid="Discount"]', t.el).val());
+                var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val());
+                var Balance = parseFloat($('[argumentid="Balance"]', t.el).text());
+                var Paid = parseFloat($('[argumentid="Paid"]', t.el).text());
 
                 var resBal = GrandTotal - Paid;
                 $('[argumentid="Balance"]', t.el).text(resBal.toFixed(3))
@@ -536,34 +648,132 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 $.showMessage(parts[ 2 ]);
 
             }
-            var params = { Command: 'UPD_SparePartInventoryInvoiceDetails', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(),  DBAction: 'GetLinesItems' };
+            var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), DBAction: 'GetLinesItems' };
             ServerCall(params, function (res)
             {
                 var res = decJSON(res)
 
                 if (res.status === 'OK')
                 {
+
+
                     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems(res, t);
-                    AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t);
+                    setTimeout(function ()
+                    {
+
+                        // Assuming totalPriceText is a collection of elements, not a single number
+                        var totalPriceText = $('.TotalPriceVal', t.el);
+
+                        let totalPriceSum = 0; // Initialize a variable to store the sum of total prices
+
+                        // Loop through each element in the totalPriceText collection
+                        for (let index = 0; index < totalPriceText.length; index++)
+                        {
+                            var getPriceText = $(totalPriceText[ index ]).text(); // Get the text content of the current element
+                            var getPriceNumber = parseFloat(getPriceText); // Convert the text content to a number
+
+                            // Ensure that the parsed number is a valid number before adding to the sum
+                            if (!isNaN(getPriceNumber))
+                            {
+                                totalPriceSum += getPriceNumber; // Add the number to the sum
+                            }
+                        }
+
+                        console.log(totalPriceSum); // Log the sum of total prices to the console
+                        $('[argumentid="SubTotal"]', t.el).val(totalPriceSum); // Update the SubTotal field with the sum
+
+                        // Retrieve various values from the form
+                        var recid = $('[argumentid="RecId"]', t.el).val();
+                        var Discount = parseFloat($('.Discount', t.el).val());
+
+                        if (isNaN(Discount))
+                        {
+                            Discount = 0;
+                        }
+
+                        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val());
+                        var Balance = parseFloat($('[argumentid="Balance"]', t.el).text());
+                        var Paid = parseFloat($('.Paid', t.el).text());
+                        var Code = $('[argumentid="Code"]', t.el).val();
+                        var InvoiceDate = $('[argumentid="InvoiceDate"]', t.el).val();
+                        var DeliveryNo = $('[argumentid="DeliveryNo"]', t.el).val();
+                        var CustomerRecCode = $('[argumentid="CustomerRecCode"]', t.el).val();
+
+                        // Ensure totalPriceSum is not NaN
+                        if (isNaN(totalPriceSum))
+                        {
+                            totalPriceSum = 0;
+                        }
+
+                        // Calculate the total grand amount after discount
+                        var totalGrand = totalPriceSum - Discount;
+                        $('[argumentid="GrandTotal"]').val(totalGrand); // Update the GrandTotal field
+                        ;
+
+                        // Calculate the total balance after payment
+                        var totalBal = totalGrand - Paid;
+                        $('[argumentid="Balance"]', t.el).text(totalBal); // Update the Balance field
+
+
+                        var params = {
+                            Command: 'UPD_InvoiceDetails',
+                            RecId: `${recid}`,
+                            SubTotal: `${totalPriceSum}`,
+                            GrandTotal: `${totalGrand}`,
+                            Balance: `${totalBal}`,
+                            Discount: `${Discount}`,
+                            Paid: `${Paid}`,
+                            Code: `${Code}`,
+                            InvoiceDate: `${InvoiceDate}`,
+                            DeliveryNo: `${DeliveryNo}`,
+                            CustomerRecCode: `${CustomerRecCode}`
+
+                        };
+
+                        // Assuming ServerCall is a function to make an API call
+                        ServerCall(params, function (res)
+                        {
+
+                            var res = decJSON(res)
+
+
+                            if (res.status === 'OK')
+                            {
+
+
+                                var parts = res.Response.split('||');
+                                var code = parts[ 0 ];
+                                var messageStatus = parts[ 1 ];
+                                var message = parts[ 2 ];
+                            }
+                            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
+
+
+
+
+
+
+                        });
+
+                        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
+
+
+                    }, 3000); // Delay execution by 4 seconds
+
 
                 }
             }, "Search");
 
-         
+
 
         });
 
-        $('.trNoDynamic input',t.el).val('');
-
-   
-     
-
-
-    });
+        $('.trNoDynamic input', t.el).val('');
+    };
 
     t.on('onLoadedValues', function (args)
     {
-
+        
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
         $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="SparePartUnitPrice"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
@@ -576,7 +786,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         console.log("InvoiceRecIdval:", InvoiceRecIdval);
         console.log("InvoicePaymentRecId:", InvoiceRecIdval);
 
-        var params = { Command: 'UPD_SparePartInventoryInvoiceDetails', InvoiceRecId: `${InvoiceRecIdval}`, DBAction: 'GetLinesItems' };
+        var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: `${InvoiceRecIdval}`, DBAction: 'GetLinesItems' };
         ServerCall(params, function (res)
         {
             var res = decJSON(res)
@@ -600,14 +810,16 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe = function (t)
 {
 
-    var subTotalVal = parseFloatSafe($('[argumentid="SubTotal"]').val());
-    var Discount = parseFloatSafe($('[argumentid="Discount"]').val());
-    var GrandTotal = parseFloatSafe($('[argumentid="GrandTotal"]').val());
-    var Balance = parseFloatSafe($('[argumentid="Balance"]').text());
-    var Paid = parseFloatSafe($('[argumentid="Paid"]').text());
+    var subTotalVal = parseFloatSafe($('[argumentid="SubTotal"]',t.el).val());
+    var Discount = parseFloatSafe($('.Discount',t.el).val());
+    var GrandTotal = parseFloatSafe($('[argumentid="GrandTotal"]',t.el).val());
+    var Balance = parseFloatSafe($('[argumentid="Balance"]',t.el).text());
+    var Paid = parseFloatSafe($('[argumentid="Paid"]',t.el).text());
     function parseFloatSafe(value)
     {
+
         var result = parseFloat(value);
+        
         return isNaN(result) ? 0.000 : result;
     }
 
@@ -625,11 +837,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe = functio
     console.log("Paid:", Paid.toFixed(3));
 
 
-    $('[argumentid="SubTotal"]').val(subTotalVal.toFixed(3));
-    $('[argumentid="Discount"]').val(Discount.toFixed(3));
-    $('[argumentid="GrandTotal"]').val(GrandTotal.toFixed(3));
-    $('[argumentid="Balance"]').text(Balance.toFixed(3));
-    $('[argumentid="Paid"]').text(Paid.toFixed(3));
+    $('[argumentid="SubTotal"]', t.el).val(subTotalVal.toFixed(3));
+    $('.Discount', t.el).val(Discount.toFixed(3));
+    $('[argumentid="GrandTotal"]', t.el).val(GrandTotal.toFixed(3));
+    $('[argumentid="Balance"]', t.el).text(Balance.toFixed(3));
+    $('[argumentid="Paid"]', t.el).text(Paid.toFixed(3));
         // Retrieve and parse values safely
 };
 
@@ -660,8 +872,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                 var SelectQuantity = row.SelectQuantity;
                 var SparePartUnitPrice = row.SparePartUnitPrice;
                 var TotalPrice = row.TotalPrice;
-                
-
+                //var toFixedSparePartUnitPrice = SparePartUnitPrice.toFixed(3);
+                //var toFixedTotalPrice = TotalPrice.toFixed(3);
 
 
                 var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
@@ -670,9 +882,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                                                     <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 60px;" colid="ItemId">
                                                         <div class="ColValue w-grid-label ItemIdName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${ItemId}</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 62px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 60px;">${RecCode}</div>
-                                                    </td>
+                                                    
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartName}</div>
                                                     </td>
@@ -683,19 +893,23 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SelectQuantity}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartUnitPrice.toFixed(3)}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartUnitPrice}</div>
                                                     </td>
                                                       <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label TotalPriceVal" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${TotalPrice.toFixed(3)}</div>
+                                                        <div class="ColValue w-grid-label TotalPriceVal" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${TotalPrice}</div>
                                                     </td>
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
                                                             <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                             <span class="remove-button" recid="${RecId}" >X</span>
+                                                             <span title="Delete Item" class="remove-button" recid="${RecId}" >X</span>
                                                             </div>
                                                         </td>
                               
 
                                                 </tr>`;
+
+                                                //<td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 62px;" colid="FileSize">
+                                                    //    <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 60px;">${RecCode}</div>
+                                                    //</td>
 
                 tblRowsHTML += genHtml;
 
@@ -714,10 +928,15 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
             {
                 
                 var btn = $(this);
+               
+                var ItemId = btn.closest('tr').find('.ColValue:eq(0)').text().trim();
+
+                var SparePartQuantity = btn.closest('tr').find('.ColValue:eq(2)').text().trim();
+                var SelectQuantity = btn.closest('tr').find('.ColValue:eq(3)').text().trim();
                 var recId = btn.attr("recId");
                 var curTR = btn.closest('tr');
                 var DeleteUploadItem = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem;
-                DeleteUploadItem(t, recId, curTR);
+                DeleteUploadItem(t, recId, curTR, btn, ItemId, SelectQuantity);
 
                 // Remove the row from the table
                 var curTR = btn.closest('tr');//.remove();
@@ -745,57 +964,121 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
 
 };
 
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = function (t, recId, curTR)
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = function (t, recId, curTR, btn, ItemId, SelectQuantity)
 {
 
-    var params = { Command: 'UPD_SparePartInventoryInvoiceDetails', RecId: recId, DBAction: 'DeleteItem' };
+    var params = { Command: 'UPD_InvoiceDetails', RecId: recId, ItemId: ItemId, SelectQuantity: SelectQuantity, DBAction: 'DeleteItem' };
     ServerCall(params, function (res)
     {
+       
         var res = decJSON(res)
-        //$('[argumentid="Discount"]', t.el).val('');
-
-        //var recid = $('[argumentid="RecId"]', t.el).val()
-        //var subTotalVal = parseFloat($('[argumentid="SubTotal"]').val());
-        //var Discount = parseFloat($('[argumentid="Discount"]').val());
-        //var GrandTotal = parseFloat($('[argumentid="GrandTotal"]').val());
-        //var Balance = parseFloat($('[argumentid="Balance"]').text());
-        //var Paid = parseFloat($('[argumentid="Paid"]').text());
-
-        //var resBal = GrandTotal - Paid
-        //$('[argumentid="Balance"]').text(resBal.toFixed(3))
+      
 
         var parts = res.Response.split('||');
         var code = parts[ 0 ];
         console.log(parts[ 0 ]);
         $.showMessage(parts[ 2 ]);
-        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t);
-    }, "DeleteRows")
+
+      
 
 
-    var recid = $('[argumentid="RecId"]', t.el).val()
-    var totalprice = parseFloat($('.TotalPriceVal', curTR).text());
-    var subTotalVal = parseFloat($('[argumentid="SubTotal"]').val());
-    var Discount = parseFloat($('[argumentid="Discount"]').val());
-    var GrandTotal = parseFloat($('[argumentid="GrandTotal"]').val());
-    var Balance = parseFloat($('[argumentid="Balance"]').text());
-    var Paid = parseFloat($('[argumentid="Paid"]').text());
 
-    var total = subTotalVal - totalprice 
-    var totalDis = subTotalVal - Discount
-    var totalBal = GrandTotal - Paid
-    var params = { Command: 'UPD_CustomerInvoiceDetails', RecId: `${recid}`, SubTotal: `${total}`, GrandTotal: `${totalDis}`, Balance: `${totalBal}` };
-    ServerCall(params, function (res)
+    }, "DeleteRows") ;
+
+  
+    setTimeout(function ()
     {
+        
+
+        var totalPriceText = $('.TotalPriceVal', t.el);
+
+        let totalPriceSum = 0; // Initialize a variable to store the sum of total prices
+
+        for (let index = 0; index < totalPriceText.length; index++)
+        {
+            var getPriceText = $(totalPriceText[ index ]).text(); // Get the text content of the current element
+            var getPriceNumber = parseFloat(getPriceText); // Convert the text content to a number
+
+            if (!isNaN(getPriceNumber))
+            {
+                totalPriceSum += getPriceNumber; 
+            }
+        }
+
+        console.log(totalPriceSum); // Log the sum of total prices to the console
+        $('[argumentid="SubTotal"]', t.el).val(totalPriceSum);
+
+        
+        var recid = $('[argumentid="RecId"]', t.el).val();
+        var Discount = parseFloat($('.Discount',t.el).val());
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]',t.el).val());
+        var Balance = parseFloat($('[argumentid="Balance"]',t.el).text());
+        var Paid = parseFloat($('.Paid',t.el).text());
+        var Code = $('[argumentid="Code"]', t.el).val();
+        var InvoiceDate = $('[argumentid="InvoiceDate"]', t.el).val();
+        var DeliveryNo = $('[argumentid="DeliveryNo"]', t.el).val();
+        var CustomerRecCode = $('[argumentid="CustomerRecCode"]', t.el).val();
 
 
-    }); 
 
-    //var params = { Command: 'SEL_SparePartCustomerAndInvoiceDetails', RecId: `${recid}` };
-    //ServerCall(params, function (res)
-    //{
-    //    var res = decJSON(res)
 
-    //}); 
+
+        if (isNaN(totalPriceSum))
+        {
+            totalPriceSum = 0;
+        }
+
+        var totalGrand = totalPriceSum - Discount;
+        $('[argumentid="GrandTotal"]').val(totalGrand);
+        var totalBal = totalGrand - Paid;
+        $('[argumentid="Balance"]',t.el).text(totalBal)
+
+        var params = {
+            Command: 'UPD_InvoiceDetails',
+            RecId: `${recid}`,
+            SubTotal: `${totalPriceSum}`,
+            GrandTotal: `${totalGrand}`,
+            Balance: `${totalBal}`,
+            Discount: `${Discount}`,
+            Paid: `${Paid}`,
+            Code: `${Code}`,
+            InvoiceDate: `${InvoiceDate}`,
+            DeliveryNo: `${DeliveryNo}`,
+            CustomerRecCode: `${CustomerRecCode}`
+
+        };
+
+        // Assuming ServerCall is a function to make an API call
+        ServerCall(params, function (res)
+        {
+            
+           var res = decJSON(res)
+
+           
+            if (res.status === 'OK')
+            {
+
+             
+                var parts = res.Response.split('||');
+                var code = parts[ 0 ];
+                var messageStatus = parts[ 1 ];
+                var message = parts[ 2 ];
+            }
+            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
+
+     
+
+  
+
+          
+        });
+
+
+    }, 4000);
+
+
+
+  
 
 };
 
@@ -803,7 +1086,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 {
 
 
-    var params = { Command: 'UPD_SparePartInventoryInvoiceDetails', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), DBAction: 'GetLinesItems' };
+    var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), DBAction: 'GetLinesItems' };
     ServerCall(params, function (res)
     {
         var res = decJSON(res)
@@ -870,7 +1153,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 
                 var tblUFL = $('table.uploadedItemList', t.el); // get the main table
 
-                $('.ItemTR tbody', tblUFL).append(tblRowsHTML);
+                $('.ItemTR tbody', tblUFL).html(tblRowsHTML);
             }
 
         }

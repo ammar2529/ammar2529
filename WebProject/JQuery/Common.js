@@ -118,7 +118,7 @@ function ServerCall(serviceInfo, success, actionId, actorId) {
 };
 //check allowed file extension
 function checkAllowedFileExtensions(allowedFileExt, fileName) {
-    debugger;
+    
     var modifyAllowedFileExt = allowedFileExt.replace("Allowed Files:", "");
     var commaOnStartFileExt = "," + modifyAllowedFileExt.trim();
     console.log(commaOnStartFileExt);

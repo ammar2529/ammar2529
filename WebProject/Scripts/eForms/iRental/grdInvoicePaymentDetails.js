@@ -95,7 +95,7 @@
     {
         $('.PrintReport', t.el).click(function ()
         { //
-            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintSalesPaymentReceiptVoucherFrPg.aspx?FormId=" + $(this).text() + "&ContractType=RNT"; // +'&amp;FormId=' + pm.SelectedKey;
+            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintInvoicePaymentReceiptVoucher.aspx?FormId=" + $(this).text() + "&ContractType=INVOICE_PAYMENT"; // +'&amp;FormId=' + pm.SelectedKey;
             console.log(strlink);
             var width = 920;
             var height = 600;

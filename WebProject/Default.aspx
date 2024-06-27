@@ -161,16 +161,16 @@
         //    window.location.reload();
         //}
 
-        $(document).ready(function () {
-        //    location.reload();
-            $('.LoginButton').click(function () {
+        //$(document).ready(function () {
+        ////    location.reload();
+        //    $('.LoginButton').click(function () {
 
-                console.log('clicked login button')
-            })
-            AsyncWidgets.Widgets.on("initialized", function () {
-               // alert("Widgets Initialized");
-            });
-        });
+        //        console.log('clicked login button')
+        //    })
+        //    AsyncWidgets.Widgets.on("initialized", function () {
+        //       // alert("Widgets Initialized");
+        //    });
+        //});
 
     </script>
 </asp:Content>

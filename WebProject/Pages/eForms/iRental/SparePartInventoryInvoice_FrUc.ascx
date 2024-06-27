@@ -37,16 +37,25 @@
 
 
 
-
-
-                <tr>
+                      <tr>
                     <td class="ftitle">
+                        <nobr>Customer RecCode:</nobr>
+                    </td>
+                    <td>
+                    
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass  "
+                            groupid="SparePartInventoryInvoice" lovpopupid="customerInvoicePopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
+
+                    </td>
+
+                     <td class="ftitle">
                         <nobr>Code:</nobr>
 
                     </td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
-                            groupid="SparePartInventoryInvoice" argumentid="Code" />
+                       
+                      <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
+
                          <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />
 <%--                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />--%>
@@ -54,6 +63,40 @@
                         
 
                     </td>
+
+                </tr>
+                <tr>
+                   
+                    <td class="ftitle">
+                        <nobr>Name:</nobr>
+                    </td>
+                    <td style="text-align: center">
+                        <span class="ftitle" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
+                    </td>
+
+                   
+                    <td class="ftitle">
+                        <nobr>Invoice No.:</nobr>
+                    </td>
+                    <td>
+                       
+                         <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvoiceNo"></span>
+
+                    </td>
+                </tr>
+
+                <tr>
+
+                     <td class="ftitle">
+                        <nobr>Mobile Telephone:</nobr>
+                    </td>
+                    <td class="ftitle">
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
+                        <nobr class="CommaM12">, </nobr>
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
+                    </td>
+
+                
 
                     <td class="ftitle">
                         <nobr>Date:</nobr>
@@ -69,14 +112,14 @@
 
                 </tr>
                 <tr>
-                    <td class="ftitle">
-                        <nobr>Invoice No.:</nobr>
+
+                      <td class="ftitle">
+                        <nobr>Nationality:</nobr>
                     </td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
-                            groupid="SparePartInventoryInvoice" argumentid="InvoiceNo" />
-
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="Nationality"></span>
                     </td>
+
 
                  
                     <td class="ftitle">
@@ -92,48 +135,11 @@
                 </tr>
 
 
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Customer RecCode:</nobr>
-                    </td>
-                    <td>
-                      <%--  <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text     "
-                            groupid="SparePartInventoryInvoice" argumentid="Customer" />--%>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass  "
-                            groupid="SparePartInventoryInvoice" lovpopupid="customerInvoicePopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
-
-                    </td>
-
-                     <td class="ftitle">
-                        <nobr>Mobile Telephone:</nobr>
-                    </td>
-                    <td class="ftitle">
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
-                        <nobr class="CommaM12">, </nobr>
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
-                    </td>
-
-                </tr>
-                <tr>
-                   
-                    <td class="ftitle">
-                        <nobr>Name:</nobr>
-                    </td>
-                    <td style="text-align: center">
-                        <span class="ftitle" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
-                    </td>
-
-                      <td class="ftitle">
-                        <nobr>Nationality:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="Nationality"></span>
-                    </td>
-                </tr>
+             
                 <tr>
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                          <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_CustomerInvoiceDetails',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                          <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                 
                     </td>
                 </tr>
@@ -186,7 +192,7 @@
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text "
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text  "
                                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                                 </td>
                                 <td>
@@ -266,11 +272,11 @@
                                                             <span href="#" class="w-grid-head ColName sort">Item ID</span>
                                                         </div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="RecCode" style="padding-left: 0px; padding-right: 0px; width: 50px;">
+                                                  <%--  <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="RecCode" style="padding-left: 0px; padding-right: 0px; width: 50px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 50px">
                                                             <span href="#" class="w-grid-head ColName sort">Code</span>
                                                         </div>
-                                                    </td>
+                                                    </td>--%>
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileType" style="padding-left: 0px; padding-right: 0px; width: 110px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
                                                             <span href="#" class="w-grid-head ColName sort">Description</span>
@@ -413,9 +419,9 @@
                     <td class="ftitle">
                         <nobr>Discount:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text "
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount"
                             groupid="SparePartInventoryInvoice" argumentid="Discount" /></td>
-                    
+                                                                            
                     <%--<td colspan="2" rowspan="2" style="padding: 0; " class="auto-style1">
                         &nbsp;</td>--%>
                    <td colspan="2" rowspan="2">
@@ -449,7 +455,7 @@
                         <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
                     </td>
                     <td style="text-align: center;" >
-                        <span class="ftitle PaymentAmountC" style="color: Green; font-size: 12px" groupid="SparePartInventoryInvoice" argumentid="Paid"></span>
+                        <span class="ftitle Paid" style="color: Green; font-size: 12px" groupid="SparePartInventoryInvoice" argumentid="Paid"></span>
                     </td>
                     <td class="ftitle">
 
@@ -473,7 +479,7 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_CustomerInvoiceDetails',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                              
 
                             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />

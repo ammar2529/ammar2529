@@ -46,13 +46,13 @@
                                 <nobr>Customer Name*:</nobr>
                             </td>
                             <td>
-                               <input type="text" id="txtCustomerName"  style="text-align: center; font-size:16px;font-weight:bold; width: 300px;" maxlength="199" class="text required"
+                               <input type="text"   style="text-align: center; font-size:16px;font-weight:bold; width: 300px;" maxlength="199" class="text required"
                                     groupid="CustomersForm"  argumentid="CustomerName" />
 
                             </td> 
                         </tr>
-
-                                                   <tr>
+<%--id="txtCustomerName"                                                 --%>
+     <tr>
                             <td class="ftitle">
                                 <nobr>Nationality*:</nobr>
                             </td>

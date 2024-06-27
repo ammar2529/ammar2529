@@ -28,75 +28,18 @@
                 </script>
             </WidgetConfig>
         </uc8:Form>
-        <%--<uc5:DataGrid ID="grdSparePartCustomerAndInvoiceDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSparePartInventory_ShUc"
-            EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_SparePartCustomerAndInvoiceDetails"
-            ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Spare Part Inventory"
-            GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SparePartInventory\',KeysCol:\'RecId\'}}}">
-            <GridConfig>
-                <script>
-                    cf = {
-                        cols: {
-                            Sequence: { width: '0px' },
-                            RecId: { width: '0px' },
-                            ItemId: { width: '70px' },
-                            SparePartName: { caption: 'Description', width: '100px' },
-                            SparePartSerialNo: { caption: 'Item Code', width: '110px' },
-                            SparePartQuantity: { caption: 'Quantity', width: '80px' },
-                            BrandId: { caption: 'Brand', width: '100px' },
-                            ModelId: { caption: 'Model', width: '100px' },
-
-                            SparePartShelfNo: { caption: 'Shelf No.', width: '100px' },
-                            SparePartUnitPrice: { caption: 'Unit Price', width: '100px' },
-                            SparePartRemarks: { caption: 'Remarks', width: '100px' },
-                            SparePartImage: { caption: 'Image', width: '80px' },
-
-                        },
-                        forms: {
-                            NewFormId: 'frmSparePartInventoryInvoice',
-                            EditFormId: 'frmSparePartInventoryInvoice',
-                            Keys: 'RecId'
-                        }
-                        //,
-                        //DataActionParams: {
-                        //    DBAction : 'SearchChassisNo'
-                        //}
-                    };
-                </script>
-            </GridConfig>
-            <Scripts>
-                <script>
-
-                    var fn = function ()
-                    {
-                        //t.on('rowsRendered', function () 
-                        //{
-                        //    $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
-                        //    {
-
-                        //        var ptr = $(this).closest('tr');
-                        //        $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
-
-                        //    });
-
-                        //});
-
-
-                    }
-
-                </script>
-            </Scripts>
-        </uc5:DataGrid>--%>
+        
 
           <AW:DataGrid ID="grdSparePartCustomerAndInvoiceDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSparePartInventoryInvoice_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true"
-            PageSize="10" DataSource="SEL_SparePartCustomerAndInvoiceDetails" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
+            PageSize="10" DataSource="SEL_Invoice" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
             GridHeadText="Invoice Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarServiceDetails\',KeysCol:\'RecId\'}}}">
             <ColumnTemplates>
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
-                                    <div class="ftitle" style="color:#602010">{InvoiceNo}</div>
+                                    <div class="ftitle" style="color:#602010">Invoice No.: {InvoiceNo}</div>
 <%--                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{BrandId}&nbsp;-&nbsp;{ModelId}</div>--%>
-                                 <div class="ftitle" style="color:#602010">{RecCode}</div>
+                                 <div class="ftitle" style="color:#602010">{InvRecCode}</div>
 
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
@@ -162,46 +105,46 @@
                         t.on('rowsRendered', function ()
                         {
 
-                            //$('.StateName', t.el).each(function ()
-                            //{
-                            //    //if ($(this).text().indexOf('Created - Reservation') > -1) {
-                            //    //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
-                            //    //}
-                            //    //else if ($(this).text() != '{StateName}') {
-                            //    $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
-                            //    //}
+                            $('.StateName', t.el).each(function ()
+                            {
+                                //if ($(this).text().indexOf('Created - Reservation') > -1) {
+                                //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
+                                //}
+                                //else if ($(this).text() != '{StateName}') {
+                                $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
+                                //}
 
-                            //    var ptr = $(this).closest('tr');
+                                var ptr = $(this).closest('tr');
 
-                            //    if ($(this).text().indexOf('Contract Closed - Payment Cleared') > -1)
-                            //    {
-                            //        ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
-                            //    }
-                            //    else if ($(this).text().indexOf('Contract Cancelled') > -1)
-                            //    {
-                            //        ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
-                            //    }
-                            //    else if ($(this).text().indexOf('Contract Open - Car In') > -1)
-                            //    {
-                            //        $(this).css('color', 'Red');
-                            //    }
-                            //    else if ($(this).text().indexOf('With Legal - Contract Open - Car Out') > -1)
-                            //    {
-                            //        $(this).css('color', 'Red');
-                            //    }
-                            //    else if ($(this).text().indexOf('With Legal - Contract Open - Car In') > -1)
-                            //    {
-                            //        $(this).css('color', 'Red');
-                            //    }
-                            //    else if ($(this).text().indexOf('With Legal - Contract Closed - Pending Payment') > -1)
-                            //    {
-                            //        $(this).css('color', 'Red');
-                            //    }
-                            //    else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1)
-                            //    {
-                            //        $(this).css('color', 'Red');
-                            //    }
-                            //});
+                                if ($(this).text().indexOf('Contract Closed - Payment Cleared') > -1)
+                                {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                else if ($(this).text().indexOf('Contract Cancelled') > -1)
+                                {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                else if ($(this).text().indexOf('Contract Open - Car In') > -1)
+                                {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('With Legal - Contract Open - Car Out') > -1)
+                                {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('With Legal - Contract Open - Car In') > -1)
+                                {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('With Legal - Contract Closed - Pending Payment') > -1)
+                                {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1)
+                                {
+                                    $(this).css('color', 'Red');
+                                }
+                            });
                             var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);
                             $('.ColValue', cols).css('cursor', 'pointer').click(ColClick);
                         });

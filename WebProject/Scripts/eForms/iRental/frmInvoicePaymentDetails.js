@@ -82,7 +82,7 @@
 
 
         var cbo = $('[argumentid="PaymentMode"] option:selected', t.el).text();
-        debugger;
+        
         var extractedCbo = cbo.replace('Select Payment Mode', '').trim(); // Remove 'Select Payment Mode' and trim any extra spaces
         if ($.trim(extractedCbo) == 'Cheque')
         {

@@ -1378,6 +1378,7 @@
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_FrUc.ascx" />
@@ -1572,6 +1573,17 @@
     </Content>
     <Content Include="LeaseContractDataSet\LeaseContractDS.xsc">
       <DependentUpon>LeaseContractDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="InvoiceDataSet\InvoicePaymentDS.xsc">
+      <DependentUpon>InvoicePaymentDS.xsd</DependentUpon>
+    </Content>
+    <None Include="InvoiceDataSet\InvoicePaymentDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InvoicePaymentDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="InvoiceDataSet\InvoicePaymentDS.xss">
+      <DependentUpon>InvoicePaymentDS.xsd</DependentUpon>
     </Content>
     <None Include="LeaseContractDataSet\LeaseContractDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -2499,6 +2511,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceDataSet\InvoicePaymentDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvoicePaymentDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="JQuery\AutoComplete\AutoComplete.aspx.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2808,6 +2825,19 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx.designer.cs">
       <DependentUpon>SparePartInventoryInvoice.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx.cs">
+      <DependentUpon>PrintInvoicePaymentReceiptVoucher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx.designer.cs">
+      <DependentUpon>PrintInvoicePaymentReceiptVoucher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintInvoicePaymentReceiptVoucher.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx.cs">
       <DependentUpon>SparePartInventoryInvoice_FrUc.ascx</DependentUpon>
@@ -3891,6 +3921,10 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintRentalContractsStatement.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintRentalContractsStatement.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintInvoicePaymentReceiptVoucher.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

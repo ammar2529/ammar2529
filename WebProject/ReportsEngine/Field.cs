@@ -412,6 +412,13 @@ namespace WebProject.ReportsEngine
             set { _CaptionContainerCol = value; }
         }
         string _QueryParameter = null;
+        //public int Ammar
+        //{
+        //    get { return _Ammar; }
+        //    set { _Ammar = value; }
+        //}
+        //private int _Ammar;
+  
 
         private void SearchPanel_FieldsInitCompleted(object sender, EventArgs e)
         {
