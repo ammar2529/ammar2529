@@ -117,15 +117,19 @@ function ($) {
         if (window.location.href.indexOf('.htm') == -1) {
             if (opts.timeoutDebug) { console.log("Session Timeout JS Started: " + opts.timeoutInSeconds + "sec"); }
             var totalTicks = opts.timeoutInSeconds * 1000; var warningTicks = opts.timeoutWarningInSeconds * 1000;
+           
             var toCall = function () {
                 showToolbar(timer, opts);
             };
             timer = setTimeout(toCall, (totalTicks - warningTicks));
 
+          
             //This is our Framework code to reset timer on any action performed or web service called
             AsyncWidgets.user.on('actionPerformed', function () {
                 clearTimeout(timer); timer = null;
                 timer = setTimeout(toCall, (totalTicks - warningTicks));
+                
+
             });
             // End
         }

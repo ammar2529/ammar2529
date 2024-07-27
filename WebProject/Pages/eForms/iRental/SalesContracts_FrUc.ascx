@@ -38,6 +38,13 @@
 <script type="text/javascript" language="javascript" src="Scripts/eForms/iRental/SalesContracts.js"></script>
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <script src="../../../JQuery/Common.js"></script>
+
+<style type="text/css">
+    .auto-style1 {
+        height: 21px;
+    }
+</style>
+
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
@@ -59,7 +66,7 @@
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>
             <%--    <tr>
-                    <td colspan="4" class="auto-style1" style="display:none">
+                    <td colspan="4" style="display:none">
                         <input type="hidden" groupid="SalesContractsForm" argumentid="RecCode" />
                     </td>
                 </tr>--%>
@@ -194,8 +201,8 @@
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass  "
                             groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
-<%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>--%>
-                        <%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;">&nbsp;</div>--%>
+<%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;"></div>--%>
+                        <%--                        <div class="ftitle w-ui-icon w-ui-panel-icon-closed unselectable contDetailsIcon" style="float: right; padding-right: 0px; height: 15px; cursor: pointer;"></div>--%>
 
                     </td>
                 </tr>
@@ -227,12 +234,12 @@
                     <td >
                         <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="BrandId"></span>
                         <div class="DropDownDIV">
-                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass " style="width: 155px;"
                 groupid="SalesContractsForm" argumentid="SalesBrandId" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                 <option value="" selected="selected">Select Brand</option>
-
+        <%--SalesModelId--%>
             </select>
-                            </div>
+                   </div>
                     </td>
                     <td class="ftitle">
                         <nobr>Nationality:</nobr>
@@ -248,7 +255,7 @@
                     <td >
                         <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="ModelId"></span>
                         <div class="DropDownDIV">
-                        <select class="dropdownlist required CommonDD" style="width: 155px;" valtype="value"
+                        <select class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;" 
                   groupid="SalesContractsForm" argumentid="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'SalesBrandId'}]}">
                  <option value="" selected="selected">Select Model</option>
               </select>
@@ -270,7 +277,7 @@
                         <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="CarYear"></span>
 
                         <div class="DropDownDIV">
-                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
                 groupid="SalesContractsForm" argumentid="SalesYearId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
                 <option value="" selected="selected">Select Year</option>
             </select>
@@ -291,7 +298,7 @@
                         <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="Color"></span>
 
                             <div class="DropDownDIV">
-                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
                 groupid="SalesContractsForm" argumentid="SalesColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}">
                 <option value="" selected="selected">Select Color</option>
             </select>
@@ -314,21 +321,31 @@
                         <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="TypeId"></span>
 
                             <div class="DropDownDIV">
-                        <select loadon="FirstVisible" class="dropdownlist required CommonDD" style="width: 155px;"
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
                 groupid="SalesContractsForm" argumentid="SalesTypeId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}">
                 <option value="" selected="selected">Select Type</option>
             </select>
                                 </div>
                     </td>
-                    <td class="ftitle">Car Owner Name:</td>
+                    <td class="ftitle">
+                        <nobr>Car Owner National ID No.:</nobr></td>
                     <td>
-                        <input type="text"   style="text-align: center; width: 262px; font-size: 16px;" maxlength="199" class="text ftitle CommonDisableClass ElemDisabled"
-                            groupid="SalesContractsForm" argumentid="CarOwnerName" />
+                        <input type="text"   style="text-align: center; width: 262px; font-size: 16px;" maxlength="12" class="text ftitle CommonDisableClass ElemDisabled"
+                            groupid="SalesContractsForm" argumentid="CarOwnerNationalIdNumber" />
                     </td>
                 </tr>
                
                
-               
+               <tr>
+                   <td></td>
+                   <td></td>
+      
+                    <td class="ftitle">
+                        <nobr>Car Owner Name::</nobr></td>
+                   <td>
+                        <input type="text"   style="text-align: center; width: 262px; font-size: 16px;" maxlength="199" class="text ftitle CommonDisableClass ElemDisabled"
+                            groupid="SalesContractsForm" argumentid="CarOwnerName" /></td>
+               </tr>
                
 
                 <tr>
@@ -486,7 +503,43 @@
                         <input type="radio" class=" CommonDisableClass  "  value="Yes" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>Yes</label>
                                                <%-- CommonDisableClass ElemDisabled default="default" --%>
                     </td>
-                    <td colspan="2"></td>
+                    
+
+                    
+                        <td class="ftitle">
+
+                        <nobr>Road Service Card No.:</nobr>
+                    </td>
+                    <td>
+                      
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  CommonDisableClass  "
+                            groupid="SalesContractsForm" argumentid="RoadServiceNo" />
+                        
+                    </td>
+                </tr>
+
+                <tr>
+                  
+
+                     <td class="ftitle">
+                        <nobr>Free Service - KM:</nobr>
+                    </td>
+                    <td > KM: 
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
+                            groupid="SalesContractsForm" argumentid="FreeServiceKM" />
+                    </td>
+
+                         <td class="ftitle">
+
+                        <nobr>Service Book No.:</nobr>
+                    </td>
+                    <td>
+                        
+
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  CommonDisableClass  "
+                            groupid="SalesContractsForm" argumentid="ServiceBookNo" />
+                        
+                    </td>
                 </tr>
 
                 <tr>
@@ -501,13 +554,7 @@
                         <nobr>Car Price:</nobr>
                     </td>
                     <td>
-                        <%-- <span class="ftitle" groupid="SalesContractsForm" argumentid="Price" style="text-align: center;" requirederr=' Car Price  Required'></span>--%>
-                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass ElemDisabled AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="Price" disabled="disabled" />--%>
-                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" step="0.01"   class="text AlwaysDisable   ElemDisabled number   bgr  "
-                            groupid="SalesContractsForm PriceC" argumentid="Price" requirederr=' *Required' disabled="disabled"/>--%>
-                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10"  class="text PriceC number bgr "
-                            groupid="SalesContractsForm " argumentid="Price" requirederr=' *Required' />--%>
+                        
 
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text PriceC number CommonDisableClass  "
                             groupid="SalesContractsForm" argumentid="Price" />
@@ -568,7 +615,7 @@
 
                 <tr>
 
-                    <td class="ftitle">
+                    <td>
                         <nobr>Grand Total:</nobr>
                     </td>
                     <td >
@@ -576,7 +623,7 @@
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number AlwaysDisable bgr"
                             groupid="SalesContractsForm" argumentid="TotalAmount" />
                     </td>
-                      <td class="ftitle">
+                      <td>
                         <nobr>Salesman:</nobr>
                     </td>
                     <td>
@@ -726,12 +773,22 @@
 <%--                            <input type="button" style="width: 225px;" value="Close Contract - Pending Payment" class="DataAction ButtonStyle btn_3" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts',Params:{NewStateId:'RRCContractClosedPendingPayment'}, HideOnSuccess:false, Requery:true}" />--%>
                             <input type="button" value="  Reserve  " ignorevalidate="DocType" class="DataAction ButtonStyle C  btnReserve common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true,GroupId:'SalesContractsForm',Requery:false}" />
                             
-                            <input type="button" ignorevalidate="DocType" style="width: 225px;  color: Green" value="Close Contract - Payment Cleared" class="DataAction CloseContract ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractClosed'}, HideOnSuccess:true,GroupId:'SalesContractsForm', Requery:true}" />
-                            <input type="button" ignorevalidate="DocType" style="width: 225px" value="Cancel Contract" class="DataAction CancelContract ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractCancelled'}, HideOnSuccess:true,GroupId:'SalesContractsForm', Requery:true}" />
+                            <input type="button" ignorevalidate="DocType" style="width: 225px;  color: Green" value="Close Contract - Payment Cleared" class="DataAction CloseContract ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractClosed'}, HideOnSuccess:true,GroupId:'SalesContractsForm', Requery:false}" />
+                            <input type="button" ignorevalidate="DocType" style="width: 225px" value="Cancel Contract" class="DataAction CancelContract ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractCancelled'}, HideOnSuccess:true,GroupId:'SalesContractsForm', Requery:false}" />
                             
                         </div>
                        
+                         <div style="padding-top: 10px;">
+                        <input type="button" style="width: 175px;" ignorevalidate="DocType" value="Pending Payment - Car Out" class="DataAction ButtonStyle PendingPaymentCarOut"
+                                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPendingPaymentCarOut'},HideOnSuccess:true,Requery:false,GroupId:'SalesContractsForm'}" />
                     
+
+                        <input type="button" style="width: 175px;" ignorevalidate="DocType" value="Pending Payment - Car In" class="DataAction ButtonStyle PendingPaymentCarIn"
+                                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPendingPaymentCarIn'},HideOnSuccess:true,Requery:false,GroupId:'SalesContractsForm'}" />
+                       
+                        </div>
+
+
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
                             <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:true,GroupId:'SalesContractsForm'}" />
@@ -739,7 +796,7 @@
 <%--                            ,Params:{DBAction:'SCReserved'}--%>
                             <input type="button" value="  Quotation  "style="width: 70px" class="ButtonStyle QuotationBtn common-button" />
 
-                            <input type="button" value="  Contract  " style="width: 70px" class="ButtonStyle PrintBtn common-button" />
+                            <input type="button" value="  Contract  " style="width: 70px" class="ButtonStyle ContractPrintBtn  common-button" />
                             <input type="button" value="  Bill  " style="width: 70px" class="ButtonStyle BillsBtn common-button" />
                             <input type="button"  value="Statement" style="width: 70px" class=" ButtonStyle Statement common-button" />
 <%--                            <input type="button" value="  Bills  " class="ButtonStyle BillsBtn common-button" />--%>
@@ -750,17 +807,17 @@
                  
 
                    <tr>
-                    <td class="ftitle">
+                    <td >
                         <nobr>Contract Created By:</nobr>
                     </td>
-                    <td style="text-align: center">
+                    <td style="text-align: center" >
                         <span class="ftitle"  groupid="SalesContractsForm" argumentid="CreatedBy"></span>
                     </td>
                    
-                       <td class="ftitle">
+                       <td >
                         <nobr>Contract Date & Time:</nobr>
                     </td>
-                    <td style="text-align: center">
+                    <td style="text-align: center" >
 <%--                        <div style="float: left; width: 135px" class="ftitle" groupid="SalesContractsForm" argumentid="DateCreated"></div>--%>
                         <span class="ftitle"  groupid="SalesContractsForm" argumentid="DateCreated"></span>
                         <span class="ftitle"  groupid="SalesContractsForm" argumentid="DateCreatedTime"></span>
@@ -778,9 +835,15 @@
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Payments\',KeysCol:\'RecId\'}}}">
+              
                 
- <GridConfig>
- <script>
+
+                
+ 
+ 
+
+<GridConfig>
+<script>
                         cf = {
                             cols: {
                                 Sequence: { width: '0px' },
@@ -805,14 +868,14 @@
                             }
                         };
                     </script>
- </GridConfig>
- <Scripts>
- <script>
+</GridConfig>
+<Scripts>
+<script>
                         var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
                     </script>
- </Scripts>
- <RowDetail>
- <pre class="" colindex="4">
+</Scripts>
+<RowDetail>
+<pre class="" colindex="4">
                     <AW:container id="conSalesPaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -859,13 +922,14 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
- </RowDetail>
+</RowDetail>
 
- </AW:DataGrid>
+</AW:DataGrid>
 
             <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
-                <WidgetConfig>
-                    <script>
+                
+ <WidgetConfig>
+ <script>
                         cf = {
 
                             header: {
@@ -876,15 +940,15 @@
                             }
                         }
                     </script>
-                </WidgetConfig>
-                <Scripts>
-                    <script>
+ </WidgetConfig>
+ <Scripts>
+ <script>
                         
                         var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
 
                     </script>
-                </Scripts>
-            </AW:Form>
+ </Scripts>
+ </AW:Form>
 
         </td>
     </tr>

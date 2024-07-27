@@ -1372,12 +1372,17 @@
     <Content Include="MasterPages\eForms.Master" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
+    <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\Invoice_PD_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Invoice_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\Modules\CarAndCustomerDetails.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\GarageCarServiceDetails.ascx" />
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
@@ -1465,9 +1470,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\eForms\iRental\frmCustomerRentalContracts.js" />
+    <Content Include="Scripts\eForms\iRental\frmCarServiceDetails.js" />
     <Content Include="Scripts\eForms\iRental\frmInvoicePaymentDetails.js" />
     <Content Include="Scripts\eForms\iRental\frmiRentalPaymentsDetail.js" />
     <Content Include="Scripts\eForms\iRental\frmRentalContracts.js" />
+    <Content Include="Scripts\eForms\iRental\frmCarAndServiceDetails.js" />
     <Content Include="Scripts\eForms\iRental\frmSparePartInventoryInvoice.js" />
     <Content Include="Scripts\eForms\iRental\frmSparePartInventory.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
@@ -1584,6 +1591,17 @@
     </None>
     <Content Include="InvoiceDataSet\InvoicePaymentDS.xss">
       <DependentUpon>InvoicePaymentDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="InvoiceDetailsDataSet\InvoiceDS.xsc">
+      <DependentUpon>InvoiceDS.xsd</DependentUpon>
+    </Content>
+    <None Include="InvoiceDetailsDataSet\InvoiceDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InvoiceDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="InvoiceDetailsDataSet\InvoiceDS.xss">
+      <DependentUpon>InvoiceDS.xsd</DependentUpon>
     </Content>
     <None Include="LeaseContractDataSet\LeaseContractDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -2516,6 +2534,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InvoicePaymentDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceDetailsDataSet\InvoiceDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvoiceDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="JQuery\AutoComplete\AutoComplete.aspx.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2770,6 +2793,20 @@
     <Compile Include="Pages\eForms\Employee\Modules\EmployeeDatabase.ascx.designer.cs">
       <DependentUpon>EmployeeDatabase.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx.cs">
+      <DependentUpon>CarAndCustomerDetails_Car_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx.designer.cs">
+      <DependentUpon>CarAndCustomerDetails_Car_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx.cs">
+      <DependentUpon>CarAndCustomerDetails_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx.designer.cs">
+      <DependentUpon>CarAndCustomerDetails_FrUc.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\CarDetails_FrUc.ascx.cs">
       <DependentUpon>CarDetails_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2797,6 +2834,20 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Invoice_PD_FrUc.ascx.designer.cs">
       <DependentUpon>Invoice_PD_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Invoice_ShUc.ascx.cs">
+      <DependentUpon>Invoice_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Invoice_ShUc.ascx.designer.cs">
+      <DependentUpon>Invoice_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarAndCustomerDetails.ascx.cs">
+      <DependentUpon>CarAndCustomerDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Modules\CarAndCustomerDetails.ascx.designer.cs">
+      <DependentUpon>CarAndCustomerDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Modules\GarageCarServiceDetails.ascx.cs">
       <DependentUpon>GarageCarServiceDetails.ascx</DependentUpon>
@@ -2826,6 +2877,13 @@
     <Compile Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx.designer.cs">
       <DependentUpon>SparePartInventoryInvoice.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.aspx.cs">
+      <DependentUpon>PrintInvoiceDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.aspx.designer.cs">
+      <DependentUpon>PrintInvoiceDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx.cs">
       <DependentUpon>PrintInvoicePaymentReceiptVoucher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2838,6 +2896,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrintInvoicePaymentReceiptVoucher.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.cs">
+      <DependentUpon>PrintInvoiceDetails.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx.cs">
       <DependentUpon>SparePartInventoryInvoice_FrUc.ascx</DependentUpon>
@@ -3933,6 +3997,10 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintLeaseContracts2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintLeaseContracts2.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintInvoiceDetails.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

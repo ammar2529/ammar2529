@@ -20,6 +20,8 @@
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SparePartInventory.ascx" TagPrefix="AW" TagName="SparePartInventory" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/GarageCarServiceDetails.ascx" TagPrefix="AW" TagName="GarageCarServiceDetails" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SparePartInventoryInvoice.ascx" TagPrefix="AW" TagName="SparePartInventoryInvoice" %>
+<%@ Register Src="~/Pages/eForms/iRental/Modules/CarAndCustomerDetails.ascx" TagPrefix="AW" TagName="CarAndCustomerDetails" %>
+
 
 
 
@@ -105,6 +107,8 @@
             <AW:SparePartInventory runat="server" ID="SparePartInventory" />
             <AW:GarageCarServiceDetails runat="server" id="GarageCarServiceDetails" />
             <AW:SparePartInventoryInvoice runat="server" id="SparePartInventoryInvoice" />
+            <AW:CarAndCustomerDetails runat="server" id="CarAndCustomerDetails" />
+
         </div>
     </div>
 

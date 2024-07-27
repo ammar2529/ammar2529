@@ -279,6 +279,7 @@
                         t.on('beforeSearchGetForm', function (p)
                         {
                             p.CarLocationId = f.GetArgVal('OutLocationId');
+                            console.log(p.CarLocationId)
                         });
 
                         t.on('rowsRendered', function () {

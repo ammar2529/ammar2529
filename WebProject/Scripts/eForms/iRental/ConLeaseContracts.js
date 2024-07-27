@@ -252,7 +252,10 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
         $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
 
         var dt = new Date();
-        $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+        if (t.FormMode == "new")
+        {
+            $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+        }
        
 
        // $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');

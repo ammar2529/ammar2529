@@ -3,10 +3,13 @@
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Chassis No.</span>
+<%--            <span style="white-space: nowrap">Chassis No.</span>--%>
+            <span style="white-space: nowrap">Car No.</span>
         </td>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Car No.</span>
+       <span style="white-space: nowrap">Chassis No.</span>
+
+            <%--<span style="white-space: nowrap">Car No.</span>--%>
         </td>
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Brand</span></td>
@@ -20,11 +23,16 @@
     </tr>
     <tr>
         <td style="text-align: left;">
+                        <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schSalesCarDetails" />
+<%--            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schSalesCarDetails" />--%>
 
-            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schSalesCarDetails" /></td>
+        </td>
         <td style="text-align: left;">
 
-            <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schSalesCarDetails" /></td>
+<%--            <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schSalesCarDetails" />--%>
+                        <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schSalesCarDetails" />
+
+        </td>
         <td style="text-align: left;">
 
             <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"

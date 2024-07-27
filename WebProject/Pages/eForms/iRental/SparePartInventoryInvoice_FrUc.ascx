@@ -35,7 +35,31 @@
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
 
+                <tr>
+                     <td class="ftitle">
+                        <nobr>Invoice No.:</nobr>
 
+                    </td>
+                    <td>
+                       
+                      <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
+                         <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
+                           <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />
+<%--                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />--%>
+                 </td>
+
+                      <td class="ftitle" width="20%">
+                        <nobr>Invoice Status:</nobr>
+                    </td>
+                    <td class="ftitle" width="30%">
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="StateName"></span>
+
+                        <div style="display: none">
+                        <span groupid="SparePartInventoryInvoice" argumentid="StateId"></span>
+
+                        </div>
+                        </td>
+                </tr>
 
                       <tr>
                     <td class="ftitle">
@@ -48,19 +72,15 @@
 
                     </td>
 
-                     <td class="ftitle">
-                        <nobr>Code:</nobr>
-
+                   
+                    <td class="ftitle">
+                        <nobr>Date:</nobr>
                     </td>
                     <td>
-                       
-                      <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
+                        <input type="text" groupid="SparePartInventoryInvoice" maxlength="10"
+                            style="width: 75px;" class="text  date DisableOnClose CommonDisableClass  " argumentid="InvoiceDate" />
 
-                         <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
-                           <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />
-<%--                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />--%>
 
-                        
 
                     </td>
 
@@ -76,11 +96,11 @@
 
                    
                     <td class="ftitle">
-                        <nobr>Invoice No.:</nobr>
+                        <nobr>Delivery No.:</nobr>
                     </td>
                     <td>
-                       
-                         <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvoiceNo"></span>
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
+                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" />
 
                     </td>
                 </tr>
@@ -99,11 +119,10 @@
                 
 
                     <td class="ftitle">
-                        <nobr>Date:</nobr>
+                      
                     </td>
                     <td>
-                        <input type="text" groupid="SparePartInventoryInvoice" maxlength="10"
-                            style="width: 75px;" class="text  date DisableOnClose CommonDisableClass  " argumentid="InvoiceDate" />
+                    
 
 
 
@@ -123,11 +142,10 @@
 
                  
                     <td class="ftitle">
-                        <nobr>Delivery No.:</nobr>
+                        
                     </td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
-                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" />
+                        
 
                     </td>
 
@@ -158,9 +176,9 @@
                         <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
                             <tr>
                                 <td>
-                                    <label for="column1">ID</label></td>
+                                    <label for="column1">Item ID</label></td>
                                 <td>
-                                    <label for="column2">Code</label></td>
+                                    <label for="column2">Item Code</label></td>
                                 <td>
                                     <label for="column3">Description</label></td>
                                 <td>
@@ -399,8 +417,8 @@
                      <td class="ftitle">
                         <nobr>SubTotal:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="SubTotal" />
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text SubTotal ElemDisabled"
+                            groupid="SparePartInventoryInvoice" argumentid="SubTotal" disabled="disabled"/>
 
                     </td>
                     <td colspan="2" class="ftitle" >
@@ -439,8 +457,8 @@
                       <td class="ftitle">
                         <nobr>Grand Total:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="GrandTotal" /></td>
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text GrandTotal ElemDisabled"
+                            groupid="SparePartInventoryInvoice" argumentid="GrandTotal"  disabled="disabled"/></td>
                 </tr>
 
                      <tr>

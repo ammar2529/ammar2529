@@ -130,6 +130,10 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
 
         if (li.attr('tabid') == 'PaymentDetails') {
             AsyncWidgets.get('grdPaymentDetails').show().Requery();
+            if ($('[widgetid="frmPaymentDetails"]', t.el).length > 0)
+            {
+                $('[widgetid="frmPaymentDetails"]', t.el).hide();
+            }
         }
 
         if (li.attr('tabid') == 'ContractComments') {

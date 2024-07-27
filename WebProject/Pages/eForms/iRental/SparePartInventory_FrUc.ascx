@@ -64,8 +64,12 @@
         </td>
         <td>
 
-            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
-                groupid="SparePartInventoryForm" argumentid="SparePartSerialNo" />
+           <%-- <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
+                groupid="SparePartInventoryForm" argumentid="SparePartSerialNo" />--%>
+
+            <input type="text" style="text-align:center;width:150px; font-weight:bold;color:red"  maxlength="10" class="text required validateunique" primarykey="RecId"
+            
+                storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"  uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
 
         </td>
     </tr>

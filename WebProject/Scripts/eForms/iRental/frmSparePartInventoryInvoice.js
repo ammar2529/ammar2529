@@ -50,7 +50,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     t.on('rowsRendered', function ()
     {
-        debugger;
+        ;
         $('.PrintReport', t.el).click(function ()
         { //
             var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintInvoicePaymentReceiptVoucher.aspx?FormId=" + $(this).text() + "&ContractType=INVOICE_PAYMENT"; // +'&amp;FormId=' + pm.SelectedKey;
@@ -160,6 +160,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                                 var recId = row.RecId;
                                 var InvRecCode = row.InvRecCode;
                                 var InvoiceNo = row.InvoiceNo;
+                                var StateName = row.StateName;
 
 
 
@@ -170,7 +171,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                            
                                 $('[argumentid="InvRecCode"]', t.el).text(InvRecCode);
                                 $('[argumentid="InvoiceNo"]', t.el).text(InvoiceNo);
-
+                                $('[argumentid="StateName"]', t.el).text(StateName);
 
 
 
@@ -255,6 +256,26 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServer = function 
     {
 
 
+        var isValid = true;
+
+        // Client-side validation
+        $('.trNoDynamic').find('[argumentid]').each(function ()
+        {
+            
+            var $element = $(this);
+            var argumentid = $element.attr('argumentid');
+            var value = $element.val().trim();
+
+            if (value != '')
+            {
+                isValid = true;
+                $element.css('border', '');
+                //console.log('Argument ID:', argumentid, 'is empty');
+                //$element.css('border', '1px solid red');
+            }
+        
+        });
+
         var itemIdInput = $(this).val();
         if (!itemIdInput)
         {
@@ -332,9 +353,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode 
         }
 
 
-
+        
         var params = { Command: 'SEL_iRental_SparePartInventory', SparePartSerialNo: `${itemIdInput}` };
-
+        2
         function Success(res)
         {
             var res = decJSON(res);
@@ -346,7 +367,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode 
                     var rows = res.Response.Rows;
                     for (var i = 0; i < rows.length; i++)
                     {
-
+                        
                         var row = rows[ i ];
                         var recId = row.RecId;
                         var ItemCode = row.SparePartSerialNo;
@@ -373,7 +394,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode 
                     $('[argumentid="SparePartQuantity"]', parentRow, t.el).val('');
                     $('[argumentid="SparePartUnitPrice"]', parentRow, t.el).val('');
                     $('[argumentid="TotalPrice"]', parentRow, t.el).val('');
-
+                    2
                 }
 
 
@@ -422,8 +443,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfQuantityAnd
 
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice = function (t)
 {
+    debugger;
 
-    //var discount = parseFloat($('[argumentid="Discount"]', t.el).val());
+    var discount = parseFloat($('.Discount', t.el).val());
     //var Paid = parseFloat($('[argumentid="Paid"]', t.el).val());
     //var Balance = parseFloat($('[argumentid="Balance"]', t.el).val());
 
@@ -444,11 +466,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice 
     $('[argumentid="GrandTotal"]',t.el).val(totalPriceSum.toFixed(3))
     $('[argumentid="Balance"]',t.el).text(totalPriceSum.toFixed(3))
     var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val());
-
+    var resDiscount = GrandTotal - discount
+    $('[argumentid="GrandTotal"]', t.el).val(resDiscount.toFixed(3))
     if (!!$('[argumentid="Paid"]', t.el).text())
     {
         var Bal = parseFloat($('[argumentid="Paid"]', t.el).text());
-        var resBal = GrandTotal - Bal;
+        var resBal = resDiscount - Bal;
         $('[argumentid="Balance"]', t.el).text(resBal.toFixed(3));
 
     } else
@@ -758,7 +781,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
 
 
-                    }, 3000); // Delay execution by 4 seconds
+                    }, 2000); // Delay execution by 2 seconds
 
 
                 }
@@ -773,6 +796,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
     t.on('onLoadedValues', function (args)
     {
+        
         
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
@@ -794,7 +818,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             if (res.status === 'OK')
             {
                 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems(res, t);
-                //AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t);
+                AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t);
              
             }
         }, "GetData");
@@ -1074,7 +1098,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
         });
 
 
-    }, 4000);
+    }, 2000);
 
 
 

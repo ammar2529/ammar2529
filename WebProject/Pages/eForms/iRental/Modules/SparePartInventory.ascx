@@ -66,17 +66,17 @@
 
                     var fn = function ()
                     {
-                        //t.on('rowsRendered', function () 
-                        //{
-                        //    $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
-                        //    {
+                        t.on('rowsRendered', function () 
+                        {
+                            $('[colid="SparePartUnitPrice"]:not(".w-grid-head-cell")').each(function ()
+                            {
                               
-                        //        var ptr = $(this).closest('tr');
-                        //        $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
+                                var ptr = $(this).closest('tr');
+                                $('[colid="SparePartUnitPrice"] div', ptr).text(parseFloat($('[colid="SparePartUnitPrice"] div', ptr).text()).fix(3));
 
-                        //    });
+                            });
 
-                        //});
+                        });
 
                        
                     }

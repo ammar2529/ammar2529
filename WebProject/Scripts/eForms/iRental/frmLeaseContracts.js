@@ -1,5 +1,4 @@
-﻿/// <reference path="/JQuery/Common.js" />
-/// <reference path="../../../jquery/common.js" />
+﻿/// <reference path="../../../jquery/common.js" />
 
 
 AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
@@ -142,8 +141,12 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
 
         if (li.attr('tabid') == 'PaymentDetails')
         {
-          
+            
             AsyncWidgets.get('grdLeasePaymentDetails').show().Requery();
+            if ($('[widgetid="frmLeasePaymentDetails"]', t.el).length > 0)
+            {
+                $('[widgetid="frmLeasePaymentDetails"]', t.el).hide();
+            }
         }
 
         if (li.attr('tabid') == 'ContractComments') {

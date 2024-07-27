@@ -116,7 +116,7 @@
                                                     }
                                                     var inv = new AsyncWidgets.RAInvoker();
                                                     inv.on('onSuccess', function (res) {
-
+                                                        debugger;;
                                                         var res = decJSON(res);
                                                         if (res.status == 'OK') {
                                                             t.hide();

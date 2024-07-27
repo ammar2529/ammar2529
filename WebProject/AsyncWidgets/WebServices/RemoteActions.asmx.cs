@@ -49,6 +49,11 @@ namespace WebProject.AsyncWidgets.WebServices
             string Response = @"{{status:""{0}"" {1}}}", ret;
             try
             {
+                var session =  System.Web.HttpContext.Current.Session;
+                if (session["UserId"]==null && ActorId!= "Authentication")
+                {
+                    return string.Format(Response, "UserNotLoggedIn", ",Response:{Message:'User Not Logged in'}");
+                }
                 object obj = ActorFacade.ExecuteAction(ActorId, ActionId, ServiceInfo);
                 if (obj.GetType().Name != "String")
                 {

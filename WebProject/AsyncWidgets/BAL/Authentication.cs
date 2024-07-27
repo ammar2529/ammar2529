@@ -9,6 +9,8 @@ using System.Web.Security;
 using System.Xml;
 
 using Newtonsoft.Json;
+using System.Diagnostics;
+
 namespace WebProject.AsyncWidgets.BAL
 {
 
@@ -20,12 +22,14 @@ namespace WebProject.AsyncWidgets.BAL
     {
         public string LogoutUser(string ServiceInfo)
         {
+            Trace.WriteLine($"Session abandoning at {DateTime.Now}, sessionid: {Session.SessionID}" );
             Session.Abandon();
             return "true";
         }
         public string IsUserLogged(string ServiceInfo)
         {
             System.Web.HttpContext ctx = System.Web.HttpContext.Current;
+
             if (ctx.Session != null)
             {
                 if (ctx.Session["UserId"] != null)
@@ -124,7 +128,9 @@ namespace WebProject.AsyncWidgets.BAL
                 ctx.Session["Name"] = dsUser.Tables[0].Rows[0]["Name"].ToString();
                 Session["Roles"] = dsUser.Tables[0].Rows[0]["Roles"].ToString();
                 Session["UserConf"] = string.Format("{{OrgId:{0},UnitId:{1},ShowEmpInfo:{2},Roles:'{3}' }}", dsUser.Tables[0].Rows[0]["OrgId"].ToString(), dsUser.Tables[0].Rows[0]["UnitId"].ToString(), dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString(), dsUser.Tables[0].Rows[0]["Roles"].ToString());
+                Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID},userid: {Session["userid"]}");
                 return string.Format("{{Authenticated:{0},Name:'{1}',Roles:'{2}',Conf:{{OrgId:{3},UnitId:{4},ShowEmpInfo:{5},Roles:'{2}' }} }}", "true", dsUser.Tables[0].Rows[0]["Name"].ToString(), dsUser.Tables[0].Rows[0]["Roles"].ToString(), dsUser.Tables[0].Rows[0]["OrgId"].ToString(), dsUser.Tables[0].Rows[0]["UnitId"].ToString(), dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString());
+                            Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID}");
             }
             
             else

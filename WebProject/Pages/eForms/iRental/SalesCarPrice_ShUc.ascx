@@ -6,7 +6,9 @@
             <span>Car For</span>
         </td>--%>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Brand</span></td>
+            <span style="white-space: nowrap">Brand</span>
+
+        </td>
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Model</span></td>
         <td style="text-align: left;" class="ftitle">

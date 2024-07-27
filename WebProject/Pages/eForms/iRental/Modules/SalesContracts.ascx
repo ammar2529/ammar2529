@@ -7,6 +7,7 @@
 
 <script src="/Scripts/eForms/iRental/SalesContracts.js" type="text/javascript"></script>
 
+
 <AW:Container ID="conSalesContracts" Hidden="true" Caption="Sales Contracts" runat="server">
     <Childern>
         <AW:Form ID="frmSalesContracts_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SalesContracts" AsyncForm="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx">
@@ -36,7 +37,7 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}{SalesBrandId}&nbsp;-&nbsp;{Model}{SalesModelId}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}{SalesBrandId}&nbsp;-&nbsp;{Model}{SalesModelId}&nbsp;-&nbsp;{Color}{SalesColorId}</div>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -55,6 +56,10 @@
                                 </pre>
                 <pre columnid="CreationDetails"> 
                                      <div class="ftitle" style="color:#808000; display:none">{ChassisNo}</div>
+                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>
+                                     <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
+                                        <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
+                    
                                      <div class="ftitle" style="color:#101080">{Salesman}</div>
                                       
 
@@ -85,6 +90,10 @@
                             NewFormId: 'frmSalesContracts',
                             EditFormId: 'frmSalesContracts',
                             Keys: 'RecId'
+                        }
+                        ,
+                        DataActionParams: {
+                            DBAction: 'SearchCarArriveNotArrive'
                         }
                     };
                 </script>

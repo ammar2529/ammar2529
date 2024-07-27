@@ -5,6 +5,8 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 
+<script src="../../../../Scripts/eForms/iRental/frmCarServiceDetails.js"></script>
+
 <AW:Container ID="conCarServiceDetails" Hidden="true" Caption="Car Service Details" runat="server">
     <Childern>
         <AW:Form ID="frmCarServiceDetails_ShUc" runat="server" Hidden="true" LoadOnInit="false"
@@ -22,46 +24,7 @@
                 </script>
             </WidgetConfig>
         </AW:Form>
-<%--        <AW:DataGrid ID="grdCarServiceDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarServiceDetails_ShUc"
-            EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_iRental_CarServiceDetails"
-            ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Cars For Sale"
-            GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarServiceDetails\',KeysCol:\'RecId\'}}}">
-            <GridConfig>
-                <script>
-                    cf = {
-                        cols: {
-                            Sequence: { width: '0px' },
-                            RecId: { width: '0px' },
-                            InvoiceNo: { width: '0px' },
-                            LastServiceKM: { width: '0px' },
-                            Problem: { width: '0px' },
-                            ActionTaken: { width: '0px' },
-                            CarToBeDeliverdDate: { width: '0px' },
-                            ServiceNo: { caption: 'Service No.', width: '100px' },
-                            ChassisNo: { caption: 'ChassisNo.', width: '135px' },
 
-                            EngineNo: { caption: 'Engine No.', width: '100px' },
-                            CarRecivedDate: { caption: 'CarRecivedDate', width: '130px' },
-                            LastServiceDate: { caption: 'LastServiceDate', width: '130px' },
-                            CarDeliverdDate: { caption: 'CarDeliverdDate', width: '130px' },
-                            CarCondition: { caption: 'Car Condition', width: '130px' },
-                            //ColorId: { caption: 'Color', width: '90px' },
-                            ////CurrentMileage: { caption: 'Mileage', width: '75px' },
-                            ///*CarType: { caption: 'CarType', width: '55px' },*/
-                            //Price: { caption: 'Car Price.', width: '80px' },
-                            //CarLocationId: { caption: 'Car Location', width: '100px' },
-                            //CarStatusId: { caption: 'Car Status', width: '87px' }
-                           
-                        },
-                        forms: {
-                            NewFormId: 'frmCarServiceDetails',
-                            EditFormId: 'frmCarServiceDetails',
-                            Keys: 'RecId'
-                        }
-                   
-                    };
-                </script>
-            </GridConfig>--%>
           <AW:DataGrid ID="grdCarServiceDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarServiceDetails_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true"
             PageSize="10" DataSource="SEL_iRental_CarServiceDetails" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
@@ -70,7 +33,7 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{BrandId}&nbsp;-&nbsp;{ModelId}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{BrandId}&nbsp;-&nbsp;{ModelId}&nbsp;-&nbsp;{ColorId}</div>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -82,13 +45,15 @@
                                 </center>
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
-                                     <div class="ftitle">{CarDeliverdDate}</div>
+                                    <div class="ftitle">Receive: {CarRecivedDate}</div>
+                                     <div class="ftitle">Delivery: {CarDeliverdDate}</div>
+                                     
                                     <%-- <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>--%>
                                    
                                 </pre>
                 <pre columnid="CreationDetails">
-                                     <div class="ftitle" style="color:#808000; ">{ChassisNo}</div>
+<%--                                     <div class="ftitle" style="color:#808000; ">{ChassisNo}</div>--%>
                                      <div class="ftitle" style="color:#101080">{CreatedBy}</div>
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                   <%-- <div class="ftitle" style="color:#808000">{FinanceCompany}</div>--%>
@@ -109,7 +74,7 @@
                             Sequence: { width: '0px' },
                             ContractDetails: { caption: 'Car Details', width: '270px' },
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            ContractDateTimeDetails: { caption: 'Delivery Date', width: '165px' },
+                            ContractDateTimeDetails: { caption: "Date's", width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
                             RecId: { width: '0px' }
                         },
@@ -191,7 +156,8 @@
 
 </AW:Container>
 
-<AW:Form ID="frmCarServiceDetails" Hidden="true" DataSource="SEL_iRental_SalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/GarageCarServiceDetails_FrUc.ascx">
+
+<AW:Form ID="frmCarServiceDetails" Hidden="true" DataSource="SEL_iRental_CarServiceDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/GarageCarServiceDetails_FrUc.ascx">
     <WidgetConfig>
         <script>
             cf = {
@@ -205,6 +171,7 @@
             }
         </script>
     </WidgetConfig>
+  
 </AW:Form>
 
 
@@ -235,13 +202,18 @@
                         Sequence: { width: '0px' },
                         RecId: { width: '0px' },
                         RecCode: { width: '0px' },
-                        ChassisNo: { width: '150px' },
                         CarNumber: { caption: 'Car No.', width: '80px' },
+                        ChassisNo: { width: '150px' },
+                       
                         BrandId: { caption: 'Brand', width: '60px' },
                         ModelId: { caption: 'Model', width: '90px' },
                         TypeId: { caption: 'Type', width: '60px' },
-                        CarLocationId: { caption: 'Car Location', width: '100px' },
+                        CarLocationId: { caption: 'Car Location', width: '0px' },
                         CarStatusId: { caption: 'Car Status', width: '100px' },
+
+                        FullInsuranceCompanyId: { width: '0px' },
+                        FullInsuranceExpiry: { width: '0px' },
+                        FullInsurancePolicyNo: { width: '0px' },
 
                         CarYear: { caption: 'Year', width: '60px' },
                         ColorId: { caption: 'Color', width: '80px' },
@@ -285,8 +257,40 @@
                     {
                         $('table[itemno]', t.el).click(function ()
                         {
+                            var FullInsuranceCompanyId = $('[colid="FullInsuranceCompanyId"]  .ColValue', this).text();
+                            var FullInsuranceExpiry = $('[colid="FullInsuranceExpiry"]  .ColValue', this).text();
+                            var FullInsurancePolicyNo = $('[colid="FullInsurancePolicyNo"]  .ColValue', this).text();
+                            if (!!FullInsuranceCompanyId)
+                            {
+                                $('[argumentid="FullInsuranceCompanyId"]', f).text(FullInsuranceCompanyId);
+                            }
+                            else
+                            {
 
-                           
+                                $('[argumentid="FullInsuranceCompanyId"]', f).text('');
+                              
+                            }
+
+
+                            if (!!FullInsuranceExpiry)
+                            {
+                                $('[argumentid="FullInsuranceExpiry"]', f).text(FullInsuranceExpiry);
+                            }
+                            else
+                            {
+
+                                $('[argumentid="FullInsuranceExpiry"]', f).text('');
+                            }
+
+                            if (!!FullInsurancePolicyNo)
+                            {
+                                $('[argumentid="FullInsurancePolicyNo"]', f).text(FullInsurancePolicyNo);
+                            }
+                            else
+                            {
+
+                                $('[argumentid="FullInsurancePolicyNo"]', f).text('');
+                            }
                         });
 
                     });

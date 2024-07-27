@@ -76,7 +76,7 @@
             <nobr>Model*:</nobr>
         </td>
         <td>
-              <select class="dropdownlist required" style="width: 155px;" valtype="value"
+              <select class="dropdownlist required" style="width: 155px;" 
                   groupid="SalesCarsForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
                  <option value="" selected="selected">Select Model</option>
               </select>
@@ -133,11 +133,11 @@
                                 
                             </td>
                             <td>
-                                <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="157">
+                                <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="157"/>
 
                                     <nobr class="ftitle">Expiry Date (dd/mm/yyyy)</nobr> 
 
-                                    <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="0">
+                                    <img height="10" src="App_Themes/eForms_Theme/Images/spacer.gif" width="0"/>
 
                                     <nobr class="ftitle">Policy No.</nobr> 
                                   

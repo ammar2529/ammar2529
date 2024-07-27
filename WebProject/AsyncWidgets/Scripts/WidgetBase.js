@@ -60,7 +60,7 @@ Ext.apply(Ext.util.Format, {
 
         }
         catch (ex) {
-            debugger;
+            ;
         }
     }
 });
@@ -108,6 +108,11 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
     success: function (res) {
         res = res.d || res;
         var t = this;
+        if (res.indexOf("UserNotLoggedIn") >-1)
+        {
+            window.location.reload();
+            return;
+        }
         t.fireEvent('onSuccess', res);
 
         t.fireEvent('afterSuccess', res);
@@ -158,7 +163,7 @@ AsyncWidgets.user = function () {
         },
        
         fireEvent: function (e) {
-            debugger;
+            ;
             Observer.fireEvent(e);
         },
         login: function () {
@@ -548,7 +553,7 @@ $(document).ready(function () {
                     AsyncWidgets.Widgets.addWidget(conf.WidgetId, Widget);  //adding widget to the collection
                 }
                 catch (e) {
-                    debugger;
+                    ;
                 }
             }
             else {//if widget DataType not provide in the config of widget
@@ -557,7 +562,7 @@ $(document).ready(function () {
             }
         }
         catch (e) {
-            debugger;
+            ;
         }
 
     });
@@ -615,7 +620,7 @@ AsyncWidgets.WidgetManager = function () {
                     return conf.retType;
                 }
                 //                catch (e) {
-                //                    debugger;
+                //                    ;
                 //                }
             });
 
@@ -670,7 +675,7 @@ AsyncWidgets.Widgets = function () {
         },
         
         getWidget: function (widgetId) {
-          //  debugger;
+          //  ;
             if (typeof _widgets[widgetId] == 'undefined') {
 
                 console.log("Widget '" + widgetId + "' not found!");
@@ -686,7 +691,7 @@ AsyncWidgets.Widgets = function () {
         },
         count: function () { return _count },
         initWidgets: function () {
-            //debugger;
+            //;
             for (var widgetId in _widgets) {
                 if (_widgets[widgetId].widget.State.AutoInit) {
                     _widgets[widgetId].widget.init();
@@ -847,7 +852,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
 
     },
     css: function (stl, vl, sel, el) {
-        //debugger;
+        //;
         var t = this;
         el = el || t.css.el || t.el || $('body');
         sel = sel || t.css.sel;
@@ -936,7 +941,7 @@ AsyncWidgets.Widgets.Container = Ext.extend(Ext.util.Observable, {
         return t;
     },
     css: function (stl, vl, sel, el) {
-        //debugger;
+        //;
         var t = this;
         el = el || t.css.el || t.el || $('body');
         sel = sel || t.css.sel;
@@ -1022,7 +1027,7 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
         if (t.State.AutoBuild) {
             t.build();
             AsyncWidgets.Widgets.on('initialized', function () {
-                //debugger;
+                //;
                 if (!!t.State.Tabs) {
                     t.initTabs();
                 }
@@ -1233,7 +1238,7 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
             t.showTab(tabid);
         });
         $('li .w-tab-close', t.tabsList).unbind('click').bind('click', function (event) {
-            //debugger;
+            //;
             var id = $(this).attr('tabid'), tab = t.tabs[id];
             if (tab.btn.prev().length == 0) {
                 if (tab.btn.next().length == 0) return;
@@ -1295,7 +1300,7 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
         }
     },
     css: function (stl, vl, sel, el) {
-        //debugger;
+        //;
         var t = this;
         el = el || t.css.el || t.el || $('body');
         sel = sel || t.css.sel;
@@ -1536,7 +1541,7 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
 
         fields.each(function () { // iterate throug each field of the container group(if specified else iterate through all fields in all groups in the container)
 
-            //debugger;
+            //;
             jqThis = $(this); //get current field
             if (!getAllFlds && Fields.indexOf(jqThis.attr("argumentid")) < 0) return;
 
@@ -1590,7 +1595,7 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
     var ServiceInfo = "<root>";
     for (var groupId in groups) {
         var doc = groups[groupId][0].document;
-        //debugger
+        //
         if (!!DALInfo) {
 
             var di = DALInfo,
@@ -1627,11 +1632,11 @@ function addAttr(obj, conf) {
 var setListValue = function (ctl,val) // can be DOM or jquery
 {
     
-    ////////////////////////////////////////////
-    //if (typeof ctl == "string")
-    //{
-    //    ctl = $(ctl);
-    //}
+    //////////////////////////////////////////
+    if (typeof ctl == "string")
+    {
+        ctl = $(ctl);
+    }
     if (!ctl.tagName) // if not a DOM object then convert it to DOM object
     {
         /////////////////////////////////////////////////////////
@@ -1713,7 +1718,7 @@ var setField = function (ctl, param, ctx)
         }
 
 //        if ($(ctl).attr('argumentid') == "Branch")
-//            debugger;
+//            ;
         if (!!$(ctl).attr('ccloading')) {
             arguments.callee.defer(1000, this, Array.prototype.slice.call(arguments));
             if (!ctl.masked) {
@@ -2000,9 +2005,11 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
 		//textbox which will show popup on focus
         $('.LOVPopup', t.el).focus(function ()
+        
         {//form widget inside bindEvents()
             //this is textbox control
-            //debugger;
+            //;
+         
             var cf = { ctrl: this };
             t.showPopup(cf);
 
@@ -2183,7 +2190,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     
     LoadCombo: function (t, cbo, ParentKey, cf) {
-      //  debugger;
+      //  ;
         var ch = cbo.filter('select'), sInfo = ch.attr('storeinfo');
         if (!sInfo) {
             console.log('Store info not found for: ' + ch.attr('argumentid'));
@@ -2511,7 +2518,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var t = this;
         if (!!t.rowDetail) {
             $('[forms~=' + t.State.WidgetId + ']', t.rowDetail.parent.el).each(function () {
-                //debugger;widgetid
+                //;widgetid
                 //
                 //AsyncWidgets.get(this.getAttribute('widgetid')).search({ wg: t, reset: true });
                 var w = t.rowDetail.getControls(t)[this.getAttribute('widgetid')];
@@ -2524,7 +2531,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         //find widgets who are attaced to this form and invoke search.
         $('[forms~=' + t.State.WidgetId + ']').each(function () {
-            //debugger;
+            //;
             var id = this.getAttribute('widgetid');
             if (!!id) {
                 var sWG = AsyncWidgets.get(id);
@@ -2555,7 +2562,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         if (!!cf.params)
         {
-           // debugger;
+           // ;
             for (var param in cf.params)
             {
 
@@ -2574,7 +2581,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
                 if (!fld)
                 {
-                    // debugger;
+                    // ;
                     if (dbg())
                     {
                         alert("Field '" + param + "' not found in the form! ");
@@ -2636,6 +2643,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var t = this;
         var cf = decJSON($(btn).attr('conf'));
         btn.cf = cf; 
+        
         if (!!cf.GroupId) {
             t.validator = new AsyncWidgets.Validater(t.el, '[groupid="' + cf.GroupId + '"]', { widget: t });
         }
@@ -2902,7 +2910,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     ActionClicked: function (t, btn, cf) { //Datagrid widget
         //try {
-            //debugger;
+            //;
             cf.cancel = false;
             t.fireEvent('onActionClicked', cf);
 
@@ -2949,7 +2957,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             Ext.applyIf(cf, { ActorId: 'DataHelper', ActionId: 'DeleteRows', ButtonId: $(btn).attr('buttonid') });
             var itemTbl, delKeys = cf.DeleteKeys, rowsToDelete = "";
             $('td.Item table .chkRowSelect', t.Repeater).each(function () {
-                //  debugger;
+                //  ;
                 if (this.checked) {
                     itemTbl = $(this).closest('tr');
                     rowsToDelete += $('[colid="' + delKeys + '"] .ColValue', itemTbl).text() + ",";
@@ -3057,7 +3065,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 gf.forms = {};
 
                 gf.templates.each(function () {
-                    //    debugger;
+                    //    ;
                     var conf = decJSON($(this).attr('conf')) || {};
                     frm = gf.forms[conf.WidgetId] = new AsyncWidgets.Widgets[conf.WidgetType](this, conf);
                     frm.isGridFrom = true;
@@ -3343,7 +3351,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 //**************************************************************************//
                 var setPager = function (conf) {
-                    //debugger;
+                    //;
                     var pager = $(conf.pager);
 
 
@@ -3653,7 +3661,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 delete t.EditForms;
                 t.EditForms = [];
                 $('.RowEditForm.ColValue', t.Repeater).unbind().click(function () {
-                    //debugger;
+                    //;
                     var itemTbl = $(this).closest('table'), itemno = itemTbl.attr('itemno'), parent;
                     if (t.SingleEditForm) {
                         //.not($('div[conf] *', t.el))
@@ -3741,7 +3749,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     }
                     else {
-                        //debugger;
+                        //;
                         if ($(this).hasClass('ChildGridExpanded')) { // already visible
                             $(this).removeClass('ChildGridExpanded');
                             $('.ChildGridRow', $(this).closest('tr').parent()).hide();
@@ -3858,7 +3866,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 .css({ 'white-space': 'nowrap', 'overflow': 'hidden', 'margin-left': LMmargin + 'px' }).width((w - (LMmargin + 10)))
                .mouseenter(
                 function () {
-                    //debugger; left: -1000,
+                    //; left: -1000,
                     var e = this, $e = $(this), sl = $('.smartLable'), lf, wd;
 
                     //  if ($e.width() + LMmargin < e.scrollWidth) {
@@ -4040,7 +4048,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         //  Ext.apply(params, t.WCF.DataActionParams);
         //  t.fireEvent('beforeDataAction', params);
-        //debugger;
+        //;
         $(t.el).mask('Please wait while loading ...');
         //ServiceInfo = getForm(t.el, cf.GroupId || null, params, null, null, { filter: cf.filter });
         ServiceInfo = getForm(null, null, params);
@@ -4297,7 +4305,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
     bindEvents: function () { //grid control
         var t = this, el = t.el;
         $('.ActionButton', el).not($('div[conf] *', el)).unbind('click').click(function () {
-            //debugger;
+            //;
             var cf;
             cf = !!$(this).attr('conf') ? decJSON($(this).attr('conf')) : {};
             t.ActionClicked(t, this, cf);
@@ -4722,7 +4730,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
         return pcf.isValid;
     }
     this.init = function () {
-        //debugger;
+        //;
         var me = this;
         $('.date' + groupid, ctx).numeric({ allow: '/' });
         $('.number' + groupid + ' , .alphanum' + groupid + ' , .alpha' + groupid, ctx).each(function () {
@@ -4931,7 +4939,7 @@ AsyncWidgets.Widgets.ItemRepeater = Ext.extend(AsyncWidgets.widgetContainer, {
         t.search(t.LastSF);
     },
     setPageSize: function (PageSize) {
-        //debugger;
+        //;
         var t = this;
         t.State.PageSize = PageSize / t.State.Columns;
         t.setPage(1);
@@ -5047,7 +5055,7 @@ AsyncWidgets.Widgets.ItemRepeater = Ext.extend(AsyncWidgets.widgetContainer, {
                                 col = TPgLnk.clone().css('display', '').addClass('nottpl');
                                 $('#PageNumber', col).html(i);
                                 col.click(function () {
-                                    //debugger;
+                                    //;
                                     t.setPage($('span', this).text() * 1);
                                 });
                             }
@@ -5111,7 +5119,7 @@ AsyncWidgets.Widgets.ItemRepeater = Ext.extend(AsyncWidgets.widgetContainer, {
         });
         inv.on('onFailure', function (res) {
             t.$el.unmask();
-            //debugger;
+            //;
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "Search", "ServiceInfo",
         ServiceInfo]
@@ -5192,7 +5200,7 @@ function setAccordion() {
     */
     $('ul.accordionmenu li a').live('click',
 		function () {
-		    //debugger;
+		    //;
 		    var checkElement = $(this).next();
 		    var parent = this.parentNode.parentNode;
 
@@ -5298,7 +5306,7 @@ function setAccordion() {
 })(jQuery);
 
 $('.mousewheel').live('mousewheel', function (e, delta) {
-    //debugger;
+    //;
     var scrollTop = $(this).scrollTop();
     $(this).scrollTop(scrollTop - (Math.round(delta) * 30));
 });

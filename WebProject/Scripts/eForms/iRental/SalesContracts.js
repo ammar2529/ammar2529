@@ -44,10 +44,23 @@ Sales.SalesContracts.grdSalesContracts = function (t) {
             else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1) {
                 $(this).css('color', 'Red');
             }
+            else if ($(this).text().indexOf('Pending Payment - Car Out') > -1)
+            {
+                $(this).css('color', 'Red');
+            }
+            else if ($(this).text().indexOf('Pending Payment - Car In') > -1)
+            {
+                $(this).css('color', 'Red');
+            }
         });
         var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);
         $('.ColValue', cols).css('cursor', 'pointer').click(ColClick);
+
+        //var $('[argumentid="CarReservationMode"]',t.el)
+
     });
+
+
 };
 
 /**
@@ -119,10 +132,15 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
 
             var dt = new Date();
-            $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+            if (t.FormMode == "new")
+            {
+                $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+            }
 
-            $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
-            $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+            //$('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
+            //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+
+            setListValue($('.PaymentMode',t.el), 'Cash')
         });
 
             //On Change of Payment Mode  $('option:selected', elem)
@@ -130,7 +148,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
             
             var cbo = $('[argumentid="PaymentMode"] option:selected', t.el).text();
-            debugger;
+            ;
             var extractedCbo = cbo.replace('Select Payment Mode', '').trim(); // Remove 'Select Payment Mode' and trim any extra spaces
             if ($.trim(extractedCbo) == 'Cheque') {
                 $('.ChequeNo', t.el).show();
@@ -173,7 +191,36 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
         });
 
        
+        t.on('onLoadedValues', function (args)
+        {
+             const rows = args.res.Response.Rows
+            debugger
 
+            for (var i = 0; i < rows.length; i++)
+            {
+                var row = rows[ i ];
+
+                var paymentMode = row.PaymentMode;
+
+              
+                
+            }
+         
+            $('.PaymentMode', t.el).val(paymentMode)
+            if (t.FormMode == 'update')
+            {
+                setTimeout(function ()
+                {
+                    setListValue($('.PaymentMode', t.el), paymentMode)
+                }, 2000)
+             
+            }
+
+
+
+
+
+        });
 
        // }
     }
@@ -193,7 +240,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
             P.ParentRecId = frm.GetArgVal('RecId');
         });
         t.on('beforeRowDelete', function (P) {
-                                /*debugger*/;
+                                /**/;
 
             var fRow = $('td.Item table .chkRowSelect:first', t.Repeater).closest('tr'), pVal;
             pVal = $('[colid="ParentRecId"] .ColValue', fRow).text();

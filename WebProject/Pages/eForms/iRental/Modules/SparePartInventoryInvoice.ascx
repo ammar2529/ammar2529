@@ -14,7 +14,7 @@
 <uc5:Container ID="conInvoice" Hidden="true" Caption="Spare Part Inventory" runat="server">
       <Childern>
         <uc8:Form ID="frmSparePartInventoryInvoice_ShUc" runat="server" Hidden="true" LoadOnInit="false"
-            ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/SparePartInventory_ShUc.ascx">
+            ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/Invoice_ShUc.ascx">
             <WidgetConfig>
                 <script>
                     cf = {
@@ -37,9 +37,9 @@
             <ColumnTemplates>
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
-                                    <div class="ftitle" style="color:#602010">Invoice No.: {InvoiceNo}</div>
+                                    <div class="ftitle" style="color:#602010">{InvRecCode}</div>
 <%--                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{BrandId}&nbsp;-&nbsp;{ModelId}</div>--%>
-                                 <div class="ftitle" style="color:#602010">{InvRecCode}</div>
+                                     <div style="font-size:11px;">Delivery No.:{DeliveryNo}</div>
 
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
@@ -52,7 +52,7 @@
                                 </center>
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
-                                     <div class="ftitle">{DeliveryNo}</div>
+                                    
                                      <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{GrandTotal:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{Balance:fix(3)}</nobr></div>
                                    
@@ -79,7 +79,7 @@
                             Sequence: { width: '0px' },
                             ContractDetails: { caption: 'Invoice Details', width: '270px' },
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            ContractDateTimeDetails: { caption: 'Delivery No.', width: '165px' },
+                            ContractDateTimeDetails: { caption: 'Payment Details', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
                             RecId: { width: '0px' }
                         },
