@@ -128,6 +128,7 @@
                     </td>
                     <td>
                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Nationality"></span>
+                        <input type="hidden"  argumentid="NationalityID"/>
                     </td>
                 </tr>
                 <tr>
@@ -141,8 +142,8 @@
                         <nobr>National ID No.:</nobr>
                     </td>
                     <td>
-                        <div style="float: left; width: 135px" class="ftitle" groupid="GarageCarServiceDetails" argumentid="NationalIDNo"></div>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="NationalIDExpiryDate"></span>
+<%--                        <div style="float: left; width: 135px" class="ftitle" groupid="GarageCarServiceDetails" argumentid="NationalIDNo"></div>--%>
+                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="NationalIDNo"></span>
                     </td>
                 </tr>
                 <tr>

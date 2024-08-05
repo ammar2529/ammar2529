@@ -236,42 +236,14 @@
                   
 
                 </tr>
-                <!-- New row with labels and 8 columns ends here -->
-               
-                 <%--<tr class="ItemSaveButtons">
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                        <button type="button" style="text-align: center;" id="addRowButton">Add Row</button>
-                          <input type="button" style="text-align: center; width: 50px;" value="  Save  "  class="DataAction ButtonStyle  btnSave1 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_SparePartInventoryInvoiceDetails',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                
-                    </td>
-                </tr>--%>
+           
 
                         <tr>
                     <td colspan="4">
 
                       
                       
-                   <%--     <div class="file-upload-drop-area">
-                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required CommonDisableClass  " style="width: 155px;"
-                                groupid="SparePartInventoryInvoice" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
-                                <option value="" selected="selected">Select Doc Type</option>
-                            </select>
-
-
-                            <input type="file" class="file-input CommonDisableClass   " accept=".pdf,.jpg,.png,.txt,.docx" />
-                            <span class="allowedFile" style="display:none;"></span>
-                          
-
-                            <button class="upload-button CommonDisableClass">Upload</button>
-
-                        </div>--%>
-
-
-
-
-                        <%-- <div class="progress-bar"></div>
-                            <div class="message"></div>--%>
+               
 
                         <input type="hidden" groupid="SparePartInventoryInvoice" argumentid="FileGuid" readonly="readonly" />
 

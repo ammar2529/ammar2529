@@ -78,6 +78,15 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdCarAndServiceDetails_Cars;
 
         /// <summary>
+        /// frmCarAndCustomerDetailsAddSaleCar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndCustomerDetailsAddSaleCar;
+
+        /// <summary>
         /// frmSearchCarForRental_Car control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace WebProject.Pages.eForms.iRental.Modules
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSearchCarForRental;
+
+        /// <summary>
+        /// frmCarAndCustomerDetailsAddRentalCar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndCustomerDetailsAddRentalCar;
 
         /// <summary>
         /// frmSearchCarForLease_Car control.
@@ -114,6 +132,15 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSearchCarForLease;
 
         /// <summary>
+        /// frmCarAndCustomerDetailsAddLeaseCar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndCustomerDetailsAddLeaseCar;
+
+        /// <summary>
         /// frmSearchCarForOther_Car control.
         /// </summary>
         /// <remarks>
@@ -130,5 +157,14 @@ namespace WebProject.Pages.eForms.iRental.Modules
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdSearchCarForOther;
+
+        /// <summary>
+        /// frmCarAndCustomerDetailsAddOtherCar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndCustomerDetailsAddOtherCar;
     }
 }

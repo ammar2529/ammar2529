@@ -41,9 +41,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
             t.fireEvent('LOVPopupShown', popup);
         });
-        t.on('FormClosed', () => {
-            t.__firstShow = undefined;
-        });
+        //t.on('FormClosed', () => {
+        //    t.__firstShow = undefined;
+        //});
 
     //only test purpose
     $('[argumentid="ChassisNo"]').focus(function () {
@@ -714,31 +714,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
 
              
-                //else
-                //{
-
-                //    $('.CloseContract,.CancelContract', t.el).removeAttr('disabled');
-                //    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn', t.el).removeClass('ElemDisabled');
-                //    $('.btnSave,.QuotationBtn,.ContractPrintBtn', t.el).removeAttr('disabled', 'disabled');
-
-                //}
-
-
-
-            //if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed')
-            //{
-            //    $('.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract  ', t.el).attr('disabled', 'disabled');
-            //    $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-            //    $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
-            //    $('[argumentid="ReservationDate"]', t.el).next('img').hide();
-            //    $('[argumentid="ContractDate"]', t.el).next('img').hide();
-            //    $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-            //    $('[argumentid="DocType"]', t.el).prop('disabled', true);
-            //    $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract', t.el).addClass('ElemDisabled');
-            //}
-
-            ///decimal
-            
+             
             var CarPrice = $('[argumentid="Price"]', t.el).val();
             var CarPriceInFloat = parseFloat(CarPrice);
             $('[argumentid="Price"]', t.el).val(CarPriceInFloat.toFixed(3));

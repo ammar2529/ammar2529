@@ -5,7 +5,7 @@
 
 <AW:Container ID="conCarAndCustomerDetails" Hidden="true" Caption="Sales Contracts" runat="server">
     <Childern>
-        <AW:Form ID="frmCarAndServiceDetails_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_CarAndCustomerDetails" AsyncForm="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx">
+        <AW:Form ID="frmCarAndServiceDetails_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_CarAndCustomerDetails" AsyncForm="~/Pages/eForms/iRental/GRG_CarAndCustomerDetails_ShUc.ascx">
             <WidgetConfig>
                 <script>
 
@@ -32,7 +32,7 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}{SalesBrandId}&nbsp;-&nbsp;{Model}{SalesModelId}&nbsp;-&nbsp;{Color}{SalesColorId}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}{OtherCarNumber}</nobr>&nbsp;-&nbsp;{BrandId}{Brand}&nbsp;-&nbsp;{ModelId}{Model}&nbsp;-&nbsp;{Color}</div>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -44,9 +44,9 @@
                                 </center>
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
-                                     <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
-                                     <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
-                                     <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
+                                     <div class="ftitle">{DateCreated}&nbsp;{DateCreatedTime}</div>
+                                     <%--<div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
+                                     <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>--%>
                                    
                                 </pre>
                 <pre columnid="CreationDetails"> 
@@ -55,11 +55,11 @@
                                      <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
                                         <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
                     
-                                     <div class="ftitle" style="color:#101080">{Salesman}</div>
-                                      
+                                     <%--<div class="ftitle" style="color:#101080">{Salesman}</div>--%>
+                                     <div class="ftitle" style="color:#602010">{CreatedBy}</div>
 
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
-                                   <div class="ftitle" style="color:#808000">{FinanceCompany}</div>
+                                   <%--<div class="ftitle" style="color:#808000">{FinanceCompany}</div>--%>
 
                     
                                     
@@ -75,9 +75,9 @@
                         cols: {
                             EditForm: { width: '0px' },
                             Sequence: { width: '0px' },
-                            ContractDetails: { caption: 'Contract & Car Details', width: '270px' },
+                            ContractDetails: { caption: 'Car Details', width: '270px' },
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px' },
+                            ContractDateTimeDetails: { caption: ' Date & Time', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
                             RecId: { width: '0px' }
                         },
@@ -178,17 +178,20 @@
                 }
             </script>
         </WidgetConfig>
-     <%--   <Scripts>
+      <%--  <Scripts>
                     <script>
-                        var fn = function () {
+                        var fn = function ()
+                        {
                             var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
 
-                            $('.ClosePopup', t.el).click(function () {
-                                var f = conGrd._frm;
-                                f._LOVCon.hide();
-                                conGrd._Masked.unmask();
-                                conGrd._frm = conGrd._Masked = null;
-                            });
+                            //$('.ClosePopup', t.el).click(function () {
+                            //    var f = conGrd._frm;
+                            //    f._LOVCon.hide();
+                            //    conGrd._Masked.unmask();
+                            //    conGrd._frm = conGrd._Masked = null;
+                            //});
+
+                       
                         }
                     </script>
                 </Scripts>--%>
@@ -231,7 +234,43 @@
 
 
  </GridConfig>
+         <Scripts>
+ <script>
+     //var fn = function ()
+     //{
 
+     //    //t.on('beforeSearchGetForm', function (p)
+     //    //{
+
+
+     //    //    p.DBAction = 'SalesCars';
+
+     //    //    console.log(p.DBAction);
+     //    //});
+
+
+     //    t.on('rowsRendered', function ()
+     //    {
+     //        debugger
+     //        $('table[itemno]', t.el).click(function ()
+     //        {
+     //            debugger
+
+     //            var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
+               
+     //        });
+     //    });
+
+     //    t.on('onLoadedValues', function (args)
+     //    {
+
+
+     //        debugger
+
+     //    });
+     //}
+ </script>
+ </Scripts>
 
  </AW:DataGrid>
 
@@ -261,6 +300,8 @@
                         $(".btnMainForm", t).hide();
 
                     });
+
+                  
                 }
             </script>
         </Scripts>
@@ -340,6 +381,10 @@
              Gender: { width: '0px' }
 
 
+         },
+         forms: {
+             NewFormId: 'frmCarAndCustomerDetailsAddSaleCar',
+             Keys: 'RecId'
          }
      };
  </script>
@@ -363,16 +408,62 @@
          {
              $('table[itemno]', t.el).click(function ()
              {
-                 debugger
+                 
 
                  var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
                  $('[lovpopupid="carPopupCutomerAndCarDetailsForSales"]').val(carValue);
+                 var NationalIDNo = $('[colid="NationalIDNo"]  .ColValue', this).text();
+
+                 if (!!NationalIDNo)
+                 {
+                     
+                     // Remove newline characters and excess whitespace
+                     let cleanedData = NationalIDNo.replace(/\n/g, '').replace(/\s+/g, ' ').trim();
+                     
+                     $('.NationalIDNo', t.el).text('');
+                     let toString = cleanedData.toString();
+                     $('.NationalIDNo', t.el).text(toString);
+                     console.log(cleanedData); // For debugging
+                 }
              });
          });
+
+       
      }
  </script>
  </Scripts>
  </AW:DataGrid>
+
+      <AW:Form ID="frmCarAndCustomerDetailsAddSaleCar" Hidden="true" DataSource="SEL_iRental_CarsForSale" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarForSales_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Sales Car'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function ()
+                {
+                    //
+                    t.on("show", function ()
+                    {
+
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </AW:Form>
 </div>
 
 <div class='LOVPopup' lovpopupid='carPopupCutomerAndCarDetailsForRental' style="display: none">
@@ -401,25 +492,39 @@
  <script>
      var cf = {
          cols: {
+
              Sequence: { width: '0px' },
              RecId: { width: '0px' },
              RecCode: { width: '0px' },
              ChassisNo: { width: '150px' },
              CarNumber: { caption: 'Car No.', width: '80px' },
+             CustomerRecCode: { width: '0px' },
              BrandId: { caption: 'Brand', width: '60px' },
              ModelId: { caption: 'Model', width: '90px' },
              TypeId: { caption: 'Type', width: '60px' },
              CarYear: { caption: 'Year', width: '60px' },
              ColorId: { caption: 'Color', width: '80px' },
-             InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
+             FullInsuranceCompanyId: { caption: 'Full Ins.', width: '90px' },
              FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
-             CurrentMileage: { caption: 'Mileage', width: '70px' },
-             CarLocationId: { width: '0px' },
-             CarStatusId: { caption: 'Car Status', width: '90px' },
-             Status: { width: '100px' },
-             ContractNo: { caption: 'Contract No.' }
+             FullInsurancePolicyNo: { width: '0px' },
+             Nationality: { width: '0px' },
+             NationalIDNo: { width: '0px' },
+             Gender: { width: '0px' },
+             MobileTelephone1: { width: '0px' },
+             MobileTelephone2: { width: '0px' }
+
+             //CurrentMileage: { caption: 'Mileage', width: '100px' },
+             //frmInsuranceExpiry: { width: '0px' },
+             //frmFullInsuranceExpiry: { width: '0px' },
+             //CarLocationId: { width: '0px' },
+             //Status: { width: '100px' },
+             //ContractNo: { caption: 'Contract No.' }
 
 
+         },
+         forms: {
+             NewFormId: 'frmCarAndCustomerDetailsAddRentalCar',
+             Keys: 'RecId'
          }
      };
  </script>
@@ -444,7 +549,7 @@
          {
              $('table[itemno]', t.el).click(function ()
              {
-                 debugger
+                 
 
                  var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
                  $('[lovpopupid="carPopupCutomerAndCarDetailsForRental"]').val(carValue);
@@ -455,6 +560,37 @@
  </script>
  </Scripts>
  </AW:DataGrid>
+
+     <AW:Form ID="frmCarAndCustomerDetailsAddRentalCar" Hidden="true" DataSource="SEL_iRental_Cars" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarDetails_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Rental Car'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function ()
+                {
+                    //
+                    t.on("show", function ()
+                    {
+
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </AW:Form>
 </div>
 
 <div class='LOVPopup' lovpopupid='carPopupCutomerAndCarDetailsForLease' style="display: none">
@@ -483,28 +619,39 @@
  <script>
      var cf = {
          cols: {
-            
-              Sequence: { width: '0px' },
+
+             Sequence: { width: '0px' },
              RecId: { width: '0px' },
              RecCode: { width: '0px' },
              ChassisNo: { width: '150px' },
              CarNumber: { caption: 'Car No.', width: '80px' },
-            
+             CustomerRecCode :{width:'0px' },
              BrandId: { caption: 'Brand', width: '60px' },
              ModelId: { caption: 'Model', width: '90px' },
              TypeId: { caption: 'Type', width: '60px' },
              CarYear: { caption: 'Year', width: '60px' },
              ColorId: { caption: 'Color', width: '80px' },
-             InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
+             FullInsuranceCompanyId: { caption: 'Full Ins.', width: '90px' },
              FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
-             CurrentMileage: { caption: 'Mileage', width: '100px' },
-             frmInsuranceExpiry: { width: '0px' },
-             frmFullInsuranceExpiry: { width: '0px' },
-             CarLocationId: { width: '0px' },
-             Status: { width: '100px' },
-             ContractNo: { caption: 'Contract No.' }
+             FullInsurancePolicyNo: { width: '0px' },
+             Nationality: { width: '0px' },
+             NationalIDNo: { width: '0px' },
+             Gender: { width: '0px' },
+             MobileTelephone1: { width: '0px' },
+             MobileTelephone2: { width: '0px' }
+             
+             //CurrentMileage: { caption: 'Mileage', width: '100px' },
+             //frmInsuranceExpiry: { width: '0px' },
+             //frmFullInsuranceExpiry: { width: '0px' },
+             //CarLocationId: { width: '0px' },
+             //Status: { width: '100px' },
+             //ContractNo: { caption: 'Contract No.' }
 
 
+         },
+         forms: {
+             NewFormId: 'frmCarAndCustomerDetailsAddLeaseCar',
+             Keys: 'RecId'
          }
      };
  </script>
@@ -529,7 +676,7 @@
          {
              $('table[itemno]', t.el).click(function ()
              {
-                 debugger
+                 
 
                  var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
                  $('[lovpopupid="carPopupCutomerAndCarDetailsForLease"]').val(carValue);
@@ -541,6 +688,37 @@
  </script>
  </Scripts>
  </AW:DataGrid>
+
+     <AW:Form ID="frmCarAndCustomerDetailsAddLeaseCar" Hidden="true" DataSource="SEL_iRental_Cars" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarDetails_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Lease Car'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function ()
+                {
+                    //
+                    t.on("show", function ()
+                    {
+
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </AW:Form>
 </div>
 
 <div class='LOVPopup' lovpopupid='carPopupCutomerAndCarDetailsForOther' style="display: none">
@@ -561,7 +739,7 @@
     <AW:DataGrid ID="grdSearchCarForOther" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSearchCarForOther_Car"
         EmptyHeight="201px" AllowNew="true" SelectableRow="false"
         PageSize="10" DataSource="SEL_CarAndCustomerDetailsForSearchingCar" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
-        GridHeadText="Select Car" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
+        GridHeadText="Select Car" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
 
         
 
@@ -579,15 +757,20 @@
              TypeId: { caption: 'Type', width: '60px' },
              CarYear: { caption: 'Year', width: '60px' },
              ColorId: { caption: 'Color', width: '80px' },
-             InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
-             FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
-             CurrentMileage: { caption: 'Mileage', width: '70px' },
-             CarLocationId: { width: '0px' },
-             CarStatusId: { caption: 'Car Status', width: '90px' },
-             Status: { width: '100px' },
-             ContractNo: { caption: 'Contract No.' }
+             FullInsuranceCompanyId: {with:'0px'},
+             FullInsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
+             FullInsurancePolicyNo: { caption: 'Full Ins.', width: '0px' },
+             //CurrentMileage: { caption: 'Mileage', width: '70px' },
+             //CarLocationId: { width: '0px' },
+             //CarStatusId: { caption: 'Car Status', width: '90px' },
+             //Status: { width: '100px' },
+             //ContractNo: { caption: 'Contract No.' }
 
 
+         },
+         forms: {
+             NewFormId: 'frmCarAndCustomerDetailsAddOtherCar',
+             Keys: 'RecId'
          }
      };
  </script>
@@ -601,20 +784,20 @@
          {
 
 
-             p.DBAction = 'LeaseCars';
+             p.DBAction = 'OtherCars';
 
              console.log(p.DBAction);
          });
-     }
+     
 
          t.on('rowsRendered', function ()
          {
              $('table[itemno]', t.el).click(function ()
              {
-                 debugger
+                 
 
                  var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
-                 $('[lovpopupid="carPopupCutomerAndCarDetailsForLease"]').val(carValue);
+                 $('[lovpopupid="carPopupCutomerAndCarDetailsForOther"]').val(carValue);
              });
          });
 
@@ -622,4 +805,35 @@
  </script>
  </Scripts>
  </AW:DataGrid>
+
+     <AW:Form ID="frmCarAndCustomerDetailsAddOtherCar" Hidden="true" DataSource="SEL_GRG_OtherCars" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/GRG_OtherCars_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Other Car'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function ()
+                {
+                    //
+                    t.on("show", function ()
+                    {
+
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </AW:Form>
 </div>

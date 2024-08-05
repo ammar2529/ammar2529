@@ -142,6 +142,8 @@
                             });
                             var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);
                             $('.ColValue', cols).css('cursor', 'pointer').click(ColClick);
+
+                           
                         });
 
 
@@ -176,7 +178,7 @@
 
 
 <div class='LOVPopup' lovpopupid='carPopupGarage' style="display: none">
-    <AW:Form ID="frmCarServiceDetails_Cars" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/SalesContracts_Cars_ShUc.ascx">
+    <AW:Form ID="frmCarServiceDetails_Cars" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_SearchCarFor_CarAndCustomerDetils" AsyncForm="~/Pages/eForms/iRental/SalesContracts_Cars_ShUc.ascx">
         <WidgetConfig>
             <script>
                 var cf = {
@@ -192,7 +194,7 @@
     </AW:Form>
     <AW:DataGrid ID="grdCarServiceDetails_Cars" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarServiceDetails_Cars"
         EmptyHeight="201px" AllowNew="true" SelectableRow="false"
-        PageSize="10" DataSource="SEL_iRental_CarsForSale" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
+        PageSize="10" DataSource="SEL_GRG_SearchCarFor_CarAndCustomerDetils" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Car" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
 
         <GridConfig>
@@ -221,6 +223,7 @@
                         MobileTelephone1: { width: '0px' },
                         MobileTelephone2: { width: '0px' },
                         NationalIDNo: { width: '0px' },
+                        NationalityID: { width: '0px' },
                         Gender: { width: '0px' }
                         
                         //CurrentMileage: { caption: 'Mileage', width: '70px' },
@@ -257,9 +260,11 @@
                     {
                         $('table[itemno]', t.el).click(function ()
                         {
+                            debugger
                             var FullInsuranceCompanyId = $('[colid="FullInsuranceCompanyId"]  .ColValue', this).text();
                             var FullInsuranceExpiry = $('[colid="FullInsuranceExpiry"]  .ColValue', this).text();
                             var FullInsurancePolicyNo = $('[colid="FullInsurancePolicyNo"]  .ColValue', this).text();
+                            var NationalIDNo =  $('[colid="NationalIDNo"]  .ColValue', this).text();
                             if (!!FullInsuranceCompanyId)
                             {
                                 $('[argumentid="FullInsuranceCompanyId"]', f).text(FullInsuranceCompanyId);
@@ -291,6 +296,19 @@
 
                                 $('[argumentid="FullInsurancePolicyNo"]', f).text('');
                             }
+
+                            if (!!NationalIDNo)
+                            {
+                                
+                                // Remove newline characters and excess whitespace
+                                let cleanedData = NationalIDNo.replace(/\n/g, '').replace(/\s+/g, ' ').trim();
+                                let toString = cleanedData.toString();
+                                $('[argumentid="NationalIDNo"]', t.el).text('');
+                                $('[argumentid="NationalIDNo"]', t.el).text(toString);
+                                console.log(cleanedData); // For debugging
+                            }
+
+
                         });
 
                     });

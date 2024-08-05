@@ -56,7 +56,7 @@
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Mobile Telephone</span></td>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Contract Status</span>
+            <span style="white-space: nowrap">Status</span>
         </td>
         <td style="text-align: left;">&nbsp;</td>
     </tr>

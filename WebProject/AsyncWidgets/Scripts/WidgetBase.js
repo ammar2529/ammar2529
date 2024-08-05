@@ -1980,7 +1980,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         $('#Last', t.el).click(function () {
             t.showRec(t.data.Count);
         });
-        $('.DataAction', t.el).not(nestChilds).click(function () {
+        $('.DataAction', t.el).not(nestChilds).click(function ()
+        {
+          
             t.submit(this);
             return false;
         });
