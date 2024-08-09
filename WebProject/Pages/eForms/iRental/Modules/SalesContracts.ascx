@@ -326,15 +326,15 @@
                         $('table[itemno]', t.el).click(function ()
                         {
                             
-                            var priceValue = $('[colid="Price"]  .ColValue', this).text();
-                            var priceInFloat = parseFloat(priceValue);
-                            $('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);
-                            $('[argumentid="TotalAmount"]', f).val(`${priceInFloat.toFixed(3)}`);
-                            var AmountDue =$('.AmountDueC').text();
-                            $('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
-                            debugger
-                            $('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
-                            $('[argumentid="AmountDueInWordsSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
+                            //var priceValue = $('[colid="Price"]  .ColValue', this).text();
+                            //var priceInFloat = parseFloat(priceValue);
+                            //$('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);
+                            //$('[argumentid="TotalAmount"]', f).val(`${priceInFloat.toFixed(3)}`);
+                            //var AmountDue =$('.AmountDueC').text();
+                            //$('[argumentid="AmountInWordsSalesContract"]').val(getAmountInWordsSalesContract(priceValue));
+                            //debugger
+                            //$('[argumentid="AmountInWordsGrandSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
+                            //$('[argumentid="AmountDueInWordsSalesContract"]').val(getAmountInWordsSalesContract($('[argumentid="TotalAmount"]').val()));
 
                             var carNumber = $('[colid="CarNumber"]  .ColValue', this).text();
                             if (!!carNumber) {
@@ -346,24 +346,24 @@
                             }
                             
                             //var floatPrice = parseFloat(priceValue);
-                            var PaymentAmountC = parseFloat($('.PaymentAmountC').text());   
-                            var AmountDueC = parseFloat($('.AmountDueC').text());   
-                            var TotalAmount = parseFloat($('[argumentid="TotalAmount"]').val());
-                            if (priceInFloat == 0 || priceValue == "") {
-                                var calculate = PaymentAmountC + AmountDueC
-                                console.log(calculate);
-                                $('.AmountDueC').text(`${calculate.toFixed(3)}`);
+                            //var PaymentAmountC = parseFloat($('.PaymentAmountC').text());   
+                            //var AmountDueC = parseFloat($('.AmountDueC').text());   
+                            //var TotalAmount = parseFloat($('[argumentid="TotalAmount"]').val());
+                            //if (priceInFloat == 0 || priceValue == "") {
+                            //    var calculate = PaymentAmountC + AmountDueC
+                            //    console.log(calculate);
+                            //    $('.AmountDueC').text(`${calculate.toFixed(3)}`);
 
-                            }
-                            else {
-                                var calculate = TotalAmount - PaymentAmountC
-                                console.log(calculate);
-                                $('.AmountDueC').text(`${calculate.toFixed(3)}`);
-                            }
+                            //}
+                            //else {
+                            //    var calculate = TotalAmount - PaymentAmountC
+                            //    console.log(calculate);
+                            //    $('.AmountDueC').text(`${calculate.toFixed(3)}`);
+                            //}
 
-                            if (PaymentAmountC == 0) {
-                                $('.AmountDueC').text(`${priceInFloat.toFixed(3)}`);
-                            } 
+                            //if (PaymentAmountC == 0) {
+                            //    $('.AmountDueC').text(`${priceInFloat.toFixed(3)}`);
+                            //} 
                         });
 
                     });

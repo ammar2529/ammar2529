@@ -1480,6 +1480,7 @@
     <Content Include="Scripts\eForms\iRental\frmSparePartInventoryInvoice.js" />
     <Content Include="Scripts\eForms\iRental\frmSparePartInventory.js" />
     <Content Include="Scripts\eForms\iRental\frmSalesContracts.js" />
+    <Content Include="Scripts\eForms\iRental\grdCarAndServiceDetailsContracts_Cust.js" />
     <Content Include="Scripts\eForms\iRental\grdInvoicePaymentDetails.js" />
     <Content Include="Scripts\eForms\iRental\RemoveButton.css" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />

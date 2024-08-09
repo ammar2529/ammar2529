@@ -2,7 +2,7 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
-
+<script src="../../../../Scripts/eForms/iRental/grdCarAndServiceDetailsContracts_Cust.js"></script>
 <AW:Container ID="conCarAndCustomerDetails" Hidden="true" Caption="Sales Contracts" runat="server">
     <Childern>
         <AW:Form ID="frmCarAndServiceDetails_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_CarAndCustomerDetails" AsyncForm="~/Pages/eForms/iRental/GRG_CarAndCustomerDetails_ShUc.ascx">
@@ -238,36 +238,17 @@
  <script>
      //var fn = function ()
      //{
+         
+         
+         
 
-     //    //t.on('beforeSearchGetForm', function (p)
+     //    //t.on('onLoadedValues', function (args)
      //    //{
 
 
-     //    //    p.DBAction = 'SalesCars';
+     //    //    debugger
 
-     //    //    console.log(p.DBAction);
      //    //});
-
-
-     //    t.on('rowsRendered', function ()
-     //    {
-     //        debugger
-     //        $('table[itemno]', t.el).click(function ()
-     //        {
-     //            debugger
-
-     //            var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
-               
-     //        });
-     //    });
-
-     //    t.on('onLoadedValues', function (args)
-     //    {
-
-
-     //        debugger
-
-     //    });
      //}
  </script>
  </Scripts>
@@ -367,7 +348,7 @@
              TypeId: { caption: 'Type', width: '60px' },
              CarLocationId: { caption: 'Car Location', width: '0px' },
              CarStatusId: { caption: 'Car Status', width: '100px' },
-
+             CarType: {width:'0px'},
              FullInsuranceCompanyId: { width: '0px' },
              FullInsuranceExpiry: { width: '0px' },
              FullInsurancePolicyNo: { width: '0px' },
