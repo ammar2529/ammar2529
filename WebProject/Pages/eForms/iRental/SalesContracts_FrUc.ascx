@@ -354,6 +354,46 @@
                     </td>
                 </tr>
 
+                
+                      <tr>
+                           
+                           
+                             <td class="ftitle">
+                                <nobr>Full Insurance:</nobr>
+                            </td>
+                           
+                       <td>
+                         <span class="ftitle CommonDisable " groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId"></span>
+                    </td>
+                                                                    
+                           
+
+                          <td class="ftitle">
+                               <%-- <nobr>Full Insurance Expiry:</nobr>--%>
+                            </td>
+                          <td>
+                              <%--<span class="ftitle CommonDisable" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry"></span> --%>
+                          </td>
+                        </tr>
+
+                <tr>
+                     <td class="ftitle">
+                                <nobr>PolicyNo. - Expiry Date:</nobr>
+                            </td>
+                      <td>
+                      <span class="ftitle CommonDisable " groupid="SalesContractsForm" argumentid="FullInsurancePolicyNo"></span> - <span class="ftitle CommonDisable" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry"></span> 
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                    </td>
+                </tr>
+
                 <tr>
                     <td class="ftitle">
                         <nobr>Reservation Date:</nobr>
@@ -541,12 +581,14 @@
                         
                     </td>
                 </tr>
-
                 <tr>
+
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
+              
+               
 
                 <tr>
                     <td class="ftitle">
@@ -586,7 +628,7 @@
 
 <%--                        style="width: 367px; height:37px" --%>
 
-                        <textarea class="textarea CommonDisableClass  " style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                        <textarea class="textarea   " style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
                             argumentid="fComments" groupid="SalesContractsForm"></textarea>
                                         
                         
@@ -615,7 +657,7 @@
 
                 <tr>
 
-                    <td>
+                    <td class="ftitle">
                         <nobr>Grand Total:</nobr>
                     </td>
                     <td >
@@ -676,17 +718,17 @@
                     <td colspan="4">
                       
                         <div class="file-upload-drop-area">
-                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required CommonDisableClass  " style="width: 155px;"
+                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
                                 groupid="SalesContractsForm" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
                                 <option value="" selected="selected">Select Doc Type</option>
                             </select>
 
 
-                            <input type="file" class="file-input CommonDisableClass   " accept=".pdf,.jpg,.png,.txt,.docx" />
+                            <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx" />
                             <span class="allowedFile" style="display:none;"></span>
                           
 
-                            <button class="upload-button CommonDisableClass">Upload</button>
+                            <button class="upload-button ">Upload</button>
 
                         </div>
 
@@ -791,8 +833,9 @@
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
-                            <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:true,GroupId:'SalesContractsForm'}" />
-                             
+                            <input type="button" style="width: 70px" value="  Reserve  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true, Requery:true,GroupId:'SalesContractsForm'}" />
+                           <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{NewStateId:'NoStateId'},HideOnSuccess:true, Requery:true,GroupId:'SalesContractsForm'}" />
+
 <%--                            ,Params:{DBAction:'SCReserved'}--%>
                             <input type="button" value="  Quotation  "style="width: 70px" class="ButtonStyle QuotationBtn common-button" />
 

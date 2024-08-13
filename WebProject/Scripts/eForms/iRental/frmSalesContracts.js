@@ -441,6 +441,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                /* $('.ItemTR > td', tblUFL).empty();*/
                 $('.NoRecordsTR', tblUFL).show();
                 $('.btnSave ', t.el).hide();
+                $('.SaveBtn', t.el).hide();
                 $('[argumentid="CustomerRecCode"]', t.el).prop('disabled', false);
                 $('[argumentid="CustomerRecCode"]', t.el).removeClass('ElemDisabled');
                 //$('[argumentid="EnginYearsWarranty"] option:nth(15)').attr('selected', 'selected');
@@ -460,14 +461,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 
             } 
 
-        var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
-        var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate);
-        var setTime = AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime(CurrentDate);
-        var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
-        var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
-        var cY = CurrentDate.getFullYear();
+            var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
+            var WeekDay = AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName(CurrentDate);
+            var setTime = AsyncWidgets.WidgetScripts.frmSalesContracts.formateTime(CurrentDate);
+            var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
+            var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
+            var cY = CurrentDate.getFullYear();
 
-            debugger;
+            
             if ($('[argumentid="StateId"]', t.el).text() == '')
             {
                 
@@ -615,9 +616,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
             
             //AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
-            $('.btn_11', t.el).show();
+            
             $('.btnReserve', t.el).hide();
             $('.btnSave ', t.el).show();
+            $('.SaveBtn ', t.el).show();
             
          
 
