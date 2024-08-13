@@ -37,6 +37,8 @@
     visibility: visible; /* Show delete button on hover */
 }
 
+  
+
 </style>
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
@@ -129,10 +131,10 @@
     </tr>
 
          <tr>
-        <td class="ftitle">
+        <td >
             <nobr>Brand*:</nobr>
         </td>
-        <td>
+        <td >
             
             <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SparePartInventoryForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
     <option value="" selected="selected">Select Brand</option>
