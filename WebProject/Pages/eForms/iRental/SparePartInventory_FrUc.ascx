@@ -45,6 +45,30 @@
         </td>
     </tr>
     
+    <tr>
+        <td class="ftitle">
+    <nobr>Purchasing From*:</nobr>
+</td>
+        <td>
+              <input type="radio" class="" default="default" value="Geniune" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Geniune Parts</label>
+              <input type="radio" class="" value="China" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Local China</label>
+              <input type="radio" class="" value="Kuwait" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Local kuwait</label>
+
+
+        </td>
+    </tr>
+    <tr>
+        <td class="ftitle">
+     <nobr>Store Location*:</nobr>
+ </td>
+        <td>
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
+    groupid="SparePartInventoryForm" argumentid="StoreLocation" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'40'}]}">
+    <option value="" selected="selected">Select Store Location</option>
+</select>
+        </td>
+    </tr>
+
       <tr>
         <td class="ftitle">
             <nobr>Item Id*:</nobr>
@@ -67,10 +91,11 @@
            <%-- <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
                 groupid="SparePartInventoryForm" argumentid="SparePartSerialNo" />--%>
 
-            <input type="text" style="text-align:center;width:150px; font-weight:bold;color:red"  maxlength="10" class="text required validateunique" primarykey="RecId"
-            
-                storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"  uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
-
+  
+           
+            <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text required validateunique" primarykey="RecId"
+    storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"
+    uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm" argumentid="SparePartSerialNo" />
         </td>
     </tr>
 
