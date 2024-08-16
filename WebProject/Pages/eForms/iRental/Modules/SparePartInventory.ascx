@@ -11,20 +11,24 @@
 
 <uc5:Container ID="conSparePartInventory" Hidden="true" Caption="Spare Part Inventory" runat="server">
     <Childern>
-        <uc8:Form ID="frmSparePartInventory_ShUc" runat="server" Hidden="true" LoadOnInit="false"
-            ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/SparePartInventory_ShUc.ascx">
+       
+
+        <uc8:Form ID="frmSparePartInventory_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SparePartInventory" AsyncForm="~/Pages/eForms/iRental/SparePartInventory_ShUc.ascx">
             <WidgetConfig>
                 <script>
-                    cf = {
+
+                    var cf = {
                         header: {
                             Style: {},
                             Visible: true,
-                            Collapsed: true,
+                            Collapsed: false,
                             HeadText: 'Search'
                         }
                     }
                 </script>
             </WidgetConfig>
+        
+         
         </uc8:Form>
         <uc5:DataGrid ID="grdSparePartInventory" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSparePartInventory_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_iRental_SparePartInventory"
@@ -36,17 +40,19 @@
                         cols: {
                             Sequence: { width: '0px' },
                             RecId: { width: '0px' },
-                            ItemId: {width: '70px'},
+                            ItemId: { caption: 'Item ID', width: '70px' },
+                            SparePartSerialNo: { caption: 'Item Code', width: '50px' },
                             SparePartName: { caption: 'Description', width: '100px' },
                             SparePartSerialNo: { caption: 'Item Code', width: '110px' },
                             SparePartQuantity: { caption: 'Quantity', width: '80px' },
-                            BrandId: { caption: 'Brand', width: '100px' },
+                            BrandId: { caption: 'Brand', width: '70px' },
                             ModelId: { caption: 'Model', width: '100px' },
-
-                            SparePartShelfNo: { caption: 'Shelf No.', width: '100px' },
+                            SparePartRackfNo: { caption: 'Rack No.', width: '70px' },
+                            SparePartShelfNo: { caption: 'Shelf No.', width: '70px' },
                             SparePartUnitPrice: { caption: 'Unit Price', width: '100px' },
                             SparePartRemarks: { caption: 'Remarks', width: '100px' },
                             SparePartImage: { caption: 'Image', width: '80px' },
+                            StoreLocation: { caption: 'Store', width: '60px' },
                       
                         },
                         forms: {

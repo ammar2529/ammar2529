@@ -9,20 +9,24 @@
 
 <AW:Container ID="conCarServiceDetails" Hidden="true" Caption="Car Service Details" runat="server">
     <Childern>
-        <AW:Form ID="frmCarServiceDetails_ShUc" runat="server" Hidden="true" LoadOnInit="false"
-            ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/GarageCarServiceDetails_ShUc.ascx">
+      
+
+          <AW:Form ID="frmCarServiceDetails_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/GarageCarServiceDetails_ShUc.ascx">
             <WidgetConfig>
                 <script>
-                    cf = {
+
+                    var cf = {
                         header: {
                             Style: {},
                             Visible: true,
-                            Collapsed: true,
+                            Collapsed: false,
                             HeadText: 'Search'
                         }
                     }
                 </script>
             </WidgetConfig>
+        
+         
         </AW:Form>
 
           <AW:DataGrid ID="grdCarServiceDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarServiceDetails_ShUc"

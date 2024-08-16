@@ -39,6 +39,7 @@
 
   
 
+
 </style>
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
@@ -51,7 +52,7 @@
         <td class="ftitle">
     <nobr>Purchasing From*:</nobr>
 </td>
-        <td>
+        <td class="ftitle">
               <input type="radio" class="" default="default" value="Geniune" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Geniune Parts</label>
               <input type="radio" class="" value="China" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Local China</label>
               <input type="radio" class="" value="Kuwait" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Local kuwait</label>
@@ -83,7 +84,7 @@
 
 
 <input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required validateunique" primarykey="RecId"                                                         
- storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"  uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm"  argumentid="ItemCode" />
+ storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"  uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
         </td>
     </tr>
     <tr>
@@ -116,7 +117,7 @@
     </tr>
 
          <tr>
-        <td >
+        <td class="ftitle">
             <nobr>Brand*:</nobr>
         </td>
         <td >
@@ -140,12 +141,12 @@
 
       <tr>
         <td class="ftitle">
-     <nobr>Store Location*:</nobr>
+     <nobr>Store *:</nobr>
  </td>
         <td>
                         <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
     groupid="SparePartInventoryForm" argumentid="StoreLocation" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'40'}]}">
-    <option value="" selected="selected">Select Store Location</option>
+    <option value="" selected="selected">Select Store</option>
 </select>
         </td>
     </tr>
@@ -156,7 +157,7 @@
     </td>
     <td>
 
-        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number"
+        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  "
             groupid="SparePartInventoryForm" argumentid="SparePartRackfNo" />
 
     </td>
@@ -166,9 +167,9 @@
         <td class="ftitle">
             <nobr>Shelf No.:</nobr>
         </td>
-        <td>
+        <td >
 
-            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number"
+            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  "
                 groupid="SparePartInventoryForm" argumentid="SparePartShelfNo" />
 
         </td>
@@ -188,9 +189,9 @@
         </td>
     </tr>
 
-       <tr roles="Show_SparePart_Cost_Price">
+       <tr runat="server" roles="Show_SparePart_Cost_Price">
     <td class="ftitle">
-        <nobr>Cost Price*:</nobr>
+        <nobr>Cost Price:</nobr>
     </td>
     <td>
 
@@ -227,7 +228,7 @@
         <input type="file" accept="image/png, image/jpeg, image/gif" class="text file-input" groupid="SparePartInventoryForm" argumentid="SparePartImage" id="imageUpload" />
         <button class="upload-button CommonDisableClass">Upload</button>
         <div class="image-container">
-            <img height="100" class="thumbnail" src="../../../App_Themes/Blue/images/default_image.png" id="thumbnail" width="100" />
+            <img height="130" class="thumbnail" src="../../../App_Themes/Blue/images/default_image.png" id="thumbnail" width="130" />
             <button type="button" class="delete-button">X</button>
         </div>
         <input type="hidden" groupid="SparePartInventoryForm" argumentid="FileGuid" readonly="readonly" />
@@ -241,19 +242,19 @@
         </td>
     </tr>
 
-    <tr>
+   <%-- <tr>
         <td class="ftitle" valign="top">
             <nobr>Remarks:</nobr>
         </td>
         <td width="100%">
             <textarea class="textarea" rows="6" wrap="1" cols="37" argumentid="SparePartRemarks" groupid="SparePartInventoryForm"></textarea>
         </td>
-    </tr>
-    <tr>
+    </tr>--%>
+ <%--   <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
+    </tr>--%>
 
     <tr>
         <td>

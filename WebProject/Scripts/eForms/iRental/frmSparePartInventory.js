@@ -7,17 +7,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventory.t = t;
 
-    $('#imageUpload').on('click', function () {
-        if ($(this).hasClass("ElemDisabled")) {
-            $.showMessage('Please delete the existing image first before uploading a new one.');
-        }
+
+    $('[argumentid="SparePartUnitPrice"], [argumentid="SparePartCostPrice"]', t.el).on('blur', function ()
+    {
+        var price = parseFloat($(this).val()) || 0; // Ensure the price is a number
+        $(this).val(price.toFixed(3)); // Only update the field that triggered the event
     });
+
    
    
 
     $('.delete-button').on('click', function () {
         /*var FileGuid = $('[argumentid="FileGuid"]', t.el);*/
-        debugger;
+       
         var params = {
             Command: 'FX_UPD_SparePartImageUpload',
             FileGuid: val('FileGuid', t.el),
@@ -36,7 +38,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
             {
                 $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png');
                 $('[argumentid="SparePartImage"]', t.el).val('');
-                $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled');
+                $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled').show();
+                $('.delete-button', t.el).hide();
+                $('.thumbnail', t.el).hide();
                 $.showMessage('Image delete successfully.');
             }
 
@@ -51,13 +55,17 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
        
 
 
-        $('[argumentid = "SparePartName"],[argumentid = "SparePartQuantity"],[argumentid = "SparePartUnitPrice"],[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled');
-        
-        $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png');
+        $('[argumentid = "SparePartName"],[argumentid = "SparePartQuantity"],[argumentid = "SparePartUnitPrice"],[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled').show();
+        $('.delete-button', t.el).hide();
+        $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png').hide();
         $('[argumentid="SparePartImage"]').val('');
 
      
+        var unitPrice = parseFloat($('[argumentid="SparePartUnitPrice"]', t.el).val()) || 0;
+        $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice.toFixed(3));
 
+        var costPrice = parseFloat($('[argumentid="SparePartCostPrice"]', t.el).val()) || 0;
+        $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3));
     });
  
 
@@ -76,20 +84,46 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 };//end of AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
 //show image on form,
+//AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t)
+//{
+
+//    debugger
+//    $('.thumbnail', t.el).show();
+//    //var file = fileInput.file[ 0 ];
+//    $('.thumbnail', t.el).css('border', '1px solid green');
+//    var file = fileInput.files ? fileInput.files[ 0 ] : fileInput[ 0 ].files[ 0 ];
+
+//    var reader = new FileReader();
+//    reader.onload = function (e)
+//    {
+//        $('.thumbnail', t.el).attr('src', e.target.result);
+       
+//    };
+//    reader.readAsDataURL(file);
+   
+
+//};///end
 AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t)
 {
-    //var file = fileInput.file[ 0 ];
+    debugger;
+    $('.thumbnail', t.el).show();
     $('.thumbnail', t.el).css('border', '1px solid green');
+
     var file = fileInput.files ? fileInput.files[ 0 ] : fileInput[ 0 ].files[ 0 ];
 
-    var reader = new FileReader();
-    reader.onload = function (e)
+    if (file)
     {
-        $('.thumbnail', t.el).attr('src', e.target.result);
-    };
-    reader.readAsDataURL(file);
-
-};///end
+        var reader = new FileReader();
+        reader.onload = function (e)
+        {
+            $('.thumbnail', t.el).attr('src', e.target.result);
+        };
+        reader.readAsDataURL(file);
+    } else
+    {
+        console.error("No file selected or file input is incorrect.");
+    }
+};
 
 
 AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = function (t)
@@ -155,7 +189,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
                     var fileName = row.FileName;
                     $('.thumbnail', t.el).css('border', '3px solid green');
                     var msg = (`File uploaded successfully.`);
-                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled');
+                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled').hide();
+                    $('.delete-button', t.el).show();
                     $('[argumentid="SparePartImage"]', t.el).val('');
 
 
@@ -205,7 +240,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
         inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
 
 
-        
+        var unitPrice = parseFloat($('[argumentid="SparePartUnitPrice"]', t.el).val()) || 0;
+        $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice.toFixed(3));
+
+        var costPrice = parseFloat($('[argumentid="SparePartCostPrice"]', t.el).val()) || 0;
+        $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3));
+
     });
 };
 
@@ -229,8 +269,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = func
                 var fileName = row.FileName;
 
                 /*var newFileName = folderPath + `${recId}_${fileGuid}_${fileName}`;*/
-
-                 var folderName = `${recId}_${fileGuid}_${fileName}`.split('.')[0];
+               /* .split('.')[ 0 ]*/
+                 var folderName = `${recId}_${fileGuid}_${fileName}`;
                 var fullFileName = `${recId}_${fileGuid}_${fileName}`;
                 var filePath = `${baseFolderPath}${folderName}/${fullFileName}`;
 
@@ -238,10 +278,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = func
                     /* thumbnail.src = URL.createObjectURL(filePath);*/
 
                     $('.thumbnail', t.el).attr('src', filePath);
-                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled');
+                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled').hide();
+                    $('.delete-button', t.el).show();
+                    $('.thumbnail', t.el).show();
                 }
                 else {
-                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled');
+                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled').show();
+                    $('.delete-button', t.el).hide();
+                    $('.thumbnail', t.el).hide();
                 }
 
                 //console.log("Full File Path:", filePath);

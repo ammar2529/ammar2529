@@ -1542,7 +1542,6 @@
     <Content Include="test.asp" />
     <Content Include="test.html" />
     <Content Include="UploadSparePartImages.aspx" />
-    <Content Include="UploadSparePartImage\10_6d127f88-948a-4d42-b035-7c7ef731d3ce_headlight.jfif" />
     <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
     <Content Include="WebForm4.aspx" />
     <Content Include="DataSets\SalesContractDS.xsc">
@@ -3900,6 +3899,7 @@
     <Folder Include="AdminPages\Common\" />
     <Folder Include="App_Data\" />
     <Folder Include="AsyncWidgets\Widgets\resources\images\Widgets\Grid\" />
+    <Folder Include="UploadSparePartImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Skins\WindowsStyle.EO.Calendar.old.ascxold" />
