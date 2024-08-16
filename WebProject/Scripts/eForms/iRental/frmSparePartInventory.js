@@ -7,10 +7,43 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventory.t = t;
 
-    $('.delete-button').on('click', function ()
-    {
-        
-        $.showMessage('The delete functionality is currently under development. Please check back later.')
+    $('#imageUpload').on('click', function () {
+        if ($(this).hasClass("ElemDisabled")) {
+            $.showMessage('Please delete the existing image first before uploading a new one.');
+        }
+    });
+   
+   
+
+    $('.delete-button').on('click', function () {
+        /*var FileGuid = $('[argumentid="FileGuid"]', t.el);*/
+        debugger;
+        var params = {
+            Command: 'FX_UPD_SparePartImageUpload',
+            FileGuid: val('FileGuid', t.el),
+            DBAction: 'DeleteFile'
+
+
+        };
+
+        // Assuming ServerCall is a function to make an API call
+        ServerCall(params, function (res) {
+
+            var res = decJSON(res)
+
+
+            if (res.status === 'OK')
+            {
+                $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png');
+                $('[argumentid="SparePartImage"]', t.el).val('');
+                $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled');
+                $.showMessage('Image delete successfully.');
+            }
+
+            
+        });
+
+      
     })
 
     t.on('show', function (args)
@@ -18,10 +51,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
        
 
 
-        $('[argumentid = "SparePartName"],[argumentid = "SparePartQuantity"],[argumentid = "SparePartUnitPrice"]', t.el).prop('disabled', false).removeClass('ElemDisabled');
-      
+        $('[argumentid = "SparePartName"],[argumentid = "SparePartQuantity"],[argumentid = "SparePartUnitPrice"],[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled');
+        
         $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png');
         $('[argumentid="SparePartImage"]').val('');
+
+     
 
     });
  
@@ -119,12 +154,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
                     var row = rows[ i ];
                     var fileName = row.FileName;
                     $('.thumbnail', t.el).css('border', '3px solid green');
-                    var msg = (`File [${fileName}] uploaded successfully.`);
-                    //$(".file-input", t.el).val('');
+                    var msg = (`File uploaded successfully.`);
+                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled');
+                    $('[argumentid="SparePartImage"]', t.el).val('');
 
 
                 }
-
+                debugger
                 AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles(objRes, t);
                 $.showMessage(msg);
 
@@ -156,7 +192,6 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
     t.on('onLoadedValues', function (p)
     {
 
-        console.log(p);
         var params = { Command: 'FX_UPD_SparePartImageUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
 
         SInfo = getForm(null, null, params);
@@ -169,13 +204,17 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
         });
         inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
 
+
+        
     });
 };
 
 
 AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = function (res, t)
 {
-    var folderPath = "../../../UploadSparePartImage/";
+    /*var baseFolderPath = "../../../UploadSparePartImage/";*/
+    var baseFolderPath = "/UploadSparePartImage/";
+
 
     if (res.status == 'OK')
     {
@@ -189,18 +228,34 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = func
                 var fileGuid = row.FileGuid;
                 var fileName = row.FileName;
 
-                var newFileName = folderPath + `${recId}_${fileGuid}_${fileName}`;
-                var imgElement = $('img.thumbnail').eq(i);
+                /*var newFileName = folderPath + `${recId}_${fileGuid}_${fileName}`;*/
 
-                // Check if the <img> element exists
-                if (imgElement.length > 0)
-                {
-                    // Set the src attribute of the <img> element
-                    imgElement.attr('src', newFileName);
-                } else
-                {
-                    console.error("Image element not found.");
+                 var folderName = `${recId}_${fileGuid}_${fileName}`.split('.')[0];
+                var fullFileName = `${recId}_${fileGuid}_${fileName}`;
+                var filePath = `${baseFolderPath}${folderName}/${fullFileName}`;
+
+                if (!!fullFileName) {
+                    /* thumbnail.src = URL.createObjectURL(filePath);*/
+
+                    $('.thumbnail', t.el).attr('src', filePath);
+                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled');
                 }
+                else {
+                    $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled');
+                }
+
+                //console.log("Full File Path:", filePath);
+                //var imgElement = $('img.thumbnail').eq(i);
+
+                //// Check if the <img> element exists
+                //if (imgElement.length > 0)
+                //{
+                //    // Set the src attribute of the <img> element
+                //    imgElement.attr('src', filePath);
+                //} else
+                //{
+                //    console.error("Image element not found.");
+                //}
 
 
             }

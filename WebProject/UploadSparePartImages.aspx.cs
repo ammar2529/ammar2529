@@ -32,7 +32,12 @@ namespace WebProject
 
                 var httpRequest = HttpContext.Current.Request;
                 var files = httpRequest.Files;
-                var savePath = HttpContext.Current.Server.MapPath(uploadPath);
+                var rootSavePath = HttpContext.Current.Server.MapPath(uploadPath);
+
+                if (!Directory.Exists(rootSavePath))
+                {
+                    Directory.CreateDirectory(rootSavePath);
+                }
 
                 if (files.Count > 0)
                 {
@@ -46,6 +51,7 @@ namespace WebProject
                     {
                         var postedFile = files[i];
                         string OriginalFileName = Path.GetFileName(postedFile.FileName);
+                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(OriginalFileName);
                         long fileSizeBytes = postedFile.ContentLength;
                         string fSize = "";
                         if (fileSizeBytes < 1024)
@@ -70,15 +76,36 @@ namespace WebProject
                         if (arrFURecId.Length > 1)
                         {
                             newFileName = $"{arrFURecId[0]}_{FileGuid}_{OriginalFileName}";
+                            string fileFolder = Path.Combine(rootSavePath, newFileName);
 
-                            var filePath = Path.Combine(savePath, newFileName);
-                            postedFile.SaveAs(filePath);
+                            // Check if any folder exists with the same FileGuid
+                            var matchingFolders = Directory.GetDirectories(rootSavePath, $"*_{FileGuid}_*");
+                            foreach (var folder in matchingFolders)
+                            {
+                                // If a matching folder is found, delete it
+                                Directory.Delete(folder, true);
+                            }
+
+                            // Create the new folder
+                            Directory.CreateDirectory(fileFolder);
+
+                            var filePath = Path.Combine(fileFolder, newFileName);
+
+                            try
+                            {
+                                postedFile.SaveAs(filePath);
+                            }
+                            catch (Exception saveEx)
+                            {
+                                return $@"{{""Status"":""Error"",""Response"":{{message:""Failed to save file: {saveEx.Message}""}}}}";
+                            }
                         }
-                    }
+                        }
 
 
 
 
+                    
                 }
             }
             catch (Exception e)

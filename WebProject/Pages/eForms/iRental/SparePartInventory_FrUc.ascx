@@ -59,17 +59,7 @@
 
         </td>
     </tr>
-    <tr>
-        <td class="ftitle">
-     <nobr>Store Location*:</nobr>
- </td>
-        <td>
-                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
-    groupid="SparePartInventoryForm" argumentid="StoreLocation" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'40'}]}">
-    <option value="" selected="selected">Select Store Location</option>
-</select>
-        </td>
-    </tr>
+ 
 
       <tr>
         <td class="ftitle">
@@ -84,23 +74,18 @@
         </td>
     </tr>
 
-      <tr>
+      
+          <tr>
         <td class="ftitle">
             <nobr>Item Code.*:</nobr>
         </td>
         <td>
 
-           <%-- <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
-                groupid="SparePartInventoryForm" argumentid="SparePartSerialNo" />--%>
 
-  
-           
-            <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text required validateunique" primarykey="RecId"
-    storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"
-    uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm" argumentid="SparePartSerialNo" />
+<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required validateunique" primarykey="RecId"                                                         
+ storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"  uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm"  argumentid="ItemCode" />
         </td>
     </tr>
-
     <tr>
         <td class="ftitle">
             <nobr>Description*:</nobr>
@@ -110,7 +95,7 @@
                 <input type="hidden"groupid="SparePartInventoryForm" argumentid="UserName"  />
             </div>
             <div>
-                 <input type="text"  style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text required" 
+                 <input type="text"  style="text-align: left; width: 300px; font-weight: bold; color: red" maxlength="10" class="text required" 
                 groupid="SparePartInventoryForm" argumentid="SparePartName" />
             </div>
         </td>
@@ -153,7 +138,30 @@
         </td>
     </tr>
 
-  
+      <tr>
+        <td class="ftitle">
+     <nobr>Store Location*:</nobr>
+ </td>
+        <td>
+                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
+    groupid="SparePartInventoryForm" argumentid="StoreLocation" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'40'}]}">
+    <option value="" selected="selected">Select Store Location</option>
+</select>
+        </td>
+    </tr>
+
+      <tr>
+    <td class="ftitle">
+        <nobr>Rack No.:</nobr>
+    </td>
+    <td>
+
+        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number"
+            groupid="SparePartInventoryForm" argumentid="SparePartRackfNo" />
+
+    </td>
+</tr>
+
       <tr>
         <td class="ftitle">
             <nobr>Shelf No.:</nobr>
@@ -179,6 +187,19 @@
 
         </td>
     </tr>
+
+       <tr roles="Show_SparePart_Cost_Price">
+    <td class="ftitle">
+        <nobr>Cost Price*:</nobr>
+    </td>
+    <td>
+
+        <input type="text" style="text-align: center; width: 150px;"  maxlength="10" class="text  number"
+            groupid="SparePartInventoryForm" argumentid="SparePartCostPrice" />
+
+    </td>
+</tr>
+
     <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
@@ -206,7 +227,7 @@
         <input type="file" accept="image/png, image/jpeg, image/gif" class="text file-input" groupid="SparePartInventoryForm" argumentid="SparePartImage" id="imageUpload" />
         <button class="upload-button CommonDisableClass">Upload</button>
         <div class="image-container">
-            <img height="100" class="thumbnail" src="../../../App_Themes/Blue/images/default_image.png" width="100" />
+            <img height="100" class="thumbnail" src="../../../App_Themes/Blue/images/default_image.png" id="thumbnail" width="100" />
             <button type="button" class="delete-button">X</button>
         </div>
         <input type="hidden" groupid="SparePartInventoryForm" argumentid="FileGuid" readonly="readonly" />
