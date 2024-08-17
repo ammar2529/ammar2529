@@ -375,7 +375,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('[argumentid="ReservationDate"]', t.el).next('img').show();
         $('[argumentid="ContractDate"]', t.el).next('img').show();
         $('[argumentid="DeliveryDate"]', t.el).next('img').show();
-        $('[argumentid="DocType"]', t.el).prop('disabled', false);
+        /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
 
     });
 
@@ -483,7 +483,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 $('[argumentid="ReservationDate"]', t.el).next('img').show();
                 $('[argumentid="ContractDate"]', t.el).next('img').show();
                 $('[argumentid="DeliveryDate"]', t.el).next('img').show();
-                $('[argumentid="DocType"]', t.el).prop('disabled', false);
+                /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
             }
             
 
@@ -639,7 +639,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                     $('[argumentid="ContractDate"]', t.el).next('img').hide();
                     $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-                    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+                   /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                     
                 }
 
@@ -653,7 +653,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="ReservationDate"]', t.el).next('img').show();
                     $('[argumentid="ContractDate"]', t.el).next('img').show();
                     $('[argumentid="DeliveryDate"]', t.el).next('img').show();
-                    $('[argumentid="DocType"]', t.el).prop('disabled', false);
+                   /* $('[argumentid="DocType"]', t.el).prop('disabled', false);*/
                     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
 
                 }
@@ -671,7 +671,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                     $('[argumentid="ContractDate"]', t.el).next('img').hide();
                     $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-                    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+                    /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                 }
 
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCPendingPaymentCarOut')
@@ -684,7 +684,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                     $('[argumentid="ContractDate"]', t.el).next('img').hide();
                     $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-                    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+                   /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                     $('.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeAttr('disabled', 'disabled');
                     $('.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeClass('ElemDisabled');
                 }
@@ -701,7 +701,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                     $('[argumentid="ContractDate"]', t.el).next('img').hide();
                     $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
-                    $('[argumentid="DocType"]', t.el).prop('disabled', true);
+                    /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                     $('.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled', 'disabled');
                     $('.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeClass('ElemDisabled');
                 }

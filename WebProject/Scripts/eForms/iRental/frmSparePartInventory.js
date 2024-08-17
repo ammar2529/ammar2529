@@ -188,7 +188,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
                     var row = rows[ i ];
                     var fileName = row.FileName;
                     $('.thumbnail', t.el).css('border', '3px solid green');
-                    var msg = (`File uploaded successfully.`);
+                    var msg = (`Image uploaded successfully.`);
                     $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled').hide();
                     $('.delete-button', t.el).show();
                     $('[argumentid="SparePartImage"]', t.el).val('');
