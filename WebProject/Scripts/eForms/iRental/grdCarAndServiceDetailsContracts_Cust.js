@@ -13,14 +13,14 @@
   
     t.on('rowsRendered', function ()
     {
-        //debugger
-        //$('table[itemno]', t.el).click(function ()
-        //{
-        //    debugger
+        debugger
+        $('table[itemno]', t.el).click(function ()
+        {
+            debugger
 
-        //    var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
+           /* var carValue = $('[colid="CarNumber"]  .ColValue', this).text();*/
 
-        //});
+        });
 
 
        

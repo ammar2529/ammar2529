@@ -50,7 +50,8 @@
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
                                     <div class="ftitle">Receive: {CarRecivedDate}</div>
-                                     <div class="ftitle">Delivery: {CarDeliverdDate}</div>
+                                     <div class="ftitle">Delivery: {CarToBeDeliverdDate}</div>
+                                     <div class="ftitle">Deliverd: {CarDeliverdDate}</div>
                                      
                                     <%-- <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>--%>

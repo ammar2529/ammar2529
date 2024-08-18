@@ -2783,7 +2783,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     Requery: function (cf) {
         this.loadValues(cf);
     },
-    loadValues: function (cf,success) {
+    loadValues: function (cf, success)
+    {
+        debugger
         var t = this, st = t.State, ServiceInfo;
         cf = cf || {};
         $(t.el).mask(MSGWAIT);

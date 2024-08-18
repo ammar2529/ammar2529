@@ -184,40 +184,68 @@
                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="TypeId"></span>
                     </td>
                       <td class="ftitle">
-                                <nobr>Full Insurance:</nobr>
+                                
                             </td>
                             <td>
                                 
-                                 <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId"></span>
+                                
                                   
                                 </td>
 
-                    <td>
+                    
                   
                 </tr>
 
                
 
 
-                <tr>
-                    <td>  <nobr class="ftitle">Expiry Date (dd/mm/yyyy)</nobr> 
-</td>
-                    <td>
-                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span>
-                    </td>
-                    <td>
-                        
-                          <nobr class="ftitle">Policy No.</nobr> 
-                    </td>
-                    <td>
-                      <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="FullInsurancePolicyNo"></span>
-                    </td>
-                </tr>
+             
          
 
-                  <tr>
+                   <tr >
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                                                    
+
+                    </td>
+                </tr>
+
+   <tr>
+                           
+                           
+                             <td class="ftitle">
+                                <nobr>Full Insurance:</nobr>
+                            </td>
+                           
+                       <td>
+                         <span class="ftitle CommonDisable " groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId"></span>
+                    </td>
+                                                                    
+                           
+
+                          <td class="ftitle">
+                               <%-- <nobr>Full Insurance Expiry:</nobr>--%>
+                            </td>
+                          <td>
+                              <%--<span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span> --%>
+                          </td>
+                        </tr>
+
+                <tr>
+                     <td class="ftitle">
+                                <nobr>PolicyNo. - Expiry Date:</nobr>
+                            </td>
+                      <td>
+                      <span class="ftitle CommonDisable " groupid="GarageCarServiceDetails" argumentid="FullInsurancePolicyNo"></span> - <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span> 
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+              <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                                                    
 
                     </td>
                 </tr>
@@ -226,15 +254,30 @@
                         <nobr>Last Service Date:</nobr>
                     </td>
                     <td  >
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="LastServiceDate" />
+                        <%--<input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="LastServiceDate" />--%>
+                        <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="LastCarRecivedDate"></span>
                     </td>
                     <td class="ftitle" style="width: 170px">Last Service KM.:</td>
                              <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
-                            groupid="GarageCarServiceDetails" argumentid="LastServiceKM" />
+                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
+                            groupid="GarageCarServiceDetails" argumentid="LastServiceKM" />--%>
+                                 <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="LastCurrentKM"></span>  
                     </td>
                   
+                </tr>
+
+                    
+                <tr>
+                    <td class="ftitle" style="width: 170px">Current KM.:</td>
+                             <td>
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   "
+                            groupid="GarageCarServiceDetails" argumentid="LastServiceKM" />
+<%--                                 <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="CurrentKM"></span>  --%>
+                    </td>
+
+                    <td></td>
+                    <td></td>
                 </tr>
 
                 
@@ -253,7 +296,7 @@
                     </td>
                   
                 </tr>
-               
+           
                 <tr>
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
