@@ -55,7 +55,7 @@
             
                 <tr>
                     <td class="ftitle" style="width: 170px">
-                        <nobr>Service Date:</nobr>
+                        <nobr>Service Date *:</nobr>
                     </td>
                     <td  >
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
@@ -73,7 +73,7 @@
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
                     <td class="ftitle" style="width: 170px">
-                        <nobr>Car No.:</nobr>
+                        <nobr>Car No.*:</nobr>
                     </td>
                     <td >
                         <input type="hidden" name="RecId" groupid="GarageCarServiceDetails" argumentid="RecId" />
@@ -267,7 +267,7 @@
 
                     
                 <tr>
-                    <td class="ftitle" style="width: 170px">Current KM.:</td>
+                    <td class="ftitle" style="width: 170px">Current KM *:</td>
                              <td>
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number required  CommonDisableClass "
                             groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" />
