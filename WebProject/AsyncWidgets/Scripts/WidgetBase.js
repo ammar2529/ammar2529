@@ -1811,6 +1811,7 @@ var setField = function (ctl, param, ctx)
         $(ctl).val(val);
     }
     else if ('DIVSPAN'.indexOf(tag) > -1) {
+        val = (val == null || val == undefined) ? "" : val;
         $(ctl).text(val);
     }
     else if (tag == 'IMG') {

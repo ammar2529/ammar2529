@@ -538,12 +538,26 @@
 
          t.on('rowsRendered', function ()
          {
-             $('table[itemno]', t.el).click(function ()
-             {
-                 
+             $('table[itemno]', t.el).click(function () {
 
-                 var carValue = $('[colid="CarNumber"]  .ColValue', this).text();
-                 $('[lovpopupid="carPopupCutomerAndCarDetailsForRental"]').val(carValue);
+                 
+                 var carValue = $('[colid="CarNumber"] .ColValue', this).text().replace(/\s+/g, ' ').trim();
+                 //var FullInsuranceCompanyId = $('[colid="FullInsuranceCompanyId"] .ColValue', this).text().replace(/\s+/g, ' ').trim();
+                 //var FullInsuranceExpiry = $('[colid="FullInsuranceExpiry"] .ColValue', this).text().replace(/\s+/g, ' ').trim();
+                 //var FullInsurancePolicyNo = $('[colid="FullInsurancePolicyNo"] .ColValue', this).text().replace(/\s+/g, ' ').trim();
+
+                 //// Debugging logs
+                 //console.log('carValue:', carValue);
+                 //console.log('FullInsuranceCompanyId:', FullInsuranceCompanyId);
+                 //console.log('FullInsuranceExpiry:', FullInsuranceExpiry);
+                 //console.log('FullInsurancePolicyNo:', FullInsurancePolicyNo);
+
+                 //// Update values
+                 $('[lovpopupid="carPopupCutomerAndCarDetailsForRental"]').val(carValue || '');
+                 //$('[argumentid="FullInsuranceCompanyId"]', t.el).text(FullInsuranceCompanyId || '');
+                 //$('[argumentid="FullInsuranceExpiry"]', t.el).text(FullInsuranceExpiry || '');
+                 //$('[argumentid="FullInsurancePolicyNo"]', t.el).text(FullInsurancePolicyNo || '');
+                
              });
          });
 
