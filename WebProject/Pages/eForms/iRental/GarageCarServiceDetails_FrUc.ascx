@@ -59,7 +59,7 @@
                     </td>
                     <td  >
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="CarRecivedDate" />
+                            style="width: 75px;"  class="text  date CommonDisableClass required " requirederr=" *Required"  argumentid="CarRecivedDate" />
                     </td>
                     <td class="ftitle" style="width: 170px">Engine No.:</td>
                              <td>
@@ -80,7 +80,7 @@
 
                    
                         <div>
-                            <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text LOVPopup required CommonDisable"
+                            <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text LOVPopup required CommonDisableClass"
                                 groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="CarNumber" />
 
                             <%--<input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="30" class="LOVPopup text  CommonDisableClass  "
@@ -121,7 +121,7 @@
                         <nobr>Brand:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="BrandId"></span>
+                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Brand"></span>
                     </td>
                     <td class="ftitle">
                         <nobr>Nationality:</nobr>
@@ -136,7 +136,7 @@
                         <nobr>Model:</nobr>
                     </td>
                     <td >
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="ModelId"></span>
+                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Model"></span>
                     </td>
                    <td class="ftitle">
                         <nobr>National ID No.:</nobr>
@@ -181,7 +181,7 @@
                         <nobr>Type:</nobr>
                     </td>
                     <td class="" >
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="TypeId"></span>
+                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Type"></span>
                     </td>
                       <td class="ftitle">
                                 
@@ -254,15 +254,13 @@
                         <nobr>Last Service Date:</nobr>
                     </td>
                     <td  >
-                        <%--<input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="LastServiceDate" />--%>
-                        <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="LastCarRecivedDate"></span>
+                        
+                        <span class="ftitle dateLabel onDisable" groupid="GarageCarServiceDetails" argumentid="LastCarServiceDate"></span>
                     </td>
                     <td class="ftitle" style="width: 170px">Last Service KM.:</td>
                              <td>
-                        <%--<input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
-                            groupid="GarageCarServiceDetails" argumentid="LastServiceKM" />--%>
-                                 <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="LastCurrentKM"></span>  
+                    
+                                 <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="LastServiceKm"></span>  
                     </td>
                   
                 </tr>
@@ -271,8 +269,8 @@
                 <tr>
                     <td class="ftitle" style="width: 170px">Current KM.:</td>
                              <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   "
-                            groupid="GarageCarServiceDetails" argumentid="LastServiceKM" />
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number required  CommonDisableClass "
+                            groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" />
 <%--                                 <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="CurrentKM"></span>  --%>
                     </td>
 
@@ -354,11 +352,14 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                             <%--<input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />--%>
-                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                             
+                           
+                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
+                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                           <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
 
-                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
+                            <input type="button" style="width: 50px" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+
+                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
                         </div>
                     </td>
                 </tr>

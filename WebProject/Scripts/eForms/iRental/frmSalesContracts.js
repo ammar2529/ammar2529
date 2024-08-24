@@ -355,6 +355,37 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             {
                 $('[widgetid="frmSalesContactsPaymentDetails"]', t.el).hide();
             }
+
+            
+
+            setTimeout(function ()
+            {
+                
+                
+                    
+                  
+                var paymentTypes = $('[colid="PaymentType"]', t.el);  // Select the elements
+
+                paymentTypes.each(function ()
+                {
+                    var paymentType = $(this).text().trim();  // Get the text of each element
+
+                    if (paymentType === 'Receipt')
+                    {
+                        $(this).css('background-color', '#e0f7da');  // Apply light green color for 'Receipt'
+                    } else if (paymentType === 'Return')
+                    {
+                        $(this).css('background-color', 'lightcoral');  // Apply a very light red color for 'Return'
+                    }
+                });
+
+                
+                   
+
+               
+            }, 2000)
+          
+
         }
 
         return false;
@@ -823,7 +854,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date)
 //calculate weekday of start date
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate = function (csDate)
 {
-
+    debugger
     if (!!csDate)
     {
         var oDate = csDate.convertDate();

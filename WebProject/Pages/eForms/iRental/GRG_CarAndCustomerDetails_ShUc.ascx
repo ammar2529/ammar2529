@@ -3,49 +3,50 @@
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            Status
-        </td>
+            <span style="white-space: nowrap">Car No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Car No.</span>
-
-        </td>
+            &nbsp;<span style="white-space: nowrap">Chassis No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Chassis No.</span>
+            &nbsp;<span>Brand</span>
+                                    
 
         </td>
         <td style="text-align: left;" class="ftitle" width="20%">
             
 
-            <span>Brand</span>
-                                    
-
-        </td>
+            <span style="white-space: nowrap">Model</span></td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Model</span></td>
+            Year</td>
     </tr>
       
     <tr>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="RecCode" groupid="schCarAndCustomerDetails" />
+            <input type="text" class="text" argumentid="CarNumber" groupid="schCarAndCustomerDetails" />
         </td>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="CarNumber" groupid="schCarAndCustomerDetails" /></td>
-        <td style="text-align: left;">
             <input type="text"  class="text" argumentid="ChassisNo" groupid="schCarAndCustomerDetails" /></td>
+        <td style="text-align: left;">
+          
+
+            <select loadon="FirstVisible" class="dropdownlist " style="width: 155px;"
+                 groupid="schCarAndCustomerDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D5">
+                <option value="" selected="selected">Select Brand</option>
+            </select></td>
        <td style="text-align: left;">
           
 
-            <select loadon="FirstVisible" class="dropdownlist CommonSecondDD" style="width: 250px;"
-                 groupid="schCarAndCustomerDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D5">
-                <option value="" selected="selected">Select Brand</option>
+            <select class="dropdownlist " style="width: 155px;"
+                 groupid="schCarAndCustomerDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D6">
+                <option value="" selected="selected">Select Model</option>
             </select></td>
 
         <td style="text-align: left;">
             
-            <select class="dropdownlist CommonSecondDD" style="width: 155px;"
-                 groupid="schCarAndCustomerDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D6">
-                <option value="" selected="selected">Select Model</option>
+
+            <select loadon="FirstVisible" class="dropdownlist" style="width: 155px;"
+                 groupid="schCarAndCustomerDetails" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
+                <option value="" selected="selected">Select Year</option>
             </select></td>
     </tr>
 
@@ -56,80 +57,43 @@
 
       <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Color</span></td>
-        <td style="text-align: left;" class="ftitle" width="20%">
             <span style="white-space: nowrap">National ID No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
             <span style="white-space: nowrap">Customer Name</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
+
             <span style="white-space: nowrap">Mobile Telephone</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+
+            <span style="white-space: nowrap">Status</span> </td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
 <%--            <span style="white-space: nowrap">Salesman</span>--%>
 
-            </td>
+                        <nobr>Car For</nobr></td>
     </tr>
       
     <tr>
         <td style="text-align: left;">
           
 
-            <select loadon="FirstVisible" class="dropdownlist CommonSecondDD" style="width: 155px;"
-                groupid="schCarAndCustomerDetails" argumentid="ColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}" name="D7">
-                <option value="" selected="selected">Select Color</option>
-            </select></td>
+            <input type="text" class="text" argumentid="NationalIDNo" groupid="schCarAndCustomerDetails" /></td>
         <td style="text-align: left;">
        
 
-            <input type="text" class="text" argumentid="NationalIDNo" groupid="schCarAndCustomerDetails" /></td>
+            <input type="text" class="text" argumentid="CustomerName" groupid="schCarAndCustomerDetails" /></td>
 
         <td style="text-align: left;">
                
   
-            <input type="text" class="text" argumentid="CustomerName" groupid="schCarAndCustomerDetails" /></td>
+
+            <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schCarAndCustomerDetails" /></td>
         <td style="text-align: left;">
           
 
 
-            <input type="text" class="text" style="width: 250px;" argumentid="MobileTelephone1" groupid="schCarAndCustomerDetails" /></td>
-
-        <td style="text-align: left;">
-            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schCarAndCustomerDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
-                            <option value="" selected="selected">Select Salesman</option>
-                        </select>--%>
-            </td>
-    </tr>
-
-   
-        <tr>
-        <td colspan="5"></td>
-    </tr>
-    
-    <tr>
-        <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
-
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Status</span>
-        </td>
-        <td style="text-align: left;" class="ftitle">
-           </td>
-    </tr>
-    <tr>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-
-            <select class="dropdownlist" style="width: 250px;"
+            <select class="dropdownlist"  style="width: 155px;"
                 groupid="schCarAndCustomerDetails" argumentid="StateId" name="D4">
                 <option value="" selected="selected">Select Status</option>
                 <%--<option value="">-----------------------------</option>
@@ -157,9 +121,52 @@
                  <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
                  <option value="">-----------------------------</option>--%>
 
-            </select>
+            </select></td>
 
-        </td>
+        <td style="text-align: left;">
+            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schCarAndCustomerDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                            <option value="" selected="selected">Select Salesman</option>
+                        </select>--%>
+
+            <select class="dropdownlist"  style="width: 155px;"
+                groupid="schCarAndCustomerDetails" argumentid="CarFor" name="D7">
+                <option value="" selected="selected">Select CarFor</option>
+                <option value="Sales">Sales</option>
+                <option value="Rental">Rental</option>
+                <option value="Lease">Lease</option>
+             
+
+            </select></td>
+    </tr>
+
+   
+        <tr>
+        <td colspan="5"></td>
+    </tr>
+    
+    <tr>
+        <td style="text-align: left;" class="ftitle">
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+           </td>
+    </tr>
+    <tr>
+        <td style="text-align: left;">
+            &nbsp;</td>
+        <td style="text-align: left;">
+            &nbsp;</td>
+        <td style="text-align: left;">
+            &nbsp;</td>
+        <td style="text-align: left;">
+
+            &nbsp;</td>
 
         <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
            

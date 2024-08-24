@@ -32,7 +32,7 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}{OtherCarNumber}</nobr>&nbsp;-&nbsp;{BrandId}{Brand}&nbsp;-&nbsp;{ModelId}{Model}&nbsp;-&nbsp;{Color}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}{OtherCarNumber}</nobr>&nbsp;-&nbsp;{BrandId}{Brand}&nbsp;-&nbsp;{ModelId}{Model}&nbsp;-&nbsp;{Color}&nbsp;-&nbsp;{CarYear}</div>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -44,7 +44,7 @@
                                 </center>
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
-                                     <div class="ftitle">{DateCreated}&nbsp;{DateCreatedTime}</div>
+                                     <div class="ftitle">CarFor: {CarFor}</div>
                                      <%--<div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>--%>
                                    
@@ -77,7 +77,7 @@
                             Sequence: { width: '0px' },
                             ContractDetails: { caption: 'Car Details', width: '270px' },
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            ContractDateTimeDetails: { caption: ' Date & Time', width: '165px' },
+                            ContractDateTimeDetails: { caption: 'Other Details', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
                             RecId: { width: '0px' }
                         },
@@ -108,12 +108,15 @@
 
                             $('.StateName', t.el).each(function ()
                             {
-                                //if ($(this).text().indexOf('Created - Reservation') > -1) {
-                                //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
-                                //}
-                                //else if ($(this).text() != '{StateName}') {
-                                $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
-                                //}
+                                if ($(this).text().indexOf('Created') > -1)
+                                {
+                                    $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
+                                    $(this).css('color', 'Green');
+                                }
+                                else if ($(this).text() != '{StateName}')
+                                {
+                                    $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
+                                }
 
                                 var ptr = $(this).closest('tr');
 
@@ -345,9 +348,12 @@
 
              BrandId: { caption: 'Brand', width: '60px' },
              ModelId: { caption: 'Model', width: '90px' },
-             TypeId: { caption: 'Type', width: '60px' },
+             Type: { width: '0px' },
              CarLocationId: { caption: 'Car Location', width: '0px' },
-             CarStatusId: { caption: 'Car Status', width: '100px' },
+             CarStatusId: { caption: 'Car Status', width: '0px' },
+             CustomerRecCode: { caption: 'Rec No.', width: '75px' },
+             NationalIDNo: { caption: 'National ID', width: '100px' },
+             MobileTelephone1: { caption: 'Mobile Telephone', width: '100px' },
              CarType: {width:'0px'},
              FullInsuranceCompanyId: { width: '0px' },
              FullInsuranceExpiry: { width: '0px' },
@@ -356,9 +362,9 @@
              CarYear: { caption: 'Year', width: '60px' },
              ColorId: { caption: 'Color', width: '80px' },
              Nationality: { width: '0px' },
-             MobileTelephone1: { width: '0px' },
+           
              MobileTelephone2: { width: '0px' },
-             NationalIDNo: { width: '0px' },
+             
              Gender: { width: '0px' }
 
 
@@ -368,6 +374,7 @@
              Keys: 'RecId'
          }
      };
+   
  </script>
  </GridConfig>
  <Scripts>
@@ -474,32 +481,35 @@
      var cf = {
          cols: {
 
-             Sequence: { width: '0px' },
+
+            Sequence: { width: '0px' },
              RecId: { width: '0px' },
              RecCode: { width: '0px' },
-             ChassisNo: { width: '150px' },
              CarNumber: { caption: 'Car No.', width: '80px' },
-             CustomerRecCode: { width: '0px' },
+             ChassisNo: { width: '150px' },
+
              BrandId: { caption: 'Brand', width: '60px' },
              ModelId: { caption: 'Model', width: '90px' },
-             TypeId: { caption: 'Type', width: '60px' },
              CarYear: { caption: 'Year', width: '60px' },
              ColorId: { caption: 'Color', width: '80px' },
-             FullInsuranceCompanyId: { caption: 'Full Ins.', width: '90px' },
-             FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
+             Type: { width: '0px' },
+             CarLocationId: { caption: 'Car Location', width: '0px' },
+             CarStatusId: { caption: 'Car Status', width: '0px' },
+             CustomerRecCode: { caption: 'Rec No.', width: '75px' },
+             NationalIDNo: { caption: 'National ID', width: '100px' },
+             MobileTelephone1: { caption: 'Mobile Telephone', width: '100px' },
+             Type: { width: '0px' },
+             FullInsuranceCompanyId: { width: '0px' },
+             FullInsuranceExpiry: { width: '0px' },
              FullInsurancePolicyNo: { width: '0px' },
-             Nationality: { width: '0px' },
-             NationalIDNo: { width: '0px' },
-             Gender: { width: '0px' },
-             MobileTelephone1: { width: '0px' },
-             MobileTelephone2: { width: '0px' }
 
-             //CurrentMileage: { caption: 'Mileage', width: '100px' },
-             //frmInsuranceExpiry: { width: '0px' },
-             //frmFullInsuranceExpiry: { width: '0px' },
-             //CarLocationId: { width: '0px' },
-             //Status: { width: '100px' },
-             //ContractNo: { caption: 'Contract No.' }
+             
+            
+             Nationality: { width: '0px' },
+
+             MobileTelephone2: { width: '0px' },
+
+             Gender: { width: '0px' }
 
 
          },
@@ -601,32 +611,35 @@
      var cf = {
          cols: {
 
-             Sequence: { width: '0px' },
+         
+            Sequence: { width: '0px' },
              RecId: { width: '0px' },
              RecCode: { width: '0px' },
-             ChassisNo: { width: '150px' },
              CarNumber: { caption: 'Car No.', width: '80px' },
-             CustomerRecCode :{width:'0px' },
+             ChassisNo: { width: '150px' },
+
              BrandId: { caption: 'Brand', width: '60px' },
              ModelId: { caption: 'Model', width: '90px' },
-             TypeId: { caption: 'Type', width: '60px' },
              CarYear: { caption: 'Year', width: '60px' },
              ColorId: { caption: 'Color', width: '80px' },
-             FullInsuranceCompanyId: { caption: 'Full Ins.', width: '90px' },
-             FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
+             Type: { width: '0px' },
+             CarLocationId: { caption: 'Car Location', width: '0px' },
+             CarStatusId: { caption: 'Car Status', width: '0px' },
+             CustomerRecCode: { caption: 'Rec No.', width: '75px' },
+             NationalIDNo: { caption: 'National ID', width: '100px' },
+             MobileTelephone1: { caption: 'Mobile Telephone', width: '100px' },
+             Type: { width: '0px' },
+             FullInsuranceCompanyId: { width: '0px' },
+             FullInsuranceExpiry: { width: '0px' },
              FullInsurancePolicyNo: { width: '0px' },
+
+
+
              Nationality: { width: '0px' },
-             NationalIDNo: { width: '0px' },
-             Gender: { width: '0px' },
-             MobileTelephone1: { width: '0px' },
-             MobileTelephone2: { width: '0px' }
-             
-             //CurrentMileage: { caption: 'Mileage', width: '100px' },
-             //frmInsuranceExpiry: { width: '0px' },
-             //frmFullInsuranceExpiry: { width: '0px' },
-             //CarLocationId: { width: '0px' },
-             //Status: { width: '100px' },
-             //ContractNo: { caption: 'Contract No.' }
+
+             MobileTelephone2: { width: '0px' },
+
+             Gender: { width: '0px' }
 
 
          },

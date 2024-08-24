@@ -1573,8 +1573,14 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
             var fldVal = val(jqThis[0], container);
             var t = !!fldVal && fldVal != "";
 
-            if (t) {
-                fldVal = jqThis.hasClass('date') ?SetDateFormat( fldVal) : fldVal;
+            if (t)
+            {
+
+                if (jqThis.attr("argumentid") == 'LastCarServiceDate')
+                {
+                    debugger;
+                }
+                fldVal = jqThis.hasClass('date') || jqThis.hasClass('dateLabel') ?SetDateFormat( fldVal) : fldVal;
                 groups[currentGroup].attr(jqThis.attr("argumentid"), fldVal);
             }
             else {//if field have no value

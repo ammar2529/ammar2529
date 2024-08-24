@@ -813,7 +813,7 @@
                     <td colspan="4" style="text-align: center;">
                         <div style="padding-top: 10px;">
 <%--                            <input type="button" style="width: 225px;" value="Close Contract - Pending Payment" class="DataAction ButtonStyle btn_3" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Contracts',Params:{NewStateId:'RRCContractClosedPendingPayment'}, HideOnSuccess:false, Requery:true}" />--%>
-                            <input type="button" value="  Reserve  "  ignorevalidate="DocType" class="DataAction ButtonStyle C  btnReserve common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,GroupId:'SalesContractsForm',Requery:true}" />
+                            <input type="button" value="  Reserve  "  ignorevalidate="DocType" class="DataAction ButtonStyle C  btnReserve common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:true,GroupId:'SalesContractsForm',Requery:false}" />
                             
                             <input type="button" ignorevalidate="DocType" style="width: 225px;  color: Green" value="Close Contract - Payment Cleared" class="DataAction CloseContract ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractClosed'}, HideOnSuccess:false,GroupId:'SalesContractsForm', Requery:true}" />
                             <input type="button" ignorevalidate="DocType" style="width: 225px" value="Cancel Contract" class="DataAction CancelContract ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractCancelled'}, HideOnSuccess:false,GroupId:'SalesContractsForm', Requery:true}" />
@@ -834,7 +834,7 @@
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
                             <input type="button" style="width: 70px" value="  Reserve  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
-                           <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{NewStateId:'NoStateId'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+                           <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
 
 <%--                            ,Params:{DBAction:'SCReserved'}--%>
                             <input type="button" value="  Quotation  "style="width: 70px" class="ButtonStyle QuotationBtn common-button" />

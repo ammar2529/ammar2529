@@ -1376,6 +1376,7 @@
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\GRG_CarAndCustomerDetails_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\GRG_CarServiceDetails_Car_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\GRG_OtherCars_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\Invoice_PD_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\Invoice_ShUc.ascx" />
@@ -2837,6 +2838,13 @@
     <Compile Include="Pages\eForms\iRental\GRG_CarAndCustomerDetails_ShUc.ascx.designer.cs">
       <DependentUpon>GRG_CarAndCustomerDetails_ShUc.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\GRG_CarServiceDetails_Car_ShUc.ascx.cs">
+      <DependentUpon>GRG_CarServiceDetails_Car_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\GRG_CarServiceDetails_Car_ShUc.ascx.designer.cs">
+      <DependentUpon>GRG_CarServiceDetails_Car_ShUc.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\GRG_OtherCars_FrUc.ascx.cs">
       <DependentUpon>GRG_OtherCars_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3876,9 +3884,6 @@
     <Compile Include="WebForm2.aspx.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm3.aspx.cs">
       <DependentUpon>WebForm3.aspx</DependentUpon>

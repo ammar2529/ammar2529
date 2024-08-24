@@ -60,8 +60,9 @@
                 <pre columnid="CreationDetails">
 <%--                                     <div class="ftitle" style="color:#808000; ">{ChassisNo}</div>--%>
                                      <div class="ftitle" style="color:#101080">{CreatedBy}</div>
-                                     <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
-                                  <%-- <div class="ftitle" style="color:#808000">{FinanceCompany}</div>--%>
+                                     
+                                    <div class="ftitle">{DateCreated}&nbsp;{DateCreatedTime}</div>
+                                   <div class="ftitle divKM" style="color:#808000">KM: {LastServiceKM}</div>
 
                     
                                     
@@ -107,12 +108,13 @@
 
                             $('.StateName', t.el).each(function ()
                             {
-                                //if ($(this).text().indexOf('Created - Reservation') > -1) {
-                                //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
-                                //}
-                                //else if ($(this).text() != '{StateName}') {
+                                if ($(this).text().indexOf('Created') > -1) {
+                                    $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
+                                    $(this).css('color', 'Green');
+                                }
+                                else if ($(this).text() != '{StateName}') {
                                 $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
-                                //}
+                                }
 
                                 var ptr = $(this).closest('tr');
 
@@ -123,6 +125,11 @@
                                 else if ($(this).text().indexOf('Contract Cancelled') > -1)
                                 {
                                     ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                else if ($(this).text().indexOf('Closed') > -1)
+                                {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                    $(this).css('color', 'Red');
                                 }
                                 else if ($(this).text().indexOf('Contract Open - Car In') > -1)
                                 {
@@ -151,7 +158,7 @@
                            
                         });
 
-
+                      
                     }
 
                 </script>
@@ -183,7 +190,7 @@
 
 
 <div class='LOVPopup' lovpopupid='carPopupGarage' style="display: none">
-    <AW:Form ID="frmCarServiceDetails_Cars" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_SearchCarFor_CarAndCustomerDetils" AsyncForm="~/Pages/eForms/iRental/SalesContracts_Cars_ShUc.ascx">
+    <AW:Form ID="frmCarServiceDetails_Cars" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_SearchCarFor_CarAndCustomerDetils" AsyncForm="~/Pages/eForms/iRental/GRG_CarServiceDetails_Car_ShUc.ascx">
         <WidgetConfig>
             <script>
                 var cf = {
@@ -206,38 +213,51 @@
             <script>
                 var cf = {
                     cols: {
-                        Sequence: { width: '0px' },
+                    
+                        
+                      Sequence: { width: '0px' },
                         RecId: { width: '0px' },
                         RecCode: { width: '0px' },
                         CarNumber: { caption: 'Car No.', width: '80px' },
                         ChassisNo: { width: '150px' },
-                       
+
                         BrandId: { caption: 'Brand', width: '60px' },
                         ModelId: { caption: 'Model', width: '90px' },
-                        TypeId: { caption: 'Type', width: '60px' },
+                        CarYear: { caption: 'Year', width: '60px' },
+                        ColorId: { caption: 'Color', width: '80px' },
+                        Type: { width: '0px' },
                         CarLocationId: { caption: 'Car Location', width: '0px' },
-                        CarStatusId: { caption: 'Car Status', width: '100px' },
-
+                        CarStatusId: { caption: 'Car Status', width: '0px' },
+                        CustomerRecCode: { caption: 'Rec No.', width: '85px' },
+                        NationalIDNo: { caption: 'National ID', width: '100px' },
+                        MobileTelephone1: { caption: 'Mobile Telephone', width: '100px' },
+                        Type: { width: '0px' },
                         FullInsuranceCompanyId: { width: '0px' },
                         FullInsuranceExpiry: { width: '0px' },
                         FullInsurancePolicyNo: { width: '0px' },
+                        CarFor: { width: '0px' },
+                        LastServiceKm: { width: '0px' },
+                        LastCarServiceDate: { width: '0px' },
+                        CarRecivedDate: { width: '0px' },
 
-                        CarYear: { caption: 'Year', width: '60px' },
-                        ColorId: { caption: 'Color', width: '80px' },
                         Nationality: { width: '0px' },
-                        MobileTelephone1: { width: '0px' },
-                        MobileTelephone2: { width: '0px' },
-                        NationalIDNo: { width: '0px' },
                         NationalityID: { width: '0px' },
-                        Gender: { width: '0px' }
-                        
-                        //CurrentMileage: { caption: 'Mileage', width: '70px' },
-                        //CarLocationId: { width: '0px' },
-                        //CarStatusId: { caption: 'Car Status', width: '90px' },
-                        //Status: { width: '100px' },
-                        //ContractNo: { caption: 'Contract No.' }
+                        MobileTelephone2: { width: '0px' },
+
+                        CurrentServiceKm: { width: '0px' },
+
+                        Gender: { width: '0px' },
+
+                        CarToBeDeliverdDate: { width: '0px' },
+                        CarDeliverdDate: { width: '0px' },
+                        Problem: { width: '0px' },
+                        ActionTaken: { width: '0px' },
+                        CarCondition: { width: '0px' },
 
 
+                    },
+                    DataActionParams: {
+                        SearchDbAction: 'SearchChassisNo'
                     }
                 };
             </script>
