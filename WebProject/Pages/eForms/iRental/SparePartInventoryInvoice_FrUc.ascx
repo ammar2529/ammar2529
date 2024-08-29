@@ -5,12 +5,6 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 
-<style type="text/css">
-    .auto-style1 {
-        width: 100%;
-    }
-</style>
-
 <script src="../../../Scripts/eForms/iRental/frmInvoicePaymentDetails.js"></script>
 
 
@@ -34,8 +28,10 @@
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-
-                <tr>
+               <tr id="trNote">
+             <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
+             </tr>
+                                <tr>
                      <td class="ftitle">
                         <nobr>Invoice No.:</nobr>
 
@@ -60,97 +56,154 @@
                         </div>
                         </td>
                 </tr>
+                                <tr>
+                     <td class="ftitle">
+                        <nobr>Invoice For:</nobr>
+
+                    </td>
+                 <td class="ftitle" width="32%">
+
+     <input type="radio" class="CommonDisableClass ElemDisabled  ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service Invoice</label>
+     <input type="radio" class="CommonDisableClass ElemDisabled PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts Invoice </label>
+                 </td>
+
+                      <td class="ftitle" width="20%">
+                        <nobr>Delivery No.: </nobr>
+                    </td>
+                    <td class="ftitle" width="30%">
+                      
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
+                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" /></td>
+                </tr>
+             
 
                       <tr>
                     <td class="ftitle">
-                        <nobr>Customer RecCode:</nobr>
+                        <nobr class="cust">Customer RecCode *:</nobr>
+                        <nobr class="serv">Service No. *:</nobr>
                     </td>
                     <td>
                     
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass  "
                             groupid="SparePartInventoryInvoice" lovpopupid="customerInvoicePopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
 
+                       <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisableClass  "
+                         groupid="SparePartInventoryInvoice" lovpopupid="carPopupGarageForInvoice" argumentid="ServiceNo"   requirederr=' *Required'/>
+
                     </td>
 
                    
                     <td class="ftitle">
                         <nobr>Date:</nobr>
-                    </td>
+                          </td>
                     <td>
                         <input type="text" groupid="SparePartInventoryInvoice" maxlength="10"
                             style="width: 75px;" class="text  date DisableOnClose CommonDisableClass  " argumentid="InvoiceDate" />
 
 
-
                     </td>
 
                 </tr>
-                <tr>
+                            <tr class="hideCarandService">
+   
+                  <td class="ftitle">
+      <nobr>Car No:</nobr>
+  </td>
+  <td >
+      <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="CarNumber"></span>
+  </td>
+
+   
+                <td class="ftitle">
+          <nobr>Model:</nobr>
+                    </td>
+                  <td style="text-align: left">
+                   <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="Model"></span>
+
+                  </td>
+            </tr>
+
+                   <tr class="hideCarandService">
+
+   
+                       <td class="ftitle">
+                <nobr>Brand:</nobr>
+            </td>
+            <td >
+                <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="Brand"></span>
+              
+            </td>
+   
+    <td class="ftitle">
+            <nobr>Year:</nobr>
+        </td>
+   
+       <td class="ftitle">
+            <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="CarYear"></span>
+   
+</td>
+
+    
+</tr>
+
+                <tr class="hideCarandService">
+     <td colspan="4">
+         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+     </td>
+ </tr>
+                             
+
+                <tr class="hideTrForINVCust">
                    
                     <td class="ftitle">
                         <nobr>Name:</nobr>
                     </td>
-                    <td style="text-align: center">
-                        <span class="ftitle" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
+                    <td style="text-align: left" >
+                        <span class="ftitle CommonSPCust" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
                     </td>
 
                    
-                    <td class="ftitle">
-                        <nobr>Delivery No.:</nobr>
-                    </td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
-                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" />
-
-                    </td>
+                    <td  class="ftitle">
+                        <nobr>Mobile Telephone:</nobr>
+                        </td>
+                    <td >
+                                 <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
+         <nobr class="CommaM12">, </nobr>
+         <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
+                        </td>
                 </tr>
 
-                <tr>
+                <tr class="hideTrForINVCust">
 
                      <td class="ftitle">
-                        <nobr>Mobile Telephone:</nobr>
+                        <nobr>National ID No.:</nobr>
                     </td>
                     <td class="ftitle">
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
-                        <nobr class="CommaM12">, </nobr>
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
+                          <div style="float: left; width: 135px" class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="NationalIDNo"></div>
+                    <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="NationalIDExpiryDate"></span>
+               
                     </td>
 
                 
 
                     <td class="ftitle">
                       
-                    </td>
-                    <td>
+                        <nobr class="serv">Customer RecCode</nobr></td>
+                    <td class="ftitle">
                     
 
-
+                       <input readonly type="text" class="ftitle CommonSPCust serv" style="font-size: 16px;display: inline-block;background: transparent;border: none;color: #628296;cursor: context-menu;"
+                           groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" />
 
                     </td>
 
 
                 </tr>
                 <tr>
-
-                      <td class="ftitle">
-                        <nobr>Nationality:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="Nationality"></span>
-                    </td>
-
-
-                 
-                    <td class="ftitle">
-                        
-                    </td>
-                    <td>
-                        
-
-                    </td>
-
-
-                </tr>
+     <td colspan="4">
+         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+     </td>
+ </tr>
 
 
              
@@ -246,6 +299,7 @@
                
 
                         <input type="hidden" groupid="SparePartInventoryInvoice" argumentid="FileGuid" readonly="readonly" />
+                        <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo"  />
 
                         <%-- Data Grid  --%>
                         <div style="width: 100%;" class="CommonDisableClass">
@@ -412,8 +466,8 @@
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount"
                             groupid="SparePartInventoryInvoice" argumentid="Discount" /></td>
                                                                             
-                    <%--<td colspan="2" rowspan="2" style="padding: 0; " class="auto-style1">
-                        &nbsp;</td>--%>
+                    <%--<td colspan="2" rowspan="2" style="padding: 0; " >
+                        </td>--%>
                    <td colspan="2" rowspan="2">
                        <textarea class="textarea CommonDisableClass  " style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
                             argumentid="Comments" groupid="SparePartInventoryInvoice"></textarea>
@@ -493,8 +547,10 @@
                 PageSize="20" DataSource="SEL_Invoice_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_Invoice_Payments\',KeysCol:\'RecId\'}}}">
                 
- <GridConfig>
- <script>
+                
+ 
+<GridConfig>
+<script>
      cf = {
          cols: {
              Sequence: { width: '0px' },
@@ -519,14 +575,14 @@
          }
      };
  </script>
- </GridConfig>
- <Scripts>
- <script>
+</GridConfig>
+<Scripts>
+<script>
      //var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
  </script>
- </Scripts>
- <RowDetail>
- <pre class="" colindex="4">
+</Scripts>
+<RowDetail>
+<pre class="" colindex="4">
                     <AW:container id="conInvoicePaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -555,33 +611,28 @@
                     </script></GridConfig>
                     <Scripts>
                     <script>
-                        var fn = function ()
-                        {
-                            t.on('rowsRendered', function ()
-                            {
-                                $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function ()
-                                {
+                        var fn = function () {
+                            t.on('rowsRendered', function () {
+                                $('[colid="PaymentType_Audit"]:not(".w-grid-head-cell")').each(function () {
                                     var ptr = $(this).closest('tr');
-                                    if ($(this).text().toLowerCase() == "return")
-                                    {
+                                    if ($(this).text().toLowerCase() == "return") {
                                         $('[colid="PaymentAmount"] div', ptr).css({ 'font-weight': 'bold', 'color': 'red' });
                                         $('[colid="PaymentAmount"] div', ptr).text('-' + $('[colid="PaymentAmount"] div', ptr).text());
                                     }
                                     $('[colid="PaymentAmount"] div', ptr).text(parseFloat($('[colid="PaymentAmount"] div', ptr).text()).fix(3));
                                 });
                             });
-                            t.on('onNoRecords', function ()
-                            {
+                            t.on('onNoRecords', function () {
                                 $('.BottomTR', t.Repeater).hide();
                             });
                         }
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
- </RowDetail>
+</RowDetail>
 
 
- </AW:DataGrid>
+</AW:DataGrid>
 
             <AW:Form ID="frmInvoicePaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/Invoice_PD_FrUc.ascx">
                 <WidgetConfig>
@@ -601,7 +652,7 @@
                     <script>
 
 
-                    </script>
+</script>
                 </Scripts>
             </AW:Form>
 

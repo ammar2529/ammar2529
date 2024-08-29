@@ -1487,8 +1487,10 @@ function val(elem, ctx) {
         else if (elem.type.toLowerCase() == 'checkbox') {
             return $(elem).attr('checked') ? "1" : "0";
         }
+        
 
     }
+   
     else if (elem.tagName == 'SPAN') {
         return $.trim($(elem).text());
     }
@@ -1810,7 +1812,9 @@ var setField = function (ctl, param, ctx)
     else if (tag == 'TEXTAREA') {
         $(ctl).val(val);
     }
+    
     else if ('DIVSPAN'.indexOf(tag) > -1) {
+       
         val = (val == null || val == undefined) ? "" : val;
         $(ctl).text(val);
     }

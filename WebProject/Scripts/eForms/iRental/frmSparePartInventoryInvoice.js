@@ -8,6 +8,66 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
 
+    $(".ServiceInvoice, .PartsInvoice").click(function () {
+       
+       
+        //var kv = {
+        //    'ServiceInvoice': 'carPopupGarageForInvoice',
+        //    'PartsInvoice': 'customerInvoicePopup'
+
+        //};
+
+        ////carPopupCutomerAndCarDetailsSales
+        //var toShow = kv[this.value];
+        //$('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"]', t.el)
+        //    .each(function () {
+        //        var elm = $(this);
+        //        if (elm.attr('lovpopupid') != toShow) {
+        //            elm.removeClass('required')
+        //                .hide();
+        //            elm.next('span[errmsg]').remove();
+        //        }
+
+        //    });
+
+
+        ///*$(`.${toShow}`)*/
+        //$(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+
+        //$('.CommonDisableCarNumber').val('');
+        //$('.CommonDisable').text('');
+
+
+
+
+        //if (toShow === 'carPopupGarageForInvoice' )
+        //{
+
+        //    $('.cust', t.el).hide();
+        //    $('.serv', t.el).show();
+        //    $('.hideCarandService', t.el).show();
+        //    $('.CommonSPCust').text('');
+        //    $('.hideTrForINVCust', t.el).hide();
+
+        //} else
+        //{
+        //    $('.cust', t.el).show();
+        //    $('.serv', t.el).hide();
+
+        //    $('[argumentid="ServiceNo" ]', t.el).val('');
+        //    $('.CommonSPINv', t.el).text('');
+        //    $('.hideCarandService', t.el).hide();
+        //    $('.hideTrForINVCust', t.el).show();
+
+
+
+
+        //}
+
+        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
+
+    });
+
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function ()
     {
@@ -50,7 +110,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     t.on('rowsRendered', function ()
     {
-        ;
+        
         $('.PrintReport', t.el).click(function ()
         { //
             var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintInvoicePaymentReceiptVoucher.aspx?FormId=" + $(this).text() + "&ContractType=INVOICE_PAYMENT"; // +'&amp;FormId=' + pm.SelectedKey;
@@ -97,6 +157,63 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                     $(this).show();
                 }
             });
+
+            var dt = new Date();
+
+            $('[argumentid="InvoiceDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
+
+            //if ($('.ServiceInvoice').is(":checked")) {
+                
+            //    var kv = {
+            //        'ServiceInvoice': 'carPopupGarageForInvoice',
+            //        'PartsInvoice': 'customerInvoicePopup'
+
+            //    };
+
+            //    //carPopupCutomerAndCarDetailsSales
+            //    var toShow = kv['ServiceInvoice'];
+            //    $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"]', t.el)
+            //        .each(function () {
+            //            var elm = $(this);
+            //            if (elm.attr('lovpopupid') != toShow) {
+            //                elm.removeClass('required')
+            //                    .hide();
+            //                elm.next('span[errmsg]').remove();
+            //            }
+
+            //        });
+
+
+            //    /*$(`.${toShow}`)*/
+            //    $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+            //    if (toShow === 'carPopupGarageForInvoice') {
+
+            //        $('.cust', t.el).hide();
+            //        $('.serv', t.el).show();
+            //    } else {
+            //        $('.cust', t.el).show();
+            //        $('.serv', t.el).hide();
+            //    }
+
+            //    //$('.RadioButtons', t.el).removeClass('ElemDisabled');
+            //    //$('.RadioButtons', t.el).removeAttr('disabled', 'disabled')
+            //    ///* $('.Other', t.el).addClass('ElemDisabled').attr('disabled', 'disabled');*/
+
+            //    //$('[argumentid="CarNumber"]', t.el).removeClass('ElemDisabled');
+            //    //$('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled')
+
+            //    // Hide the dropdown for Sales
+            //    //$('.CommonCarDropdown').removeClass('required').hide();
+            //    //$('.carCutomerAndCarDetailsForOther', t.el).hide();
+            //    //$('.hideTr', t.el).show();
+            //    //$('.ChassisNo', t.el).show();
+            //}
+
+            //$('.hideCarandService', t.el).show();
+            //$('.hideTrForINVCust', t.el).hide();
+
+            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
         }
 
        
@@ -109,8 +226,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         if (params.res.status === 'OK')
         {
             
-
-            var myMessage = "Invoice create Successfully";
+            
+            var myMessage = "Invoice Created Successfully";
             var trimMyMessage = myMessage.trim();
             var parts = params.res.Response.split('||');
             var code = parts[ 0 ];
@@ -124,7 +241,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
       
 
-            if (trimMessage === trimMyMessage)
+            if (trimMessage.toLowerCase() === trimMyMessage.toLowerCase())
             {
                 
                 // This line will only execute if the message is "Invoice create Successfully"
@@ -209,6 +326,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems(t);
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem(t);
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode(t);
+   /* AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();*/
+
     //AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.btnSavePayment(t);
 
     $('#addRowButton').off('click').on('click', function ()
@@ -443,7 +562,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfQuantityAnd
 
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice = function (t)
 {
-    debugger;
+    
 
     var discount = parseFloat($('.Discount', t.el).val());
     //var Paid = parseFloat($('[argumentid="Paid"]', t.el).val());
@@ -796,8 +915,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
     t.on('onLoadedValues', function (args)
     {
-        
-        
+
+        debugger
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
         $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="SparePartUnitPrice"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
@@ -826,6 +945,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
   
        
         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
+        
+        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
 
 
     });
@@ -1184,4 +1305,122 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
     }, "Search");
 
 }
+
+
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function () {
+    var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
+    //if ($(".ServiceInvoice").is(":checked")) {
+
+    //    $('.hideTrForINVCust', t.el).hide();
+    //    $('.hideCarandService', t.el).show();
+    //    $('.cust', t.el).hide();
+    //    $('.serv', t.el).show();
+
+    //} else if ($(".PartsInvoice").is(":checked")) {
+
+    //    $('.hideCarandService', t.el).hide();
+    //    $('.hideTrForINVCust', t.el).show();
+
+    //    $('.cust', t.el).show();
+    //    $('.serv', t.el).hide();
+    //}
+
+  
+    if ($('.ServiceInvoice').is(":checked"))
+    {
+
+        var kv = {
+            'ServiceInvoice': 'carPopupGarageForInvoice',
+            'PartsInvoice': 'customerInvoicePopup'
+
+        };
+
+        //carPopupCutomerAndCarDetailsSales
+        var toShow = kv['ServiceInvoice'];
+        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"]', t.el)
+            .each(function () {
+                var elm = $(this);
+                if (elm.attr('lovpopupid') != toShow) {
+                    elm.removeClass('required')
+                        .hide();
+                    elm.next('span[errmsg]').remove();
+                }
+
+            });
+
+
+        /*$(`.${toShow}`)*/
+        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+        if (toShow === 'carPopupGarageForInvoice') {
+
+            $('.cust', t.el).hide();
+            $('.serv', t.el).show();
+        } else {
+            $('.cust', t.el).show();
+            $('.serv', t.el).hide();
+        }
+
+
+
+        $('.hideCarandService', t.el).show();
+        $('.hideTrForINVCust', t.el).show();
+    }
+
+
+
+    if ($('.PartsInvoice').is(":checked")) {
+
+        var kv = {
+            'ServiceInvoice': 'carPopupGarageForInvoice',
+            'PartsInvoice': 'customerInvoicePopup'
+
+        };
+
+        //carPopupCutomerAndCarDetailsSales
+        var toShow = kv['PartsInvoice'];
+        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"]', t.el)
+            .each(function () {
+                var elm = $(this);
+                if (elm.attr('lovpopupid') != toShow) {
+                    elm.removeClass('required')
+                        .hide();
+                    elm.next('span[errmsg]').remove();
+                }
+
+            });
+
+
+        /*$(`.${toShow}`)*/
+        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+        if (toShow === 'customerInvoicePopup') {
+
+            $('.cust', t.el).show();
+            $('.serv', t.el).hide();
+            $('[argumentid="ChassisNo" ]', t.el).val('');
+        } else {
+            $('.cust', t.el).hide();
+            $('.serv', t.el).show();
+        }
+
+        //$('.RadioButtons', t.el).removeClass('ElemDisabled');
+        //$('.RadioButtons', t.el).removeAttr('disabled', 'disabled')
+        ///* $('.Other', t.el).addClass('ElemDisabled').attr('disabled', 'disabled');*/
+
+        //$('[argumentid="CarNumber"]', t.el).removeClass('ElemDisabled');
+        //$('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled')
+
+        // Hide the dropdown for Sales
+        //$('.CommonCarDropdown').removeClass('required').hide();
+        //$('.carCutomerAndCarDetailsForOther', t.el).hide();
+        //$('.hideTr', t.el).show();
+        //$('.ChassisNo', t.el).show();
+
+        $('.hideCarandService', t.el).hide();
+        $('.hideTrForINVCust', t.el).show();
+
+    }
+
+    
+
+};
 

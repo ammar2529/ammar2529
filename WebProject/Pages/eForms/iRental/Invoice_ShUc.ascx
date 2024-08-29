@@ -1,83 +1,99 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Invoice_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.Invoice_ShUc" %>
 
 <table class="w-form-table" cellspacing="2" style="width: 100%">
-  
-        <tr>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Invoice No.</span>
-        </td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Customer Name</span></td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Mobile Telephone</span>
-        </td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">National ID No.</span></td>
-
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Delivery No.</span>
-            </td>
-    </tr>
-      
     <tr>
-        <td style="text-align: left;">
+        <td style="text-align: left;" class="ftitle" width="20%">
+            <span style="white-space: nowrap">Car No.</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+            &nbsp;<span style="white-space: nowrap">Chassis No.</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+            &nbsp;<span>Brand</span>
+                                    
 
-            <input type="text"  class="text" argumentid="RecCode"  groupid="schInvoice" />
         </td>
-        <td style="text-align: left;">
-            <input type="text" class="text" argumentid="CustomerName" groupid="schInvoice" /></td>
-        <td style="text-align: left;">
-        <input type="text" class="text" argumentid="MobileTelephone1" groupid="schInvoice" />    
-        </td>
-        <td style="text-align: left;">
+        <td style="text-align: left;" class="ftitle" width="20%">
             
-            <input type="text" class="text" style="width: 300px;" argumentid="NationalIDNo" groupid="schInvoice" />
-           </td>
 
-        <td style="text-align: left;">
-            <input type="text" class="text" argumentid="DeliveryNo" groupid="schInvoice" />
-            </td>
+            <span style="white-space: nowrap">Model</span></td>
+
+        <td style="text-align: left;" class="ftitle" width="20%">
+            Year</td>
     </tr>
-    
-    
-   
-    <tr>
-
-        <td colspan="7">&nbsp;
-        </td>
-
-    </tr>
-
       
     <tr>
-        <td style="text-align: left;" class="ftitle">
-        
-
+        <td style="text-align: left;">
+            <input type="text" class="text" argumentid="CarNumber" groupid="schInvoice" />
         </td>
-        <td style="text-align: left;" class="ftitle">
-
+        <td style="text-align: left;">
+            <input type="text"  class="text" argumentid="ChassisNo" groupid="schInvoice" /></td>
+        <td style="text-align: left;">
           
 
-        </td>
-        <td style="text-align: left;" class="ftitle">
-            </td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Contract Status</span>
-        </td>
-        <td style="text-align: left;">&nbsp;</td>
+            <select loadon="FirstVisible" class="dropdownlist " style="width: 155px;"
+                 groupid="schInvoice" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D5">
+                <option value="" selected="selected">Select Brand</option>
+            </select></td>
+       <td style="text-align: left;">
+          
+
+            <select class="dropdownlist " style="width: 155px;"
+                 groupid="schInvoice" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D6">
+                <option value="" selected="selected">Select Model</option>
+            </select></td>
+
+        <td style="text-align: left;">
+            
+
+            <select loadon="FirstVisible" class="dropdownlist" style="width: 155px;"
+                 groupid="schInvoice" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
+                <option value="" selected="selected">Select Year</option>
+            </select></td>
     </tr>
+
+    <tr>
+        <td colspan="5"></td>
+    </tr>
+
+
+      <tr>
+        <td style="text-align: left;" class="ftitle" width="20%">
+            <span style="white-space: nowrap">National ID No.</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+
+            <span style="white-space: nowrap">Customer Name</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+
+            <span style="white-space: nowrap">Mobile Telephone</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+
+            <span style="white-space: nowrap">Status</span> </td>
+
+        <td style="text-align: left;" class="ftitle" width="20%">
+<%--            <span style="white-space: nowrap">Salesman</span>--%>
+
+                        <nobr>Invoice For</nobr></td>
+    </tr>
+      
     <tr>
         <td style="text-align: left;">
-                            </td>
-        <td style="text-align: left;">
-            
-        </td>
-        <td style="text-align: left;">
-            
-        </td>
-        <td style="text-align: left;">
+          
 
-            <select class="dropdownlist" style="width: 300px;"
+            <input type="text" class="text" argumentid="NationalIDNo" groupid="schInvoice" /></td>
+        <td style="text-align: left;">
+       
+
+            <input type="text" class="text" argumentid="CustomerName" groupid="schInvoice" /></td>
+
+        <td style="text-align: left;">
+               
+  
+
+            <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schInvoice" /></td>
+        <td style="text-align: left;">
+          
+
+
+            <select class="dropdownlist"  style="width: 155px;"
                 groupid="schInvoice" argumentid="StateId" name="D4">
                 <option value="" selected="selected">Select Status</option>
                 <%--<option value="">-----------------------------</option>
@@ -106,14 +122,61 @@
                  <option value="">-----------------------------</option>--%>
 
             </select></td>
+
+        <td style="text-align: left;">
+            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schInvoice" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                            <option value="" selected="selected">Select Salesman</option>
+                        </select>--%>
+
+            <select class="dropdownlist"  style="width: 155px;"
+                groupid="schInvoice" argumentid="InvoiceDetails" name="D7">
+                <option value="" selected="selected">Select InvoiceFor</option>
+                <option value="ServiceInvoice">Service Invoice</option>
+                <option value="PartsInvoice">Parts Invoice</option>
+              
+             
+
+            </select></td>
+    </tr>
+
+   
+        <tr>
+        <td colspan="5"></td>
+    </tr>
+    
+    <tr>
+        <td style="text-align: left;" class="ftitle">
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+            &nbsp;</td>
+        <td style="text-align: left;" class="ftitle">
+           </td>
+    </tr>
+    <tr>
+        <td style="text-align: left;">
+            &nbsp;</td>
+        <td style="text-align: left;">
+            &nbsp;</td>
+        <td style="text-align: left;">
+            &nbsp;</td>
+        <td style="text-align: left;">
+
+            &nbsp;</td>
+
         <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
+           
             <a href="javascript:void(0);" class="search ViewButton ">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
                     border="0" /></a> 
             <a href="javascript:void(0);" class="reset clearCheck ClearButton">
                         <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
                             border="0" /></a>
-        </td>
-    </tr>
-
+           
+            </td>
+  
 </table>
