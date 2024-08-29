@@ -148,7 +148,20 @@
 
 
                                 }
-                                
+
+                                $('.CarDetails').each(function ()
+                                {
+                                    
+                                    var carNumber = $(this).find('.ftitle').text().trim();
+                                    var content = $(this).text().trim();
+
+                                    // Check if any of the fields are empty, contain only white space, or a hyphen
+                                    if (!carNumber || carNumber === '-' || content.includes("{Brand}") || content.includes("{Model}") || content.includes("{CarYear}") ||
+                                        content.includes(" - ") || content.includes("  ") || content.includes(" -"))
+                                    {
+                                        $(this).hide();
+                                    }
+                                });
                                
                                 
                             });
