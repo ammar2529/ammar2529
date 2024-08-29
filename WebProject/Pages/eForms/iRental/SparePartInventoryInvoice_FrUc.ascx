@@ -31,6 +31,28 @@
                <tr id="trNote">
              <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
              </tr>
+                                                <tr class="hideCarandService">
+                     <td class="ftitle">
+                        <nobr>Service Status:</nobr>
+
+                    </td>
+                    <td>
+                       
+                      <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="ServiceState"></span>
+                        
+<%--                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />--%>
+                 </td>
+
+                      <td class="ftitle" width="20%">
+                        <nobr>Service Date:</nobr>
+                    </td>
+                    <td class="ftitle" width="30%">
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="DateCreated"></span>
+
+                        
+                        </td>
+                </tr>
+
                                 <tr>
                      <td class="ftitle">
                         <nobr>Invoice No.:</nobr>
@@ -63,8 +85,8 @@
                     </td>
                  <td class="ftitle" width="32%">
 
-     <input type="radio" class="CommonDisableClass ElemDisabled  ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service Invoice</label>
-     <input type="radio" class="CommonDisableClass ElemDisabled PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts Invoice </label>
+     <input type="radio" class="   ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service Invoice</label>
+     <input type="radio" class="  PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts Invoice </label>
                  </td>
 
                       <td class="ftitle" width="20%">

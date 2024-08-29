@@ -164,7 +164,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
 
             //if ($('.ServiceInvoice').is(":checked")) {
-                
+
             //    var kv = {
             //        'ServiceInvoice': 'carPopupGarageForInvoice',
             //        'PartsInvoice': 'customerInvoicePopup'
@@ -213,7 +213,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             //$('.hideCarandService', t.el).show();
             //$('.hideTrForINVCust', t.el).hide();
 
+            
             AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
+            $('.ServiceInvoice', t.el).removeAttr('disabled', 'disabled');
+            $('.PartsInvoice', t.el).removeAttr('disabled', 'disabled');
         }
 
        
@@ -916,7 +919,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
     t.on('onLoadedValues', function (args)
     {
 
-        debugger
+        
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
         $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="SparePartUnitPrice"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
@@ -1351,14 +1354,22 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
 
         /*$(`.${toShow}`)*/
         $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+        
         if (toShow === 'carPopupGarageForInvoice') {
 
+            if (t.FormMode == 'update') {
             $('.cust', t.el).hide();
             $('.serv', t.el).show();
+            $('.PartsInvoice', t.el).attr('disabled', 'disabled');
+
         } else {
             $('.cust', t.el).show();
             $('.serv', t.el).hide();
+          
+            }
+
         }
+    
 
 
 
@@ -1393,14 +1404,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         /*$(`.${toShow}`)*/
         $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
         if (toShow === 'customerInvoicePopup') {
+            if (t.FormMode == 'update') {
+                $('.cust', t.el).show();
+                $('.serv', t.el).hide();
+                $('[argumentid="ChassisNo" ]', t.el).val('');
+                $('.ServiceInvoice', t.el).attr('disabled', 'disabled');
+            } else {
+                $('.cust', t.el).hide();
+                $('.serv', t.el).show();
+                $('.ServiceInvoice', t.el).removeAttr('disabled', 'disabled');
+            }
 
-            $('.cust', t.el).show();
-            $('.serv', t.el).hide();
-            $('[argumentid="ChassisNo" ]', t.el).val('');
-        } else {
-            $('.cust', t.el).hide();
-            $('.serv', t.el).show();
         }
+      
 
         //$('.RadioButtons', t.el).removeClass('ElemDisabled');
         //$('.RadioButtons', t.el).removeAttr('disabled', 'disabled')

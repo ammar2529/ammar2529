@@ -40,10 +40,12 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{InvRecCode}</div>
+                                  <tpl if="CarNumber && Brand && Model && CarYear">
                                      <div class="CarDetails" style="font-size:11px;">
                                          <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}&nbsp;-&nbsp;{Model}&nbsp;-&nbsp;{CarYear}
 
                                      </div>
+                                   </tpl>
                                      <%--<div class="ftitle" style="font-size:11px;">Delivery No.:{DeliveryNo}</div>--%>
 
                                     <div class="ftitle">InvoiceFor:&nbsp;<nobr class="ftitle" style="color:#602010">{InvoiceDetails}</nobr></div> 
@@ -341,9 +343,9 @@
                         CarStatusId: { caption: 'Car Status', width: '0px' },
                         InvCustomerName: { caption: 'Name', width: '80px' },
                         /*CustomerRecCode: { caption: 'Rec No.', width: '85px' },*/
-                        InvCustomerRecCode: { caption: 'Rec No.', width: '85px' },
+                        SICustomerRecCode: { caption: 'Rec No.', width: '85px' },
                             NationalIDNo: { caption: 'National ID', width: '100px' },
-                        InvMobileTelephone1: { caption: 'Mobile Telephone', width: '100px' },
+                        MobileTelephone1: { caption: 'Mobile Telephone', width: '100px' },
                         Type: { width: '0px' },
                         FullInsuranceCompanyId: { width: '0px' },
                         FullInsuranceExpiry: { width: '0px' },
@@ -357,6 +359,7 @@
                         NationalityID: { width: '0px' },
                         InvNationalIDNo: { width: '0px' },
                         MobileTelephone2: { width: '0px' },
+                        
 
                         CurrentServiceKm: { width: '0px' },
 
@@ -367,6 +370,8 @@
                         Problem: { width: '0px' },
                         ActionTaken: { width: '0px' },
                         CarCondition: { width: '0px' },
+                        ServiceState: { width: '0px' },
+                        DateCreated: { width: '0px' }
 
 
                     },
