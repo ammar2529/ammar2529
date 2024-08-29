@@ -63,7 +63,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
 
         //}
-
+        debugger;
         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
 
     });
@@ -213,7 +213,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             //$('.hideCarandService', t.el).show();
             //$('.hideTrForINVCust', t.el).hide();
 
-            
+            debugger;
             AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
             $('.ServiceInvoice', t.el).removeAttr('disabled', 'disabled');
             $('.PartsInvoice', t.el).removeAttr('disabled', 'disabled');
@@ -1363,8 +1363,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
             $('.PartsInvoice', t.el).attr('disabled', 'disabled');
 
         } else {
-            $('.cust', t.el).show();
-            $('.serv', t.el).hide();
+            $('.cust', t.el).hide();
+            $('.serv', t.el).show();
           
             }
 
@@ -1409,9 +1409,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('.serv', t.el).hide();
                 $('[argumentid="ChassisNo" ]', t.el).val('');
                 $('.ServiceInvoice', t.el).attr('disabled', 'disabled');
-            } else {
-                $('.cust', t.el).hide();
-                $('.serv', t.el).show();
+            }
+            else {
+                $('.cust', t.el).show();
+                $('.serv', t.el).hide();
                 $('.ServiceInvoice', t.el).removeAttr('disabled', 'disabled');
             }
 
