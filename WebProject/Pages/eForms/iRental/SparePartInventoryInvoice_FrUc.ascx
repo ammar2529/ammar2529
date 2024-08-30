@@ -31,7 +31,7 @@
                <tr id="trNote">
              <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
              </tr>
-                                                <tr class="hideCarandService">
+               <%--  <tr class="hideCarandService">
                      <td class="ftitle">
                         <nobr>Service Status:</nobr>
 
@@ -40,18 +40,18 @@
                        
                       <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="ServiceState"></span>
                         
-<%--                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />--%>
+                         
                  </td>
 
                       <td class="ftitle" width="20%">
-                        <nobr>Service Date:</nobr>
-                    </td>
+                        &nbsp;<nobr>Date:</nobr>
+                          </td>
                     <td class="ftitle" width="30%">
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="DateCreated"></span>
+                        
 
                         
-                        </td>
-                </tr>
+                        <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  " groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
+                </tr>--%>
 
                                 <tr>
                      <td class="ftitle">
@@ -63,7 +63,7 @@
                       <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
                          <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />
-<%--                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />--%>
+                       
                  </td>
 
                       <td class="ftitle" width="20%">
@@ -90,7 +90,8 @@
                  </td>
 
                       <td class="ftitle" width="20%">
-                        <nobr>Delivery No.: </nobr>
+                          <nobr>Date:</nobr>
+                        <%--<nobr>Delivery No.: </nobr>--%>
                     </td>
                     <td class="ftitle" width="30%">
                       
@@ -116,13 +117,11 @@
 
                    
                     <td class="ftitle">
-                        <nobr>Date:</nobr>
-                          </td>
+                        <nobr>Service Date:</nobr></td>
                     <td>
-                        <input type="text" groupid="SparePartInventoryInvoice" maxlength="10"
-                            style="width: 75px;" class="text  date DisableOnClose CommonDisableClass  " argumentid="InvoiceDate" />
+                        
 
-
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="DateCreated"></span>
                     </td>
 
                 </tr>
@@ -137,10 +136,10 @@
 
    
                 <td class="ftitle">
-          <nobr>Model:</nobr>
+          &nbsp;<nobr>Year:</nobr>
                     </td>
                   <td style="text-align: left">
-                   <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="Model"></span>
+                   <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="CarYear"></span>
 
                   </td>
             </tr>
@@ -157,11 +156,11 @@
             </td>
    
     <td class="ftitle">
-            <nobr>Year:</nobr>
-        </td>
+          <nobr>Model:</nobr></td>
    
        <td class="ftitle">
-            <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="CarYear"></span>
+            
+           <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="Model"></span>
    
 </td>
 

@@ -237,6 +237,7 @@
                         FullInsurancePolicyNo: { width: '0px' },
                         CarFor: { width: '0px' },
                         LastServiceKm: { width: '0px' },
+                        CurrentServiceKm: { width: '0px' },
                         LastCarServiceDate: { width: '0px' },
                         CarRecivedDate: { width: '0px' },
 
@@ -244,7 +245,7 @@
                         NationalityID: { width: '0px' },
                         MobileTelephone2: { width: '0px' },
 
-                        CurrentServiceKm: { width: '0px' },
+                        
 
                         Gender: { width: '0px' },
 
