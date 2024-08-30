@@ -5,25 +5,25 @@
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
    /* , [ argumentid = "CurrentServiceKm" ]'*/
     
-    $('[argumentid="CarRecivedDate"]', t.el).on('blur', function ()
-    {
-        var CarRecivedDate = $(this).val();
+    //$('[argumentid="CarRecivedDate"]', t.el).on('blur', function ()
+    //{
+    //    var CarRecivedDate = $(this).val();
 
-        var ParseCarRecivedDate = CarRecivedDate.convertDate();
-        var formattedDate = ParseCarRecivedDate.toLocaleDateString('en-GB');
-        $('[argumentid="LastCarServiceDate"]', t.el).text(formattedDate);
+    //    var ParseCarRecivedDate = CarRecivedDate.convertDate();
+    //    var formattedDate = ParseCarRecivedDate.toLocaleDateString('en-GB');
+    //    $('[argumentid="LastCarServiceDate"]', t.el).text(formattedDate);
        
-    });
+    //});
 
-    $('[argumentid="CurrentServiceKm"]', t.el).on('blur', function ()
-    {
-        debugger
-        var CurrentServiceKm = $(this).val();
+    //$('[argumentid="CurrentServiceKm"]', t.el).on('blur', function ()
+    //{
+    //    debugger
+    //    var CurrentServiceKm = $(this).val();
 
       
-        $('[argumentid="LastServiceKm"]', t.el).text(CurrentServiceKm);
+    //    $('[argumentid="LastServiceKm"]', t.el).text(CurrentServiceKm);
 
-    });
+    //});
 
 
     $('.CarServiceButton_Edit', t.el).click(function ()

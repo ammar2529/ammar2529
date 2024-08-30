@@ -355,7 +355,7 @@
                            
                             <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
                             <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                           <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                           <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
                             <input type="button" style="width: 50px" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
 
