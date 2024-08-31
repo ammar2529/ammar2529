@@ -90,13 +90,13 @@
                  </td>
 
                       <td class="ftitle" width="20%">
-                          <nobr>Date:</nobr>
-                        <%--<nobr>Delivery No.: </nobr>--%>
+                          <nobr>Invoice Date:</nobr>
+                       
                     </td>
                     <td class="ftitle" width="30%">
                       
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
-                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" /></td>
+                <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  " groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
+
                 </tr>
              
 
@@ -176,27 +176,20 @@
 
                 <tr class="hideTrForINVCust">
                    
+                     <td class="ftitle">
+                      
+                        <nobr class="serv">Customer RecCode</nobr></td>
                     <td class="ftitle">
-                        <nobr>Name:</nobr>
-                    </td>
-                    <td style="text-align: left" >
-                        <span class="ftitle CommonSPCust" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
+                    
+
+                       <input readonly type="text" class="ftitle CommonSPCust serv" style="display: inline-block;font-size: 15px;background: transparent;color: rgb(98, 130, 150);
+                        outline: none;border: none;color: #628296;cursor: context-menu;"
+                           groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" />
+
                     </td>
 
                    
-                    <td  class="ftitle">
-                        <nobr>Mobile Telephone:</nobr>
-                        </td>
-                    <td >
-                                 <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
-         <nobr class="CommaM12">, </nobr>
-         <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
-                        </td>
-                </tr>
-
-                <tr class="hideTrForINVCust">
-
-                     <td class="ftitle">
+                      <td class="ftitle">
                         <nobr>National ID No.:</nobr>
                     </td>
                     <td class="ftitle">
@@ -204,19 +197,30 @@
                     <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="NationalIDExpiryDate"></span>
                
                     </td>
+                   
+                   
+                </tr>
 
-                
+                <tr class="hideTrForINVCust">
 
-                    <td class="ftitle">
-                      
-                        <nobr class="serv">Customer RecCode</nobr></td>
-                    <td class="ftitle">
-                    
-
-                       <input readonly type="text" class="ftitle CommonSPCust serv" style="font-size: 16px;display: inline-block;background: transparent;border: none;color: #628296;cursor: context-menu;"
-                           groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" />
-
+                     <td class="ftitle">
+                        <nobr>Name:</nobr>
                     </td>
+                    <td style="text-align: left" >
+                        <span class="ftitle CommonSPCust" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
+                    </td>
+
+                   
+
+                 <td  class="ftitle">
+                        <nobr>Mobile Telephone:</nobr>
+                        </td>
+                    <td >
+                                 <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
+         <nobr class="CommaM12">, </nobr>
+         <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
+                        </td>
+                        
 
 
                 </tr>
@@ -226,6 +230,25 @@
      </td>
  </tr>
 
+                <tr>
+                       <td class="ftitle" width="20%">
+               <nobr>Delivery No.: </nobr>
+                    </td>
+                    <td class="ftitle" width="30%">
+                      
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
+                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" />
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                           <tr>
+     <td colspan="4">
+         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+     </td>
+ </tr>
 
              
                 <tr>
