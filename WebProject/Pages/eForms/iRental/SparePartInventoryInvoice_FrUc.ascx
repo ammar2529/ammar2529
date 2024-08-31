@@ -53,7 +53,7 @@
                         <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  " groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
                 </tr>--%>
 
-                                <tr>
+                                <tr class="StatusRow">
                      <td class="ftitle">
                         <nobr>Invoice No.:</nobr>
 
@@ -117,11 +117,11 @@
 
                    
                     <td class="ftitle">
-                        <nobr>Service Date:</nobr></td>
+                        <nobr class="serv">Service Date:</nobr></td>
                     <td>
                         
 
-                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="DateCreated"></span>
+                        <span class="ftitle serv" groupid="SparePartInventoryInvoice" argumentid="DateCreated"></span>
                     </td>
 
                 </tr>
@@ -183,7 +183,7 @@
                     
 
                        <input readonly type="text" class="ftitle CommonSPCust serv" style="display: inline-block;font-size: 15px;background: transparent;color: rgb(98, 130, 150);
-                        outline: none;border: none;color: #628296;cursor: context-menu;"
+                        outline: none;border: none;color: #628296;cursor: context-menu;font-size: 11px;font-weight: bold;"
                            groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" />
 
                     </td>
@@ -244,23 +244,7 @@
                     <td></td>
                 </tr>
 
-                           <tr>
-     <td colspan="4">
-         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-     </td>
- </tr>
-
              
-                <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                          <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                
-                    </td>
-                </tr>
-                    
-                           
-              
                            
                 <tr>
                     <td colspan="4">
@@ -567,6 +551,7 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
+                            <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                             <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                              
 
@@ -591,22 +576,9 @@
                 PageSize="20" DataSource="SEL_Invoice_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_Invoice_Payments\',KeysCol:\'RecId\'}}}">
                 
-                
- 
-                
- 
- 
-
-                
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-&nbsp;
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <GridConfig>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <script>
+     
+ <GridConfig>
+ <script>
      cf = {
          cols: {
              Sequence: { width: '0px' },
@@ -631,14 +603,14 @@
          }
      };
  </script>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </GridConfig>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <Scripts>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <script>
+ </GridConfig>
+ <Scripts>
+ <script>
      //var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
  </script>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </Scripts>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <RowDetail>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <pre class="" colindex="4">
+ </Scripts>
+ <RowDetail>
+ <pre class="" colindex="4">
                     <AW:container id="conInvoicePaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -685,10 +657,10 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </RowDetail>
+ </RowDetail>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </AW:DataGrid>
+ </AW:DataGrid>
 
             <AW:Form ID="frmInvoicePaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/Invoice_PD_FrUc.ascx">
                 <WidgetConfig>

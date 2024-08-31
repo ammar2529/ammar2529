@@ -52,6 +52,8 @@
                     </td>
                     <td >
                         <input type="hidden" name="RecId" groupid="CarAndCustomersDetails" argumentid="RecId" />
+                         <input type="hidden" name="RecId" groupid="CarAndCustomersDetails" argumentid="CsRecId" />
+
                         <input type="hidden" name="CarAndCustomersDetailsRecId" groupid="CarAndCustomersDetails" argumentid="CarAndCustomersDetailsRecId" />
 
 <%--    <div class="carPopupCutomerAndCarDetails hidden"></div>--%>

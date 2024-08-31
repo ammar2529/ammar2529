@@ -10,60 +10,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     $(".ServiceInvoice, .PartsInvoice").click(function () {
        
-       
-        //var kv = {
-        //    'ServiceInvoice': 'carPopupGarageForInvoice',
-        //    'PartsInvoice': 'customerInvoicePopup'
-
-        //};
-
-        ////carPopupCutomerAndCarDetailsSales
-        //var toShow = kv[this.value];
-        //$('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"]', t.el)
-        //    .each(function () {
-        //        var elm = $(this);
-        //        if (elm.attr('lovpopupid') != toShow) {
-        //            elm.removeClass('required')
-        //                .hide();
-        //            elm.next('span[errmsg]').remove();
-        //        }
-
-        //    });
-
-
-        ///*$(`.${toShow}`)*/
-        //$(`input[lovpopupid="${toShow}"]`).addClass('required').show();
-
-        //$('.CommonDisableCarNumber').val('');
-        //$('.CommonDisable').text('');
-
-
-
-
-        //if (toShow === 'carPopupGarageForInvoice' )
-        //{
-
-        //    $('.cust', t.el).hide();
-        //    $('.serv', t.el).show();
-        //    $('.hideCarandService', t.el).show();
-        //    $('.CommonSPCust').text('');
-        //    $('.hideTrForINVCust', t.el).hide();
-
-        //} else
-        //{
-        //    $('.cust', t.el).show();
-        //    $('.serv', t.el).hide();
-
-        //    $('[argumentid="ServiceNo" ]', t.el).val('');
-        //    $('.CommonSPINv', t.el).text('');
-        //    $('.hideCarandService', t.el).hide();
-        //    $('.hideTrForINVCust', t.el).show();
-
-
-
-
-        //}
-        debugger;
+    
+        
         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
 
     });
@@ -163,60 +111,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             $('[argumentid="InvoiceDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
 
-            //if ($('.ServiceInvoice').is(":checked")) {
+            
 
-            //    var kv = {
-            //        'ServiceInvoice': 'carPopupGarageForInvoice',
-            //        'PartsInvoice': 'customerInvoicePopup'
-
-            //    };
-
-            //    //carPopupCutomerAndCarDetailsSales
-            //    var toShow = kv['ServiceInvoice'];
-            //    $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"]', t.el)
-            //        .each(function () {
-            //            var elm = $(this);
-            //            if (elm.attr('lovpopupid') != toShow) {
-            //                elm.removeClass('required')
-            //                    .hide();
-            //                elm.next('span[errmsg]').remove();
-            //            }
-
-            //        });
-
-
-            //    /*$(`.${toShow}`)*/
-            //    $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
-            //    if (toShow === 'carPopupGarageForInvoice') {
-
-            //        $('.cust', t.el).hide();
-            //        $('.serv', t.el).show();
-            //    } else {
-            //        $('.cust', t.el).show();
-            //        $('.serv', t.el).hide();
-            //    }
-
-            //    //$('.RadioButtons', t.el).removeClass('ElemDisabled');
-            //    //$('.RadioButtons', t.el).removeAttr('disabled', 'disabled')
-            //    ///* $('.Other', t.el).addClass('ElemDisabled').attr('disabled', 'disabled');*/
-
-            //    //$('[argumentid="CarNumber"]', t.el).removeClass('ElemDisabled');
-            //    //$('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled')
-
-            //    // Hide the dropdown for Sales
-            //    //$('.CommonCarDropdown').removeClass('required').hide();
-            //    //$('.carCutomerAndCarDetailsForOther', t.el).hide();
-            //    //$('.hideTr', t.el).show();
-            //    //$('.ChassisNo', t.el).show();
-            //}
-
-            //$('.hideCarandService', t.el).show();
-            //$('.hideTrForINVCust', t.el).hide();
-
-            debugger;
+            
             AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
             $('.ServiceInvoice', t.el).removeAttr('disabled', 'disabled');
             $('.PartsInvoice', t.el).removeAttr('disabled', 'disabled');
+            $('.StatusRow', t.el).hide();
+            $('.btnSaveInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+            $('.btnSaveInvoice', t.el).show();
+
+            $('.btnSave', t.el).attr('disabled');
+            $('.btnSave', t.el).addClass('ElemDisabled');
+            $('.btnSave', t.el).hide();
         }
 
        
@@ -236,6 +143,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             var code = parts[ 0 ];
             var messageStatus = parts[ 1 ];
             var message = parts[ 2 ];
+            $('.btnSaveInvoice', t.el).attr('disabled')
+            $('.btnSaveInvoice', t.el).hide();
+            $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
+
+            $('.btnSave', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+            $('.btnSave', t.el).show();
+            
             if (message !== undefined)
             {
                 var trimMessage = message.trim();
@@ -253,6 +167,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
               var inv =   $('[argumentid="InvoicePaymentRecId"]', t.el).val(code);
                 console.log("Setting InvoiceRecId to:", code); // Add this line for debugging
                 console.log("Setting InvoicePaymentRecId to:", inv);
+                AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown(trimMessage.toLowerCase());
+                $('.StatusRow', t.el).show();
 
 
                 var params = {
@@ -693,8 +609,15 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
 
         }, 3000);
 
+        $('.btnSaveInvoice', t.el).attr('disabled');
+        $('.btnSaveInvoice', t.el).hide();
+        $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
 
 
+        $('.btnSave', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+        $('.btnSave', t.el).show();
+        
+        
     });
 
 
@@ -923,14 +846,20 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
         $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="SparePartUnitPrice"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
-        
+        $('.StatusRow', t.el).show();
         //const InvoiceRecIdval = args.res.Response.Rows[ 0 ].RecId;
         const InvoiceRecIdval = String(args.res.Response.Rows[ 0 ].RecId);
         $('[argumentid="InvoiceRecId"]').val(InvoiceRecIdval);
         $('[argumentid="InvoicePaymentRecId"]').val(InvoiceRecIdval);
         // Display the RecId as a string
-        console.log("InvoiceRecIdval:", InvoiceRecIdval);
-        console.log("InvoicePaymentRecId:", InvoiceRecIdval);
+        //console.log("InvoiceRecIdval:", InvoiceRecIdval);
+        //console.log("InvoicePaymentRecId:", InvoiceRecIdval);
+        $('.btnSaveInvoice', t.el).attr('disabled');
+        $('.btnSaveInvoice', t.el).hide();
+        $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
+
+        $('.btnSave', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+        $('.btnSave', t.el).show();
 
         var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: `${InvoiceRecIdval}`, DBAction: 'GetLinesItems' };
         ServerCall(params, function (res)
@@ -1310,23 +1239,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 }
 
 
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function () {
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage) {
     var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
-    //if ($(".ServiceInvoice").is(":checked")) {
-
-    //    $('.hideTrForINVCust', t.el).hide();
-    //    $('.hideCarandService', t.el).show();
-    //    $('.cust', t.el).hide();
-    //    $('.serv', t.el).show();
-
-    //} else if ($(".PartsInvoice").is(":checked")) {
-
-    //    $('.hideCarandService', t.el).hide();
-    //    $('.hideTrForINVCust', t.el).show();
-
-    //    $('.cust', t.el).show();
-    //    $('.serv', t.el).hide();
-    //}
+ 
 
   
     if ($('.ServiceInvoice').is(":checked"))
@@ -1362,9 +1277,15 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
             $('.serv', t.el).show();
             $('.PartsInvoice', t.el).attr('disabled', 'disabled');
 
-        } else {
+            }
+            else if(trimMessage){
+                $('.PartsInvoice', t.el).attr('disabled', 'disabled');
+            }
+            else
+            {
             $('.cust', t.el).hide();
-            $('.serv', t.el).show();
+                $('.serv', t.el).show();
+
           
             }
 
@@ -1410,6 +1331,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('[argumentid="ChassisNo" ]', t.el).val('');
                 $('.ServiceInvoice', t.el).attr('disabled', 'disabled');
             }
+            else if (trimMessage)
+            {
+                $('.ServiceInvoice', t.el).attr('disabled', 'disabled');            }
             else {
                 $('.cust', t.el).show();
                 $('.serv', t.el).hide();

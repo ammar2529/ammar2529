@@ -95,7 +95,7 @@
         <td style="text-align: left;">
             <input type="text"  class="text" argumentid="ChassisNo" groupid="schSalesContractDetails" /></td>
         <td style="text-align: left;">
-            <select class="dropdownlist" style="width: 300px;" loadon="FirstVisible"  groupid="schSalesContractDetails" argumentid="FinanceCompany" 
+            <select class="dropdownlist" style="width: 220px;" loadon="FirstVisible"  groupid="schSalesContractDetails" argumentid="FinanceCompany" 
                 storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
                 <option value="" selected="selected">Select Finance Company</option>
             </select>
@@ -166,12 +166,12 @@
         <td style="text-align: left;">
           
 
-              <select loadon="FirstVisible" class="dropdownlist   CommonFirstDD" style="width: 300px;"
+              <select loadon="FirstVisible" class="dropdownlist   CommonFirstDD" style="width: 220px;"
                 groupid="schSalesContractDetails" argumentid="SalesColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}">
                 <option value="" selected="selected">Select Color</option>
             </select>
 
-            <select loadon="FirstVisible" class="dropdownlist CommonSecondDD" style="width: 300px;"
+            <select loadon="FirstVisible" class="dropdownlist CommonSecondDD" style="width: 220px;"
                 groupid="schSalesContractDetails" argumentid="ColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}">
                 <option value="" selected="selected">Select Color</option>
             </select>
@@ -216,7 +216,7 @@
         </td>
         <td style="text-align: left;">
 
-            <select class="dropdownlist" style="width: 300px;"
+            <select class="dropdownlist" style="width: 220px;"
                 groupid="schSalesContractDetails" argumentid="StateId" name="D4">
                 <option value="" selected="selected">Select Status</option>
                 <option value="">-----------------------------</option>

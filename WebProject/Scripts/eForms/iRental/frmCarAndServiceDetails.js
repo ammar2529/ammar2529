@@ -65,7 +65,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj) {
         {
             
 
-            var myMessage = "Invoice create Successfully";
+            var myMessage = "Record Insert Successfully!!";
             var trimMyMessage = myMessage.trim();
             var parts = params.res.Response.split('||');
             var code = parts[ 0 ];
