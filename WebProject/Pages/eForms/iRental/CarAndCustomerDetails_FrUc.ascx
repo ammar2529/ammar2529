@@ -275,91 +275,52 @@
 
                 
                         <%-- Data Grid  --%>
-               <%-- <tr>
+                <tr>
                     <td colspan="4">
 
                       
 
-                        <div style="width: 100%;" class="CommonDisableClass">
-                        <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; style="width:100%;"  text-align: left" class="CustomerModifyList">
-                            <tbody>
-                                <tr class="HeaderTR">
-                                    <td class="Header w-grid-border">
-                                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header">
-                                            <tbody>
-                                                <tr class="w-grid-head-back">
+                        <div style="width: 100%;" >
+                       
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="CustomerModifyListt">
+                                <thead>
+                                    <tr>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Rec No.</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width:30%">Customer Name</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Nationality</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">National ID No</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Mobile</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Created Date</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Created By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    <tr class="ItemTRR">
 
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-3" colindex="3" colid="ItemId" style="padding-left: 0px; padding-right: 0px;width: 50px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Customer Code</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="RecCode" style="padding-left: 0px; padding-right: 0px; width: 50px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 50px">
-                                                            <span href="#" class="w-grid-head ColName sort">Code</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileType" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Name</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Nationality</span>
+                                    </tr>
+                                   
+                                </tbody>
+                                <tfoot>
+                                    <tr class="NoRecordsTR" >
 
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                             <span href="#" class="w-grid-head ColName sort">National ID No.</span>
-                                         
-                                                        </div>
-                                                    </td>
-                                                      <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                             <span href="#" class="w-grid-head ColName sort">Created Date.</span>
-                      
-                                                        </div>
-                                                    </td>
-                                                      <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; margin-left: 10px; " class="auto-style1">
-                                                            <span href="#" class="w-grid-head ColName sort">Created By</span>
-                                                                          </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 45px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                            <span href="#" class="w-grid-head ColName sort"></span>
-                                                        </div>
-                                                    </td>
+                                        <td class="NoRecords w-grid-norecords-msg" colspan="7">
+                                            <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                                        </td>
+                                    </tr>
+    
+                                 </tfoot>
+
+                            </table>
+                        </div>
 
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr class="ItemTR">
-                                    <td class="Item w-grid-border">
-                                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; table-layout: fixed" itemno="10" class="w-grid-row-odd">
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr class="NoRecordsTR" style="display: none;">
-                                    <td class="NoRecords w-grid-norecords-msg">
-                                        <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                            </div>
-                        
-                   
-                        
+
                     </td>
-                </tr>--%>
+                </tr>
+
+         
+               
                 <%--<%-- End Data Grid --%>
 
 
@@ -378,7 +339,7 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <%--<input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />--%>
-                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:true, Requery:true,GroupId:'CarAndCustomersDetails'}" />
+                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:false, Requery:true,GroupId:'CarAndCustomersDetails'}" />
                              
 
                             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />

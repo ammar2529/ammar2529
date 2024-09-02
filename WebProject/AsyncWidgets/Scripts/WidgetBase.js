@@ -1580,7 +1580,7 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
 
                 if (jqThis.attr("argumentid") == 'LastCarServiceDate')
                 {
-                    debugger;
+                    
                 }
                 fldVal = jqThis.hasClass('date') || jqThis.hasClass('dateLabel') ?SetDateFormat( fldVal) : fldVal;
                 groups[currentGroup].attr(jqThis.attr("argumentid"), fldVal);
@@ -2796,7 +2796,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     loadValues: function (cf, success)
     {
-        debugger
+        
         var t = this, st = t.State, ServiceInfo;
         cf = cf || {};
         $(t.el).mask(MSGWAIT);
