@@ -296,7 +296,7 @@
                                 </td>
                                 <td>
                                     <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text ElemDisabled number"
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" disabled="disabled"/>
+                                        groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" />
                                 </td>
                                 <td>
                                     <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text ElemDisabled "

@@ -16,6 +16,25 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     });
 
+   
+
+$('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
+
+
+    var SparePartUnitPrice = parseFloat($(this).val()) || 0;
+    SparePartUnitPrice = SparePartUnitPrice.toFixed(3);
+    var SelectQuantity = parseFloat($('[argumentid="SelectQuantity"]', t.el).val());
+
+    var Result = SparePartUnitPrice * SelectQuantity;
+
+    // Set SparePartUnitPrice with 3 decimal places back to the input field
+    $(this).val(SparePartUnitPrice);
+
+    $('[argumentid="TotalPrice" ]', t.el).val(Result.toFixed(3))
+  
+
+});
+    
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function ()
     {
@@ -603,7 +622,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         setTimeout(function ()
         {
             $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
-            $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="SparePartUnitPrice"],[argumentid="TotalPrice"]').prop('disabled', true).addClass('ElemDisabled');
+            $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]').prop('disabled', true).addClass('ElemDisabled');
 
             
 
@@ -845,7 +864,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
-        $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="SparePartUnitPrice"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
+        $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
         $('.StatusRow', t.el).show();
         //const InvoiceRecIdval = args.res.Response.Rows[ 0 ].RecId;
         const InvoiceRecIdval = String(args.res.Response.Rows[ 0 ].RecId);
