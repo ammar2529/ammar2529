@@ -57,32 +57,33 @@
 
       <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">National ID No.</span></td>
-        <td style="text-align: left;" class="ftitle" width="20%">
 
             <span style="white-space: nowrap">Customer Name</span></td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+
+            <span style="white-space: nowrap">National ID No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
             <span style="white-space: nowrap">Mobile Telephone</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
-            <span style="white-space: nowrap">Status</span> </td>
+                        <nobr>Car For</nobr></td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
 <%--            <span style="white-space: nowrap">Salesman</span>--%>
 
-                        <nobr>Car For</nobr></td>
+                        <nobr><span style="white-space: nowrap">Status</span> </nobr></td>
     </tr>
       
     <tr>
         <td style="text-align: left;">
           
 
-            <input type="text" class="text" argumentid="NationalIDNo" groupid="schCarAndCustomerDetails" /></td>
+            <input type="text" class="text" argumentid="CustomerName" groupid="schCarAndCustomerDetails" /></td>
         <td style="text-align: left;">
        
 
-            <input type="text" class="text" argumentid="CustomerName" groupid="schCarAndCustomerDetails" /></td>
+            <input type="text" class="text" argumentid="NationalIDNo" groupid="schCarAndCustomerDetails" /></td>
 
         <td style="text-align: left;">
                
@@ -91,6 +92,23 @@
             <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schCarAndCustomerDetails" /></td>
         <td style="text-align: left;">
           
+
+
+            <select class="dropdownlist"  style="width: 155px;"
+                groupid="schCarAndCustomerDetails" argumentid="CarFor" name="D7">
+                <option value="" selected="selected">Select CarFor</option>
+                <option value="Sales">Sales</option>
+                <option value="Rental">Rental</option>
+                <option value="Lease">Lease</option>
+             
+
+            </select></td>
+
+        <td style="text-align: left;">
+            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schCarAndCustomerDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                            <option value="" selected="selected">Select Salesman</option>
+                        </select>--%>
+
 
 
             <select class="dropdownlist"  style="width: 155px;"
@@ -120,21 +138,6 @@
                 <option value="">-----------------------------</option>
                  <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
                  <option value="">-----------------------------</option>--%>
-
-            </select></td>
-
-        <td style="text-align: left;">
-            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schCarAndCustomerDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
-                            <option value="" selected="selected">Select Salesman</option>
-                        </select>--%>
-
-            <select class="dropdownlist"  style="width: 155px;"
-                groupid="schCarAndCustomerDetails" argumentid="CarFor" name="D7">
-                <option value="" selected="selected">Select CarFor</option>
-                <option value="Sales">Sales</option>
-                <option value="Rental">Rental</option>
-                <option value="Lease">Lease</option>
-             
 
             </select></td>
     </tr>

@@ -22,10 +22,10 @@
 
                 <tr class="StatusTR">
                     <td class="ftitle" width="18%">
-                      <%--  <nobr>Service No.:</nobr>--%>
+                        <nobr>Contract No.:</nobr>
                     </td>
                     <td class="ftitle" width="32%">
-                  <%--      <span class="ftitle" style="color: red;" groupid="GarageCarServiceDetails" argumentid="RecCode">New contract no. will be generated on saving</span>--%>
+                        <span class="ftitle" style="color: red;" groupid="CarAndCustomersDetails" argumentid="RecCode">New contract no. will be generated on saving</span>
                     </td>
                     <td class="ftitle" width="20%">
                         <nobr> Status:</nobr>

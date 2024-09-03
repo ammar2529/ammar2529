@@ -28,10 +28,9 @@
 
     $('.CarServiceButton_Edit', t.el).click(function ()
     {
-        $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
-         $('[argumentid="StateName"]', t.el).text('Start State');
+        
 
-        $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
+        $('[argumentid="StateId"]', t.el).text('OpendState');
         $('[argumentid="StateName"]', t.el).text('Start State');
 
         $('.common-button,.CommonDisableClass', t.el).removeAttr('disabled', 'disabled');
@@ -60,16 +59,24 @@
             if ($('[argumentid="StateId"]', t.el).text() == '')
             {
 
-                $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
+                $('[argumentid="StateId"]', t.el).text('OpenState');
                 $('[argumentid="StateName"]', t.el).text('Start State');
 
-                $('.common-button,.CommonDisableClass', t.el).removeAttr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
 
-                $('.common-button,.CommonDisableClass', t.el).removeClass('ElemDisabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
                 $('.StatusTR', t.el).hide();
+
+                $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
+                $('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled');
+
+                $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
+                $('[argumentid="CarNumber"]', t.el).removeAttr('ElemDisabled');
+                $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+              
 
             }
         }
@@ -120,6 +127,7 @@
 
         if (t.FormMode == 'update')
         {
+            
 
             $('.grgbtnSave2', t.el).show();
             $('.grgbtnSave', t.el).hide();
@@ -131,23 +139,54 @@
 
                 $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
 
+
+                $(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
+                $('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
+
                 $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
                 $('.common-button,.CommonDisableClass', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
 
             }
 
-            if ($('[argumentid="StateId"]', t.el).text() == 'CreatedState')
+            if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
             {
-                $('.common-button,.CommonDisableClass ', t.el).removeAttr('disabled', 'disabled');
-
-                $('.common-button,.CommonDisableClass', t.el).removeAttr('disabled', 'disabled');
-                $('.common-button,.CommonDisableClass', t.el).removeClass('ElemDisabled');
+                
+                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+
+                $('[argumentid="CarRecivedDate"]', t.el).attr('disabled', 'disabled');
+                $('[argumentid="CarNumber"]', t.el).attr('disabled', 'disabled');
+
+                $('[argumentid="CarRecivedDate"]', t.el).addClass('ElemDisabled');
+                $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
+
+                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+
+            }
+
+            if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
+
+
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).attr('disabled', 'disabled');
+
+                $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).addClass('ElemDisabled');
+                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+                $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
+                $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+
+                //$('[argumentid="StateName"]',t.el).filter(function () {
+                //    return $(this).text().trim() === 'Canceled';
+                //}).css('color', 'red');
+
 
             }
         }

@@ -44,7 +44,7 @@
                                 </center>
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
-                                     <div class="ftitle">CarFor: {CarFor}</div>
+                                     <div class="ftitle">Car For: {CarFor}</div>
                                      <%--<div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>--%>
                                    

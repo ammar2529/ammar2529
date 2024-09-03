@@ -292,7 +292,7 @@
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="CarToBeDeliverdDate" />
                     </td>
-                    <td class="ftitle" style="width: 170px">&nbsp;Deliverd Date:</td>
+                    <td class="ftitle" style="width: 170px">Deliverd Date:</td>
                              <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="CarDeliverdDate" />
@@ -326,10 +326,10 @@
                
                    <tr>
         <td valign="center" class="ftitle">
-            <nobr>Problem:</nobr>
+            <nobr>Problem *:</nobr>
         </td>
                        <td colspan="3">
-                           <textarea class="textarea required" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; 
+                           <textarea class="textarea required Problem" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; 
                             resize: none;" argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
                        </td>
        
@@ -341,7 +341,8 @@
             <nobr>Action Taken:</nobr>
         </td>
                        <td colspan="3">
-                           <textarea class="textarea" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;" argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
+                           <textarea class="textarea ActionTaken" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;" 
+                               argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
                        </td>
        
     </tr>
@@ -352,7 +353,8 @@
             <nobr>Car Condition:</nobr>
         </td>
                        <td colspan="3">
-                           <textarea class="textarea" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;" argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
+                           <textarea class="textarea CarCondition" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                               argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
                        </td>
        
     </tr>
@@ -375,16 +377,29 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                            
-                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
-                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                           <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                      <input type="button" style="width: 75px" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                       <input type="button" style="width: 75px" value="  Canceled  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
-                            <input type="button" style="width: 50px" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-
-                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
-                        </div>
+                         </div>
                     </td>
                 </tr>
+
+                  <tr>
+      <td colspan="4" style="text-align: center;">
+         
+         
+      
+          <div style="padding-top: 10px; padding-bottom: 10px">
+             
+              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
+              <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+
+
+              <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
+          </div>
+      </td>
+  </tr>
 
             </table>
         </td>

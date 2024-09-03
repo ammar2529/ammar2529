@@ -135,6 +135,10 @@
                                     ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
                                     $(this).css('color', 'Red');
                                 }
+                                else if ($(this).text().indexOf('Canceled') > -1) {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                    $(this).css('color', 'Red');
+                                }
                                 else if ($(this).text().indexOf('Contract Open - Car In') > -1)
                                 {
                                     $(this).css('color', 'Red');
