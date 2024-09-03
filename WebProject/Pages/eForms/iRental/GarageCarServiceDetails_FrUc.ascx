@@ -1,10 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GarageCarServiceDetails_FrUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.GarageCarServiceDetails_FrUc" %>
 
-<style type="text/css">
-    . {
-        height: 21px;
-    }
-</style>
+
 
 
 
