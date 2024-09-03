@@ -87,7 +87,7 @@
                 <option value="RRCCreatedState">Created - Reservation</option>
                 <option value="">-----------------------------</option>--%>
                 <option value="">-----------------------------</option>
-                <option value="CreatedState">Created</option>
+                <option value="OpenState">Open</option>
                 <option value="">-----------------------------</option>
                 <option value="ClosedState">Closed</option>
                 <option value="">-----------------------------</option>

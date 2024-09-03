@@ -20,7 +20,26 @@
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>
 
-        
+                <tr class="StatusTR">
+                    <td class="ftitle" width="18%">
+                      <%--  <nobr>Service No.:</nobr>--%>
+                    </td>
+                    <td class="ftitle" width="32%">
+                  <%--      <span class="ftitle" style="color: red;" groupid="GarageCarServiceDetails" argumentid="RecCode">New contract no. will be generated on saving</span>--%>
+                    </td>
+                    <td class="ftitle" width="20%">
+                        <nobr> Status:</nobr>
+                    </td>
+                    <td class="ftitle" width="30%">
+                        <span class="ftitle" groupid="CarAndCustomersDetails" argumentid="StateName"></span>
+
+                        <div style="display: none">
+                            <span groupid="CarAndCustomersDetails" argumentid="StateId"></span>
+
+                        </div>
+
+                    </td>
+                </tr>
 
                           <tr>
 
@@ -339,8 +358,8 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <%--<input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />--%>
-                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:false, Requery:true,GroupId:'CarAndCustomersDetails'}" />
-                             
+                            <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:true, Requery:true,GroupId:'CarAndCustomersDetails'}" />
+                             <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:false, Requery:false,GroupId:'CarAndCustomersDetails'}" />
 
                             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>

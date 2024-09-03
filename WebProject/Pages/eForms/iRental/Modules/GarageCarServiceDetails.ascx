@@ -112,6 +112,10 @@
                                     $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
                                     $(this).css('color', 'Green');
                                 }
+                               else if ($(this).text().indexOf('Open') > -1) {
+                                    $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
+                                    $(this).css('color', 'Green');
+                                }
                                 else if ($(this).text() != '{StateName}') {
                                 $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
                                 }

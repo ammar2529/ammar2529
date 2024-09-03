@@ -161,10 +161,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
 
             if ($('.Sales').is(":checked"))
             {
-                //$('.carPopupCutomerAndCarDetailsForRental').hide();
-                //$('.carPopupCutomerAndCarDetailsForLease').hide();
-                //$('.carPopupCutomerAndCarDetailsForOther').hide();
-                //$('.carPopupCutomerAndCarDetailsForSales').show();
+               
 
                 var kv = {
                     'Sales': 'carPopupCutomerAndCarDetailsForSales',
@@ -213,6 +210,9 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
         //    $('.NoRecordsTR', tblUFL).show();
             $('table.CustomerModifyListt tfoot tr').show();
             $('table.CustomerModifyListt tbody tr').remove();
+            $('.StatusTR', t.el).hide();
+            $('.btnSave2', t.el).hide();
+            $('.btnSave', t.el).show();
         }
 
 
@@ -223,9 +223,12 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
     // On Start of Onloaded Values
     t.on('onLoadedValues', function (args)
     {
-        ;
+        
         var carNumber = $('[argumentid="CarNumber"]', t.el).val();
         $('[argumentid="CarNumber"]', t.el).val(carNumber);
+        $('.StatusTR', t.el).show();
+        $('.btnSave2', t.el).show();
+        $('.btnSave', t.el).hide();
 
         $('.RadioButtons', t.el).addClass('ElemDisabled');
         $('.RadioButtons', t.el).attr('disabled', 'disabled')

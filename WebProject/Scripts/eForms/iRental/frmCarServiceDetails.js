@@ -69,6 +69,7 @@
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+                $('.StatusTR', t.el).hide();
 
             }
         }
@@ -122,6 +123,7 @@
 
             $('.grgbtnSave2', t.el).show();
             $('.grgbtnSave', t.el).hide();
+            $('.StatusTR', t.el).show();
 
             if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState')
             {
