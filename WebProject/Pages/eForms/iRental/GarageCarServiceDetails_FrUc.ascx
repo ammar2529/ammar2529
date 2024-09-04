@@ -73,6 +73,7 @@
                     </td>
                     <td >
                         <input type="hidden" name="RecId" groupid="GarageCarServiceDetails" argumentid="RecId" />
+                        <input type="hidden" name="FileGuid" groupid="GarageCarServiceDetails" argumentid="FileGuid" />
 
                    
                         <div>
@@ -366,6 +367,82 @@
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                                                     
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="4">
+
+
+                        <div class="file-upload-drop-area">
+                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
+                                groupid="GarageCarServiceDetails" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
+                                <option value="" selected="selected">Select Doc Type</option>
+                            </select>
+
+
+                            <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx" />
+                            <span class="allowedFile" style="display: none;"></span>
+
+
+                            <button class="upload-button ">Upload</button>
+
+                        </div>
+
+
+                        <div style="width: 100%;">
+
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="UploadFileListForJC">
+                                <thead>
+                                    <tr>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 40%;">File Name</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">File Size</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">File Type</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Uploaded By</th>
+                                      <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Upload Date</th>
+                                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;"></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                            <tr>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${CustomerRecCode}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${CustomerName}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${Nationality}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${NationalIDNo}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${MobileTelephone1}</td>
+                             <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${DateCreated}</td>
+                    
+                            </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="NoRecordsTR">
+
+                                        <td class="NoRecords w-grid-norecords-msg" colspan="7">
+                                            <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                                        </td>
+                                    </tr>
+
+                                </tfoot>
+
+                            </table>
+                        </div>
+
+
+
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+
 
                     </td>
                 </tr>

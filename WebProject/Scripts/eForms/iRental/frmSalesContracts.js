@@ -1007,6 +1007,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     var loggedUser = $('.LoggedUser').text();
     $(".file-input", t.el).change(function ()
     {
+
+        
        /* var fileList = $(".file-list", t.el);*/
         var linkFile = $('.ItemTableRow td>.linkFileName', t.el);
         var fileName = $('.ItemTableRow td>.fileName', t.el);
