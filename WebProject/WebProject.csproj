@@ -1543,6 +1543,7 @@
     <Content Include="Scripts_21-11-2023\Views\VW_Type.sql" />
     <Content Include="test.asp" />
     <Content Include="test.html" />
+    <Content Include="UploadFileForCarServiceDetails.aspx" />
     <Content Include="UploadSparePartImages.aspx" />
     <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
     <Content Include="Web.config">
@@ -3870,6 +3871,13 @@
     </Compile>
     <Compile Include="UploadFile.aspx.designer.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadFileForCarServiceDetails.aspx.cs">
+      <DependentUpon>UploadFileForCarServiceDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadFileForCarServiceDetails.aspx.designer.cs">
+      <DependentUpon>UploadFileForCarServiceDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadSparePartImages.aspx.cs">
       <DependentUpon>UploadSparePartImages.aspx</DependentUpon>
