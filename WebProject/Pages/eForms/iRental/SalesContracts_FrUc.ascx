@@ -645,12 +645,20 @@
 
                         <nobr>Discount:</nobr>
 
+
                     </td>
-                    <td >
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
-                            groupid="SalesContractsForm" argumentid="Discount" />
-                    
+
+                    <td>
+                        <div style="display: flex; align-items: center;">
+                            <input type="text" style="text-align: center; margin-right:3px;width: 150px;" maxlength="10" class="text number CommonDisableClass  "
+                                groupid="SalesContractsForm" argumentid="Discount" />
+                            <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " style="width: 142px;" groupid="SalesContractsForm" argumentid="DiscountGiver" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'41'}]}" name="D1">
+                                <option value="" selected="selected">Select Discount Giver</option>
+                            </select>
+                        </div>
                     </td>
+
+
                 </tr>
 
 
@@ -665,7 +673,7 @@
                         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number AlwaysDisable bgr"
                             groupid="SalesContractsForm" argumentid="TotalAmount" />
                     </td>
-                      <td>
+                      <td class="ftitle">
                         <nobr>Salesman:</nobr>
                     </td>
                     <td>
