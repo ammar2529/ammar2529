@@ -31,7 +31,7 @@ namespace WebProject
             string uploadPath = "~/UploadsFilesForCarServiceDetails/";
             try
             {
-
+                string UserID = HttpContext.Current.Session["UserId"].ToString();
                 var httpRequest = HttpContext.Current.Request;
                 var files = httpRequest.Files;
                 var savePath = HttpContext.Current.Server.MapPath(uploadPath);
@@ -65,7 +65,7 @@ namespace WebProject
                         }
                         //fileSizeBytes = postedFile.ContentLength /1024;
 
-                        var FURecId = SaveFileToDb(postedFile.FileName, fSize);
+                        var FURecId = SaveFileToDb(postedFile.FileName, fSize, UserID);
                         var arrFURecId = FURecId.Split(new string[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
                         // Combine the prefixes and the original file name
                         if (arrFURecId.Length > 1)
@@ -95,13 +95,14 @@ namespace WebProject
                 return $@"{{""Status"":""Error"",""Response"":{{message:""{firstError} - {ex.Message}""}}}}";
             }
         }
-        private static string SaveFileToDb(string fileName, string FileSize)
+        private static string SaveFileToDb(string fileName, string FileSize,string UserId)
         {
             var PD = GetParamsFromPost();
             PD.Add("FileName", new QueryParameter(fileName));
             PD.Add("FileSize", new QueryParameter(FileSize.ToString())); // Add DBAction parameter
             //PD.Add("DocType", new QueryParameter(DocType));
             PD.Add("DBAction", new QueryParameter("AddUploadedFile"));
+            PD.Add("UserId", new QueryParameter(UserId));
             return DBHelper.InvokeSP("FX_UPD_FileUploadForCarServiceDetails_SP", PD).ToString();
 
             // DBHelper.GetDataTableProc("SPName", PD);

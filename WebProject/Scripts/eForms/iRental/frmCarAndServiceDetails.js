@@ -238,6 +238,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
 
         if (args.res.status == 'OK')
         {
+            
             if (args.res.Response.Rows.length > 0)
             {
 
@@ -266,12 +267,11 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
 
                         if (res.status === 'OK')
                         {
-                            if (res.Response.Rows.length > 0)
-                            {
-
+                            
+                               
                                 AsyncWidgets.WidgetScripts.frmCarAndServiceDetails.showCustomerList(res, t)
 
-                            }
+                            
 
 
                         }
@@ -313,11 +313,9 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
 
                 var tblUFL = $('table.CustomerModifyListt', t.el);
                 $('table.CustomerModifyListt tfoot tr').hide();
-                $('table.CustomerModifyListt tbody tr').hide();
+                $('table.CustomerModifyListt tbody tr').show();
 
-                $('.ItemTRR', tblUFL).show();
-                /*$('.NoRecordsTR', tblUFL).hide();*/
-                $('table.CustomerModifyListt tfoot tr').hide();
+                
 
                 var tblRowsHTML = "";
 
@@ -365,10 +363,13 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
                 $('tbody ', tblUFL).html(tblRowsHTML);
             } else
             {
-                var tblUFL = $('table.CustomerModifyListt', t.el);
-                $('tbody', tblUFL).hide();
-                /* $('.NoRecordsTR', tblUFL).show();*/
+                //var tblUFL = $('table.CustomerModifyListt', t.el);
+                //$('tbody', tblUFL).hide();
+                ///* $('.NoRecordsTR', tblUFL).show();*/
+                //$('table.CustomerModifyListt tfoot tr').show();
+
                 $('table.CustomerModifyListt tfoot tr').show();
+                $('table.CustomerModifyListt tbody tr').hide();
             }
         } //  if (res.status == 'OK')
 

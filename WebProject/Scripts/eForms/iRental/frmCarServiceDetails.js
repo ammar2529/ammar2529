@@ -58,6 +58,9 @@
             $('.grgbtnSave2', t.el).hide();
             $('.grgbtnSave', t.el).show();
 
+            var tblUFL = $('table.UploadFileListForJC', t.el);
+            $('table.UploadFileListForJC .ItemTableRow', t.el).remove();
+            $('.NoRecordsTR', tblUFL).show();
             if ($('[argumentid="StateId"]', t.el).text() == '')
             {
 
@@ -387,8 +390,9 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
             var $fileList = $(".file-list", t.el);
             var loggedUser = $('.LoggedUser').text();
             var tblRowsHTML = "";
-            $('.ItemTR', tblUFL).show();
-            $('.NoRecordsTR', tblUFL).hide();
+            $('table.UploadFileListForJC .ItemTableRow').show();
+            $('table.UploadFileListForJC .NoRecordsTR').hide();
+            
             for (var i = 0; i < rows.length; i++) {
 
                 var row = rows[i];
@@ -465,6 +469,9 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
             var tblUFL = $('table.uploadedFileList', t.el);
             $('.ItemTR', tblUFL).hide();
             $('.NoRecordsTR', tblUFL).show();
+
+            $('table.UploadFileListForJC .ItemTableRow').hide();
+            $('table.UploadFileListForJC .NoRecordsTR').show();
         }
     } //  if (res.status == 'OK')
 

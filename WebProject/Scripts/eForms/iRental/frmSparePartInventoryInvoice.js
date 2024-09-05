@@ -98,7 +98,7 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
 
             
             var tblUFL = $('table.uploadedItemList', t.el);
-            $('table.uploadedItemList .ItemTR .ItemTableRow',t.el).remove();
+            $('table.uploadedItemList .ItemTableRow',t.el).remove();
             /* $('.ItemTR > td', tblUFL).empty();*/
             $('.NoRecordsTR', tblUFL).show();
             $('.trNoDynamic input',t.el).prop('disabled', true).addClass('ElemDisabled');
