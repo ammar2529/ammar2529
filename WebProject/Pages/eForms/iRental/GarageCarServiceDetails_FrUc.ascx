@@ -3,6 +3,8 @@
 
 
 
+<link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
+<link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
 
@@ -402,22 +404,12 @@
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">File Type</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Uploaded By</th>
                                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Upload Date</th>
-                                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;"></th>
+                                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" ></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
 
-
-                            <tr>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${CustomerRecCode}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${CustomerName}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${Nationality}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${NationalIDNo}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${MobileTelephone1}</td>
-                             <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${DateCreated}</td>
-                    
-                            </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr class="NoRecordsTR">
@@ -454,8 +446,8 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                            
-                      <input type="button" style="width: 75px" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                       <input type="button" style="width: 75px" value="  Canceled  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                      <input type="button" style="width: 75px" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                       <input type="button" style="width: 75px" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
                          </div>
                     </td>
@@ -469,8 +461,8 @@
           <div style="padding-top: 10px; padding-bottom: 10px">
              
               <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
-              <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-             <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+              <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CreatedState'},HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
 
               <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
