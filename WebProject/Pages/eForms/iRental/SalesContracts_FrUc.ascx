@@ -725,7 +725,7 @@
                 <tr>
                     <td colspan="4">
                       
-                        <div class="file-upload-drop-area">
+                        <div class="file-upload-drop-area" style="padding:5px;">
                             <select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
                                 groupid="SalesContractsForm" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
                                 <option value="" selected="selected">Select Doc Type</option>

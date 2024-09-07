@@ -6,6 +6,49 @@
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
+<style>
+    
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
 
     <tr tabid="GarageCarServiceDetails">
@@ -378,7 +421,7 @@
                     <td colspan="4">
 
 
-                        <div class="file-upload-drop-area">
+                        <div class="file-upload-drop-area" style="padding:5px;">
                             <select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
                                 groupid="GarageCarServiceDetails" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
                                 <option value="" selected="selected">Select Doc Type</option>
@@ -394,7 +437,7 @@
                         </div>
 
 
-                        <div style="width: 100%;">
+                        <div style="width: 100%; padding:4px;">
 
                             <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="UploadFileListForJC">
                                 <thead>
@@ -431,13 +474,7 @@
 
 
 
-                <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-
-
-                    </td>
-                </tr>
+            
 
                 <tr>
                     <td colspan="4" style="text-align: center;">
@@ -446,29 +483,52 @@
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
                            
-                      <input type="button" style="width: 75px" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                       <input type="button" style="width: 75px" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                      <input type="button" style="width: 95px;color: Green"" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                       <input type="button" style="width: 95px;color: Red"" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
                          </div>
-                    </td>
-                </tr>
 
-                  <tr>
-      <td colspan="4" style="text-align: center;">
-         
-         
-      
-          <div style="padding-top: 10px; padding-bottom: 10px">
+                         <div style="padding-top: 10px; padding-bottom: 10px">
              
               <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
               <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
              <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-
+                <input type="button" value="  Print Job Card  " style="width: 102px" class="ButtonStyle PrintJobCard  " />
 
               <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
           </div>
-      </td>
-  </tr>
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td >
+                        <nobr>Contract Created By:</nobr>
+                    </td>
+                    <td style="text-align: center" >
+                        <span class="ftitle"  groupid="GarageCarServiceDetails" argumentid="CreatedBy"></span>
+                    </td>
+                   
+                       <td >
+                        <nobr>Contract Date & Time:</nobr>
+                    </td>
+                    <td style="text-align: center" >
+<%--                        <div style="float: left; width: 135px" class="ftitle" groupid="GarageCarServiceDetails" argumentid="DateCreated"></div>--%>
+                        <span class="ftitle"  groupid="GarageCarServiceDetails" argumentid="DateCreated"></span>
+                        <span class="ftitle"  groupid="GarageCarServiceDetails" argumentid="DateCreatedTime"></span>
+                    </td>
+                </tr>
+
+               <tr >
+               
+                        <!-- The Popup Modal -->
+                <div id="popupModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Functionality is still in progress.</p>
+                    </div>
+                </div>
+                  
+               </tr>
 
             </table>
         </td>

@@ -8,6 +8,27 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
 
+    $('.PrintBill', t.el).click(function ()
+    {
+        debugger
+        $('#popupModal', t.el).fadeIn(); // Show the modal
+    });
+
+    // When the user clicks on the close button (x), close the modal
+    $('.close', t.el).click(function ()
+    {
+        $('#popupModal', t.el).fadeOut(); // Hide the modal
+    });
+
+    // When the user clicks anywhere outside the modal, close it
+    $(window).click(function (event)
+    {
+        if ($(event.target).is('#popupModal', t.el))
+        {
+            $('#popupModal', t.el).fadeOut(); // Hide the modal
+        }
+    });
+
     $(".ServiceInvoice, .PartsInvoice").click(function () {
        
     

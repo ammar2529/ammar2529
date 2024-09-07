@@ -7,7 +7,56 @@
 
 <script src="../../../Scripts/eForms/iRental/frmInvoicePaymentDetails.js"></script>
 
+<style>
+    
 
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+          <!-- The Popup Modal -->
+                <div id="popupModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Functionality is still in progress.</p>
+                    </div>
+                </div>
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTableInvoice">
 
@@ -553,13 +602,12 @@
                         <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                             <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                             
+                             <input type="button" value="  Print Bill  " style="width: 102px" class="ButtonStyle PrintBill  " />
 
                             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
                     </td>
                 </tr>
-
 
             </table>
         </td>

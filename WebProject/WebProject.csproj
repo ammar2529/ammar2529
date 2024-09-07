@@ -1386,6 +1386,7 @@
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintCarServiceDetails.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
@@ -1555,6 +1556,17 @@
     </Content>
     <Content Include="DataSets\SalesContactsDsForUAT.xsc">
       <DependentUpon>SalesContactsDsForUAT.xsd</DependentUpon>
+    </Content>
+    <Content Include="CarServiceDetailsDataSet\CarServiceDetails.xsc">
+      <DependentUpon>CarServiceDetails.xsd</DependentUpon>
+    </Content>
+    <None Include="CarServiceDetailsDataSet\CarServiceDetails.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CarServiceDetails.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="CarServiceDetailsDataSet\CarServiceDetails.xss">
+      <DependentUpon>CarServiceDetails.xsd</DependentUpon>
     </Content>
     <None Include="DataSets\SalesContactsDsForUAT.xsd">
       <SubType>Designer</SubType>
@@ -2512,6 +2524,11 @@
     <Compile Include="AsyncWidgets\Widgets\TabPanel.ascx.designer.cs">
       <DependentUpon>TabPanel.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CarServiceDetailsDataSet\CarServiceDetails.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarServiceDetails.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="CUtilityWeb.cs" />
     <Compile Include="DataSets\SalesContactsDsForUAT.Designer.cs">
@@ -2912,6 +2929,19 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx.designer.cs">
       <DependentUpon>SparePartInventoryInvoice.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintCarServiceDetails.aspx.cs">
+      <DependentUpon>PrintCarServiceDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintCarServiceDetails.aspx.designer.cs">
+      <DependentUpon>PrintCarServiceDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintCarServiceDetailsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintCarServiceDetailsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintInvoiceDetails.aspx.cs">
       <DependentUpon>PrintInvoiceDetails.aspx</DependentUpon>
@@ -3823,6 +3853,12 @@
       <DependentUpon>SalesContractsCrysReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SalesOpportunity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesOpportunity.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SaveLineOfItems.aspx.cs">
       <DependentUpon>SaveLineOfItems.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4025,6 +4061,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintInvoicePaymentReceiptVoucher.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintCarServiceDetailsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintCarServiceDetailsReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenLeaseContracts.cs</LastGenOutput>
@@ -4040,6 +4080,10 @@
     <EmbeddedResource Include="SalesContractsCrysReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesContractsCrysReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesOpportunity.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesOpportunity.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

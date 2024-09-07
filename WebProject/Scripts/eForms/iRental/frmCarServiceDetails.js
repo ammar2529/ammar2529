@@ -6,19 +6,63 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers(t);
 
+    //$('.PrintJobCard', t.el).click(function ()
+    //{ //
+    //    var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+    //    console.log(strlink);
+    //    var width = 920;
+    //    var height = 600;
+    //    var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+    //    var top = parseInt((screen.availHeight / 2) - (height / 2));
+    //    window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+    //    console.log('Click on Print Button');
+
+    //    return false;
+    //});
+
+    $('.PrintJobCard', t.el).click(function ()
+    {
+        $('#popupModal').fadeIn(); // Show the modal
+    });
+
+    // When the user clicks on the close button (x), close the modal
+    $('.close').click(function ()
+    {
+        $('#popupModal').fadeOut(); // Hide the modal
+    });
+
+    // When the user clicks anywhere outside the modal, close it
+    $(window).click(function (event)
+    {
+        if ($(event.target).is('#popupModal'))
+        {
+            $('#popupModal').fadeOut(); // Hide the modal
+        }
+    });
+
+
     $('.CarServiceButton_Edit', t.el).click(function ()
     {
         
 
-        $('[argumentid="StateId"]', t.el).text('OpendState');
-        $('[argumentid="StateName"]', t.el).text('Start State');
+        $('[argumentid="StateId"]', t.el).text('OpenState');
+        $('[argumentid="StateName"]', t.el).text('Open');
 
-        $('.common-button,.CommonDisableClass', t.el).removeAttr('disabled', 'disabled');
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
 
-        $('.common-button,.CommonDisableClass', t.el).removeClass('ElemDisabled');
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+        $('[argumentid="NextServiceDate"]', t.el).next('img').show();
+       
+
+        $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
+        $('[argumentid="CarNumber"]', t.el).attr('disabled', 'disabled');
+
+        $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
+        $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
 
     });
 
@@ -73,6 +117,7 @@
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+                $('[argumentid="NextServiceDate"]', t.el).next('img').show();
                 $('.StatusTR', t.el).hide();
 
                 $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
@@ -94,40 +139,7 @@
     {
       
 
-        if (res.res.status === 'OK')
-        {
-            if (res.res.Response.Rows.length > 0)
-            {
-                var rows = res.res.Response.Rows;
-               
-                //for (var row of rows)
-                //{
-                //    var keys = Object.keys(row);
-                //    console.log(keys);
-                //    $()
-                //}
-
-                //for (var i = 0; i < rows.length; i++)
-                //{
-                //    var row = rows[ i ];
-
-                //    var RecId = row.RecId;
-                //    var CarRecivedDate = row.CarRecivedDate;
-                //    var LastServiceKM = row.LastServiceKM;
-                //}
-
-                //if (!!CarRecivedDate || !!LastServiceKm)
-                //{
-                //    $('[argumentid="LastCarServiceDate"]', t.el).text(CarRecivedDate);
-                //    $('[argumentid="LastServiceKm"]', t.el).text(LastServiceKM);
-                //} else
-                //{
-                //    $('[argumentid="LastCarServiceDate"]', t.el).text('');
-                //    $('[argumentid="LastServiceKm"]', t.el).text('');
-                //}
-            }
-
-        }
+    
 
 
         if (t.FormMode == 'update')
@@ -154,6 +166,7 @@
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+                $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
 
             }
 
@@ -165,6 +178,7 @@
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+                $('[argumentid="NextServiceDate"]', t.el).next('img').show();
 
                 $('[argumentid="CarRecivedDate"]', t.el).attr('disabled', 'disabled');
                 $('[argumentid="CarNumber"]', t.el).attr('disabled', 'disabled');
@@ -187,6 +201,7 @@
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+                $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
 
                 //$('[argumentid="StateName"]',t.el).filter(function () {
                 //    return $(this).text().trim() === 'Canceled';
@@ -194,6 +209,18 @@
 
 
             }
+
+            var params = { Command: 'FX_UPD_FileUploadForCarServiceDetails', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+
+            SInfo = getForm(null, null, params);
+            var inv = new AsyncWidgets.RAInvoker();
+            inv.on('onSuccess', function (res)
+            {
+                var res = decJSON(res);
+                AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles(res, t);
+                $(t.el).unmask();
+            });
+            inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
         }
 
       
@@ -365,21 +392,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers = function (t
 
 
 
-    t.on('onLoadedValues', function (p) {
-
-        console.log(p);
-        var params = { Command: 'FX_UPD_FileUploadForCarServiceDetails', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
-
-        SInfo = getForm(null, null, params);
-        var inv = new AsyncWidgets.RAInvoker();
-        inv.on('onSuccess', function (res) {
-            var res = decJSON(res);
-            AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles(res, t);
-            $(t.el).unmask();
-        });
-        inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
-
-    });
+  
 };
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (res, t) {
