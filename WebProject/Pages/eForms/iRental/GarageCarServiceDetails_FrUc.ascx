@@ -94,21 +94,7 @@
                   
                 </tr>--%>
             
-                <tr>
-                    <td class="ftitle" style="width: 170px">
-                        <nobr>Service Date *:</nobr>
-                    </td>
-                    <td  >
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass required " requirederr=" *Required"  argumentid="CarRecivedDate" />
-                    </td>
-                    <td class="ftitle" style="width: 170px">Engine No.:</td>
-                             <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
-                            groupid="GarageCarServiceDetails" argumentid="EngineNo" />
-                    </td>
-                  
-                </tr>
+               
 
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
@@ -307,6 +293,22 @@
                   
                 </tr>
 
+                <tr>
+                    <td class="ftitle" style="width: 170px">
+                        <nobr>Service Date *:</nobr>
+                    </td>
+                    <td>
+                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                            style="width: 75px;" class="text  date CommonDisableClass required " requirederr=" *Required" argumentid="CarRecivedDate" />
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass required " style="width: 142px;" groupid="GarageCarServiceDetails" argumentid="CarRecivedDateHours" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D1">
+                            <option value="" selected="selected">Select Hours</option>
+                        </select>
+
+                    </td>
+                    <td class="ftitle" style="width: 170px"></td>
+                    <td></td>
+
+                </tr>
                     
                 <tr>
                     <td class="ftitle" style="width: 170px">In KM *:</td>
@@ -320,7 +322,7 @@
                              <td>
                    
 
-                                 <input type="text" style="text-align: center; width: 150px;" maxlength="100"  class="text number   CommonDisableClass "
+                                 <input type="text" style="text-align: center; width: 150px;" maxlength="100"  class="text number   CommonDisableClass OnStartState"
                                      groupid="GarageCarServiceDetails" argumentid="OutKm"
                                      />
 
@@ -332,31 +334,55 @@
                 
                    <tr>
                     <td class="ftitle" style="width: 170px">
-                        <nobr>Delivery Date:</nobr>
+                        <nobr>Delivery Date *:</nobr>
                     </td>
                     <td  >
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="CarToBeDeliverdDate" />
+                            style="width: 75px;"  class="text  date CommonDisableClass  required " requirederr=" *Required" argumentid="CarToBeDeliverdDate" />
+
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " style="width: 142px;" groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverdDateHours" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D1">
+                            <option value="" selected="selected">Select Hours</option>
+                        </select>
+
                     </td>
                     <td class="ftitle" style="width: 170px">Deliverd Date:</td>
                              <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass  "  argumentid="CarDeliverdDate" />
+                            style="width: 75px;"  class="text  date CommonDisableClass  OnStartState"  argumentid="CarDeliverdDate" />
+
+                                 
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass OnStartState " style="width: 142px;" groupid="GarageCarServiceDetails" argumentid="CarDeliverdDateHours" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D1">
+                            <option value="" selected="selected">Select Hours</option>
+                        </select>
                     </td>
                   
                 </tr>
 
+                   <tr>
+    <td class="ftitle" style="width: 170px">
+        
+    </td>
+    <td  >
+ 
+    </td>
+    <td class="ftitle" style="width: 170px">   <nobr>Next Service Date:</nobr></td>
+             <td>
+         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+       style="width: 75px;" class="text  date CommonDisableClass OnStartState " argumentid="NextServiceDate" />
+    </td>
+  
+</tr>
+
                 <tr>
                     <td class="ftitle" style="width: 170px">
-                        <nobr>Next Service Date:</nobr>
+                     
                     </td>
                     <td>
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;" class="text  date CommonDisableClass  " argumentid="NextServiceDate" />
+                     
                     </td>
                     <td class="ftitle" style="width: 170px">Next Service KM:</td>
                     <td>
-                      <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass "
+                      <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState"
                         groupid="GarageCarServiceDetails" argumentid="NextServiceKm" />
                     </td>
 
@@ -375,23 +401,13 @@
             <nobr>Problem *:</nobr>
         </td>
                        <td colspan="3">
-                           <textarea class="textarea required Problem" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; 
+                           <textarea class="textarea required Problem CommonDisableClass" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; 
                             resize: none;" argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
                        </td>
        
     </tr>
 
-                   
-                   <tr>
-        <td valign="center" class="ftitle">
-            <nobr>Action Taken:</nobr>
-        </td>
-                       <td colspan="3">
-                           <textarea class="textarea ActionTaken" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;" 
-                               argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
-                       </td>
-       
-    </tr>
+   
 
                         
                    <tr>
@@ -399,13 +415,24 @@
             <nobr>Car Condition:</nobr>
         </td>
                        <td colspan="3">
-                           <textarea class="textarea CarCondition" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                           <textarea class="textarea CarCondition CommonDisableClass" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
                                argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
                        </td>
        
     </tr>
 
 
+                                
+                   <tr>
+        <td valign="center" class="ftitle">
+            <nobr>Action Taken:</nobr>
+        </td>
+                       <td colspan="3">
+                           <textarea class="textarea ActionTaken CommonDisableClass OnStartState" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;" 
+                               argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
+                       </td>
+       
+    </tr>
               
 
               <tr>
@@ -482,18 +509,18 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                           
-                      <input type="button" style="width: 95px;color: Green"" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                       <input type="button" style="width: 95px;color: Red"" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnClosed common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                       <input type="button" style="width: 50px;color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                      <input type="button" style="width: 95px;color: Green"" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                       <input type="button" style="width: 95px;color: Red"" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
                          </div>
 
                          <div style="padding-top: 10px; padding-bottom: 10px">
              
-              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit" />
-              <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-             <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                <input type="button" value="  Print Job Card  " style="width: 102px" class="ButtonStyle PrintJobCard  " />
+              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm" />
+              <input type="button" style="width: 50px;color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                <input type="button" value="  Print Job Card  " style="width: 102px" class="ButtonStyle PrintJobCard  OnNewForm" />
 
               <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
           </div>

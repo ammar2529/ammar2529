@@ -983,7 +983,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
 
                 var RecId = row.RecId;
                 var ItemId = row.ItemId;
-                var RecCode = row.RecCode;
+                var SparePartSerialNo = row.SparePartSerialNo;
                 var SparePartName = row.SparePartName;
                 var SparePartQuantity = row.SparePartQuantity;
                 var SelectQuantity = row.SelectQuantity;
@@ -1001,10 +1001,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                                                     </td>
                                                     
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartName}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartSerialNo}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartQuantity}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartName}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SelectQuantity}</div>
@@ -1224,12 +1224,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
                     var row = rows[ i ];
                     var RecId = row.RecId;
                     var ItemId = row.ItemId;
-                    var RecCode = row.RecCode;
+                    var SparePartSerialNo = row.SparePartSerialNo;
                     var SparePartName = row.SparePartName;
                     var SparePartQuantity = row.SparePartQuantity;
                     var SelectQuantity = row.SelectQuantity;
                     var SparePartUnitPrice = row.SparePartUnitPrice;
                     var TotalPrice = row.TotalPrice;
+                     
 
 
                     var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
@@ -1239,12 +1240,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
                                                         <div class="ColValue w-grid-label ItemIdName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${ItemId}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 62px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 60px;">${RecCode}</div>
+                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 60px;">${SparePartSerialNo}</div>
                                                     </td>
                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartName}</div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
+                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap;display:none; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
                                                         <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartQuantity}</div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">

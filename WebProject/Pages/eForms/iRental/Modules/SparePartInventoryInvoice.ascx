@@ -17,8 +17,10 @@
             ShowOnLoad="true" DataSource="SEL_iRental_CarsForSale" AsyncForm="~/Pages/eForms/iRental/Invoice_ShUc.ascx">
             <WidgetConfig>
                 <script>
-                    cf = {
-                        header: {
+                    cf =
+                    {
+                        header:
+                        {
                             Style: {},
                             Visible: true,
                             Collapsed: false,
@@ -48,8 +50,14 @@
                                    </tpl>
                                      <%--<div class="ftitle" style="font-size:11px;">Delivery No.:{DeliveryNo}</div>--%>
 
-                                    <div class="ftitle">InvoiceFor:&nbsp;<nobr class="ftitle" style="color:#602010">{InvoiceDetails}</nobr></div> 
+                                    <div class="ftitle">Invoice For:&nbsp;<nobr class="ftitle" style="color:#602010">{InvoiceDetails}</nobr></div> 
 
+                                    <tpl if="ServiceNo">
+                                    <div class="ftitle ServiceNo" style="color:#602010">
+                                        ServiceNo.:&nbsp;<nobr class="ftitle" style="color:red"> {ServiceNo}</nobr>
+                                       
+                                    </div>
+                                        </tpl>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -162,7 +170,23 @@
                                         $(this).hide();
                                     }
                                 });
-                               
+
+                                
+
+
+                                $('.ServiceNo').each(function ()
+                                {
+
+                                    var ServiceNo = $(this).find('.ftitle').text().trim();
+                                    var content = $(this).text().trim();
+
+                                    // Check if any of the fields are empty, contain only white space, or a hyphen
+                                    if (!ServiceNo || ServiceNo === '-' || content.includes("{ServiceNo}")||
+                                        content.includes(" - ") || content.includes("  ") || content.includes(" -"))
+                                    {
+                                        $(this).hide();
+                                    }
+                                });
                                 
                             });
                             var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);
@@ -333,7 +357,7 @@
     <AW:DataGrid ID="grdCarServiceDetailsForInvoice_Cars" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarServiceDetailsForInvoice_Cars"
         EmptyHeight="201px" AllowNew="true" SelectableRow="false"
         PageSize="10" DataSource="SEL_GRG_SearchCarFor_CarAndCustomerDetils" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
-        GridHeadText="Select Car" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
+        GridHeadText="Select Service" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
 
         <GridConfig>
             <script>
@@ -387,10 +411,8 @@
                         DateCreated: { width: '0px' }
 
 
-                    },
-                    DataActionParams: {
-                        SearchDbAction: 'SearchChassisNo'
                     }
+                   
                 };
             </script>
         </GridConfig>

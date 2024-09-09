@@ -273,25 +273,9 @@
 
 
                 </tr>
-                <tr>
-     <td colspan="4">
-         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-     </td>
- </tr>
+           
 
-                <tr>
-                       <td class="ftitle" width="20%">
-               <nobr>Delivery No.: </nobr>
-                    </td>
-                    <td class="ftitle" width="30%">
-                      
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  number   "
-                            groupid="SparePartInventoryInvoice" argumentid="DeliveryNo" />
-
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
+              
 
              
                            
@@ -300,26 +284,47 @@
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
+
+
+                <tr class="hideCarandService">
+
+                    <td class="ftitle">
+                        <nobr>In KM:</nobr>
+                    </td>
+                    <td>
+                        <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="CurrentServiceKm"></span>
+                    </td>
+
+
+                    <td class="ftitle">
+                        
+                    </td>
+                    <td style="text-align: left">
+                        
+
+                    </td>
+                </tr>
+
                 <!-- New row with labels and 8 columns starts here -->
                 <tr class="LineOfItemRow">
                     <td colspan="4">
                         <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
                             <tr>
-                                <td>
+                                <td class="ftitle">
                                     <label for="column1">Item ID</label></td>
-                                <td>
+                                <td class="ftitle">
                                     <label for="column2">Item Code</label></td>
-                                <td>
+                                <td class="ftitle">
                                     <label for="column3">Description</label></td>
-                                <td>
+                                <td class="ftitle">
                                     <label for="column4">Qty'AVL</label></td>
-                                <td>
+                                <td class="ftitle">
                                     <label for="column5">QTY</label></td>
-                                <td>
-                                    <label for="column7">Unit.P</label></td>
-                                <td>
-                                    <label for="column8">Total.P</label></td>
-                                 <td><label for="column9">Actions</label></td> <!-- Actions column -->
+                                <td class="ftitle">
+                                    <label for="column7">Unit Price</label></td>
+                                <td class="ftitle">
+                                    <label for="column8">Total Price</label></td>
+                                 <td class="ftitle"><label for="column9">Actions</label></td> <!-- Actions column -->
 
                             </tr>
                             <tr class="trNoDynamic">
@@ -400,27 +405,32 @@
                                                     </td>--%>
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileType" style="padding-left: 0px; padding-right: 0px; width: 110px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
+                                                            <span href="#" class="w-grid-head ColName sort">Item Code</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px; ">
+                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
                                                             <span href="#" class="w-grid-head ColName sort">Description</span>
                                                         </div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px;">
+                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px;display:none;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
                                                             <span href="#" class="w-grid-head ColName sort">Qty'AVL</span>
                                                         </div>
                                                     </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
+                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px; ">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
                                                             <span href="#" class="w-grid-head ColName sort">Qty</span>
                                                         </div>
                                                     </td>
                                                       <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Unit.P</span>
+                                                            <span href="#" class="w-grid-head ColName sort">Unit Price</span>
                                                         </div>
                                                     </td>
                                                       <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Total.P</span>
+                                                            <span href="#" class="w-grid-head ColName sort">Total Price</span>
                                                         </div>
                                                     </td>
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 45px;">

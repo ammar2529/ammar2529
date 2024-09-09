@@ -99,7 +99,7 @@ var th = ['','thousand','million', 'billion','trillion'];
         </td>
         <td class="auto-style3">
             <div class="auto-style1 parentDiv">
-                <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 155px;"
+                <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 116px;"
                     groupid="Invoice_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
                     <option value="" selected="selected">Select Payment Mode</option>
                 </select>
