@@ -4061,10 +4061,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintInvoicePaymentReceiptVoucher.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintCarServiceDetailsReport.rpt">
+    <Content Include="Pages\eForms\iRental\Reports\PrintCarServiceDetailsReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintCarServiceDetailsReport.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenLeaseContracts.cs</LastGenOutput>

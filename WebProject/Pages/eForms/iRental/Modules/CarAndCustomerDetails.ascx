@@ -32,8 +32,8 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}{OtherCarNumber}</nobr>&nbsp;-&nbsp;{BrandId}{Brand}&nbsp;-&nbsp;{ModelId}{Model}&nbsp;-&nbsp;{Color}&nbsp;-&nbsp;{CarYear}</div>
-                                    <div class="ftitle StateName" style="color:#602010">{StateName}</div>
+                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}{OtherCarNumber}</nobr>&nbsp;-&nbsp;{BrandId}{Brand}&nbsp;-&nbsp;{ModelId}{Model}&nbsp;-&nbsp;{CarYear}</div>
+                                    <div class="ftitle StateName" style="color:#602010;display:none">{StateName}</div>
                                 </div>
                                 </pre>
                 <pre columnid="CustomerDetails">
@@ -56,7 +56,7 @@
                                         <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
                     
                                      <%--<div class="ftitle" style="color:#101080">{Salesman}</div>--%>
-                                     <div class="ftitle" style="color:#602010">{CreatedBy}</div>
+                                     <div class="ftitle" style="color:#101080">{CreatedBy}</div>
 
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                    <%--<div class="ftitle" style="color:#808000">{FinanceCompany}</div>--%>

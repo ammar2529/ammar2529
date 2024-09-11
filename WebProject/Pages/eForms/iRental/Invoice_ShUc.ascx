@@ -130,7 +130,7 @@
 
             <select class="dropdownlist"  style="width: 155px;"
                 groupid="schInvoice" argumentid="InvoiceDetails" name="D7">
-                <option value="" selected="selected">Select InvoiceFor</option>
+                <option value="" selected="selected">Select Invoice For</option>
                 <option value="ServiceInvoice">Service Invoice</option>
                 <option value="PartsInvoice">Parts Invoice</option>
               

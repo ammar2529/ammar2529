@@ -108,12 +108,14 @@
 
                             $('.StateName', t.el).each(function ()
                             {
+                                $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
+
                                 if ($(this).text().indexOf('Created') > -1) {
                                     $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
                                     $(this).css('color', 'Green');
                                 }
                                else if ($(this).text().indexOf('Open') > -1) {
-                                    $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
+                                  
                                     $(this).css('color', 'Green');
                                 }
                                 else if ($(this).text() != '{StateName}') {

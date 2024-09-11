@@ -276,12 +276,14 @@
                         CarLocationId: { width: '0px' },
                         CarStatusId: { caption: 'Car Status', width: '90px' },
                         Status: { width: '100px' },
-                        ContractNo: { caption: 'Contract No.' }
+                        ContractNo: { caption: 'Contract No.' },
+                        FullInsuranceCompanyId: { width: '0px' },
+                        FullInsurancePolicyNo: { width: '0px' }
 
 
                     }
                 };
-            </script>
+ </script>
  </GridConfig>
  <Scripts>
  <script>

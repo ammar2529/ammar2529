@@ -6,39 +6,137 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers(t);
 
-    //$('.PrintJobCard', t.el).click(function ()
-    //{ //
-    //    var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
-    //    console.log(strlink);
-    //    var width = 920;
-    //    var height = 600;
-    //    var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
-    //    var top = parseInt((screen.availHeight / 2) - (height / 2));
-    //    window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
-    //    console.log('Click on Print Button');
 
-    //    return false;
-    //});
+    var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
+    $('[argumentid="CarRecivedDate"]').on('blur', function ()
+    {
+
+        var cDate = new Date();
+        var cH = cDate.getHours();
+        var cM = cDate.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+        $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
+
+        
+        var csDate = val('CarRecivedDate', t.el);
+
+        var dow = CalculateDayOfWeekCsDate(csDate);
+
+
+        setField('ServiceStartDay', dow, t.el);
+
+
+
+    });
+
+    $('[argumentid="CarToBeDeliverdDate"]').on('blur', function ()
+    {
+
+        var cDate = new Date();
+        var cH = cDate.getHours();
+        var cM = cDate.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+        $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
+
+
+        var csDate = val('CarToBeDeliverdDate', t.el);
+
+        var dow = CalculateDayOfWeekCsDate(csDate);
+
+
+        setField('CarToBeDeliverStartDay', dow, t.el);
+
+
+
+    });
+
+    $('[argumentid="CarDeliverdDate"]').on('blur', function ()
+    {
+
+        var cDate = new Date();
+        var cH = cDate.getHours();
+        var cM = cDate.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+        $('[argumentid="CarDeliverdStartTime"]', t.el).val(cH + ':' + cM);
+
+
+        var csDate = val('CarDeliverdDate', t.el);
+
+        var dow = CalculateDayOfWeekCsDate(csDate);
+
+
+        setField('CarDeliverdStartDay', dow, t.el);
+
+
+
+    });
+
+    $('[argumentid="NextServiceDate"]').on('blur', function ()
+    {
+
+        var cDate = new Date();
+        var cH = cDate.getHours();
+        var cM = cDate.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+        $('[argumentid="NextServiceStartTime"]', t.el).val(cH + ':' + cM);
+
+
+        var csDate = val('NextServiceDate', t.el);
+
+        var dow = CalculateDayOfWeekCsDate(csDate);
+
+
+        setField('NextServiceStartDay', dow, t.el);
+
+
+
+    });
 
     $('.PrintJobCard', t.el).click(function ()
-    {
-        $('#popupModal').fadeIn(); // Show the modal
+    { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on Print Button');
+
+        return false;
     });
 
-    // When the user clicks on the close button (x), close the modal
-    $('.close').click(function ()
-    {
-        $('#popupModal').fadeOut(); // Hide the modal
-    });
+    //$('.PrintJobCard', t.el).click(function ()
+    //{
+    //    $('#popupModal').fadeIn(); // Show the modal
+    //});
 
-    // When the user clicks anywhere outside the modal, close it
-    $(window).click(function (event)
-    {
-        if ($(event.target).is('#popupModal'))
-        {
-            $('#popupModal').fadeOut(); // Hide the modal
-        }
-    });
+    //// When the user clicks on the close button (x), close the modal
+    //$('.close').click(function ()
+    //{
+    //    $('#popupModal').fadeOut(); // Hide the modal
+    //});
+
+    //// When the user clicks anywhere outside the modal, close it
+    //$(window).click(function (event)
+    //{
+    //    if ($(event.target).is('#popupModal'))
+    //    {
+    //        $('#popupModal').fadeOut(); // Hide the modal
+    //    }
+    //});
 
 
     $('.CarServiceButton_Edit', t.el).click(function ()
@@ -109,6 +207,34 @@
         var dt = new Date();
         $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
         $('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+       
+        var cH = dt.getHours();
+        var cM = dt.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+        var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
+       
+        
+            var csDate = val('CarRecivedDate', t.el);
+
+            var dow = CalculateDayOfWeekCsDate(csDate);
+
+
+            setField('ServiceStartDay', dow, t.el);
+
+
+        var esDate = val('CarToBeDeliverdDate', t.el);
+
+        var dowe = CalculateDayOfWeekCsDate(esDate);
+
+
+        setField('CarToBeDeliverStartDay', dowe, t.el);
+        
+
+        $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
+        $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
       
         if (t.FormMode == 'new')
         {
@@ -126,9 +252,9 @@
                 $('[argumentid="StateId"]', t.el).text('OpenState');
                 $('[argumentid="StateName"]', t.el).text('Start State');
 
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeAttr('disabled', 'disabled');
 
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
@@ -141,8 +267,8 @@
                 $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarNumber"]', t.el).removeAttr('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-                $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState', t.el).attr('disabled', 'disabled');
-                $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState', t.el).addClass('ElemDisabled');
+                $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
+                $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide(); 
                 $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
             }
@@ -178,8 +304,8 @@
                 //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
                 //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
 
-                $('.common-button,.CommonDisableClass,.PrintJobCard', t.el).attr('disabled', 'disabled');
-                $('.common-button,.CommonDisableClass,.PrintJobCard', t.el).addClass('ElemDisabled');
+                $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
@@ -191,17 +317,17 @@
             if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
             {
                 
-                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard', t.el).removeAttr('disabled', 'disabled');
-                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard', t.el).removeClass('ElemDisabled');
+                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="NextServiceDate"]', t.el).next('img').show();
 
                 $('[argumentid="CarRecivedDate"]', t.el).attr('disabled', 'disabled');
-                $('[argumentid="CarNumber"],.grgbtnSave3', t.el).attr('disabled', 'disabled');
+                $('[argumentid="CarNumber"],.grgbtnSave3,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
 
-                $('[argumentid="CarRecivedDate"],.grgbtnSave3', t.el).addClass('ElemDisabled');
+                $('[argumentid="CarRecivedDate"],.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
 
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
@@ -211,10 +337,10 @@
             if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
 
 
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard', t.el).attr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
 
               
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard', t.el).addClass('ElemDisabled');
+                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
@@ -525,4 +651,23 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.DeleteUploadFile = function (t, 
         $(t.el).unmask();
     });
     inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
+};
+
+//calculate weekday of start date
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate = function (csDate)
+{
+
+    if (!!csDate)
+    {
+        var oDate = csDate.convertDate();
+        if (!isNaN(oDate))
+        {
+            var weekdays = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+            return weekdays[ oDate.getDay() ];
+
+
+
+        }
+        return "";
+    }
 };

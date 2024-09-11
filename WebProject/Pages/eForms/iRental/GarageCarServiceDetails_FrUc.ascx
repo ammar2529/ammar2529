@@ -300,9 +300,11 @@
                     <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 75px;" class="text  date CommonDisableClass required " requirederr=" *Required" argumentid="CarRecivedDate" />
-                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass required " style="width: 142px;" groupid="GarageCarServiceDetails" argumentid="CarRecivedDateHours" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D1">
-                            <option value="" selected="selected">Select Hours</option>
-                        </select>
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                            groupid="GarageCarServiceDetails" argumentid="ServiceStartDay" />
+
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
+                            groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
 
                     </td>
                     <td class="ftitle" style="width: 170px"></td>
@@ -340,9 +342,11 @@
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 75px;"  class="text  date CommonDisableClass  required " requirederr=" *Required" argumentid="CarToBeDeliverdDate" />
 
-                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " style="width: 142px;" groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverdDateHours" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D1">
-                            <option value="" selected="selected">Select Hours</option>
-                        </select>
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                            groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartDay" />
+
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
+                            groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
 
                     </td>
                     <td class="ftitle" style="width: 170px">Deliverd Date:</td>
@@ -351,9 +355,11 @@
                             style="width: 75px;"  class="text  date CommonDisableClass  OnStartState"  argumentid="CarDeliverdDate" />
 
                                  
-                        <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass OnStartState " style="width: 142px;" groupid="GarageCarServiceDetails" argumentid="CarDeliverdDateHours" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D1">
-                            <option value="" selected="selected">Select Hours</option>
-                        </select>
+                           <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC "
+                            groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
+
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState CarDeliverdStartTime"
+                            groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
                     </td>
                   
                 </tr>
@@ -369,6 +375,13 @@
              <td>
          <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
        style="width: 75px;" class="text  date CommonDisableClass OnStartState " argumentid="NextServiceDate" />
+
+                          
+                           <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
+
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState NextServiceStartTime"
+                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
     </td>
   
 </tr>
@@ -509,7 +522,7 @@
                        
                     
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                       <input type="button" style="width: 50px;color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                       <input type="button" style="width: 95px;color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
                       <input type="button" style="width: 95px;color: Green"" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
                        <input type="button" style="width: 95px;color: Red"" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 

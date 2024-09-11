@@ -28,10 +28,10 @@
                         <span class="ftitle" style="color: red;" groupid="CarAndCustomersDetails" argumentid="RecCode">New contract no. will be generated on saving</span>
                     </td>
                     <td class="ftitle" width="20%">
-                        <nobr> Status:</nobr>
+                        <%--<nobr> Status:</nobr>--%>
                     </td>
                     <td class="ftitle" width="30%">
-                        <span class="ftitle" groupid="CarAndCustomersDetails" argumentid="StateName"></span>
+                       <%-- <span class="ftitle" groupid="CarAndCustomersDetails" argumentid="StateName"></span>--%>
 
                         <div style="display: none">
                             <span groupid="CarAndCustomersDetails" argumentid="StateId"></span>
@@ -199,8 +199,7 @@
                     </td>
                     <td class="ftitle">
                         <span class="ftitle CommonDisable " groupid="CarAndCustomersDetails" argumentid="MobileTelephone1"></span>
-                        <nobr class="CommaM12">, </nobr>
-                        <span class="ftitle CommonDisable " groupid="CarAndCustomersDetails" argumentid="MobileTelephone2"></span>
+                       
                     </td>
                 </tr>
                 <tr>
@@ -304,7 +303,7 @@
                             <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="CustomerModifyListt">
                                 <thead>
                                     <tr>
-                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Rec No.</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Code</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width:30%">Customer Name</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Nationality</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">National ID No</th>
