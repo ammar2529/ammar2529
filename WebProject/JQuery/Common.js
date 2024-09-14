@@ -189,6 +189,48 @@ function getAmountInWordsSalesContract(v)
 }
 
 
+function compareDates(date1, date2) {
+    // Convert the date strings to Date objects (assumes 'DD/MM/YYYY' format)
+
+
+    // Convert the date strings to Date objects (assumes 'DD/MM/YYYY' format)
+    // Convert the date strings to Date objects (assumes 'DD/MM/YYYY' format)
+    function parseDate(dateStr) {
+        const [day, month, year] = dateStr.split('/');
+        return new Date(`${year}-${month}-${day}`);
+    }
+
+    const CarRecivedDateConvert = parseDate(date1);
+    const CarToBeDeliverdDateConvert = parseDate(date2);
+
+    // Check if the first date is earlier, later, or the same as the second date
+    if (CarRecivedDateConvert > CarToBeDeliverdDateConvert) {
+        console.log("Date 1 is later than Date 2.");
+    } else if (CarRecivedDateConvert < CarToBeDeliverdDateConvert) {
+        console.log("Date 1 is earlier than Date 2.");
+    } else {
+        console.log("Both dates are the same.");
+    }
+
+    // Calculate the difference in milliseconds
+    const diffTime = Math.abs(CarRecivedDateConvert - CarToBeDeliverdDateConvert);
+
+    // Convert difference to hours
+    const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+    debugger
+    if (diffHours < 24) {
+        console.log(`The difference is ${diffHours} hours.`);
+    } else {
+        // Define diffDays only when it's needed
+        const diffDays = Math.floor(diffHours / 24);
+        console.log(`The difference is ${diffDays} day(s).`);
+    }
+
+    // Return the final difference in hours or days
+    return diffHours < 24 ? `${diffHours} hours` : `${Math.floor(diffHours / 24)} day(s)`;
+}
+
+
 //var sessionCheckTimeout;
 //function setTimer()
 //{

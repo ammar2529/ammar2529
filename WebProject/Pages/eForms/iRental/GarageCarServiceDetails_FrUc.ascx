@@ -10,50 +10,50 @@
 <link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet" />
 
 <style>
-    
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+        text-align: center;
+    }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    text-align: center;
-}
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
     .auto-style1 {
         width: 170px;
     }
 </style>
+
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
 
@@ -243,26 +243,26 @@
                     </td>
                 </tr>
 
-   <tr>
-                           
-                           
-                             <td class="ftitle">
-                                <nobr>Full Insurance:</nobr>
-                            </td>
-                           
-                       <td>
-                         <span class="ftitle CommonDisable " groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId"></span>
-                    </td>
-                                                                    
-                           
+                <tr>
 
-                          <td class="ftitle">
-                               <%-- <nobr>Full Insurance Expiry:</nobr>--%>
-                            </td>
-                          <td>
-                              <%--<span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span> --%>
-                          </td>
-                        </tr>
+
+                    <td class="ftitle">
+                        <nobr>Full Insurance:</nobr>
+                    </td>
+
+                    <td>
+                        <span class="ftitle CommonDisable " groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId"></span>
+                    </td>
+
+
+
+                    <td class="ftitle">
+                        <%-- <nobr>Full Insurance Expiry:</nobr>--%>
+                    </td>
+                    <td>
+                        <%--<span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span> --%>
+                    </td>
+                </tr>
 
                 <tr>
                      <td class="ftitle">
@@ -311,44 +311,41 @@
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
 
+<%--                         <input type="text" style="text-align: center; width: 55px;" id="time"  groupid="GarageCarServiceDetails"  readonly />--%>
+
                     </td>
-                    </td>
-    <td class="ftitle" style="width: 170px">   In KM *:</td>
-             <td>
-         
+
+                    <td class="ftitle" style="width: 170px">In KM *:</td>
+                    <td>
+
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number required  CommonDisableClass CommonCommaVal"
                             groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" /></td>
 
                 </tr>
-                    
-          
+            <tr>
+                <td class="ftitle" style="width: 170px">
+                    <nobr>Delivery Date *:</nobr>
+                </td>
+                <td>
+                    <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                        style="width: 75px;" class="text  date CommonDisableClass  required " requirederr=" *Required" argumentid="CarToBeDeliverdDate" />
 
-                
-                   <tr>
-                    <td class="ftitle" style="width: 170px">
-                        <nobr>Delivery Date *:</nobr>
-                    </td>
-                    <td  >
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date CommonDisableClass  required " requirederr=" *Required" argumentid="CarToBeDeliverdDate" />
+                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartDay" />
 
-                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
-                            groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartDay" />
+                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
+                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
 
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
-                            groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
+                </td>
+                <td class="ftitle" style="width: 170px">Out KM :</td>
+                <td>
 
-                    </td>
-                    <td class="ftitle" style="width: 170px">Out KM :</td>
-                             <td>
-                       
-                   
 
-                                 <input type="text" style="text-align: center; width: 150px;" maxlength="100"  class="text number   CommonDisableClass OnStartState CommonCommaVal"
-                                     groupid="GarageCarServiceDetails" argumentid="OutKm"
-                                     /></td>
-                  
-                </tr>
+
+                    <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState CommonCommaVal"
+                        groupid="GarageCarServiceDetails" argumentid="OutKm" /></td>
+
+            </tr>
 
             <tr>
                  <td class="ftitle" style="width: 170px">Deliverd Date:</td>
@@ -370,24 +367,25 @@
                   
             </tr>
 
-    <tr>
-         <td class="ftitle">   <nobr>Next Service Date:</nobr>
+                <tr>
+                    <td class="ftitle">
+                        <nobr>Next Service Date:</nobr>
 
-    </td>
-             <td>
-         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-       style="width: 75px;" class="text  date CommonDisableClass OnStartState " argumentid="NextServiceDate" />
+                    </td>
+                    <td>
+                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                            style="width: 75px;" class="text  date CommonDisableClass OnStartState " argumentid="NextServiceDate" />
 
-                          
-                           <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
 
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState NextServiceStartTime"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
-    </td>
-        <td></td>
-        <td></td>
-    </tr>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
 
         
 
@@ -401,44 +399,44 @@
 
                     </td>
                 </tr>
-               
-                   <tr>
-        <td valign="center" class="ftitle">
-            <nobr>Problem *:</nobr>
-        </td>
-                       <td colspan="3">
-                           <textarea class="textarea required Problem CommonDisableClass" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; 
-                            resize: none;" argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
-                       </td>
-       
-    </tr>
 
-   
+                <tr>
+                    <td valign="center" class="ftitle">
+                        <nobr>Problem *:</nobr>
+                    </td>
+                    <td colspan="3">
+                        <textarea class="textarea required Problem CommonDisableClass" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                            argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
+                    </td>
 
-                        
-                   <tr>
-        <td valign="center" class="ftitle">
-            <nobr>Car Condition:</nobr>
-        </td>
-                       <td colspan="3">
-                           <textarea class="textarea CarCondition CommonDisableClass" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
-                               argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
-                       </td>
-       
-    </tr>
+                </tr>
 
 
-                                
-                   <tr>
-        <td valign="center" class="ftitle">
-            <nobr>Action Taken:</nobr>
-        </td>
-                       <td colspan="3">
-                           <textarea class="textarea ActionTaken CommonDisableClass OnStartState" rows="4" wrap="1"" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;" 
-                               argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
-                       </td>
-       
-    </tr>
+
+
+                <tr>
+                    <td valign="center" class="ftitle">
+                        <nobr>Car Condition:</nobr>
+                    </td>
+                    <td colspan="3">
+                        <textarea class="textarea CarCondition CommonDisableClass" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                            argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+                    <td valign="center" class="ftitle">
+                        <nobr>Action Taken:</nobr>
+                    </td>
+                    <td colspan="3">
+                        <textarea class="textarea ActionTaken CommonDisableClass OnStartState" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                            argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
+                    </td>
+
+                </tr>
               
 
               <tr>
@@ -455,10 +453,10 @@
 
 
                         <div class="file-upload-drop-area" style="padding:5px;">
-                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
+                            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
                                 groupid="GarageCarServiceDetails" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
                                 <option value="" selected="selected">Select Doc Type</option>
-                            </select>
+                            </select>--%>
 
 
                             <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx" />
@@ -507,29 +505,29 @@
 
 
 
-            
+
 
                 <tr>
                     <td colspan="4" style="text-align: center;">
-                       
-                       
-                    
+
+
+
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                       <input type="button" style="width: 95px;color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                      <input type="button" style="width: 95px;color: Green"" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                       <input type="button" style="width: 95px;color: Red"" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 95px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 95px; color: Green" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 95px; color: Red" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
-                         </div>
+                        </div>
 
-                         <div style="padding-top: 10px; padding-bottom: 10px">
-             
-              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm" />
-              <input type="button" style="width: 50px;color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-             <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                <input type="button" value="  Print Job Card  " style="width: 102px" class="ButtonStyle PrintJobCard  OnNewForm" />
+                        <div style="padding-top: 10px; padding-bottom: 10px">
 
-              <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
-          </div>
+                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm" />
+                            <input type="button" style="width: 50px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" value="  Print Job Card  " style="width: 102px" class="ButtonStyle PrintJobCard  OnNewForm" />
+
+                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
+                        </div>
                     </td>
                 </tr>
 
@@ -551,7 +549,7 @@
                     </td>
                 </tr>
 
-               <tr >
+              <%-- <tr >
                
                         <!-- The Popup Modal -->
                 <div id="popupModal" class="modal">
@@ -561,12 +559,14 @@
                     </div>
                 </div>
                   
-               </tr>
+               </tr>--%>
+
+
 
             </table>
-        </td>
-    </tr>
-
+      
+            </td>
+        </tr>
 
 
 </table>

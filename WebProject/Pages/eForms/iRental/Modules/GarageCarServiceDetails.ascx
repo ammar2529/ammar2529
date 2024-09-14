@@ -38,7 +38,8 @@
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
                                      <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{BrandId}&nbsp;-&nbsp;{ModelId}</div>
-                                    <div class="ftitle StateName" style="color:#602010">{StateName}</div>
+                                    <div class="ftitle StateName" style="color:#602010">{StateName}&nbsp;-&nbsp;<nobr class="ftitle" style="color:#602010">{TimeElapsed}</nobr></div>
+                                    
                                 </div>
                                 </pre>
                 <pre columnid="CustomerDetails">

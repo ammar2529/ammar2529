@@ -6,6 +6,7 @@
     }
 </style>
 
+
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
@@ -110,21 +111,18 @@
 
             <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schCarAndCustomerDetails" /></td>
 
-        <td style="text-align: left;">
-            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schCarAndCustomerDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
-                            <option value="" selected="selected">Select Salesman</option>
-                        </select>--%>
+        <td style="text-align: left; padding: 0; white-space: nowrap; vertical-align: middle;">
+            <!-- View Button -->
+            <a href="javascript:void(0);" class="search ViewButton" style="display: inline-block; height: 22px;">
+                <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+            </a>
 
+            <!-- Clear Button -->
+            <a href="javascript:void(0);" class="reset clearCheck ClearButton" style="display: inline-block; height: 22px;">
+                <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+            </a>
+        </td>
 
-
-            <a href="javascript:void(0);" class="search ViewButton ">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                    border="0" /></a> 
-            <a href="javascript:void(0);" class="reset clearCheck ClearButton">
-                        <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                            border="0" /></a>
-           
-            </td>
     </tr>
 
    

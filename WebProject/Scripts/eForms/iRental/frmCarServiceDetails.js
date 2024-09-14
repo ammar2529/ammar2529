@@ -6,6 +6,7 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers(t);
 
+  
 
     var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
     $('[argumentid="CarRecivedDate"]').on('blur', function ()
@@ -317,6 +318,7 @@
             if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
             {
                 
+                
                 $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
                 $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
@@ -329,8 +331,17 @@
                 $('.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
 
-                var CarRecivedDate = $('[argumentid="CarRecivedDate"]').val();
-                var 
+                var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
+                var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
+                debugger
+                
+
+                const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
+                console.log(daysDifference); // Outputs: The difference is 9 days.
+
+               
+
+ 
 
             }
 

@@ -62,15 +62,15 @@
     </tr>
     <tr>
         <td style="text-align: left;">
-                    <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                            style="width: 126px;"  class="text  date   "  argumentid="CarRecivedDate" /></td>
+            <input type="text" groupid="schCarServiceDetails" maxlength="10"
+                style="width: 126px;" class="text  date   " argumentid="CarRecivedDate" /></td>
         <td style="text-align: left;">
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                            style="width: 126px;"  class="text  date   "  argumentid="CarToBeDeliverdDate" /></td>
+                style="width: 126px;" class="text  date   " argumentid="CarToBeDeliverdDate" /></td>
         <td style="text-align: left;">
 
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                            style="width: 126px;"  class="text  date   "  argumentid="CarDeliverdDate" /></td>
+                style="width: 126px;" class="text  date   " argumentid="CarDeliverdDate" /></td>
         <td style="text-align: left;">
 
             <select class="dropdownlist" style="width: 152px;"
@@ -84,32 +84,21 @@
                 <option value="">-----------------------------</option>
                 <option value="ClosedState">Closed</option>
                 <option value="">-----------------------------</option>
-                <%--<option value="RRCContractOpen">Contract Open - Car Out</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCContractCreated">Contract Created</option>
-                            <option value="">-----------------------------</option>
-							<option value="RRCContractOpenCarIn" style="color:red">Contract Open - Car In</option>
-							<option value="RRCWithLegalContractOpenCarOut" style="color:red">With Legal - Contract Open - Car Out</option>
-							<option value="RRCWithLegalContractOpenCarIn" style="color:red">With Legal - Contract Open - Car In</option>
-							<option value="RRCWithLegalContractClosedPendingPayment" style="color:red">With Legal - Contract Closed - Pending Payment</option>
-                            <option value="RRCContractClosedPendingPayment" style="color:red">Contract Closed - Pending Payment</option>
-                            <option value="">-----------------------------</option>--%>
-            <%--    <option value="RRCContractClosed" style="color: Green">Contract Closed - Payment Cleared</option>
-                <option value="">-----------------------------</option>
-                <option value="RRCContractCancelled">Contract Cancelled</option>
-                <option value="">-----------------------------</option>
-                <option value="RRCPendingPaymentCarOut">Pending Payment - Car Out</option>
-                <option value="">-----------------------------</option>
-                 <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
-                 <option value="">-----------------------------</option>--%>
 
             </select></td>
-        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
 
-            <a href="javascript:void(0);" class="search ViewButton ">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                    border="0" /></a><a href="javascript:void(0);" class="reset clearCheck ClearButton"><img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                        border="0" /></a></td>
+
+        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
+            <!-- View Button -->
+            <a href="javascript:void(0);" class="search ViewButton">
+                <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+            </a>
+
+            <!-- Clear Button -->
+            <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+                <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+            </a>
+        </td>
 
     </tr>
 
