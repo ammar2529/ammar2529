@@ -8,51 +8,43 @@
         <td style="text-align: left;" class="ftitle" width="20%">
             <span style="white-space: nowrap">Car No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Chassis No.</span></td>
+
+            <span style="white-space: nowrap">Customer Name</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
             <span style="white-space: nowrap">National ID No.</span></td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
 
-            <span style="white-space: nowrap">Customer Name</span></td>
+            <span style="white-space: nowrap">Mobile Telephone</span></td>
             
     </tr>
       
     <tr>
         <td style="text-align: left;">
 
-            <input type="text"  class="text" argumentid="RecCode"  groupid="schCarServiceDetails" />
+            <input type="text" style="width:145px"  class="text" argumentid="RecCode"  groupid="schCarServiceDetails" />
         </td>
         <td style="text-align: left;">
-            <input type="text"  class="text " 
+            <input type="text"  class="text " style="width:145px"
                                 groupid="schCarServiceDetails"  argumentid="CarNumber" /></td>
         <td style="text-align: left;">
-            <input type="text"  class="text" argumentid="ChassisNo"  groupid="schCarServiceDetails" /></td>
+            <input type="text" style="width:145px" class="text" argumentid="CustomerName" groupid="schCarServiceDetails" /></td>
         <td style="text-align: left;">
             
-            <input type="text" class="text"  argumentid="NationalIDNo" groupid="schCarServiceDetails" />
+            <input type="text" class="text" style="width:145px"  argumentid="NationalIDNo" groupid="schCarServiceDetails" />
            </td>
 
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="CustomerName" groupid="schCarServiceDetails" />
-            </td>
+            &nbsp;<input type="text" class="text" style="width:145px" argumentid="MobileTelephone1" groupid="schCarServiceDetails" /></td>
         
     </tr>
     
     
    
-    <tr>
 
-        <td colspan="7">&nbsp;
-        </td>
-
-    </tr>
 
       
     <tr>
-        <td style="text-align: left;" class="ftitle">
-
-            <span style="white-space: nowrap">Mobile Telephone</span></td>
         <td style="text-align: left;" class="ftitle">
 
             Receive Date</td>
@@ -62,25 +54,26 @@
         <td style="text-align: left;" class="ftitle">
 
             Deliverd Date</td>
-        <td style="text-align: left;" class="ftitle">Status</td>
+        <td style="text-align: left;" class="ftitle">
+
+            Status</td>
+        <td style="text-align: left;" class="ftitle">&nbsp;</td>
         
     </tr>
     <tr>
         <td style="text-align: left;">
-                    &nbsp;<input type="text" class="text" argumentid="MobileTelephone1" groupid="schCarServiceDetails" /></td>
-        <td style="text-align: left;">
-            &nbsp;<input type="text" groupid="schCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date   "  argumentid="CarRecivedDate" /></td>
+                    <input type="text" groupid="schCarServiceDetails" maxlength="10"
+                            style="width: 126px;"  class="text  date   "  argumentid="CarRecivedDate" /></td>
         <td style="text-align: left;">
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date   "  argumentid="CarToBeDeliverdDate" /></td>
+                            style="width: 126px;"  class="text  date   "  argumentid="CarToBeDeliverdDate" /></td>
         <td style="text-align: left;">
 
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date   "  argumentid="CarDeliverdDate" /></td>
-        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
-         
-            <select class="dropdownlist"
+                            style="width: 126px;"  class="text  date   "  argumentid="CarDeliverdDate" /></td>
+        <td style="text-align: left;">
+
+            <select class="dropdownlist" style="width: 152px;"
                 groupid="schCarServiceDetails" argumentid="StateId" name="D4">
                 <option value="" selected="selected">Select Status</option>
                 <%--<option value="">-----------------------------</option>
@@ -111,51 +104,21 @@
                  <option value="">-----------------------------</option>--%>
 
             </select></td>
+        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
 
-    </tr>
-
-     <tr>
-
-        <td colspan="7">&nbsp;
-        </td>
-
-    </tr>
-
-
-       <tr>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            &nbsp;</td>
-
-        <td style="text-align: left;" class="ftitle" width="20%">
-
-            &nbsp;</td>
-         
-    </tr>
-      
-    <tr>
-        <td style="text-align: left;">
-
-            &nbsp;</td>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-            
-            &nbsp;</td>
-
-        <td style="text-align: left;">
-            &nbsp;<a href="javascript:void(0);" class="search ViewButton "><img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
+            <a href="javascript:void(0);" class="search ViewButton ">
+                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
                     border="0" /></a><a href="javascript:void(0);" class="reset clearCheck ClearButton"><img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                            border="0" /></a></td>
-       
+                        border="0" /></a></td>
+
     </tr>
+
+    
+
+
+   
+      
+   
   
 
 </table>

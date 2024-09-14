@@ -306,10 +306,10 @@
 
                 $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
                 $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+                $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+                
                 $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
 
             }
@@ -317,20 +317,20 @@
             if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
             {
                 
-                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
-                $('.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
+                $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
+                $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
                 $('[argumentid="NextServiceDate"]', t.el).next('img').show();
 
-                $('[argumentid="CarRecivedDate"]', t.el).attr('disabled', 'disabled');
                 $('[argumentid="CarNumber"],.grgbtnSave3,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
 
-                $('[argumentid="CarRecivedDate"],.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
+                $('.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
 
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+                var CarRecivedDate = $('[argumentid="CarRecivedDate"]').val();
+                var 
 
             }
 
@@ -365,6 +365,14 @@
                 $(t.el).unmask();
             });
             inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
+
+            $('.CommonCommaVal').each(function ()
+            {
+
+                var amount = parseInt($(this).val());
+                var formattedAmount = amount.toLocaleString();
+                $(this).val(formattedAmount);
+            });
         }
 
       

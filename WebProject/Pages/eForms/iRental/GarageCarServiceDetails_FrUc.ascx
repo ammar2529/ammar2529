@@ -6,6 +6,9 @@
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
+<script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet" />
+
 <style>
     
 
@@ -47,6 +50,9 @@
     text-decoration: none;
     cursor: pointer;
 }
+    .auto-style1 {
+        width: 170px;
+    }
 </style>
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
@@ -200,8 +206,7 @@
                     </td>
                     <td class="ftitle">
                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="MobileTelephone1"></span>
-                        <nobr class="CommaM12">, </nobr>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="MobileTelephone2"></span>
+                        
                     </td>
                 </tr>
                 <tr>
@@ -288,7 +293,7 @@
                     <td class="ftitle" style="width: 170px">Last Service KM.:</td>
                              <td>
                     
-                                 <span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="LastServiceKm"></span>  
+                                 <span class="ftitle CommonDisable CommonCommaText" groupid="GarageCarServiceDetails" argumentid="LastServiceKm"></span>  
                     </td>
                   
                 </tr>
@@ -307,31 +312,16 @@
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
 
                     </td>
-                    <td class="ftitle" style="width: 170px"></td>
-                    <td></td>
+                    </td>
+    <td class="ftitle" style="width: 170px">   In KM *:</td>
+             <td>
+         
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number required  CommonDisableClass CommonCommaVal"
+                            groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" /></td>
 
                 </tr>
                     
-                <tr>
-                    <td class="ftitle" style="width: 170px">In KM *:</td>
-                             <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number required  CommonDisableClass "
-                            groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" />
-
-                    </td>
-
-                    <td class="ftitle" style="width: 170px">Out KM :</td>
-                             <td>
-                   
-
-                                 <input type="text" style="text-align: center; width: 150px;" maxlength="100"  class="text number   CommonDisableClass OnStartState"
-                                     groupid="GarageCarServiceDetails" argumentid="OutKm"
-                                     />
-
-                             
-                             
-                    </td>
-                </tr>
+          
 
                 
                    <tr>
@@ -349,7 +339,19 @@
                             groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
 
                     </td>
-                    <td class="ftitle" style="width: 170px">Deliverd Date:</td>
+                    <td class="ftitle" style="width: 170px">Out KM :</td>
+                             <td>
+                       
+                   
+
+                                 <input type="text" style="text-align: center; width: 150px;" maxlength="100"  class="text number   CommonDisableClass OnStartState CommonCommaVal"
+                                     groupid="GarageCarServiceDetails" argumentid="OutKm"
+                                     /></td>
+                  
+                </tr>
+
+            <tr>
+                 <td class="ftitle" style="width: 170px">Deliverd Date:</td>
                              <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 75px;"  class="text  date CommonDisableClass  OnStartState"  argumentid="CarDeliverdDate" />
@@ -361,17 +363,17 @@
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState CarDeliverdStartTime"
                             groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
                     </td>
+                <td class="ftitle">Next Service KM:</td>
+                <td>
+                      <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState CommonCommaVal"
+                        groupid="GarageCarServiceDetails" argumentid="NextServiceKm" /></td>
                   
-                </tr>
+            </tr>
 
-                   <tr>
-    <td class="ftitle" style="width: 170px">
-        
+    <tr>
+         <td class="ftitle">   <nobr>Next Service Date:</nobr>
+
     </td>
-    <td  >
- 
-    </td>
-    <td class="ftitle" style="width: 170px">   <nobr>Next Service Date:</nobr></td>
              <td>
          <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
        style="width: 75px;" class="text  date CommonDisableClass OnStartState " argumentid="NextServiceDate" />
@@ -383,23 +385,14 @@
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState NextServiceStartTime"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
     </td>
-  
-</tr>
+        <td></td>
+        <td></td>
+    </tr>
 
-                <tr>
-                    <td class="ftitle" style="width: 170px">
-                     
-                    </td>
-                    <td>
-                     
-                    </td>
-                    <td class="ftitle" style="width: 170px">Next Service KM:</td>
-                    <td>
-                      <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState"
-                        groupid="GarageCarServiceDetails" argumentid="NextServiceKm" />
-                    </td>
+        
 
-                </tr>
+ 
+
 
                 <tr>
                     <td colspan="4">
