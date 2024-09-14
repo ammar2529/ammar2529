@@ -453,10 +453,10 @@
 
 
                         <div class="file-upload-drop-area" style="padding:5px;">
-                            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px;"
-                                groupid="GarageCarServiceDetails" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}">
+                            <select loadon="FirstVisible" valtype="value" class="dropdownlist required   " style="width: 155px; display:none"
+                                groupid="GarageCarServiceDetails" argumentid="DocType" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'34'}]}" >
                                 <option value="" selected="selected">Select Doc Type</option>
-                            </select>--%>
+                            </select>
 
 
                             <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx" />

@@ -233,10 +233,10 @@
 
         setField('CarToBeDeliverStartDay', dowe, t.el);
         
-
+        debugger
         $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
         $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
-      
+        
         if (t.FormMode == 'new')
         {
 
@@ -272,7 +272,13 @@
                 $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide(); 
                 $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+              
             }
+
+            setTimeout(function () {
+                $('[argumentid="DocType"]', t.el).val($('[argumentid="DocType"] option').eq(3).val());
+
+            }, 1000)
         }
      
     });
@@ -312,6 +318,7 @@
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
                 
                 $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+                $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
 
             }
 
@@ -330,14 +337,15 @@
 
                 $('.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
+                $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
 
-                var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
-                var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
-                debugger
+                //var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
+                //var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
+                
                 
 
-                const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
-                console.log(daysDifference); // Outputs: The difference is 9 days.
+                //const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
+                //console.log(daysDifference); // Outputs: The difference is 9 days.
 
                
 
@@ -357,6 +365,7 @@
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
                 $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+                $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
 
                 //$('[argumentid="StateName"]',t.el).filter(function () {
                 //    return $(this).text().trim() === 'Canceled';
