@@ -189,9 +189,9 @@
         
         /*$('[argumentid="StateName"]', t.el).text('Open');*/
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard', t.el).removeAttr('disabled', 'disabled');
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeAttr('disabled', 'disabled');
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard', t.el).removeClass('ElemDisabled');
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
