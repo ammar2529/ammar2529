@@ -163,7 +163,7 @@ AsyncWidgets.user = function () {
         },
        
         fireEvent: function (e) {
-            ;
+            
             Observer.fireEvent(e);
         },
         login: function () {
@@ -4491,6 +4491,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
     groupid = groupid || '';
     cf = cf || {};
     this.isElemValid = function (elem, cfg) {
+        
         var t = $(elem);
         var valid = true, tval = $.trim(this.val(elem)), igv, argid = t.attr('argumentid') || "";
         cfg = cfg || { btn: { attr: function () { return ""; } } };
@@ -4507,15 +4508,31 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
                 }
             }
         }
+
         if (t.hasClass('number') && $.trim(tval) != "") {
+            /*tval = tval.replace(/,/g, '');*/
             if (tval.indexOf('.') != tval.lastIndexOf('.')) {
                 this.showErr(t, ' Invalid Number');
                 return false;
             }
             if (!((tval - 0) == tval && tval.length > 0)) {
-                this.showErr(t, ' Invalid Number');
+                this.showErr(t, ' Invalid Number' );
                 return false;
             }
+            //if (t.hasClass('timePick') && $.trim(tval) != "")
+            //{
+                
+            //    var isValidTime = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(tval);
+
+              
+            //    if (!isValidTime)
+            //    {
+            //        this.showErr(t, 'Invalid Time');
+            //        t.val('12:00'); // Reset to default time if invalid
+            //        return false;
+            //    }
+
+            //}
 														               if (typeof t.attr('minvalue') != 'undefined') {
                 var minval=parseFloat(t.attr('minvalue')) ||0 ;
                 if(parseFloat(tval) < minval ){

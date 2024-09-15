@@ -290,7 +290,7 @@
                         
                         <span class="ftitle dateLabel onDisable" groupid="GarageCarServiceDetails" argumentid="LastCarServiceDate"></span>
                     </td>
-                    <td class="ftitle" style="width: 170px">Last Service KM.:</td>
+                    <td class="ftitle" style="width: 170px">Last Service KM:</td>
                              <td>
                     
                                  <span class="ftitle CommonDisable CommonCommaText" groupid="GarageCarServiceDetails" argumentid="LastServiceKm"></span>  
@@ -308,7 +308,7 @@
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartDay" />
 
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text timePick CommonDisableClass"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
 
 <%--                         <input type="text" style="text-align: center; width: 55px;" id="time"  groupid="GarageCarServiceDetails"  readonly />--%>

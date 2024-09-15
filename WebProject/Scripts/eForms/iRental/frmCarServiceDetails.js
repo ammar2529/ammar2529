@@ -6,8 +6,38 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers(t);
 
-  
+    var previousValue = ""; // Global variable to store the previous valid time
 
+    // Capture the previous valid time when any of the target inputs gains focus
+    $('[argumentid="ServiceStartTime"], [argumentid="CarToBeDeliverStartTime"], [argumentid="CarDeliverdStartTime"], [argumentid="NextServiceStartTime"]').on('focus', function () {
+        previousValue = $(this).val(); // Store the previous value of the focused input
+    });
+
+    // Validate the time on blur for any of the target inputs
+    $('[argumentid="ServiceStartTime"], [argumentid="CarToBeDeliverStartTime"], [argumentid="CarDeliverdStartTime"], [argumentid="NextServiceStartTime"]').on('blur', function () {
+        var time = $(this).val();  // Get the current value of the blurred input
+        var isValidTime = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time);  // Validate the time format
+
+        if (!isValidTime) {
+            // If previousValue is empty, set the time to '12:00'
+            if (previousValue === "") {
+                $(this).val('12:00'); // Set default time to '12:00'
+            } else {
+                $(this).val(previousValue); // Restore the previous valid time if available
+            }
+        }
+    });
+
+
+
+        
+        //$('[argumentid="CarRecivedDate"]', t.el).datepicker({
+            
+        //    startDate: new Date()   
+        //});
+    
+
+   
     var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
     $('[argumentid="CarRecivedDate"]').on('blur', function ()
     {
@@ -386,13 +416,13 @@
             });
             inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
 
-            $('.CommonCommaVal').each(function ()
-            {
+            //$('.CommonCommaVal').each(function ()
+            //{
 
-                var amount = parseInt($(this).val());
-                var formattedAmount = amount.toLocaleString();
-                $(this).val(formattedAmount);
-            });
+            //    var amount = parseInt($(this).val());
+            //    var formattedAmount = amount.toLocaleString();
+            //    $(this).val(formattedAmount);
+            //});
         }
 
       
