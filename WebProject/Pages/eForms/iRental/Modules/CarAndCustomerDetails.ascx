@@ -105,49 +105,52 @@
                         };
                         t.on('rowsRendered', function ()
                         {
-
+                            
                             $('.StateName', t.el).each(function ()
                             {
-                                if ($(this).text().indexOf('Created') > -1)
-                                {
-                                    $('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
-                                    $(this).css('color', 'Green');
-                                }
-                                else if ($(this).text() != '{StateName}')
-                                {
-                                    $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
-                                }
+                                
+                                $('.chkRowSelect', $(this).closest('tr')).attr('disabled');
 
-                                var ptr = $(this).closest('tr');
+                                //if ($(this).text().indexOf('Created') > -1)
+                                //{
+                                  
+                                //    $(this).css('color', 'Green');
+                                //}
+                                //else if ($(this).text() != '{StateName}')
+                                //{
+                                //    $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
+                                //}
 
-                                if ($(this).text().indexOf('Contract Closed - Payment Cleared') > -1)
-                                {
-                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
-                                }
-                                else if ($(this).text().indexOf('Contract Cancelled') > -1)
-                                {
-                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
-                                }
-                                else if ($(this).text().indexOf('Contract Open - Car In') > -1)
-                                {
-                                    $(this).css('color', 'Red');
-                                }
-                                else if ($(this).text().indexOf('With Legal - Contract Open - Car Out') > -1)
-                                {
-                                    $(this).css('color', 'Red');
-                                }
-                                else if ($(this).text().indexOf('With Legal - Contract Open - Car In') > -1)
-                                {
-                                    $(this).css('color', 'Red');
-                                }
-                                else if ($(this).text().indexOf('With Legal - Contract Closed - Pending Payment') > -1)
-                                {
-                                    $(this).css('color', 'Red');
-                                }
-                                else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1)
-                                {
-                                    $(this).css('color', 'Red');
-                                }
+                                //var ptr = $(this).closest('tr');
+
+                                //if ($(this).text().indexOf('Contract Closed - Payment Cleared') > -1)
+                                //{
+                                //    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                //}
+                                //else if ($(this).text().indexOf('Contract Cancelled') > -1)
+                                //{
+                                //    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                //}
+                                //else if ($(this).text().indexOf('Contract Open - Car In') > -1)
+                                //{
+                                //    $(this).css('color', 'Red');
+                                //}
+                                //else if ($(this).text().indexOf('With Legal - Contract Open - Car Out') > -1)
+                                //{
+                                //    $(this).css('color', 'Red');
+                                //}
+                                //else if ($(this).text().indexOf('With Legal - Contract Open - Car In') > -1)
+                                //{
+                                //    $(this).css('color', 'Red');
+                                //}
+                                //else if ($(this).text().indexOf('With Legal - Contract Closed - Pending Payment') > -1)
+                                //{
+                                //    $(this).css('color', 'Red');
+                                //}
+                                //else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1)
+                                //{
+                                //    $(this).css('color', 'Red');
+                                //}
                             });
                             var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);
                             $('.ColValue', cols).css('cursor', 'pointer').click(ColClick);

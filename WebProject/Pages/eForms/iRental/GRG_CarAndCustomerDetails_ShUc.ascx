@@ -27,7 +27,7 @@
             Year</td>
     </tr>
       
-    <tr>
+    <tr style="height: 35px;">
         <td style="text-align: left;">
             <input type="text" class="text" argumentid="CarNumber" groupid="schCarAndCustomerDetails" />
         </td>
@@ -111,17 +111,19 @@
 
             <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schCarAndCustomerDetails" /></td>
 
-        <td style="text-align: left; padding: 0; white-space: nowrap; vertical-align: middle;">
-            <!-- View Button -->
-            <a href="javascript:void(0);" class="search ViewButton" style="display: inline-block; height: 22px;">
-                <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-            </a>
 
-            <!-- Clear Button -->
-            <a href="javascript:void(0);" class="reset clearCheck ClearButton" style="display: inline-block; height: 22px;">
-                <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-            </a>
-        </td>
+
+     <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">
+    <!-- View Button -->
+    <a href="javascript:void(0);" class="search ViewButton">
+        <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+
+    <!-- Clear Button -->
+    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+        <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+</td>
 
     </tr>
 

@@ -20,7 +20,7 @@
             Year</td>
     </tr>
       
-    <tr>
+    <tr style="height:35px">
         <td style="text-align: left;">
             <input type="text" class="text" argumentid="CarNumber" groupid="schInvoice" />
         </td>
@@ -33,15 +33,15 @@
                  groupid="schInvoice" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D5">
                 <option value="" selected="selected">Select Brand</option>
             </select></td>
-       <td style="text-align: left;">
+       <td style="text-align: left;padding-bottom: 4px;">
           
 
-            <select class="dropdownlist " style="width: 155px;"
+            <select class="dropdownlist " style="width: 155px;;"
                  groupid="schInvoice" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D6">
                 <option value="" selected="selected">Select Model</option>
             </select></td>
 
-        <td style="text-align: left;">
+        <td style="text-align: left;padding-bottom: 4px;">
             
 
             <select loadon="FirstVisible" class="dropdownlist" style="width: 155px;"
@@ -50,10 +50,7 @@
             </select></td>
     </tr>
 
-    <tr>
-        <td colspan="5"></td>
-    </tr>
-
+  
 
       <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
@@ -74,7 +71,7 @@
                         <nobr>Invoice For</nobr></td>
     </tr>
       
-    <tr>
+    <tr style="height:35px">
         <td style="text-align: left;">
           
 
@@ -140,10 +137,7 @@
     </tr>
 
    
-        <tr>
-        <td colspan="5"></td>
-    </tr>
-    
+     
     <tr>
         <td style="text-align: left;" class="ftitle">
             &nbsp;</td>
@@ -168,15 +162,16 @@
 
             &nbsp;</td>
 
-        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
-           
-            <a href="javascript:void(0);" class="search ViewButton ">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                    border="0" /></a> 
-            <a href="javascript:void(0);" class="reset clearCheck ClearButton">
-                        <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif"
-                            border="0" /></a>
-           
-            </td>
+            <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">
+    <!-- View Button -->
+    <a href="javascript:void(0);" class="search ViewButton">
+        <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+
+    <!-- Clear Button -->
+    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+        <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+</td>
   
 </table>

@@ -28,7 +28,7 @@
     </tr>
 
 
-    <tr>
+    <tr style="height:35px">
         <td style="text-align: left;">
 
             <input type="text" style="width: 115px;" class="text" argumentid="ItemId" groupid="schSparePartInventory" /></td>
@@ -46,14 +46,14 @@
             </select></td>
       
        
-        <td style="text-align: left; padding-bottom: 0px">
+        <td style="text-align: left; padding-bottom: 4px">
 
             <select class="dropdownlist required" style="width: 115px;" groupid="schSparePartInventory" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D3">
     <option value="" selected="selected">Select Model</option>
     </select>
         
         </td>
-         <td style="text-align: left; padding-bottom: 0px">
+         <td style="text-align: left; padding-bottom: 0px;padding-bottom:4px">
 
              <select argumentid="StoreLocation" class="dropdownlist  " 
                  groupid="schSparePartInventory" loadon="FirstVisible" name="D2" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'40'}]}" style="width: 115px;">
@@ -159,17 +159,17 @@
         </td>
         
        
-        <td style="text-align: left; padding-bottom: 0px">
+        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">
+    <!-- View Button -->
+    <a href="javascript:void(0);" class="search ViewButton">
+        <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
 
-            <a href="javascript:void(0);" class="search ViewButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-            <a href="javascript:void(0);" class="reset ClearButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-
-           <%-- <a href="javascript:void(0);" class="ClosePopup CloseLOVPopup">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/Close.gif" border="0" /></a>--%>
-
-        </td>
+    <!-- Clear Button -->
+    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+        <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+</td>
     </tr>
 </table>
 

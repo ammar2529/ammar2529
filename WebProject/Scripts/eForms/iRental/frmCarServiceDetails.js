@@ -28,14 +28,38 @@
         }
     });
 
+    //var CurrentServiceKm = 0;
+
+    //// On focus event for CurrentServiceKm input
+    //$('[argumentid="CurrentServiceKm"]', t.el).on('focus', function () {
+    //    // Get the current value of CurrentServiceKm input
+    //    CurrentServiceKm = parseInt($(this).val()) || 0;
+    //});
+
+    // On blur event for CurrentServiceKm input
+    //$('[argumentid="CurrentServiceKm"]', t.el).on('blur', function () {
+    //    ;
+    //    CurrentServiceKm = parseInt($(this).val()) || 0;
+    //    // Get the value of LastServiceKm (text content)
+    //    var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
+
+    //    // Check if CurrentServiceKm is less than LastServiceKm
+    //    if (CurrentServiceKm <= LastServiceKm) {
+
+    //        $.showMessage('Current Service KM cannot be less than or equal to Last Service KM.')
+    //        return false;
+
+    //        // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
+    //        //CurrentServiceKm = LastServiceKm + 1;
+    //        //t.Showerr()
+    //        //// Update the input field with the new value
+    //        //$(this).val(CurrentServiceKm);
+    //    }
+    //});
+
+   
 
 
-        
-        //$('[argumentid="CarRecivedDate"]', t.el).datepicker({
-            
-        //    startDate: new Date()   
-        //});
-    
 
    
     var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
@@ -172,7 +196,7 @@
 
     $('.CarServiceButton_Edit', t.el).click(function ()
     {
-        //debugger;
+        //;
         //if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState')
         //{
         //    $('[argumentid="StateId"]', t.el).text('ClosedState');
@@ -263,7 +287,7 @@
 
         setField('CarToBeDeliverStartDay', dowe, t.el);
         
-        debugger
+        
         $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
         $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
         
@@ -308,7 +332,66 @@
             setTimeout(function () {
                 $('[argumentid="DocType"]', t.el).val($('[argumentid="DocType"] option').eq(3).val());
 
-            }, 1000)
+            }, 1000);
+
+            t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
+            t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
+
+            
+
+            // On blur event for CurrentServiceKm input
+            $('[argumentid="CurrentServiceKm"]', t.el).on('blur', function () {
+                ;
+                CurrentServiceKm = parseInt($(this).val()) || 0;
+                // Get the value of LastServiceKm (text content)
+                var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
+
+                // Check if CurrentServiceKm is less than LastServiceKm
+                if (CurrentServiceKm <= LastServiceKm) {
+
+                  
+
+
+
+                    // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
+                    CurrentServiceKm = LastServiceKm + 1;
+                   
+                    // Update the input field with the new value
+                    $(this).val(CurrentServiceKm);
+                    $.showMessage('In KM cannot be less than or equal to Last Service KM.')
+                }
+                
+            });
+
+
+
+            $('[argumentid="CarToBeDeliverdDate"]',t.el).on('blur', function ()
+            {
+                
+                var receivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
+                var deliverDate = $(this).val();
+
+                // Parse the date values into Date objects (assuming the format is DD/MM/YYYY)
+                var receivedDateParts = receivedDate.split('/');
+                var deliverDateParts = deliverDate.split('/');
+
+                // Create Date objects for comparison
+                var receivedDateObj = new Date(receivedDateParts[2], receivedDateParts[1] - 1, receivedDateParts[0]);
+                var deliverDateObj = new Date(deliverDateParts[2], deliverDateParts[1] - 1, deliverDateParts[0]);
+
+                // Check if the Deliver Date is greater than the Received Date
+                if (deliverDateObj <= receivedDateObj) {
+                    $.showMessage('The delivery date must be greater than the received date.');
+                    $(this).val(''); // Clear the invalid date value
+                    $('[argumentid = "CarToBeDeliverStartDay"]',t.el).val('');
+                    $('[argumentid ="CarToBeDeliverStartTime"]',t.el).val(''); 
+                }
+
+            });
+
+
+            
+
         }
      
     });
@@ -322,17 +405,15 @@
     
 
 
-        if (t.FormMode == 'update')
-        {
-            
+        if (t.FormMode == 'update') {
+
 
             $('.grgbtnSave2', t.el).show();
             $('.grgbtnSave', t.el).hide();
             $('.StatusTR', t.el).show();
             $('.OnNewForm', t.el).show();
 
-            if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState')
-            {
+            if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
 
 
                 $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
@@ -346,16 +427,15 @@
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
                 $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
-                
+
                 $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
                 $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
 
             }
 
-            if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
-            {
-                
-                
+            if ($('[argumentid="StateId"]', t.el).text() == 'OpenState') {
+
+
                 $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
                 $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
@@ -371,15 +451,15 @@
 
                 //var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
                 //var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
-                
-                
+
+
 
                 //const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
                 //console.log(daysDifference); // Outputs: The difference is 9 days.
 
-               
 
- 
+
+
 
             }
 
@@ -388,7 +468,7 @@
 
                 $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
 
-              
+
                 $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
                 $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
                 $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
@@ -408,13 +488,12 @@
 
             SInfo = getForm(null, null, params);
             var inv = new AsyncWidgets.RAInvoker();
-            inv.on('onSuccess', function (res)
-            {
+            inv.on('onSuccess', function (res) {
                 var res = decJSON(res);
                 AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles(res, t);
                 $(t.el).unmask();
             });
-            inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
+            inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
 
             //$('.CommonCommaVal').each(function ()
             //{
@@ -423,7 +502,96 @@
             //    var formattedAmount = amount.toLocaleString();
             //    $(this).val(formattedAmount);
             //});
+
+            t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
+            t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
+
+            t.GetField('CarDeliverdDate').datepicker("option", "minDate", new Date());
+            t.GetField('NextServiceDate').datepicker("option", "minDate", new Date());
+
+            $('[argumentid="OutKm"]', t.el).on('blur', function () {
+
+
+
+                OutKm = parseInt($(this).val()) || 0;
+
+                var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
+                var CurrentServiceKm = parseInt($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+
+
+                // Check if CurrentServiceKm is less than LastServiceKm
+                if (OutKm <= CurrentServiceKm || OutKm <= LastServiceKm  ) {
+
+
+
+
+
+                    // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
+                    OutKm = CurrentServiceKm + 1;
+
+                    // Update the input field with the new value
+                    $(this).val(OutKm);
+                    $.showMessage('Out KM cannot be less than or equal to Last Service KM & In KM .')
+                }
+
+            });
+
+
+            $('[argumentid="NextServiceKm"]', t.el).on('blur', function ()
+            {
+
+
+
+                NextServiceKm = parseInt($(this).val()) || 0;
+
+                var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
+                var CurrentServiceKm = parseInt($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+                var OutKm = parseInt($('[argumentid="OutKm"]', t.el).val()) || 0;
+
+                // Check if CurrentServiceKm is less than LastServiceKm
+                if (NextServiceKm <= OutKm || NextServiceKm <= CurrentServiceKm || NextServiceKm <= LastServiceKm)
+                {
+
+
+
+
+
+                    // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
+                    NextServiceKm = OutKm + 1;
+
+                    // Update the input field with the new value
+                    $(this).val(NextServiceKm);
+                    $.showMessage('NextServiceKM KM cannot be less than or equal to Last Service KM & In KM & Out KM.')
+                }
+
+            });
+
+            $('[argumentid="CarToBeDeliverdDate"]', t.el).on('blur', function () {
+                
+                var receivedDate = $('[argumentid="CarRecivedDate"]', t.el).val();
+                var deliverDate = $(this).val();
+
+                // Parse the date values into Date objects (assuming the format is DD/MM/YYYY)
+                var receivedDateParts = receivedDate.split('/');
+                var deliverDateParts = deliverDate.split('/');
+
+                // Create Date objects for comparison
+                var receivedDateObj = new Date(receivedDateParts[2], receivedDateParts[1] - 1, receivedDateParts[0]);
+                var deliverDateObj = new Date(deliverDateParts[2], deliverDateParts[1] - 1, deliverDateParts[0]);
+
+                // Check if the Deliver Date is greater than the Received Date
+                if (deliverDateObj <= receivedDateObj) {
+                    $.showMessage('The delivery date must be greater than the received date.');
+                    $(this).val(''); // Clear the invalid date value
+                    $('[argumentid = "CarToBeDeliverStartDay"]', t.el).val('');
+                    $('[argumentid ="CarToBeDeliverStartTime"]', t.el).val('');
+                }
+
+            });
+
         }
+
+
 
       
     });
@@ -437,7 +605,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers = function (t
 
     $(".upload-button", t.el).click(function (e) {
         var isGUIDUpdateNeeded = false;
-        debugger;
+        ;
         if (val('FileGuid', t.el).trim() == "") {
             var guid = generateGuid();
             setField('FileGuid', guid, t.el);
@@ -532,7 +700,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers = function (t
     //   Handle file selection and display in the list
     var loggedUser = $('.LoggedUser').text();
     $(".file-input", t.el).change(function () {
-        debugger
+        
         /* var fileList = $(".file-list", t.el);*/
         var linkFile = $('.ItemTableRow td>.linkFileName', t.el);
         var fileName = $('.ItemTableRow td>.fileName', t.el);

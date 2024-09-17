@@ -6,8 +6,6 @@
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
-<script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-<link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet" />
 
 <style>
     /* The Modal (background) */
@@ -304,7 +302,7 @@
                     </td>
                     <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;" class="text  date CommonDisableClass required " requirederr=" *Required" argumentid="CarRecivedDate" />
+                            style="width: 75px;" class="text  date CommonDisableClass required " requirederr=" *Required" argumentid="CarRecivedDate"/>
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartDay" />
 
@@ -318,7 +316,7 @@
                     <td class="ftitle" style="width: 170px">In KM *:</td>
                     <td>
 
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number required  CommonDisableClass CommonCommaVal"
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number1 required  CommonDisableClass CommonCommaVal"
                             groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" /></td>
 
                 </tr>

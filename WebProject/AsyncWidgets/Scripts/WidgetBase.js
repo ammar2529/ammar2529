@@ -1368,7 +1368,9 @@ function hideFields(cf,hide) {
 function showFields(cf) {
     hideFields(cf,false);
 }
-function setDatePicker(ctx) {
+function setDatePicker(ctx, datePickerCF) {
+    // datePickerCF:{minDate:'yyyy/mm/dd'}
+
     var el =ctx,dts;
     if (ctx instanceof jQuery)
         el = ctx[0];
@@ -1402,7 +1404,8 @@ function setDatePicker(ctx) {
             dateFormat: 'dd/mm/yy',
             onSelect: onSelect
         };
-        Ext.apply(cf, tcf.conf);
+
+        Ext.apply(cf, tcf.conf,datePickerCF);
         $(dts[i]).datepicker(cf);
         dts[i].hideTrigger =function () {  $.datepicker._getInst(this).trigger.hide()};
         dts[i].showTrigger = function () { $.datepicker._getInst(this).trigger.show() };
@@ -1834,7 +1837,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.base.constructor.call(this, el, config);
         t.addEvents({ 'actionSuccess': true, 'widgetAction': true, 'onActionClicked': true, 'afterActionClicked': true, 'onComboFilled': true,
             'beforeComboFill': true, 'onParentCobmoChanged': true, 'AutocompleteResult': true, 'onLoadingValues': true, 'beforeLoadingValues': true
-            , 'LOVPopupShown': true, 'LOVPopupClose': true, FormClosing: true, FormClosed:true
+            , 'LOVPopupShown': true, 'LOVPopupClose': true, FormClosing: true, FormClosed:true,SettingDatePicker:true
         });
         AsyncWidgets.Widgets.on('initialized', function () {
             if (t.State.Hidden) {
@@ -2191,7 +2194,16 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         return t;
     },
+    GetField: (argId,ctx) => {
+        //get a form field by argumentid
+        var t = this;
+        if (!argId) return;
+        ctx = ctx || t.el;
+        return $(`[argumentid="${argId}"]`,ctx);
+    },
     GetFields: function (flds, ctx) {
+        //flds is field argument  ids separated by commmas
+        //ctx is optional, if not given get the fileds from current form widget
         var t = this;
         if (!flds) return;
         ctx = ctx || t.el;
@@ -2427,7 +2439,12 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         */
 
-        setDatePicker(t.el);
+        // {startDate:'yyyy/mm/dd'}
+        var datePickerCF = {};
+
+
+        t.fireEvent('SettingDatePicker',datePickerCF);
+        setDatePicker(t.el, datePickerCF);
         t.bindEvents();
         t.validator = new AsyncWidgets.Validater(t.el,'', { widget: t });
         t.HtmlLoaded = true;
@@ -4519,6 +4536,20 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
                 this.showErr(t, ' Invalid Number' );
                 return false;
             }
+            //if (t.hasClass('timePick') && $.trim(tval) != "")
+            //{
+
+            //    var isValidTime = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(tval);
+
+
+            //    if (!isValidTime)
+            //    {
+            //        this.showErr(t, 'Invalid Time');
+            //        t.val('12:00'); // Reset to default time if invalid
+            //        return false;
+            //    }
+
+            //}
             //if (t.hasClass('timePick') && $.trim(tval) != "")
             //{
                 

@@ -19,7 +19,7 @@
             
     </tr>
       
-    <tr>
+    <tr style="height: 35px";>
         <td style="text-align: left;">
 
             <input type="text" style="width:145px"  class="text" argumentid="RecCode"  groupid="schCarServiceDetails" />
@@ -88,7 +88,7 @@
             </select></td>
 
 
-        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap">
+        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">
             <!-- View Button -->
             <a href="javascript:void(0);" class="search ViewButton">
                 <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">

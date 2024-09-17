@@ -13,7 +13,8 @@ Sales.SalesContracts.grdSalesContracts = function (t) {
     };
     t.on('rowsRendered', function () {
 
-        $('.StateName', t.el).each(function () {
+        $('.StateName', t.el).each(function ()
+        {
             //if ($(this).text().indexOf('Created - Reservation') > -1) {
             //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
             //}
