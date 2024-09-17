@@ -354,7 +354,8 @@
 
 
                     // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
-                    CurrentServiceKm = LastServiceKm + 1;
+                    /* CurrentServiceKm = LastServiceKm + 1;*/
+                    CurrentServiceKm = 0;
                    
                     // Update the input field with the new value
                     $(this).val(CurrentServiceKm);
@@ -509,6 +510,35 @@
             t.GetField('CarDeliverdDate').datepicker("option", "minDate", new Date());
             t.GetField('NextServiceDate').datepicker("option", "minDate", new Date());
 
+
+            var CurrentServiceKm1 = 0;
+            $('[argumentid="CurrentServiceKm"]').on('focus', function () {
+                CurrentServiceKm1 = parseInt($(this).val()) || 0;
+            });
+            $('[argumentid="CurrentServiceKm"]', t.el).on('blur', function () {
+                
+                CurrentServiceKm = parseInt($(this).val()) || 0;
+                // Get the value of LastServiceKm (text content)
+                var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
+
+                // Check if CurrentServiceKm is less than LastServiceKm
+                if (CurrentServiceKm <= LastServiceKm) {
+
+
+
+
+
+                    // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
+                    /* CurrentServiceKm = LastServiceKm + 1;*/
+                  /*  CurrentServiceKm = 0;*/
+
+                    // Update the input field with the new value
+                    $(this).val(CurrentServiceKm1);
+                    $.showMessage('In KM cannot be less than or equal to Last Service KM.')
+                }
+
+            });
+
             $('[argumentid="OutKm"]', t.el).on('blur', function () {
 
 
@@ -527,8 +557,8 @@
 
 
                     // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
-                    OutKm = CurrentServiceKm + 1;
-
+                    /*OutKm = CurrentServiceKm + 1;*/
+                    OutKm = 0;
                     // Update the input field with the new value
                     $(this).val(OutKm);
                     $.showMessage('Out KM cannot be less than or equal to Last Service KM & In KM .')
@@ -557,7 +587,8 @@
 
 
                     // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
-                    NextServiceKm = OutKm + 1;
+                    /* NextServiceKm = OutKm + 1;*/
+                    NextServiceKm = 0;
 
                     // Update the input field with the new value
                     $(this).val(NextServiceKm);

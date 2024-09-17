@@ -4564,7 +4564,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
             //    }
 
             //}
-														               if (typeof t.attr('minvalue') != 'undefined') {
+				if (typeof t.attr('minvalue') != 'undefined') {
                 var minval=parseFloat(t.attr('minvalue')) ||0 ;
                 if(parseFloat(tval) < minval ){
                     this.showErr(t, "Value must be greater than or equal to " + t.attr('minvalue'));
