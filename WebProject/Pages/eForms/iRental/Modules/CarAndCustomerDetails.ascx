@@ -105,7 +105,7 @@
                         };
                         t.on('rowsRendered', function ()
                         {
-                            
+                            $('.chkRowSelect', t.el).attr('disabled', 'disabled');
                             $('.StateName', t.el).each(function ()
                             {
                                 
