@@ -266,7 +266,7 @@
                         </td>
                     <td >
                                  <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
-         <nobr class="CommaM12">, </nobr>
+       <%--  <nobr class="CommaM12">, </nobr>--%>
          <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
                         </td>
                         
