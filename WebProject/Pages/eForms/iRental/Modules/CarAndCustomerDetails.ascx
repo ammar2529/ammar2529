@@ -58,7 +58,7 @@
                                      <%--<div class="ftitle" style="color:#101080">{Salesman}</div>--%>
                                      <div class="ftitle" style="color:#101080">{CreatedBy}</div>
 
-                                     <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
+                                     <div class="ftitle">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                    <%--<div class="ftitle" style="color:#808000">{FinanceCompany}</div>--%>
 
                     
