@@ -8,26 +8,26 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
 
-    $('.PrintBill', t.el).click(function ()
-    {
-        debugger
-        $('#popupModal', t.el).fadeIn(); // Show the modal
-    });
+    //$('.PrintBill', t.el).click(function ()
+    //{
+    //    debugger
+    //    $('#popupModal', t.el).fadeIn(); // Show the modal
+    //});
 
-    // When the user clicks on the close button (x), close the modal
-    $('.close', t.el).click(function ()
-    {
-        $('#popupModal', t.el).fadeOut(); // Hide the modal
-    });
+    //// When the user clicks on the close button (x), close the modal
+    //$('.close', t.el).click(function ()
+    //{
+    //    $('#popupModal', t.el).fadeOut(); // Hide the modal
+    //});
 
-    // When the user clicks anywhere outside the modal, close it
-    $(window).click(function (event)
-    {
-        if ($(event.target).is('#popupModal', t.el))
-        {
-            $('#popupModal', t.el).fadeOut(); // Hide the modal
-        }
-    });
+    //// When the user clicks anywhere outside the modal, close it
+    //$(window).click(function (event)
+    //{
+    //    if ($(event.target).is('#popupModal', t.el))
+    //    {
+    //        $('#popupModal', t.el).fadeOut(); // Hide the modal
+    //    }
+    //});
 
     $(".ServiceInvoice, .PartsInvoice").click(function () {
        
@@ -37,6 +37,20 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     });
 
+
+    $('.PrintBill  ', t.el).click(function ()
+    { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintInvoice.aspx?FormCode=" + $('[argumentid="InvRecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on Print Button');
+
+        return false;
+    });
    
 
 $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {

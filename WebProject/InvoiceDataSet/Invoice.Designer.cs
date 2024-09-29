@@ -20,17 +20,17 @@ namespace WebProject.InvoiceDataSet {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("InvoicePaymentDS")]
+    [global::System.Xml.Serialization.XmlRootAttribute("Invoice")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class InvoicePaymentDS : global::System.Data.DataSet {
+    public partial class Invoice : global::System.Data.DataSet {
         
-        private RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable tableRNTInvoicePayment_Print_Receipt_Voucher_SP;
+        private RNTInvoice_InvoiceDetails_SPDataTable tableRNTInvoice_InvoiceDetails_SP;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public InvoicePaymentDS() {
+        public Invoice() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace WebProject.InvoiceDataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected InvoicePaymentDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected Invoice(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace WebProject.InvoiceDataSet {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["RNTInvoicePayment_Print_Receipt_Voucher_SP"] != null)) {
-                    base.Tables.Add(new RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable(ds.Tables["RNTInvoicePayment_Print_Receipt_Voucher_SP"]));
+                if ((ds.Tables["RNTInvoice_InvoiceDetails_SP"] != null)) {
+                    base.Tables.Add(new RNTInvoice_InvoiceDetails_SPDataTable(ds.Tables["RNTInvoice_InvoiceDetails_SP"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace WebProject.InvoiceDataSet {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable RNTInvoicePayment_Print_Receipt_Voucher_SP {
+        public RNTInvoice_InvoiceDetails_SPDataTable RNTInvoice_InvoiceDetails_SP {
             get {
-                return this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP;
+                return this.tableRNTInvoice_InvoiceDetails_SP;
             }
         }
         
@@ -127,7 +127,7 @@ namespace WebProject.InvoiceDataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            InvoicePaymentDS cln = ((InvoicePaymentDS)(base.Clone()));
+            Invoice cln = ((Invoice)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace WebProject.InvoiceDataSet {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["RNTInvoicePayment_Print_Receipt_Voucher_SP"] != null)) {
-                    base.Tables.Add(new RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable(ds.Tables["RNTInvoicePayment_Print_Receipt_Voucher_SP"]));
+                if ((ds.Tables["RNTInvoice_InvoiceDetails_SP"] != null)) {
+                    base.Tables.Add(new RNTInvoice_InvoiceDetails_SPDataTable(ds.Tables["RNTInvoice_InvoiceDetails_SP"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace WebProject.InvoiceDataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP = ((RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable)(base.Tables["RNTInvoicePayment_Print_Receipt_Voucher_SP"]));
+            this.tableRNTInvoice_InvoiceDetails_SP = ((RNTInvoice_InvoiceDetails_SPDataTable)(base.Tables["RNTInvoice_InvoiceDetails_SP"]));
             if ((initTable == true)) {
-                if ((this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP != null)) {
-                    this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.InitVars();
+                if ((this.tableRNTInvoice_InvoiceDetails_SP != null)) {
+                    this.tableRNTInvoice_InvoiceDetails_SP.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace WebProject.InvoiceDataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "InvoicePaymentDS";
+            this.DataSetName = "Invoice";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/InvoicePaymentDS.xsd";
+            this.Namespace = "http://tempuri.org/Invoice.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP = new RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable();
-            base.Tables.Add(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP);
+            this.tableRNTInvoice_InvoiceDetails_SP = new RNTInvoice_InvoiceDetails_SPDataTable();
+            base.Tables.Add(this.tableRNTInvoice_InvoiceDetails_SP);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeRNTInvoicePayment_Print_Receipt_Voucher_SP() {
+        private bool ShouldSerializeRNTInvoice_InvoiceDetails_SP() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace WebProject.InvoiceDataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            InvoicePaymentDS ds = new InvoicePaymentDS();
+            Invoice ds = new Invoice();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,43 +270,71 @@ namespace WebProject.InvoiceDataSet {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEventHandler(object sender, RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent e);
+        public delegate void RNTInvoice_InvoiceDetails_SPRowChangeEventHandler(object sender, RNTInvoice_InvoiceDetails_SPRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable : global::System.Data.TypedTableBase<RNTInvoicePayment_Print_Receipt_Voucher_SPRow> {
+        public partial class RNTInvoice_InvoiceDetails_SPDataTable : global::System.Data.TypedTableBase<RNTInvoice_InvoiceDetails_SPRow> {
             
-            private global::System.Data.DataColumn columnFormId;
+            private global::System.Data.DataColumn columnRecId;
             
-            private global::System.Data.DataColumn columnPaymentDate;
+            private global::System.Data.DataColumn columnFormCode;
             
-            private global::System.Data.DataColumn columnPaymentAmount;
+            private global::System.Data.DataColumn columnServiceNo;
             
-            private global::System.Data.DataColumn columnCustomerName;
+            private global::System.Data.DataColumn columnCarNumber;
             
-            private global::System.Data.DataColumn columnBank;
+            private global::System.Data.DataColumn columnChassisNo;
             
-            private global::System.Data.DataColumn columnPaymentMode;
+            private global::System.Data.DataColumn columnInvoiceDetails;
             
-            private global::System.Data.DataColumn columnReceivedBy;
+            private global::System.Data.DataColumn columnCode;
             
-            private global::System.Data.DataColumn columnSettlement;
+            private global::System.Data.DataColumn columnCustomerRecCode;
             
-            private global::System.Data.DataColumn columnAmountInWords;
+            private global::System.Data.DataColumn columnCustomer;
             
-            private global::System.Data.DataColumn columnPaymentType;
+            private global::System.Data.DataColumn columnPhoneNo;
             
-            private global::System.Data.DataColumn columnPaymentFor;
+            private global::System.Data.DataColumn columnInvoiceNo;
             
-            private global::System.Data.DataColumn columnBankName;
+            private global::System.Data.DataColumn columnDeliveryNo;
+            
+            private global::System.Data.DataColumn columnInvoiceDate;
+            
+            private global::System.Data.DataColumn columnSubTotal;
+            
+            private global::System.Data.DataColumn columnDiscount;
+            
+            private global::System.Data.DataColumn columnGrandTotal;
+            
+            private global::System.Data.DataColumn columnPaid;
+            
+            private global::System.Data.DataColumn columnBalance;
+            
+            private global::System.Data.DataColumn columnComments;
+            
+            private global::System.Data.DataColumn columnItemId;
+            
+            private global::System.Data.DataColumn columnSelectQuantity;
+            
+            private global::System.Data.DataColumn columnSparePartName;
+            
+            private global::System.Data.DataColumn columnSparePartQuantity;
+            
+            private global::System.Data.DataColumn columnSparePartSerialNo;
+            
+            private global::System.Data.DataColumn columnSparePartUnitPrice;
+            
+            private global::System.Data.DataColumn columnRecCode;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable() {
-                this.TableName = "RNTInvoicePayment_Print_Receipt_Voucher_SP";
+            public RNTInvoice_InvoiceDetails_SPDataTable() {
+                this.TableName = "RNTInvoice_InvoiceDetails_SP";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -314,7 +342,7 @@ namespace WebProject.InvoiceDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable(global::System.Data.DataTable table) {
+            internal RNTInvoice_InvoiceDetails_SPDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -331,104 +359,216 @@ namespace WebProject.InvoiceDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected RNTInvoice_InvoiceDetails_SPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FormIdColumn {
+            public global::System.Data.DataColumn RecIdColumn {
                 get {
-                    return this.columnFormId;
+                    return this.columnRecId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentDateColumn {
+            public global::System.Data.DataColumn FormCodeColumn {
                 get {
-                    return this.columnPaymentDate;
+                    return this.columnFormCode;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentAmountColumn {
+            public global::System.Data.DataColumn ServiceNoColumn {
                 get {
-                    return this.columnPaymentAmount;
+                    return this.columnServiceNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CustomerNameColumn {
+            public global::System.Data.DataColumn CarNumberColumn {
                 get {
-                    return this.columnCustomerName;
+                    return this.columnCarNumber;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BankColumn {
+            public global::System.Data.DataColumn ChassisNoColumn {
                 get {
-                    return this.columnBank;
+                    return this.columnChassisNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentModeColumn {
+            public global::System.Data.DataColumn InvoiceDetailsColumn {
                 get {
-                    return this.columnPaymentMode;
+                    return this.columnInvoiceDetails;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ReceivedByColumn {
+            public global::System.Data.DataColumn CodeColumn {
                 get {
-                    return this.columnReceivedBy;
+                    return this.columnCode;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SettlementColumn {
+            public global::System.Data.DataColumn CustomerRecCodeColumn {
                 get {
-                    return this.columnSettlement;
+                    return this.columnCustomerRecCode;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AmountInWordsColumn {
+            public global::System.Data.DataColumn CustomerColumn {
                 get {
-                    return this.columnAmountInWords;
+                    return this.columnCustomer;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentTypeColumn {
+            public global::System.Data.DataColumn PhoneNoColumn {
                 get {
-                    return this.columnPaymentType;
+                    return this.columnPhoneNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentForColumn {
+            public global::System.Data.DataColumn InvoiceNoColumn {
                 get {
-                    return this.columnPaymentFor;
+                    return this.columnInvoiceNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BankNameColumn {
+            public global::System.Data.DataColumn DeliveryNoColumn {
                 get {
-                    return this.columnBankName;
+                    return this.columnDeliveryNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn InvoiceDateColumn {
+                get {
+                    return this.columnInvoiceDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SubTotalColumn {
+                get {
+                    return this.columnSubTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DiscountColumn {
+                get {
+                    return this.columnDiscount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalColumn {
+                get {
+                    return this.columnGrandTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PaidColumn {
+                get {
+                    return this.columnPaid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BalanceColumn {
+                get {
+                    return this.columnBalance;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CommentsColumn {
+                get {
+                    return this.columnComments;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ItemIdColumn {
+                get {
+                    return this.columnItemId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SelectQuantityColumn {
+                get {
+                    return this.columnSelectQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SparePartNameColumn {
+                get {
+                    return this.columnSparePartName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SparePartQuantityColumn {
+                get {
+                    return this.columnSparePartQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SparePartSerialNoColumn {
+                get {
+                    return this.columnSparePartSerialNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SparePartUnitPriceColumn {
+                get {
+                    return this.columnSparePartUnitPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RecCodeColumn {
+                get {
+                    return this.columnRecCode;
                 }
             }
             
@@ -443,56 +583,102 @@ namespace WebProject.InvoiceDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RNTInvoicePayment_Print_Receipt_Voucher_SPRow this[int index] {
+            public RNTInvoice_InvoiceDetails_SPRow this[int index] {
                 get {
-                    return ((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(this.Rows[index]));
+                    return ((RNTInvoice_InvoiceDetails_SPRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEventHandler RNTInvoicePayment_Print_Receipt_Voucher_SPRowChanging;
+            public event RNTInvoice_InvoiceDetails_SPRowChangeEventHandler RNTInvoice_InvoiceDetails_SPRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEventHandler RNTInvoicePayment_Print_Receipt_Voucher_SPRowChanged;
+            public event RNTInvoice_InvoiceDetails_SPRowChangeEventHandler RNTInvoice_InvoiceDetails_SPRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEventHandler RNTInvoicePayment_Print_Receipt_Voucher_SPRowDeleting;
+            public event RNTInvoice_InvoiceDetails_SPRowChangeEventHandler RNTInvoice_InvoiceDetails_SPRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEventHandler RNTInvoicePayment_Print_Receipt_Voucher_SPRowDeleted;
+            public event RNTInvoice_InvoiceDetails_SPRowChangeEventHandler RNTInvoice_InvoiceDetails_SPRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddRNTInvoicePayment_Print_Receipt_Voucher_SPRow(RNTInvoicePayment_Print_Receipt_Voucher_SPRow row) {
+            public void AddRNTInvoice_InvoiceDetails_SPRow(RNTInvoice_InvoiceDetails_SPRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RNTInvoicePayment_Print_Receipt_Voucher_SPRow AddRNTInvoicePayment_Print_Receipt_Voucher_SPRow(string FormId, string PaymentDate, decimal PaymentAmount, string CustomerName, string Bank, string PaymentMode, string ReceivedBy, long Settlement, string AmountInWords, int PaymentType, string PaymentFor, string BankName) {
-                RNTInvoicePayment_Print_Receipt_Voucher_SPRow rowRNTInvoicePayment_Print_Receipt_Voucher_SPRow = ((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(this.NewRow()));
+            public RNTInvoice_InvoiceDetails_SPRow AddRNTInvoice_InvoiceDetails_SPRow(
+                        string FormCode, 
+                        string ServiceNo, 
+                        string CarNumber, 
+                        string ChassisNo, 
+                        string InvoiceDetails, 
+                        string Code, 
+                        string CustomerRecCode, 
+                        string Customer, 
+                        string PhoneNo, 
+                        string InvoiceNo, 
+                        long DeliveryNo, 
+                        System.DateTime InvoiceDate, 
+                        decimal SubTotal, 
+                        decimal Discount, 
+                        decimal GrandTotal, 
+                        decimal Paid, 
+                        decimal Balance, 
+                        string Comments, 
+                        long ItemId, 
+                        long SelectQuantity, 
+                        string SparePartName, 
+                        long SparePartQuantity, 
+                        string SparePartSerialNo, 
+                        decimal SparePartUnitPrice, 
+                        string RecCode) {
+                RNTInvoice_InvoiceDetails_SPRow rowRNTInvoice_InvoiceDetails_SPRow = ((RNTInvoice_InvoiceDetails_SPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        FormId,
-                        PaymentDate,
-                        PaymentAmount,
-                        CustomerName,
-                        Bank,
-                        PaymentMode,
-                        ReceivedBy,
-                        Settlement,
-                        AmountInWords,
-                        PaymentType,
-                        PaymentFor,
-                        BankName};
-                rowRNTInvoicePayment_Print_Receipt_Voucher_SPRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRNTInvoicePayment_Print_Receipt_Voucher_SPRow);
-                return rowRNTInvoicePayment_Print_Receipt_Voucher_SPRow;
+                        null,
+                        FormCode,
+                        ServiceNo,
+                        CarNumber,
+                        ChassisNo,
+                        InvoiceDetails,
+                        Code,
+                        CustomerRecCode,
+                        Customer,
+                        PhoneNo,
+                        InvoiceNo,
+                        DeliveryNo,
+                        InvoiceDate,
+                        SubTotal,
+                        Discount,
+                        GrandTotal,
+                        Paid,
+                        Balance,
+                        Comments,
+                        ItemId,
+                        SelectQuantity,
+                        SparePartName,
+                        SparePartQuantity,
+                        SparePartSerialNo,
+                        SparePartUnitPrice,
+                        RecCode};
+                rowRNTInvoice_InvoiceDetails_SPRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRNTInvoice_InvoiceDetails_SPRow);
+                return rowRNTInvoice_InvoiceDetails_SPRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public RNTInvoice_InvoiceDetails_SPRow FindByRecId(long RecId) {
+                return ((RNTInvoice_InvoiceDetails_SPRow)(this.Rows.Find(new object[] {
+                            RecId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable cln = ((RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable)(base.Clone()));
+                RNTInvoice_InvoiceDetails_SPDataTable cln = ((RNTInvoice_InvoiceDetails_SPDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -500,94 +686,143 @@ namespace WebProject.InvoiceDataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable();
+                return new RNTInvoice_InvoiceDetails_SPDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnFormId = base.Columns["FormId"];
-                this.columnPaymentDate = base.Columns["PaymentDate"];
-                this.columnPaymentAmount = base.Columns["PaymentAmount"];
-                this.columnCustomerName = base.Columns["CustomerName"];
-                this.columnBank = base.Columns["Bank"];
-                this.columnPaymentMode = base.Columns["PaymentMode"];
-                this.columnReceivedBy = base.Columns["ReceivedBy"];
-                this.columnSettlement = base.Columns["Settlement"];
-                this.columnAmountInWords = base.Columns["AmountInWords"];
-                this.columnPaymentType = base.Columns["PaymentType"];
-                this.columnPaymentFor = base.Columns["PaymentFor"];
-                this.columnBankName = base.Columns["BankName"];
+                this.columnRecId = base.Columns["RecId"];
+                this.columnFormCode = base.Columns["FormCode"];
+                this.columnServiceNo = base.Columns["ServiceNo"];
+                this.columnCarNumber = base.Columns["CarNumber"];
+                this.columnChassisNo = base.Columns["ChassisNo"];
+                this.columnInvoiceDetails = base.Columns["InvoiceDetails"];
+                this.columnCode = base.Columns["Code"];
+                this.columnCustomerRecCode = base.Columns["CustomerRecCode"];
+                this.columnCustomer = base.Columns["Customer"];
+                this.columnPhoneNo = base.Columns["PhoneNo"];
+                this.columnInvoiceNo = base.Columns["InvoiceNo"];
+                this.columnDeliveryNo = base.Columns["DeliveryNo"];
+                this.columnInvoiceDate = base.Columns["InvoiceDate"];
+                this.columnSubTotal = base.Columns["SubTotal"];
+                this.columnDiscount = base.Columns["Discount"];
+                this.columnGrandTotal = base.Columns["GrandTotal"];
+                this.columnPaid = base.Columns["Paid"];
+                this.columnBalance = base.Columns["Balance"];
+                this.columnComments = base.Columns["Comments"];
+                this.columnItemId = base.Columns["ItemId"];
+                this.columnSelectQuantity = base.Columns["SelectQuantity"];
+                this.columnSparePartName = base.Columns["SparePartName"];
+                this.columnSparePartQuantity = base.Columns["SparePartQuantity"];
+                this.columnSparePartSerialNo = base.Columns["SparePartSerialNo"];
+                this.columnSparePartUnitPrice = base.Columns["SparePartUnitPrice"];
+                this.columnRecCode = base.Columns["RecCode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnFormId = new global::System.Data.DataColumn("FormId", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFormId);
-                this.columnPaymentDate = new global::System.Data.DataColumn("PaymentDate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentDate);
-                this.columnPaymentAmount = new global::System.Data.DataColumn("PaymentAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentAmount);
-                this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustomerName);
-                this.columnBank = new global::System.Data.DataColumn("Bank", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBank);
-                this.columnPaymentMode = new global::System.Data.DataColumn("PaymentMode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentMode);
-                this.columnReceivedBy = new global::System.Data.DataColumn("ReceivedBy", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnReceivedBy);
-                this.columnSettlement = new global::System.Data.DataColumn("Settlement", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSettlement);
-                this.columnAmountInWords = new global::System.Data.DataColumn("AmountInWords", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAmountInWords);
-                this.columnPaymentType = new global::System.Data.DataColumn("PaymentType", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentType);
-                this.columnPaymentFor = new global::System.Data.DataColumn("PaymentFor", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentFor);
-                this.columnBankName = new global::System.Data.DataColumn("BankName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBankName);
-                this.columnFormId.MaxLength = 50;
-                this.columnPaymentDate.ReadOnly = true;
-                this.columnPaymentDate.MaxLength = 10;
-                this.columnPaymentAmount.ReadOnly = true;
-                this.columnCustomerName.AllowDBNull = false;
-                this.columnCustomerName.MaxLength = 200;
-                this.columnBank.ReadOnly = true;
-                this.columnBank.MaxLength = 16;
-                this.columnPaymentMode.ReadOnly = true;
-                this.columnPaymentMode.MaxLength = 150;
-                this.columnReceivedBy.MaxLength = 255;
-                this.columnSettlement.ReadOnly = true;
-                this.columnAmountInWords.MaxLength = 255;
-                this.columnPaymentFor.MaxLength = 2000;
-                this.columnBankName.MaxLength = 150;
+                this.columnRecId = new global::System.Data.DataColumn("RecId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRecId);
+                this.columnFormCode = new global::System.Data.DataColumn("FormCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormCode);
+                this.columnServiceNo = new global::System.Data.DataColumn("ServiceNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServiceNo);
+                this.columnCarNumber = new global::System.Data.DataColumn("CarNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCarNumber);
+                this.columnChassisNo = new global::System.Data.DataColumn("ChassisNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChassisNo);
+                this.columnInvoiceDetails = new global::System.Data.DataColumn("InvoiceDetails", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceDetails);
+                this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCode);
+                this.columnCustomerRecCode = new global::System.Data.DataColumn("CustomerRecCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerRecCode);
+                this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomer);
+                this.columnPhoneNo = new global::System.Data.DataColumn("PhoneNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhoneNo);
+                this.columnInvoiceNo = new global::System.Data.DataColumn("InvoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceNo);
+                this.columnDeliveryNo = new global::System.Data.DataColumn("DeliveryNo", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeliveryNo);
+                this.columnInvoiceDate = new global::System.Data.DataColumn("InvoiceDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceDate);
+                this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubTotal);
+                this.columnDiscount = new global::System.Data.DataColumn("Discount", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiscount);
+                this.columnGrandTotal = new global::System.Data.DataColumn("GrandTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotal);
+                this.columnPaid = new global::System.Data.DataColumn("Paid", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaid);
+                this.columnBalance = new global::System.Data.DataColumn("Balance", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBalance);
+                this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComments);
+                this.columnItemId = new global::System.Data.DataColumn("ItemId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemId);
+                this.columnSelectQuantity = new global::System.Data.DataColumn("SelectQuantity", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSelectQuantity);
+                this.columnSparePartName = new global::System.Data.DataColumn("SparePartName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSparePartName);
+                this.columnSparePartQuantity = new global::System.Data.DataColumn("SparePartQuantity", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSparePartQuantity);
+                this.columnSparePartSerialNo = new global::System.Data.DataColumn("SparePartSerialNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSparePartSerialNo);
+                this.columnSparePartUnitPrice = new global::System.Data.DataColumn("SparePartUnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSparePartUnitPrice);
+                this.columnRecCode = new global::System.Data.DataColumn("RecCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRecCode);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnRecId}, true));
+                this.columnRecId.AutoIncrement = true;
+                this.columnRecId.AutoIncrementSeed = -1;
+                this.columnRecId.AutoIncrementStep = -1;
+                this.columnRecId.AllowDBNull = false;
+                this.columnRecId.ReadOnly = true;
+                this.columnRecId.Unique = true;
+                this.columnFormCode.MaxLength = 200;
+                this.columnServiceNo.MaxLength = 200;
+                this.columnCarNumber.MaxLength = 50;
+                this.columnChassisNo.MaxLength = 200;
+                this.columnInvoiceDetails.MaxLength = 50;
+                this.columnCode.MaxLength = 50;
+                this.columnCustomerRecCode.MaxLength = 20;
+                this.columnCustomer.MaxLength = 200;
+                this.columnPhoneNo.MaxLength = 100;
+                this.columnInvoiceNo.MaxLength = 100;
+                this.columnComments.MaxLength = 255;
+                this.columnSparePartName.MaxLength = 500;
+                this.columnSparePartSerialNo.MaxLength = 200;
+                this.columnRecCode.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RNTInvoicePayment_Print_Receipt_Voucher_SPRow NewRNTInvoicePayment_Print_Receipt_Voucher_SPRow() {
-                return ((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(this.NewRow()));
+            public RNTInvoice_InvoiceDetails_SPRow NewRNTInvoice_InvoiceDetails_SPRow() {
+                return ((RNTInvoice_InvoiceDetails_SPRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RNTInvoicePayment_Print_Receipt_Voucher_SPRow(builder);
+                return new RNTInvoice_InvoiceDetails_SPRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(RNTInvoicePayment_Print_Receipt_Voucher_SPRow);
+                return typeof(RNTInvoice_InvoiceDetails_SPRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowChanged != null)) {
-                    this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowChanged(this, new RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent(((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(e.Row)), e.Action));
+                if ((this.RNTInvoice_InvoiceDetails_SPRowChanged != null)) {
+                    this.RNTInvoice_InvoiceDetails_SPRowChanged(this, new RNTInvoice_InvoiceDetails_SPRowChangeEvent(((RNTInvoice_InvoiceDetails_SPRow)(e.Row)), e.Action));
                 }
             }
             
@@ -595,8 +830,8 @@ namespace WebProject.InvoiceDataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowChanging != null)) {
-                    this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowChanging(this, new RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent(((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(e.Row)), e.Action));
+                if ((this.RNTInvoice_InvoiceDetails_SPRowChanging != null)) {
+                    this.RNTInvoice_InvoiceDetails_SPRowChanging(this, new RNTInvoice_InvoiceDetails_SPRowChangeEvent(((RNTInvoice_InvoiceDetails_SPRow)(e.Row)), e.Action));
                 }
             }
             
@@ -604,8 +839,8 @@ namespace WebProject.InvoiceDataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowDeleted != null)) {
-                    this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowDeleted(this, new RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent(((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(e.Row)), e.Action));
+                if ((this.RNTInvoice_InvoiceDetails_SPRowDeleted != null)) {
+                    this.RNTInvoice_InvoiceDetails_SPRowDeleted(this, new RNTInvoice_InvoiceDetails_SPRowChangeEvent(((RNTInvoice_InvoiceDetails_SPRow)(e.Row)), e.Action));
                 }
             }
             
@@ -613,14 +848,14 @@ namespace WebProject.InvoiceDataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowDeleting != null)) {
-                    this.RNTInvoicePayment_Print_Receipt_Voucher_SPRowDeleting(this, new RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent(((RNTInvoicePayment_Print_Receipt_Voucher_SPRow)(e.Row)), e.Action));
+                if ((this.RNTInvoice_InvoiceDetails_SPRowDeleting != null)) {
+                    this.RNTInvoice_InvoiceDetails_SPRowDeleting(this, new RNTInvoice_InvoiceDetails_SPRowChangeEvent(((RNTInvoice_InvoiceDetails_SPRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveRNTInvoicePayment_Print_Receipt_Voucher_SPRow(RNTInvoicePayment_Print_Receipt_Voucher_SPRow row) {
+            public void RemoveRNTInvoice_InvoiceDetails_SPRow(RNTInvoice_InvoiceDetails_SPRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -629,7 +864,7 @@ namespace WebProject.InvoiceDataSet {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                InvoicePaymentDS ds = new InvoicePaymentDS();
+                Invoice ds = new Invoice();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -647,7 +882,7 @@ namespace WebProject.InvoiceDataSet {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable";
+                attribute2.FixedValue = "RNTInvoice_InvoiceDetails_SPDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -691,345 +926,748 @@ namespace WebProject.InvoiceDataSet {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class RNTInvoicePayment_Print_Receipt_Voucher_SPRow : global::System.Data.DataRow {
+        public partial class RNTInvoice_InvoiceDetails_SPRow : global::System.Data.DataRow {
             
-            private RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable tableRNTInvoicePayment_Print_Receipt_Voucher_SP;
+            private RNTInvoice_InvoiceDetails_SPDataTable tableRNTInvoice_InvoiceDetails_SP;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal RNTInvoicePayment_Print_Receipt_Voucher_SPRow(global::System.Data.DataRowBuilder rb) : 
+            internal RNTInvoice_InvoiceDetails_SPRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP = ((RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable)(this.Table));
+                this.tableRNTInvoice_InvoiceDetails_SP = ((RNTInvoice_InvoiceDetails_SPDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string FormId {
+            public long RecId {
+                get {
+                    return ((long)(this[this.tableRNTInvoice_InvoiceDetails_SP.RecIdColumn]));
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.RecIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FormCode {
                 get {
                     try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.FormIdColumn]));
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.FormCodeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FormId\' in table \'RNTInvoicePayment_Print_Receipt_Voucher_S" +
-                                "P\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FormCode\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.FormIdColumn] = value;
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.FormCodeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PaymentDate {
+            public string ServiceNo {
                 get {
                     try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentDateColumn]));
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.ServiceNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentDate\' in table \'RNTInvoicePayment_Print_Receipt_Vouc" +
-                                "her_SP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ServiceNo\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentDateColumn] = value;
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.ServiceNoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal PaymentAmount {
+            public string CarNumber {
                 get {
                     try {
-                        return ((decimal)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentAmountColumn]));
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.CarNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentAmount\' in table \'RNTInvoicePayment_Print_Receipt_Vo" +
-                                "ucher_SP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CarNumber\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentAmountColumn] = value;
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.CarNumberColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string CustomerName {
-                get {
-                    return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.CustomerNameColumn]));
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.CustomerNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Bank {
+            public string ChassisNo {
                 get {
                     try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankColumn]));
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.ChassisNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Bank\' in table \'RNTInvoicePayment_Print_Receipt_Voucher_SP\'" +
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChassisNo\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.ChassisNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string InvoiceDetails {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDetailsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceDetails\' in table \'RNTInvoice_InvoiceDetails_SP\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDetailsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Code {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.CodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Code\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.CodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CustomerRecCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.CustomerRecCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerRecCode\' in table \'RNTInvoice_InvoiceDetails_SP\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.CustomerRecCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Customer {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.CustomerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Customer\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.CustomerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PhoneNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.PhoneNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhoneNo\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.PhoneNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string InvoiceNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceNo\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long DeliveryNo {
+                get {
+                    try {
+                        return ((long)(this[this.tableRNTInvoice_InvoiceDetails_SP.DeliveryNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeliveryNo\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.DeliveryNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime InvoiceDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceDate\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal SubTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRNTInvoice_InvoiceDetails_SP.SubTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SubTotal\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.SubTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Discount {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRNTInvoice_InvoiceDetails_SP.DiscountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Discount\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.DiscountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal GrandTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRNTInvoice_InvoiceDetails_SP.GrandTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotal\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.GrandTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Paid {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRNTInvoice_InvoiceDetails_SP.PaidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Paid\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.PaidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Balance {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRNTInvoice_InvoiceDetails_SP.BalanceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Balance\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.BalanceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Comments {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.CommentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Comments\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.CommentsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long ItemId {
+                get {
+                    try {
+                        return ((long)(this[this.tableRNTInvoice_InvoiceDetails_SP.ItemIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemId\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.ItemIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long SelectQuantity {
+                get {
+                    try {
+                        return ((long)(this[this.tableRNTInvoice_InvoiceDetails_SP.SelectQuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SelectQuantity\' in table \'RNTInvoice_InvoiceDetails_SP\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.SelectQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SparePartName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SparePartName\' in table \'RNTInvoice_InvoiceDetails_SP\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long SparePartQuantity {
+                get {
+                    try {
+                        return ((long)(this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartQuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SparePartQuantity\' in table \'RNTInvoice_InvoiceDetails_SP\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SparePartSerialNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartSerialNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SparePartSerialNo\' in table \'RNTInvoice_InvoiceDetails_SP\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartSerialNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal SparePartUnitPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartUnitPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SparePartUnitPrice\' in table \'RNTInvoice_InvoiceDetails_SP\'" +
                                 " is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankColumn] = value;
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartUnitPriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PaymentMode {
+            public string RecCode {
                 get {
                     try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentModeColumn]));
+                        return ((string)(this[this.tableRNTInvoice_InvoiceDetails_SP.RecCodeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentMode\' in table \'RNTInvoicePayment_Print_Receipt_Vouc" +
-                                "her_SP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RecCode\' in table \'RNTInvoice_InvoiceDetails_SP\' is DBNull." +
+                                "", e);
                     }
                 }
                 set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentModeColumn] = value;
+                    this[this.tableRNTInvoice_InvoiceDetails_SP.RecCodeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string ReceivedBy {
-                get {
-                    try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.ReceivedByColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ReceivedBy\' in table \'RNTInvoicePayment_Print_Receipt_Vouch" +
-                                "er_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.ReceivedByColumn] = value;
-                }
+            public bool IsFormCodeNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.FormCodeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long Settlement {
-                get {
-                    try {
-                        return ((long)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.SettlementColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Settlement\' in table \'RNTInvoicePayment_Print_Receipt_Vouch" +
-                                "er_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.SettlementColumn] = value;
-                }
+            public void SetFormCodeNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.FormCodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string AmountInWords {
-                get {
-                    try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.AmountInWordsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AmountInWords\' in table \'RNTInvoicePayment_Print_Receipt_Vo" +
-                                "ucher_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.AmountInWordsColumn] = value;
-                }
+            public bool IsServiceNoNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.ServiceNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int PaymentType {
-                get {
-                    try {
-                        return ((int)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentType\' in table \'RNTInvoicePayment_Print_Receipt_Vouc" +
-                                "her_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentTypeColumn] = value;
-                }
+            public void SetServiceNoNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.ServiceNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PaymentFor {
-                get {
-                    try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentForColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentFor\' in table \'RNTInvoicePayment_Print_Receipt_Vouch" +
-                                "er_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentForColumn] = value;
-                }
+            public bool IsCarNumberNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.CarNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string BankName {
-                get {
-                    try {
-                        return ((string)(this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BankName\' in table \'RNTInvoicePayment_Print_Receipt_Voucher" +
-                                "_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankNameColumn] = value;
-                }
+            public void SetCarNumberNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.CarNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFormIdNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.FormIdColumn);
+            public bool IsChassisNoNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.ChassisNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFormIdNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.FormIdColumn] = global::System.Convert.DBNull;
+            public void SetChassisNoNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.ChassisNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPaymentDateNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentDateColumn);
+            public bool IsInvoiceDetailsNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDetailsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPaymentDateNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentDateColumn] = global::System.Convert.DBNull;
+            public void SetInvoiceDetailsNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDetailsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPaymentAmountNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentAmountColumn);
+            public bool IsCodeNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.CodeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPaymentAmountNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentAmountColumn] = global::System.Convert.DBNull;
+            public void SetCodeNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.CodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBankNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankColumn);
+            public bool IsCustomerRecCodeNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.CustomerRecCodeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBankNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankColumn] = global::System.Convert.DBNull;
+            public void SetCustomerRecCodeNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.CustomerRecCodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPaymentModeNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentModeColumn);
+            public bool IsCustomerNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.CustomerColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPaymentModeNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentModeColumn] = global::System.Convert.DBNull;
+            public void SetCustomerNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.CustomerColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsReceivedByNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.ReceivedByColumn);
+            public bool IsPhoneNoNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.PhoneNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetReceivedByNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.ReceivedByColumn] = global::System.Convert.DBNull;
+            public void SetPhoneNoNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.PhoneNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSettlementNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.SettlementColumn);
+            public bool IsInvoiceNoNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.InvoiceNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSettlementNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.SettlementColumn] = global::System.Convert.DBNull;
+            public void SetInvoiceNoNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAmountInWordsNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.AmountInWordsColumn);
+            public bool IsDeliveryNoNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.DeliveryNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAmountInWordsNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.AmountInWordsColumn] = global::System.Convert.DBNull;
+            public void SetDeliveryNoNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.DeliveryNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPaymentTypeNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentTypeColumn);
+            public bool IsInvoiceDateNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPaymentTypeNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentTypeColumn] = global::System.Convert.DBNull;
+            public void SetInvoiceDateNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.InvoiceDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPaymentForNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentForColumn);
+            public bool IsSubTotalNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.SubTotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPaymentForNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.PaymentForColumn] = global::System.Convert.DBNull;
+            public void SetSubTotalNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.SubTotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBankNameNull() {
-                return this.IsNull(this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankNameColumn);
+            public bool IsDiscountNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.DiscountColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBankNameNull() {
-                this[this.tableRNTInvoicePayment_Print_Receipt_Voucher_SP.BankNameColumn] = global::System.Convert.DBNull;
+            public void SetDiscountNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.DiscountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsGrandTotalNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.GrandTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetGrandTotalNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.GrandTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPaidNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.PaidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPaidNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.PaidColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBalanceNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.BalanceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBalanceNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.BalanceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCommentsNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.CommentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCommentsNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.CommentsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsItemIdNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.ItemIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetItemIdNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.ItemIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSelectQuantityNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.SelectQuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSelectQuantityNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.SelectQuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSparePartNameNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.SparePartNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSparePartNameNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSparePartQuantityNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.SparePartQuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSparePartQuantityNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartQuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSparePartSerialNoNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.SparePartSerialNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSparePartSerialNoNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartSerialNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSparePartUnitPriceNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.SparePartUnitPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSparePartUnitPriceNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.SparePartUnitPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsRecCodeNull() {
+                return this.IsNull(this.tableRNTInvoice_InvoiceDetails_SP.RecCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetRecCodeNull() {
+                this[this.tableRNTInvoice_InvoiceDetails_SP.RecCodeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1037,22 +1675,22 @@ namespace WebProject.InvoiceDataSet {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent : global::System.EventArgs {
+        public class RNTInvoice_InvoiceDetails_SPRowChangeEvent : global::System.EventArgs {
             
-            private RNTInvoicePayment_Print_Receipt_Voucher_SPRow eventRow;
+            private RNTInvoice_InvoiceDetails_SPRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RNTInvoicePayment_Print_Receipt_Voucher_SPRowChangeEvent(RNTInvoicePayment_Print_Receipt_Voucher_SPRow row, global::System.Data.DataRowAction action) {
+            public RNTInvoice_InvoiceDetails_SPRowChangeEvent(RNTInvoice_InvoiceDetails_SPRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RNTInvoicePayment_Print_Receipt_Voucher_SPRow Row {
+            public RNTInvoice_InvoiceDetails_SPRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1068,7 +1706,7 @@ namespace WebProject.InvoiceDataSet {
         }
     }
 }
-namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
+namespace WebProject.InvoiceDataSet.InvoiceTableAdapters {
     
     
     /// <summary>
@@ -1080,7 +1718,7 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RNTInvoicePayment_Print_Receipt_Voucher_SPTableAdapter : global::System.ComponentModel.Component {
+    public partial class RNTInvoice_InvoiceDetails_SPTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1094,7 +1732,7 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public RNTInvoicePayment_Print_Receipt_Voucher_SPTableAdapter() {
+        public RNTInvoice_InvoiceDetails_SPTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1191,19 +1829,33 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "RNTInvoicePayment_Print_Receipt_Voucher_SP";
-            tableMapping.ColumnMappings.Add("FormId", "FormId");
-            tableMapping.ColumnMappings.Add("PaymentDate", "PaymentDate");
-            tableMapping.ColumnMappings.Add("PaymentAmount", "PaymentAmount");
-            tableMapping.ColumnMappings.Add("CustomerName", "CustomerName");
-            tableMapping.ColumnMappings.Add("Bank", "Bank");
-            tableMapping.ColumnMappings.Add("PaymentMode", "PaymentMode");
-            tableMapping.ColumnMappings.Add("ReceivedBy", "ReceivedBy");
-            tableMapping.ColumnMappings.Add("Settlement", "Settlement");
-            tableMapping.ColumnMappings.Add("AmountInWords", "AmountInWords");
-            tableMapping.ColumnMappings.Add("PaymentType", "PaymentType");
-            tableMapping.ColumnMappings.Add("PaymentFor", "PaymentFor");
-            tableMapping.ColumnMappings.Add("BankName", "BankName");
+            tableMapping.DataSetTable = "RNTInvoice_InvoiceDetails_SP";
+            tableMapping.ColumnMappings.Add("RecId", "RecId");
+            tableMapping.ColumnMappings.Add("FormCode", "FormCode");
+            tableMapping.ColumnMappings.Add("ServiceNo", "ServiceNo");
+            tableMapping.ColumnMappings.Add("CarNumber", "CarNumber");
+            tableMapping.ColumnMappings.Add("ChassisNo", "ChassisNo");
+            tableMapping.ColumnMappings.Add("InvoiceDetails", "InvoiceDetails");
+            tableMapping.ColumnMappings.Add("Code", "Code");
+            tableMapping.ColumnMappings.Add("CustomerRecCode", "CustomerRecCode");
+            tableMapping.ColumnMappings.Add("Customer", "Customer");
+            tableMapping.ColumnMappings.Add("PhoneNo", "PhoneNo");
+            tableMapping.ColumnMappings.Add("InvoiceNo", "InvoiceNo");
+            tableMapping.ColumnMappings.Add("DeliveryNo", "DeliveryNo");
+            tableMapping.ColumnMappings.Add("InvoiceDate", "InvoiceDate");
+            tableMapping.ColumnMappings.Add("SubTotal", "SubTotal");
+            tableMapping.ColumnMappings.Add("Discount", "Discount");
+            tableMapping.ColumnMappings.Add("GrandTotal", "GrandTotal");
+            tableMapping.ColumnMappings.Add("Paid", "Paid");
+            tableMapping.ColumnMappings.Add("Balance", "Balance");
+            tableMapping.ColumnMappings.Add("Comments", "Comments");
+            tableMapping.ColumnMappings.Add("ItemId", "ItemId");
+            tableMapping.ColumnMappings.Add("SelectQuantity", "SelectQuantity");
+            tableMapping.ColumnMappings.Add("SparePartName", "SparePartName");
+            tableMapping.ColumnMappings.Add("SparePartQuantity", "SparePartQuantity");
+            tableMapping.ColumnMappings.Add("SparePartSerialNo", "SparePartSerialNo");
+            tableMapping.ColumnMappings.Add("SparePartUnitPrice", "SparePartUnitPrice");
+            tableMapping.ColumnMappings.Add("RecCode", "RecCode");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1220,37 +1872,23 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.RNTInvoicePayment_Print_Receipt_Voucher_SP";
+            this._commandCollection[0].CommandText = "dbo.RNTInvoice_InvoiceDetails_SP";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RecId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@__UserId", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FormCode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InvoicePaymentDS.RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable dataTable, global::System.Nullable<int> RecId, string Type, string @__UserId) {
+        public virtual int Fill(Invoice.RNTInvoice_InvoiceDetails_SPDataTable dataTable, string FormCode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((RecId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(RecId.Value));
-            }
-            else {
+            if ((FormCode == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Type == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Type));
-            }
-            if ((@__UserId == null)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(@__UserId));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(FormCode));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1263,27 +1901,15 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InvoicePaymentDS.RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable GetData(global::System.Nullable<int> RecId, string Type, string @__UserId) {
+        public virtual Invoice.RNTInvoice_InvoiceDetails_SPDataTable GetData(string FormCode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((RecId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(RecId.Value));
-            }
-            else {
+            if ((FormCode == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Type == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Type));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(FormCode));
             }
-            if ((@__UserId == null)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(@__UserId));
-            }
-            InvoicePaymentDS.RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable dataTable = new InvoicePaymentDS.RNTInvoicePayment_Print_Receipt_Voucher_SPDataTable();
+            Invoice.RNTInvoice_InvoiceDetails_SPDataTable dataTable = new Invoice.RNTInvoice_InvoiceDetails_SPDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1357,7 +1983,7 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(InvoicePaymentDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(Invoice dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1367,7 +1993,7 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(InvoicePaymentDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(Invoice dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1377,7 +2003,7 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(InvoicePaymentDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(Invoice dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1411,7 +2037,7 @@ namespace WebProject.InvoiceDataSet.InvoicePaymentDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(InvoicePaymentDS dataSet) {
+        public virtual int UpdateAll(Invoice dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

@@ -11,7 +11,7 @@ namespace WebProject.Pages.eForms.iRental.Reports
 {
 
 
-    public partial class PrintInvoiceDetails1
+    public partial class PrintInvoice
     {
 
         /// <summary>
@@ -24,30 +24,30 @@ namespace WebProject.Pages.eForms.iRental.Reports
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// InvoiceDetails control.
+        /// PrintInvoiceDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer InvoiceDetails;
+        protected global::CrystalDecisions.Web.CrystalReportViewer PrintInvoiceDetails;
 
         /// <summary>
-        /// SqlDataSource13 control.
+        /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource13;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
-        /// CrystalReportSource13 control.
+        /// CrystalReportSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource13;
+        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource1;
     }
 }
