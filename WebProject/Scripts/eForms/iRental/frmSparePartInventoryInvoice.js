@@ -582,7 +582,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
     $('[argumentid="Discount"]', t.el).on('blur', function ()
     { 
         
-        var discount = $(this).val();
+        var discount = $(this).val() || 0;
         var resDiscount = parseFloat(discount);
         var subTotal = parseFloat($('[argumentid="SubTotal"]', t.el).val());
 
