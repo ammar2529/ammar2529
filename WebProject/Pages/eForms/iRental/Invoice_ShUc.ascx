@@ -3,9 +3,9 @@
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Car No.</span></td>
+            Invoice<span style="white-space: nowrap"> No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            &nbsp;<span style="white-space: nowrap">Chassis No.</span></td>
+            &nbsp;<span style="white-space: nowrap">Car No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
             &nbsp;<span>Brand</span>
                                     
@@ -22,21 +22,21 @@
       
     <tr style="height:35px">
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="CarNumber" groupid="schInvoice" />
+            <input type="text" class="text" argumentid="InvRecCode" groupid="schInvoice" />
         </td>
         <td style="text-align: left;">
-            <input type="text"  class="text" argumentid="ChassisNo" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="CarNumber" groupid="schInvoice" /></td>
         <td style="text-align: left;">
           
 
-            <select loadon="FirstVisible" class="dropdownlist " style="width: 155px;"
+            <select loadon="FirstVisible" class="dropdownlist " style="width: 160px;"
                  groupid="schInvoice" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D5">
                 <option value="" selected="selected">Select Brand</option>
             </select></td>
        <td style="text-align: left;padding-bottom: 4px;">
           
 
-            <select class="dropdownlist " style="width: 155px;;"
+            <select class="dropdownlist " style="width: 160px;;"
                  groupid="schInvoice" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D6">
                 <option value="" selected="selected">Select Model</option>
             </select></td>
@@ -44,7 +44,7 @@
         <td style="text-align: left;padding-bottom: 4px;">
             
 
-            <select loadon="FirstVisible" class="dropdownlist" style="width: 155px;"
+            <select loadon="FirstVisible" class="dropdownlist" style="width: 160px;"
                  groupid="schInvoice" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
                 <option value="" selected="selected">Select Year</option>
             </select></td>
@@ -54,28 +54,28 @@
 
       <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">National ID No.</span></td>
+            Service<span style="white-space: nowrap"> No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
             <span style="white-space: nowrap">Customer Name</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
-            <span style="white-space: nowrap">Mobile Telephone</span></td>
+            <span style="white-space: nowrap">National ID No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
-            <span style="white-space: nowrap">Status</span> </td>
+            <span style="white-space: nowrap">Mobile Telephone</span></td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
 <%--            <span style="white-space: nowrap">Salesman</span>--%>
 
-                        <nobr>Invoice For</nobr></td>
+                        </td>
     </tr>
       
     <tr style="height:35px">
         <td style="text-align: left;">
           
 
-            <input type="text" class="text" argumentid="NationalIDNo" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="ServiceNo" groupid="schInvoice" /></td>
         <td style="text-align: left;">
        
 
@@ -85,93 +85,30 @@
                
   
 
-            <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="NationalIDNo" groupid="schInvoice" /></td>
         <td style="text-align: left;">
           
 
 
-            <select class="dropdownlist"  style="width: 155px;"
-                groupid="schInvoice" argumentid="StateId" name="D4">
-                <option value="" selected="selected">Select Status</option>
-                <%--<option value="">-----------------------------</option>
-                <option value="RRCCreatedState">Created - Reservation</option>
-                <option value="">-----------------------------</option>--%>
-                <option value="">-----------------------------</option>
-                <option value="CreatedState">Created</option>
-                <option value="">-----------------------------</option>
-                <%--<option value="RRCContractOpen">Contract Open - Car Out</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCContractCreated">Contract Created</option>
-                            <option value="">-----------------------------</option>
-							<option value="RRCContractOpenCarIn" style="color:red">Contract Open - Car In</option>
-							<option value="RRCWithLegalContractOpenCarOut" style="color:red">With Legal - Contract Open - Car Out</option>
-							<option value="RRCWithLegalContractOpenCarIn" style="color:red">With Legal - Contract Open - Car In</option>
-							<option value="RRCWithLegalContractClosedPendingPayment" style="color:red">With Legal - Contract Closed - Pending Payment</option>
-                            <option value="RRCContractClosedPendingPayment" style="color:red">Contract Closed - Pending Payment</option>
-                            <option value="">-----------------------------</option>--%>
-            <%--    <option value="RRCContractClosed" style="color: Green">Contract Closed - Payment Cleared</option>
-                <option value="">-----------------------------</option>
-                <option value="RRCContractCancelled">Contract Cancelled</option>
-                <option value="">-----------------------------</option>
-                <option value="RRCPendingPaymentCarOut">Pending Payment - Car Out</option>
-                <option value="">-----------------------------</option>
-                 <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
-                 <option value="">-----------------------------</option>--%>
+            <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schInvoice" /></td>
 
-            </select></td>
+        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
+            <!-- View Button -->
+            <a href="javascript:void(0);" class="search ViewButton">
+                <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+            </a>
 
-        <td style="text-align: left;">
-            <%--<select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  "   style="width: 135px;" groupid="schInvoice" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
-                            <option value="" selected="selected">Select Salesman</option>
-                        </select>--%>
+            <!-- Clear Button -->
+            <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+                <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+            </a>
+        </td>
+            
 
-            <select class="dropdownlist"  style="width: 155px;"
-                groupid="schInvoice" argumentid="InvoiceDetails" name="D7">
-                <option value="" selected="selected">Select Invoice For</option>
-                <option value="ServiceInvoice">Service Invoice</option>
-                <option value="PartsInvoice">Parts Invoice</option>
-              
-             
-
-            </select></td>
+  
     </tr>
 
    
-     
-    <tr>
-        <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
 
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
-        <td style="text-align: left;" class="ftitle">
-           </td>
-    </tr>
-    <tr>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-            &nbsp;</td>
-        <td style="text-align: left;">
-
-            &nbsp;</td>
-
-            <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">
-    <!-- View Button -->
-    <a href="javascript:void(0);" class="search ViewButton">
-        <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-    </a>
-
-    <!-- Clear Button -->
-    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
-        <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-    </a>
-</td>
   
 </table>

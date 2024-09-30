@@ -144,7 +144,7 @@
                     </td>
                     <td class="ftitle" width="30%">
                       
-                <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  " groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
+                <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
 
                 </tr>
              
@@ -156,10 +156,10 @@
                     </td>
                     <td>
                     
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass  "
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass CommonDisableClasss "
                             groupid="SparePartInventoryInvoice" lovpopupid="customerInvoicePopup" argumentid="CustomerRecCode" requirederr=' *Required'  />
 
-                       <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisableClass  "
+                       <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisableClass  CommonDisableClasss"
                          groupid="SparePartInventoryInvoice" lovpopupid="carPopupGarageForInvoice" argumentid="ServiceNo"   requirederr=' *Required'/>
 
                     </td>
@@ -333,7 +333,7 @@
                                         groupid="SparePartInventoryInvoice" argumentid="ItemId" />
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text "
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text CommonDisableClass "
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" />
                                 </td>
                                 <td>
@@ -341,15 +341,15 @@
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartName"  disabled="disabled"/>
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text ElemDisabled number"
+                                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text ElemDisabled number "
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text  "
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text CommonDisableClass "
                                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text ElemDisabled number"
+                                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text ElemDisabled number CommonDisableClass "
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" />
                                 </td>
                                 <td>
@@ -384,7 +384,7 @@
                         <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo"  />
 
                         <%-- Data Grid  --%>
-                        <div style="width: 100%;" class="CommonDisableClass">
+                        <div style="width: 100%;" class=" CommonDisableClasss">
                         <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; style="width:100%;"  text-align: left" class="uploadedItemList">
                             <tbody>
                                 <tr class="HeaderTR">
@@ -550,13 +550,13 @@
                     <td class="ftitle">
                         <nobr>Discount:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount"
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount CommonDisableClass CommonDisableClasss"
                             groupid="SparePartInventoryInvoice" argumentid="Discount" /></td>
                                                                             
                     <%--<td colspan="2" rowspan="2" style="padding: 0; " >
                         </td>--%>
                    <td colspan="2" rowspan="2">
-                       <textarea class="textarea CommonDisableClass  " style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                       <textarea class="textarea CommonDisableClass  CommonDisableClasss" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
                             argumentid="Comments" groupid="SparePartInventoryInvoice"></textarea>
                    </td>
 
@@ -607,14 +607,20 @@
                   <tr>
                     <td colspan="4" style="text-align: center;">
                            
-                       
+                       <div style="padding-top: 10px; padding-bottom: 10px">
+                            <input type="button" style="width: 95px; color: blue;"  value="  Open  " class="DataAction ButtonStyle  InvoiceOpenBtn common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Green"  value="  Closed  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Red"  value="  Canceled  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+
+                        </div>
                     
-                        <div style="padding-top: 10px; padding-bottom: 10px">
+                        <div style="padding-top: 10px; padding-bottom: 10px; height: 50px;">
+                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle InvoiceButton_Edit OnNewForm" />
                             <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                             <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                             <input type="button" value="  Print Bill  " style="width: 102px" class="ButtonStyle PrintBill  " />
+                             <input type="button" value="  Print Bill  " style="width: 102px" class="ButtonStyle PrintBill OnNewForm  common-button" />
 
-                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
+                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
                         </div>
                     </td>
                 </tr>

@@ -42,6 +42,20 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{InvRecCode}</div>
+
+                                      <tpl if="ServiceNo">
+                                                    <div class="ftitle">Invoice For:&nbsp;
+                                                        <nobr class="ftitle" style="color:red">{ServiceNo}</nobr>
+                                                    </div> 
+                                                </tpl>
+
+                                                <tpl if="!ServiceNo && InvoiceDetails">
+                                                    <div class="ftitle">Invoice For:&nbsp;
+                                                        <nobr class="ftitle" style="color:#602010">{InvoiceDetails}</nobr>
+                                                    </div>
+                                                </tpl>
+
+
                                   <tpl if="CarNumber && Brand && Model && CarYear">
                                      <div class="CarDetails" style="font-size:11px;">
                                          <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}&nbsp;-&nbsp;{Model}&nbsp;-&nbsp;{CarYear}
@@ -50,14 +64,22 @@
                                    </tpl>
                                      <%--<div class="ftitle" style="font-size:11px;">Delivery No.:{DeliveryNo}</div>--%>
 
-                                    <div class="ftitle">Invoice For:&nbsp;<nobr class="ftitle" style="color:#602010">{InvoiceDetails}</nobr></div> 
+                                <%--    <tpl if="ServiceNo || InvoiceDetails">
 
-                                    <tpl if="ServiceNo">
+                                    <div class="ftitle">Invoice For:&nbsp;<nobr class="ftitle" style="color:#602010">{InvoiceDetails}</nobr>
+                                                                           <nobr class="ftitle" style="color:red">{ServiceNo}</nobr>
+                                    </div> 
+                                     </tpl>--%>
+
+                                
+
+
+                                   <%-- <tpl if="ServiceNo">
                                     <div class="ftitle ServiceNo" style="color:#602010">
                                         ServiceNo.:&nbsp;<nobr class="ftitle" style="color:red"> {ServiceNo}</nobr>
                                        
                                     </div>
-                                        </tpl>
+                                        </tpl>--%>
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
@@ -124,12 +146,19 @@
                         t.on('rowsRendered', function () {
 
                             $('.StateName', t.el).each(function () {
-                                //if ($(this).text().indexOf('Created - Reservation') > -1) {
-                                //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
-                                //}
-                                //else if ($(this).text() != '{StateName}') {
                                 $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
-                                //}
+
+                                if ($(this).text().indexOf('Created') > -1) {
+                                    $('.chkRowSelect', $(this).closest('tr')).attr('disabled');
+                                    $(this).css('color', 'Green');
+                                }
+                                else if ($(this).text().indexOf('Open') > -1) {
+
+                                    $(this).css('color', 'Green');
+                                }
+                                else if ($(this).text() != '{StateName}') {
+                                    $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
+                                }
 
                                 var ptr = $(this).closest('tr');
 
@@ -138,6 +167,14 @@
                                 }
                                 else if ($(this).text().indexOf('Contract Cancelled') > -1) {
                                     ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                else if ($(this).text().indexOf('Closed') > -1) {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('Canceled') > -1) {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                    $(this).css('color', 'Red');
                                 }
                                 else if ($(this).text().indexOf('Contract Open - Car In') > -1) {
                                     $(this).css('color', 'Red');
@@ -153,9 +190,10 @@
                                 }
                                 else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1) {
                                     $(this).css('color', 'Red');
-
-
                                 }
+
+
+                                
 
                                 $('.CarDetails').each(function ()
                                 {
@@ -174,19 +212,19 @@
                                 
 
 
-                                $('.ServiceNo').each(function ()
-                                {
+                                //$('.ServiceNo').each(function ()
+                                //{
 
-                                    var ServiceNo = $(this).find('.ftitle').text().trim();
-                                    var content = $(this).text().trim();
+                                //    var ServiceNo = $(this).find('.ftitle').text().trim();
+                                //    var content = $(this).text().trim();
 
-                                    // Check if any of the fields are empty, contain only white space, or a hyphen
-                                    if (!ServiceNo || ServiceNo === '-' || content.includes("{ServiceNo}")||
-                                        content.includes(" - ") || content.includes("  ") || content.includes(" -"))
-                                    {
-                                        $(this).hide();
-                                    }
-                                });
+                                //    // Check if any of the fields are empty, contain only white space, or a hyphen
+                                //    if (!ServiceNo || ServiceNo === '-' || content.includes("{ServiceNo}")||
+                                //        content.includes(" - ") || content.includes("  ") || content.includes(" -"))
+                                //    {
+                                //        $(this).hide();
+                                //    }
+                                //});
                                 
                             });
                             var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);

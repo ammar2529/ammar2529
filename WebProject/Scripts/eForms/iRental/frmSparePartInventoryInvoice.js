@@ -51,6 +51,18 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
         return false;
     });
+
+    $('.InvoiceButton_Edit', t.el).click(function () {
+
+
+        $('.common-button,.CommonDisableClasss ', t.el).removeAttr('disabled', 'disabled');
+
+        $('.common-button,.CommonDisableClasss ', t.el).removeClass('ElemDisabled');
+      
+
+
+    });
+
    
 
 $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
@@ -175,9 +187,24 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
             $('.btnSaveInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
             $('.btnSaveInvoice', t.el).show();
 
-            $('.btnSave', t.el).attr('disabled');
-            $('.btnSave', t.el).addClass('ElemDisabled');
-            $('.btnSave', t.el).hide();
+            $('.btnSave,.OnCreateInvoice', t.el).attr('disabled');
+            $('.btnSave,.OnCreateInvoice', t.el).addClass('ElemDisabled');
+            $('.btnSave,.OnCreateInvoice', t.el).hide();
+
+            if ($('[argumentid="StateId"]', t.el).text() == '') {
+
+                $('[argumentid="StateId"]', t.el).text('OpenState');
+                $('[argumentid="StateName"]', t.el).text('Start State');
+
+                $('.common-button,.CommonDisableClasss,', t.el).removeAttr('disabled', 'disabled');
+
+                $('.common-button,.CommonDisableClasss', t.el).removeClass('ElemDisabled');
+                $('[argumentid="InvoiceDate"]', t.el).next('img').show();
+
+                $('.OnNewForm', t.el).hide();
+               
+
+            }
         }
 
        
@@ -201,8 +228,8 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
             $('.btnSaveInvoice', t.el).hide();
             $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
 
-            $('.btnSave', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-            $('.btnSave', t.el).show();
+            $('.btnSave,.OnCreateInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+            $('.btnSave,.OnCreateInvoice', t.el).show();
             
             if (message !== undefined)
             {
@@ -308,7 +335,7 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
         
         
         const newRow = `<tr class="DyRows">
-                    <td><input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC number CommonDisableClass" groupid="SparePartInventoryInvoice" argumentid="ItemId" /></td>
+                    <td><input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC number CommonDisableClasss" groupid="SparePartInventoryInvoice" argumentid="ItemId" /></td>
                     <td><input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC" groupid="SparePartInventoryInvoice" argumentid="Code" /></td>
                     <td><input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="30" class="text PriceC" groupid="SparePartInventoryInvoice" argumentid="SparePartName" /></td>
                     <td><input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text number" groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" /></td>
@@ -668,8 +695,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
 
 
-        $('.btnSave', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-        $('.btnSave', t.el).show();
+        $('.btnSave,.OnCreateInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+        $('.btnSave,.OnCreateInvoice', t.el).show();
+        $('.OnNewForm', t.el).show();
         
         
     });
@@ -912,8 +940,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         $('.btnSaveInvoice', t.el).hide();
         $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
 
-        $('.btnSave', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-        $('.btnSave', t.el).show();
+        $('.btnSave,.OnCreateInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+        $('.btnSave,.OnCreateInvoice', t.el).show();
 
         var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: `${InvoiceRecIdval}`, DBAction: 'GetLinesItems' };
         ServerCall(params, function (res)
@@ -928,11 +956,57 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             }
         }, "GetData");
 
-  
+        
        
         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
         
         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
+    
+        
+       
+         $('.OnNewForm', t.el).show();
+            
+            if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
+
+
+                $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList,.remove-button', t.el).attr('disabled', 'disabled');
+
+                $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList,.remove-button', t.el).addClass('ElemDisabled');
+
+        }
+
+
+
+        if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
+
+
+            $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList', t.el).attr('disabled', 'disabled');
+
+            $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList',t.el).addClass('ElemDisabled');
+
+        }
+
+   
+        if ($('[argumentid="StateId"]', t.el).text() == 'OpenState') {
+
+
+            $('.common-button,.CommonDisableClasss', t.el).removeAttr('disabled', 'disabled');
+
+            $('.common-button,.CommonDisableClasss', t.el).removeClass('ElemDisabled');
+            $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
+            $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
+            $('.InvoiceOpenBtn', t.el).addClass('ElemDisabled');
+        }
+
+        if ($('[argumentid="StateId"]', t.el).text() == 'CreatedState') {
+
+
+            $('.common-button,.CommonDisableClasss', t.el).removeAttr('disabled', 'disabled');
+
+            $('.common-button,.CommonDisableClasss,', t.el).removeClass('ElemDisabled');
+
+        }
+
 
 
     });

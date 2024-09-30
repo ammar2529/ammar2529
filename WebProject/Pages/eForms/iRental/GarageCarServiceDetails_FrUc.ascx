@@ -511,15 +511,15 @@
 
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" style="width: 95px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                            <input type="button" style="width: 95px; color: Green" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                            <input type="button" style="width: 95px; color: Red" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 95px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 95px; color: Green" ignorevalidate="DocType" value="  Closed  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+                            <input type="button" style="width: 95px; color: Red" ignorevalidate="DocType" value="  Canceled  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
 
                         </div>
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
 
-                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm" />
+                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm OnCreateInvoice" />
                             <input type="button" style="width: 50px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
                             <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
                             <input type="button" value="  Print Job Card  " style="width: 102px" class="ButtonStyle PrintJobCard  OnNewForm" />
