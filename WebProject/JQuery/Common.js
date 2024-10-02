@@ -1,4 +1,39 @@
-﻿
+﻿function showErr(elem, msg, color) {
+    if (!!elem.tagName) // if not a DOM object then convert it to DOM object
+    {
+        /////////////////////////////////////////////////////////
+        //  console.log("Converting jquery to DOM");
+        elem =$(elem);
+    }
+    msg = msg || (_Lang == 'en' ? '&nbsp;* Required' : 'قاسم');
+    try { msg = decJSON(msg) } catch (err) { }
+    if (!!msg.en) {
+        msg = _Lang == 'en' ? msg.en : msg.ar;
+    }
+    //        var buble = $($('.bubbleTemplate').html());
+    //        buble.css({'display':''}).appendTo('body')
+
+    color = color || 'red';
+    var t = elem, err = t.hasClass('date') ? t.next().next() : t.next();
+    //if (err.hasClass('ui-datepicker-trigger')) err = err.next();
+
+    if (err.length != 0 && err[0].tagName.toLowerCase() == 'span' && err.attr('errmsg') == 'true') { //if err span exists
+        err.html(msg);
+        err.css({ display: '', color: color });
+    }
+    else {
+        if (t.hasClass('date')) t = t.next();
+        t.after(String.format("<span errmsg='true' style='color:{0}' class='PWCLabel'>{1}</span>", color, msg));
+    }
+}
+function hideErr(elem) {
+
+    var err = elem.hasClass('date') ? elem.next().next() : elem.next();
+    if (err.length == 0) return;
+    if (err[0].tagName.toLowerCase() == 'span' && err.attr('errmsg') == 'true') { //if err span exists
+        err.html('').css('display', 'none');
+    }
+}
 function toWords(s) {
     // American Numbering System
     var th = ['', 'thousand', 'million', 'billion', 'trillion'];

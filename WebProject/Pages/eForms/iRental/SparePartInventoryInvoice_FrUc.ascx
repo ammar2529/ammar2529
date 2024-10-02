@@ -384,7 +384,7 @@
                         <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo"  />
 
                         <%-- Data Grid  --%>
-                        <div style="width: 100%;" class=" CommonDisableClasss">
+                        <%--<div style="width: 100%;" class=" CommonDisableClasss">
                         <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; style="width:100%;"  text-align: left" class="uploadedItemList">
                             <tbody>
                                 <tr class="HeaderTR">
@@ -398,11 +398,7 @@
                                                             <span href="#" class="w-grid-head ColName sort">Item ID</span>
                                                         </div>
                                                     </td>
-                                                  <%--  <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="RecCode" style="padding-left: 0px; padding-right: 0px; width: 50px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 50px">
-                                                            <span href="#" class="w-grid-head ColName sort">Code</span>
-                                                        </div>
-                                                    </td>--%>
+                                                
                                                     <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileType" style="padding-left: 0px; padding-right: 0px; width: 110px;">
                                                         <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
                                                             <span href="#" class="w-grid-head ColName sort">Item Code</span>
@@ -460,7 +456,38 @@
                                 </tr>
                             </tbody>
                         </table>
-                            </div>
+                            </div>--%>
+
+         <div style="width: 100%; padding:4px;" class="ItemListDiv">
+
+      <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="uploadedItemList">
+          <thead>
+              <tr>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 60px; ">Item ID</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 130px;">Item Code</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 400px;">Description</th>
+                <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Unit Price</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Total Price</th>
+                 <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border w-grid-cell-border-last colIndex-4" ></th>
+
+              </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+          <tfoot>
+              <tr class="NoRecordsTR">
+
+                  <td class="NoRecords w-grid-norecords-msg" colspan="7">
+                      <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                  </td>
+              </tr>
+
+          </tfoot>
+
+      </table>
+  </div>
                         <%--<%-- End Data Grid --%>
                    
                         

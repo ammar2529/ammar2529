@@ -457,7 +457,7 @@
                             </select>
 
 
-                            <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx" />
+                            <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx,.garage" />
                             <span class="allowedFile" style="display: none;"></span>
 
 
@@ -468,7 +468,7 @@
 
                         <div style="width: 100%; padding:4px;">
 
-                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="UploadFileListForJC">
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 99%;" class="UploadFileListForJC">
                                 <thead>
                                     <tr>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 40%;">File Name</th>

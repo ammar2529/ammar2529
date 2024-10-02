@@ -966,28 +966,36 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
        
          $('.OnNewForm', t.el).show();
             
-            if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
+        if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState')
+        {
 
 
-                $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList,.remove-button', t.el).attr('disabled', 'disabled');
+                $('.common-button,.CommonDisableClasss,.CommonDisableClass', t.el).attr('disabled', 'disabled');
 
-                $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList,.remove-button', t.el).addClass('ElemDisabled');
+            $('.common-button,.CommonDisableClasss,.CommonDisableClass', t.el).addClass('ElemDisabled');
+
+           
 
         }
 
 
 
-        if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
+        if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState')
+        {
 
 
-            $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList', t.el).attr('disabled', 'disabled');
+            $('.common-button,.CommonDisableClasss,.CommonDisableClass,.ItemListDiv', t.el).attr('disabled', 'disabled');
 
-            $('.common-button,.CommonDisableClasss,.CommonDisableClass,.uploadedItemList',t.el).addClass('ElemDisabled');
+            $('.common-button,.CommonDisableClasss,.CommonDisableClass,.ItemListDiv', t.el).addClass('ElemDisabled');
 
+
+        
+          
         }
 
    
-        if ($('[argumentid="StateId"]', t.el).text() == 'OpenState') {
+            if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
+            {
 
 
             $('.common-button,.CommonDisableClasss', t.el).removeAttr('disabled', 'disabled');
@@ -995,7 +1003,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             $('.common-button,.CommonDisableClasss', t.el).removeClass('ElemDisabled');
             $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
             $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
-            $('.InvoiceOpenBtn', t.el).addClass('ElemDisabled');
+                $('.InvoiceOpenBtn', t.el).addClass('ElemDisabled');
+
+               
+
+
         }
 
         if ($('[argumentid="StateId"]', t.el).text() == 'CreatedState') {
@@ -1080,53 +1092,29 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                 //var toFixedSparePartUnitPrice = SparePartUnitPrice.toFixed(3);
                 //var toFixedTotalPrice = TotalPrice.toFixed(3);
 
+                
+                var genHtml = `
 
-                var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
 
+                                <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                               <td class="ColTemplate w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${ItemId}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartSerialNo}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SelectQuantity}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice}</td>
+                              <td class="ColTemplate TotalPriceVal w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice}</td>
+                             <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;" recid="${RecId}">X</td>
+                              </tr>
 
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 60px;" colid="ItemId">
-                                                        <div class="ColValue w-grid-label ItemIdName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${ItemId}</div>
-                                                    </td>
-                                                    
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartSerialNo}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartName}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SelectQuantity}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartUnitPrice}</div>
-                                                    </td>
-                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label TotalPriceVal" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${TotalPrice}</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
-                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                             <span title="Delete Item" class="remove-button" recid="${RecId}" >X</span>
-                                                            </div>
-                                                        </td>
-                              
-
-                                                </tr>`;
-
-                                                //<td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 62px;" colid="FileSize">
-                                                    //    <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 60px;">${RecCode}</div>
-                                                    //</td>
+                                                `;
 
                 tblRowsHTML += genHtml;
-
-
-
-            }  // for loop;
-            
-
+            } //end for loop
 
             var tblUFL = $('table.uploadedItemList', t.el); // get the main table
 
-            $('.ItemTR tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
+            /*  $('.ItemTR tbody', tblUFL).html(tblRowsHTML);*/
+            $('tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
 
            
             $('.remove-button', tblUFL).click(function ()
@@ -1164,6 +1152,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
             var tblUFL = $('table.uploadedItemList', t.el);
             $('.ItemTR', tblUFL).hide();
             $('.NoRecordsTR', tblUFL).show();
+
+
+            $('table.uploadedItemList .ItemTableRow').hide();
+            $('table.uploadedItemList .NoRecordsTR').show();
         }
     } //  if (res.status == 'OK')
 
@@ -1321,45 +1313,28 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
                      
 
 
-                    var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                    var genHtml = `
 
 
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 60px;" colid="ItemId">
-                                                        <div class="ColValue w-grid-label ItemIdName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${ItemId}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 62px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 60px;">${SparePartSerialNo}</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartName}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap;display:none; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartQuantity}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SelectQuantity}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${SparePartUnitPrice}</div>
-                                                    </td>
-                                                      <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label TotalPriceVal" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${TotalPrice}</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
-                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                             <span class="remove-button" recid="${RecId}" >X</span>
-                                                            </div>
-                                                        </td>
-                              
+                                <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                               <td class="ColTemplate w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${ItemId}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartSerialNo}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartQuantity}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice}</td>
+                             <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;display:block;" recid="${recId}">X</td>
+                              </tr>
 
-                                                </tr>`;
+                                                `;
 
                     tblRowsHTML += genHtml;
                 }//end for loop
 
                 var tblUFL = $('table.uploadedItemList', t.el); // get the main table
 
-                $('.ItemTR tbody', tblUFL).html(tblRowsHTML);
+                /*  $('.ItemTR tbody', tblUFL).html(tblRowsHTML);*/
+                $('tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
             }
 
         }

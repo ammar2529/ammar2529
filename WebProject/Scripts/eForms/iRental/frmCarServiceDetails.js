@@ -4,7 +4,7 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
 
-    AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers(t);
+    
 
     var previousValue = ""; // Global variable to store the previous valid time
 
@@ -28,269 +28,43 @@
         }
     });
 
-    //var CurrentServiceKm = 0;
+ 
 
-    //// On focus event for CurrentServiceKm input
-    //$('[argumentid="CurrentServiceKm"]', t.el).on('focus', function () {
-    //    // Get the current value of CurrentServiceKm input
-    //    CurrentServiceKm = parseInt($(this).val()) || 0;
-    //});
-
-    // On blur event for CurrentServiceKm input
-    //$('[argumentid="CurrentServiceKm"]', t.el).on('blur', function () {
-    //    ;
-    //    CurrentServiceKm = parseInt($(this).val()) || 0;
-    //    // Get the value of LastServiceKm (text content)
-    //    var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
-
-    //    // Check if CurrentServiceKm is less than LastServiceKm
-    //    if (CurrentServiceKm <= LastServiceKm) {
-
-    //        $.showMessage('Current Service KM cannot be less than or equal to Last Service KM.')
-    //        return false;
-
-    //        // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
-    //        //CurrentServiceKm = LastServiceKm + 1;
-    //        //t.Showerr()
-    //        //// Update the input field with the new value
-    //        //$(this).val(CurrentServiceKm);
-    //    }
-    //});
-
+    AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarRecivedDate', 'ServiceStartTime', 'ServiceStartDay', t);
+    AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarToBeDeliverdDate', 'CarToBeDeliverStartTime', 'CarToBeDeliverStartDay', t);
+    AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarDeliverdDate', 'CarDeliverdStartTime', 'CarDeliverdStartDay', t);
+    AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('NextServiceDate', 'NextServiceStartTime', 'NextServiceStartDay', t);
+    AsyncWidgets.WidgetScripts.frmCarServiceDetails.AllowedFiles(t);
+    AsyncWidgets.WidgetScripts.frmCarServiceDetails.BindUploadHandlers(t);
    
-
-
-
-   
-    var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
-    $('[argumentid="CarRecivedDate"]').on('blur', function ()
-    {
-
-        var cDate = new Date();
-        var cH = cDate.getHours();
-        var cM = cDate.getMinutes();
-
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
-
-        $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
-
-        
-        var csDate = val('CarRecivedDate', t.el);
-
-        var dow = CalculateDayOfWeekCsDate(csDate);
-
-
-        setField('ServiceStartDay', dow, t.el);
-
-
-
-    });
-
-    $('[argumentid="CarToBeDeliverdDate"]').on('blur', function ()
-    {
-
-        var cDate = new Date();
-        var cH = cDate.getHours();
-        var cM = cDate.getMinutes();
-
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
-
-        $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
-
-
-        var csDate = val('CarToBeDeliverdDate', t.el);
-
-        var dow = CalculateDayOfWeekCsDate(csDate);
-
-
-        setField('CarToBeDeliverStartDay', dow, t.el);
-
-
-
-    });
-
-    $('[argumentid="CarDeliverdDate"]').on('blur', function ()
-    {
-
-        var cDate = new Date();
-        var cH = cDate.getHours();
-        var cM = cDate.getMinutes();
-
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
-
-        $('[argumentid="CarDeliverdStartTime"]', t.el).val(cH + ':' + cM);
-
-
-        var csDate = val('CarDeliverdDate', t.el);
-
-        var dow = CalculateDayOfWeekCsDate(csDate);
-
-
-        setField('CarDeliverdStartDay', dow, t.el);
-
-
-
-    });
-
-    $('[argumentid="NextServiceDate"]').on('blur', function ()
-    {
-
-        var cDate = new Date();
-        var cH = cDate.getHours();
-        var cM = cDate.getMinutes();
-
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
-
-        $('[argumentid="NextServiceStartTime"]', t.el).val(cH + ':' + cM);
-
-
-        var csDate = val('NextServiceDate', t.el);
-
-        var dow = CalculateDayOfWeekCsDate(csDate);
-
-
-        setField('NextServiceStartDay', dow, t.el);
-
-
-
-    });
-
     $('.PrintJobCard', t.el).click(function ()
     { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
-        console.log(strlink);
-        var width = 920;
-        var height = 600;
-        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
-        var top = parseInt((screen.availHeight / 2) - (height / 2));
-        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
-        console.log('Click on Print Button');
 
-        return false;
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.PrintJobCard(t);
+
     });
 
-    //$('.PrintJobCard', t.el).click(function ()
-    //{
-    //    $('#popupModal').fadeIn(); // Show the modal
-    //});
 
-    //// When the user clicks on the close button (x), close the modal
-    //$('.close').click(function ()
-    //{
-    //    $('#popupModal').fadeOut(); // Hide the modal
-    //});
-
-    //// When the user clicks anywhere outside the modal, close it
-    //$(window).click(function (event)
-    //{
-    //    if ($(event.target).is('#popupModal'))
-    //    {
-    //        $('#popupModal').fadeOut(); // Hide the modal
-    //    }
-    //});
 
 
     $('.CarServiceButton_Edit', t.el).click(function ()
     {
-        //;
-        //if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState')
-        //{
-        //    $('[argumentid="StateId"]', t.el).text('ClosedState');
-        //} else if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
-        //{
-        //    $('[argumentid="StateId"]', t.el).text('OpenState');
-        //}
+   
 
-        //else
-        //{
-        //    $('[argumentid="StateId"]', t.el).text('CanceledState');
-        //}
-
-        
-        /*$('[argumentid="StateName"]', t.el).text('Open');*/
-
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeAttr('disabled', 'disabled');
-
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeClass('ElemDisabled');
-        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
-        $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
-        $('[argumentid="NextServiceDate"]', t.el).next('img').show();
-       
-
-        $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
-        $('[argumentid="CarNumber"]', t.el).attr('disabled', 'disabled');
-       
-
-        $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
-        $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
-        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.CarServiceButton_Edit(t)
 
     });
 
+   
  
-    var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "35" };
-    function Success(res) {
-
-        var res = decJSON(res);
-        if (res.status == 'OK') {
-            if (res.Response.Rows.length > 0) {
-                var rows = res.Response.Rows;
-                console.log(`Rows: ${rows}`);
-                for (var i = 0; i < rows.length; i++) {
-
-                    var row = rows[i];
-                    var name = row.Name;
-                    console.log(`Name: ${name}`);
-                    var myTable = $('.myTable', t.el);
-                    $('.allowedFile', myTable).text(`Allowed Files: ${name}`);
-                }
-            }
-        }
-    }
-
-    ServerCall(params, Success, "ChildComboRows");
-
+  
 
     t.on('show', function (args)
     {
-        var dt = new Date();
-        $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
-        $('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
-       
-        var cH = dt.getHours();
-        var cM = dt.getMinutes();
+   
 
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
+     
 
-        var CalculateDayOfWeekCsDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate;
-       
-        
-            var csDate = val('CarRecivedDate', t.el);
-
-            var dow = CalculateDayOfWeekCsDate(csDate);
-
-
-            setField('ServiceStartDay', dow, t.el);
-
-
-        var esDate = val('CarToBeDeliverdDate', t.el);
-
-        var dowe = CalculateDayOfWeekCsDate(esDate);
-
-
-        setField('CarToBeDeliverStartDay', dowe, t.el);
-        
-        
-        $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
-        $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
-        
         if (t.FormMode == 'new')
         {
 
@@ -301,41 +75,14 @@
             var tblUFL = $('table.UploadFileListForJC', t.el);
             $('table.UploadFileListForJC .ItemTableRow', t.el).remove();
             $('.NoRecordsTR', tblUFL).show();
-            if ($('[argumentid="StateId"]', t.el).text() == '')
-            {
-
-                $('[argumentid="StateId"]', t.el).text('OpenState');
-                $('[argumentid="StateName"]', t.el).text('Start State');
-
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeAttr('disabled', 'disabled');
-
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeClass('ElemDisabled');
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-                $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
-                $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
-                $('[argumentid="NextServiceDate"]', t.el).next('img').show();
-                $('.StatusTR', t.el).hide();
-
-                $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
-                $('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled');
-
-                $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
-                $('[argumentid="CarNumber"]', t.el).removeAttr('ElemDisabled');
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-                $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
-                $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
-                $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide(); 
-                $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
-              
-            }
+ 
 
             setTimeout(function () {
                 $('[argumentid="DocType"]', t.el).val($('[argumentid="DocType"] option').eq(3).val());
 
             }, 1000);
 
-            t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
-            t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
+          
 
             
 
@@ -381,7 +128,7 @@
                 var deliverDateObj = new Date(deliverDateParts[2], deliverDateParts[1] - 1, deliverDateParts[0]);
 
                 // Check if the Deliver Date is greater than the Received Date
-                if (deliverDateObj <= receivedDateObj) {
+                if (deliverDateObj < receivedDateObj) {
                     $.showMessage('The delivery date must be greater than the received date.');
                     $(this).val(''); // Clear the invalid date value
                     $('[argumentid = "CarToBeDeliverStartDay"]',t.el).val('');
@@ -391,8 +138,10 @@
             });
 
 
-            
-
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetCurrentDateAndWeekDaysOnCarRecivedDateAndCarToBeDeliverdDate(t);
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll(t);
+            t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
+            t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
         }
      
     });
@@ -414,95 +163,14 @@
             $('.StatusTR', t.el).show();
             $('.OnNewForm', t.el).show();
 
-            if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
 
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState(t);
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState(t);
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState(t);
 
-                $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
+     
+           
 
-
-                //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
-                //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
-
-                $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
-                $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-                $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
-                $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
-
-                $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
-                $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-
-            }
-
-            if ($('[argumentid="StateId"]', t.el).text() == 'OpenState') {
-
-
-                $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
-                $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
-                $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
-                $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
-                $('[argumentid="NextServiceDate"]', t.el).next('img').show();
-
-                $('[argumentid="CarNumber"],.grgbtnSave3,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
-
-                $('.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
-                $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
-                $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-
-                //var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
-                //var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
-
-
-
-                //const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
-                //console.log(daysDifference); // Outputs: The difference is 9 days.
-
-
-
-
-
-            }
-
-            if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
-
-
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
-
-
-                $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
-                $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
-                $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
-                $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
-                $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
-                $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-
-                //$('[argumentid="StateName"]',t.el).filter(function () {
-                //    return $(this).text().trim() === 'Canceled';
-                //}).css('color', 'red');
-
-
-            }
-
-            var params = { Command: 'FX_UPD_FileUploadForCarServiceDetails', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
-
-            SInfo = getForm(null, null, params);
-            var inv = new AsyncWidgets.RAInvoker();
-            inv.on('onSuccess', function (res) {
-                var res = decJSON(res);
-                AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles(res, t);
-                $(t.el).unmask();
-            });
-            inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
-
-            //$('.CommonCommaVal').each(function ()
-            //{
-
-            //    var amount = parseInt($(this).val());
-            //    var formattedAmount = amount.toLocaleString();
-            //    $(this).val(formattedAmount);
-            //});
 
             t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
             t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
@@ -611,14 +279,16 @@
                 var deliverDateObj = new Date(deliverDateParts[2], deliverDateParts[1] - 1, deliverDateParts[0]);
 
                 // Check if the Deliver Date is greater than the Received Date
-                if (deliverDateObj <= receivedDateObj) {
-                    $.showMessage('The delivery date must be greater than the received date.');
+                if (deliverDateObj < receivedDateObj) {
+                    $.showMessage('The delivery date must be equal or greater than the received date.');
                     $(this).val(''); // Clear the invalid date value
                     $('[argumentid = "CarToBeDeliverStartDay"]', t.el).val('');
                     $('[argumentid ="CarToBeDeliverStartTime"]', t.el).val('');
                 }
 
             });
+
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.FileUploadForCarServiceDetails(t);
 
         }
 
@@ -856,7 +526,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
             var tblUFL = $('table.UploadFileListForJC', t.el); // get the main table
 
             $('tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
-            $('.remove-button', tblUFL).click(function () {
+            $('.remove-button', tblUFL).click(function ()
+            {
                 var btn = $(this);
                 var recId = btn.attr("recId");
                 var fileName = btn.attr("fileName");
@@ -879,7 +550,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
 
 
         } // if length>0
-        else {
+        else
+        {
             var tblUFL = $('table.uploadedFileList', t.el);
             $('.ItemTR', tblUFL).hide();
             $('.NoRecordsTR', tblUFL).show();
@@ -928,3 +600,267 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate = funct
         return "";
     }
 };
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.FileUploadForCarServiceDetails = function (t)
+{
+    var params = { Command: 'FX_UPD_FileUploadForCarServiceDetails', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+
+    SInfo = getForm(null, null, params);
+    var inv = new AsyncWidgets.RAInvoker();
+    inv.on('onSuccess', function (res) {
+        var res = decJSON(res);
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles(res, t);
+        $(t.el).unmask();
+    });
+    inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates = function (dateFieldId, timeFieldId, dayFieldId, t)
+{
+    
+ 
+    $('[argumentid="' + dateFieldId + '"]').on('blur', function () {
+        debugger
+        var cDate = new Date();
+        var cH = cDate.getHours();
+        var cM = cDate.getMinutes();
+
+        // Add leading zeros if necessary
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+        // Set the time in the corresponding time field
+        $('[argumentid="' + timeFieldId + '"]', t.el).val(cH + ':' + cM);
+
+        // Get the date value
+        var csDate = val(dateFieldId, t.el);
+
+        // Calculate day of the week
+        var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
+
+        // Set the day of the week
+        setField(dayFieldId, dow, t.el);
+    });
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.AllowedFiles = function (t)
+{
+    var params = { Command: 'FX_SEL_Common_LOV_AutoFill', textcol: 'Name', valcol: 'ChildId', isparentstr: "false", parenttypeid: "35" };
+    function Success(res) {
+
+        var res = decJSON(res);
+        if (res.status == 'OK') {
+            if (res.Response.Rows.length > 0) {
+                var rows = res.Response.Rows;
+                console.log(`Rows: ${rows}`);
+                for (var i = 0; i < rows.length; i++) {
+
+                    var row = rows[i];
+                    var name = row.Name;
+                    console.log(`Name: ${name}`);
+                    var myTable = $('.myTable', t.el);
+                    $('.allowedFile', myTable).text(`Allowed Files: ${name}`);
+                }
+            }
+        }
+    }
+
+    ServerCall(params, Success, "ChildComboRows");
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.PrintJobCard = function (t) {
+    var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+    console.log(strlink);
+    var width = 920;
+    var height = 600;
+    var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+    var top = parseInt((screen.availHeight / 2) - (height / 2));
+    window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+    console.log('Click on Print Button');
+
+    return false;
+
+
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.CarServiceButton_Edit = function (t)
+{
+    $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeAttr('disabled', 'disabled');
+
+    $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeClass('ElemDisabled');
+    $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+    $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
+    $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+    $('[argumentid="NextServiceDate"]', t.el).next('img').show();
+
+
+    $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
+    $('[argumentid="CarNumber"]', t.el).attr('disabled', 'disabled');
+
+
+    $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
+    $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
+    $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetCurrentDateAndWeekDaysOnCarRecivedDateAndCarToBeDeliverdDate = function (t)
+{
+
+    var dt = new Date();
+    $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+    $('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
+    var cH = dt.getHours();
+    var cM = dt.getMinutes();
+
+    cH = cH < 10 ? '0' + cH : cH;
+    cM = cM < 10 ? '0' + cM : cM;
+
+
+
+    var csDate = val('CarRecivedDate', t.el);
+
+    var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
+
+
+    setField('ServiceStartDay', dow, t.el);
+
+
+    var esDate = val('CarToBeDeliverdDate', t.el);
+
+    var dowe = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(esDate);
+
+
+    setField('CarToBeDeliverStartDay', dowe, t.el);
+
+
+    $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
+    $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
+
+
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll = function (t)
+{
+    if ($('[argumentid="StateId"]', t.el).text() == '') {
+
+        $('[argumentid="StateId"]', t.el).text('OpenState');
+        $('[argumentid="StateName"]', t.el).text('Start State');
+
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeAttr('disabled', 'disabled');
+
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeClass('ElemDisabled');
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
+        $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+        $('[argumentid="NextServiceDate"]', t.el).next('img').show();
+        $('.StatusTR', t.el).hide();
+
+        $('[argumentid="CarRecivedDate"]', t.el).removeAttr('disabled', 'disabled');
+        $('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled');
+
+        $('[argumentid="CarRecivedDate"]', t.el).removeClass('ElemDisabled');
+        $('[argumentid="CarNumber"]', t.el).removeAttr('ElemDisabled');
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+        $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
+        $('.grgbtnClosed,.grgbtnCanceled,.PrintJobCard,.grgbtnSave3,.OnStartState,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
+        $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+        $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+
+    }
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState = function (t)
+{
+    if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
+
+
+        $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
+
+
+        //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
+        //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
+
+        $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+        $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
+        $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+
+        $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+        $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
+
+    }
+};
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function (t)
+{
+    if ($('[argumentid="StateId"]', t.el).text() == 'OpenState') {
+
+
+        $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
+        $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
+        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
+        $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
+        $('[argumentid="NextServiceDate"]', t.el).next('img').show();
+
+        $('[argumentid="CarNumber"],.grgbtnSave3,.AlwaysDisableJC', t.el).attr('disabled', 'disabled');
+
+        $('.grgbtnSave3,.AlwaysDisableJC', t.el).addClass('ElemDisabled');
+        $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
+        $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
+
+        //var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
+        //var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
+
+
+
+        //const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
+        //console.log(daysDifference); // Outputs: The difference is 9 days.
+
+
+
+
+
+    }
+};
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState = function (t)
+{
+    if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
+
+
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+
+
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
+        $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+        $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+        $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+        $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
+
+        //$('[argumentid="StateName"]',t.el).filter(function () {
+        //    return $(this).text().trim() === 'Canceled';
+        //}).css('color', 'red');
+
+
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
