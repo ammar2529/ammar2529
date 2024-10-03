@@ -152,7 +152,7 @@
     {
       
 
-    
+    debugger
 
 
         if (t.FormMode == 'update') {
@@ -170,11 +170,11 @@
            
 
 
-            t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
-            t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
+            t.GetField('CarRecivedDate').datepicker("option", "minDate", $('[argumentid="CarRecivedDate"]',t.el).val());
+            t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", $('[argumentid="CarToBeDeliverdDate"]', t.el).val());
 
-            t.GetField('CarDeliverdDate').datepicker("option", "minDate", new Date());
-            t.GetField('NextServiceDate').datepicker("option", "minDate", new Date());
+            t.GetField('CarDeliverdDate').datepicker("option", "minDate", $('[argumentid="CarDeliverdDate"]', t.el).val());
+            t.GetField('NextServiceDate').datepicker("option", "minDate", $('[argumentid="NextServiceDate"]', t.el).val());
 
 
             var CurrentServiceKm1 = 0;
