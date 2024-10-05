@@ -3,7 +3,7 @@
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            Invoice<span style="white-space: nowrap"> No.</span></td>
+            <span style="white-space: nowrap">Invoice No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
             &nbsp;<span style="white-space: nowrap">Car No.</span></td>
         <td style="text-align: left;" class="ftitle" width="20%">
@@ -22,10 +22,10 @@
       
     <tr style="height:35px">
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="InvRecCode" groupid="schInvoice" />
+            <input type="text" class="text" argumentid="InvRecCode" groupid="schInvoice" style="width:155px;" />
         </td>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="CarNumber" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="CarNumber" groupid="schInvoice" style="width:155px;" /></td>
         <td style="text-align: left;">
           
 
@@ -75,22 +75,22 @@
         <td style="text-align: left;">
           
 
-            <input type="text" class="text" argumentid="ServiceNo" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="ServiceNo" groupid="schInvoice" style="width:155px;"/></td>
         <td style="text-align: left;">
        
 
-            <input type="text" class="text" argumentid="CustomerName" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="CustomerName" groupid="schInvoice" style="width:155px;"/></td>
 
         <td style="text-align: left;">
                
   
 
-            <input type="text" class="text" argumentid="NationalIDNo" groupid="schInvoice" /></td>
+            <input type="text" class="text" argumentid="NationalIDNo" groupid="schInvoice" style="width:155px;"/></td>
         <td style="text-align: left;">
           
 
 
-            <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schInvoice" /></td>
+            <input type="text" class="text"  argumentid="MobileTelephone1" groupid="schInvoice" style="width:155px;"/></td>
 
         <td style="text-align: left; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
             <!-- View Button -->

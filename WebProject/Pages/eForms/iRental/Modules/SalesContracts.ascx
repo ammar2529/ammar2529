@@ -37,10 +37,31 @@
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
-                                     <div style="font-size:11px;"><nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>&nbsp;-&nbsp;{Brand}{SalesBrandId}&nbsp;-&nbsp;{Model}{SalesModelId}&nbsp;-&nbsp;{Color}{SalesColorId}</div>
+                                   
+                                <tpl if="CarNumber">
+                                  <div style="font-size:11px;">
+                                    <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>
+                                    <tpl if="Brand">&nbsp;-&nbsp;{Brand}</tpl>
+                                    <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
+                                    <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
+                                  </div>
+                                </tpl>
+                                <tpl else>
+                                  <div style="font-size:11px;">
+                                    <nobr style="color:#602010">
+                                      <tpl if="SalesBrandId">{SalesBrandId}</tpl>
+                                      <tpl if="SalesModelId">&nbsp;-&nbsp;{SalesModelId}</tpl>
+                                      <tpl if="SalesColorId">&nbsp;-&nbsp;{SalesColorId}</tpl>
+                                    </nobr>
+                                  </div>
+                                </tpl>
+
+
+
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
+               
                 <pre columnid="CustomerDetails">
                                 <center>
                                      <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>

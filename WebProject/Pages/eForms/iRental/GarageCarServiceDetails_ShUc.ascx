@@ -22,20 +22,20 @@
     <tr style="height: 35px";>
         <td style="text-align: left;">
 
-            <input type="text" style="width:145px"  class="text" argumentid="RecCode"  groupid="schCarServiceDetails" />
+            <input type="text" style="width:155px;"  class="text" argumentid="RecCode"  groupid="schCarServiceDetails" />
         </td>
         <td style="text-align: left;">
-            <input type="text"  class="text " style="width:145px"
+            <input type="text"  class="text " style="width:155px;" 
                                 groupid="schCarServiceDetails"  argumentid="CarNumber" /></td>
         <td style="text-align: left;">
-            <input type="text" style="width:145px" class="text" argumentid="CustomerName" groupid="schCarServiceDetails" /></td>
+            <input type="text" style="width:155px;" class="text" argumentid="CustomerName" groupid="schCarServiceDetails" /></td>
         <td style="text-align: left;">
             
-            <input type="text" class="text" style="width:145px"  argumentid="NationalIDNo" groupid="schCarServiceDetails" />
+            <input type="text" class="text" style="width:155px;"   argumentid="NationalIDNo" groupid="schCarServiceDetails" />
            </td>
 
         <td style="text-align: left;">
-            &nbsp;<input type="text" class="text" style="width:145px" argumentid="MobileTelephone1" groupid="schCarServiceDetails" /></td>
+            <input type="text" class="text" style="width:155px;" argumentid="MobileTelephone1" groupid="schCarServiceDetails" /></td>
         
     </tr>
     
@@ -63,17 +63,17 @@
     <tr>
         <td style="text-align: left;">
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                style="width: 126px;" class="text  date   " argumentid="CarRecivedDate" /></td>
+                style="width: 135px;" class="text  date   " argumentid="CarRecivedDate" /></td>
         <td style="text-align: left;">
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                style="width: 126px;" class="text  date   " argumentid="CarToBeDeliverdDate" /></td>
+                style="width: 135px;" class="text  date   " argumentid="CarToBeDeliverdDate" /></td>
         <td style="text-align: left;">
 
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                style="width: 126px;" class="text  date   " argumentid="CarDeliverdDate" /></td>
+                style="width: 135px;" class="text  date   " argumentid="CarDeliverdDate" /></td>
         <td style="text-align: left;">
 
-            <select class="dropdownlist" style="width: 152px;"
+            <select class="dropdownlist" style="width: 160px;"
                 groupid="schCarServiceDetails" argumentid="StateId" name="D4">
                 <option value="" selected="selected">Select Status</option>
                 <%--<option value="">-----------------------------</option>
