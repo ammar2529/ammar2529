@@ -333,9 +333,15 @@
                                         groupid="SparePartInventoryInvoice" argumentid="ItemId" />
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text CommonDisableClass "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" />
+                                  <%--  <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text CommonDisableClass "
+                                        groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" />--%>
+
+                                    
+                                <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass  "
+                                 groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="SparePartSerialNo"   />
                                 </td>
+
+
                                 <td>
                                     <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text  ElemDisabled"
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartName"  disabled="disabled"/>
@@ -463,7 +469,7 @@
       <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="uploadedItemList">
           <thead>
               <tr>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 60px; ">Item ID</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4 " style="padding-left: 5px; padding-right: 0px; color: black;width: 60px; ">Item ID</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 130px;">Item Code</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 400px;">Description</th>
                 <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>

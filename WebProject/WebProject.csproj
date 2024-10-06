@@ -1389,6 +1389,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintCarServiceDetails.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoice.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
+    <Content Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_FrUc.ascx" />
@@ -2952,6 +2953,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrintInvoiceReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx.cs">
+      <DependentUpon>Invoice_ItemCode_ShUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx.designer.cs">
+      <DependentUpon>Invoice_ItemCode_ShUc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx.cs">
       <DependentUpon>SparePartInventoryInvoice_FrUc.ascx</DependentUpon>

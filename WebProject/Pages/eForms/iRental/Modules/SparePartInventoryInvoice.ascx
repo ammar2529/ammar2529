@@ -532,3 +532,93 @@
         </Scripts>
     </AW:DataGrid>
 </div>
+
+<div class='LOVPopup' lovpopupid='ItemCodePopup' style="display: none">
+    <uc8:Form ID="frmInvoiceItemCode" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SparePartInventory" AsyncForm="~/Pages/eForms/iRental/Invoice_ItemCode_ShUc.ascx">
+        <WidgetConfig>
+            <script>
+                var cf = {
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Search'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+    </uc8:Form>
+    <AW:DataGrid ID="grdInvoiceItemCode" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmInvoiceItemCode"
+        EmptyHeight="201px" AllowNew="true" SelectableRow="false"
+        PageSize="10" DataSource="SEL_iRental_SparePartInventory" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
+        GridHeadText="Select Item" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
+
+        
+
+ <GridConfig>
+ <script>
+     var cf = {
+         cols: {
+             Sequence: { width: '0px' },
+             RecId: { width: '0px' },
+             RecCode: { width: '0px' },
+             ItemId: { caption: 'Item ID', width: '50px' },
+             SparePartSerialNo: { caption: 'Item Code', width: '80px' },
+             SparePartName: { caption: 'Description', width: '150px' },
+             SparePartQuantity: { caption: "Qty'Avl", width: '53px' },
+             SparePartUnitPrice: { caption: 'Unit Price', width: '70px' },
+             PurchasingFrom: { caption: 'PurchasingFrom', width: '80px' },
+             StoreLocation: { caption: 'StoreLocation', width: '80px' },
+             //ColorId: { caption: 'Color', width: '0px' },
+             //InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
+             //FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
+             //CurrentMileage: { caption: 'Mileage', width: '70px' },
+             //CarLocationId: { width: '0px' },
+             //CarStatusId: { caption: 'Car Status', width: '90px' },
+             //Status: { width: '100px' },
+             //ContractNo: { caption: 'Contract No.' },
+             //FullInsuranceCompanyId: { width: '0px' },
+             //FullInsurancePolicyNo: { width: '0px' }
+
+
+         }
+     };
+ </script>
+ </GridConfig>
+ <Scripts>
+ <script>
+     var fn = function () {
+         //var conCar = AsyncWidgets.get("conRentalContracts_Cars");
+         //var f = conCar._frm;
+         t.on('beforeSearchGetForm', function (p) {
+             /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
+
+            /* p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);*/
+             p.DBAction = 'popupItemCode';
+             /*console.log(p.CarType);*/
+             console.log(p.DBAction);
+         });
+
+        
+
+
+         t.on('rowsRendered', function () {
+
+            
+                 $('[colid="SparePartUnitPrice"]:not(".w-grid-head-cell")').each(function () {
+
+                     var ptr = $(this).closest('tr');
+                     $('[colid="SparePartUnitPrice"] div', ptr).text(parseFloat($('[colid="SparePartUnitPrice"] div', ptr).text()).fix(3));
+
+                 });
+
+
+         });
+
+
+
+     }
+ </script>
+ </Scripts>
+ </AW:DataGrid>
+</div>

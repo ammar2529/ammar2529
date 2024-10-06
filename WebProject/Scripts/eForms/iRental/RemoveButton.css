@@ -28,7 +28,7 @@
     font-weight: bold;
     color: white;
     background-color: red;
-    border: 1px solid red;
+    border: 0.5px solid black;
     padding: 2px 6px;  Reduced padding around the button text 
     border-radius: 5px;  Rounded corners 
     font-size: 9px;  Reduced font size 

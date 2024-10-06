@@ -749,9 +749,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             return;
         }
 
-
+        
         var ItemIdInTextBox = $('.ItemIdClass').val().trim();
-        var ItemIdNames = $('.ItemIdName').toArray();
+        var ItemIdNames = $('.linkFileName').toArray();
 
         for (var i = 0; i < ItemIdNames.length; i++)
         {
@@ -1312,12 +1312,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
                     var TotalPrice = row.TotalPrice;
                      
 
-
+                    
                     var genHtml = `
 
 
                                 <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
-                               <td class="ColTemplate w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${ItemId}</td>
+                               <td class=" ItemIdName ColTemplate  w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${ItemId}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartSerialNo}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartQuantity}</td>
@@ -1447,18 +1447,6 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         }
       
 
-        //$('.RadioButtons', t.el).removeClass('ElemDisabled');
-        //$('.RadioButtons', t.el).removeAttr('disabled', 'disabled')
-        ///* $('.Other', t.el).addClass('ElemDisabled').attr('disabled', 'disabled');*/
-
-        //$('[argumentid="CarNumber"]', t.el).removeClass('ElemDisabled');
-        //$('[argumentid="CarNumber"]', t.el).removeAttr('disabled', 'disabled')
-
-        // Hide the dropdown for Sales
-        //$('.CommonCarDropdown').removeClass('required').hide();
-        //$('.carCutomerAndCarDetailsForOther', t.el).hide();
-        //$('.hideTr', t.el).show();
-        //$('.ChassisNo', t.el).show();
 
         $('.hideCarandService', t.el).hide();
         $('.hideTrForINVCust', t.el).show();

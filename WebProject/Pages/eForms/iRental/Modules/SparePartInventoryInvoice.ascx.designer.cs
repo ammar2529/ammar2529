@@ -76,5 +76,23 @@ namespace WebProject.Pages.eForms.iRental.Modules
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdCarServiceDetailsForInvoice_Cars;
+
+        /// <summary>
+        /// frmInvoiceItemCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmInvoiceItemCode;
+
+        /// <summary>
+        /// grdInvoiceItemCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdInvoiceItemCode;
     }
 }
