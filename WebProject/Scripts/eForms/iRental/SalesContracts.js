@@ -195,7 +195,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
         t.on('onLoadedValues', function (args)
         {
              const rows = args.res.Response.Rows
-            debugger
+            
 
             for (var i = 0; i < rows.length; i++)
             {

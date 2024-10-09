@@ -64,27 +64,38 @@
 
       <tr>
         <td class="ftitle">
-            <nobr>Item ID*:</nobr>
+            <nobr>System ID*:</nobr>
         </td>
         <td>
             
             <div>
                  <input type="text"  style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text  AlwaysDisable ElemDisabled" 
-                groupid="SparePartInventoryForm" argumentid="ItemId"  disabled="disabled" readonly="readonly"/>
+                groupid="SparePartInventoryForm" argumentid="SystemId"  disabled="disabled" readonly="readonly"/>
             </div>
         </td>
     </tr>
 
-      
-          <tr>
+              <tr>
         <td class="ftitle">
-            <nobr>Item Code.*:</nobr>
+            <nobr>Item ID*:</nobr>
         </td>
         <td>
 
 
-<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required validateunique" primarykey="RecId"                                                         
- storeid="iRental_SparePartInventory" uniquenotfound="{en:' Item Code is valid...',color:'green'}"  uniquefound="{en:' Duplicate Item Code...',color:'red'}" groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
+<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required "                                                          
+  groupid="SparePartInventoryForm"  argumentid="ItemId" />
+        </td>
+    </tr>
+      
+          <tr>
+        <td class="ftitle">
+            <nobr>Item Code*:</nobr>
+        </td>
+        <td>
+
+
+<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required "                                                         
+  groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
         </td>
     </tr>
     <tr>

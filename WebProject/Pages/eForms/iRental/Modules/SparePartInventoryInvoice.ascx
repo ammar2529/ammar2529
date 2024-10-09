@@ -118,7 +118,7 @@
                         cols: {
                             EditForm: { width: '0px' },
                             Sequence: { width: '0px' },
-                            ContractDetails: { caption: 'Invoice Details', width: '270px' },
+                            ContractDetails: { caption: 'Invoice Details', width: '300px' },
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
                             ContractDateTimeDetails: { caption: 'Payment Details', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },

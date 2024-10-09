@@ -127,32 +127,44 @@
                         </div>
                         </td>
                 </tr>
-                                <tr>
-                     <td class="ftitle">
+                <tr>
+                    <td class="ftitle">
                         <nobr>Invoice For:</nobr>
 
                     </td>
-                 <td class="ftitle" width="32%">
+                    <td class="ftitle" width="32%">
 
-     <input type="radio" class="   ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service Invoice</label>
-     <input type="radio" class="  PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts Invoice </label>
-                 </td>
+                        <input type="radio" class="   ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service Invoice</label>
+                        <input type="radio" class="  PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts Invoice </label>
+                    </td>
 
-                      <td class="ftitle" width="20%">
-                          <nobr>Invoice Date:</nobr>
-                       
+                    <td class="ftitle" width="20%">
+                        <nobr>Invoice Date:</nobr>
+
                     </td>
                     <td class="ftitle" width="30%">
-                      
-                <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
+
+                        <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
 
                 </tr>
-             
 
+                <tr class="serv">
+                    <td class="ftitle">
+                        <nobr>Invoice Type:</nobr>
+
+                    </td>
+                    <td class="ftitle" width="32%">
+
+                        <input type="radio" class="   CashInvoice  InvoiceTypeCommon" checked="checked" default="default" value="CashInvoice" name="InvoiceType" groupid="SparePartInventoryInvoice" argumentid="InvoiceType" /><label>Cash</label>
+                        <input type="radio" class="  WarrentyInvoice InvoiceTypeCommon " value="WarrantyInvoice" name="InvoiceType" groupid="SparePartInventoryInvoice" argumentid="InvoiceType" /><label>Warranty </label>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
                       <tr>
                     <td class="ftitle">
                         <nobr class="cust">Customer RecCode *:</nobr>
-                        <nobr class="serv">Service No. *:</nobr>
+                        <nobr class="serv">Service No.*:</nobr>
                     </td>
                     <td>
                     
@@ -163,6 +175,7 @@
                          groupid="SparePartInventoryInvoice" lovpopupid="carPopupGarageForInvoice" argumentid="ServiceNo"   requirederr=' *Required'/>
 
                     </td>
+                         
 
                    
                     <td class="ftitle">
@@ -279,11 +292,7 @@
 
              
                            
-                <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
-                </tr>
+                
 
 
                 <tr class="hideCarandService">
@@ -302,6 +311,12 @@
                     <td style="text-align: left">
                         
 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
 
@@ -329,16 +344,19 @@
                             </tr>
                             <tr class="trNoDynamic">
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
-                                        groupid="SparePartInventoryInvoice" argumentid="ItemId" />
+                                   <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
+                                        groupid="SparePartInventoryInvoice" argumentid="ItemId" />--%>
+
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass ElemDisabled "
+                                    groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId"   />
                                 </td>
                                 <td>
-                                  <%--  <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text CommonDisableClass "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" />--%>
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                                        groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" disabled="disabled" />
 
-                                    
-                                <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass  "
-                                 groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="SparePartSerialNo"   />
+                                <%--    
+                                <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass ElemDisabled "
+                                 groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="SparePartSerialNo"  />--%>
                                 </td>
 
 

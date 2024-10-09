@@ -65,19 +65,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
    
 
-$('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
-
+    $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
+        debugger;
 
     var SparePartUnitPrice = parseFloat($(this).val()) || 0;
     SparePartUnitPrice = SparePartUnitPrice.toFixed(3);
-    var SelectQuantity = parseFloat($('[argumentid="SelectQuantity"]', t.el).val());
+    var SelectQuantity = parseFloat($('[argumentid="SelectQuantity"]', t.el).val()) || 0;
 
     var Result = SparePartUnitPrice * SelectQuantity;
 
     // Set SparePartUnitPrice with 3 decimal places back to the input field
     $(this).val(SparePartUnitPrice);
 
-    $('[argumentid="TotalPrice" ]', t.el).val(Result.toFixed(3))
+    $('[argumentid="TotalPrice" ]', t.el).val(Result.toFixed(3)) || 0;
   
 
 });
@@ -205,6 +205,20 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
                
 
             }
+
+            $('.trNoDynamic').find('[argumentid]').each(function () {
+                var $element = $(this);
+                var argumentid = $element.attr('argumentid');
+                var value = $element.val().trim();
+
+                if (value === '') {
+                    isValid = true;
+                    console.log('Argument ID:', argumentid, 'is empty');
+                    $element.css('border', '');
+                } 
+            });
+
+            $('.InvoiceTypeCommon').prop('disabled', false);
         }
 
        
@@ -248,7 +262,7 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
               var inv =   $('[argumentid="InvoicePaymentRecId"]', t.el).val(code);
                 console.log("Setting InvoiceRecId to:", code); // Add this line for debugging
                 console.log("Setting InvoicePaymentRecId to:", inv);
-                AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown(trimMessage.toLowerCase());
+                AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown(trimMessage.toLowerCase(),'');
                 $('.StatusRow', t.el).show();
 
 
@@ -319,13 +333,13 @@ $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
   
 
 
-    AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServer(t);
+  /*  AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServer(t);*/
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfQuantityAndUnitPrice(t);
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount(t);
     //AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateCustomerPaid(t);
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems(t);
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem(t);
-    AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode(t);
+   /* AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode(t);*/
    /* AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();*/
 
     //AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.btnSavePayment(t);
@@ -684,7 +698,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         setTimeout(function ()
         {
             $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
-            $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]').prop('disabled', true).addClass('ElemDisabled');
+            $('[argumentid="SparePartSerialNo"],[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]').prop('disabled', true).addClass('ElemDisabled');
 
             
 
@@ -750,7 +764,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         }
 
         
-        var ItemIdInTextBox = $('.ItemIdClass').val().trim();
+        var ItemIdInTextBox = $('.ItemIdClass').val();
         var ItemIdNames = $('.linkFileName').toArray();
 
         for (var i = 0; i < ItemIdNames.length; i++)
@@ -923,11 +937,17 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
     t.on('onLoadedValues', function (args)
     {
-
-        
+        var res = args.res.Response.Rows;
+        InvoiceType = "";
+        for (var i = 0; i < res.length; i++)
+        {
+            var row = res[i];
+             InvoiceType = row.InvoiceType
+        }
+        debugger
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
-        $('[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
+        $('[argumentid="SparePartSerialNo"],[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
         $('.StatusRow', t.el).show();
         //const InvoiceRecIdval = args.res.Response.Rows[ 0 ].RecId;
         const InvoiceRecIdval = String(args.res.Response.Rows[ 0 ].RecId);
@@ -960,7 +980,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
        
         AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe(t);
         
-        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown();
+        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown('',InvoiceType);
     
         
        
@@ -1343,7 +1363,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 }
 
 
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage) {
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage,InvoiceType) {
     var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
  
 
@@ -1375,12 +1395,31 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
         
         if (toShow === 'carPopupGarageForInvoice') {
-
+            debugger
             if (t.FormMode == 'update') {
             $('.cust', t.el).hide();
             $('.serv', t.el).show();
-            $('.PartsInvoice', t.el).attr('disabled', 'disabled');
+                $('.PartsInvoice', t.el).attr('disabled', 'disabled');
 
+                if (InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice' && InvoiceType != null) {
+
+                    if ($('.CashInvoice').is(":checked")) {
+                        $('.WarrentyInvoice').prop('disabled', true);
+                    } else {
+                        $('.WarrentyInvoice').prop('disabled', false);
+                    }
+
+                    if ($('.WarrentyInvoice').is(":checked")) {
+                        $('.CashInvoice').prop('disabled', true);
+                    } else {
+                        $('.CashInvoice').prop('disabled', false);
+                    }
+
+                } else
+                {
+                    $('.InvoiceTypeCommon').prop('disabled', false);
+                }
+                
             }
             else if(trimMessage){
                 $('.PartsInvoice', t.el).attr('disabled', 'disabled');
@@ -1434,6 +1473,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('.serv', t.el).hide();
                 $('[argumentid="ChassisNo" ]', t.el).val('');
                 $('.ServiceInvoice', t.el).attr('disabled', 'disabled');
+                $('.CashInvoice').prop('checked', true);
             }
             else if (trimMessage)
             {
@@ -1442,6 +1482,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('.cust', t.el).show();
                 $('.serv', t.el).hide();
                 $('.ServiceInvoice', t.el).removeAttr('disabled', 'disabled');
+                $('.CashInvoice').prop('checked', true);
             }
 
         }
