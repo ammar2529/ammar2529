@@ -82,9 +82,9 @@
         <td>
 
 
-<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required "                                                          
+<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text  "                                                          
   groupid="SparePartInventoryForm"  argumentid="ItemId" />&nbsp;
-        <input type="button" value="  Generate ItemID  " class="DataAction ButtonStyle GenerateItemIDBtn " ignorevalidate="ItemId SparePartSerialNo SparePartName SparePartQuantity BrandId ModelId StoreLocation" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'GenerateNewItemId'},Command:'SEL_iRental_SparePartInventory',HideOnSuccess:false,Requery:false,GroupId:'SparePartInventoryForm'}" />
+        <input type="button" value="  Generate ItemID  " class="DataAction ButtonStyle GenerateItemIDBtn " ignorevalidate="ItemId SparePartSerialNo SparePartName SparePartQuantity BrandId ModelId StoreLocation" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'GenerateNewItemId'},Command:'SEL_iRental_SparePartInventory',HideOnSuccess:false,Requery:false,ShowActionMsg:false,GroupId:'SparePartInventoryForm'}" />
         </td>
     </tr>
       
@@ -108,7 +108,7 @@
                 <input type="hidden"groupid="SparePartInventoryForm" argumentid="UserName"  />
             </div>
             <div>
-                 <input type="text"  style="text-align: left; width: 300px; font-weight: bold; color: red" maxlength="10" class="text required" 
+                 <input type="text"  style="text-align: left; width: 300px;  " maxlength="10" class="text required" 
                 groupid="SparePartInventoryForm" argumentid="SparePartName" />
             </div>
         </td>

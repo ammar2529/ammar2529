@@ -1,11 +1,12 @@
 ﻿/// <reference path="../../../jquery/common.js" />
 
 
-AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) 
-{
+AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
     var t = obj;
 
     AsyncWidgets.WidgetScripts.frmSparePartInventory.t = t;
+
+    /*$('#sliding_message_box', t.el).remove();*/
 
     $('.EditInventory', t.el).on('click', function () {
 
@@ -25,10 +26,51 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         $('[argumentid="ItemId" ]', t.el).removeClass('ElemDisabled');
     });
 
+    $('[argumentid="ItemId" ]', t.el).on('input', function () {
+        var ItemId = $(this).val();
+        if (ItemId === '') {
+            $('.GenerateItemIDBtn', t.el).show();
+            setTimeout(function () {
+                $('[argumentid="ItemId" ]', t.el).next('span[errmsg]').remove();
+
+            }, 60);
+
+            //var params = {
+            //    Command: 'SEL_iRental_SparePartInventory',
+               
+            //    DBAction: 'SearchItemIDWhenEmpty'
+            //};
+
+            //// Assuming ServerCall is a function to make an API call
+            //ServerCall(params, function (res) {
+            //    var res = decJSON(res);
+
+
+            //    if (res.status === 'OK') {
+            //        debugger
+            //        var rows = res.Response.Rows || [];
+
+            //        if (rows.length > 0) {
+            //            var row = rows[0]; // Assuming only the first row is needed
+
+                    
+            //        }
+            //    }
+            //}, 'GetData');
+
+        } else {
+            $('.GenerateItemIDBtn', t.el).hide();
+        }
+    });
     $('[argumentid="ItemId" ]', t.el).on('blur', function () {
 
         var ItemId = $(this).val();
+        if (ItemId === '') {
 
+            setTimeout(function () {
+                $('[argumentid="ItemId" ]', t.el).next('span[errmsg]').remove();
+            }, 50);
+        }
 
         var params = {
             Command: 'SEL_iRental_SparePartInventory',
@@ -39,7 +81,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         // Assuming ServerCall is a function to make an API call
         ServerCall(params, function (res) {
             var res = decJSON(res);
-           
+
 
             if (res.status === 'OK') {
                 var rows = res.Response.Rows || [];
@@ -47,7 +89,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                 if (rows.length > 0) {
                     var row = rows[0]; // Assuming only the first row is needed
 
-                    t.setParams({ params: rows[0], isRow: true });
+                    t.setParams({
+                        params: rows[0],
+                        isRow: true
+                    });
 
                     $('[argumentid="SparePartName"]', t.el).attr('disabled', 'disabled');
                     $('[argumentid="SparePartName"]', t.el).addClass('ElemDisabled');
@@ -66,13 +111,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                         $('[argumentid="ModelId" ]', t.el).attr('disabled', 'disabled');
                         $('[argumentid="ModelId" ]', t.el).addClass('ElemDisabled');
                     }, 1000)
-                    
+
                     //setTimeout(function () {
                     //    $('[argumentid="ModelId" ]', t.el).val(ModelId);
                     //    $('[argumentid="ModelId" ]', t.el).attr('disabled', 'disabled');
 
                     /*var fields = ['SparePartName', 'SparePartSerialNo', 'BrandId','ModelId'];*/
-                   
+
                     // Set values for text fields
                     //fields.forEach(function (field)
                     //{
@@ -85,15 +130,15 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                     //    //$('[argumentid="' + field + '"]', t.el).val(value)
                     //    //.attr('disabled', 'disabled')
                     //    //    .addClass('ElemDisabled');
-                      
+
                     //});
 
-                   
+
 
                     $('.GenerateItemIDBtn', t.el).hide();
                     $('.EditInventory', t.el).show();
                 } else {
-                 
+
 
                     $('[argumentid="SparePartName"]', t.el).removeAttr('disabled');
                     $('[argumentid="SparePartName"]', t.el).removeClass('ElemDisabled');
@@ -114,12 +159,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                     $('[argumentid="SparePartName" ]', t.el).val('');
                     $('[argumentid="SparePartSerialNo" ]', t.el).val('');
                     $('[argumentid="BrandId" ]', t.el).val('');
-                     $('[argumentid="ModelId" ]', t.el).val('');
+                    $('[argumentid="ModelId" ]', t.el).val('');
 
 
 
-                    if ($('[argumentid="ItemId"]', t.el).val() === '')
-                    {
+                    if ($('[argumentid="ItemId"]', t.el).val() === '') {
                         $('.GenerateItemIDBtn', t.el).show();
                         $('.EditInventory', t.el).hide();
 
@@ -135,7 +179,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         // This will pause execution for debugging if the developer tools are open
         if (params.res.status === 'OK') {
 
-            
+
 
             var myMessage = "Generate New ItemID Successfully";
             var trimMyMessage = myMessage.trim();
@@ -143,7 +187,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
             var code = parts[0];
             var messageStatus = parts[1];
             var message = parts[2];
-          
+
 
             if (message !== undefined) {
                 var trimMessage = message.trim();
@@ -156,7 +200,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
                 $('[argumentid="ItemId"]', t.el).val(code);
                 $('.GenerateItemIDBtn', t.el).hide();
-           
+
             } else {
                 console.log("Line of item");
             }
@@ -167,18 +211,17 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
     });
 
-    $('[argumentid="SparePartUnitPrice"], [argumentid="SparePartCostPrice"]', t.el).on('blur', function ()
-    {
+    $('[argumentid="SparePartUnitPrice"], [argumentid="SparePartCostPrice"]', t.el).on('blur', function () {
         var price = parseFloat($(this).val()) || 0; // Ensure the price is a number
         $(this).val(price.toFixed(3)); // Only update the field that triggered the event
     });
 
-   
-   
+
+
 
     $('.delete-button').on('click', function () {
         /*var FileGuid = $('[argumentid="FileGuid"]', t.el);*/
-       
+
         var params = {
             Command: 'FX_UPD_SparePartImageUpload',
             FileGuid: val('FileGuid', t.el),
@@ -193,8 +236,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
             var res = decJSON(res)
 
 
-            if (res.status === 'OK')
-            {
+            if (res.status === 'OK') {
                 $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png');
                 $('[argumentid="SparePartImage"]', t.el).val('');
                 $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled').show();
@@ -203,15 +245,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                 $.showMessage('Image delete successfully.');
             }
 
-            
+
         });
 
-      
+
     })
 
-    t.on('show', function (args)
-    {
-       
+    t.on('show', function (args) {
+
 
 
         $('[argumentid = "SparePartName"],[argumentid = "SparePartQuantity"],[argumentid = "SparePartUnitPrice"],[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled').show();
@@ -220,7 +261,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         $('[argumentid="SparePartImage"]').val('');
         $('.GenerateItemIDBtn', t.el).show();
         $('.EditInventory', t.el).hide();
-     
+
         var unitPrice = parseFloat($('[argumentid="SparePartUnitPrice"]', t.el).val()) || 0;
         $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice.toFixed(3));
 
@@ -237,17 +278,16 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         $('[argumentid="BrandId" ]', t.el).removeClass('ElemDisabled');
 
         $('[argumentid="ModelId" ]', t.el).removeAttr('disabled');
-        $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled'); 
+        $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled');
 
         $('[argumentid="ItemId" ]', t.el).removeAttr('disabled');
         $('[argumentid="ItemId" ]', t.el).removeClass('ElemDisabled');
     });
- 
 
-    $('.file-input', t.el).change(function ()
-    {
-        
-        AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail(this,t);
+
+    $('.file-input', t.el).change(function () {
+
+        AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail(this, t);
     });
 
 
@@ -256,7 +296,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
 
 
-};//end of AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
+}; //end of AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
 //show image on form,
 //AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t)
@@ -272,58 +312,49 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 //    reader.onload = function (e)
 //    {
 //        $('.thumbnail', t.el).attr('src', e.target.result);
-       
+
 //    };
 //    reader.readAsDataURL(file);
-   
+
 
 //};///end
-AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t)
-{
+AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t) {
     debugger;
     $('.thumbnail', t.el).show();
     $('.thumbnail', t.el).css('border', '1px solid green');
 
-    var file = fileInput.files ? fileInput.files[ 0 ] : fileInput[ 0 ].files[ 0 ];
+    var file = fileInput.files ? fileInput.files[0] : fileInput[0].files[0];
 
-    if (file)
-    {
+    if (file) {
         var reader = new FileReader();
-        reader.onload = function (e)
-        {
+        reader.onload = function (e) {
             $('.thumbnail', t.el).attr('src', e.target.result);
         };
         reader.readAsDataURL(file);
-    } else
-    {
+    } else {
         console.error("No file selected or file input is incorrect.");
     }
 };
 
 
-AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = function (t)
-{
-    $(".upload-button", t.el).click(function (e)
-    {
+AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = function (t) {
+    $(".upload-button", t.el).click(function (e) {
         var isGUIDUpdateNeeded = false;
-        if (val('FileGuid', t.el).trim() == "")
-        {
+        if (val('FileGuid', t.el).trim() == "") {
             var guid = generateGuid();
             setField('FileGuid', guid, t.el);
-            if (t.FormMode == 'update')
-            {
+            if (t.FormMode == 'update') {
                 isGUIDUpdateNeeded = true;
             }
         }
 
         e.preventDefault();
-        var fileInput = $(".file-input", t.el)[ 0 ];
+        var fileInput = $(".file-input", t.el)[0];
         var loggedUser = $('.LoggedUser').text()
         setField('UserName', loggedUser, t.el);
         var files = fileInput.files;
-        
-        if (files.length === 0)
-        {
+
+        if (files.length === 0) {
             //var errorMsg = $(".message", t.el).html("Please select a file.");
             $.showMessage("Please select a file.");
             return;
@@ -331,20 +362,18 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 
 
         var formData = new FormData();
-        for (var i = 0; i < files.length; i++)
-        {
+        for (var i = 0; i < files.length; i++) {
 
-            formData.append("file" + i, files[ i ]);
+            formData.append("file" + i, files[i]);
 
         }
 
         formData.append("UserName", val('UserName', t.el));
         formData.append("FileGuid", val("FileGuid", t.el));
-        if (isGUIDUpdateNeeded)
-        {
+        if (isGUIDUpdateNeeded) {
             formData.append("SalesRecId", val("RecId"));
         }
-      
+
         $.ajax({
 
             type: "POST",
@@ -353,14 +382,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
             dataType: 'text',
             processData: false,
             contentType: false,
-           
-            success: function (response)
-            {
+
+            success: function (response) {
                 objRes = JSON.parse(response)
                 var rows = objRes.Response.Rows;
-                for (var i = 0; i < rows.length; i++)
-                {
-                    var row = rows[ i ];
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
                     var fileName = row.FileName;
                     $('.thumbnail', t.el).css('border', '3px solid green');
                     var msg = (`Image uploaded successfully.`);
@@ -377,8 +404,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 
                 // $('.message', t.el).text(response);
             },
-            error: function (error)
-            {
+            error: function (error) {
                 $(".message", t.el).html("Error uploading file(s): " + error.statusText);
             }
         }); //end of Ajax
@@ -387,11 +413,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 
 
     //generate guid 
-    function generateGuid()
-    {
+    function generateGuid() {
 
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c)
-        {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0,
                 v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
@@ -399,20 +423,24 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
     }
 
 
-    t.on('onLoadedValues', function (p)
-    {
+    t.on('onLoadedValues', function (p) {
 
-        var params = { Command: 'FX_UPD_SparePartImageUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+        var params = {
+            Command: 'FX_UPD_SparePartImageUpload',
+            FileGuid: val('FileGuid', t.el),
+            DBAction: 'GetUploadedFiles'
+        };
 
         SInfo = getForm(null, null, params);
         var inv = new AsyncWidgets.RAInvoker();
-        inv.on('onSuccess', function (res)
-        {
+        inv.on('onSuccess', function (res) {
             var res = decJSON(res);
             AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles(res, t);
             $(t.el).unmask();
         });
-        inv.invokeRA({ params: [ "ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo ] });
+        inv.invokeRA({
+            params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo]
+        });
 
 
         var unitPrice = parseFloat($('[argumentid="SparePartUnitPrice"]', t.el).val()) || 0;
@@ -445,27 +473,23 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 };
 
 
-AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = function (res, t)
-{
+AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = function (res, t) {
     /*var baseFolderPath = "../../../UploadSparePartImage/";*/
     var baseFolderPath = "/UploadSparePartImage/";
 
 
-    if (res.status == 'OK')
-    {
-        if (res.Response.Rows.length > 0)
-        {
+    if (res.status == 'OK') {
+        if (res.Response.Rows.length > 0) {
             var rows = res.Response.Rows;
-            for (var i = 0; i < rows.length; i++)
-            {
-                var row = rows[ i ];
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
                 var recId = row.RecId;
                 var fileGuid = row.FileGuid;
                 var fileName = row.FileName;
 
                 /*var newFileName = folderPath + `${recId}_${fileGuid}_${fileName}`;*/
-               /* .split('.')[ 0 ]*/
-                 var folderName = `${recId}_${fileGuid}_${fileName}`;
+                /* .split('.')[ 0 ]*/
+                var folderName = `${recId}_${fileGuid}_${fileName}`;
                 var fullFileName = `${recId}_${fileGuid}_${fileName}`;
                 var filePath = `${baseFolderPath}${folderName}/${fullFileName}`;
 
@@ -476,8 +500,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles = func
                     $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', true).addClass('ElemDisabled').hide();
                     $('.delete-button', t.el).show();
                     $('.thumbnail', t.el).show();
-                }
-                else {
+                } else {
                     $('[argumentid="SparePartImage"],.upload-button', t.el).prop('disabled', false).removeClass('ElemDisabled').show();
                     $('.delete-button', t.el).hide();
                     $('.thumbnail', t.el).hide();

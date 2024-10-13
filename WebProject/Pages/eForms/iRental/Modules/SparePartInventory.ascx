@@ -44,16 +44,16 @@
                             SparePartSerialNo: { caption: 'Item Code', width: '50px' },
                             SparePartName: { caption: 'Description', width: '100px' },
                             SparePartSerialNo: { caption: 'Item Code', width: '110px' },
-                            SparePartQuantity: { caption: 'Quantity', width: '80px' },
+                            SparePartQuantity: { caption: 'Qty', width: '45px' },
                             BrandId: { caption: 'Brand', width: '70px' },
-                            ModelId: { caption: 'Model', width: '100px' },
-                            SparePartRackfNo: { caption: 'Rack No.', width: '70px' },
-                            SparePartShelfNo: { caption: 'Shelf No.', width: '70px' },
-                            SparePartUnitPrice: { caption: 'Unit Price', width: '100px' },
+                            ModelId: { caption: 'Model', width: '60px' },
+                            SparePartRackfNo: { caption: 'Rack', width: '60px' },
+                            SparePartShelfNo: { caption: 'Shelf', width: '60px' },
+                            SparePartUnitPrice: { caption: 'Unit Price', width: '80px' },
                             SparePartRemarks: { caption: 'Remarks', width: '100px' },
                             SparePartImage: { caption: 'Image', width: '80px' },
-                            StoreLocation: { caption: 'Store', width: '60px' },
-                            PurchasingFrom: {width:'0px'}
+                            StoreLocation: { caption: 'Store', width: '50px' },
+                            PurchasingFrom: { caption: 'From', width:'60px'}
                       
                         },
                         forms: {
