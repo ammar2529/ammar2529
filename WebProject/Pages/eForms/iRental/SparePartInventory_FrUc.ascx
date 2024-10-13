@@ -274,6 +274,8 @@
         </td>
         <td>
             <input type="text" style="display: none" groupid="SparePartInventoryForm" argumentid="action" value="new" class="noautoreset" />
+              <input type="button" value="  Edit  " class="DataAction ButtonStyle EditInventory"  />
+
             <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SparePartInventory',HideOnSuccess:true}" />
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
 

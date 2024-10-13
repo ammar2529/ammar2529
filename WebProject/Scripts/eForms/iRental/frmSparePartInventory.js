@@ -7,6 +7,24 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventory.t = t;
 
+    $('.EditInventory', t.el).on('click', function () {
+
+        $('[argumentid="SparePartName"]', t.el).removeAttr('disabled');
+        $('[argumentid="SparePartName"]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="SparePartSerialNo" ]', t.el).removeAttr('disabled');
+        $('[argumentid="SparePartSerialNo" ]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="BrandId" ]', t.el).removeAttr('disabled');
+        $('[argumentid="BrandId" ]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="ModelId" ]', t.el).removeAttr('disabled');
+        $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="ItemId" ]', t.el).removeAttr('disabled');
+        $('[argumentid="ItemId" ]', t.el).removeClass('ElemDisabled');
+    });
+
     $('[argumentid="ItemId" ]', t.el).on('blur', function () {
 
         var ItemId = $(this).val();
@@ -36,6 +54,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
                     $('[argumentid="SparePartSerialNo" ]', t.el).attr('disabled', 'disabled');
                     $('[argumentid="SparePartSerialNo" ]', t.el).addClass('ElemDisabled');
+
+                    $('[argumentid="ItemId" ]', t.el).attr('disabled', 'disabled');
+                    $('[argumentid="ItemId" ]', t.el).addClass('ElemDisabled');
 
                     setTimeout(function () {
 
@@ -70,6 +91,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                    
 
                     $('.GenerateItemIDBtn', t.el).hide();
+                    $('.EditInventory', t.el).show();
                 } else {
                  
 
@@ -85,6 +107,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                     $('[argumentid="ModelId" ]', t.el).removeAttr('disabled');
                     $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled');
 
+
+                    $('[argumentid="ItemId" ]', t.el).removeAttr('disabled');
+                    $('[argumentid="ItemId" ]', t.el).removeClass('ElemDisabled');
+
                     $('[argumentid="SparePartName" ]', t.el).val('');
                     $('[argumentid="SparePartSerialNo" ]', t.el).val('');
                     $('[argumentid="BrandId" ]', t.el).val('');
@@ -95,6 +121,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
                     if ($('[argumentid="ItemId"]', t.el).val() === '')
                     {
                         $('.GenerateItemIDBtn', t.el).show();
+                        $('.EditInventory', t.el).hide();
 
                     }
                 }
@@ -192,7 +219,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png').hide();
         $('[argumentid="SparePartImage"]').val('');
         $('.GenerateItemIDBtn', t.el).show();
-
+        $('.EditInventory', t.el).hide();
      
         var unitPrice = parseFloat($('[argumentid="SparePartUnitPrice"]', t.el).val()) || 0;
         $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice.toFixed(3));
@@ -210,7 +237,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         $('[argumentid="BrandId" ]', t.el).removeClass('ElemDisabled');
 
         $('[argumentid="ModelId" ]', t.el).removeAttr('disabled');
-        $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled');
+        $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled'); 
+
+        $('[argumentid="ItemId" ]', t.el).removeAttr('disabled');
+        $('[argumentid="ItemId" ]', t.el).removeClass('ElemDisabled');
     });
  
 
@@ -390,7 +420,26 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 
         var costPrice = parseFloat($('[argumentid="SparePartCostPrice"]', t.el).val()) || 0;
         $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3));
+
+        $('[argumentid="SparePartName"]', t.el).attr('disabled', 'disabled');
+        $('[argumentid="SparePartName"]', t.el).addClass('ElemDisabled');
+
+        $('[argumentid="SparePartSerialNo" ]', t.el).attr('disabled', 'disabled');
+        $('[argumentid="SparePartSerialNo" ]', t.el).addClass('ElemDisabled');
+
+        $('[argumentid="ItemId" ]', t.el).attr('disabled', 'disabled');
+        $('[argumentid="ItemId" ]', t.el).addClass('ElemDisabled');
+
+        setTimeout(function () {
+
+            $('[argumentid="BrandId" ]', t.el).attr('disabled', 'disabled');
+            $('[argumentid="BrandId" ]', t.el).addClass('ElemDisabled');
+
+            $('[argumentid="ModelId" ]', t.el).attr('disabled', 'disabled');
+            $('[argumentid="ModelId" ]', t.el).addClass('ElemDisabled');
+        }, 1000)
         $('.GenerateItemIDBtn', t.el).hide();
+        $('.EditInventory', t.el).show();
 
     });
 };
