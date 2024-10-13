@@ -10,14 +10,105 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
     $('[argumentid="ItemId" ]', t.el).on('blur', function () {
 
         var ItemId = $(this).val();
-          
+
+
+        var params = {
+            Command: 'SEL_iRental_SparePartInventory',
+            ItemId: `${ItemId}`,
+            DBAction: 'SearchItemID'
+        };
+
+        // Assuming ServerCall is a function to make an API call
+        ServerCall(params, function (res) {
+            var res = decJSON(res);
+           
+
+            if (res.status === 'OK') {
+                var rows = res.Response.Rows || [];
+
+                if (rows.length > 0) {
+                    var row = rows[0]; // Assuming only the first row is needed
+
+                    t.setParams({ params: rows[0], isRow: true });
+
+                    $('[argumentid="SparePartName"]', t.el).attr('disabled', 'disabled');
+                    $('[argumentid="SparePartName"]', t.el).addClass('ElemDisabled');
+
+                    $('[argumentid="SparePartSerialNo" ]', t.el).attr('disabled', 'disabled');
+                    $('[argumentid="SparePartSerialNo" ]', t.el).addClass('ElemDisabled');
+
+                    setTimeout(function () {
+
+                        $('[argumentid="BrandId" ]', t.el).attr('disabled', 'disabled');
+                        $('[argumentid="BrandId" ]', t.el).addClass('ElemDisabled');
+
+                        $('[argumentid="ModelId" ]', t.el).attr('disabled', 'disabled');
+                        $('[argumentid="ModelId" ]', t.el).addClass('ElemDisabled');
+                    }, 1000)
+                    
+                    //setTimeout(function () {
+                    //    $('[argumentid="ModelId" ]', t.el).val(ModelId);
+                    //    $('[argumentid="ModelId" ]', t.el).attr('disabled', 'disabled');
+
+                    /*var fields = ['SparePartName', 'SparePartSerialNo', 'BrandId','ModelId'];*/
+                   
+                    // Set values for text fields
+                    //fields.forEach(function (field)
+                    //{
+                    //    debugger
+                    //    var value = row[field];
+                    //    /*setField($('[argumentid="' + field + '"]', value, t.el));*/
+
+                    //    t.setParams({ params: value, isRow: true });
+
+                    //    //$('[argumentid="' + field + '"]', t.el).val(value)
+                    //    //.attr('disabled', 'disabled')
+                    //    //    .addClass('ElemDisabled');
+                      
+                    //});
+
+                   
+
+                    $('.GenerateItemIDBtn', t.el).hide();
+                } else {
+                 
+
+                    $('[argumentid="SparePartName"]', t.el).removeAttr('disabled');
+                    $('[argumentid="SparePartName"]', t.el).removeClass('ElemDisabled');
+
+                    $('[argumentid="SparePartSerialNo" ]', t.el).removeAttr('disabled');
+                    $('[argumentid="SparePartSerialNo" ]', t.el).removeClass('ElemDisabled');
+
+                    $('[argumentid="BrandId" ]', t.el).removeAttr('disabled');
+                    $('[argumentid="BrandId" ]', t.el).removeClass('ElemDisabled');
+
+                    $('[argumentid="ModelId" ]', t.el).removeAttr('disabled');
+                    $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled');
+
+                    $('[argumentid="SparePartName" ]', t.el).val('');
+                    $('[argumentid="SparePartSerialNo" ]', t.el).val('');
+                    $('[argumentid="BrandId" ]', t.el).val('');
+                     $('[argumentid="ModelId" ]', t.el).val('');
+
+
+
+                    if ($('[argumentid="ItemId"]', t.el).val() === '')
+                    {
+                        $('.GenerateItemIDBtn', t.el).show();
+
+                    }
+                }
+            }
+        }, 'GetData');
+
+
 
     });
     t.on('afterDataAction', function (params) {
         // This will pause execution for debugging if the developer tools are open
         if (params.res.status === 'OK') {
 
-           
+            
 
             var myMessage = "Generate New ItemID Successfully";
             var trimMyMessage = myMessage.trim();

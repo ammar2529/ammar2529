@@ -83,7 +83,8 @@
 
 
 <input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required "                                                          
-  groupid="SparePartInventoryForm"  argumentid="ItemId" />
+  groupid="SparePartInventoryForm"  argumentid="ItemId" />&nbsp;
+        <input type="button" value="  Generate ItemID  " class="DataAction ButtonStyle GenerateItemIDBtn " ignorevalidate="ItemId SparePartSerialNo SparePartName SparePartQuantity BrandId ModelId StoreLocation" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'GenerateNewItemId'},Command:'SEL_iRental_SparePartInventory',HideOnSuccess:false,Requery:false,GroupId:'SparePartInventoryForm'}" />
         </td>
     </tr>
       
