@@ -7,6 +7,47 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventory.t = t;
 
+    $('[argumentid="ItemId" ]', t.el).on('blur', function () {
+
+        var ItemId = $(this).val();
+          
+
+    });
+    t.on('afterDataAction', function (params) {
+        // This will pause execution for debugging if the developer tools are open
+        if (params.res.status === 'OK') {
+
+           
+
+            var myMessage = "Generate New ItemID Successfully";
+            var trimMyMessage = myMessage.trim();
+            var parts = params.res.Response.split('||');
+            var code = parts[0];
+            var messageStatus = parts[1];
+            var message = parts[2];
+          
+
+            if (message !== undefined) {
+                var trimMessage = message.trim();
+                // Further processing with trimMessage
+            }
+
+
+
+            if (trimMessage.toLowerCase() === trimMyMessage.toLowerCase()) {
+
+                $('[argumentid="ItemId"]', t.el).val(code);
+                $('.GenerateItemIDBtn', t.el).hide();
+           
+            } else {
+                console.log("Line of item");
+            }
+        } else {
+            console.error("Unexpected status:", params.res.status);
+        }
+
+
+    });
 
     $('[argumentid="SparePartUnitPrice"], [argumentid="SparePartCostPrice"]', t.el).on('blur', function ()
     {
@@ -59,6 +100,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
         $('.delete-button', t.el).hide();
         $('.thumbnail').attr('src', '../../../App_Themes/Blue/images/default_image.png').hide();
         $('[argumentid="SparePartImage"]').val('');
+        $('.GenerateItemIDBtn', t.el).show();
 
      
         var unitPrice = parseFloat($('[argumentid="SparePartUnitPrice"]', t.el).val()) || 0;
@@ -245,6 +287,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 
         var costPrice = parseFloat($('[argumentid="SparePartCostPrice"]', t.el).val()) || 0;
         $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3));
+        $('.GenerateItemIDBtn', t.el).hide();
 
     });
 };
