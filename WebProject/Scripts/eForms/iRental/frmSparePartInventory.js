@@ -199,6 +199,18 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj)
 
         var costPrice = parseFloat($('[argumentid="SparePartCostPrice"]', t.el).val()) || 0;
         $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3));
+
+        $('[argumentid="SparePartName"]', t.el).removeAttr('disabled');
+        $('[argumentid="SparePartName"]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="SparePartSerialNo" ]', t.el).removeAttr('disabled');
+        $('[argumentid="SparePartSerialNo" ]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="BrandId" ]', t.el).removeAttr('disabled');
+        $('[argumentid="BrandId" ]', t.el).removeClass('ElemDisabled');
+
+        $('[argumentid="ModelId" ]', t.el).removeAttr('disabled');
+        $('[argumentid="ModelId" ]', t.el).removeClass('ElemDisabled');
     });
  
 
