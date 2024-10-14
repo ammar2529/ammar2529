@@ -95,7 +95,7 @@
         <td>
 
 
-<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required "                                                         
+<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required CommonClass"                                                         
   groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
         </td>
     </tr>
@@ -108,7 +108,7 @@
                 <input type="hidden"groupid="SparePartInventoryForm" argumentid="UserName"  />
             </div>
             <div>
-                 <input type="text"  style="text-align: left; width: 300px;  " maxlength="10" class="text required" 
+                 <input type="text"  style="text-align: left; width: 300px;  " maxlength="10" class="text required CommonClass" 
                 groupid="SparePartInventoryForm" argumentid="SparePartName" />
             </div>
         </td>
@@ -116,17 +116,7 @@
 
     
 
-     <tr>
-        <td class="ftitle">
-            <nobr>Quantity*:</nobr>
-        </td>
-        <td>
-
-            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
-                groupid="SparePartInventoryForm" argumentid="SparePartQuantity" />
-
-        </td>
-    </tr>
+   
 
          <tr>
         <td class="ftitle">
@@ -134,7 +124,7 @@
         </td>
         <td >
             
-            <select loadon="FirstVisible" class="dropdownlist required" style="width: 155px;" groupid="SparePartInventoryForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+            <select loadon="FirstVisible" class="dropdownlist required CommonClass" style="width: 155px;" groupid="SparePartInventoryForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
     <option value="" selected="selected">Select Brand</option>
     </select>
         </td>
@@ -145,7 +135,7 @@
             <nobr>Model*:</nobr>
         </td>
         <td>
-            <select class="dropdownlist required" style="width: 155px;" groupid="SparePartInventoryForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
+            <select class="dropdownlist required CommonClass" style="width: 155px;" groupid="SparePartInventoryForm" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
     <option value="" selected="selected">Select Model</option>
     </select>
         </td>
@@ -187,7 +177,17 @@
         </td>
     </tr>
 
-  
+    <tr>
+     <td class="ftitle">
+         <nobr>Quantity*:</nobr>
+     </td>
+     <td>
+
+         <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
+             groupid="SparePartInventoryForm" argumentid="SparePartQuantity" />
+
+     </td>
+ </tr>
 
        <tr>
         <td class="ftitle">
@@ -271,10 +271,10 @@
     <tr>
         <td>
             <img src="App_Themes/eForms_Theme/Images/spacer.gif" />
-        </td>
+            <input class=" ButtonStyle EditInventory" type="button" value="  Edit  "  style="display: block;margin: 0 auto;"/></td>
         <td>
             <input type="text" style="display: none" groupid="SparePartInventoryForm" argumentid="action" value="new" class="noautoreset" />
-              <input type="button" value="  Edit  " class="DataAction ButtonStyle EditInventory"  />
+              
 
             <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SparePartInventory',HideOnSuccess:true}" />
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />

@@ -33,7 +33,18 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
         return false;
     });
 
-    
+
+
+    $('[argumentid="ContractDiscount"]', t.el).on('blur', function () {
+        
+        var ContractDiscount = parseFloat($(this).val()) || 0;
+        var AmountDue = parseFloat($('[argumentid="AmountDue"]',t.el).text()) || 0;
+
+        var Result = AmountDue - ContractDiscount;
+        $('[argumentid="TotalAmountDue"]',t.el).text(Result.toFixed(3));
+
+    });
+
 
     //On Focus of Customer Code to Get Customer Popup Selection
     $('[argumentid="CustomerRecCode"]', t.el).focus(function () {
@@ -645,6 +656,10 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('.OnLoadHide', t.el).hide();
                 $('[argumentid="OutLocationId"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
                 $('.Button_Edit', t.el).hide();
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractOpen') {
@@ -652,24 +667,40 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('.CommonDisable', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
                 $('[argumentid="ContractKMIn"]', t.el).addClass('required');
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractOpenCarIn') {
                 $('.btn_2,.btn_5,.btn_6,.btn_8', t.el).attr('disabled', 'disabled');
                 $('.CommonDisable', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCWithLegalContractOpenCarOut') {
                 $('.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_10', t.el).attr('disabled', 'disabled');
                 $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCWithLegalContractOpenCarIn') {
                 $('.btn_1,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_10', t.el).attr('disabled', 'disabled');
                 $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCWithLegalContractClosedPendingPayment') {
@@ -678,6 +709,10 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosedPendingPayment') {
@@ -686,6 +721,12 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
+
+
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed') {
@@ -694,6 +735,11 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
+                
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
+                
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractCancelled') {
@@ -702,6 +748,10 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
+
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
 
@@ -725,5 +775,16 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
         }
     });
     // End of On Loaded Values
+
+
+
+    function CalculateDiscount() {
+
+        var ContractDiscount = parseFloat($('[argumentid="ContractDiscount"]',t.el).val()) || 0;
+        var AmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text()) || 0;
+
+        var Result = AmountDue - ContractDiscount;
+        $('[argumentid="TotalAmountDue"]', t.el).text(Result.toFixed(3));
+    }
 }
     ;

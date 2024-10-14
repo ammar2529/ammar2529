@@ -381,6 +381,34 @@
                                         groupid="SparePartInventoryInvoice" argumentid="TotalPrice" disabled="disabled"/>
 
                                 </td>
+                                <%--<td> display none </td>--%>
+                                <td style="display:none">
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text ElemDisabled "
+                                        groupid="SparePartInventoryInvoice" argumentid="StoreLocationID" disabled="disabled"/>
+
+                                </td>
+
+                                <td style="display: none">
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                                        groupid="SparePartInventoryInvoice" argumentid="SparePartRackfNo" disabled="disabled" />
+
+                                </td>
+
+                                <td style="display: none">
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                                        groupid="SparePartInventoryInvoice" argumentid="SparePartShelfNo" disabled="disabled" />
+
+                                </td>
+
+                         
+                                <td style="display: none">
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                                        groupid="SparePartInventoryInvoice" argumentid="PurchasingFrom" disabled="disabled" />
+
+                                </td>
+
+
+                                <%--<td> display none </td>--%>
                                  <td><button type = "button" recid="recId" class="SaveBtn">Save</button></td> <!-- Delete button -->
 
                             </tr>
@@ -489,10 +517,14 @@
               <tr>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4 " style="padding-left: 5px; padding-right: 0px; color: black;width: 60px; ">Item ID</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 130px;">Item Code</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 400px;">Description</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 270px;">Description</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Store</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Rack</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Shelf</th>
                 <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Unit Price</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Total Price</th>
+                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">From</th>
                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border w-grid-cell-border-last colIndex-4" ></th>
 
               </tr>
@@ -503,7 +535,7 @@
           <tfoot>
               <tr class="NoRecordsTR">
 
-                  <td class="NoRecords w-grid-norecords-msg" colspan="7">
+                  <td class="NoRecords w-grid-norecords-msg" colspan="10">
                       <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
                   </td>
               </tr>

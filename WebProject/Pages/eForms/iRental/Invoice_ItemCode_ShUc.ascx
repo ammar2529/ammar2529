@@ -17,8 +17,7 @@
             <span style="white-space: nowrap">Purchasing</span></td>
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Store</span></td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap"></span></td>
+       
         <td style="text-align: left;" class="ftitle"></td>
     </tr>
     <tr>
@@ -54,10 +53,7 @@
     <option value="" selected="selected">Select Store</option>
 </select>
         </td>
-        <td style="text-align: left;">
-            
-
-        </td>
+       
         <td style="text-align: left; padding-bottom: 0px">
 
             <a href="javascript:void(0);" class="search ViewButton">

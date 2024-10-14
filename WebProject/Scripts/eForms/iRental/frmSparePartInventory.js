@@ -30,14 +30,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
         var ItemId = $(this).val();
         if (ItemId === '') {
             $('.GenerateItemIDBtn', t.el).show();
-            setTimeout(function () {
-                $('[argumentid="ItemId" ]', t.el).next('span[errmsg]').remove();
+            //setTimeout(function () {
+            //    $('[argumentid="ItemId" ]', t.el).next('span[errmsg]').remove();
 
-            }, 60);
+            //}, 60);
 
             //var params = {
             //    Command: 'SEL_iRental_SparePartInventory',
-               
+
             //    DBAction: 'SearchItemIDWhenEmpty'
             //};
 
@@ -53,10 +53,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
             //        if (rows.length > 0) {
             //            var row = rows[0]; // Assuming only the first row is needed
 
-                    
+
             //        }
             //    }
             //}, 'GetData');
+
+            $('.CommonClass', t.el).val('');
+            $('.CommonClass', t.el).removeAttr('disabled');
+            $('.CommonClass', t.el).removeClass('ElemDisabled')
 
         } else {
             $('.GenerateItemIDBtn', t.el).hide();
@@ -100,8 +104,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
                     $('[argumentid="SparePartSerialNo" ]', t.el).attr('disabled', 'disabled');
                     $('[argumentid="SparePartSerialNo" ]', t.el).addClass('ElemDisabled');
 
-                    $('[argumentid="ItemId" ]', t.el).attr('disabled', 'disabled');
-                    $('[argumentid="ItemId" ]', t.el).addClass('ElemDisabled');
+                    //$('[argumentid="ItemId" ]', t.el).attr('disabled', 'disabled');
+                    //$('[argumentid="ItemId" ]', t.el).addClass('ElemDisabled');
 
                     setTimeout(function () {
 

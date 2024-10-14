@@ -102,7 +102,7 @@
                                      <div class="ftitle" style="color:#808000; display:none">{ChassisNo}</div>
                                      <div class="ftitle" style="color:#101080">{CreatedBy}</div>
                                      <div class="ftitle" >{DateCreated}&nbsp;{DateCreatedTime}</div>
-                                  <%-- <div class="ftitle" style="color:#808000">{FinanceCompany}</div>--%>
+                                   <div class="ftitle">{InvoiceType}</div>
 
                     
                                     
@@ -559,27 +559,34 @@
  <script>
      var cf = {
          cols: {
+             //Sequence: { width: '0px' },
+             //RecId: { width: '0px' },
+             //RecCode: { width: '0px' },
+             //ItemId: { caption: 'Item ID', width: '50px' },
+             //SparePartSerialNo: { caption: 'Item Code', width: '80px' },
+             //SparePartName: { caption: 'Description', width: '150px' },
+             //SparePartQuantity: { caption: "Qty", width: '53px' },
+             //SparePartUnitPrice: { caption: 'Unit Price', width: '70px' },
+             //PurchasingFrom: { caption: 'From', width: '80px' },
+             //StoreLocation: { caption: 'Store', width: '50px' },
+             //SparePartRackfNo: { caption: 'Rack', width: '60px' },
+             //SparePartShelfNo: { caption: 'Shelf', width: '60px' },
+
              Sequence: { width: '0px' },
              RecId: { width: '0px' },
-             RecCode: { width: '0px' },
-             ItemId: { caption: 'Item ID', width: '50px' },
-             SparePartSerialNo: { caption: 'Item Code', width: '80px' },
-             SparePartName: { caption: 'Description', width: '150px' },
-             SparePartQuantity: { caption: "Qty'Avl", width: '53px' },
-             SparePartUnitPrice: { caption: 'Unit Price', width: '70px' },
-             PurchasingFrom: { caption: 'PurchasingFrom', width: '80px' },
-             StoreLocation: { caption: 'StoreLocation', width: '80px' },
-             //ColorId: { caption: 'Color', width: '0px' },
-             //InsuranceExpiry: { caption: 'Normal Ins.', width: '0px' },
-             //FullInsuranceExpiry: { caption: 'Full Ins.', width: '0px' },
-             //CurrentMileage: { caption: 'Mileage', width: '70px' },
-             //CarLocationId: { width: '0px' },
-             //CarStatusId: { caption: 'Car Status', width: '90px' },
-             //Status: { width: '100px' },
-             //ContractNo: { caption: 'Contract No.' },
-             //FullInsuranceCompanyId: { width: '0px' },
-             //FullInsurancePolicyNo: { width: '0px' }
-
+             ItemId: { caption: 'Item ID', width: '70px' },
+             SparePartSerialNo: { caption: 'Item Code', width: '30px' },
+             SparePartName: { caption: 'Description', width: '190px' },
+             SparePartSerialNo: { caption: 'Item Code', width: '110px' },
+             BrandId: { caption: 'Brand', width: '60px' },
+             ModelId: { caption: 'Model', width: '60px' },
+             SparePartQuantity: { caption: 'Qty', width: '45px' },
+             SparePartRackfNo: { caption: 'Rack', width: '60px' },
+             SparePartShelfNo: { caption: 'Shelf', width: '60px' },
+             SparePartUnitPrice: { caption: 'Price', width: '55px' },
+             StoreLocation: { caption: 'Store', width: '50px' },
+             PurchasingFrom: { caption: 'From', width: '60px' },
+             StoreLocationID :{ width: '0px' }
 
          }
      };
