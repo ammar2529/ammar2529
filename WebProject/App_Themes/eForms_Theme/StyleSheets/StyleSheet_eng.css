@@ -397,7 +397,15 @@ TABLE.ctable TD.f {
 
 .dropdownlist
 {
-	BORDER-RIGHT: #aaaaaa 1px solid; BORDER-TOP: #aaaaaa 1px solid; FONT-SIZE: 11px; BACKGROUND: #ffffff; BORDER-LEFT: #aaaaaa 1px solid; COLOR: #525252; BORDER-BOTTOM: #aaaaaa 1px solid; FONT-FAMILY: verdana, helvetica; xletter-spacing: 0px
+	BORDER-RIGHT: #aaaaaa 1px solid; 
+	BORDER-TOP: #aaaaaa 1px solid; 
+	FONT-SIZE: 11px; 
+	BACKGROUND: #ffffff; 
+	BORDER-LEFT: #aaaaaa 1px solid;
+	COLOR: #525252; 
+	BORDER-BOTTOM: #aaaaaa 1px solid; 
+	FONT-FAMILY: verdana, helvetica; 
+	/*xletter-spacing: 0px*/
 }
 
 .text-align-positive

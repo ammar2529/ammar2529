@@ -40,12 +40,12 @@ var th = ['','thousand','million', 'billion','trillion'];
     </tr>
 
 
-    <tr>
+<%--    <tr>
         <td width="10%" class="ftitle" valign="top">
             <nobr>System ID</nobr>
         </td>
-        <td class="auto-style3" >
-            <div class="auto-style4">
+        <td  >
+            <div >
                 <input type="text" style="text-align: center; width: 150px; font-weight: bold; background-color: #F1F1F1" maxlength="50" class="text AlwaysDisable"
                     groupid="Invoice_Payments" argumentid="LocationReceiptId" />
                 &nbsp;
@@ -57,12 +57,7 @@ var th = ['','thousand','million', 'billion','trillion'];
                                  <input type="text" style="text-align: center; width: 150px; font-weight: bold" maxlength="10" class="text number"
                                      groupid="Invoice_Payments" argumentid="ReceiptId" />
            
-            
-           <%-- <nobr  style="font-style: italic; font-weight: bold;">&nbsp; Manual Receipt Date: </nobr>
-           
-            
-            &nbsp;<input type="text" groupid="Invoice_Payments" maxlength="10"
-                            style="width: 75px;" class="text  date ManualReceiptDate CommonDisable"  argumentid="ManualReceiptDate" />--%>
+    
 
             <div style="display: none">
                 <span groupid="Invoice_Payments" argumentid="ParentRecId"></span>
@@ -71,13 +66,34 @@ var th = ['','thousand','million', 'billion','trillion'];
 
 
         </td>
-    </tr>
+    </tr>--%>
+        <tr>
+          <td width="20%" class="ftitle" valign="top">
+          <nobr>System ID</nobr>
+        </td>
+        <td width="80%">
+        <div style="float:left;width:300px"> 
+          <input type="text" style="text-align:center; width:150px; font-weight:bold; background-color:#F1F1F1"  maxlength="50" class="text AlwaysDisable"
+                groupid="Invoice_Payments" argumentid="LocationReceiptId" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <nobr style="font-style:italic; font-weight:bold; float:right">Manual ID:</nobr></div>
+                &nbsp;
+             <input type="text" style="text-align:center; width:150px; font-weight:bold"  maxlength="10" class="text number"
+                groupid="Invoice_Payments" argumentid="ReceiptId" />
 
+                <div style="display:none"><span groupid="Invoice_Paymentss" argumentid="ParentRecId"></span>
+                <span groupid="Invoice_Payments" argumentid="RecId"></span>
+                
+                </div>
+
+          
+                </td>
+    </tr>
     <tr>
         <td class="ftitle">
             <nobr>Payment Date*:</nobr>
         </td>
-        <td class="auto-style3">
+        <td >
             <input type="text" groupid="Invoice_Payments" maxlength="10"
                 style="width: 150px;" class="text required date" requirederr='*' argumentid="PaymentDate" />
         </td>
@@ -87,7 +103,7 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td class="ftitle">
             <nobr>Payment Type*:</nobr>
         </td>
-        <td class="auto-style3">
+        <td class="ftitle">
             <input type="radio" checked="checked" default="default" value="0" name="PaymentType" groupid="Invoice_Payments" argumentid="PaymentType"/><label>Receipt</label>
             <input type="radio" value="1" name="PaymentType" groupid="Invoice_Payments" argumentid="PaymentType"/><label>Return</label>
         </td>
@@ -97,25 +113,18 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td class="ftitle" rowspan="2">
             <nobr>Payment Mode*:</nobr>
         </td>
-        <td class="auto-style3">
-            <div class="auto-style1 parentDiv">
-                <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 116px;"
+        <td >
+            <div class=" parentDiv">
+                <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 155px;"
                     groupid="Invoice_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
                     <option value="" selected="selected">Select Payment Mode</option>
-                </select>
-                &nbsp;
-
-                                   
-                  </div>
+                </select></div>
              
-            &nbsp;
-           
-             
-            &nbsp;</td>
+            </td>
     </tr>
 
     <tr class="PaymentMetthodDetails">
-        <td class="auto-style3">
+        <td >
 
                                    
                
@@ -138,7 +147,7 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td class="ftitle">
             <nobr>Payment Amount*:</nobr>
         </td>
-        <td class="auto-style3">
+        <td >
             <div style="float: left; width: 300px">
                 <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number required"
                     groupid="Invoice_Payments" alphconf="{allow:'.'}" requirederr='*' argumentid="PaymentAmount" />
@@ -149,34 +158,15 @@ var th = ['','thousand','million', 'billion','trillion'];
             &nbsp;
                                       <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable" argumentid="AmountInWords"  groupid="Invoice_Payments"/>
 
-            <%--                                <input type="hidden" name="ParentRecId"  groupid="Invoice_Payments" argumentid="ParentRecId"  />--%>
-            <%--                                        <input type="hidden" name="RecId"  groupid="Invoice_Payments" argumentid="RecId"  />--%>
+       
         </td>
     </tr>
 
-<%--    <tr>
-         <td class="ftitle">
-            <nobr>Payment For:</nobr>
-        </td>
-        <td>
-            <input type="text" style="text-align: center; width: 152px;" maxlength="10" class="text number "
-                    groupid="Invoice_Payments" alphconf="{allow:'.'}"  argumentid="PaymentFor" />
-
-        </td>
-    </tr>--%>
-     <tr>
-        <td class="ftitle" valign="top">
-            <nobr>Payment For:</nobr>
-        </td>
-        <td class="auto-style3">
-            <textarea class="textarea" rows="4" wrap="1" style="width: 707px" argumentid="PaymentFor" groupid="Invoice_Payments"></textarea></td>
-    </tr>
-    
     <tr>
         <td class="ftitle" valign="top">
             <nobr>Comments:</nobr>
         </td>
-        <td class="auto-style3">
+        <td >
             <textarea class="textarea" rows="4" wrap="1" style="width: 707px" argumentid="PaymentComments" groupid="Invoice_Payments"></textarea></td>
     </tr>
 
@@ -190,7 +180,7 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td>
             <img src="App_Themes/eForms_Theme/Images/spacer.gif"/>
         </td>
-        <td class="auto-style3">
+        <td >
             <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice_Payments',HideOnSuccess:true}" />
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
         </td>

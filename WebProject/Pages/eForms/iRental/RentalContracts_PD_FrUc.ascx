@@ -85,8 +85,8 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td class="ftitle" rowspan="2">
             <nobr>Payment Mode*:</nobr>
         </td>
-        <td class="auto-style3">
-            <div class="auto-style1 parentDiv">
+        <td >
+            <div class=" parentDiv">
                 <select loadon="FirstVisible" class="dropdownlist" requirederr='*' style="width: 155px;"
                     groupid="Rental_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
                     <option value="" selected="selected">Select Payment Mode</option>
@@ -97,10 +97,11 @@ var th = ['','thousand','million', 'billion','trillion'];
                   </div>
              
             </td>
+    
     </tr>
 
      <tr class="PaymentMetthodDetailsRental">
-        <td class="auto-style3">
+        <td >
 
                                    
                
