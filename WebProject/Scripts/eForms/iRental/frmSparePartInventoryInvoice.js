@@ -763,7 +763,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             return;
         }
 
-        
+        debugger;
         var ItemIdInTextBox = $('.ItemIdClass').val();
         var ItemIdNames = $('.linkFileName').toArray();
 

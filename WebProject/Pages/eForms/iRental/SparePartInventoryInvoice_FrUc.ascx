@@ -347,7 +347,7 @@
                                    <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
                                         groupid="SparePartInventoryInvoice" argumentid="ItemId" />--%>
 
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass ElemDisabled "
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled "
                                     groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId"   />
                                 </td>
                                 <td>

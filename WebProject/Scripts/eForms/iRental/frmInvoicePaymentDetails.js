@@ -75,8 +75,8 @@
             $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
         }
 
-        $('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
-        $('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+        //$('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
+        //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
     });
 
     //On Change of Payment Mode  $('option:selected', elem)
