@@ -1546,6 +1546,29 @@
     <Content Include="test.asp" />
     <Content Include="test.html" />
     <Content Include="UploadFileForCarServiceDetails.aspx" />
+    <Content Include="UploadsFilesForCarServiceDetails\10_97143e93-3763-4310-a076-7ebc2441ed5c_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\11_8fb1e10d-eadb-427f-b400-4a5df10f0e9e_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\12_9e9edb72-eee7-4f18-8a7a-54cb4d9ccfa3_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\13_9e9edb72-eee7-4f18-8a7a-54cb4d9ccfa3_stearing_boot.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\14_d9313899-6806-43d7-ad97-08a327ac9077_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\15_d9313899-6806-43d7-ad97-08a327ac9077_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\16_d9313899-6806-43d7-ad97-08a327ac9077_stearing_boot.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\17_d9313899-6806-43d7-ad97-08a327ac9077_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\18_d9313899-6806-43d7-ad97-08a327ac9077_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\19_d9313899-6806-43d7-ad97-08a327ac9077_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\1_2f0991d9-240a-4f28-a7a9-53398c94a216_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\1_d91c6e84-ea2c-4312-9abd-05595d6f0c4c_365.png" />
+    <Content Include="UploadsFilesForCarServiceDetails\20_d9313899-6806-43d7-ad97-08a327ac9077_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\21_d61a1355-097f-4e19-a9b3-9e4a16aec589_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\22_9e9edb72-eee7-4f18-8a7a-54cb4d9ccfa3_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\2_e4d5bc61-3f30-40a8-a554-20955584f38f_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\3_46e774c7-b634-4e79-a3be-43c438faae82_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\3_68e3be78-efbf-41cd-92f8-13061b283ec7_365.png" />
+    <Content Include="UploadsFilesForCarServiceDetails\4_87b2efd5-ab15-4c0f-807e-1b2cabdead7d_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\6_9e1d1f61-a186-4b70-8161-b5fa5e777471_vu.png" />
+    <Content Include="UploadsFilesForCarServiceDetails\7_d61a1355-097f-4e19-a9b3-9e4a16aec589_RoofRack.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\8_d61a1355-097f-4e19-a9b3-9e4a16aec589_oneee.jpg" />
+    <Content Include="UploadsFilesForCarServiceDetails\9_d61a1355-097f-4e19-a9b3-9e4a16aec589_stearing_boot.jpg" />
     <Content Include="UploadSparePartImages.aspx" />
     <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
     <Content Include="Web.config">
@@ -2220,6 +2243,16 @@
     <Content Include="Skins\WindowsStyle.EO.Calendar.ascx" />
     <Content Include="testpage.aspx" />
     <Content Include="Bundle.config" />
+    <Content Include="UploadsFilesForCarServiceDetails\1_97daa2b4-5043-423e-9681-ab6d5694d2cd_CrystalReportViewer1 %2816%29.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\2_3724a3b7-2437-48fc-bc4a-465155c8a889_cv - Copy.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\2_ae03f117-bdf9-4e64-a803-f44a8c8b861d_ammar.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\3_16dab9b2-ebff-4ad9-9dad-99369e462149_daraz.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\4_d61a1355-097f-4e19-a9b3-9e4a16aec589_cv - Copy.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\5_9e1d1f61-a186-4b70-8161-b5fa5e777471_acc.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\5_d61a1355-097f-4e19-a9b3-9e4a16aec589_cv - Copy.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\6_d61a1355-097f-4e19-a9b3-9e4a16aec589_CrystalReportViewer1 %2816%29.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\7_9e1d1f61-a186-4b70-8161-b5fa5e777471_cv - Copy.pdf" />
+    <Content Include="UploadsFilesForCarServiceDetails\8_9e1d1f61-a186-4b70-8161-b5fa5e777471_acc.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

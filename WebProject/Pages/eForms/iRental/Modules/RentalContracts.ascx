@@ -294,7 +294,7 @@
                             });
 
                             $('table[itemno]', t.el).click(function () {
-
+                                debugger
                                 if ($('[colid="Status"] .ColValue', this).text().toLowerCase() != "available") {
                                     return;
                                 }

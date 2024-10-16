@@ -38,6 +38,20 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     });
 
 
+    $('[argumentid="ItemId"]', t.el).on('focus', function ()
+    
+    {
+   
+        $('.trNoDynamic').find('[argumentid]').each(function () {
+            var $element = $(this);
+            var argumentid = $element.attr('argumentid');
+            var value = $element.val('');
+
+           
+        });
+
+    })
+
     $('.PrintBill  ', t.el).click(function ()
     { //
         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintInvoice.aspx?FormCode=" + $('[argumentid="InvRecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
@@ -728,22 +742,40 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         var isValid = true;
 
         // Client-side validation
-        $('.trNoDynamic').find('[argumentid]').each(function ()
-        {
+        //$('.trNoDynamic').find('[argumentid]').each(function ()
+        //{
+        //    var $element = $(this);
+        //    var argumentid = $element.attr('argumentid');
+        //    var value = $element.val().trim();
+
+        //    if (value === '')
+        //    {
+        //        isValid = false;
+        //        console.log('Argument ID:', argumentid, 'is empty');
+        //        $element.css('border', '1px solid red');
+        //    } else
+        //    {
+        //        $element.css('border', '');
+        //    }
+        //});
+
+        $('.trNoDynamic').find('[argumentid]').each(function () {
             var $element = $(this);
             var argumentid = $element.attr('argumentid');
             var value = $element.val().trim();
 
-            if (value === '')
-            {
-                isValid = false;
-                console.log('Argument ID:', argumentid, 'is empty');
-                $element.css('border', '1px solid red');
-            } else
-            {
-                $element.css('border', '');
+            // Check if the argumentid is one of the specified ones
+            if (['ItemId', 'SelectQuantity', 'SparePartUnitPrice'].includes(argumentid)) {
+                if (value === '') {
+                    isValid = false;
+                    console.log('Argument ID:', argumentid, 'is empty');
+                    $element.css('border', '1px solid red');
+                } else {
+                    $element.css('border', '');
+                }
             }
         });
+
 
         // Additional check to ensure all required fields are filled
         var requiredFieldsFilled = $('.trNoDynamic').find('[argumentid]').toArray().every(function (element)
@@ -944,7 +976,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             var row = res[i];
              InvoiceType = row.InvoiceType
         }
-        debugger
+      
         $('.SimpleTab', t.el).removeAttr('disabled');
         $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
         $('[argumentid="SparePartSerialNo"],[argumentid="SparePartName"],[argumentid="SparePartQuantity"],[argumentid="TotalPrice"]',t.el).prop('disabled', true).addClass('ElemDisabled');
@@ -1023,9 +1055,23 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             $('.common-button,.CommonDisableClasss', t.el).removeClass('ElemDisabled');
             $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
             $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
-                $('.InvoiceOpenBtn', t.el).addClass('ElemDisabled');
+             $('.InvoiceOpenBtn', t.el).addClass('ElemDisabled');
 
-               
+
+                setTimeout(function () {
+                    $('.trNoDynamic').find('[argumentid]').each(function () {
+                        var $element = $(this);
+                        var argumentid = $element.attr('argumentid');
+                        var value = $element.val().trim();
+
+                        if (value === '') {
+                            isValid = true;
+                            console.log('Argument ID:', argumentid, 'is empty');
+                            $element.css('border', '');
+                        }
+                    });
+
+                }, 1000);
 
 
         }
@@ -1102,6 +1148,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                 var row = rows[ i ];
 
                 var RecId = row.RecId;
+                var InvRecId = row.InvRecId;
                 var ItemId = row.ItemId;
                 var SparePartSerialNo = row.SparePartSerialNo;
                 var SparePartName = row.SparePartName;
@@ -1122,14 +1169,16 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
 
 
                                 <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                                <td class="ColTemplate w-grid-cell-border colIndex-4 InvRecId" style="padding: 5px; background: white; color: black;display:none;">${InvRecId}</td>
                                <td class="ColTemplate w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${ItemId}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartSerialNo}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${StoreLocation}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartRackfNo}</td>
                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartShelfNo}</td>
-                               
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SelectQuantity}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4 SparePartQuantity" style="padding: 5px; background: white; color: black;display:none;">${SparePartQuantity}</td>
+
+                              <td class="ColTemplate w-grid-cell-border colIndex-4 SelectQuantity" style="padding: 5px; background: white; color: black;">${SelectQuantity}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice.toFixed(3)}</td>
                               <td class="ColTemplate TotalPriceVal w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3) }</td>
                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
@@ -1149,17 +1198,17 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
            
             $('.remove-button', tblUFL).click(function ()
             {
-                
+                debugger;
                 var btn = $(this);
-               
-                var ItemId = btn.closest('tr').find('.ColValue:eq(0)').text().trim();
+                var curTR = btn.closest('tr');
+                var invRecIdValue = curTR.find('.InvRecId').text().trim(); 
 
-                var SparePartQuantity = btn.closest('tr').find('.ColValue:eq(2)').text().trim();
-                var SelectQuantity = btn.closest('tr').find('.ColValue:eq(3)').text().trim();
+                var SparePartQuantity = curTR.find('.SparePartQuantity').text().trim(); 
+                var SelectQuantity = curTR.find('.SelectQuantity').text().trim();
                 var recId = btn.attr("recId");
                 var curTR = btn.closest('tr');
                 var DeleteUploadItem = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem;
-                DeleteUploadItem(t, recId, curTR, btn, ItemId, SelectQuantity);
+                DeleteUploadItem(t, recId, curTR, btn, invRecIdValue, SelectQuantity);
 
                 // Remove the row from the table
                 var curTR = btn.closest('tr');//.remove();
@@ -1191,10 +1240,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
 
 };
 
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = function (t, recId, curTR, btn, ItemId, SelectQuantity)
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = function (t, recId, curTR, btn, invRecIdValue, SelectQuantity)
 {
 
-    var params = { Command: 'UPD_InvoiceDetails', RecId: recId, ItemId: ItemId, SelectQuantity: SelectQuantity, DBAction: 'DeleteItem' };
+    var params = { Command: 'UPD_InvoiceDetails', RecId: recId, InvRecId: invRecIdValue, SelectQuantity: SelectQuantity, DBAction: 'DeleteItem' };
     ServerCall(params, function (res)
     {
        

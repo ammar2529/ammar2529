@@ -586,7 +586,8 @@
              SparePartUnitPrice: { caption: 'Price', width: '55px' },
              StoreLocation: { caption: 'Store', width: '50px' },
              PurchasingFrom: { caption: 'From', width: '60px' },
-             StoreLocationID :{ width: '0px' }
+             StoreLocationID: { width: '0px' },
+             InvRecId: { width: '0px' }
 
          }
      };
@@ -594,7 +595,8 @@
  </GridConfig>
  <Scripts>
  <script>
-     var fn = function () {
+     var fn = function ()
+     {
          //var conCar = AsyncWidgets.get("conRentalContracts_Cars");
          //var f = conCar._frm;
          t.on('beforeSearchGetForm', function (p) {
@@ -604,24 +606,49 @@
              p.DBAction = 'popupItemCode';
              /*console.log(p.CarType);*/
              console.log(p.DBAction);
+
+
+
          });
 
         
 
-
          t.on('rowsRendered', function () {
 
-            
-                 $('[colid="SparePartUnitPrice"]:not(".w-grid-head-cell")').each(function () {
+             
+             $('[colid="SparePartUnitPrice"]:not(".w-grid-head-cell")').each(function () {
 
-                     var ptr = $(this).closest('tr');
-                     $('[colid="SparePartUnitPrice"] div', ptr).text(parseFloat($('[colid="SparePartUnitPrice"] div', ptr).text()).fix(3));
+                 var ptr = $(this).closest('tr');
+                 $('[colid="SparePartUnitPrice"] div', ptr).text(parseFloat($('[colid="SparePartUnitPrice"] div', ptr).text()).fix(3));
 
-                 });
+             });
 
 
+             $('[colid="SparePartQuantity"]:not(".w-grid-head-cell")').each(function ()
+             {
+             
+                 var ptr = $(this).closest('tr');
+                 if (parseFloat($(this).text()) < 1) {
+                     ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                     //$('td:nth-child(3)', ptr).css('cursor', '').unbind();
+
+                 }
+             });
+
+
+             $('table[itemno]', t.el).click(function (event) {
+                 debugger;
+                 if (parseFloat($('[colid="SparePartQuantity"] .ColValue', this).text()) < 1 || parseFloat($('[colid="SparePartQuantity"] .ColValue', this).text()) == 0) {
+                     event.preventDefault();  // Prevent default click action
+                     event.stopPropagation(); // Stop the click event from propagating
+                     return false;            // Prevent any further handling of this click
+                 }
+
+                 $('table[itemno] td,table[itemno] div').css('cursor', 'pointer');
+             });
          });
 
+  
 
 
      }

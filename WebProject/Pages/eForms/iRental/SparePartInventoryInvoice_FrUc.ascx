@@ -112,6 +112,7 @@
                       <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
                          <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />
+                        <%--<input type="hidden" name="InvRecId"  argumentid="InvRecId" groupid="SparePartInventoryInvoice"/>--%>
                        
                  </td>
 
@@ -343,9 +344,16 @@
 
                             </tr>
                             <tr class="trNoDynamic">
+
+                                <td style="display: none">
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                                        groupid="SparePartInventoryInvoice" argumentid="InvRecId" disabled="disabled" />
+
+                                </td>
                                 <td>
                                    <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
                                         groupid="SparePartInventoryInvoice" argumentid="ItemId" />--%>
+
 
                                     <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled "
                                     groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId"   />
