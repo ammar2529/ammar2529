@@ -497,8 +497,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
                     continue;
                 }
                 //var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}' target='_blank'>${fileName}</a>`;
-
-                var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}' target='_blank' rel='noopener noreferrer'>${fileName}</a>`;
+                debugger
+                var fileLink = `<a class='file-link' href='UploadsFilesForCarServiceDetails/${recId}_${fileGuid}_${fileName}' target='_blank' rel='noopener noreferrer'>${fileName}</a>`;
 
 
 
