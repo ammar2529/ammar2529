@@ -703,7 +703,7 @@
                        <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" style="width: 95px; color: blue;"  value="  Open  " class="DataAction ButtonStyle  InvoiceOpenBtn common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                             <input type="button" style="width: 95px; color: Green"  value="  Close " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                            <input type="button" style="width: 95px; color: Red"  value="  Cancele  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Red"  value="  Cancel  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
 
                         </div>
                     

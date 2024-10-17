@@ -176,7 +176,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         if (t.FormMode == "new") 
         {
 
-            
+            $('.LineOfItemRow', t.el).show();
             var tblUFL = $('table.uploadedItemList', t.el);
             $('table.uploadedItemList .ItemTableRow',t.el).remove();
             /* $('.ItemTR > td', tblUFL).empty();*/
