@@ -514,7 +514,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${fileType}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${loggedUser}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${dateCreated}</td>
-                             <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;display:block;" recid="${recId}" filename="${fileName}">X</td>
+                             <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;" recid="${recId}" filename="${fileName}">X</td>
                               </tr>
                                                 `;
 
