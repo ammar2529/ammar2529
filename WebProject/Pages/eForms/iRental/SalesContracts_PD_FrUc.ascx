@@ -58,7 +58,7 @@ var th = ['','thousand','million', 'billion','trillion'];
     </tr>
 
 
-    <tr>
+<%--    <tr>
         <td width="10%" class="ftitle" valign="top">
             <nobr>System ID</nobr>
         </td>
@@ -75,12 +75,7 @@ var th = ['','thousand','million', 'billion','trillion'];
                                  <input type="text" style="text-align: center; width: 150px; font-weight: bold" maxlength="10" class="text number"
                                      groupid="Sales_Payments" argumentid="ReceiptId" />
            
-            
-           <%-- <nobr  style="font-style: italic; font-weight: bold;">&nbsp; Manual Receipt Date: </nobr>
-           
-            
-            &nbsp;<input type="text" groupid="Sales_Payments" maxlength="10"
-                            style="width: 75px;" class="text  date ManualReceiptDate CommonDisable"  argumentid="ManualReceiptDate" />--%>
+          
 
             <div style="display: none">
                 <span groupid="Sales_Payments" argumentid="ParentRecId"></span>
@@ -89,7 +84,30 @@ var th = ['','thousand','million', 'billion','trillion'];
 
 
         </td>
-    </tr>
+    </tr>--%>
+      <tr>
+        <td width="20%" class="ftitle" valign="top">
+        <nobr>System ID</nobr>
+      </td>
+      <td width="80%">
+      <div style="float:left;width:300px"> 
+        <input type="text" style="text-align:center; width:150px; font-weight:bold; background-color:#F1F1F1"  maxlength="50" class="text AlwaysDisable"
+              groupid="Sales_Payments" argumentid="LocationReceiptId" />
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <nobr style="font-style:italic; font-weight:bold; float:right">Manual ID:</nobr></div>
+              &nbsp;
+           <input type="text" style="text-align:center; width:150px; font-weight:bold"  maxlength="10" class="text number"
+              groupid="Sales_Payments" argumentid="ReceiptId" />
+
+              <div style="display:none">
+                  <span groupid="Sales_Payments" argumentid="ParentRecId"></span>
+              <span groupid="Sales_Payments" argumentid="RecId"></span>
+              
+              </div>
+
+        
+              </td>
+  </tr>
 
     <tr>
         <td class="ftitle">

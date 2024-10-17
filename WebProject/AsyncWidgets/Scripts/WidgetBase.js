@@ -1923,6 +1923,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 return;
             }
             resGrd.on('rowClicked', function HandleRowClick(args) {
+                if ($("tr", args.row).attr('disabled') == "disabled") {
+                    return;
+                }
                 args.canceled = false;
                 t.setParams({ params: args.rowData, isRow: true });
                 popup.hide();
@@ -3541,8 +3544,9 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 }).mouseleave(function () {
                     $(this).removeClass('w-grid-row-hover');
                 }).click(function (e) {
-                    if ($(e.target).hasClass('ColValue') || $(e.target).attr('colid') || $(e.target).closest('.ColValue').length)
+                    if ($(e.target).hasClass('ColValue') || $(e.target).attr('colid') || $(e.target).closest('.ColValue').length) {
                         t.fireEvent('rowClicked', { rowData: r.Rows[$(this).attr('itemno') - 1], e: e, row: this });
+                        }
                     if (!!t.highLightedRow) {
                         t.highLightedRow.removeClass('w-grid-row-highlighted');
                         if (t.highLightedRow[0] === this) return;

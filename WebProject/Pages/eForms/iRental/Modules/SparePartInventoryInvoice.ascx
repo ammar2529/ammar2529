@@ -584,7 +584,7 @@
              SparePartRackfNo: { caption: 'Rack', width: '60px' },
              SparePartShelfNo: { caption: 'Shelf', width: '60px' },
              SparePartUnitPrice: { caption: 'Price', width: '55px' },
-             StoreLocation: { caption: 'Store', width: '50px' },
+             StoreLocation: { caption: 'Store', width: '60px' },
              PurchasingFrom: { caption: 'From', width: '60px' },
              StoreLocationID: { width: '0px' },
              InvRecId: { width: '0px' }
@@ -629,23 +629,22 @@
              
                  var ptr = $(this).closest('tr');
                  if (parseFloat($(this).text()) < 1) {
-                     ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                     ptr.css({ 'background': '#F1F1F1','cursor':'not-allowed' }).attr('disabled', 'disabled');
+                     $('div,td', ptr).css({ 'cursor': 'not-allowed' });
                      //$('td:nth-child(3)', ptr).css('cursor', '').unbind();
 
                  }
              });
 
 
-             $('table[itemno]', t.el).click(function (event) {
-                 debugger;
-                 if (parseFloat($('[colid="SparePartQuantity"] .ColValue', this).text()) < 1 || parseFloat($('[colid="SparePartQuantity"] .ColValue', this).text()) == 0) {
-                     event.preventDefault();  // Prevent default click action
-                     event.stopPropagation(); // Stop the click event from propagating
-                     return false;            // Prevent any further handling of this click
-                 }
+             //$('table[itemno]', t.el).click(function (event) {
+             //   debugger
+               
+             //   var a =  $('[argumentid="SelectQuantity"]', t.el).val(1);
+               
 
-                 $('table[itemno] td,table[itemno] div').css('cursor', 'pointer');
-             });
+               
+             //});
          });
 
   

@@ -377,7 +377,7 @@
                                         groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text CommonDisableClass "
+                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text CommonDisableClass SelectQuantity "
                                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                                 </td>
                                 <td>
@@ -526,13 +526,15 @@
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4 " style="padding-left: 5px; padding-right: 0px; color: black;width: 60px; ">Item ID</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 130px;">Item Code</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 270px;">Description</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Store</th>
+                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">From</th>
+              
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Rack</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Shelf</th>
+                      <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Store</th>
                 <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Unit Price</th>
                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Total Price</th>
-                   <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">From</th>
+                   
                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border w-grid-cell-border-last colIndex-4" ></th>
 
               </tr>
@@ -700,8 +702,8 @@
                            
                        <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" style="width: 95px; color: blue;"  value="  Open  " class="DataAction ButtonStyle  InvoiceOpenBtn common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                            <input type="button" style="width: 95px; color: Green"  value="  Closed  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                            <input type="button" style="width: 95px; color: Red"  value="  Canceled  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Green"  value="  Close " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Red"  value="  Cancele  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
 
                         </div>
                     

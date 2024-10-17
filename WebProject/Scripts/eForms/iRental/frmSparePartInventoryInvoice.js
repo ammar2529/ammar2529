@@ -38,17 +38,36 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     });
 
 
-    $('[argumentid="ItemId"]', t.el).on('focus', function ()
-    
-    {
-   
+    $('[argumentid="ItemId"]', t.el).on('focus', function () {
+        var itemId = $(this).val();
+        debugger
+      
+
         $('.trNoDynamic').find('[argumentid]').each(function () {
             var $element = $(this);
             var argumentid = $element.attr('argumentid');
             var value = $element.val('');
 
-           
         });
+
+        $('.trNoDynamic').find('[argumentid]').each(function () {
+            var $element = $(this);
+            var argumentid = $element.attr('argumentid');
+            var value = $element.val().trim();
+
+            if (value === '') {
+                isValid = true;
+                console.log('Argument ID:', argumentid, 'is empty');
+                $element.css('border', '');
+            }
+        });
+
+        if (itemId === '') {
+            $('.SelectQuantity', t.el).val('1').addClass('selected-highlight');
+        } else {
+            $('.SelectQuantity', t.el).val('').removeClass('selected-highlight');
+
+        }
 
     })
 
@@ -80,7 +99,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
    
 
     $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
-        debugger;
+        
 
     var SparePartUnitPrice = parseFloat($(this).val()) || 0;
     SparePartUnitPrice = SparePartUnitPrice.toFixed(3);
@@ -795,7 +814,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             return;
         }
 
-        debugger;
+        
         var ItemIdInTextBox = $('.ItemIdClass').val();
         var ItemIdNames = $('.linkFileName').toArray();
 
@@ -998,6 +1017,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: `${InvoiceRecIdval}`, DBAction: 'GetLinesItems' };
         ServerCall(params, function (res)
         {
+            debugger
             var res = decJSON(res)
             
             if (res.status === 'OK')
@@ -1026,6 +1046,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
             $('.common-button,.CommonDisableClasss,.CommonDisableClass', t.el).addClass('ElemDisabled');
 
+            $('.LineOfItemRow', t.el).hide();
+
+            setTimeout(function () {
+                $('.remove-button', t.el).hide();
+                $('.ItemListDiv', t.el).attr('disabled', 'disabled');
+            }, 500)
            
 
         }
@@ -1040,8 +1066,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
             $('.common-button,.CommonDisableClasss,.CommonDisableClass,.ItemListDiv', t.el).addClass('ElemDisabled');
 
-
-        
+            $('.LineOfItemRow', t.el).hide();
+            setTimeout(function () {
+                $('.remove-button', t.el).hide();
+                $('.ItemListDiv', t.el).attr('disabled', 'disabled');
+            }, 500)
           
         }
 
@@ -1049,7 +1078,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             if ($('[argumentid="StateId"]', t.el).text() == 'OpenState')
             {
 
-
+                $('.LineOfItemRow', t.el).show();
             $('.common-button,.CommonDisableClasss', t.el).removeAttr('disabled', 'disabled');
 
             $('.common-button,.CommonDisableClasss', t.el).removeClass('ElemDisabled');
@@ -1173,15 +1202,17 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                                <td class="ColTemplate w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${ItemId}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartSerialNo}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${StoreLocation}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
+                             
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartRackfNo}</td>
                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartShelfNo}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${StoreLocation}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4 SparePartQuantity" style="padding: 5px; background: white; color: black;display:none;">${SparePartQuantity}</td>
 
                               <td class="ColTemplate w-grid-cell-border colIndex-4 SelectQuantity" style="padding: 5px; background: white; color: black;">${SelectQuantity}</td>
                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice.toFixed(3)}</td>
                               <td class="ColTemplate TotalPriceVal w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3) }</td>
-                               <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
+                             
                              <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;" recid="${RecId}">X</td>
                               </tr>
 
@@ -1198,7 +1229,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
            
             $('.remove-button', tblUFL).click(function ()
             {
-                debugger;
+                
                 var btn = $(this);
                 var curTR = btn.closest('tr');
                 var invRecIdValue = curTR.find('.InvRecId').text().trim(); 
@@ -1234,6 +1265,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
 
 
             $('table.uploadedItemList .ItemTableRow').hide();
+            $('table.uploadedItemList .ItemTableRow').remove();
             $('table.uploadedItemList .NoRecordsTR').show();
         }
     } //  if (res.status == 'OK')
