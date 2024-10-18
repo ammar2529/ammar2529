@@ -92,8 +92,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
         setTimeout(function ()
         {
-            $('.remove-button', t.el).hide();
-            $('.ItemListDiv', t.el).attr('disabled', 'disabled');
+            $('.remove-button', t.el).show();
+          
         }, 500)
       
 
