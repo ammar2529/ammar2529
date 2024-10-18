@@ -39,8 +39,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
 
     $('[argumentid="ItemId"]', t.el).on('focus', function () {
-        var itemId = $(this).val();
-        debugger
+      
       
 
         $('.trNoDynamic').find('[argumentid]').each(function () {
@@ -62,12 +61,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             }
         });
 
-        if (itemId === '') {
-            $('.SelectQuantity', t.el).val('1').addClass('selected-highlight');
-        } else {
-            $('.SelectQuantity', t.el).val('').removeClass('selected-highlight');
-
-        }
+    
 
     })
 
