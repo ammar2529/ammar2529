@@ -711,7 +711,7 @@
                             <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle InvoiceButton_Edit OnNewForm" />
                             <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                             <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                             <input type="button" value="  Print Bill  " style="width: 102px" class="ButtonStyle PrintBill OnNewForm  common-button" />
+                             <input type="button" value="  Print  " style="width: 50px" class="ButtonStyle PrintBill OnNewForm  " />
 
                             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
                         </div>
