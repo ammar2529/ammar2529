@@ -93,6 +93,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         setTimeout(function ()
         {
             $('.remove-button', t.el).show();
+            $('.LineOfItemRow', t.el).show();
+            $('[argumentid = "ItemId"], [argumentid = "SelectQuantity"], [argumentid = "SparePartUnitPrice"]', t.el).removeAttr('disabled');
+            $('[argumentid = "ItemId"], [argumentid = "SelectQuantity"], [argumentid = "SparePartUnitPrice"]', t.el).removeClass('ElemDisabled')
           
         }, 500)
       
