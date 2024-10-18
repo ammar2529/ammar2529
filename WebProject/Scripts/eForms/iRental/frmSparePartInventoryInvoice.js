@@ -38,30 +38,34 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     });
 
 
-    $('[argumentid="ItemId"]', t.el).on('focus', function () {
-      
-      
+    $('[argumentid="ItemId"]', t.el).on('focus', function ()
+    {
 
-        $('.trNoDynamic').find('[argumentid]').each(function () {
+
+
+        $('.trNoDynamic').find('[argumentid]').each(function ()
+        {
             var $element = $(this);
             var argumentid = $element.attr('argumentid');
             var value = $element.val('');
 
         });
 
-        $('.trNoDynamic').find('[argumentid]').each(function () {
+        $('.trNoDynamic').find('[argumentid]').each(function ()
+        {
             var $element = $(this);
             var argumentid = $element.attr('argumentid');
             var value = $element.val().trim();
 
-            if (value === '') {
+            if (value === '')
+            {
                 isValid = true;
                 console.log('Argument ID:', argumentid, 'is empty');
                 $element.css('border', '');
             }
         });
 
-    
+
 
     })
 
@@ -85,6 +89,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         $('.common-button,.CommonDisableClasss ', t.el).removeAttr('disabled', 'disabled');
 
         $('.common-button,.CommonDisableClasss ', t.el).removeClass('ElemDisabled');
+
+        setTimeout(function ()
+        {
+            $('.remove-button', t.el).hide();
+            $('.ItemListDiv', t.el).attr('disabled', 'disabled');
+        }, 500)
       
 
 

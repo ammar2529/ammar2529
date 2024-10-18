@@ -598,7 +598,6 @@
      var fn = function ()
      {
          var f = AsyncWidgets.get("frmSparePartInventoryInvoice");
-         //var f = conCar._frm;
          t.on('beforeSearchGetForm', function (p) {
              /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
 
@@ -637,20 +636,22 @@
              });
 
 
-             $('table[itemno]', t.el).click(function (event) {
+             $('table[itemno]', t.el).click(function (event)
+             {
 
-                 debugger;
+
                  var SparePartUnitPrice = parseFloat($('[colid="SparePartUnitPrice"] .ColValue', this).text());
                  var SelectQuantity = 1;
 
                  var Result = SelectQuantity * SparePartUnitPrice;
-                var a=  $('[argumentid="TotalPrice"]', f.el).val(Result.toFixed(3));
-                 var b =$('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+                 var a = $('[argumentid="TotalPrice"]', f.el).val(Result.toFixed(3));
+                 var b = $('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
                  var c = $('[argumentid="SelectQuantity"]', f.el).val(SelectQuantity)
-               
 
 
-               
+
+
+
              });
          });
 

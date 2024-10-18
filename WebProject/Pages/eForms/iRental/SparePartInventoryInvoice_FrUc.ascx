@@ -322,115 +322,115 @@
                 </tr>
 
                 <!-- New row with labels and 8 columns starts here -->
-                <tr class="LineOfItemRow">
-                    <td colspan="4">
-                        <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
-                            <tr>
-                                <td class="ftitle" style="width:2px">
-                                    <label for="column1">Item ID</label></td>
-                                <td class="ftitle" style="width:100px">
-                                    <label for="column2">Item Code</label></td>
-                                <td class="ftitle" style="width:300px">
-                                    <label for="column3">Description</label></td>
-                                <td class="ftitle" style="width:50px">
-                                    <label for="column4">Qty'AVL</label></td>
-                                <td class="ftitle" style="width:30px">
-                                    <label for="column5">QTY</label></td>
-                                <td class="ftitle" style="width:70px">
-                                    <label for="column7">Unit Price</label></td>
-                                <td class="ftitle" style="width:56px">
-                                    <label for="column8">Total Price</label></td>
-                                 <td class="ftitle"><label for="column9">Actions</label></td> <!-- Actions column -->
+              <tr class="LineOfItemRow">
+    <td colspan="4">
+        <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
+            <tr>
+                <td class="ftitle" style="width:2px">
+                    <label for="column1">Item ID</label></td>
+                <td class="ftitle" style="width:100px">
+                    <label for="column2">Item Code</label></td>
+                <td class="ftitle" style="width:300px">
+                    <label for="column3">Description</label></td>
+                <td class="ftitle" style="width:50px">
+                    <label for="column4">Qty'AVL</label></td>
+                <td class="ftitle" style="width:30px">
+                    <label for="column5">QTY</label></td>
+                <td class="ftitle" style="width:70px">
+                    <label for="column7">Unit Price</label></td>
+                <td class="ftitle" style="width:56px">
+                    <label for="column8">Total Price</label></td>
+                 <td class="ftitle"><label for="column9">Actions</label></td> <!-- Actions column -->
 
-                            </tr>
-                            <tr class="trNoDynamic">
+            </tr>
+            <tr class="trNoDynamic">
 
-                                <td style="display: none">
-                                    <input type="text" style="text-align: center; width: 50px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="InvRecId" disabled="disabled" />
+                <td style="display: none">
+                    <input type="text" style="text-align: center; width: 50px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="InvRecId" disabled="disabled" />
 
-                                </td>
-                                <td>
-                                   <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
-                                        groupid="SparePartInventoryInvoice" argumentid="ItemId" />--%>
-
-
-                                    <input type="text" style="text-align: center; width: 50px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled "
-                                    groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId"   />
-                                </td>
-                                <td>
-                                    <input type="text" style="text-align: left; width: 130px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" disabled="disabled" />
-
-                                <%--    
-                                <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass ElemDisabled "
-                                 groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="SparePartSerialNo"  />--%>
-                                </td>
+                </td>
+                <td>
+                   <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
+                        groupid="SparePartInventoryInvoice" argumentid="ItemId" />--%>
 
 
-                                <td>
-                                    <input type="text" style="text-align: left; width: 380px; font-weight: bold;" maxlength="10" class="text  ElemDisabled"
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartName"  disabled="disabled"/>
-                                </td>
-                                <td>
-                                    <input type="text" style="text-align: center; width: 50px;" maxlength="10" class="text ElemDisabled number "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
-                                </td>
-                                <td>
-                                    <input type="text" style="text-align: center; width: 30px; font-weight: bold; " maxlength="10" class="text CommonDisableClass SelectQuantity "
-                                        groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
-                                </td>
-                                <td>
-                                    <input type="text" style="text-align: center; width: 56px;" maxlength="10" class="text ElemDisabled number CommonDisableClass "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" />
-                                </td>
-                                <td>
-                                    <input type="text" style="text-align: center; width: 70px; font-weight: bold; " maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="TotalPrice" disabled="disabled"/>
+                    <input type="text" style="text-align: center; width: 50px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled "
+                    groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId"   />
+                </td>
+                <td>
+                    <input type="text" style="text-align: left; width: 130px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" disabled="disabled" />
 
-                                </td>
-                                <%--<td> display none </td>--%>
-                                <td style="display:none">
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="StoreLocationID" disabled="disabled"/>
-
-                                </td>
-
-                                <td style="display: none">
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartRackfNo" disabled="disabled" />
-
-                                </td>
-
-                                <td style="display: none">
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="SparePartShelfNo" disabled="disabled" />
-
-                                </td>
-
-                         
-                                <td style="display: none">
-                                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
-                                        groupid="SparePartInventoryInvoice" argumentid="PurchasingFrom" disabled="disabled" />
-
-                                </td>
+                <%--    
+                <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass ElemDisabled "
+                 groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="SparePartSerialNo"  />--%>
+                </td>
 
 
-                                <%--<td> display none </td>--%>
-                                 <td><button type = "button" recid="recId" class="SaveBtn">Save</button></td> <!-- Delete button -->
+                <td>
+                    <input type="text" style="text-align: left; width: 380px; font-weight: bold;" maxlength="10" class="text  ElemDisabled"
+                        groupid="SparePartInventoryInvoice" argumentid="SparePartName"  disabled="disabled"/>
+                </td>
+                <td>
+                    <input type="text" style="text-align: center; width: 50px;" maxlength="10" class="text ElemDisabled number "
+                        groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
+                </td>
+                <td>
+                    <input type="text" style="text-align: center; width: 30px; font-weight: bold; " maxlength="10" class="text CommonDisableClass SelectQuantity "
+                        groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
+                </td>
+                <td>
+                    <input type="text" style="text-align: center; width: 56px;" maxlength="10" class="text ElemDisabled number CommonDisableClass "
+                        groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" />
+                </td>
+                <td>
+                    <input type="text" style="text-align: center; width: 70px; font-weight: bold; " maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="TotalPrice" disabled="disabled"/>
 
-                            </tr>
+                </td>
+                <%--<td> display none </td>--%>
+                <td style="display:none">
+                    <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="StoreLocationID" disabled="disabled"/>
+
+                </td>
+
+                <td style="display: none">
+                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="SparePartRackfNo" disabled="disabled" />
+
+                </td>
+
+                <td style="display: none">
+                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="SparePartShelfNo" disabled="disabled" />
+
+                </td>
+
+         
+                <td style="display: none">
+                    <input type="text" style="text-align: center; width: 80px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
+                        groupid="SparePartInventoryInvoice" argumentid="PurchasingFrom" disabled="disabled" />
+
+                </td>
 
 
-                     
-                        </table>
+                <%--<td> display none </td>--%>
+                 <td><button type = "button" recid="recId" class="SaveBtn">Save</button></td> <!-- Delete button -->
+
+            </tr>
 
 
-                    </td>
+     
+        </table>
 
-                  
 
-                </tr>
+    </td>
+
+  
+
+</tr>
            
 
                         <tr>
