@@ -746,14 +746,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         }, 3000);
 
         $('.btnSaveInvoice', t.el).attr('disabled');
-        $('.btnSaveInvoice', t.el).hide();
+        $('.btnSaveInvoice,.InvoiceButton_Edit,.InvoiceOpenBtn', t.el).hide();
         $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
 
 
         $('.btnSave,.OnCreateInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
         $('.btnSave,.OnCreateInvoice', t.el).show();
         $('.OnNewForm', t.el).show();
-        
+        $('.InvoiceButton_Edit,.InvoiceOpenBtn', t.el).hide();
         
     });
 
