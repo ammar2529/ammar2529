@@ -266,6 +266,34 @@ function compareDates(date1, date2) {
 }
 
 
+
+
+    // Simple function to set dropdown value by the option's value
+    var setDropdownValue = function (dropdownSelector, optionValue) {
+        // Get the dropdown element by the selector
+        var dropdownElement = $(dropdownSelector);
+
+        // Check if the dropdown exists
+        if (!dropdownElement.length) {
+            console.log("Dropdown not found");
+            return;
+        }
+
+        // Set the dropdown value to the given option value
+        dropdownElement.val(optionValue);
+
+        // Optional: Check if the correct value was set
+        if (dropdownElement.val() == optionValue) {
+            console.log("Value " + optionValue + " is selected successfully");
+        } else {
+            console.log("Failed to select value " + optionValue);
+        }
+    };
+
+    // Example usage:
+    
+
+
 //var sessionCheckTimeout;
 //function setTimer()
 //{

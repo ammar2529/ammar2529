@@ -377,6 +377,170 @@
 
 </div>
 
+<div class='LOVPopup' lovpopupid='QuotationInvoicePopup' style="display: none">
+    <UC8:Form ID="frmInvoice_Cust_Quotation_ShU" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
+
+        <WidgetConfig>
+            <script>
+                var cf = {
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Search'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+     <%--   <Scripts>
+                    <script>
+                        var fn = function () {
+                            var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
+
+                            $('.ClosePopup', t.el).click(function () {
+                                var f = conGrd._frm;
+                                f._LOVCon.hide();
+                                conGrd._Masked.unmask();
+                                conGrd._frm = conGrd._Masked = null;
+                            });
+                        }
+                    </script>
+                </Scripts>--%>
+    </UC8:Form>
+    <AW:DataGrid ID="grdInvoice_Cust_Quotation" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmInvoice_Cust_Quotation_ShU"
+        EmptyHeight="201px" AllowNew="false" SelectableRow="false"
+        PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
+        GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
+
+        
+ <GridConfig>
+ <script>
+     var cf = {
+         cols: {
+             Sequence: { width: '0px' },
+             NationalIDExpiryDate: { width: '0px' },
+             Nationality: { width: '0px' },
+             Gender: { width: '0px' },
+             DrivingLicenseNo: { width: '0px' },
+             DrivingLicenseExpiry: { width: '0px' },
+             PassportNo: { width: '0px' },
+             PassportExpiry: { width: '0px' },
+             CustomerType: { width: '0px' },
+             WorkTelephone: { width: '0px' },
+             ResidenceTelephone: { width: '0px' },
+             MobileTelephone2: { width: '0px' },
+             RecCode: { caption: 'Code', width: '90px' },
+             NationalIDNo: { caption: 'National ID No.' },
+             MobileTelephone1: { caption: 'Mobile Telephone' },
+             CustomerStatus: { caption: 'Status' }
+
+
+         },
+         forms: {
+             NewFormId: 'frmInvoiceDetails_Quotation',
+             Keys: 'RecId'
+         }
+     };
+ </script>
+
+
+ </GridConfig>
+        <Scripts>
+            <script>
+                var fn = function () {
+                    var f = AsyncWidgets.get("frmSparePartInventoryInvoice");
+                    //t.on('beforeSearchGetForm', function (p) {
+                    //    /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
+
+                    //    /* p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);*/
+                    //    p.DBAction = 'popupItemCode';
+                    //    /*console.log(p.CarType);*/
+                    //    console.log(p.DBAction);
+
+
+
+                    //});
+
+
+
+                    t.on('rowsRendered', function () {
+
+
+                        //$('[colid="SparePartUnitPrice"]:not(".w-grid-head-cell")').each(function () {
+
+                        //    var ptr = $(this).closest('tr');
+                        //    $('[colid="SparePartUnitPrice"] div', ptr).text(parseFloat($('[colid="SparePartUnitPrice"] div', ptr).text()).fix(3));
+
+                        //});
+
+
+                        //$('[colid="SparePartQuantity"]:not(".w-grid-head-cell")').each(function () {
+
+                        //    var ptr = $(this).closest('tr');
+                        //    if (parseFloat($(this).text()) < 1) {
+                        //        ptr.css({ 'background': '#F1F1F1', 'cursor': 'not-allowed' }).attr('disabled', 'disabled');
+                        //        $('div,td', ptr).css({ 'cursor': 'not-allowed' });
+                        //        //$('td:nth-child(3)', ptr).css('cursor', '').unbind();
+
+                        //    }
+                        //});
+
+
+                        $('table[itemno]', t.el).click(function (event) {
+
+                            debugger
+                            var CustomerRecCode = $('[colid="CustomerRecCode"] .ColValue', this).text();
+                           
+                           
+                            var a = $('[argumentid="CustomerRecCodeQuotation"]', f.el).val(CustomerRecCode);
+                         
+
+                            var b = $('[argumentid="CustomerRecCode"]', f.el).val('');
+
+
+                        });
+                    });
+
+
+
+
+                }
+            </script>
+        </Scripts>
+
+ </AW:DataGrid>
+
+    <uc8:Form ID="frmInvoiceDetails_Quotation" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Customers'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function () {
+                    //
+                    t.on("show", function () {
+
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </uc8:Form>
+
+</div>
+
 <div class='LOVPopup' lovpopupid='carPopupGarageForInvoice' style="display: none">
     <uc8:Form ID="frmCarServiceDetailsForInvoice_Cars" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_GRG_SearchCarFor_CarAndCustomerDetils" AsyncForm="~/Pages/eForms/iRental/GRG_CarServiceDetails_Car_ShUc.ascx">
         <WidgetConfig>
@@ -623,31 +787,43 @@
              });
 
 
-             $('[colid="SparePartQuantity"]:not(".w-grid-head-cell")').each(function ()
-             {
-             
-                 var ptr = $(this).closest('tr');
-                 if (parseFloat($(this).text()) < 1) {
-                     ptr.css({ 'background': '#F1F1F1','cursor':'not-allowed' }).attr('disabled', 'disabled');
-                     $('div,td', ptr).css({ 'cursor': 'not-allowed' });
-                     //$('td:nth-child(3)', ptr).css('cursor', '').unbind();
 
-                 }
-             });
+             if ($('.ServiceInvoice', f.el).is(":checked") || $('.PartsInvoice', f.el).is(":checked"))
+             {
+                 $('[colid="SparePartQuantity"]:not(".w-grid-head-cell")').each(function () {
+
+                     var ptr = $(this).closest('tr');
+                     if (parseFloat($(this).text()) < 1) {
+                         ptr.css({ 'background': '#F1F1F1', 'cursor': 'not-allowed' }).attr('disabled', 'disabled');
+                         $('div,td', ptr).css({ 'cursor': 'not-allowed' });
+                         //$('td:nth-child(3)', ptr).css('cursor', '').unbind();
+
+                     }
+                 });
+             }
 
 
              $('table[itemno]', t.el).click(function (event)
              {
 
 
-                 var SparePartUnitPrice = parseFloat($('[colid="SparePartUnitPrice"] .ColValue', this).text());
+                 var SparePartUnitPrice = parseFloat($('[colid="SparePartUnitPrice"] .ColValue', this).text()) || 0;
+                 var SparePartQuantity = parseFloat($('[colid="SparePartQuantity"] .ColValue', this).text()) || 0;
                  var SelectQuantity = 1;
+                 if (SparePartQuantity === 0) {
+                     var c = $('[argumentid="SelectQuantity"]', f.el).val(0)
+                     var b = $('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+                     var a = $('[argumentid="TotalPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+                     $('[argumentid="SelectQuantity"]', f.el).focus().select();
 
-                 var Result = SelectQuantity * SparePartUnitPrice;
-                 var a = $('[argumentid="TotalPrice"]', f.el).val(Result.toFixed(3));
-                 var b = $('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
-                 var c = $('[argumentid="SelectQuantity"]', f.el).val(SelectQuantity)
+                 } else {
+                     var Result = SelectQuantity * SparePartUnitPrice;
+                     var a = $('[argumentid="TotalPrice"]', f.el).val(Result.toFixed(3));
+                     var b = $('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+                     var c = $('[argumentid="SelectQuantity"]', f.el).val(SelectQuantity)
+                     $('[argumentid="SelectQuantity"]', f.el).focus().select();
 
+                 }
 
 
 

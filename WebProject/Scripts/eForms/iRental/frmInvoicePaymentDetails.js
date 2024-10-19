@@ -4,7 +4,7 @@
 
     AsyncWidgets.WidgetScripts.frmInvoicePaymentDetails.t = t;
 
-
+   
 
     t.on('beforeDataAction', function (param)
     {
@@ -52,31 +52,46 @@
 
     t.on('show', function (args)
     {
-        $('.ChequeNo', t.el).hide();
-        $('.BankName', t.el).hide();
-        $('.ChequeDate', t.el).hide();
-        $('nobr:contains("Cheque No*:")', t.el).hide();
-        $('nobr:contains("Cheque Date*:")', t.el).hide();
-        $('.PaymentMetthodDetails td>.ui-datepicker-trigger').hide();
-        $('div>.ui-datepicker-trigger').hide();
-        $('tr.PaymentMetthodDetails').hide();
-        $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan")
-        $('div.a>nobr ').hide();
-        $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
-        $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
-        $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
 
-        var frm = AsyncWidgets.get('frmSparePartInventoryInvoice');
-        $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
-
-        var dt = new Date();
         if (t.FormMode == "new")
         {
+
+            $('.ChequeNo', t.el).hide();
+            $('.BankName', t.el).hide();
+            $('.ChequeDate', t.el).hide();
+            $('nobr:contains("Cheque No*:")', t.el).hide();
+            $('nobr:contains("Cheque Date*:")', t.el).hide();
+            $('.PaymentMetthodDetails td>.ui-datepicker-trigger').hide();
+            $('div>.ui-datepicker-trigger').hide();
+            $('tr.PaymentMetthodDetails').hide();
+            $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan")
+            $('div.a>nobr ').hide();
+            $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
+            $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
+            $('[argumentid="PaymentMode"]', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+
+            var frm = AsyncWidgets.get('frmSparePartInventoryInvoice');
+            $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
+
+            var dt = new Date();
+            
             $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
+            //$('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
+            //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'K-NET');
+            //var paymentModeElement = $('[argumentid="PaymentMode"]');
+            //var a = setListValue(paymentModeElement, 'K-NET');
+
+            setTimeout(function () {
+                setDropdownValue('[argumentid="PaymentMode"]', '27'); // This will select 'K-Net' (value = '27')
+                
+            }, 2000);
+
+            $('[argumentid="PaymentAmount"]', t.el).focus();
+            
         }
 
-        //$('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
-        //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
+        
     });
 
     //On Change of Payment Mode  $('option:selected', elem)
@@ -128,5 +143,13 @@
         $('[argumentid="AmountInWords"]', t.el).val(getAmountInWords($('[argumentid="PaymentAmount"]', t.el).val()));
 
     });
+
+   
+
+    t.on('onLoadedValues', function (args) {
+
+        $('[argumentid="PaymentAmount"]', t.el).focus();
+    });
+
 
 };

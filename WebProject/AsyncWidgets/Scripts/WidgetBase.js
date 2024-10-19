@@ -1427,7 +1427,7 @@ function GetArgVal(ArgId, GroupId, ctx) {
         return "Argument ID '" + ArgId + "' Not found!";
     }
 }
-function val(elem, ctx) {
+function val(elem, ctx) {//framework function to read a field value from a context
     if (!ctx) { //if ctx is not given,
         if (!!val._ctx) {//if ctx is saved
             ctx = val._ctx; //restore ctx
@@ -1461,18 +1461,22 @@ function val(elem, ctx) {
             return "";
         }
     }
-    var text = $(elem).attr('valtype') == 'text' ? true : false;
+    var text = $(elem).attr('valtype') == 'text';
     if (elem.tagName.toLowerCase() == 'select') {
-        if (elem.selectedIndex > -1)
+        if (elem.selectedIndex > -1) {
             return text ? $('option:selected', elem)[0].text : $('option:selected', elem)[0].value;
-        else return "";
+        }
+        else { 
+            return "";
+        }
     }
     else if (elem.tagName.toLowerCase() == "textarea") {
         return $(elem).val();
     }
     else if (elem.tagName.toLowerCase() == 'input') {
-        if ("textareapasswordhidden".indexOf(elem.type.toLowerCase()) > -1)
+        if ("textpasswordhidden".indexOf(elem.type.toLowerCase()) > -1) { 
             return $(elem).val();
+          }
         else if (elem.type.toLowerCase() == 'radio') {
          //   var rdo = elem.name.toLowerCase(), grpid = elem.getAttribute('groupid');
             var rdo = elem.name, grpid = elem.getAttribute('groupid');
@@ -1640,13 +1644,24 @@ function addAttr(obj, conf) {
         obj.attr(key, conf[key]);
     }
 }
-var setListValue = function (ctl,val) // can be DOM or jquery
+var setListValue = function (ctl,val,valType,ctx) // can be DOM or jquery
 {
-    
+    valType = valType || "text";    
     //////////////////////////////////////////
     if (typeof ctl == "string")
     {
-        ctl = $(ctl);
+        if (!ctx) {
+            if (!setListValue._ctx) {
+                $.showMessage("ctx needed when argument selector is provided");
+                return;
+            }
+            ctx = setListValue._ctx
+        }
+        else {
+            setListValue._ctx = ctx;
+        }
+        
+        ctl = ctl.indexOf("argumentid") > -1 ? $(ctl,ctx) :$(`[argumentid="${ctl}"]`,ctx );
     }
     if (!ctl.tagName) // if not a DOM object then convert it to DOM object
     {
@@ -1661,8 +1676,8 @@ var setListValue = function (ctl,val) // can be DOM or jquery
     val = val.toString().toUpperCase();
     for (var i = 0; i < ctl.options.length; i++)
     {
-        let ctlVale = ctl.options[ i ].text.toUpperCase();
-        if (ctlVale == val)
+        let ctlVale = valType == "text" ? ctl.options[i].text.toUpperCase() : ctl.options[i].value.toUpperCase();
+        if (ctlVale == val.toUpperCase())
         {
             ctl.selectedIndex = i;
             return;
@@ -1771,7 +1786,7 @@ var setField = function (ctl, param, ctx)
                     return;
                 };
                 //$("option:contains(" + val + ")", ctl).attr('selected', 'selected');
-                setListValue(ctl, val);
+                setListValue(ctl, val,'value');
             }
         }
         var ch = $(ctl).attr('childcombo'), sid = $(ctl).attr('storeinfo');

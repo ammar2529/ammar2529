@@ -782,15 +782,15 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState = functio
         //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
         //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
 
-        $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
-        $('.common-button,.CommonDisableClass,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+        $('.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+        $('.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
 
         $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-
+        $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
     }
 };
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function (t)
@@ -811,6 +811,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function 
         $('[argumentid="CarNumber"]', t.el).addClass('ElemDisabled');
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
 
+        $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).hide();
+
         //var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
         //var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
 
@@ -830,17 +832,17 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState = funct
     if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
         debugger
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
 
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
         $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
         $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-
+        $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
         //$('[argumentid="StateName"]',t.el).filter(function () {
         //    return $(this).text().trim() === 'Canceled';
         //}).css('color', 'red');

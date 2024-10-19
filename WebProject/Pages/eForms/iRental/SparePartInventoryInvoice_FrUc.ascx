@@ -135,8 +135,9 @@
                     </td>
                     <td class="ftitle" width="32%">
 
-                        <input type="radio" class="   ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service Invoice</label>
-                        <input type="radio" class="  PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts Invoice </label>
+                        <input type="radio" class="   ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service</label>
+                        <input type="radio" class="  PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts</label>
+                        <input type="radio" class="  QuotationInvoice  " value="QuotationInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Quotation</label>
                     </td>
 
                     <td class="ftitle" width="20%">
@@ -145,7 +146,7 @@
                     </td>
                     <td class="ftitle" width="30%">
 
-                        <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
+                        <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 150px;text-align:center" type="text" /></td>
 
                 </tr>
 
@@ -164,7 +165,7 @@
                 </tr>
                       <tr>
                     <td class="ftitle">
-                        <nobr class="cust">Customer RecCode *:</nobr>
+                        <nobr class="cust">Customer Code *:</nobr>
                         <nobr class="serv">Service No.*:</nobr>
                     </td>
                     <td>
@@ -174,6 +175,11 @@
 
                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text required CommonDisableClass  CommonDisableClasss"
                          groupid="SparePartInventoryInvoice" lovpopupid="carPopupGarageForInvoice" argumentid="ServiceNo"   requirederr=' *Required'/>
+
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass CommonDisableClasss "
+                            groupid="SparePartInventoryInvoice" lovpopupid="QuotationInvoicePopup" argumentid="CustomerRecCodeQuotation" requirederr=' *Required' />
+
+
 
                     </td>
                          
@@ -241,12 +247,12 @@
                    
                      <td class="ftitle">
                       
-                        <nobr class="serv">Customer RecCode</nobr></td>
+                        <nobr class="serv">Customer Code</nobr></td>
                     <td class="ftitle">
                     
 
                        <input readonly type="text" class="ftitle CommonSPCust serv" style="display: inline-block;font-size: 15px;background: transparent;color: rgb(98, 130, 150);
-                        outline: none;border: none;color: #628296;cursor: context-menu;font-size: 11px;font-weight: bold;"
+                        outline: none;border: none;color: #628296;cursor: context-menu;font-size: 12.5px;font-weight: bold;"
                            groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" />
 
                     </td>
@@ -373,15 +379,15 @@
                         groupid="SparePartInventoryInvoice" argumentid="SparePartName"  disabled="disabled"/>
                 </td>
                 <td>
-                    <input type="text" style="text-align: center; width: 50px;" maxlength="10" class="text ElemDisabled number "
+                    <input type="text" style="text-align: center; width: 50px;font-weight: bold;" maxlength="10" class="text ElemDisabled number "
                         groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
                 </td>
                 <td>
-                    <input type="text" style="text-align: center; width: 30px; font-weight: bold; " maxlength="10" class="text CommonDisableClass SelectQuantity "
+                    <input type="text" style="text-align: center; width: 30px ; font-weight: bold; " maxlength="10" class="text CommonDisableClass SelectQuantity "
                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                 </td>
                 <td>
-                    <input type="text" style="text-align: center; width: 56px;" maxlength="10" class="text ElemDisabled number CommonDisableClass "
+                    <input type="text" style="text-align: center; width: 56px;font-weight: bold;" maxlength="10" class="text ElemDisabled number CommonDisableClass "
                         groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" />
                 </td>
                 <td>
@@ -667,15 +673,15 @@
                             groupid="SparePartInventoryInvoice" argumentid="GrandTotal"  disabled="disabled"/></td>
                 </tr>
 
-                     <tr>
+                     <tr class="hideOnQuotation">
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
                     </td>
                 </tr>
                 
-                <tr>
-                    <td class="ftitle">
+                <tr class="hideOnQuotation">
+                    <td class="ftitle ">
                         <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
                     </td>
                     <td style="text-align: center;" >
