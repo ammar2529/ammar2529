@@ -142,6 +142,13 @@
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll(t);
             t.GetField('CarRecivedDate').datepicker("option", "minDate", new Date());
             t.GetField('CarToBeDeliverdDate').datepicker("option", "minDate", new Date());
+
+            $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+
+         
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
+
+
         }
      
     });
@@ -152,7 +159,7 @@
     {
       
 
-    debugger
+    
 
 
         if (t.FormMode == 'update') {
@@ -497,7 +504,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.GenerateUploadFiles = function (
                     continue;
                 }
                 //var fileLink = `<a class='file-link' href='Uploads/${recId}_${fileGuid}_${fileName}' target='_blank'>${fileName}</a>`;
-                debugger
+                
                 var fileLink = `<a class='file-link' href='UploadsFilesForCarServiceDetails/${recId}_${fileGuid}_${fileName}' target='_blank' rel='noopener noreferrer'>${fileName}</a>`;
 
 
@@ -621,7 +628,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates = function (da
     
  
     $('[argumentid="' + dateFieldId + '"]').on('blur', function () {
-        debugger
+        
         var cDate = new Date();
         var cH = cDate.getHours();
         var cM = cDate.getMinutes();
@@ -768,6 +775,11 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll = function (t)
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
         $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
 
+
+        $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+
+
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
     }
 };
 
@@ -791,6 +803,10 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState = functio
         $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
         $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
+        $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+
+
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
     }
 };
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function (t)
@@ -812,7 +828,11 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function 
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
 
         $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).hide();
+        $('.AddRequired', t.el).addClass('required').attr('requirederr', '*');
 
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk(t);
+        
+      
         //var CarRecivedDate = $('[argumentid="CarRecivedDate"]',t.el).val();
         //var CarToBeDeliverdDate = $('[argumentid="CarToBeDeliverdDate"]', t.el).val();
 
@@ -830,7 +850,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState = function (t)
 {
     if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
-        debugger
+        
 
         $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
 
@@ -843,13 +863,54 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState = funct
         $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
         $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
-        //$('[argumentid="StateName"]',t.el).filter(function () {
-        //    return $(this).text().trim() === 'Canceled';
-        //}).css('color', 'red');
+
+        $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+
+
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
 
 
     }
 };
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk = function (t) {
+    const labels = ["Deliverd Date", "Next Service Date", "Out KM", "Action Taken", "Next Service KM"]; // Labels without colons
+    $("td.AddAsterisk", t.el).each(function () {
+        // Pehle text ko retrieve karo aur trim kar lo
+        let text = $(this).text().trim();
+
+        // Sab kuch jo label ke baad hai (jaise * ya :), hata do
+        labels.forEach(label => {
+            if (text.startsWith(label)) {
+                // Agar label match karta hai, to baad ka sab kuch remove karo
+                $(this).text(label + ":"); // Sirf colon wapas add karo
+            }
+        });
+    });
+}
+
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
+
+    const labels = ["Deliverd Date:", "Next Service Date:", "Out KM:", "Action Taken:", "Next Service KM:",]; // Labels with colons
+
+    $("td.AddAsterisk").filter(function () {
+        const text = $(this).text().trim();
+        debugger
+        // If the text matches one of the labels
+        if (labels.includes(text)) {
+            // Replace colon with a space
+            const newText = text.replace(":", " ");
+            // Add an asterisk after replacing the colon
+            $(this).text(newText + " *:");
+            return true;
+        }
+        return false;
+    });
+
+};
+
+
 
 
 

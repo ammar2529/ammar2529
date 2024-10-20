@@ -182,7 +182,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         
         if (t.FormMode == "new") 
         {
-
+            $('[argumentid="InvoiceDate" ]', t.el).next('img').show();
             $('.LineOfItemRow', t.el).show();
             var tblUFL = $('table.uploadedItemList', t.el);
             $('table.uploadedItemList .ItemTableRow',t.el).remove();
@@ -1057,6 +1057,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             $('.InvoiceOpenBtn,.InvoiceButton_Edit', t.el).show();
 
             $('.LineOfItemRow', t.el).hide();
+            $('[argumentid="InvoiceDate" ]', t.el).next('img').hide();
 
             setTimeout(function () {
                 $('.remove-button', t.el).hide();
@@ -1076,7 +1077,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
             $('.common-button,.CommonDisableClasss,.CommonDisableClass,.ItemListDiv', t.el).addClass('ElemDisabled');
             $('.InvoiceOpenBtn,.InvoiceButton_Edit', t.el).show();
-
+            $('[argumentid="InvoiceDate" ]', t.el).next('img').hide();
             $('.LineOfItemRow', t.el).hide();
             setTimeout(function () {
                 $('.remove-button', t.el).hide();
@@ -1097,7 +1098,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             $('.InvoiceOpenBtn', t.el).attr('disabled', 'disabled');
                 $('.InvoiceOpenBtn', t.el).addClass('ElemDisabled');
                 $('.InvoiceOpenBtn,.InvoiceButton_Edit', t.el).hide();
-
+                $('[argumentid="InvoiceDate" ]', t.el).next('img').show();
 
                 setTimeout(function () {
                     $('.trNoDynamic').find('[argumentid]').each(function () {
