@@ -302,21 +302,20 @@
                 
 
 
-                <tr class="hideCarandService">
+                <tr >
 
                     <td class="ftitle">
-                        <nobr>In KM:</nobr>
+                        <nobr class="hideCarandService">In KM:</nobr>
                     </td>
                     <td>
-                        <span class="ftitle CommonSPINv" groupid="SparePartInventoryInvoice" argumentid="CurrentServiceKm"></span>
+                        <span class="ftitle CommonSPINv hideCarandService" groupid="SparePartInventoryInvoice" argumentid="CurrentServiceKm"></span>
                     </td>
 
 
                     <td class="ftitle">
-                        
-                    </td>
-                    <td style="text-align: left">
-                        
+                        <nobr class="OnNewForm">System ID:</nobr></td>
+                    <td>
+                        <span class="ftitle OnNewForm" groupid="SparePartInventoryInvoice" argumentid="SystemId"></span>
 
                     </td>
                 </tr>

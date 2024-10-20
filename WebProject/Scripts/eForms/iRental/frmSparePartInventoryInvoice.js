@@ -296,10 +296,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
             if (trimMessage.toLowerCase() === trimMyMessage.toLowerCase())
             {
-                
+                debugger
                 // This line will only execute if the message is "Invoice create Successfully"
                 $('[argumentid="InvoiceRecId"]', t.el).val(code);
                 $('[argumentid="RecId"]', t.el).val(code);
+                $('[argumentid="SystemId"]', t.el).text(code);
               var inv =   $('[argumentid="InvoicePaymentRecId"]', t.el).val(code);
                 console.log("Setting InvoiceRecId to:", code); // Add this line for debugging
                 console.log("Setting InvoicePaymentRecId to:", inv);
@@ -344,6 +345,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                                 $('[argumentid="InvRecCode"]', t.el).text(InvRecCode);
                                 $('[argumentid="InvoiceNo"]', t.el).text(InvoiceNo);
                                 $('[argumentid="StateName"]', t.el).text(StateName);
+                               
 
 
 

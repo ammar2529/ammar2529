@@ -61,7 +61,7 @@
                 <tr id="trNote">
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>
-
+               
                 <tr class="StatusTR">
                       <td class="ftitle" width="18%">
                         <nobr>Service No.:</nobr>
@@ -255,10 +255,10 @@
 
 
                     <td class="ftitle">
-                        <%-- <nobr>Full Insurance Expiry:</nobr>--%>
-                    </td>
+                        <nobr class="OnNewForm">System ID:</nobr></td>
                     <td>
-                        <%--<span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span> --%>
+                        <span class="ftitle OnNewForm" groupid="GarageCarServiceDetails" argumentid="SystemId"></span>
+
                     </td>
                 </tr>
 
