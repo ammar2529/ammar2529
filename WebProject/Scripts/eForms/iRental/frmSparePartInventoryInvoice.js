@@ -150,12 +150,23 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             //, function () {
             //    wg.show();
             //}
+            if ($('[widgetid="grdInvoicePaymentDetails"]', t.el).length > 0) {
+                $('[widgetid="grdInvoicePaymentDetails"]', t.el).hide();
+                $('[widgetid="frmInvoicePaymentDetails"]', t.el).hide();
+            }
 
         }
 
         else if (li.attr('tabid') == 'InvoicePaymentDetails')
         {
-            AsyncWidgets.get('grdInvoicePaymentDetails').show().Requery();
+            debugger
+           var a =  AsyncWidgets.get('grdInvoicePaymentDetails').show().Requery();
+
+            if ($('[widgetid="grdInvoicePaymentDetails"]', t.el).length > 0) {
+                $('[widgetid="grdInvoicePaymentDetails"]', t.el).show();
+               /* $('[widgetid="frmInvoicePaymentDetails"]', t.el).show();*/
+                
+            }
         }
 
         return false;

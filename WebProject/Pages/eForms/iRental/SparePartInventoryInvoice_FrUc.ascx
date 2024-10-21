@@ -313,9 +313,9 @@
 
 
                     <td class="ftitle">
-                        <nobr class="OnNewForm">System ID:</nobr></td>
+                        <nobr class="OnNewForm">Manual ID:</nobr></td>
                     <td>
-                        <span class="ftitle OnNewForm" groupid="SparePartInventoryInvoice" argumentid="SystemId"></span>
+                        <input class="ftitle OnNewForm" groupid="SparePartInventoryInvoice" argumentid="ManualID" style="text-align: center; width: 150px;" />
 
                     </td>
                 </tr>
