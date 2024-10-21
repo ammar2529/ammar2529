@@ -255,9 +255,9 @@
 
 
                     <td class="ftitle">
-                        <nobr class="OnNewForm">Manual ID:</nobr></td>
+                        <nobr class="">Manual ID:</nobr></td>
                     <td>
-                        <input class="ftitle OnNewForm" style="text-align: center; width: 150px;"  groupid="GarageCarServiceDetails" argumentid="ManualID" />
+                        <input class="ftitle CommonDisableClass " style="text-align: center; width: 150px;"  groupid="GarageCarServiceDetails" argumentid="ManualID" />
 
                     </td>
                 </tr>

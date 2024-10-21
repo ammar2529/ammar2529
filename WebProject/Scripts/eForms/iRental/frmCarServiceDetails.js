@@ -693,9 +693,9 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.PrintJobCard = function (t) {
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.CarServiceButton_Edit = function (t)
 {
-    $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeAttr('disabled', 'disabled');
+    $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeAttr('disabled', 'disabled');
 
-    $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeClass('ElemDisabled');
+    $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.PrintJobCard,.OnStartState ', t.el).removeClass('ElemDisabled');
     $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
     $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
     $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
@@ -755,9 +755,9 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll = function (t)
         $('[argumentid="StateId"]', t.el).text('OpenState');
         $('[argumentid="StateName"]', t.el).text('Start State');
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeAttr('disabled', 'disabled');
+        $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeAttr('disabled', 'disabled');
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeClass('ElemDisabled');
+        $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.ServiceStartTime', t.el).removeClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
@@ -794,8 +794,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState = functio
         //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
         //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
 
-        $('.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
-        $('.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+        $('[argumentid="ManualID"],.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+        $('[argumentid="ManualID"],.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
@@ -814,8 +814,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function 
     if ($('[argumentid="StateId"]', t.el).text() == 'OpenState') {
 
 
-        $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
-        $('[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
+        $('[argumentid="ManualID"],[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeAttr('disabled', 'disabled');
+        $('[argumentid="ManualID"],[argumentid="CarRecivedDate"],.common-button,.CommonDisableClass,.Problem, .ActionTaken, .CarCondition,.PrintJobCard,.CarDeliverdStartTime,.NextServiceStartTime', t.el).removeClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').show();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').show();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').show();
@@ -852,10 +852,10 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState = funct
     if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
         
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+        $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
 
 
-        $('.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+        $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
         $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
         $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
         $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();

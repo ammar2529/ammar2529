@@ -272,24 +272,24 @@
 
                 <tr class="hideTrForINVCust">
 
-                     <td class="ftitle">
+                    <td class="ftitle">
                         <nobr>Name:</nobr>
                     </td>
-                    <td style="text-align: left" >
+                    <td style="text-align: left">
                         <span class="ftitle CommonSPCust" style="font-size: 16px;" groupid="SparePartInventoryInvoice" argumentid="CustomerName"></span>
                     </td>
 
-                   
 
-                 <td  class="ftitle">
+
+                    <td class="ftitle">
                         <nobr>Mobile Telephone:</nobr>
-                        </td>
-                    <td >
-                                 <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
-       <%--  <nobr class="CommaM12">, </nobr>--%>
-         <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
-                        </td>
-                        
+                    </td>
+                    <td>
+                        <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
+                        <%--  <nobr class="CommaM12">, </nobr>--%>
+                        <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
+                    </td>
+
 
 
                 </tr>
@@ -313,9 +313,9 @@
 
 
                     <td class="ftitle">
-                        <nobr class="OnNewForm">Manual ID:</nobr></td>
+                        <nobr class="">Manual ID:</nobr></td>
                     <td>
-                        <input class="ftitle OnNewForm" groupid="SparePartInventoryInvoice" argumentid="ManualID" style="text-align: center; width: 150px;" />
+                        <input class="ftitle  CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" argumentid="ManualID" style="text-align: center; width: 150px;" />
 
                     </td>
                 </tr>
@@ -739,8 +739,11 @@
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_Invoice_Payments\',KeysCol:\'RecId\'}}}">
                 
      
- <GridConfig>
- <script>
+                
+ 
+ 
+<GridConfig>
+<script>
      cf = {
          cols: {
              Sequence: { width: '0px' },
@@ -765,14 +768,14 @@
          }
      };
  </script>
- </GridConfig>
- <Scripts>
- <script>
+</GridConfig>
+<Scripts>
+<script>
      //var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
  </script>
- </Scripts>
- <RowDetail>
- <pre class="" colindex="4">
+</Scripts>
+<RowDetail>
+<pre class="" colindex="4">
                     <AW:container id="conInvoicePaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -819,10 +822,10 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
- </RowDetail>
+</RowDetail>
 
 
- </AW:DataGrid>
+</AW:DataGrid>
 
             <AW:Form ID="frmInvoicePaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/Invoice_PD_FrUc.ascx">
                 <WidgetConfig>
