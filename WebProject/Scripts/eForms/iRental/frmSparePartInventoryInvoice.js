@@ -9,6 +9,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     $('.MyDataAction', t.el).click(function () {
         debugger;
+
+
         var btn = $(this);
         var a = $('.uploadedItemList')
         /* var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).text()) || 0;*/
