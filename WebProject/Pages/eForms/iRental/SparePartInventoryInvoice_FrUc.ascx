@@ -315,7 +315,8 @@
                     <td class="ftitle">
                         <nobr class="">Manual ID:</nobr></td>
                     <td>
-                        <input class="ftitle  CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" argumentid="ManualID" style="text-align: center; width: 150px;" />
+<%--                        <input type="text" class="ftitle  CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" argumentid="ManualID" style="text-align: center; width: 150px;" />--%>
+                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass CommonDisableClasss"groupid="SparePartInventoryInvoice" argumentid="ManualID" />
 
                     </td>
                 </tr>
@@ -374,7 +375,7 @@
 
 
                 <td>
-                    <input type="text" style="text-align: left; width: 380px; font-weight: bold;" maxlength="10" class="text  ElemDisabled"
+                    <input type="text" style="text-align: left; width: 350px; font-weight: bold;" maxlength="10" class="text  ElemDisabled"
                         groupid="SparePartInventoryInvoice" argumentid="SparePartName"  disabled="disabled"/>
                 </td>
                 <td>
@@ -654,7 +655,7 @@
                     <%--<td colspan="2" rowspan="2" style="padding: 0; " >
                         </td>--%>
                    <td colspan="2" rowspan="2">
-                       <textarea class="textarea CommonDisableClass  CommonDisableClasss" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                       <textarea class="textarea CommonDisableClass  CommonDisableClasss" style="width: 100%; height: 50px; box-sizing: border-box; resize: none;"
                             argumentid="Comments" groupid="SparePartInventoryInvoice"></textarea>
                    </td>
 
@@ -707,8 +708,8 @@
                            
                        <div style="padding-top: 10px; padding-bottom: 10px">
                             <input type="button" style="width: 95px; color: blue;"  value="  Open  " class="DataAction ButtonStyle  InvoiceOpenBtn common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                            <input type="button" style="width: 95px; color: Green"  value="  Close " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
-                            <input type="button" style="width: 95px; color: Red"  value="  Cancel  " class="DataAction ButtonStyle   common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Green"  value="  Close " class="MyDataAction ButtonStyle ClosedInvoice  common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
+                            <input type="button" style="width: 95px; color: Red"  value="  Cancel  " class="MyDataAction ButtonStyle CanceledInvoice  common-button OnNewForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
 
                         </div>
                     

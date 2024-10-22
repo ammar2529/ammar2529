@@ -7,50 +7,6 @@
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
 
 
-<style>
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-        text-align: center;
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    .auto-style1 {
-        width: 170px;
-    }
-</style>
 
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
@@ -103,7 +59,7 @@
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
-                    <td class="ftitle" style="width: 170px">
+                    <td class="ftitle" style="width: 140px">
                         <nobr>Car No.*:</nobr>
                     </td>
                     <td >
@@ -111,13 +67,13 @@
                         <input type="hidden" name="FileGuid" groupid="GarageCarServiceDetails" argumentid="FileGuid" />
 
                    
-                        <div>
+                        
                             <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text LOVPopup required CommonDisableClass"
                                 groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="CarNumber" />
 
                             <%--<input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="30" class="LOVPopup text  CommonDisableClass  "
                                 groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="ChassisNo"   />--%>
-                        </div>
+                        
                     </td>
                     <td class="ftitle" style="width: 140px">
                         <nobr>Customer Code*:</nobr></td>
@@ -257,8 +213,8 @@
                     <td class="ftitle">
                         <nobr class="">Manual ID:</nobr></td>
                     <td>
-                        <input class="ftitle CommonDisableClass " style="text-align: center; width: 150px;"  groupid="GarageCarServiceDetails" argumentid="ManualID" />
-
+                     <%--   <input type="text" class="ftitle CommonDisableClass " style="text-align: center; width: 150px;"  groupid="GarageCarServiceDetails" argumentid="ManualID" />--%>
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass "groupid="GarageCarServiceDetails" argumentid="ManualID" />
                     </td>
                 </tr>
 
@@ -400,7 +356,7 @@
                         <nobr>Problem *:</nobr>
                     </td>
                     <td colspan="3">
-                        <textarea class="textarea required Problem CommonDisableClass" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                        <textarea class="textarea required Problem CommonDisableClass" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; resize: none;"
                             argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
                     </td>
 
@@ -414,7 +370,7 @@
                         <nobr>Car Condition:</nobr>
                     </td>
                     <td colspan="3">
-                        <textarea class="textarea CarCondition CommonDisableClass" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                        <textarea class="textarea CarCondition CommonDisableClass" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box;  resize: none;"
                             argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
                     </td>
 
@@ -425,7 +381,7 @@
                 <tr>
                     <td valign="center " class="ftitle AddAsterisk">Action Taken:</td>
                     <td colspan="3">
-                        <textarea class="textarea ActionTaken CommonDisableClass AddRequired OnStartState" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box; border: 0.5px solid black; resize: none;"
+                        <textarea class="textarea ActionTaken CommonDisableClass AddRequired OnStartState" rows="4" wrap="1" style="width: 100%; height: 50px; box-sizing: border-box;  resize: none;"
                             argumentid="ActionTaken" groupid="GarageCarServiceDetails"></textarea>
                     </td>
 
@@ -542,17 +498,7 @@
                     </td>
                 </tr>
 
-              <%-- <tr >
-               
-                        <!-- The Popup Modal -->
-                <div id="popupModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>Functionality is still in progress.</p>
-                    </div>
-                </div>
-                  
-               </tr>--%>
+         
 
 
 

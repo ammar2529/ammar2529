@@ -17,7 +17,7 @@
             <span style="white-space: nowrap">Model</span></td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
-            Year</td>
+            Status</td>
     </tr>
       
     <tr style="height:35px">
@@ -44,10 +44,21 @@
         <td style="text-align: left;padding-bottom: 4px;">
             
 
-            <select loadon="FirstVisible" class="dropdownlist" style="width: 160px;"
-                 groupid="schInvoice" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
-                <option value="" selected="selected">Select Year</option>
-            </select></td>
+            <select class="dropdownlist" style="width: 160px;"
+    groupid="schInvoice" argumentid="StateId" name="D4">
+    <option value="" selected="selected">Select Status</option>
+    <%--<option value="">-----------------------------</option>
+    <option value="RRCCreatedState">Created - Reservation</option>
+    <option value="">-----------------------------</option>--%>
+    <option value="">-----------------------------</option>
+    <option value="OpenState">Open</option>
+    <option value="">-----------------------------</option>
+    <option value="ClosedState">Closed</option>
+    <option value="">-----------------------------</option>
+    <option value="CanceledState">Canceled</option>
+    <option value="">-----------------------------</option>
+
+</select></td>
     </tr>
 
   

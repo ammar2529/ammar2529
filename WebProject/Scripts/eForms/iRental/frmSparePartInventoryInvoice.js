@@ -7,28 +7,46 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
+    $('.MyDataAction', t.el).click(function () {
+        debugger;
+        var btn = $(this);
+        var a = $('.uploadedItemList')
+        /* var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).text()) || 0;*/
+        var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).first().text()) || 0;
 
-    //$('.PrintBill', t.el).click(function ()
-    //{
-    //    
-    //    $('#popupModal', t.el).fadeIn(); // Show the modal
-    //});
+        var Balance = parseFloat($('[argumentid="Balance"]').text()) || 0;
+        var isQuotationInvoiceChecked =  val('InvoiceDetails', t.el) === 'QuotationInvoice';
 
-    //// When the user clicks on the close button (x), close the modal
-    //$('.close', t.el).click(function ()
-    //{
-    //    $('#popupModal', t.el).fadeOut(); // Hide the modal
-    //});
+        if (btn.hasClass('ClosedInvoice')) {
+            if (InvRecId != 0 && (isQuotationInvoiceChecked || Balance > 0)) {
 
-    //// When the user clicks anywhere outside the modal, close it
-    //$(window).click(function (event)
-    //{
-    //    if ($(event.target).is('#popupModal', t.el))
-    //    {
-    //        $('#popupModal', t.el).fadeOut(); // Hide the modal
-    //    }
-    //});
+                console.log('Close button working');
+                t.submit(btn);
+                
+                return false;
 
+            } else {
+                $.showMessage("Items must be added before closing the invoice.");
+
+                return false
+            }
+
+        } else if (btn.hasClass('CanceledInvoice')) {
+            if (InvRecId == 0 || (isQuotationInvoiceChecked && InvRecId == 0)) {
+                console.log('Cancel button working');
+                t.submit(btn);
+                return false;
+            } else {
+                $.showMessage("Items must be deleted before canceling the invoice.");
+                return false;
+            }
+        }
+
+        //t.submit(this);
+        //return false;
+    });
+
+  
     $(".ServiceInvoice, .PartsInvoice,.QuotationInvoice").click(function () {
        
     

@@ -3,9 +3,7 @@
     var t = obj;
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
-
-    
-
+ 
     var previousValue = ""; // Global variable to store the previous valid time
 
     // Capture the previous valid time when any of the target inputs gains focus
@@ -896,7 +894,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
 
     $("td.AddAsterisk").filter(function () {
         const text = $(this).text().trim();
-        debugger
+        
         // If the text matches one of the labels
         if (labels.includes(text)) {
             // Replace colon with a space

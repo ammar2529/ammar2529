@@ -84,6 +84,8 @@
                 <option value="">-----------------------------</option>
                 <option value="ClosedState">Closed</option>
                 <option value="">-----------------------------</option>
+                <option value="CanceledState">Canceled</option>
+                <option value="">-----------------------------</option>
 
             </select></td>
 
