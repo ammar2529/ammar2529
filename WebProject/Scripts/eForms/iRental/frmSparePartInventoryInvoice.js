@@ -59,7 +59,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         if (btn.hasClass('ClosedInvoice')) {
             // If QuotationInvoice is checked, skip balance check
             if (!isQuotationInvoiceChecked && Balance != 0) {
-                $.showMessage("Balance must be zero to close the invoice.");
+                $.showMessage("Amount  must be zero to close the invoice.");
+                $.showMessage("Amount Due must be zero to close the invoice.");
                 return false;
             }
 
