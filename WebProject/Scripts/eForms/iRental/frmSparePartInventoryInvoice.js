@@ -56,14 +56,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         var Balance = parseFloat($('[argumentid="Balance"]').text()) || 0;
         var isQuotationInvoiceChecked = val('InvoiceDetails', t.el) === 'QuotationInvoice';
 
-        // Separate check for Balance
         if (btn.hasClass('ClosedInvoice')) {
-            if (Balance != 0) {
+            // If QuotationInvoice is checked, skip balance check
+            if (!isQuotationInvoiceChecked && Balance != 0) {
                 $.showMessage("Balance must be zero to close the invoice.");
                 return false;
             }
 
-            if (InvRecId != 0 && (isQuotationInvoiceChecked || Balance == 0)) {
+            if (InvRecId != 0) {
                 console.log('Close button working');
                 t.submit(btn);
                 return false;
@@ -87,6 +87,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
         return false;
     });
+
 
 
   
