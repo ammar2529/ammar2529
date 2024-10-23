@@ -49,7 +49,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     //});
 
     $('.MyDataAction', t.el).click(function () {
-        debugger;
+     
 
         var btn = $(this);
         var InvRecId = parseInt($('.ItemTableRow td.InvRecId', '.uploadedItemList').first().text()) || 0;
@@ -59,8 +59,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         if (btn.hasClass('ClosedInvoice')) {
             // If QuotationInvoice is checked, skip balance check
             if (!isQuotationInvoiceChecked && Balance != 0) {
-                $.showMessage("Amount  must be zero to close the invoice.");
-                $.showMessage("Amount Due must be zero to close the invoice.");
+                $.showMessage("Amount due must be zero to close the invoice.");
                 return false;
             }
 
@@ -88,6 +87,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
         return false;
     });
+
 
 
 
