@@ -19,13 +19,13 @@
                 </tr>
                
                 <tr class="StatusTR">
-                      <td class="ftitle" width="18%">
+                      <td class="ftitle" >
                         <nobr>Service No.:</nobr>
                     </td>
-                    <td class="ftitle" width="32%">
+                    <td class="ftitle" >
                         <span class="ftitle" style="color: red;" groupid="GarageCarServiceDetails" argumentid="RecCode">New contract no. will be generated on saving</span>
                     </td>
-                    <td class="ftitle" width="20%">
+                    <td class="ftitle" >
                         <nobr>Service Status:</nobr>
                     </td>
                     <td class="ftitle" width="30%">
@@ -59,10 +59,10 @@
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
-                    <td class="ftitle" style="width: 140px">
+                    <td class="ftitle" >
                         <nobr>Car No.*:</nobr>
                     </td>
-                    <td >
+                    <td style="width:255px;">
                         <input type="hidden" name="RecId" groupid="GarageCarServiceDetails" argumentid="RecId" />
                         <input type="hidden" name="FileGuid" groupid="GarageCarServiceDetails" argumentid="FileGuid" />
 
@@ -75,7 +75,7 @@
                                 groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="ChassisNo"   />--%>
                         
                     </td>
-                    <td class="ftitle" style="width: 140px">
+                    <td class="ftitle" >
                         <nobr>Customer Code*:</nobr></td>
                      <td style="text-align: center">
                         <span class="ftitle" style="font-size: 12px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
@@ -237,14 +237,14 @@
                     </td>
                 </tr>
                    <tr>
-                    <td class="ftitle" style="width: 170px">
+                    <td class="ftitle">
                         <nobr>Last Service Date:</nobr>
                     </td>
                     <td  >
                         
                         <span class="ftitle dateLabel onDisable" groupid="GarageCarServiceDetails" argumentid="LastCarServiceDate"></span>
                     </td>
-                    <td class="ftitle" style="width: 170px">Last Service KM:</td>
+                    <td class="ftitle" >Last Service KM:</td>
                              <td>
                     
                                  <span class="ftitle CommonDisable CommonCommaText" groupid="GarageCarServiceDetails" argumentid="LastServiceKm"></span>  
@@ -253,23 +253,35 @@
                 </tr>
 
                 <tr>
-                    <td class="ftitle" style="width: 170px">
+                    <td class="ftitle" >
                         <nobr>Service Date *:</nobr>
                     </td>
-                    <td>
+                   <%-- <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;" class="text  date CommonDisableClass required " requirederr="*" argumentid="CarRecivedDate"/>
+                            style="width: 75px;" class="text  date CommonDisableClass required " requirederr="*" argumentid="CarRecivedDate" />
+                        
                         <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartDay" />
 
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text timePick CommonDisableClass"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
 
-<%--                         <input type="text" style="text-align: center; width: 55px;" id="time"  groupid="GarageCarServiceDetails"  readonly />--%>
+
+                    </td>--%>
+
+                    <td ">
+                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                            style="width: 75px;" class="text  date CommonDisableClass required " argumentid="CarRecivedDate" />
+
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                            groupid="GarageCarServiceDetails" argumentid="ServiceStartDay" />
+
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text timePick CommonDisableClass"
+                            groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
 
                     </td>
 
-                    <td class="ftitle" style="width: 170px">In KM *:</td>
+                    <td class="ftitle">In KM *:</td>
                     <td>
 
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number1 required  CommonDisableClass CommonCommaVal"
@@ -277,10 +289,10 @@
 
                 </tr>
             <tr>
-                <td class="ftitle" style="width: 170px">
+                <td class="ftitle">
                     <nobr>Delivery Date *:</nobr>
                 </td>
-                <td>
+              <%--  <td>
                     <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                         style="width: 75px;" class="text  date CommonDisableClass  required " requirederr="*" argumentid="CarToBeDeliverdDate" />
 
@@ -290,8 +302,21 @@
                     <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
                         groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
 
+                </td>--%>
+
+                <td>
+                    <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                        style="width: 75px;" class="text  date CommonDisableClass required " argumentid="CarToBeDeliverdDate" />
+
+                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartDay" />
+
+                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  CommonDisableClass"
+                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
+
                 </td>
-                <td class="ftitle AddAsterisk" style="width: 170px">Out KM:</td>
+
+                <td class="ftitle AddAsterisk" >Out KM:</td>
                 <td>
 
 
@@ -302,18 +327,33 @@
             </tr>
 
             <tr>
-                 <td class="ftitle AddAsterisk " style="width: 170px">Deliverd Date:</td>
-                             <td>
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;"  class="text  date AddRequired CommonDisableClass  OnStartState"  argumentid="CarDeliverdDate" />
+                 <td class="ftitle AddAsterisk " >Deliverd Date:</td>
+            <%--    <td>
+                    <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                        style="width: 75px;" class="text  date AddRequired CommonDisableClass  OnStartState" argumentid="CarDeliverdDate" />
 
-                                 
-                           <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text  AlwaysDisableJC "
-                            groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
 
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState CarDeliverdStartTime"
-                            groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
-                    </td>
+                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text  AlwaysDisableJC "
+                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
+
+                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState CarDeliverdStartTime"
+                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
+                </td>--%>
+
+
+                <td>
+                    <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                        style="width: 75px;" class="text  date AddRequired CommonDisableClass OnStartState " argumentid="CarDeliverdDate" />
+
+                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
+
+                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  OnStartState CarDeliverdStartTime"
+                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
+
+                </td>
+                
+
                 <td class="ftitle AddAsterisk">Next Service KM:</td>
                 <td>
                       <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number AddRequired  CommonDisableClass OnStartState CommonCommaVal"
@@ -323,7 +363,7 @@
 
                 <tr>
                     <td class="ftitle AddAsterisk">Next Service Date:</td>
-                    <td>
+                 <%--   <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 75px;" class="text  date CommonDisableClass AddRequired OnStartState " argumentid="NextServiceDate" />
 
@@ -333,6 +373,18 @@
 
                         <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState NextServiceStartTime"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
+                    </td>--%>
+
+                    <td>
+                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
+                            style="width: 75px;" class="text  date AddRequired CommonDisableClass  OnStartState " argumentid="NextServiceDate" />
+
+                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
+                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
+
+                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  OnStartState NextServiceStartTime"
+                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
+
                     </td>
                     <td></td>
                     <td></td>

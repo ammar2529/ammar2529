@@ -7,33 +7,74 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
+    //$('.MyDataAction', t.el).click(function () {
+    //    debugger;
+
+
+    //    var btn = $(this);
+    //    var a = $('.uploadedItemList')
+    //    /* var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).text()) || 0;*/
+    //    var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).first().text()) || 0;
+
+    //    var Balance = parseFloat($('[argumentid="Balance"]').text()) || 0;
+    //    var isQuotationInvoiceChecked =  val('InvoiceDetails', t.el) === 'QuotationInvoice';
+
+    //    if (btn.hasClass('ClosedInvoice')) {
+    //        if (InvRecId != 0 && (isQuotationInvoiceChecked || Balance == 0)) {
+
+    //            console.log('Close button working');
+    //            t.submit(btn);
+
+    //            return false;
+
+    //        } else {
+    //            $.showMessage("Items must be added before closing the invoice.");
+
+    //            return false
+    //        }
+
+    //    } else if (btn.hasClass('CanceledInvoice')) {
+    //        if (InvRecId == 0 || (isQuotationInvoiceChecked && InvRecId == 0)) {
+    //            console.log('Cancel button working');
+    //            t.submit(btn);
+    //            return false;
+    //        } else {
+    //            $.showMessage("Items must be deleted before canceling the invoice.");
+    //            return false;
+    //        }
+    //    }
+
+    //    //t.submit(this);
+    //    //return false;
+    //});
+
     $('.MyDataAction', t.el).click(function () {
         debugger;
 
-
         var btn = $(this);
-        var a = $('.uploadedItemList')
-        /* var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).text()) || 0;*/
-        var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).first().text()) || 0;
-
+        var InvRecId = parseInt($('.ItemTableRow td.InvRecId', '.uploadedItemList').first().text()) || 0;
         var Balance = parseFloat($('[argumentid="Balance"]').text()) || 0;
-        var isQuotationInvoiceChecked =  val('InvoiceDetails', t.el) === 'QuotationInvoice';
+        var isQuotationInvoiceChecked = val('InvoiceDetails', t.el) === 'QuotationInvoice';
 
+        // Separate check for Balance
         if (btn.hasClass('ClosedInvoice')) {
-            if (InvRecId != 0 && (isQuotationInvoiceChecked || Balance > 0)) {
-
-                console.log('Close button working');
-                t.submit(btn);
-                
+            if (Balance != 0) {
+                $.showMessage("Balance must be zero to close the invoice.");
                 return false;
-
-            } else {
-                $.showMessage("Items must be added before closing the invoice.");
-
-                return false
             }
 
-        } else if (btn.hasClass('CanceledInvoice')) {
+            if (InvRecId != 0 && (isQuotationInvoiceChecked || Balance == 0)) {
+                console.log('Close button working');
+                t.submit(btn);
+                return false;
+            } else {
+                $.showMessage("Items must be added before closing the invoice.");
+                return false;
+            }
+        }
+
+        // Condition for CanceledInvoice
+        else if (btn.hasClass('CanceledInvoice')) {
             if (InvRecId == 0 || (isQuotationInvoiceChecked && InvRecId == 0)) {
                 console.log('Cancel button working');
                 t.submit(btn);
@@ -44,9 +85,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             }
         }
 
-        //t.submit(this);
-        //return false;
+        return false;
     });
+
 
   
     $(".ServiceInvoice, .PartsInvoice,.QuotationInvoice").click(function () {
