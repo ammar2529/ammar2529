@@ -53,9 +53,9 @@
     <nobr>Purchasing From*:</nobr>
 </td>
         <td class="ftitle">
-              <input type="radio" class="" default="default" value="Geniune" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Geniune Parts</label>
-              <input type="radio" class="" value="China" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Local China</label>
-              <input type="radio" class="" value="Kuwait" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>Local kuwait</label>
+              <input type="radio" class="" default="default" value="Geniune" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>GP</label>
+              <input type="radio" class="" value="China" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>LC</label>
+              <input type="radio" class="" value="Kuwait" name="PurchasingFrom" groupid="SparePartInventoryForm" argumentid="PurchasingFrom" /><label>LK</label>
 
 
         </td>

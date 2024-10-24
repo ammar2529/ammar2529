@@ -41,9 +41,9 @@
         <td style="text-align: left;">
             <select class="dropdownlist" style="width:120px" argumentid="PurchasingFrom"  groupid="schInvoice_ItemCode_ShUc" name="D1">
             <option value="" >Select Purchasing From</option>
-            <option value="Geniune">Geniune Parts</option>
-             <option value="China">Local China</option>
-                <option value="Kuwait">Local kuwait</option>
+            <option value="Geniune">GP</option>
+             <option value="China">LC</option>
+                <option value="Kuwait">LK</option>
             
         </select></td>
         <td style="text-align: left;">

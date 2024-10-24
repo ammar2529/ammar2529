@@ -96,11 +96,11 @@
              
                 
 
-                <option value="Geniune">Geniune Parts</option>
+                <option value="Geniune">GP</option>
                
-                <option value="China">Local China</option>
+                <option value="China">LC</option>
              
-                 <option value="Kuwait">Local kuwait</option>
+                 <option value="Kuwait">LK</option>
                 
 
             </select>
