@@ -7,46 +7,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
-    //$('.MyDataAction', t.el).click(function () {
-    //    debugger;
-
-
-    //    var btn = $(this);
-    //    var a = $('.uploadedItemList')
-    //    /* var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).text()) || 0;*/
-    //    var InvRecId = parseInt($('.ItemTableRow td.InvRecId', a).first().text()) || 0;
-
-    //    var Balance = parseFloat($('[argumentid="Balance"]').text()) || 0;
-    //    var isQuotationInvoiceChecked =  val('InvoiceDetails', t.el) === 'QuotationInvoice';
-
-    //    if (btn.hasClass('ClosedInvoice')) {
-    //        if (InvRecId != 0 && (isQuotationInvoiceChecked || Balance == 0)) {
-
-    //            console.log('Close button working');
-    //            t.submit(btn);
-
-    //            return false;
-
-    //        } else {
-    //            $.showMessage("Items must be added before closing the invoice.");
-
-    //            return false
-    //        }
-
-    //    } else if (btn.hasClass('CanceledInvoice')) {
-    //        if (InvRecId == 0 || (isQuotationInvoiceChecked && InvRecId == 0)) {
-    //            console.log('Cancel button working');
-    //            t.submit(btn);
-    //            return false;
-    //        } else {
-    //            $.showMessage("Items must be deleted before canceling the invoice.");
-    //            return false;
-    //        }
-    //    }
-
-    //    //t.submit(this);
-    //    //return false;
-    //});
+ 
 
     $('.MyDataAction', t.el).click(function () {
      
@@ -222,7 +183,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
         else if (li.attr('tabid') == 'InvoicePaymentDetails')
         {
-            debugger
+            
            var a =  AsyncWidgets.get('grdInvoicePaymentDetails').show().Requery();
 
             if ($('[widgetid="grdInvoicePaymentDetails"]', t.el).length > 0) {
@@ -380,6 +341,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                 console.log("Setting InvoicePaymentRecId to:", inv);
                 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown(trimMessage.toLowerCase(),'');
                 $('.StatusRow', t.el).show();
+                $('.SimpleTab', t.el).removeAttr('disabled');
 
 
                 var params = {
@@ -419,6 +381,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                                 $('[argumentid="InvRecCode"]', t.el).text(InvRecCode);
                                 $('[argumentid="InvoiceNo"]', t.el).text(InvoiceNo);
                                 $('[argumentid="StateName"]', t.el).text(StateName);
+                               
+
                                
 
 
