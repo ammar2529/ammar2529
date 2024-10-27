@@ -37,11 +37,13 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
 
     $('[argumentid="ContractDiscount"]', t.el).on('blur', function () {
         
-        var ContractDiscount = parseFloat($(this).val()) || 0;
-        var AmountDue = parseFloat($('[argumentid="AmountDue"]',t.el).text()) || 0;
+        var ContractDiscount = parseFloat($('[argumentid="ContractDiscount"]', t.el).val()) || 0;
+        var AmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text()) || 0;
+        var ContractOtherCharges = parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text()) || 0;
 
-        var Result = AmountDue - ContractDiscount;
-        $('[argumentid="TotalAmountDue"]',t.el).text(Result.toFixed(3));
+        var TotalRes = AmountDue + ContractOtherCharges;
+        var TotalAmountDue = TotalRes - ContractDiscount;
+        $('[argumentid="TotalAmountDue"]', t.el).text(TotalAmountDue.toFixed(3));
 
     });
 
@@ -668,9 +670,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
                 $('[argumentid="ContractKMIn"]', t.el).addClass('required');
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractOpenCarIn') {
@@ -678,9 +680,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('.CommonDisable', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCWithLegalContractOpenCarOut') {
@@ -688,9 +690,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCWithLegalContractOpenCarIn') {
@@ -698,9 +700,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('.CommonDisable,.DisableOnClose', t.el).attr('disabled', 'disabled');
                 $('[argumentid="InLocationId"]', t.el).val($('[argumentid="OutLocationId"]', t.el).val());
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCWithLegalContractClosedPendingPayment') {
@@ -710,9 +712,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
             if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosedPendingPayment') {
@@ -722,9 +724,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
 
 
             }
@@ -736,9 +738,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
                 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
                 
             }
 
@@ -749,9 +751,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
                 $('[argumentid="LeaseFirstPaymentDate"]', t.el).next('img').hide();
                 $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide();
 
-                //setTimeout(function () {
-                //    CalculateDiscount();
-                //}, 2000)
+                setTimeout(function () {
+                    CalculateDiscount();
+                }, 2000)
             }
 
 
@@ -782,9 +784,11 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
         debugger
         var ContractDiscount = parseFloat($('[argumentid="ContractDiscount"]',t.el).val()) || 0;
         var AmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text()) || 0;
-
-        var Result = AmountDue - ContractDiscount;
-        $('[argumentid="TotalAmountDue"]', t.el).text(Result.toFixed(3));
+        var ContractOtherCharges = parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text()) || 0;
+       
+        var TotalRes = AmountDue + ContractOtherCharges;
+        var TotalAmountDue = TotalRes - ContractDiscount;
+        $('[argumentid="TotalAmountDue"]', t.el).text(TotalAmountDue.toFixed(3));
     }
 }
     ;
