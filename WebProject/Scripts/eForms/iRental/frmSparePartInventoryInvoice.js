@@ -9,7 +9,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
 
     t.on('LOVPopupShown', (popup) => {
-         debugger;
+         ;
         $(t.el).mask("");
         $('.loadmask-msg', t.el).hide();
         popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
@@ -344,7 +344,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
             if (trimMessage.toLowerCase() === trimMyMessage.toLowerCase())
             {
-                debugger
+                
                 // This line will only execute if the message is "Invoice create Successfully"
                 $('[argumentid="InvoiceRecId"]', t.el).val(code);
                 $('[argumentid="RecId"]', t.el).val(code);
@@ -796,7 +796,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGrea
 {
     
    
-      debugger
+      
 
     if (quantity > AVLQTY) {
         $.showMessage(`Select QTY Cannot be greater than AVL Qty..! `);
@@ -833,7 +833,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
 
 
         let isValid = false; // Assume no field is filled initially
-        debugger
+        
         // Define the required fields to check
         const requiredFields = [
             $('[lovpopupid="customerInvoicePopup"]'),
@@ -974,7 +974,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             if (res.status === 'OK')
             {
 
-                debugger
+                
                 var subTotalVal = parseFloat($('[argumentid="SubTotal"]', t.el).val()) || 0;
                 var Discount = parseFloat($('[argumentid="Discount"]', t.el).val()) || 0;
                 var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
@@ -1008,7 +1008,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems(res, t);
                     setTimeout(function ()
                     {
-                        debugger
+                        
                         // Assuming totalPriceText is a collection of elements, not a single number
                         var totalPriceText = $('.TotalPriceVal', t.el);
 
@@ -1249,7 +1249,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
 // Define parseFloatSafe function outside to avoid redundant definitions
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe = function (t) {
-    debugger
+    
     // Use parseFloatSafe function to safely parse and handle NaN values as 0.000
     var subTotalVal = parseFloatSafe($('[argumentid="SubTotal"]', t.el).val());
     var Discount = parseFloatSafe($('.Discount', t.el).val());
@@ -1310,7 +1310,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
             for (var i = 0; i < rows.length; i++)
             {
 
-                debugger
+                
                 var row = rows[ i ];
 
                 var RecId = row.RecId;
@@ -1591,7 +1591,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage,InvoiceType) {
     var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
 
-    debugger
+    
   
     if ($('.ServiceInvoice').is(":checked"))
     {

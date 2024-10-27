@@ -156,7 +156,7 @@
             /*$('[showwidget="conInvoice"]').trigger('click');*/
 
             $('[showwidget = "conInvoice"]').on('click', function () {
-                debugger
+                
                 AsyncWidgets.get('grdSparePartCustomerAndInvoiceDetails').Requery();
 
             });

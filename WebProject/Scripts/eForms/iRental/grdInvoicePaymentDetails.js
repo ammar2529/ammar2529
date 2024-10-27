@@ -9,7 +9,7 @@
     });
     t.on('beforeRowDelete', function (P)
     {
-                                /*debugger*/;
+                                /**/;
 
         var fRow = $('td.Item table .chkRowSelect:first', t.Repeater).closest('tr'), pVal;
         pVal = $('[colid="ParentRecId"] .ColValue', fRow).text();

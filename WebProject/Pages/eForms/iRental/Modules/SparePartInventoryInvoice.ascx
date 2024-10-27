@@ -488,7 +488,7 @@
 
                         $('table[itemno]', t.el).click(function (event) {
 
-                            debugger
+                            
                             var CustomerRecCode = $('[colid="CustomerRecCode"] .ColValue', this).text();
                            
                            

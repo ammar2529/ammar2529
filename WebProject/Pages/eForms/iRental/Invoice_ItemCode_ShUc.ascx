@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Invoice_ItemCode_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_Cars_ShUc" %>
 
 <script>
-    debugger
+    
     
         // 2 seconds ke baad form fields ko reset karna
         setTimeout(function () {
