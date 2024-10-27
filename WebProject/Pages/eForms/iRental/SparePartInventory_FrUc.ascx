@@ -108,7 +108,7 @@
                 <input type="hidden"groupid="SparePartInventoryForm" argumentid="UserName"  />
             </div>
             <div>
-                 <input type="text"  style="text-align: left; width: 300px;  " maxlength="10" class="text required CommonClass" 
+                 <input type="text"  style="text-align: left; width: 300px;  " maxlength="250" class="text required CommonClass" 
                 groupid="SparePartInventoryForm" argumentid="SparePartName" />
             </div>
         </td>
@@ -195,7 +195,7 @@
         </td>
         <td>
 
-            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required number"
+            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text required "
                 groupid="SparePartInventoryForm" argumentid="SparePartUnitPrice" />
 
         </td>
@@ -207,7 +207,7 @@
     </td>
     <td>
 
-        <input type="text" style="text-align: center; width: 150px;"  maxlength="10" class="text  number"
+        <input type="text" style="text-align: center; width: 150px;"  maxlength="10" class="text  "
             groupid="SparePartInventoryForm" argumentid="SparePartCostPrice" />
 
     </td>

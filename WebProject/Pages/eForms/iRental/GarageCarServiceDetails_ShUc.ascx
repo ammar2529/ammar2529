@@ -38,35 +38,26 @@
             <input type="text" class="text" style="width:155px;" argumentid="MobileTelephone1" groupid="schCarServiceDetails" /></td>
         
     </tr>
-    
-    
-   
 
 
-      
+
+
+
+
     <tr>
-        <td style="text-align: left;" class="ftitle">
-
-            Receive Date</td>
-        <td style="text-align: left;" class="ftitle">
-
-            Delivery Date</td>
-        <td style="text-align: left;" class="ftitle">
-
-            Deliverd Date</td>
-        <td style="text-align: left;" class="ftitle">
-
-            Status</td>
+        <td style="text-align: left;" class="ftitle">Receive Date</td>
+        <td style="text-align: left;" class="ftitle">Deliverd Date</td>
+        <td style="text-align: left;" class="ftitle">Status</td>
         <td style="text-align: left;" class="ftitle">&nbsp;</td>
-        
+        <td style="text-align: left;" class="ftitle">&nbsp;</td>
+
     </tr>
+   
+    
     <tr>
         <td style="text-align: left;">
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
                 style="width: 135px;" class="text  date   " argumentid="CarRecivedDate" /></td>
-        <td style="text-align: left;">
-            <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                style="width: 135px;" class="text  date   " argumentid="CarToBeDeliverdDate" /></td>
         <td style="text-align: left;">
 
             <input type="text" groupid="schCarServiceDetails" maxlength="10"
@@ -88,6 +79,9 @@
                 <option value="">-----------------------------</option>
 
             </select></td>
+        <td style="text-align: left;">
+
+            &nbsp;</td>
 
 
         <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">

@@ -7,7 +7,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
- 
+
+    t.on('LOVPopupShown', (popup) => {
+         debugger;
+        $(t.el).mask("");
+        $('.loadmask-msg', t.el).hide();
+        popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
+        t.fireEvent('LOVPopupShown', popup);
+    });
 
     $('.MyDataAction', t.el).click(function () {
      
@@ -129,23 +136,28 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
    
 
+
     $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
-        
+        var SparePartUnitPrice = parseFloat($(this).val()) || 0;
 
-    var SparePartUnitPrice = parseFloat($(this).val()) || 0;
-    SparePartUnitPrice = SparePartUnitPrice.toFixed(3);
-    var SelectQuantity = parseFloat($('[argumentid="SelectQuantity"]', t.el).val()) || 0;
+        // Check if SparePartUnitPrice is an integer
+        if (Number.isInteger(SparePartUnitPrice)) {
+            SparePartUnitPrice = SparePartUnitPrice.toFixed(3); // Format integer to 3 decimal places
+        }
 
-    var Result = SparePartUnitPrice * SelectQuantity;
+        // Set SparePartUnitPrice back to the input field
+        $(this).val(SparePartUnitPrice);
 
-    // Set SparePartUnitPrice with 3 decimal places back to the input field
-    $(this).val(SparePartUnitPrice);
+        var SelectQuantity = parseFloat($('[argumentid="SelectQuantity"]', t.el).val()) || 0;
+        var Result = SparePartUnitPrice * SelectQuantity;
 
-    $('[argumentid="TotalPrice" ]', t.el).val(Result.toFixed(3)) || 0;
-  
-
-});
-    
+        // Check if Result is an integer and format TotalPrice accordingly
+        if (Number.isInteger(Result)) {
+            $('[argumentid="TotalPrice"]', t.el).val(Result.toFixed(3)); // Format integer to 3 decimal places
+        } else {
+            $('[argumentid="TotalPrice"]', t.el).val(Result); // Keep existing decimals as they are
+        }
+    });
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function ()
     {
@@ -295,6 +307,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             });
 
             $('.InvoiceTypeCommon').prop('disabled', false);
+            $('.HideOnNewForm', t.el).hide();
         }
 
        
@@ -454,7 +467,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         $('#addRowButton', t.el).prop('disabled', true);
     } 
 
-
+    
    
 
 
@@ -624,118 +637,142 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode 
 
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfQuantityAndUnitPrice = function (t)
 {
-    $('#dynamicRows').on('input', '[argumentid="SelectQuantity"]', function ()
-    {
+    //$('#dynamicRows').on('input', '[argumentid="SelectQuantity"]', function ()
+    //{
+    //    var t = this;
+    //    //AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan(t);
+    //    var $row = $(this).closest('tr'); // Find the closest table row or relevant container
+    //    var quantity = parseFloat($row.find('[argumentid="SelectQuantity"]').val()) || 0;
+    //    var unitPrice = parseFloat($row.find('[argumentid="SparePartUnitPrice"]').val()) || 0;
+    //    var AVLQTY = parseFloat($row.find('[argumentid="SparePartQuantity"]').val()) || 0;
+    //    if (!isNaN(quantity) && !isNaN(unitPrice))
+    //    {
+    //        var totalPrice = quantity * unitPrice;
+    //        var LeftQTY = AVLQTY - quantity;
+    //        $row.find('[argumentid="TotalPrice"]').val(totalPrice.toFixed(3)); // Assuming there's an input field for total price
+    //        //$row.find('[argumentid="SparePartQuantity"]').val(LeftQTY);
+    //        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t)
+    //        AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan(t, AVLQTY, quantity);
+
+
+    //    } else
+    //    {
+    //        $row.find('[argumentid="TotalPrice"]').val(''); // Clear total price if inputs are invalid
+    //    }
+
+    //    if ($('[argumentid="SelectQuantity"]',t.el).val != "")
+    //    {
+    //        $('#addRowButton', t.el).prop('disabled', false);
+    //    }
+    //});
+
+    $('#dynamicRows').on('input', '[argumentid="SelectQuantity"]', function () {
         var t = this;
-        //AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan(t);
         var $row = $(this).closest('tr'); // Find the closest table row or relevant container
-        var quantity = parseFloat($row.find('[argumentid="SelectQuantity"]').val());
-        var unitPrice = parseFloat($row.find('[argumentid="SparePartUnitPrice"]').val());
-        var AVLQTY = parseFloat($row.find('[argumentid="SparePartQuantity"]').val());
-        if (!isNaN(quantity) && !isNaN(unitPrice))
-        {
+
+        // Parse quantities and unit price
+        var quantity = parseFloat($row.find('[argumentid="SelectQuantity"]').val()) || 0;
+        var unitPrice = parseFloat($row.find('[argumentid="SparePartUnitPrice"]').val()) || 0;
+        var AVLQTY = parseFloat($row.find('[argumentid="SparePartQuantity"]').val()) || 0;
+        var TotalPricee = parseFloat($row.find('[argumentid="TotalPrice"]').val()) || 0;
+
+        if (!isNaN(quantity) && !isNaN(unitPrice)) {
+            // Calculate total price and left quantity
             var totalPrice = quantity * unitPrice;
             var LeftQTY = AVLQTY - quantity;
-            $row.find('[argumentid="TotalPrice"]').val(totalPrice.toFixed(3)); // Assuming there's an input field for total price
-            //$row.find('[argumentid="SparePartQuantity"]').val(LeftQTY);
-            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t)
-            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan(t, AVLQTY, quantity);
 
+            // Set TotalPrice with conditional formatting
+            if (Number.isInteger(totalPrice)) {
+                $row.find('[argumentid="TotalPrice"]').val(totalPrice.toFixed(3)); // Show as 3 decimal places for integer values
+            } else {
+                $row.find('[argumentid="TotalPrice"]').val(totalPrice); // Retain existing decimal precision
+            }
 
-        } else
-        {
-            $row.find('[argumentid="TotalPrice"]').val(''); // Clear total price if inputs are invalid
+            // Set LeftQTY if needed and call other functions
+            // $row.find('[argumentid="SparePartQuantity"]').val(LeftQTY); // Uncomment if needed
+            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t);
+            AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan(t, AVLQTY, quantity, unitPrice);
+        } else {
+            // Clear TotalPrice if inputs are invalid
+            $row.find('[argumentid="TotalPrice"]').val('');
         }
 
-        if ($('[argumentid="SelectQuantity"]',t.el).val != "")
-        {
+        // Enable 'Add Row' button if SelectQuantity is not empty
+        if ($('[argumentid="SelectQuantity"]', t.el).val() !== "") {
             $('#addRowButton', t.el).prop('disabled', false);
         }
     });
+
 
 };
 
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice = function (t)
 {
     
-
-    var discount = parseFloat($('.Discount', t.el).val());
-    //var Paid = parseFloat($('[argumentid="Paid"]', t.el).val());
-    //var Balance = parseFloat($('[argumentid="Balance"]', t.el).val());
-
+    // Get and parse the discount value, defaulting to 0 if invalid
+    var discount = parseFloat($('.Discount', t.el).val()) || 0;
 
     var totalPriceText = $('.TotalPriceVal', t.el);
+    let totalPriceSum = 0;
 
-    let totalPriceSum = 0; // Initialize a variable to store the sum of total prices
-    
-    for (let index = 0; index < totalPriceText.length; index++)
-    {
-        var getPriceText = $(totalPriceText[ index ]).text(); // Get the text content of the current element
-        var getPriceNumber = parseFloat(getPriceText); // Convert the text content to a number
-        totalPriceSum += getPriceNumber; // Add the number to the sum
+    // Sum up the total prices
+    for (let index = 0; index < totalPriceText.length; index++) {
+        var getPriceText = $(totalPriceText[index]).text();
+        var getPriceNumber = parseFloat(getPriceText);
+        if (!isNaN(getPriceNumber)) {
+            totalPriceSum += getPriceNumber;
+        }
     }
 
-    console.log(totalPriceSum); // Log the sum of total prices to the console
-    $('[argumentid="SubTotal"]',t.el).val(totalPriceSum.toFixed(3))
-    $('[argumentid="GrandTotal"]',t.el).val(totalPriceSum.toFixed(3))
-    $('[argumentid="Balance"]',t.el).text(totalPriceSum.toFixed(3))
-    var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val());
-    var resDiscount = GrandTotal - discount
-    $('[argumentid="GrandTotal"]', t.el).val(resDiscount.toFixed(3))
-    if (!!$('[argumentid="Paid"]', t.el).text())
-    {
-        var Bal = parseFloat($('[argumentid="Paid"]', t.el).text());
-        var resBal = resDiscount - Bal;
-        $('[argumentid="Balance"]', t.el).text(resBal.toFixed(3));
+    console.log("Total Price Sum:", totalPriceSum);
+    $('[argumentid="SubTotal"]', t.el).val(formatValue(totalPriceSum));
 
-    } else
-    {
-        $('[argumentid="Balance"]', t.el).text(totalPriceSum.toFixed(3))
+    // Apply discount to calculate GrandTotal
+    var grandTotal = totalPriceSum - discount;
+    $('[argumentid="GrandTotal"]', t.el).val(formatValue(grandTotal));
+    $('[argumentid="Balance"]', t.el).text(formatValue(grandTotal));
+
+    // Check and apply paid amount to calculate final balance
+    var paid = parseFloat($('[argumentid="Paid"]', t.el).text()) || 0;
+    var finalBalance = grandTotal - paid;
+    $('[argumentid="Balance"]', t.el).text(formatValue(finalBalance));
+
+    // Format values with helper function
+    function formatValue(value) {
+        return Number.isInteger(value) ? value.toFixed(3) : value;
     }
-
-    //var resultSubtotal = totalPriceSum - discount;
-    //$('[argumentid="GrandTotal"]', t.el).val(resultSubtotal.toFixed(3));
-    //$('[argumentid="Balance"]', t.el).val(resultSubtotal.toFixed(3));
-
 
 };
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = function (t)
 {
-    $('[argumentid="Discount"]', t.el).on('blur', function ()
-    { 
-        
+    $('[argumentid="Discount"]', t.el).on('blur', function () {
         var discount = $(this).val() || 0;
         var resDiscount = parseFloat(discount);
         var subTotal = parseFloat($('[argumentid="SubTotal"]', t.el).val());
 
-      
+        // Set resDiscount to 0 if it's NaN, otherwise format as needed
+        resDiscount = isNaN(resDiscount) ? 0 : resDiscount;
 
+        // Calculate grandTotal and apply appropriate formatting
         var grandTotal = subTotal - resDiscount;
+        $('[argumentid="GrandTotal"]', t.el).val(formatValue(grandTotal));
+        $('[argumentid="Balance"]', t.el).text(formatValue(grandTotal));
 
-        $('[argumentid="GrandTotal"]', t.el).val(grandTotal.toFixed(3));
-        $('[argumentid="Balance"]', t.el).text(grandTotal.toFixed(3));
+        // Handle Paid and Balance calculations
+        var paidText = $('[argumentid="Paid"]', t.el).text() || '0.000';
+        var paid = parseFloat(paidText);
+        var resBalance = grandTotal - (isNaN(paid) ? 0 : paid);
+        $('[argumentid="Balance"]', t.el).text(formatValue(resBalance));
 
-        if (!!$('[argumentid="Paid"]', t.el).text())
-        {
-            var paid = parseFloat($('[argumentid="Paid"]', t.el).text());
-            var resBalance = grandTotal - paid;
-            $('[argumentid="Balance"]', t.el).text(resBalance.toFixed(3));
-        } else
-        {
-            $('[argumentid="Paid"]', t.el).text('0.000')
-        }
-
-        if (!!isNaN(resDiscount))
-        {
-            resDiscount = 0;
-        } else
-        {
-            // Ensure discount is fixed to 3 decimal places
-            resDiscount = resDiscount.toFixed(3);
-            $(this).val(resDiscount);
-        }
-
+        // Format resDiscount to three decimal places only if it's an integer
+        $(this).val(formatValue(resDiscount));
     });
+
+    // Helper function to format values: show toFixed(3) for integers, otherwise keep as is
+    function formatValue(value) {
+        return Number.isInteger(value) ? value.toFixed(3) : value;
+    }
+
 
 };
 
@@ -755,19 +792,36 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
 //    });
 //};
 
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan = function (t, AVLQTY, quantity)
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGreaterThan = function (t, AVLQTY, quantity, unitPrice)
 {
-
+    
    
-        //var availableQTY = parseFloat($('[argumentid="SparePartQuantity"]', t.el).val());
-        //var selectQTY = parseFloat($(this).val());
+      debugger
 
-    if (quantity > AVLQTY)
-        {
-             $.showMessage(`Select QTY Cannot be greater than AVL Qty..! `);
-             $('[argumentid="SelectQuantity"]',t.el).val(AVLQTY);
-        }
+    if (quantity > AVLQTY) {
+        $.showMessage(`Select QTY Cannot be greater than AVL Qty..! `);
+        $('[argumentid="SelectQuantity"]', t.el).val(AVLQTY);
+        var SelectQTY = AVLQTY;
 
+    }
+    else if (quantity == 0) {
+        SelectQTY = 0;
+    }
+    else if (quantity < AVLQTY) {
+
+        SelectQTY = quantity;
+    }
+    else if (quantity == AVLQTY) {
+        SelectQTY = quantity;
+    }
+    // Calculate TotalPrice using SelectQTY (either adjusted or original)
+    var AgainCalculation = SelectQTY * unitPrice;
+
+    // Format TotalPrice to only show decimals if necessary
+    var formattedTotalPrice = Number.isInteger(AgainCalculation) ? AgainCalculation : AgainCalculation.toFixed(3);
+
+    // Update TotalPrice field with formatted result
+    $('[argumentid="TotalPrice"]', t.el).val(formattedTotalPrice);
 
 
 };
@@ -776,6 +830,29 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
 {
     $('.btnSaveInvoice', t.el).on('click', function ()
     {
+
+
+        let isValid = false; // Assume no field is filled initially
+        debugger
+        // Define the required fields to check
+        const requiredFields = [
+            $('[lovpopupid="customerInvoicePopup"]'),
+            $('[lovpopupid="carPopupGarageForInvoice"]'),
+            $('[lovpopupid="QuotationInvoicePopup"]')
+        ];
+
+        // Loop through the required fields to check if any are filled
+        requiredFields.forEach(function (field) {
+            if (field.val()) { // If the field is filled
+                isValid = true; // Set isValid to true
+            }
+        });
+
+        // If no required field is filled, stop the click event
+        if (!isValid) {
+            alert('Please fill in at least one of the required fields.'); // Alert the user
+            return false; // Exit the function
+        }
         setTimeout(function ()
         {
             $('.trNoDynamic input').prop('disabled', false).removeClass('ElemDisabled');
@@ -789,9 +866,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         $('.btnSaveInvoice,.InvoiceButton_Edit,.InvoiceOpenBtn', t.el).hide();
         $('.btnSaveInvoice', t.el).addClass('ElemDisabled');
 
-
+        
         $('.btnSave,.OnCreateInvoice', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-        $('.btnSave,.OnCreateInvoice', t.el).show();
+        $('.btnSave,.OnCreateInvoice,.HideOnNewForm', t.el).show();
         $('.OnNewForm', t.el).show();
         $('.InvoiceButton_Edit,.InvoiceOpenBtn', t.el).hide();
         
@@ -835,8 +912,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             if (['ItemId', 'SelectQuantity', 'SparePartUnitPrice'].includes(argumentid)) {
                 if (value === '') {
                     isValid = false;
-                    console.log('Argument ID:', argumentid, 'is empty');
+                    $.showMessage('Argument ID:', argumentid, 'is empty');
                     $element.css('border', '1px solid red');
+                    return false
                 } else {
                     $element.css('border', '');
                 }
@@ -844,21 +922,21 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         });
 
 
-        // Additional check to ensure all required fields are filled
-        var requiredFieldsFilled = $('.trNoDynamic').find('[argumentid]').toArray().every(function (element)
-        {
-            return $(element).val().trim() !== '';
+        //  Additional check to ensure all required fields are filled
+        var requiredFieldIds = ['ItemId', 'SelectQuantity', 'SparePartUnitPrice'];
+        var requiredFieldsFilled = requiredFieldIds.every(function (id) {
+            return $(`.trNoDynamic [argumentid="${id}"]`).val().trim() !== '';
         });
 
-        if (!requiredFieldsFilled)
-        {
+        // If any field is empty, set isValid to false
+        if (!requiredFieldsFilled) {
             isValid = false;
         }
 
         // If any field is empty, prevent further execution
-        if (!isValid)
-        {
-            console.log('Form validation failed. Please fill all required fields.');
+        if (!isValid) {
+         /*   console.log('Form validation failed. Please fill all required fields.');*/
+            $.showMessage("Please fill all required fields.");
             return;
         }
 
@@ -877,7 +955,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 return;
             }
         }
-        debugger
+        
         // All fields are valid, proceed with server call
         executeServerCall();
     });
@@ -896,15 +974,21 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             if (res.status === 'OK')
             {
 
-
-                var subTotalVal = parseFloat($('[argumentid="SubTotal"]', t.el).val());
-                var Discount = parseFloat($('[argumentid="Discount"]', t.el).val());
-                var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val());
-                var Balance = parseFloat($('[argumentid="Balance"]', t.el).text());
-                var Paid = parseFloat($('[argumentid="Paid"]', t.el).text());
+                debugger
+                var subTotalVal = parseFloat($('[argumentid="SubTotal"]', t.el).val()) || 0;
+                var Discount = parseFloat($('[argumentid="Discount"]', t.el).val()) || 0;
+                var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+                var Balance = parseFloat($('[argumentid="Balance"]', t.el).text()) || 0;
+                var Paid = parseFloat($('[argumentid="Paid"]', t.el).text()) || 0;
 
                 var resBal = GrandTotal - Paid;
-                $('[argumentid="Balance"]', t.el).text(resBal.toFixed(3))
+
+                // Format resBal based on whether it's an integer or has a decimal part
+                var formattedResBal = Number.isInteger(resBal) ? resBal.toFixed(3) : resBal;
+
+                // Update Balance field with the formatted result
+                $('[argumentid="Balance"]', t.el).text(formattedResBal);
+
 
                 var parts = res.Response.split('||');
                 var code = parts[ 0 ];
@@ -924,59 +1008,49 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems(res, t);
                     setTimeout(function ()
                     {
-
+                        debugger
                         // Assuming totalPriceText is a collection of elements, not a single number
                         var totalPriceText = $('.TotalPriceVal', t.el);
 
                         let totalPriceSum = 0; // Initialize a variable to store the sum of total prices
 
                         // Loop through each element in the totalPriceText collection
-                        for (let index = 0; index < totalPriceText.length; index++)
-                        {
-                            var getPriceText = $(totalPriceText[ index ]).text(); // Get the text content of the current element
+                        for (let index = 0; index < totalPriceText.length; index++) {
+                            var getPriceText = $(totalPriceText[index]).text(); // Get the text content of the current element
                             var getPriceNumber = parseFloat(getPriceText); // Convert the text content to a number
 
                             // Ensure that the parsed number is a valid number before adding to the sum
-                            if (!isNaN(getPriceNumber))
-                            {
+                            if (!isNaN(getPriceNumber)) {
                                 totalPriceSum += getPriceNumber; // Add the number to the sum
                             }
                         }
 
-                        console.log(totalPriceSum); // Log the sum of total prices to the console
-                        $('[argumentid="SubTotal"]', t.el).val(totalPriceSum); // Update the SubTotal field with the sum
+                        // Format totalPriceSum based on whether it’s an integer or has decimals
+                        var formattedTotalPriceSum = Number.isInteger(totalPriceSum) ? totalPriceSum.toFixed(3) : totalPriceSum;
+                        $('[argumentid="SubTotal"]', t.el).val(formattedTotalPriceSum); // Update the SubTotal field with the formatted sum
 
                         // Retrieve various values from the form
                         var recid = $('[argumentid="RecId"]', t.el).val();
-                        var Discount = parseFloat($('.Discount', t.el).val());
+                        var Discount = parseFloat($('.Discount', t.el).val()) || 0; // Default to 0 if Discount is not a valid number
 
-                        if (isNaN(Discount))
-                        {
-                            Discount = 0;
-                        }
-
-                        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val());
-                        var Balance = parseFloat($('[argumentid="Balance"]', t.el).text());
-                        var Paid = parseFloat($('.Paid', t.el).text());
+                        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+                        var Balance = parseFloat($('[argumentid="Balance"]', t.el).text()) || 0;
+                        var Paid = parseFloat($('.Paid', t.el).text()) || 0;
                         var Code = $('[argumentid="Code"]', t.el).val();
                         var InvoiceDate = $('[argumentid="InvoiceDate"]', t.el).val();
                         var DeliveryNo = $('[argumentid="DeliveryNo"]', t.el).val();
                         var CustomerRecCode = $('[argumentid="CustomerRecCode"]', t.el).val();
 
-                        // Ensure totalPriceSum is not NaN
-                        if (isNaN(totalPriceSum))
-                        {
-                            totalPriceSum = 0;
-                        }
-
                         // Calculate the total grand amount after discount
                         var totalGrand = totalPriceSum - Discount;
-                        $('[argumentid="GrandTotal"]').val(totalGrand); // Update the GrandTotal field
-                        ;
+                        var formattedTotalGrand = Number.isInteger(totalGrand) ? totalGrand.toFixed(3) : totalGrand;
+                        $('[argumentid="GrandTotal"]').val(formattedTotalGrand); // Update the GrandTotal field
 
                         // Calculate the total balance after payment
                         var totalBal = totalGrand - Paid;
-                        $('[argumentid="Balance"]', t.el).text(totalBal); // Update the Balance field
+                        var formattedTotalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal;
+                        $('[argumentid="Balance"]', t.el).text(formattedTotalBal); // Update the Balance field
+
 
 
                         var params = {
@@ -1085,7 +1159,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
     
         
        
-         $('.OnNewForm', t.el).show();
+        $('.OnNewForm', t.el).show();
+        $('.HideOnNewForm', t.el).show();
             
         if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState')
         {
@@ -1172,43 +1247,52 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
     });
 };
 
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe = function (t)
-{
+// Define parseFloatSafe function outside to avoid redundant definitions
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.parseFloatSafe = function (t) {
+    debugger
+    // Use parseFloatSafe function to safely parse and handle NaN values as 0.000
+    var subTotalVal = parseFloatSafe($('[argumentid="SubTotal"]', t.el).val());
+    var Discount = parseFloatSafe($('.Discount', t.el).val());
+    var GrandTotal = parseFloatSafe($('[argumentid="GrandTotal"]', t.el).val());
+    var Balance = parseFloatSafe($('[argumentid="Balance"]', t.el).text());
+    var Paid = parseFloatSafe($('[argumentid="Paid"]', t.el).text());
 
-    var subTotalVal = parseFloatSafe($('[argumentid="SubTotal"]',t.el).val());
-    var Discount = parseFloatSafe($('.Discount',t.el).val());
-    var GrandTotal = parseFloatSafe($('[argumentid="GrandTotal"]',t.el).val());
-    var Balance = parseFloatSafe($('[argumentid="Balance"]',t.el).text());
-    var Paid = parseFloatSafe($('[argumentid="Paid"]',t.el).text());
-    function parseFloatSafe(value)
-    {
-
-        var result = parseFloat(value);
-        
-        return isNaN(result) ? 0.000 : result;
-    }
-
-    console.log("SubTotal type:", typeof subTotalVal);
-    console.log("Discount type:", typeof Discount);
-    console.log("GrandTotal type:", typeof GrandTotal);
-    console.log("Balance type:", typeof Balance);
-    console.log("Paid type:", typeof Paid);
-
-    // Ensure toFixed(3) is applied correctly
-    console.log("SubTotal:", subTotalVal.toFixed(3));
-    console.log("Discount:", Discount.toFixed(3));
-    console.log("GrandTotal:", GrandTotal.toFixed(3));
-    console.log("Balance:", Balance.toFixed(3));
-    console.log("Paid:", Paid.toFixed(3));
-
-
-    $('[argumentid="SubTotal"]', t.el).val(subTotalVal.toFixed(3));
-    $('.Discount', t.el).val(Discount.toFixed(3));
-    $('[argumentid="GrandTotal"]', t.el).val(GrandTotal.toFixed(3));
-    $('[argumentid="Balance"]', t.el).text(Balance.toFixed(3));
-    $('[argumentid="Paid"]', t.el).text(Paid.toFixed(3));
-        // Retrieve and parse values safely
+    // Apply conditional formatting: if integer, format to 3 decimals, otherwise show as is
+    $('[argumentid="SubTotal"]', t.el).val(formatValue(subTotalVal));
+    $('.Discount', t.el).val(formatValue(Discount));
+    $('[argumentid="GrandTotal"]', t.el).val(formatValue(GrandTotal));
+    $('[argumentid="Balance"]', t.el).text(formatValue(Balance));
+    $('[argumentid="Paid"]', t.el).text(formatValue(Paid));
 };
+
+// Helper function to check if a number is an integer
+function isInteger(value) {
+    return Number.isInteger(value);
+}
+
+// Function to format values: show toFixed(3) for integers, otherwise as is
+function formatValue(value) {
+    return isInteger(value) ? value.toFixed(3) : value;
+}
+
+// Safe parse function to avoid NaN values by returning 0.000 if NaN
+function parseFloatSafe(value) {
+    var result = parseFloat(value);
+    return isNaN(result) ? 0.000 : result;
+}
+
+
+// Helper function to check if a number is an integer
+function isInteger(value) {
+    return Number.isInteger(value);
+}
+
+// Safe parse function to avoid NaN values by returning 0.000 if NaN
+function parseFloatSafe(value) {
+    var result = parseFloat(value);
+    return isNaN(result) ? 0.000 : result;
+}
+
 
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = function (res, t)
 {
@@ -1225,8 +1309,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
 
             for (var i = 0; i < rows.length; i++)
             {
-                
 
+                debugger
                 var row = rows[ i ];
 
                 var RecId = row.RecId;
@@ -1236,8 +1320,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                 var SparePartName = row.SparePartName;
                 var SparePartQuantity = row.SparePartQuantity;
                 var SelectQuantity = row.SelectQuantity;
-                var SparePartUnitPrice = row.SparePartUnitPrice;
-                var TotalPrice = row.TotalPrice;
+                var SparePartUnitPrice = Number.isInteger(row.SparePartUnitPrice) ? row.SparePartUnitPrice.toFixed(3) : row.SparePartUnitPrice;
+                var TotalPrice = Number.isInteger(row.TotalPrice) ? row.TotalPrice.toFixed(3) : row.TotalPrice;
                 var PurchasingFrom = row.PurchasingFrom;
                 var StoreLocation = row.StoreLocation;
                 var SparePartShelfNo = row.SparePartShelfNo;
@@ -1263,8 +1347,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                               <td class="ColTemplate w-grid-cell-border colIndex-4 SparePartQuantity" style="padding: 5px; background: white; color: black;display:none;">${SparePartQuantity}</td>
 
                               <td class="ColTemplate w-grid-cell-border colIndex-4 SelectQuantity" style="padding: 5px; background: white; color: black;">${SelectQuantity}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice.toFixed(3)}</td>
-                              <td class="ColTemplate TotalPriceVal w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3) }</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice}</td>
+                              <td class="ColTemplate TotalPriceVal w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice }</td>
                              
                              <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;" recid="${RecId}">X</td>
                               </tr>
@@ -1352,47 +1436,44 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
         
 
         var totalPriceText = $('.TotalPriceVal', t.el);
-
         let totalPriceSum = 0; // Initialize a variable to store the sum of total prices
 
-        for (let index = 0; index < totalPriceText.length; index++)
-        {
-            var getPriceText = $(totalPriceText[ index ]).text(); // Get the text content of the current element
+        for (let index = 0; index < totalPriceText.length; index++) {
+            var getPriceText = $(totalPriceText[index]).text(); // Get the text content of the current element
             var getPriceNumber = parseFloat(getPriceText); // Convert the text content to a number
 
-            if (!isNaN(getPriceNumber))
-            {
-                totalPriceSum += getPriceNumber; 
+            if (!isNaN(getPriceNumber)) {
+                totalPriceSum += getPriceNumber; // Add the number to the sum
             }
         }
 
         console.log(totalPriceSum); // Log the sum of total prices to the console
+
+        // Format totalPriceSum based on whether it has decimals
+        totalPriceSum = Number.isInteger(totalPriceSum) ? totalPriceSum.toFixed(3) : totalPriceSum;
         $('[argumentid="SubTotal"]', t.el).val(totalPriceSum);
 
-        
+        // Retrieve various values from the form
         var recid = $('[argumentid="RecId"]', t.el).val();
-        var Discount = parseFloat($('.Discount',t.el).val());
-        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]',t.el).val());
-        var Balance = parseFloat($('[argumentid="Balance"]',t.el).text());
-        var Paid = parseFloat($('.Paid',t.el).text());
+        var Discount = parseFloat($('.Discount', t.el).val()) || 0; // Ensure Discount is a number, default to 0 if NaN
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+        var Balance = parseFloat($('[argumentid="Balance"]', t.el).text()) || 0;
+        var Paid = parseFloat($('.Paid', t.el).text()) || 0;
         var Code = $('[argumentid="Code"]', t.el).val();
         var InvoiceDate = $('[argumentid="InvoiceDate"]', t.el).val();
         var DeliveryNo = $('[argumentid="DeliveryNo"]', t.el).val();
         var CustomerRecCode = $('[argumentid="CustomerRecCode"]', t.el).val();
 
-
-
-
-
-        if (isNaN(totalPriceSum))
-        {
-            totalPriceSum = 0;
-        }
-
+        // Calculate total grand amount after discount
         var totalGrand = totalPriceSum - Discount;
+        totalGrand = Number.isInteger(totalGrand) ? totalGrand.toFixed(3) : totalGrand;
         $('[argumentid="GrandTotal"]').val(totalGrand);
+
+        // Calculate total balance after payment
         var totalBal = totalGrand - Paid;
-        $('[argumentid="Balance"]',t.el).text(totalBal)
+        totalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal;
+        $('[argumentid="Balance"]', t.el).text(totalBal);
+
 
         var params = {
             Command: 'UPD_InvoiceDetails',
@@ -1510,7 +1591,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage,InvoiceType) {
     var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
 
-    
+    debugger
   
     if ($('.ServiceInvoice').is(":checked"))
     {
@@ -1542,10 +1623,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         
         if (toShow === 'carPopupGarageForInvoice') {
             
-            if (t.FormMode == 'update') {
-            $('.cust', t.el).hide();
-            $('.serv', t.el).show();
-                $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
+            if (t.FormMode == 'update')
+            {
+                $('.cust', t.el).hide();
+                $('.serv', t.el).show();
+                    $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
 
                 if (InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice' && InvoiceType != null) {
 
@@ -1579,6 +1661,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
             }
 
         }
+
+       
     
 
 
@@ -1586,6 +1670,16 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         $('.hideCarandService', t.el).show();
         $('.hideTrForINVCust', t.el).show();
         $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
+
+        if (t.FormMode == 'new') {
+            
+            $('.HideOnNewForm', t.el).hide();
+
+            if (trimMessage) {
+
+                $('.HideOnNewForm', t.el).show();
+            }
+        }
     }
 
 
@@ -1637,9 +1731,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
       
 
 
+
         $('.hideCarandService', t.el).hide();
         $('.hideTrForINVCust', t.el).show();
         $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
+        if (t.FormMode == 'new') {
+
+            $('.HideOnNewForm', t.el).hide();
+
+            if (trimMessage) {
+
+                $('.HideOnNewForm', t.el).show();
+            }
+        }
 
     }
 
@@ -1690,6 +1794,15 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         }
 
 
+        if (t.FormMode == 'new') {
+
+            $('.HideOnNewForm', t.el).hide();
+
+            if (trimMessage) {
+
+                $('.HideOnNewForm', t.el).show();
+            }
+        }
 
         $('.hideCarandService', t.el).hide();
         $('.hideTrForINVCust', t.el).show();

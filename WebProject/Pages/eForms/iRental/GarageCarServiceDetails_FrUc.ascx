@@ -251,7 +251,15 @@
                     </td>
                   
                 </tr>
-
+                <tr>
+                    <td class="ftitle">Warranty</td>
+                    <td class="ftitle">
+                             <input type="radio" class="   WarrentyYes  " checked="checked" default="default" value="Yes" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty" /><label>Yes</label>
+                             <input type="radio" class="  WarrentyNo  " value="No" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty" /><label>No</label>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td class="ftitle" >
                         <nobr>Service Date *:</nobr>
@@ -289,30 +297,21 @@
 
                 </tr>
             <tr>
-                <td class="ftitle">
-                    <nobr>Delivery Date *:</nobr>
+                <td class="ftitle AddAsterisk">
+                    Deliverd Date:
                 </td>
-              <%--  <td>
-                    <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                        style="width: 75px;" class="text  date CommonDisableClass  required " requirederr="*" argumentid="CarToBeDeliverdDate" />
-
-                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
-                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartDay" />
-
-                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text CommonDisableClass"
-                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
-
-                </td>--%>
 
                 <td>
+
                     <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                        style="width: 75px;" class="text  date CommonDisableClass required " argumentid="CarToBeDeliverdDate" />
+                        style="width: 75px;" class="text  date AddRequired CommonDisableClass OnStartState " argumentid="CarDeliverdDate" />
 
                     <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
-                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartDay" />
+                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
 
-                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  CommonDisableClass"
-                        groupid="GarageCarServiceDetails" argumentid="CarToBeDeliverStartTime" />
+                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  OnStartState CarDeliverdStartTime"
+                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
+
 
                 </td>
 
@@ -327,29 +326,19 @@
             </tr>
 
             <tr>
-                 <td class="ftitle AddAsterisk " >Deliverd Date:</td>
-            <%--    <td>
-                    <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                        style="width: 75px;" class="text  date AddRequired CommonDisableClass  OnStartState" argumentid="CarDeliverdDate" />
+                 <td class="ftitle AddAsterisk " >Next Service Date: </td>
 
-
-                    <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text  AlwaysDisableJC "
-                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
-
-                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState CarDeliverdStartTime"
-                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
-                </td>--%>
 
 
                 <td>
                     <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                        style="width: 75px;" class="text  date AddRequired CommonDisableClass OnStartState " argumentid="CarDeliverdDate" />
+                        style="width: 75px;" class="text  date AddRequired CommonDisableClass  OnStartState " argumentid="NextServiceDate" />
 
                     <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
-                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay" />
+                        groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
 
-                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  OnStartState CarDeliverdStartTime"
-                        groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
+                    <%--<input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  OnStartState NextServiceStartTime"
+                        groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />--%>
 
                 </td>
                 
@@ -361,38 +350,6 @@
                   
             </tr>
 
-                <tr>
-                    <td class="ftitle AddAsterisk">Next Service Date:</td>
-                 <%--   <td>
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;" class="text  date CommonDisableClass AddRequired OnStartState " argumentid="NextServiceDate" />
-
-
-                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
-                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
-
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text OnStartState NextServiceStartTime"
-                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
-                    </td>--%>
-
-                    <td>
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 75px;" class="text  date AddRequired CommonDisableClass  OnStartState " argumentid="NextServiceDate" />
-
-                        <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisableJC"
-                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
-
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text  OnStartState NextServiceStartTime"
-                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartTime" />
-
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-        
-
- 
 
 
                 <tr>
@@ -417,7 +374,7 @@
 
 
 
-                <tr>
+              <%--  <tr>
                     <td valign="center" class="ftitle">
                         <nobr>Car Condition:</nobr>
                     </td>
@@ -426,7 +383,7 @@
                             argumentid="CarCondition" groupid="GarageCarServiceDetails"></textarea>
                     </td>
 
-                </tr>
+                </tr>--%>
 
 
 
@@ -441,11 +398,27 @@
               
 
               <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                                                    
+                        <td colspan="4" style="text-align: center;">
 
-                    </td>
+
+
+         <div style="padding-top: 10px; padding-bottom: 10px">
+             <input type="button" style="width: 95px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" style="width: 95px; color: Green" ignorevalidate="DocType" value="  Close  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" style="width: 95px; color: Red" ignorevalidate="DocType CurrentServiceKm NextServiceKm CarDeliverdDate NextServiceDate ActionTaken" value="  Cancel  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
+
+         </div>
+
+         <div style="padding-top: 10px; padding-bottom: 10px">
+
+             <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm OnCreateInvoice" />
+             <input type="button" style="width: 50px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
+             <input type="button" value="  Print " style="width: 50px" class="ButtonStyle PrintJobCard  OnNewForm" />
+
+             <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
+         </div>
+     </td>
                 </tr>
 
 
@@ -508,39 +481,17 @@
 
 
 
-                <tr>
-                    <td colspan="4" style="text-align: center;">
-
-
-
-                        <div style="padding-top: 10px; padding-bottom: 10px">
-                            <input type="button" style="width: 95px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave3 common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                            <input type="button" style="width: 95px; color: Green" ignorevalidate="DocType" value="  Close  " class="DataAction ButtonStyle  grgbtnClosed common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-                            <input type="button" style="width: 95px; color: Red" ignorevalidate="DocType CurrentServiceKm NextServiceKm CarDeliverdDate NextServiceDate ActionTaken" value="  Cancel  " class="DataAction ButtonStyle  grgbtnCanceled common-button OnNewForm OnCreateInvoice" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'GarageCarServiceDetails'}" />
-
-                        </div>
-
-                        <div style="padding-top: 10px; padding-bottom: 10px">
-
-                            <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle CarServiceButton_Edit OnNewForm OnCreateInvoice" />
-                            <input type="button" style="width: 50px; color: blue;" ignorevalidate="DocType" value="  Open  " class="DataAction ButtonStyle  grgbtnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                            <input type="button" style="width: 50px" ignorevalidate="DocType" value="  Save  " class="DataAction ButtonStyle  grgbtnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false, Requery:true,GroupId:'GarageCarServiceDetails'}" />
-                            <input type="button" value="  Print " style="width: 50px" class="ButtonStyle PrintJobCard  OnNewForm" />
-
-                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel " />
-                        </div>
-                    </td>
-                </tr>
+            
 
                  <tr>
-                    <td >
+                    <td class="ftitle">
                         <nobr>Contract Created By:</nobr>
                     </td>
                     <td style="text-align: center" >
                         <span class="ftitle"  groupid="GarageCarServiceDetails" argumentid="CreatedBy"></span>
                     </td>
                    
-                       <td >
+                       <td class="ftitle">
                         <nobr>Contract Date & Time:</nobr>
                     </td>
                     <td style="text-align: center" >

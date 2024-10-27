@@ -251,7 +251,7 @@
                     <td class="ftitle">
                     
 
-                       <input readonly type="text" class="ftitle CommonSPCust serv" style="display: inline-block;font-size: 15px;background: transparent;color: rgb(98, 130, 150);
+                       <input  type="text" class="ftitle CommonSPCust serv" style="display: inline-block;font-size: 15px;background: transparent;color: rgb(98, 130, 150);
                         outline: none;border: none;color: #628296;cursor: context-menu;font-size: 12.5px;font-weight: bold;"
                            groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" />
 
@@ -328,7 +328,8 @@
                 </tr>
 
                 <!-- New row with labels and 8 columns starts here -->
-              <tr class="LineOfItemRow">
+              
+              <tr class="LineOfItemRow HideOnNewForm">
     <td colspan="4">
         <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
             <tr>
@@ -387,7 +388,7 @@
                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                 </td>
                 <td>
-                    <input type="text" style="text-align: center; width: 56px;font-weight: bold;" maxlength="10" class="text ElemDisabled number CommonDisableClass "
+                    <input type="text" style="text-align: center; width: 56px;font-weight: bold;" maxlength="10" class="text ElemDisabled  CommonDisableClass "
                         groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" />
                 </td>
                 <td>
@@ -437,136 +438,59 @@
   
 
 </tr>
-           
 
-                        <tr>
+
+                <tr class="HideOnNewForm">
                     <td colspan="4">
 
-                      
-                      
-               
-
                         <input type="hidden" groupid="SparePartInventoryInvoice" argumentid="FileGuid" readonly="readonly" />
-                        <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo"  />
+                        <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo" />
 
                         <%-- Data Grid  --%>
-                        <%--<div style="width: 100%;" class=" CommonDisableClasss">
-                        <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; style="width:100%;"  text-align: left" class="uploadedItemList">
-                            <tbody>
-                                <tr class="HeaderTR">
-                                    <td class="Header w-grid-border">
-                                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header">
-                                            <tbody>
-                                                <tr class="w-grid-head-back">
-
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-3" colindex="3" colid="ItemId" style="padding-left: 0px; padding-right: 0px;width: 50px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Item ID</span>
-                                                        </div>
-                                                    </td>
-                                                
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileType" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Item Code</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px; ">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Description</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px;display:none;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Qty'AVL</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px; ">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Qty</span>
-                                                        </div>
-                                                    </td>
-                                                      <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Unit Price</span>
-                                                        </div>
-                                                    </td>
-                                                      <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                                            <span href="#" class="w-grid-head ColName sort">Total Price</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 45px;">
-                                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                            <span href="#" class="w-grid-head ColName sort"></span>
-                                                        </div>
-                                                    </td>
 
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr class="ItemTR">
-                                    <td class="Item w-grid-border">
-                                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; table-layout: fixed" itemno="10" class="w-grid-row-odd">
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr class="NoRecordsTR" style="display: none;">
-                                    <td class="NoRecords w-grid-norecords-msg">
-                                        <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                            </div>--%>
+                        <div style="width: 100%; padding: 4px;" class="ItemListDiv ">
 
-         <div style="width: 100%; padding:4px;" class="ItemListDiv">
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="uploadedItemList ">
+                                <thead>
+                                    <tr>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4 " style="padding-left: 5px; padding-right: 0px; color: black; width: 60px;">Item ID</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 130px;">Item Code</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 270px;">Description</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">From</th>
 
-      <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="uploadedItemList">
-          <thead>
-              <tr>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4 " style="padding-left: 5px; padding-right: 0px; color: black;width: 60px; ">Item ID</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 130px;">Item Code</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 270px;">Description</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">From</th>
-              
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Rack</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Shelf</th>
-                      <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Store</th>
-                <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Unit Price</th>
-                  <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Total Price</th>
-                   
-                 <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border w-grid-cell-border-last colIndex-4" ></th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Rack</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Shelf</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Store</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Unit Price</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Total Price</th>
 
-              </tr>
-          </thead>
-          <tbody>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border w-grid-cell-border-last colIndex-4"></th>
 
-          </tbody>
-          <tfoot>
-              <tr class="NoRecordsTR">
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="NoRecordsTR">
 
-                  <td class="NoRecords w-grid-norecords-msg" colspan="10">
-                      <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
-                  </td>
-              </tr>
+                                        <td class="NoRecords w-grid-norecords-msg" colspan="10">
+                                            <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                                        </td>
+                                    </tr>
 
-          </tfoot>
+                                </tfoot>
 
-      </table>
-  </div>
+                            </table>
+                        </div>
                         <%--<%-- End Data Grid --%>
                    
                         
                     </td>
                 </tr>
 
-                 <tr>
+                 <tr class="HideOnNewForm">
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
@@ -624,7 +548,7 @@
                     </td>
                 </tr>--%>
 
-                       <tr>
+                       <tr class="HideOnNewForm">
                   
                      <td class="ftitle">
                         <nobr>SubTotal:</nobr></td>
@@ -643,10 +567,10 @@
                 </tr>
 
 
-                <tr>
+                <tr class="HideOnNewForm">
 
 
-                    <td class="ftitle">
+                    <td class="ftitle ">
                         <nobr>Discount:</nobr></td>
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount CommonDisableClass CommonDisableClasss"
@@ -662,7 +586,7 @@
                 </tr>
 
 
-                <tr>
+                <tr class="HideOnNewForm">
 
                  
 
@@ -673,14 +597,14 @@
                             groupid="SparePartInventoryInvoice" argumentid="GrandTotal"  disabled="disabled"/></td>
                 </tr>
 
-                     <tr class="hideOnQuotation">
+                     <tr class="hideOnQuotation HideOnNewForm" >
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
                     </td>
                 </tr>
                 
-                <tr class="hideOnQuotation">
+                <tr class="hideOnQuotation HideOnNewForm">
                     <td class="ftitle ">
                         <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
                     </td>
@@ -696,13 +620,13 @@
                     </td>
                 </tr>
             
-                     <tr>
+                     <tr class="HideOnNewForm">
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
                     </td>
                 </tr>
-
+                
                   <tr>
                     <td colspan="4" style="text-align: center;">
                            

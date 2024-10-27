@@ -29,7 +29,7 @@
  
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarRecivedDate', 'ServiceStartTime', 'ServiceStartDay', t);
-    AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarToBeDeliverdDate', 'CarToBeDeliverStartTime', 'CarToBeDeliverStartDay', t);
+    /*AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarToBeDeliverdDate', 'CarToBeDeliverStartTime', 'CarToBeDeliverStartDay', t);*/
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('CarDeliverdDate', 'CarDeliverdStartTime', 'CarDeliverdStartDay', t);
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleBlurOnDates('NextServiceDate', 'NextServiceStartTime', 'NextServiceStartDay', t);
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.AllowedFiles(t);
@@ -186,6 +186,13 @@
             $('[argumentid="CurrentServiceKm"]').on('focus', function () {
                 CurrentServiceKm1 = parseInt($(this).val()) || 0;
             });
+
+            $('[argumentid="CurrentServiceKm"]', t.el).on('input', function () {
+
+                var CurrentServiceKm = $(this).val();
+                $('[argumentid="OutKm"]', t.el).val(CurrentServiceKm);
+
+            });
             $('[argumentid="CurrentServiceKm"]', t.el).on('blur', function () {
                 
                 CurrentServiceKm = parseInt($(this).val()) || 0;
@@ -193,7 +200,7 @@
                 var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
 
                 // Check if CurrentServiceKm is less than LastServiceKm
-                if (CurrentServiceKm <= LastServiceKm) {
+                if (CurrentServiceKm < LastServiceKm) {
 
 
 
@@ -204,8 +211,8 @@
                   /*  CurrentServiceKm = 0;*/
 
                     // Update the input field with the new value
-                    $(this).val(CurrentServiceKm1);
-                    $.showMessage('In KM cannot be less than or equal to Last Service KM.')
+                    $(this).val('');
+                    $.showMessage('In-KM cannot be less than to Last Service-KM.')
                 }
 
             });
@@ -221,7 +228,7 @@
 
 
                 // Check if CurrentServiceKm is less than LastServiceKm
-                if (OutKm <= CurrentServiceKm || OutKm <= LastServiceKm  ) {
+                if (OutKm < CurrentServiceKm || OutKm < LastServiceKm  ) {
 
 
 
@@ -231,8 +238,8 @@
                     /*OutKm = CurrentServiceKm + 1;*/
                     OutKm = 0;
                     // Update the input field with the new value
-                    $(this).val(OutKm);
-                    $.showMessage('Out KM cannot be less than or equal to Last Service KM & In KM .')
+                    $(this).val('');
+                    $.showMessage('Out-KM cannot be less than  to Last Service KM & In-KM .')
                 }
 
             });
@@ -250,7 +257,7 @@
                 var OutKm = parseInt($('[argumentid="OutKm"]', t.el).val()) || 0;
 
                 // Check if CurrentServiceKm is less than LastServiceKm
-                if (NextServiceKm <= OutKm || NextServiceKm <= CurrentServiceKm || NextServiceKm <= LastServiceKm)
+                if (NextServiceKm < OutKm || NextServiceKm < CurrentServiceKm || NextServiceKm < LastServiceKm)
                 {
 
 
@@ -262,8 +269,8 @@
                     NextServiceKm = 0;
 
                     // Update the input field with the new value
-                    $(this).val(NextServiceKm);
-                    $.showMessage('NextServiceKM KM cannot be less than or equal to Last Service KM & In KM & Out KM.')
+                    $(this).val('');
+                    $.showMessage('NextServiceKM-KM cannot be less than  to Last Service-KM & In-KM & Out-KM.')
                 }
 
             });
@@ -714,7 +721,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetCurrentDateAndWeekDaysOnCarRe
 
     var dt = new Date();
     $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
-    $('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+    /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
 
     var cH = dt.getHours();
     var cM = dt.getMinutes();
@@ -727,21 +734,21 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetCurrentDateAndWeekDaysOnCarRe
     var csDate = val('CarRecivedDate', t.el);
 
     var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
-
+    
 
     setField('ServiceStartDay', dow, t.el);
 
 
-    var esDate = val('CarToBeDeliverdDate', t.el);
+    //var esDate = val('CarToBeDeliverdDate', t.el);
 
-    var dowe = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(esDate);
+    //var dowe = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(esDate);
 
 
-    setField('CarToBeDeliverStartDay', dowe, t.el);
+    //setField('CarToBeDeliverStartDay', dowe, t.el);
 
 
     $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
-    $('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
+    //$('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
 
 
 };
