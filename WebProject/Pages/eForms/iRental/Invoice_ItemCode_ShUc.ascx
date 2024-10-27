@@ -1,5 +1,34 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Invoice_ItemCode_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_Cars_ShUc" %>
 
+<script>
+    debugger
+    
+        // 2 seconds ke baad form fields ko reset karna
+        setTimeout(function () {
+
+            $('[argumentid="ItemId"]').focus();
+
+            // Specific fields ko enable karna
+            $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"]').prop('disabled', false);
+
+            // Enter key press se search button trigger karna
+            $(document).on('keypress', function (e) {
+                if (e.which === 13) { // 13 is the Enter key code
+                    $('.search').click();
+                    e.preventDefault(); // Page reload hone se rokne ke liye
+                }
+            });
+            
+        }, 1000);
+    
+
+    
+   
+
+   
+</script>
+
+
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle">
