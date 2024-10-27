@@ -66,9 +66,9 @@
                 <li class="active" tabid="InvoiceDetails">
                     <div>Invoice Details </div>
                 </li>
-                <li tabid="InvoicePaymentDetails" style="border-right: 1px solid #8298B0;">
+              <%--  <li tabid="InvoicePaymentDetails" style="border-right: 1px solid #8298B0;">
                     <div>Payment Details </div>
-                </li>
+                </li>--%>
 
             </ul>
         </td>
@@ -597,14 +597,14 @@
                             groupid="SparePartInventoryInvoice" argumentid="GrandTotal"  disabled="disabled"/></td>
                 </tr>
 
-                     <tr class="hideOnQuotation HideOnNewForm" >
+                     <%--<tr class="hideOnQuotation HideOnNewForm" >
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
                     </td>
-                </tr>
+                </tr>--%>
                 
-                <tr class="hideOnQuotation HideOnNewForm">
+             <%--   <tr class="hideOnQuotation HideOnNewForm">
                     <td class="ftitle ">
                         <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
                     </td>
@@ -618,7 +618,7 @@
                     <td style="text-align: center;">
                         <span class="ftitle AmountDueC" style="color: Red; font-size: 12px" groupid="SparePartInventoryInvoice" argumentid="Balance"></span>
                     </td>
-                </tr>
+                </tr>--%>
             
                      <tr class="HideOnNewForm">
                     <td colspan="4">

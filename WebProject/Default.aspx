@@ -148,34 +148,32 @@
     $().ready(onReady);
 
 </script>--%>
-    <script>
 
-        //setInterval(function () {
-        //    location.reload();
-        //}, 5000);
-        // 5000 milliseconds = 5 seconds
+    <script type="text/javascript">
+    var onReady = () => {
+        //console.log("finding menu...");
+        if ($('[showwidget="conInvoice"]').length > 0) {
+            /*$('[showwidget="conInvoice"]').trigger('click');*/
 
-        //if (!sessionStorage.getItem('hasReloaded')) {
-        //    sessionStorage.setItem('hasReloaded', 'true');
-        //    window.location.reload();
-        //}
+            $('[showwidget = "conInvoice"]').on('click', function () {
+                debugger
+                AsyncWidgets.get('grdSparePartCustomerAndInvoiceDetails').Requery();
 
-        //if (sessionStorage.getItem('hasLoggedIn')) {
-        //    sessionStorage.removeItem('hasLoggedIn');
-        //    window.location.reload();
-        //}
+            });
+        }
 
-        //$(document).ready(function () {
-        ////    location.reload();
-        //    $('.LoginButton').click(function () {
+        else {
+            //var outterFun = arguments.callee;
+            setTimeout(onReady, 3000);
+        }
+    };
 
-        //        console.log('clicked login button')
-        //    })
-        //    AsyncWidgets.Widgets.on("initialized", function () {
-        //       // alert("Widgets Initialized");
-        //    });
-        //});
+
+
+    $().ready(onReady);
 
     </script>
+
+
 </asp:Content>
 
