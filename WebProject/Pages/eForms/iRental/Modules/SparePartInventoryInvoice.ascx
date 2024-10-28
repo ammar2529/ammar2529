@@ -751,7 +751,8 @@
              StoreLocation: { caption: 'Store', width: '60px' },
              PurchasingFrom: { caption: 'From', width: '60px' },
              StoreLocationID: { width: '0px' },
-             InvRecId: { width: '0px' }
+             InvRecId: { width: '0px' },
+             SearchOrderNo: { width: '0px' }
 
          }
      };

@@ -95,7 +95,7 @@
         <td>
 
 
-<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text required CommonClass"                                                         
+<input type="text" style="text-align:center;width:150px;"  maxlength="30" class="text  CommonClass"                                                         
   groupid="SparePartInventoryForm"  argumentid="SparePartSerialNo" />
         </td>
     </tr>
@@ -201,17 +201,32 @@
         </td>
     </tr>
 
-       <tr runat="server" roles="Show_SparePart_Cost_Price">
-    <td class="ftitle">
-        <nobr>Cost Price:</nobr>
-    </td>
-    <td>
+    <tr runat="server" roles="Show_SparePart_Cost_Price">
+        <td class="ftitle">
+            <nobr>Cost Price:</nobr>
+        </td>
+        <td>
 
-        <input type="text" style="text-align: center; width: 150px;"  maxlength="10" class="text  "
-            groupid="SparePartInventoryForm" argumentid="SparePartCostPrice" />
+            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  "
+                groupid="SparePartInventoryForm" argumentid="SparePartCostPrice" />
 
-    </td>
-</tr>
+        </td>
+    </tr>
+
+
+    <tr >
+        <td class="ftitle">
+            <nobr>Search Order No.:</nobr>
+        </td>
+        <td>
+
+            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="number"
+                groupid="SparePartInventoryForm" argumentid="SearchOrderNo" />
+
+        </td>
+    </tr>
+
+
 
     <tr>
         <td colspan="2">

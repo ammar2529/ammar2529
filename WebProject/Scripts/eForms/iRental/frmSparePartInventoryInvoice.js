@@ -7,6 +7,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
+    $(document).on("keydown", function (event) {
+        if (event.key === "Enter") {
+            $(".SaveBtn").click(); // Trigger the Save button click
+        }
+    });
 
     t.on('LOVPopupShown', (popup) => {
          ;
@@ -14,6 +19,79 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         $('.loadmask-msg', t.el).hide();
         popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
         t.fireEvent('LOVPopupShown', popup);
+    });
+
+    // Handle input on the Card field
+    $('[argumentid="Card"]', t.el).on('input', function () {
+        var Card = parseFloat($(this).val()) || 0;
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+
+        // Calculate remaining Cash
+        var total = GrandTotal - Card;
+
+        if (Card === 0) {
+            $('[argumentid="Cash"]', t.el).val(''); // Clear Cash if Card is 0
+        } else if (Card > GrandTotal) {
+            alert('Card amount cannot exceed the Grand Total.');
+            $(this).val(GrandTotal.toFixed(3)); // Reset Card to GrandTotal if it exceeds
+            $('[argumentid="Cash"]', t.el).val(0); // Set Cash to 0 if Card equals GrandTotal
+        } else {
+            $('[argumentid="Cash"]', t.el).val(total.toFixed(3)); // Update Cash with calculated total
+        }
+    });
+
+    // Handle input on the Cash field
+    $('[argumentid="Cash"]', t.el).on('input', function () {
+        var Cash = parseFloat($(this).val()) || 0;
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+
+        // Calculate remaining Card
+        var total = GrandTotal - Cash;
+
+        if (Cash === 0) {
+            $('[argumentid="Card"]', t.el).val(''); // Clear Card if Cash is 0
+        } else if (Cash > GrandTotal) {
+            alert('Cash amount cannot exceed the Grand Total.');
+            $(this).val(GrandTotal.toFixed(3)); // Reset Cash to GrandTotal if it exceeds
+            $('[argumentid="Card"]', t.el).val(0); // Set Card to 0 if Cash equals GrandTotal
+        } else {
+            $('[argumentid="Card"]', t.el).val(total.toFixed(3)); // Update Card with calculated total
+        }
+    });
+
+
+    $('[argumentid="Cash"]', t.el).on('blur', function () {
+        var Cash = parseFloat($(this).val()) || 0;
+        var Card = parseFloat($('[argumentid="Card"]', t.el).val()) || 0;
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+
+        // Check if the sum of Cash and Card exceeds GrandTotal
+        if (Cash + Card > GrandTotal) {
+            alert('Total amount (Cash + Card) cannot exceed the Grand Total.');
+            Cash = GrandTotal - Card; // Set Cash to the max allowable value within GrandTotal
+            $(this).val(Cash.toFixed(3)); // Update the Cash input with adjusted value
+        }
+
+        var result = Cash + Card;
+        $('[argumentid="Total"]', t.el).val(result.toFixed(3));
+        $(this).val(Cash.toFixed(3))
+    });
+
+
+    $('[argumentid="Card"]', t.el).on('blur', function () {
+        var Card = parseFloat($(this).val()) || 0;
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+        var Cash = parseFloat($('[argumentid="Cash"]', t.el).val()) || 0;
+
+        if (Card > GrandTotal) {
+            alert('Card amount cannot exceed the Grand Total.');
+            $(this).val(GrandTotal.toFixed(3)); // Set Card value to GrandTotal if it exceeds
+            Card = GrandTotal;
+        }
+
+        var result = Cash + Card;
+        $('[argumentid="Total"]', t.el).val(result.toFixed(3));
+        $(this).val(Card.toFixed(3))
     });
 
     $('.MyDataAction', t.el).click(function () {
@@ -139,12 +217,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
         var SparePartUnitPrice = parseFloat($(this).val()) || 0;
-
+        debugger
         // Check if SparePartUnitPrice is an integer
         if (Number.isInteger(SparePartUnitPrice)) {
             SparePartUnitPrice = SparePartUnitPrice.toFixed(3); // Format integer to 3 decimal places
         }
-
+        else {
+            SparePartUnitPrice = SparePartUnitPrice.toFixed(3); 
+        }
         // Set SparePartUnitPrice back to the input field
         $(this).val(SparePartUnitPrice);
 
@@ -155,7 +235,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         if (Number.isInteger(Result)) {
             $('[argumentid="TotalPrice"]', t.el).val(Result.toFixed(3)); // Format integer to 3 decimal places
         } else {
-            $('[argumentid="TotalPrice"]', t.el).val(Result); // Keep existing decimals as they are
+            $('[argumentid="TotalPrice"]', t.el).val(Result.toFixed(3)); // Keep existing decimals as they are
         }
     });
     // To Select Tabs
@@ -685,7 +765,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfQuantityAnd
             if (Number.isInteger(totalPrice)) {
                 $row.find('[argumentid="TotalPrice"]').val(totalPrice.toFixed(3)); // Show as 3 decimal places for integer values
             } else {
-                $row.find('[argumentid="TotalPrice"]').val(totalPrice); // Retain existing decimal precision
+                $row.find('[argumentid="TotalPrice"]').val(totalPrice.toFixed(3)); // Retain existing decimal precision
             }
 
             // Set LeftQTY if needed and call other functions
@@ -739,7 +819,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice 
 
     // Format values with helper function
     function formatValue(value) {
-        return Number.isInteger(value) ? value.toFixed(3) : value;
+        return Number.isInteger(value) ? value.toFixed(3) : value.toFixed(3);
     }
 
 };
@@ -770,7 +850,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
 
     // Helper function to format values: show toFixed(3) for integers, otherwise keep as is
     function formatValue(value) {
-        return Number.isInteger(value) ? value.toFixed(3) : value;
+        return Number.isInteger(value) ? value.toFixed(3) : value.toFixed(3);
     }
 
 
@@ -818,7 +898,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CheckAvailableQTYNotGrea
     var AgainCalculation = SelectQTY * unitPrice;
 
     // Format TotalPrice to only show decimals if necessary
-    var formattedTotalPrice = Number.isInteger(AgainCalculation) ? AgainCalculation : AgainCalculation.toFixed(3);
+    var formattedTotalPrice = Number.isInteger(AgainCalculation) ? AgainCalculation.toFixed(3) : AgainCalculation.toFixed(3);
 
     // Update TotalPrice field with formatted result
     $('[argumentid="TotalPrice"]', t.el).val(formattedTotalPrice);
@@ -984,7 +1064,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 var resBal = GrandTotal - Paid;
 
                 // Format resBal based on whether it's an integer or has a decimal part
-                var formattedResBal = Number.isInteger(resBal) ? resBal.toFixed(3) : resBal;
+                var formattedResBal = Number.isInteger(resBal) ? resBal.toFixed(3) : resBal.toFixed(3);
 
                 // Update Balance field with the formatted result
                 $('[argumentid="Balance"]', t.el).text(formattedResBal);
@@ -1026,7 +1106,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                         }
 
                         // Format totalPriceSum based on whether it’s an integer or has decimals
-                        var formattedTotalPriceSum = Number.isInteger(totalPriceSum) ? totalPriceSum.toFixed(3) : totalPriceSum;
+                        var formattedTotalPriceSum = Number.isInteger(totalPriceSum) ? totalPriceSum.toFixed(3) : totalPriceSum.toFixed(3);
                         $('[argumentid="SubTotal"]', t.el).val(formattedTotalPriceSum); // Update the SubTotal field with the formatted sum
 
                         // Retrieve various values from the form
@@ -1043,12 +1123,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
                         // Calculate the total grand amount after discount
                         var totalGrand = totalPriceSum - Discount;
-                        var formattedTotalGrand = Number.isInteger(totalGrand) ? totalGrand.toFixed(3) : totalGrand;
+                        var formattedTotalGrand = Number.isInteger(totalGrand) ? totalGrand.toFixed(3) : totalGrand.toFixed(3);
                         $('[argumentid="GrandTotal"]').val(formattedTotalGrand); // Update the GrandTotal field
 
                         // Calculate the total balance after payment
                         var totalBal = totalGrand - Paid;
-                        var formattedTotalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal;
+                        var formattedTotalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal.toFixed(3);
                         $('[argumentid="Balance"]', t.el).text(formattedTotalBal); // Update the Balance field
 
 
@@ -1242,7 +1322,16 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
         }
 
+        debugger
+        var Cash = parseFloat((parseFloat($('[argumentid="Cash"]', t.el).val()) || 0));
+        var Card = parseFloat((parseFloat($('[argumentid="Card"]', t.el).val()) || 0));
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
 
+        var result = Cash + Card;
+        $('[argumentid="Total"]', t.el).val(result.toFixed(3));
+
+        $('[argumentid="Cash"]', t.el).val(Cash.toFixed(3));
+        $('[argumentid="Card"]', t.el).val(Card.toFixed(3));
 
     });
 };
@@ -1290,7 +1379,7 @@ function isInteger(value) {
 // Safe parse function to avoid NaN values by returning 0.000 if NaN
 function parseFloatSafe(value) {
     var result = parseFloat(value);
-    return isNaN(result) ? 0.000 : result;
+    return isNaN(result) ? 0.000 : result.toFixed(3);
 }
 
 
@@ -1320,8 +1409,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems = fu
                 var SparePartName = row.SparePartName;
                 var SparePartQuantity = row.SparePartQuantity;
                 var SelectQuantity = row.SelectQuantity;
-                var SparePartUnitPrice = Number.isInteger(row.SparePartUnitPrice) ? row.SparePartUnitPrice.toFixed(3) : row.SparePartUnitPrice;
-                var TotalPrice = Number.isInteger(row.TotalPrice) ? row.TotalPrice.toFixed(3) : row.TotalPrice;
+                var SparePartUnitPrice = Number.isInteger(row.SparePartUnitPrice) ? row.SparePartUnitPrice.toFixed(3) : row.SparePartUnitPrice.toFixed(3);
+                var TotalPrice = Number.isInteger(row.TotalPrice) ? row.TotalPrice.toFixed(3) : row.TotalPrice.toFixed(3);
                 var PurchasingFrom = row.PurchasingFrom;
                 var StoreLocation = row.StoreLocation;
                 var SparePartShelfNo = row.SparePartShelfNo;
@@ -1466,12 +1555,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
 
         // Calculate total grand amount after discount
         var totalGrand = totalPriceSum - Discount;
-        totalGrand = Number.isInteger(totalGrand) ? totalGrand.toFixed(3) : totalGrand;
+        totalGrand = Number.isInteger(totalGrand) ? totalGrand.toFixed(3) : totalGrand.toFixed(3);
         $('[argumentid="GrandTotal"]').val(totalGrand);
 
         // Calculate total balance after payment
         var totalBal = totalGrand - Paid;
-        totalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal;
+        totalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal.toFixed(3);
         $('[argumentid="Balance"]', t.el).text(totalBal);
 
 

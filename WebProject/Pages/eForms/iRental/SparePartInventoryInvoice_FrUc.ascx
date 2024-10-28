@@ -103,7 +103,7 @@
                 </tr>--%>
 
                                 <tr class="StatusRow">
-                     <td class="ftitle">
+                     <td class="ftitle" style="width: 20%;">
                         <nobr>Invoice No.:</nobr>
 
                     </td>
@@ -116,10 +116,10 @@
                        
                  </td>
 
-                      <td class="ftitle" width="20%">
+                      <td class="ftitle" >
                         <nobr>Invoice Status:</nobr>
                     </td>
-                    <td class="ftitle" width="30%">
+                    <td class="ftitle" style="width:33%">
                         <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="StateName"></span>
 
                         <div style="display: none">
@@ -451,7 +451,7 @@
 
                         <div style="width: 100%; padding: 4px;" class="ItemListDiv ">
 
-                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="uploadedItemList ">
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 99%;" class="uploadedItemList ">
                                 <thead>
                                     <tr>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4 " style="padding-left: 5px; padding-right: 0px; color: black; width: 60px;">Item ID</th>
@@ -548,20 +548,21 @@
                     </td>
                 </tr>--%>
 
-                       <tr class="HideOnNewForm">
-                  
-                     <td class="ftitle">
-                        <nobr>SubTotal:</nobr></td>
+                <tr class="HideOnNewForm">
+
+                    <td class="ftitle">
+                        <nobr>Sub Total:</nobr></td>
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text SubTotal ElemDisabled"
-                            groupid="SparePartInventoryInvoice" argumentid="SubTotal" disabled="disabled"/>
+                            groupid="SparePartInventoryInvoice" argumentid="SubTotal" disabled="disabled" />
 
                     </td>
-                    <td colspan="2" class="ftitle" >
-                        
-                        <nobr>Comments:</nobr>
-                    
-                     </td>
+                    <td class="ftitle">Card:</td>
+                    <td>
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text"
+                            groupid="SparePartInventoryInvoice" argumentid="Card" />
+                    </td>
+
 
 
                 </tr>
@@ -575,27 +576,35 @@
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount CommonDisableClass CommonDisableClasss"
                             groupid="SparePartInventoryInvoice" argumentid="Discount" /></td>
-                                                                            
+
                     <%--<td colspan="2" rowspan="2" style="padding: 0; " >
                         </td>--%>
-                   <td colspan="2" rowspan="2">
-                       <textarea class="textarea CommonDisableClass  CommonDisableClasss" style="width: 100%; height: 50px; box-sizing: border-box; resize: none;"
-                            argumentid="Comments" groupid="SparePartInventoryInvoice"></textarea>
-                   </td>
+                    <td class="ftitle">Cash:</td>
+                    <td>
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text"
+                            groupid="SparePartInventoryInvoice" argumentid="Cash" />
+                    </td>
 
                 </tr>
 
 
                 <tr class="HideOnNewForm">
 
-                 
 
-                      <td class="ftitle">
+
+                    <td class="ftitle">
                         <nobr>Grand Total:</nobr></td>
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text GrandTotal ElemDisabled"
-                            groupid="SparePartInventoryInvoice" argumentid="GrandTotal"  disabled="disabled"/></td>
-                </tr>
+                            groupid="SparePartInventoryInvoice" argumentid="GrandTotal" disabled="disabled" /></td>
+                    <td class="ftitle">Total Received:</td>
+                    <td>
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text Total ElemDisabled"
+                            groupid="SparePartInventoryInvoice" argumentid="Total" disabled="disabled" />
+                    </td>
+
+
+                    </tr>
 
                      <%--<tr class="hideOnQuotation HideOnNewForm" >
                     <td colspan="4">
@@ -648,6 +657,24 @@
                     </td>
                 </tr>
 
+
+                <tr>
+                    <td class="ftitle">
+                        <nobr>Contract Created By:</nobr>
+                    </td>
+                    <td style="text-align: center">
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="CreatedBy"></span>
+                    </td>
+
+                    <td class="ftitle">
+                        <nobr>Contract Date & Time:</nobr>
+                    </td>
+                    <td style="text-align: center">
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="InvDateCreated"></span>
+                        <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="DateCreatedTime"></span>
+                    </td>
+                </tr>
+
             </table>
         </td>
     </tr>
@@ -667,8 +694,14 @@
                 
  
  
-<GridConfig>
-<script>
+                
+ 
+ 
+ 
+
+
+                <GridConfig>
+                    <script>
      cf = {
          cols: {
              Sequence: { width: '0px' },
@@ -693,14 +726,14 @@
          }
      };
  </script>
-</GridConfig>
-<Scripts>
-<script>
+                </GridConfig>
+                <Scripts>
+                    <script>
      //var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
  </script>
-</Scripts>
-<RowDetail>
-<pre class="" colindex="4">
+                </Scripts>
+                <RowDetail>
+                    <pre class="" colindex="4">
                     <AW:container id="conInvoicePaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -747,10 +780,10 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
-</RowDetail>
+                </RowDetail>
 
 
-</AW:DataGrid>
+            </AW:DataGrid>
 
             <AW:Form ID="frmInvoicePaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/Invoice_PD_FrUc.ascx">
                 <WidgetConfig>

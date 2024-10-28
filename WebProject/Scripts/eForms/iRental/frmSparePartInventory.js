@@ -220,7 +220,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
         if (Number.isInteger(price)) {
             $(this).val(price.toFixed(3)); // Add three decimal places if it's an integer
         } else {
-            $(this).val(price); // Keep the value as it is if it already has decimals
+            $(this).val(price.toFixed(3)); // Keep the value as it is if it already has decimals
         }
     });
 
@@ -456,14 +456,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
         if (Number.isInteger(unitPrice)) {
             $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice.toFixed(3)); // Format integer to 3 decimal places
         } else {
-            $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice); // Keep existing decimals as they are
+            $('[argumentid="SparePartUnitPrice"]', t.el).val(unitPrice.toFixed(3)); // Keep existing decimals as they are
         }
 
         var costPrice = parseFloat($('[argumentid="SparePartCostPrice"]', t.el).val()) || 0;
         if (Number.isInteger(costPrice)) {
             $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3)); // Format integer to 3 decimal places
         } else {
-            $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice); // Keep existing decimals as they are
+            $('[argumentid="SparePartCostPrice"]', t.el).val(costPrice.toFixed(3)); // Keep existing decimals as they are
         }
 
         $('[argumentid="SparePartName"]', t.el).attr('disabled', 'disabled');

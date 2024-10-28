@@ -3,6 +3,68 @@
     var t = obj;
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
+
+    
+    $('.btnGetNewDateD').click(function () {
+        var dt = new Date();
+        $('[argumentid="CarDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+        /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
+
+        var cH = dt.getHours();
+        var cM = dt.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+
+
+        var csDate = val('CarDeliverdDate', t.el);
+
+        var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
+
+
+        setField('CarDeliverdStartDay', dow, t.el);
+
+        $('[argumentid="CarDeliverdStartTime"]', t.el).val(cH + ':' + cM);
+        //$('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
+    });
+
+    $('.btnGetNewDateR').click(function () {
+        var dt = new Date();
+        $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+        /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
+
+        var cH = dt.getHours();
+        var cM = dt.getMinutes();
+
+        cH = cH < 10 ? '0' + cH : cH;
+        cM = cM < 10 ? '0' + cM : cM;
+
+
+
+        var csDate = val('CarRecivedDate', t.el);
+
+        var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
+
+
+        setField('ServiceStartDay', dow, t.el);
+
+        $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
+        //$('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
+    });
+
+    $('.btn3').click(function () {
+        debugger
+       var a =  AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation(3,t); // 3 months
+    });
+
+    $('.btn6').click(function () {
+       var a= AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation(6,t); // 6 months
+    });
+
+    $('.btn12').click(function () {
+       var a = AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation(12,t); // 12 months
+    });
  
     var previousValue = ""; // Global variable to store the previous valid time
 
@@ -187,12 +249,21 @@
                 CurrentServiceKm1 = parseInt($(this).val()) || 0;
             });
 
-            $('[argumentid="CurrentServiceKm"]', t.el).on('input', function () {
+            //$('[argumentid="CurrentServiceKm"]', t.el).on('input', function () {
 
-                var CurrentServiceKm = $(this).val();
+            //    var CurrentServiceKm = $(this).val();
+            //    $('[argumentid="OutKm"]', t.el).val(CurrentServiceKm);
+
+            //});
+
+            $('.btnCurrentServiceKm', t.el).on('click', function () {
+                debugger
+                var CurrentServiceKm = $('[argumentid="CurrentServiceKm"]',t.el).val();
                 $('[argumentid="OutKm"]', t.el).val(CurrentServiceKm);
 
             });
+
+            
             $('[argumentid="CurrentServiceKm"]', t.el).on('blur', function () {
                 
                 CurrentServiceKm = parseInt($(this).val()) || 0;
@@ -718,7 +789,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.CarServiceButton_Edit = function
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetCurrentDateAndWeekDaysOnCarRecivedDateAndCarToBeDeliverdDate = function (t)
 {
-
+    debugger
     var dt = new Date();
     $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
     /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
@@ -904,16 +975,80 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
         
         // If the text matches one of the labels
         if (labels.includes(text)) {
-            // Replace colon with a space
-            const newText = text.replace(":", " ");
-            // Add an asterisk after replacing the colon
-            $(this).text(newText + " *:");
+            //// Replace colon with a space
+            //const newText = text.replace(":", " ");
+            //// Add an asterisk after replacing the colon
+            //$(this).text(newText+"*:");
+            //return true;
+            // Add an asterisk before the colon without additional spaces
+            const newText = text.replace(":", "*:");
+            $(this).text(newText);
             return true;
         }
         return false;
     });
 
 };
+
+
+// Function to handle date calculation based on button click
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation = function (monthsToAdd,t) {
+        // Current date field value
+    var currentDateValue = $('[argumentid="CarRecivedDate"]', t.el).val();
+    
+        // Validate and parse the date
+    var currentDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate(currentDateValue);
+
+        if (currentDate) {
+            // Add specified months
+            currentDate.setMonth(currentDate.getMonth() + monthsToAdd);
+            // Check if the resulting date is a Friday
+            if (currentDate.getDay() === 5) { // 5 represents Friday
+                // Increment by one day to set to Saturday
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            // Format the date to DD/MM/YYYY
+            var nextServiceDate = currentDate.toLocaleDateString('en-GB');
+
+            // Save in the NextServiceDate field
+             $('[argumentid="NextServiceDate"]', t.el).val(nextServiceDate);
+            var a =$('[argumentid="NextServiceDate"]', t.el).val();
+            var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(a);
+
+
+            setField('NextServiceStartDay', dow, t.el);
+        } else {
+            $.showMessage("Please first select a valid <strong>Car Recived Date</strong> in the format DD/MM/YYYY.");
+
+        }
+    }
+
+    // Event handlers for buttons
+
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function (dateString) {
+        // Split the date string into day, month, and year
+        var parts = dateString.split('/');
+        if (parts.length !== 3) {
+            return null; // Invalid format
+        }
+
+        var day = parseInt(parts[0], 10);
+        var month = parseInt(parts[1], 10) - 1; // Months are 0-based in JavaScript
+        var year = parseInt(parts[2], 10);
+
+        // Create a new Date object
+        var date = new Date(year, month, day);
+
+        // Check if the date is valid
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+            return date; // Valid date
+        }
+
+        return null; // Invalid date
+    }
+
 
 
 

@@ -53,7 +53,8 @@
                             SparePartRemarks: { caption: 'Remarks', width: '100px' },
                             SparePartImage: { caption: 'Image', width: '80px' },
                             StoreLocation: { caption: 'Store', width: '65px' },
-                            PurchasingFrom: { caption: 'From', width:'60px'}
+                            PurchasingFrom: { caption: 'From', width: '60px' },
+                            SearchOrderNo: { width: '0px' }
                       
                         },
                         forms: {
