@@ -276,7 +276,7 @@
 
                     </td>--%>
 
-                    <td ">
+                    <td >
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
                             style="width: 67px;" class="text  date CommonDisableClass required " argumentid="CarRecivedDate" />
 
@@ -294,7 +294,7 @@
 
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number1 required  CommonDisableClass CommonCommaVal"
                             groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm" />
-                    <input type="button" style="width: 40px"  value="0" class="ButtonStyle btnCurrentServiceKm" />
+                    
 
                     </td>
 
@@ -325,7 +325,9 @@
 
 
                     <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number AddRequired  CommonDisableClass OnStartState CommonCommaVal"
-                        groupid="GarageCarServiceDetails" argumentid="OutKm" /></td>
+                        groupid="GarageCarServiceDetails" argumentid="OutKm" />
+                    <input type="button" style="width: 40px"  value="0" class="ButtonStyle btnCurrentServiceKm" />
+                </td>
 
             </tr>
 
