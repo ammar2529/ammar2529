@@ -377,8 +377,9 @@
                         <nobr>Problem*:</nobr>
                     </td>
                     <td colspan="3">
-                        <textarea class="textarea required Problem CommonDisableClass" rows="4" style="width: 84.5%; height: 80px; box-sizing: border-box; resize: none;"
+                        <textarea class=" required Problem CommonDisableClass" rows="4" style="width: 84.5%; height: 80px; box-sizing: border-box; resize: none;"
                             argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
+                        
                     </td>
 
                 </tr>

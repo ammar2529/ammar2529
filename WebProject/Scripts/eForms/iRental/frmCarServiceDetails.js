@@ -4,6 +4,24 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
 
+    const problemTextArea = document.querySelector('[argumentid="Problem"]',t.el);
+    const ActionTakenTextArea = document.querySelector('[argumentid="ActionTaken"]', t.el);
+    problemTextArea.addEventListener('keypress', function (event) {
+        // Check if the Enter key (key code 13) is pressed
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default action (form submission)
+            this.value += '\n'; // Append a new line character
+        }
+    });
+
+    ActionTakenTextArea.addEventListener('keypress', function (event) {
+        // Check if the Enter key (key code 13) is pressed
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default action (form submission)
+            this.value += '\n'; // Append a new line character
+        }
+    });
+
     $('[argumentid="CurrentServiceKm"]', t.el).on('input', function () {
 
         $('[argumentid="NextServiceKm"]', t.el).val('');
