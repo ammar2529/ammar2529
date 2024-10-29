@@ -183,7 +183,7 @@
              
          
 
-                   <tr >
+                   <tr class="hideOnNoExpirayDate">
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                                                     
@@ -191,7 +191,7 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="hideOnNoExpirayDate">
 
 
                     <td class="ftitle">
@@ -212,7 +212,7 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="hideOnNoExpirayDate">
                      <td class="ftitle">
                                 <nobr>PolicyNo.:</nobr>
                             </td>
@@ -248,8 +248,8 @@
                 <tr>
                     <td class="ftitle">Warranty</td>
                     <td class="ftitle">
-                             <input type="radio" class="   WarrentyYes  " checked="checked" default="default" value="Yes" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty" /><label>Yes</label>
-                             <input type="radio" class="  WarrentyNo  " value="No" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty" /><label>No</label>
+                             <input type="radio" class="   WarrentyYes CommonDisableClass  " checked="checked" default="default" value="Yes" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty" /><label>Yes</label>
+                             <input type="radio" class="  WarrentyNo CommonDisableClass  " value="No" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty" /><label>No</label>
                     </td>
                     <td class="ftitle">Mechanic Name:</td>
                     <td>
@@ -285,7 +285,7 @@
 
                         <input type="text" style="text-align: center;width: 40px;margin-right: 0.5px;" maxlength="10" class="text timePick CommonDisableClass"
                             groupid="GarageCarServiceDetails" argumentid="ServiceStartTime" />
-                        <input type="button" value="0" style="width: 20px;margin-right:0px;cursor: pointer;" class="ButtonStyle  CommonDisableClass btnGetNewDateR" />
+                        <input type="button" title="Set current date & time" value="⏲" style="width: 20px;margin-right:0px;cursor: pointer;" class="ButtonStyle  CommonDisableClass btnGetNewDateR" />
 
                     </td>
 
@@ -314,7 +314,7 @@
 
                     <input type="text" style="text-align: center;width: 40px;margin-right: 0.5px;" maxlength="10" class="text  OnStartState CarDeliverdStartTime"
                         groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime" />
-                    <input type="button" value="0" style="width: 20px;margin-right:0px;cursor: pointer;" class="ButtonStyle OnStartState CommonDisableClass btnGetNewDateD" />
+                    <input type="button" title="Set current date & time" value="⏲" style="width: 20px;margin-right:0px;cursor: pointer;" class="ButtonStyle OnStartState CommonDisableClass btnGetNewDateD" />
 
 
                 </td>
@@ -326,7 +326,7 @@
 
                     <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number AddRequired  CommonDisableClass OnStartState CommonCommaVal"
                         groupid="GarageCarServiceDetails" argumentid="OutKm" />
-                    <input type="button" style="width: 40px"  value="0" class="ButtonStyle btnCurrentServiceKm" />
+                    <input type="button" style="width: 40px;cursor: pointer;"  value="📋" class="ButtonStyle CommonDisableClass OnStartState btnCurrentServiceKm" />
                 </td>
 
             </tr>
@@ -355,8 +355,8 @@
                 <td>
                       <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number AddRequired  CommonDisableClass OnStartState CommonCommaVal"
                         groupid="GarageCarServiceDetails" argumentid="NextServiceKm" />
-                    <input type="button" style="width: 40px;margin-right: 0px;" value="5KD" class="ButtonStyle " />
-                    <input type="button" style="width: 40px" value="10KD" class="ButtonStyle " />
+                    <input type="button"  style="width: 40px;margin-right: 0px;cursor: pointer;" value="5KD" class="ButtonStyle CommonDisableClass OnStartState btn5KD" />
+                    <input type="button" style="width: 40px;cursor: pointer;" value="10KD" class="ButtonStyle CommonDisableClass OnStartState btn10KD" />
 
                 </td>
                   

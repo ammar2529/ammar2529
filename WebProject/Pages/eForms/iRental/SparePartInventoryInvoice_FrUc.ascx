@@ -557,9 +557,12 @@
                             groupid="SparePartInventoryInvoice" argumentid="SubTotal" disabled="disabled" />
 
                     </td>
-                    <td class="ftitle">Card:</td>
+                    <td class="ftitle ">
+                        <nobr class="onQuotation">Card:</nobr
+
+                    </td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text"
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text onQuotation"
                             groupid="SparePartInventoryInvoice" argumentid="Card" />
                     </td>
 
@@ -579,9 +582,10 @@
 
                     <%--<td colspan="2" rowspan="2" style="padding: 0; " >
                         </td>--%>
-                    <td class="ftitle">Cash:</td>
+                    <td class="ftitle ">
+                        <nobr class="onQuotation">Cash:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text"
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text onQuotation"
                             groupid="SparePartInventoryInvoice" argumentid="Cash" />
                     </td>
 
@@ -597,9 +601,12 @@
                     <td>
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text GrandTotal ElemDisabled"
                             groupid="SparePartInventoryInvoice" argumentid="GrandTotal" disabled="disabled" /></td>
-                    <td class="ftitle">Total Received:</td>
+                    <td class="ftitle ">
+                        <nobr class="onQuotation">Total Received:</nobr>
+
+                    </td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text Total ElemDisabled"
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text onQuotation Total ElemDisabled"
                             groupid="SparePartInventoryInvoice" argumentid="Total" disabled="disabled" />
                     </td>
 

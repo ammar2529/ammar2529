@@ -1716,7 +1716,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
             {
                 $('.cust', t.el).hide();
                 $('.serv', t.el).show();
-                    $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
+                $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
+                $('.onQuotation', t.el).show();
 
                 if (InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice' && InvoiceType != null) {
 
@@ -1759,6 +1760,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         $('.hideCarandService', t.el).show();
         $('.hideTrForINVCust', t.el).show();
         $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
+        $('.onQuotation', t.el).show();
 
         if (t.FormMode == 'new') {
             
@@ -1805,6 +1807,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('[argumentid="ChassisNo" ]', t.el).val('');
                 $('.ServiceInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
                 $('.CashInvoice').prop('checked', true);
+                $('.onQuotation', t.el).show();
             }
             else if (trimMessage)
             {
@@ -1814,6 +1817,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('.serv', t.el).hide();
                 $('.ServiceInvoice,.QuotationInvoice', t.el).removeAttr('disabled', 'disabled');
                 $('.CashInvoice').prop('checked', true);
+                $('.onQuotation', t.el).show();
             }
 
         }
@@ -1868,6 +1872,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('[argumentid="ChassisNo" ]', t.el).val('');
                 $('.ServiceInvoice,.PartsInvoice', t.el).attr('disabled', 'disabled');
                 $('.CashInvoice').prop('checked', true);
+                $('.onQuotation', t.el).hide();
 
             }
             else if (trimMessage) {
@@ -1878,6 +1883,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('.serv', t.el).hide();
                 $('.ServiceInvoice,.PartsInvoice', t.el).removeAttr('disabled', 'disabled');
                 $('.CashInvoice').prop('checked', true);
+                $('.onQuotation', t.el).hide();
             }
 
         }
@@ -1886,16 +1892,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
         if (t.FormMode == 'new') {
 
             $('.HideOnNewForm', t.el).hide();
+            $('.onQuotation', t.el).hide();
 
             if (trimMessage) {
 
                 $('.HideOnNewForm', t.el).show();
+                $('.onQuotation', t.el).hide();
             }
         }
 
         $('.hideCarandService', t.el).hide();
         $('.hideTrForINVCust', t.el).show();
         $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).hide();
+        $('.onQuotation', t.el).hide();
 
     }
 

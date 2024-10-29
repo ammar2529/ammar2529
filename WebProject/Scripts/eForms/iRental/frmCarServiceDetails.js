@@ -4,7 +4,58 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
 
-    
+    $('[argumentid="CurrentServiceKm"]', t.el).on('input', function () {
+
+        $('[argumentid="NextServiceKm"]', t.el).val('');
+    });
+    $('.btn5KD', t.el).on('click', function () {
+
+        if ($('.WarrentyNo').is(':checked')) {
+            debugger
+
+            // Code to execute if .WarrentyNo is checked
+            $('[argumentid="NextServiceKm"]', t.el).val('')
+            var CurrentServiceKm = parseFloat($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+            var NextServiceKm = parseFloat($('[argumentid="NextServiceKm"]', t.el).val()) || 0;
+            if (CurrentServiceKm == 0) {
+                $.showMessage('In-Km cannot be empty or zero')
+                return false;
+            }
+            var result = CurrentServiceKm + 5000
+
+            $('[argumentid="NextServiceKm"]', t.el).val(result)
+
+        }
+        //else {
+        //     Code to execute if .WarrentyNo is not checked
+        //}
+
+
+    });
+
+    $('.btn10KD', t.el).on('click', function () {
+
+        if ($('.WarrentyNo').is(':checked')) {
+            $('[argumentid="NextServiceKm"]', t.el).val('')
+            // Code to execute if .WarrentyNo is checked
+            var CurrentServiceKm = parseFloat($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+            var NextServiceKm = parseFloat($('[argumentid="NextServiceKm"]', t.el).val()) || 0;
+
+            if (CurrentServiceKm == 0) {
+                $.showMessage('In-Km cannot be empty or zero')
+                return false;
+            }
+            var result = CurrentServiceKm + 10000;
+
+            $('[argumentid="NextServiceKm"]', t.el).val(result)
+
+        }
+        //else {
+        //    // Code to execute if .WarrentyNo is not checked
+        //}
+
+
+    });
     $('.btnGetNewDateD').click(function () {
         var dt = new Date();
         $('[argumentid="CarDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
@@ -131,7 +182,7 @@
             $('.grgbtnSave2', t.el).hide();
             $('.grgbtnSave', t.el).show();
             $('.OnNewForm', t.el).hide();
-
+            $('.hideOnNoExpirayDate', t.el).show();
             var tblUFL = $('table.UploadFileListForJC', t.el);
             $('table.UploadFileListForJC .ItemTableRow', t.el).remove();
             $('.NoRecordsTR', tblUFL).show();
@@ -222,7 +273,8 @@
     
 
 
-        if (t.FormMode == 'update') {
+        if (t.FormMode == 'update')
+        {
 
 
             $('.grgbtnSave2', t.el).show();
@@ -373,6 +425,14 @@
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState(t);
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState(t);
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState(t);
+
+            
+            var FullInsuranceExpiry = $('[argumentid="FullInsuranceExpiry"]', t.el).text();
+            if (FullInsuranceExpiry === '' | FullInsuranceExpiry == null) {
+                $('.hideOnNoExpirayDate', t.el).hide();
+            } else {
+                $('.hideOnNoExpirayDate', t.el).show();
+            }
 
         }
 
