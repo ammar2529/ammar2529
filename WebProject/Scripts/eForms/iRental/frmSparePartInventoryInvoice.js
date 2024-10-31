@@ -1201,6 +1201,15 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                         $('[argumentid="GrandTotal"]').css('color', 'red');
                         $('[argumentid="Total"]').css('color', 'red');
                     }
+
+
+                    if ($('.QuotationInvoice').is(":checked")) {
+
+                        $('[argumentid="GrandTotal"]').css('color', 'green');
+                        $('[argumentid="Total"]').css('color', 'green');
+
+                    }
+
                     var zero = 0;
                     $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
                     $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
@@ -1289,6 +1298,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                                 $('[argumentid="GrandTotal"]').css('color', 'red');
                                 $('[argumentid="Total"]').css('color', 'red');
                             }
+
+                            if ($('.QuotationInvoice').is(":checked")) {
+
+                                $('[argumentid="GrandTotal"]').css('color', 'green');
+                                $('[argumentid="Total"]').css('color', 'green');
+
+                            }
+
                             var zero = 0;
                             $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
                             $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
@@ -1405,7 +1422,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                     }
 
                     if ($('.QuotationInvoice').is(":checked")) {
-                        debugger
+                        
                         $('[argumentid="GrandTotal"]').css('color', 'green');
                         $('[argumentid="Total"]').css('color', 'green');
 
