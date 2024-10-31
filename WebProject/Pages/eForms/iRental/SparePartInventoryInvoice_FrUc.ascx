@@ -60,26 +60,26 @@
 
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTableInvoice">
 
-       <tr>
+  <%--     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
             <ul class="SimpleTab" style="margin: 0px;">
                 <li class="active" tabid="InvoiceDetails">
                     <div>Invoice Details </div>
                 </li>
-              <%--  <li tabid="InvoicePaymentDetails" style="border-right: 1px solid #8298B0;">
+                <li tabid="InvoicePaymentDetails" style="border-right: 1px solid #8298B0;">
                     <div>Payment Details </div>
-                </li>--%>
+                </li>
 
             </ul>
         </td>
-    </tr>
+    </tr>--%>
     <tr tabid="InvoiceDetails">
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-               <tr id="trNote">
+           <%--    <tr id="trNote">
              <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-             </tr>
+             </tr>--%>
                <%--  <tr class="hideCarandService">
                      <td class="ftitle">
                         <nobr>Service Status:</nobr>
@@ -384,7 +384,7 @@
                         groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
                 </td>
                 <td>
-                    <input type="text" style="text-align: center; width: 30px ; font-weight: bold; " maxlength="10" class="text CommonDisableClass SelectQuantity "
+                    <input type="text" style="text-align: center; width: 30px ; font-weight: bold; " maxlength="10" class="number CommonDisableClass SelectQuantity "
                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                 </td>
                 <td>
@@ -636,13 +636,13 @@
                     </td>
                 </tr>--%>
             
-                     <tr class="HideOnNewForm">
+                    <%-- <tr class="HideOnNewForm">
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
                     </td>
                 </tr>
-                
+                --%>
                   <tr>
                     <td colspan="4" style="text-align: center;">
                            
@@ -653,7 +653,7 @@
 
                         </div>
                     
-                        <div style="padding-top: 10px; padding-bottom: 10px; height: 50px;">
+                        <div style="padding-top: 10px; padding-bottom: 10px;">
                             <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle InvoiceButton_Edit OnNewForm" />
                             <input type="button" style="width: 100px" value="  Create Invoice  "  class="DataAction ButtonStyle btnSaveInvoice   common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />
                             <input type="button" style="width: 50px" value="  Save  "  class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" />

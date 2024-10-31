@@ -16,9 +16,9 @@
     <tr tabid="CarAndCustomersDetails">
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
-                <tr id="trNote">
+             <%--   <tr id="trNote">
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-                </tr>
+                </tr>--%>
 
                 <tr class="StatusTR">
                     <td class="ftitle" width="18%">

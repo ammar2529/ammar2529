@@ -113,9 +113,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
     AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
-    var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown;
-    AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode;
-    var toggleDropdownCarReservationMode = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode;
+    var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+    AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
+    var toggleDropdownCarReservationMode = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
 
     ///change cash and finance 
     $(".cash, .finance").click(function ()
@@ -1410,7 +1410,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = function ()
 {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
-    
+    debugger
     if ($('.Arrive').is(":checked"))
     {
         

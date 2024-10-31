@@ -25,16 +25,18 @@
     $('[argumentid="CurrentServiceKm"]', t.el).on('input', function () {
 
         $('[argumentid="NextServiceKm"]', t.el).val('');
+        $('[argumentid="OutKm"]', t.el).val('');
     });
     $('.btn5KD', t.el).on('click', function () {
 
+        var CurrentServiceKm = parseFloat($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+        var NextServiceKm = parseFloat($('[argumentid="NextServiceKm"]', t.el).val()) || 0;
         if ($('.WarrentyNo').is(':checked')) {
-            debugger
+        
 
             // Code to execute if .WarrentyNo is checked
-            $('[argumentid="NextServiceKm"]', t.el).val('')
-            var CurrentServiceKm = parseFloat($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
-            var NextServiceKm = parseFloat($('[argumentid="NextServiceKm"]', t.el).val()) || 0;
+            $('[argumentid="NextServiceKm"]', t.el).val('');
+         
             if (CurrentServiceKm == 0) {
                 $.showMessage('In-Km cannot be empty or zero')
                 return false;
@@ -44,20 +46,31 @@
             $('[argumentid="NextServiceKm"]', t.el).val(result)
 
         }
-        //else {
-        //     Code to execute if .WarrentyNo is not checked
-        //}
+        else if ($('.WarrentyYes').is(':checked')) {
+            debugger
+            $('[argumentid="NextServiceKm"]', t.el).val('');
+
+            if (CurrentServiceKm == 0) {
+                $.showMessage('In-Km cannot be empty or zero')
+                return false;
+            }
+            var result = Math.ceil(CurrentServiceKm / 5000) * 5000;
+            $('[argumentid="NextServiceKm"]', t.el).val(result);
+
+           /* $('[argumentid="NextServiceKm"]', t.el).val(res)*/
+
+        }
 
 
     });
 
     $('.btn10KD', t.el).on('click', function () {
-
+        var CurrentServiceKm = parseFloat($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+        var NextServiceKm = parseFloat($('[argumentid="NextServiceKm"]', t.el).val()) || 0;
         if ($('.WarrentyNo').is(':checked')) {
             $('[argumentid="NextServiceKm"]', t.el).val('')
             // Code to execute if .WarrentyNo is checked
-            var CurrentServiceKm = parseFloat($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
-            var NextServiceKm = parseFloat($('[argumentid="NextServiceKm"]', t.el).val()) || 0;
+        
 
             if (CurrentServiceKm == 0) {
                 $.showMessage('In-Km cannot be empty or zero')
@@ -68,9 +81,20 @@
             $('[argumentid="NextServiceKm"]', t.el).val(result)
 
         }
-        //else {
-        //    // Code to execute if .WarrentyNo is not checked
-        //}
+        else if ($('.WarrentyYes').is(':checked')) {
+            debugger
+            $('[argumentid="NextServiceKm"]', t.el).val('');
+
+            if (CurrentServiceKm == 0) {
+                $.showMessage('In-Km cannot be empty or zero')
+                return false;
+            }
+            var result = Math.ceil(CurrentServiceKm / 10000) * 10000;
+            $('[argumentid="NextServiceKm"]', t.el).val(result);
+
+            /* $('[argumentid="NextServiceKm"]', t.el).val(res)*/
+
+        }
 
 
     });

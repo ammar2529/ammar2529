@@ -63,7 +63,7 @@
 
             <a href="javascript:void(0);" class="search ViewButton">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-            <a href="javascript:void(0);" class="reset ClearButton">
+            <a href="javascript:void(0);" class="reset ClearButton" resetonpopupshow="resetonpopupshow">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
 
             <a href="javascript:void(0);" class="ClosePopup CloseLOVPopup">

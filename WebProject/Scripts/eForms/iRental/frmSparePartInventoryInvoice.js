@@ -25,18 +25,28 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     $('[argumentid="Card"]', t.el).on('input', function () {
         var Card = parseFloat($(this).val()) || 0;
         var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
-
+        var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+        
         // Calculate remaining Cash
         var total = GrandTotal - Card;
 
-        if (Card === 0) {
+        if (Card === 0 || Card === '') {
+
             $('[argumentid="Cash"]', t.el).val(''); // Clear Cash if Card is 0
+            $('[argumentid="Cash"]', t.el).val(GrandTotal.toFixed(3));
+
         } else if (Card > GrandTotal) {
-            alert('Card amount cannot exceed the Grand Total.');
-            $(this).val(GrandTotal.toFixed(3)); // Reset Card to GrandTotal if it exceeds
-            $('[argumentid="Cash"]', t.el).val(0); // Set Cash to 0 if Card equals GrandTotal
-        } else {
+            var zero = 0;
+            $.showMessage('Card amount cannot exceed the Grand Total.');
+             $(this).val(GrandTotal.toFixed(3)); // Reset Card to GrandTotal if it exceeds
+            $('[argumentid="Cash"]', t.el).val(zero.toFixed(3)); // Set Cash to 0 if Card equals GrandTotal
+            //debugger;
+            //showErr($('[argumentid="Card"]', t.el), { 'en': 'Card amount cannot exceed the Grand Total.' }, 'red');
+        }
+
+      else {
             $('[argumentid="Cash"]', t.el).val(total.toFixed(3)); // Update Cash with calculated total
+            
         }
     });
 
@@ -44,19 +54,27 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     $('[argumentid="Cash"]', t.el).on('input', function () {
         var Cash = parseFloat($(this).val()) || 0;
         var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+        var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+
 
         // Calculate remaining Card
         var total = GrandTotal - Cash;
 
-        if (Cash === 0) {
+        if (Cash === 0 || Cash === '') {
             $('[argumentid="Card"]', t.el).val(''); // Clear Card if Cash is 0
+            $('[argumentid="Card"]', t.el).val(GrandTotal.toFixed(3));
         } else if (Cash > GrandTotal) {
-            alert('Cash amount cannot exceed the Grand Total.');
+            var zero = 0;
+            $.toShow('Cash amount cannot exceed the Grand Total.');
             $(this).val(GrandTotal.toFixed(3)); // Reset Cash to GrandTotal if it exceeds
-            $('[argumentid="Card"]', t.el).val(0); // Set Card to 0 if Cash equals GrandTotal
-        } else {
-            $('[argumentid="Card"]', t.el).val(total.toFixed(3)); // Update Card with calculated total
+            $('[argumentid="Card"]', t.el).val(zero.toFixed(3)); // Set Card to 0 if Cash equals GrandTotal
         }
+       else
+         {
+            $('[argumentid="Card"]', t.el).val(total.toFixed(3)); // Update Card with calculated total
+            
+        }
+        
     });
 
 
@@ -64,6 +82,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         var Cash = parseFloat($(this).val()) || 0;
         var Card = parseFloat($('[argumentid="Card"]', t.el).val()) || 0;
         var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+       
+
 
         // Check if the sum of Cash and Card exceeds GrandTotal
         if (Cash + Card > GrandTotal) {
@@ -71,10 +91,24 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             Cash = GrandTotal - Card; // Set Cash to the max allowable value within GrandTotal
             $(this).val(Cash.toFixed(3)); // Update the Cash input with adjusted value
         }
+       
 
         var result = Cash + Card;
         $('[argumentid="Total"]', t.el).val(result.toFixed(3));
-        $(this).val(Cash.toFixed(3))
+        $(this).val(Cash.toFixed(3));
+
+        setTimeout(function () {
+            var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+
+            
+            if (GrandTotal === Totall) {
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+            } else {
+                $('[argumentid="GrandTotal"]').css('color', 'red');
+                $('[argumentid="Total"]').css('color', 'red');
+            }
+        }, 1000)
     });
 
 
@@ -82,6 +116,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         var Card = parseFloat($(this).val()) || 0;
         var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
         var Cash = parseFloat($('[argumentid="Cash"]', t.el).val()) || 0;
+        
+
 
         if (Card > GrandTotal) {
             alert('Card amount cannot exceed the Grand Total.');
@@ -89,9 +125,21 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             Card = GrandTotal;
         }
 
+
+
         var result = Cash + Card;
         $('[argumentid="Total"]', t.el).val(result.toFixed(3));
-        $(this).val(Card.toFixed(3))
+        $(this).val(Card.toFixed(3));
+        setTimeout(function () {
+            var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+            if (GrandTotal === Totall) {
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+            } else {
+                $('[argumentid="GrandTotal"]').css('color', 'red');
+                $('[argumentid="Total"]').css('color', 'red');
+            }
+        }, 1000)
     });
 
     $('.MyDataAction', t.el).click(function () {
@@ -100,16 +148,28 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         var btn = $(this);
         var InvRecId = parseInt($('.ItemTableRow td.InvRecId', '.uploadedItemList').first().text()) || 0;
         var Balance = parseFloat($('[argumentid="Balance"]').text()) || 0;
-        var isQuotationInvoiceChecked = val('InvoiceDetails', t.el) === 'QuotationInvoice';
+        var isQuotationInvoiceChecked = val('C', t.el) === 'QuotationInvoice';
+        var GrandTotal = parseFloat($('[argumentid="GrandTotal"]').val()) || 0;
+        var Total = parseFloat($('[argumentid="Total"]').val()) || 0;
 
+        debugger
         if (btn.hasClass('ClosedInvoice')) {
             // If QuotationInvoice is checked, skip balance check
-            if (!isQuotationInvoiceChecked && Balance != 0) {
+            if ($('[argumentid="QuotationInvoice"]',t.el).is(':checked') && GrandTotal === 0 && Total === 0) {
                 $.showMessage("Amount due must be zero to close the invoice.");
                 return false;
             }
 
-            if (InvRecId != 0) {
+          
+             if (GrandTotal != Total || (GrandTotal === 0 && Total===0)) {
+
+                
+
+                $.showMessage(" Grand Total & Total  must be zero not to close the invoice.");
+                return false;
+            }
+
+            if (InvRecId != 0 ) {
                 console.log('Close button working');
                 t.submit(btn);
                 return false;
@@ -171,6 +231,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                 isValid = true;
                 console.log('Argument ID:', argumentid, 'is empty');
                 $element.css('border', '');
+                $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
             }
         });
 
@@ -215,18 +276,21 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
    
 
 
-    $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
-        var SparePartUnitPrice = parseFloat($(this).val()) || 0;
+    $('#dynamicRows').on('input', '[argumentid="SparePartUnitPrice"]', function () {
         debugger
+        var SparePartUnitPrice = parseFloat($(this).val()) || 0;
+        
         // Check if SparePartUnitPrice is an integer
-        if (Number.isInteger(SparePartUnitPrice)) {
-            SparePartUnitPrice = SparePartUnitPrice.toFixed(3); // Format integer to 3 decimal places
-        }
-        else {
-            SparePartUnitPrice = SparePartUnitPrice.toFixed(3); 
-        }
+        //if (Number.isInteger(SparePartUnitPrice)) {
+        //    SparePartUnitPrice = SparePartUnitPrice.toFixed(3); // Format integer to 3 decimal places
+        //    $(this).val(SparePartUnitPrice);
+        //}
+        //else {
+        //    SparePartUnitPrice = SparePartUnitPrice.toFixed(3); 
+        //    $(this).val(SparePartUnitPrice);
+        //}
         // Set SparePartUnitPrice back to the input field
-        $(this).val(SparePartUnitPrice);
+       
 
         var SelectQuantity = parseFloat($('[argumentid="SelectQuantity"]', t.el).val()) || 0;
         var Result = SparePartUnitPrice * SelectQuantity;
@@ -238,6 +302,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             $('[argumentid="TotalPrice"]', t.el).val(Result.toFixed(3)); // Keep existing decimals as they are
         }
     });
+
+    $('#dynamicRows').on('blur', '[argumentid="SparePartUnitPrice"]', function () {
+
+        var SparePartUnitPrice = parseFloat($(this).val()) || 0;
+        $('[argumentid="SparePartUnitPrice"]', t.el).val(SparePartUnitPrice.toFixed(3));
+    });
+
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function ()
     {
@@ -309,6 +380,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         
         if (t.FormMode == "new") 
         {
+            debugger
+            $('.reset[resetonpopupshow]',t.el).click();
+            $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
             $('[argumentid="InvoiceDate" ]', t.el).next('img').show();
             $('.LineOfItemRow', t.el).show();
             var tblUFL = $('table.uploadedItemList', t.el);
@@ -846,6 +920,34 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
 
         // Format resDiscount to three decimal places only if it's an integer
         $(this).val(formatValue(resDiscount));
+        debugger
+        setTimeout(function () {
+            var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+            var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+            debugger
+            if (GrandTotal === Totall && GrandTotal != 0 && Totall != 0) {
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+            } else if (GrandTotal == 0 || Totall == 0) {
+                $('[argumentid="GrandTotal"]').css('color', 'red');
+                $('[argumentid="Total"]').css('color', 'red');
+            }  else {
+                $('[argumentid="GrandTotal"]').css('color', 'red');
+                $('[argumentid="Total"]').css('color', 'red')
+            }
+
+            if ($('.QuotationInvoice').is(":checked")) {
+                debugger
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+
+            }
+            var zero = 0;
+            $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
+            $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
+            $('[argumentid="Total"]', t.el).val(zero.toFixed(3));
+        }, 1000);
+      
     });
 
     // Helper function to format values: show toFixed(3) for integers, otherwise keep as is
@@ -951,6 +1053,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         $('.btnSave,.OnCreateInvoice,.HideOnNewForm', t.el).show();
         $('.OnNewForm', t.el).show();
         $('.InvoiceButton_Edit,.InvoiceOpenBtn', t.el).hide();
+        $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
         
     });
 
@@ -963,7 +1066,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
     $('.SaveBtn').click(function ()
     {
-        var isValid = true;
+       
 
         // Client-side validation
         //$('.trNoDynamic').find('[argumentid]').each(function ()
@@ -983,23 +1086,44 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         //    }
         //});
 
-        $('.trNoDynamic').find('[argumentid]').each(function () {
-            var $element = $(this);
-            var argumentid = $element.attr('argumentid');
-            var value = $element.val().trim();
+        let isValid = true; // Initialize isValid
 
+        // Variables to hold the values of SelectQuantity and SparePartUnitPrice
+        let selectQuantityValue = null;
+        let sparePartUnitPriceValue = null;
+
+        $('.trNoDynamic').find('[argumentid]').each(function () {
+            const $element = $(this);
+            const argumentid = $element.attr('argumentid');
+            const value = $element.val().trim();
+            debugger
             // Check if the argumentid is one of the specified ones
             if (['ItemId', 'SelectQuantity', 'SparePartUnitPrice'].includes(argumentid)) {
                 if (value === '') {
                     isValid = false;
-                    $.showMessage('Argument ID:', argumentid, 'is empty');
+                    $.showMessage(`Argument ID: ${argumentid} is empty`);
                     $element.css('border', '1px solid red');
-                    return false
+                    return false; // Breaks out of the .each loop
                 } else {
                     $element.css('border', '');
+
+                    // Store the values for SelectQuantity and SparePartUnitPrice
+                    if (argumentid === 'SelectQuantity') {
+                        selectQuantityValue = parseFloat(value) || 0; // Convert to float, default to 0 if NaN
+                    }
+                    if (argumentid === 'SparePartUnitPrice') {
+                        sparePartUnitPriceValue = parseFloat(value) || 0; // Convert to float, default to 0 if NaN
+                    }
                 }
             }
         });
+
+        // Check if both SelectQuantity and SparePartUnitPrice are 0
+        if (selectQuantityValue === 0 || sparePartUnitPriceValue === 0) {
+            
+            $.showMessage('Both Select Quantity and Spare Part Unit Price cannot be zero');
+            return false
+        }
 
 
         //  Additional check to ensure all required fields are filled
@@ -1060,6 +1184,27 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
                 var Balance = parseFloat($('[argumentid="Balance"]', t.el).text()) || 0;
                 var Paid = parseFloat($('[argumentid="Paid"]', t.el).text()) || 0;
+
+                var zero = 0;
+                
+
+                setTimeout(function () {
+                    var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+                    var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+                    debugger
+                    if (GrandTotal === Totall) {
+                        $('[argumentid="GrandTotal"]').css('color', 'green');
+                        $('[argumentid="Total"]').css('color', 'green');
+                    } else {
+                        $('[argumentid="GrandTotal"]').css('color', 'red');
+                        $('[argumentid="Total"]').css('color', 'red');
+                    }
+                    var zero = 0;
+                    $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
+                    $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
+                    $('[argumentid="Total"]', t.el).val(zero.toFixed(3));
+                }, 1000)
+
 
                 var resBal = GrandTotal - Paid;
 
@@ -1131,7 +1276,22 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                         var formattedTotalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal.toFixed(3);
                         $('[argumentid="Balance"]', t.el).text(formattedTotalBal); // Update the Balance field
 
-
+                        setTimeout(function () {
+                            var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+                            var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+                            debugger
+                            if (GrandTotal === Totall) {
+                                $('[argumentid="GrandTotal"]').css('color', 'green');
+                                $('[argumentid="Total"]').css('color', 'green');
+                            } else {
+                                $('[argumentid="GrandTotal"]').css('color', 'red');
+                                $('[argumentid="Total"]').css('color', 'red');
+                            }
+                            var zero = 0;
+                            $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
+                            $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
+                            $('[argumentid="Total"]', t.el).val(zero.toFixed(3));
+                        }, 1000)
 
                         var params = {
                             Command: 'UPD_InvoiceDetails',
@@ -1227,6 +1387,29 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             {
                 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.GenerateUploadItems(res, t);
                 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculationOfTotalPrice(t);
+                setTimeout(function () {
+                    var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+                    var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+                    debugger
+                    if (GrandTotal === Totall && GrandTotal != 0 || Totall != 0) {
+                        $('[argumentid="GrandTotal"]').css('color', 'green');
+                        $('[argumentid="Total"]').css('color', 'green');
+                    } else if (GrandTotal == 0 || Totall == 0) {
+                        $('[argumentid="GrandTotal"]').css('color', 'red');
+                        $('[argumentid="Total"]').css('color', 'red');
+                    } else {
+                        $('[argumentid="GrandTotal"]').css('color', 'red');
+                        $('[argumentid="Total"]').css('color', 'red')
+                    }
+
+                    if ($('.QuotationInvoice').is(":checked")) {
+                        debugger
+                        $('[argumentid="GrandTotal"]').css('color', 'green');
+                        $('[argumentid="Total"]').css('color', 'green');
+
+                    }
+                 
+                }, 1000)
              
             }
         }, "GetData");
@@ -1305,6 +1488,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                             isValid = true;
                             console.log('Argument ID:', argumentid, 'is empty');
                             $element.css('border', '');
+                            $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
                         }
                     });
 
@@ -1519,7 +1703,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
 
     }, "DeleteRows") ;
 
-  
+  debugger
     setTimeout(function ()
     {
         
@@ -1562,6 +1746,37 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
         var totalBal = totalGrand - Paid;
         totalBal = Number.isInteger(totalBal) ? totalBal.toFixed(3) : totalBal.toFixed(3);
         $('[argumentid="Balance"]', t.el).text(totalBal);
+
+        setTimeout(function () {
+            var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
+            var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
+            debugger
+            if (GrandTotal === Totall && GrandTotal != 0 && Totall != 0) {
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+            } else if (GrandTotal == 0 || Totall == 0) {
+                $('[argumentid="GrandTotal"]').css('color', 'red');
+                $('[argumentid="Total"]').css('color', 'red');
+            } else {
+                $('[argumentid="GrandTotal"]').css('color', 'red');
+                $('[argumentid="Total"]').css('color', 'red')
+            } 
+
+            if ($('.QuotationInvoice').is(":checked")) {
+                debugger
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+
+            }
+            var zero = 0;
+            $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
+            $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
+            $('[argumentid="Total"]', t.el).val(zero.toFixed(3));
+        }, 1000);
+
+
+
+        
 
 
         var params = {

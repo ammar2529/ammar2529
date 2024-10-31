@@ -1919,9 +1919,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             $.showMessage('A LOV popup with id:"' + popId + '" not found!');
             return;
         }
-        
+      
         //'#628296'
-
+       
         popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', border: '1px solid rgb(130, 152, 176)', 'background': 'rgb(238, 238, 255)', width:(cf.width||'900px' )}).show();
         if (!autoShowControls) { //row select grid with a search panel and datagrid
 
@@ -1937,6 +1937,15 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $.showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
                 return;
             }
+
+            if ($('.reset[resetonpopupshow]').length) {
+                // Trigger the reset action
+                $('.reset[resetonpopupshow]').click();
+                $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
+            }
+           
+            
+            
             resGrd.on('rowClicked', function HandleRowClick(args) {
                 if ($("tr", args.row).attr('disabled') == "disabled") {
                     return;
@@ -1955,6 +1964,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
             resGrd.show();
             searchForm.search();
+           
 
         }
         else {

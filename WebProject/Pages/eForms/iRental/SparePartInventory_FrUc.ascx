@@ -43,10 +43,10 @@
 </style>
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-    <tr id="trNote">
+<%--    <tr id="trNote">
         <td colspan="2" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory
         </td>
-    </tr>
+    </tr>--%>
     
     <tr>
         <td class="ftitle">
@@ -220,7 +220,10 @@
         </td>
         <td>
 
-            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="number"
+            <%--<input type="text" style="text-align: center; width: 150px;" maxlength="10" class="number"
+                groupid="SparePartInventoryForm" argumentid="SearchOrderNo" />--%>
+
+            <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number"
                 groupid="SparePartInventoryForm" argumentid="SearchOrderNo" />
 
         </td>
@@ -286,14 +289,15 @@
     <tr>
         <td>
             <img src="App_Themes/eForms_Theme/Images/spacer.gif" />
-            <input class=" ButtonStyle EditInventory" type="button" value="  Edit  "  style="display: block;margin: 0 auto;"/></td>
+            </td>
         <td>
             <input type="text" style="display: none" groupid="SparePartInventoryForm" argumentid="action" value="new" class="noautoreset" />
-              
+              <input class=" ButtonStyle EditInventory" style="width: 50px"; type="button" value="Edit" />
 
-            <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SparePartInventory',HideOnSuccess:true}" />
-            <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
+            <input type="button" style="width: 50px"; value="Save" class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SparePartInventory',HideOnSuccess:true}" />
+            <input type="button" style="width: 50px"; value="Cancel" class="CloseForm ButtonStyle" />
 
         </td>
     </tr>
 </table>
+

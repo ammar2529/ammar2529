@@ -762,6 +762,7 @@
  <script>
      var fn = function ()
      {
+         
          var f = AsyncWidgets.get("frmSparePartInventoryInvoice");
          t.on('beforeSearchGetForm', function (p) {
              /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/

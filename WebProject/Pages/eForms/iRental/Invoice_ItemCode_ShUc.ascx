@@ -1,28 +1,36 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Invoice_ItemCode_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_Cars_ShUc" %>
 
 <script>
-    
+
+    /*var f = AsyncWidgets.get("frmSparePartInventoryInvoice");*/
     
         // 2 seconds ke baad form fields ko reset karna
-        setTimeout(function () {
+        //setTimeout(function () {
 
-            $('[argumentid="ItemId"]').focus();
+        //    $('[argumentid="ItemId"]').focus();
 
-            // Specific fields ko enable karna
-            $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"]').prop('disabled', false);
+        //    // Specific fields ko enable karna
+        //    $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"]').prop('disabled', false);
+        //    $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"],[argumentid="ItemId"]').val('')
 
-            // Enter key press se search button trigger karna
-            $(document).on('keypress', function (e) {
-                if (e.which === 13) { // 13 is the Enter key code
-                    $('.search').click();
-                    e.preventDefault(); // Page reload hone se rokne ke liye
-                }
-            });
+        //    // Enter key press se search button trigger karna
+        //    $(document).on('keypress', function (e) {
+        //        if (e.which === 13) { // 13 is the Enter key code
+        //            $('.search').click();
+        //            e.preventDefault(); // Page reload hone se rokne ke liye
+        //        }
+        //    });
             
-        }, 1000);
-    
+        //}, 1000);
+
+    //$('[argumentid="ItemId"]').on('focus', function ()
+    //{
+  
+
+    //}, 1000);
 
     
+
    
 
    
@@ -87,7 +95,7 @@
 
             <a href="javascript:void(0);" class="search ViewButton">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-            <a href="javascript:void(0);" class="reset ClearButton">
+            <a href="javascript:void(0);" class="reset ClearButton" resetonpopupshow="resetonpopupshow">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
 
             <a href="javascript:void(0);" class="ClosePopup CloseLOVPopup">
