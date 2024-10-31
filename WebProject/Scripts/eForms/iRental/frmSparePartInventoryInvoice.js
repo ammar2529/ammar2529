@@ -9,7 +9,9 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     $(document).on("keydown", function (event) {
         if (event.key === "Enter") {
+            event.preventDefault();
             $(".SaveBtn").click(); // Trigger the Save button click
+         
         }
     });
 
@@ -1140,7 +1142,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         // If any field is empty, prevent further execution
         if (!isValid) {
          /*   console.log('Form validation failed. Please fill all required fields.');*/
-            $.showMessage("Please fill all required fields.");
+            /*$.showMessage("Please fill all required fields.");*/
             return;
         }
 
