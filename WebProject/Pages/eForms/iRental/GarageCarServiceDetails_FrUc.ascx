@@ -375,7 +375,7 @@
                 </tr>
 
                 <tr>
-                    <td valign="center">
+                    <td valign="center" class="ftitle">
                         <nobr>Problem*:</nobr>
                     </td>
                     <td colspan="3">
@@ -403,7 +403,7 @@
 
 
                 <tr>
-                    <td valign="center" class="AddAsterisk">Action Taken:</td>
+                    <td valign="center" class="AddAsterisk ftitle">Action Taken:</td>
                     <td colspan="3">
                         <textarea class="textarea ActionTaken CommonDisableClass AddRequired OnStartState"
                             rows="4"

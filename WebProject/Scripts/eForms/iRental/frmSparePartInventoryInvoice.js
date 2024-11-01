@@ -1410,7 +1410,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                     var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
                     var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
                     debugger
-                    if (GrandTotal === Totall && GrandTotal != 0 || Totall != 0) {
+                    if (GrandTotal === Totall && GrandTotal != 0 && Totall != 0) {
                         $('[argumentid="GrandTotal"]').css('color', 'green');
                         $('[argumentid="Total"]').css('color', 'green');
                     } else if (GrandTotal == 0 || Totall == 0) {

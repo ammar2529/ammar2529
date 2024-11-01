@@ -1937,12 +1937,37 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $.showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
                 return;
             }
+            debugger
 
             if ($('.reset[resetonpopupshow]').length) {
                 // Trigger the reset action
                 $('.reset[resetonpopupshow]').click();
                 $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
+
+                
             }
+            setTimeout(function () {
+                if ($('.ItemId[ShowOnFocusPopup]').length) {
+                    $('.ItemId[ShowOnFocusPopup]').focus();
+
+                        $(document).on('keypress', function (e) {
+                            if (e.which === 13) { // 13 is the Enter key code
+                                $('.search[FocusOnSerach]').click();
+                                e.preventDefault(); // Page reload hone se rokne ke liye
+                            }
+                        });
+
+                    $(document).on('keydown', function (event) {
+                        // Check if the Enter key (key code 13) is pressed
+                        if (event.key === "Enter") {
+                            // Simulate a click on the link
+                            $('.search[FocusOnSerach]').click();
+                            e.preventDefault();
+                        }
+                    });
+                }
+            }, 1000);
+           
            
             
             

@@ -384,7 +384,7 @@
                         groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled="disabled"/>
                 </td>
                 <td>
-                    <input type="text" style="text-align: center; width: 30px ; font-weight: bold; " maxlength="10" class="number CommonDisableClass SelectQuantity "
+                    <input type="text" style="text-align: center; width: 30px ; font-weight: bold; " maxlength="10" class="number text CommonDisableClass SelectQuantity "
                         groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" />
                 </td>
                 <td>
