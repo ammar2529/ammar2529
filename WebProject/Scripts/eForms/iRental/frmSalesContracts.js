@@ -113,7 +113,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
     AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
-    var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
+    var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown;
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
     var toggleDropdownCarReservationMode = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode;
 
