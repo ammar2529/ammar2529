@@ -628,7 +628,7 @@
 
 <%--                        style="width: 367px; height:37px" --%>
 
-                        <textarea class="textarea   " style="width: 100%; height: 50px; box-sizing: border-box;  resize: none;"
+                        <textarea class="textarea   " style="width: 98.5%; height: 50px; box-sizing: border-box;  resize: none;"
                             argumentid="fComments" groupid="SalesContractsForm"></textarea>
                                         
                         
