@@ -115,7 +115,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
     var toggleDropdown = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
     AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
-    var toggleDropdownCarReservationMode = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
+    var toggleDropdownCarReservationMode = AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode;
 
     ///change cash and finance 
     $(".cash, .finance").click(function ()
@@ -125,7 +125,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     $(".Arrive, .NotArrive",t.el).click(function ()
     {
-        toggleDropdownCarReservationMode();
+        AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
         
         // Get the value of the input field with attribute 'argumentid' equal to 'ChassisNo'
         var chassisNo = $('[argumentid="ChassisNo"]').val();

@@ -6,6 +6,7 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 
 <script src="../../../Scripts/eForms/iRental/frmInvoicePaymentDetails.js"></script>
+<script src="../../../Scripts/eForms/iRental/frmSparePartInventoryInvoice.js"></script>
 
 <style>
     
@@ -424,7 +425,7 @@
 
 
                 <%--<td> display none </td>--%>
-                 <td><button type = "button" recid="recId" class="SaveBtn">Save</button></td> <!-- Delete button -->
+                 <td><button type = "button" recid="recId" class="SaveBtn" SaveButton="SaveButton">Save</button></td> <!-- Delete button -->
 
             </tr>
 

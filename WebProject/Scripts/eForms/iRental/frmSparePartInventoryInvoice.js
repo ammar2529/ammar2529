@@ -42,7 +42,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             $.showMessage('Card amount cannot exceed the Grand Total.');
              $(this).val(GrandTotal.toFixed(3)); // Reset Card to GrandTotal if it exceeds
             $('[argumentid="Cash"]', t.el).val(zero.toFixed(3)); // Set Cash to 0 if Card equals GrandTotal
-            //debugger;
+            //;
             //showErr($('[argumentid="Card"]', t.el), { 'en': 'Card amount cannot exceed the Grand Total.' }, 'red');
         }
 
@@ -154,7 +154,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         var GrandTotal = parseFloat($('[argumentid="GrandTotal"]').val()) || 0;
         var Total = parseFloat($('[argumentid="Total"]').val()) || 0;
 
-        debugger
+        
         if (btn.hasClass('ClosedInvoice')) {
             // If QuotationInvoice is checked, skip balance check
             if ($('[argumentid="QuotationInvoice"]',t.el).is(':checked') && GrandTotal === 0 && Total === 0) {
@@ -279,7 +279,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
 
     $('#dynamicRows').on('input', '[argumentid="SparePartUnitPrice"]', function () {
-        debugger
+        
         var SparePartUnitPrice = parseFloat($(this).val()) || 0;
         
         // Check if SparePartUnitPrice is an integer
@@ -382,7 +382,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         
         if (t.FormMode == "new") 
         {
-            debugger
+            
             $('.reset[resetonpopupshow]',t.el).click();
             $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
             $('[argumentid="InvoiceDate" ]', t.el).next('img').show();
@@ -922,11 +922,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
 
         // Format resDiscount to three decimal places only if it's an integer
         $(this).val(formatValue(resDiscount));
-        debugger
+        
         setTimeout(function () {
             var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
             var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
-            debugger
+            
             if (GrandTotal === Totall && GrandTotal != 0 && Totall != 0) {
                 $('[argumentid="GrandTotal"]').css('color', 'green');
                 $('[argumentid="Total"]').css('color', 'green');
@@ -939,7 +939,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
             }
 
             if ($('.QuotationInvoice').is(":checked")) {
-                debugger
+                
                 $('[argumentid="GrandTotal"]').css('color', 'green');
                 $('[argumentid="Total"]').css('color', 'green');
 
@@ -1066,9 +1066,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = function (t)
 {
 
-    $('.SaveBtn').click(function ()
+    $('.SaveBtn',t.el).click(function ()
     {
-       
+        debugger
+        var btn = this 
+
 
         // Client-side validation
         //$('.trNoDynamic').find('[argumentid]').each(function ()
@@ -1098,7 +1100,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             const $element = $(this);
             const argumentid = $element.attr('argumentid');
             const value = $element.val().trim();
-            debugger
+            
             // Check if the argumentid is one of the specified ones
             if (['ItemId', 'SelectQuantity', 'SparePartUnitPrice'].includes(argumentid)) {
                 if (value === '') {
@@ -1193,7 +1195,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 setTimeout(function () {
                     var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
                     var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
-                    debugger
+                    
                     if (GrandTotal === Totall) {
                         $('[argumentid="GrandTotal"]').css('color', 'green');
                         $('[argumentid="Total"]').css('color', 'green');
@@ -1290,7 +1292,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                         setTimeout(function () {
                             var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
                             var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
-                            debugger
+                            
                             if (GrandTotal === Totall) {
                                 $('[argumentid="GrandTotal"]').css('color', 'green');
                                 $('[argumentid="Total"]').css('color', 'green');
@@ -1409,7 +1411,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 setTimeout(function () {
                     var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
                     var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
-                    debugger
+                    
                     if (GrandTotal === Totall && GrandTotal != 0 && Totall != 0) {
                         $('[argumentid="GrandTotal"]').css('color', 'green');
                         $('[argumentid="Total"]').css('color', 'green');
@@ -1525,7 +1527,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
         }
 
-        debugger
+        
         var Cash = parseFloat((parseFloat($('[argumentid="Cash"]', t.el).val()) || 0));
         var Card = parseFloat((parseFloat($('[argumentid="Card"]', t.el).val()) || 0));
         var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
@@ -1722,7 +1724,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
 
     }, "DeleteRows") ;
 
-  debugger
+  
     setTimeout(function ()
     {
         
@@ -1769,7 +1771,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
         setTimeout(function () {
             var Totall = parseFloat($('[argumentid="Total"]', t.el).val()) || 0;
             var GrandTotal = parseFloat($('[argumentid="GrandTotal"]', t.el).val()) || 0;
-            debugger
+            
             if (GrandTotal === Totall && GrandTotal != 0 && Totall != 0) {
                 $('[argumentid="GrandTotal"]').css('color', 'green');
                 $('[argumentid="Total"]').css('color', 'green');
@@ -1782,7 +1784,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
             } 
 
             if ($('.QuotationInvoice').is(":checked")) {
-                debugger
+                
                 $('[argumentid="GrandTotal"]').css('color', 'green');
                 $('[argumentid="Total"]').css('color', 'green');
 
