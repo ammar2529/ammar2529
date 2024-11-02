@@ -7,7 +7,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
     //t.on('onLoad', function ()
     //{
-    //    debugger
+    //    
 
     //});
 
@@ -29,13 +29,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         });
         t.on('LOVPopupClosed', (args) =>
         {
-          /*    debugger;*/
+          /*    */
 
             
         });
         t.on('LOVPopupShown', (popup) =>
         {
-            // debugger;
+            // 
             $(t.el).mask("");
             $('.loadmask-msg', t.el).hide();
             popup.css({ position: 'absolute', top: '25%', left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
@@ -532,7 +532,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
             //if ($('[argumentid="StateId"]', t.el).text() == 'RRCStartState')
             //{
-            //    debugger
+            //    
             //    $('[argumentid="StateId"]', t.el).text('RRCStartState');
             //}
 
@@ -573,7 +573,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             ServerCall(params, Success, "ChildComboRows");
 
             //if (t.FormMode === "new" && t.FormMode === "update") {
-            //    //debugger;
+            //    //
             //    //AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown();
             //    AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal();
             //}
@@ -740,7 +740,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
               
                     
-                    //debugger
+                    //
                     //var AmountDue = $('[AmountDueC]', t.el).text();
                    
 
@@ -855,7 +855,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.getWeekdayName = function (date)
 //calculate weekday of start date
 AsyncWidgets.WidgetScripts.frmSalesContracts.CalculateDayOfWeekCsDate = function (csDate)
 {
-    debugger
+    
     if (!!csDate)
     {
         var oDate = csDate.convertDate();
@@ -1410,7 +1410,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = function ()
 {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
-    debugger
+    
     if ($('.Arrive').is(":checked"))
     {
         

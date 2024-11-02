@@ -1068,10 +1068,10 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
     $('.SaveBtn',t.el).click(function ()
     {
-        debugger
-        var btn = this 
+        
+       
 
-
+  
         // Client-side validation
         //$('.trNoDynamic').find('[argumentid]').each(function ()
         //{

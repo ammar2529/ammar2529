@@ -1943,13 +1943,13 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $('.reset[resetonpopupshow]').click();
                 $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
 
-
+                9
             }
             setTimeout(function () {
                 if ($('.ItemId[ShowOnFocusPopup]').length) {
                     $('.ItemId[ShowOnFocusPopup]').focus();
-
-                    $('[SaveBtn]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).removeClass('SaveBtn');
+                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).unbind('click.SaveBtn')
+                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).removeClass('SaveBtn');
 
                     $(document).on('keydown', function (event) {
                         // Check if the Enter key (key code 13) is pressed
@@ -1974,6 +1974,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 t.fireEvent('LOVPopupClosed', args);
                 $(t.el).unmask();
                 resGrd.removeListener('rowClicked', HandleRowClick);
+                $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).bind('click.SaveBtn')
+                $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).addClass('SaveBtn');
             });
             $(t.el).mask("");
             $('.loadmask-msg', t.el).hide();
@@ -2012,6 +2014,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             $(t.el).unmask();
             $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
             t.fireEvent('LOVPopupClosed');
+            $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).bind('click.SaveBtn')
+            $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).addClass('SaveBtn');
         });
 
     },//end of show popup function of form widget
