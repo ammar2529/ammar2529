@@ -231,7 +231,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             if (value === '')
             {
                 isValid = true;
-                console.log('Argument ID:', argumentid, 'is empty');
+              /*  console.log('Argument ID:', argumentid, 'is empty');*/
                 $element.css('border', '');
                 $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
             }
@@ -457,7 +457,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
                 if (value === '') {
                     isValid = true;
-                    console.log('Argument ID:', argumentid, 'is empty');
+                   /* console.log('Argument ID:', argumentid, 'is empty');*/
                     $element.css('border', '');
                 } 
             });
@@ -1507,7 +1507,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
                         if (value === '') {
                             isValid = true;
-                            console.log('Argument ID:', argumentid, 'is empty');
+                            /*console.log('Argument ID:', argumentid, 'is empty');*/
                             $element.css('border', '');
                             $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
                         }

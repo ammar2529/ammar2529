@@ -410,35 +410,35 @@
             });
 
 
-            $('[argumentid="NextServiceKm"]', t.el).on('blur', function ()
-            {
+            //$('[argumentid="NextServiceKm"]', t.el).on('blur', function ()
+            //{
 
 
 
-                NextServiceKm = parseInt($(this).val()) || 0;
+            //    NextServiceKm = parseInt($(this).val()) || 0;
 
-                var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
-                var CurrentServiceKm = parseInt($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
-                var OutKm = parseInt($('[argumentid="OutKm"]', t.el).val()) || 0;
+            //    var LastServiceKm = parseInt($('[argumentid="LastServiceKm"]', t.el).text()) || 0;
+            //    var CurrentServiceKm = parseInt($('[argumentid="CurrentServiceKm"]', t.el).val()) || 0;
+            //    var OutKm = parseInt($('[argumentid="OutKm"]', t.el).val()) || 0;
 
-                // Check if CurrentServiceKm is less than LastServiceKm
-                if (NextServiceKm < OutKm || NextServiceKm < CurrentServiceKm || NextServiceKm < LastServiceKm)
-                {
-
-
+            //    // Check if CurrentServiceKm is less than LastServiceKm
+            //    if (NextServiceKm < OutKm || NextServiceKm < CurrentServiceKm || NextServiceKm < LastServiceKm)
+            //    {
 
 
 
-                    // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
-                    /* NextServiceKm = OutKm + 1;*/
-                    NextServiceKm = 0;
 
-                    // Update the input field with the new value
-                    $(this).val('');
-                    $.showMessage('NextServiceKM-KM cannot be less than  to Last Service-KM & In-KM & Out-KM.')
-                }
 
-            });
+            //        // Increment the LastServiceKm by 1 and set it as the value of CurrentServiceKm
+            //        /* NextServiceKm = OutKm + 1;*/
+            //        NextServiceKm = 0;
+
+            //        // Update the input field with the new value
+            //        $(this).val('');
+            //        $.showMessage('NextServiceKM-KM cannot be less than  to Last Service-KM & In-KM & Out-KM.')
+            //    }
+
+            //});
 
             $('[argumentid="CarToBeDeliverdDate"]', t.el).on('blur', function () {
                 

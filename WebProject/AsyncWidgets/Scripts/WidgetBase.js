@@ -1943,7 +1943,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $('.reset[resetonpopupshow]').click();
                 $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
 
-                9
+                
             }
             setTimeout(function () {
                 if ($('.ItemId[ShowOnFocusPopup]').length) {
@@ -1956,12 +1956,33 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                         if (event.key === "Enter") {
                             // Simulate a click on the link
                             $('.search[FocusOnSerach]').click();
+                            //if (resGrd && resGrd.rows.length === 1) {
+                            //    $('table[itemno]').click(); // Auto-click the single row
+                                
+                            //}
+                           /* event.preventDefault();*/
+                        }
+                    });
+                }
+            }, 1000);
+
+            setTimeout(function () {
+                if ($('.CarNumber[ShowOnFocusPopup]').length) {
+                    $('.CarNumber[ShowOnFocusPopup]').focus();
+                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).unbind('click.SaveBtn')
+                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).removeClass('SaveBtn');
+
+                    $(document).on('keydown', function (event) {
+                        // Check if the Enter key (key code 13) is pressed
+                        if (event.key === "Enter") {
+                            // Simulate a click on the link
+                            $('.search[FocusOnSerach]').click();
+
                             event.preventDefault();
                         }
                     });
                 }
             }, 1000);
-           
             
             
             resGrd.on('rowClicked', function HandleRowClick(args) {
@@ -1984,7 +2005,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
             resGrd.show();
             searchForm.search();
-           
+
+
 
         }
         else {

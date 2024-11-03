@@ -25,7 +25,7 @@
     </tr>
     <tr>
         <td style="text-align: left;">
-                        <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schCarServiceDetailsCarSearch" />
+                        <input type="text" style="width: 115px;" class="text CarNumber" argumentid="CarNumber" groupid="schCarServiceDetailsCarSearch" ShowOnFocusPopup="ShowOnFocusPopup"/>
 <%--            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schCarServiceDetailsCarSearch" />--%>
 
         </td>
@@ -61,7 +61,7 @@
         </td>
         <td style="text-align: left; padding-bottom: 0px">
 
-            <a href="javascript:void(0);" class="search ViewButton">
+            <a href="javascript:void(0);" class="search ViewButton" focusonserach="FocusOnSerach">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
             <a href="javascript:void(0);" class="reset ClearButton" resetonpopupshow="resetonpopupshow">
                 <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>

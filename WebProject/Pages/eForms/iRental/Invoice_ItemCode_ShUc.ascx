@@ -2,32 +2,32 @@
 
 <script>
 
-    /*var f = AsyncWidgets.get("frmSparePartInventoryInvoice");*/
+    var f = AsyncWidgets.get("frmSparePartInventoryInvoice");
     
-        // 2 seconds ke baad form fields ko reset karna
-        //setTimeout(function () {
+      /*   2 seconds ke baad form fields ko reset karna*/
+        setTimeout(function () {
 
-        //    $('[argumentid="ItemId"]').focus();
+          /*  $('[argumentid="ItemId"]').focus();*/
 
-        //    // Specific fields ko enable karna
-        //    $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"]').prop('disabled', false);
-        //    $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"],[argumentid="ItemId"]').val('')
+            // Specific fields ko enable karna
+            $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"]').prop('disabled', false);
+            $('[argumentid="SparePartName"], [argumentid="SparePartSerialNo"],[argumentid="ItemId"]').val('')
 
-        //    // Enter key press se search button trigger karna
-        //    $(document).on('keypress', function (e) {
-        //        if (e.which === 13) { // 13 is the Enter key code
-        //            $('.search').click();
-        //            e.preventDefault(); // Page reload hone se rokne ke liye
-        //        }
-        //    });
+            // Enter key press se search button trigger karna
+            //$(document).on('keypress', function (e) {
+            //    if (e.which === 13) { // 13 is the Enter key code
+            //        $('.search').click();
+            //        e.preventDefault(); // Page reload hone se rokne ke liye
+            //    }
+            //});
             
-        //}, 1000);
+        }, 1000);
 
-    //$('[argumentid="ItemId"]').on('focus', function ()
-    //{
+    $('[argumentid="ItemId"]').on('focus', function ()
+    {
   
 
-    //}, 1000);
+    }, 2000);
 
     
 
@@ -60,19 +60,19 @@
     <tr>
         
         <td style="text-align: left;">
-                        <input type="text" style="width: 115px;" class="text ItemId" argumentid="ItemId" groupid="schInvoice_ItemCode_ShUc"  ShowOnFocusPopup="ShowOnFocusPopup"/>
+                        <input type="text" style="width: 115px;" class="text ItemId ShowOnFocusPopup" argumentid="ItemId" groupid="schInvoice_ItemCode_ShUc"  ShowOnFocusPopup="ShowOnFocusPopup"/>
 <%--            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schInvoice_ItemCode_ShUc" />--%>
 
         </td>
         <td style="text-align: left;">
 
 <%--            <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schInvoice_ItemCode_ShUc" />--%>
-                        <input type="text" style="width: 115px;" class="text" argumentid="SparePartSerialNo" groupid="schInvoice_ItemCode_ShUc" />
+                        <input type="text" style="width: 115px;" class="text" argumentid="SparePartSerialNoo" groupid="schInvoice_ItemCode_ShUc" />
 
         </td>
         <td style="text-align: left;">
 
-                        <input type="text" style="width: 115px;" class="text" argumentid="SparePartName" groupid="schInvoice_ItemCode_ShUc" />
+                        <input type="text" style="width: 115px;" class="text" argumentid="SparePartNamee" groupid="schInvoice_ItemCode_ShUc" />
 
         </td>
         <td style="text-align: left;">
