@@ -1960,7 +1960,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                             //    $('table[itemno]').click(); // Auto-click the single row
                                 
                             //}
-                           /* event.preventDefault();*/
+                            event.preventDefault();
                         }
                     });
                 }
