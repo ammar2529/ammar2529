@@ -1956,11 +1956,25 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                         if (event.key === "Enter") {
                             // Simulate a click on the link
                             $('.search[FocusOnSerach]').click();
-                            //if (resGrd && resGrd.rows.length === 1) {
-                            //    $('table[itemno]').click(); // Auto-click the single row
+                            setTimeout(function () {
                                 
-                            //}
+                                if (resGrd && resGrd.rows.length === 1) {
+                                    $('table[itemno]').click(); // Auto-click the single row
+                                    t.setParams({
+                                        params: resGrd.rows[0],
+                                        isRow: true
+                                    });
+                                    popup.hide();
+                                    $(t.el).unmask();
+                                    resGrd.removeListener('table[itemno]');
+                                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).bind('click.SaveBtn')
+                                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).addClass('SaveBtn');
+                                    $('.reset[resetonpopupshow]').click();
+                                }
+                            }, 1300)
+                           
                             event.preventDefault();
+
                         }
                     });
                 }
