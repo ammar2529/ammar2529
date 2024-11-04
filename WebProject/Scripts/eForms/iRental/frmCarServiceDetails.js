@@ -4,6 +4,16 @@
 
     AsyncWidgets.WidgetScripts.frmCarServiceDetails.t = t;
 
+
+    $(".ServiceCHK, .ProblemCHK,.BothCHK").click(function () {
+        
+        AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk(t);
+
+
+    });
+
+
+
     const problemTextArea = document.querySelector('[argumentid="Problem"]',t.el);
     const ActionTakenTextArea = document.querySelector('[argumentid="ActionTaken"]', t.el);
     problemTextArea.addEventListener('keypress', function (event) {
@@ -298,6 +308,7 @@
 
             $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
 
+            $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
          
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
 
@@ -465,6 +476,7 @@
 
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.FileUploadForCarServiceDetails(t);
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState(t);
+            debugger
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState(t);
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState(t);
 
@@ -955,6 +967,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll = function (t)
 
 
         $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+        $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
 
 
         AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
@@ -982,6 +995,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState = functio
         $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
         $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
         $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+
+        $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
 
 
         AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
@@ -1019,6 +1034,17 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function 
         //const daysDifference = compareDates(CarRecivedDate, CarToBeDeliverdDate);
         //console.log(daysDifference); // Outputs: The difference is 9 days.
 
+        if ($('.ServiceCHK').is(':checked') || $('.BothCHK').is(':checked')) {
+
+            $('.AddRequiredOnNXKM', t.el).addClass('required').attr('requirederr', '*');
+            
+
+
+        } else if ($('.ProblemCHK').is(':checked')) {
+
+            $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
+            
+        }
 
 
 
@@ -1069,28 +1095,50 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk = function (t) {
 
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
+    // Labels with colons to be modified
+    const labels = ["Deliverd Date:", "Next Service Date:", "Out KM:", "Action Taken:", "Next Service KM:"];
+    // Specific labels without colons to target when "Problem" is checked
+    const labelss = ["Next Service Date", "Next Service KM"];
+    
+    // Check if either the "Service" or "Both" radio button is checked
+    if ($('.ServiceCHK').is(':checked') || $('.BothCHK').is(':checked')) {
+        // Filter and modify labels for asterisks
+        $("td.AddAsterisk").filter(function () {
+            const text = $(this).text().trim();
 
-    const labels = ["Deliverd Date:", "Next Service Date:", "Out KM:", "Action Taken:", "Next Service KM:",]; // Labels with colons
+            // If the text matches one of the defined labels
+            if (labels.includes(text)) {
+                // Replace the colon with an asterisk
+                const newText = text.replace(":", "*:");
+                $(this).text(newText);
+                return true; // Continue processing
+            }
+            $('.AddRequiredOnNXKM', t.el).addClass('required').attr('requirederr', '*');
+            return false; // Stop processing this item
+        });
+    }
 
-    $("td.AddAsterisk").filter(function () {
-        const text = $(this).text().trim();
-        
-        // If the text matches one of the labels
-        if (labels.includes(text)) {
-            //// Replace colon with a space
-            //const newText = text.replace(":", " ");
-            //// Add an asterisk after replacing the colon
-            //$(this).text(newText+"*:");
-            //return true;
-            // Add an asterisk before the colon without additional spaces
-            const newText = text.replace(":", "*:");
-            $(this).text(newText);
-            return true;
-        }
-        return false;
-    });
+    // Check if the "Problem" radio button is checked
+    if ($('.ProblemCHK').is(':checked')) {
+        // Iterate over each label in AddAsterisk
+        $("td.AddAsterisk", t.el).each(function () {
+            // Retrieve the text and trim it
+            let text = $(this).text().trim();
 
+            // Check if the text starts with any of the specified labels
+            labelss.forEach(label => {
+                if (text.startsWith(label)) {
+                    // If there's a match, revert to the original label with a colon
+                    $(this).text(label + ":");
+                }
+            });
+            $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
+        });
+    }
+
+    return false; // End of the function
 };
+
 
 
 // Function to handle date calculation based on button click

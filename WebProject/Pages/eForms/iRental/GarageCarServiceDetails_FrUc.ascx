@@ -9,6 +9,15 @@
 
 
 
+<style type="text/css">
+    .auto-style1 {
+        height: 29px;
+    }
+</style>
+
+
+
+
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
 
     <tr tabid="GarageCarServiceDetails">
@@ -137,16 +146,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="ftitle">
+                    <td class="auto-style1">
                         <nobr>Year:</nobr>
                     </td>
-                    <td>
+                    <td class="auto-style1">
                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CarYear"></span>
                     </td>
-                    <td class="ftitle">
+                    <td class="auto-style1">
                         <nobr>Temp Telephone:</nobr>
                     </td>
-                    <td>
+                    <td class="auto-style1">
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass " groupid="GarageCarServiceDetails" argumentid="TempMobile" />
                     </td>
                 </tr>
@@ -183,13 +192,9 @@
 
 
 
-
-
-                <tr class="hideOnNoExpirayDate">
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-
-
+                <tr>
+                    <td class="hideOnNoExpirayDate" colspan="4" style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;">
+                        <!-- Orange line ke liye empty space -->
                     </td>
                 </tr>
 
@@ -228,8 +233,8 @@
                 </tr>
 
                 <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                    <td colspan="4" style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;">
+                        
 
 
                     </td>
@@ -249,6 +254,23 @@
                     </td>
 
                 </tr>
+                
+                <tr>
+                    <td class="ftitle">Service Type</td>
+                    <td class="ftitle">
+                        <input type="radio" class="   ServiceCHK CommonDisableClass  " checked="checked" default="default" value="Service" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType" /><label>Service</label>
+                        <input type="radio" class="  ProblemCHK CommonDisableClass  " value="Problem" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType" /><label>Problem</label>
+                        <input type="radio" class="  BothCHK CommonDisableClass  " value="Both" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType" /><label>Both</label>
+                    </td>
+                    <td class="ftitle">Adviser Name:</td>
+                    <td>
+                        <select loadon="FirstVisible" class="dropdownlist  CommonDisableClass" style="width: 155px;"
+                            groupid="GarageCarServiceDetails" argumentid="AdviserName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'44'}]}">
+                            <option value="" selected="selected">Select Adviser Name</option>
+                        </select>
+                    </td>
+                </tr>
+
                 <tr>
                     <td class="ftitle">Warranty</td>
                     <td class="ftitle">
@@ -264,21 +286,7 @@
                     </td>
                 </tr>
 
-                    <tr>
-        <td class="ftitle">Service Type</td>
-        <td class="ftitle">
-            <input type="radio" class="   Service CommonDisableClass  " checked="checked" default="default" value="Service" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType" /><label>Service</label>
-            <input type="radio" class="  Problem CommonDisableClass  " value="Problem" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType" /><label>Problem</label>
-            <input type="radio" class="  Both CommonDisableClass  " value="Both" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType" /><label>Both</label>
-        </td>
-        <td class="ftitle">Adviser Name:</td>
-        <td>
-            <select loadon="FirstVisible" class="dropdownlist  CommonDisableClass" style="width: 155px;"
-                groupid="GarageCarServiceDetails" argumentid="AdviserName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'44'}]}">
-                <option value="" selected="selected">Select Adviser Name</option>
-            </select>
-        </td>
-    </tr>
+       
 
                 <tr>
                     <td class="ftitle">
@@ -352,13 +360,13 @@
                 </tr>
 
                 <tr>
-                    <td class="ftitle  ">Next Service Date: </td>
+                    <td class="ftitle AddAsterisk ">Next Service Date: </td>
 
 
 
                     <td>
                         <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="width: 67px;" class="text  date  CommonDisableClass  OnStartState " argumentid="NextServiceDate" />
+                            style="width: 67px;" class="text  date  CommonDisableClass  OnStartState AddRequiredOnNXKM" argumentid="NextServiceDate" />
 
                         <input type="text" style="text-align: center; width: 67px;" maxlength="10" class="text AlwaysDisableJC"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay" />
@@ -371,9 +379,9 @@
                     </td>
 
 
-                    <td class="ftitle ">Next Service KM:</td>
+                    <td class="ftitle AddAsterisk">Next Service KM:</td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState CommonCommaVal"
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState AddRequiredOnNXKM CommonCommaVal"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceKm" />
                         <input type="button" style="width: 40px; margin-right: 0px; cursor: pointer;" value="5KD" class="ButtonStyle CommonDisableClass OnStartState btn5KD" />
                         <input type="button" style="width: 40px; cursor: pointer;" value="10KD" class="ButtonStyle CommonDisableClass OnStartState btn10KD" />
@@ -385,8 +393,8 @@
 
 
                 <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+                    <td colspan="4" style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;">
+                        
 
 
                     </td>
@@ -460,7 +468,7 @@
                 </tr>
 
 
-                <tr>
+                <%--<tr>
                     <td colspan="4">
 
 
@@ -512,7 +520,7 @@
 
 
                     </td>
-                </tr>
+                </tr>--%>
 
 
 
