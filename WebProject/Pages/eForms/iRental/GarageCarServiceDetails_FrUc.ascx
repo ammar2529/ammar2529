@@ -68,10 +68,10 @@
 
                 <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                 <tr>
-                    <td class="ftitle">
+                    <td class="ftitle" style="width:20%">
                         <nobr>Car No.*:</nobr>
                     </td>
-                    <td style="width: 255px;">
+                    <td style="width: 30%;">
                         <input type="hidden" name="RecId" groupid="GarageCarServiceDetails" argumentid="RecId" />
                         <input type="hidden" name="FileGuid" groupid="GarageCarServiceDetails" argumentid="FileGuid" />
 
@@ -84,9 +84,9 @@
                                 groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="ChassisNo"   />--%>
                         
                     </td>
-                    <td class="ftitle">
+                    <td class="ftitle" style="width:20%">
                         <nobr>Customer Code*:</nobr></td>
-                    <td style="text-align: center">
+                    <td style="text-align: center; width:30%">
                         <span class="ftitle" style="font-size: 12px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
                     </td>
                 </tr>
@@ -146,16 +146,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">
+                    <td class="ftitle">
                         <nobr>Year:</nobr>
                     </td>
-                    <td class="auto-style1">
+                    <td >
                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CarYear"></span>
                     </td>
-                    <td class="auto-style1">
+                    <td class="ftitle">
                         <nobr>Temp Telephone:</nobr>
                     </td>
-                    <td class="auto-style1">
+                    <td >
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass " groupid="GarageCarServiceDetails" argumentid="TempMobile" />
                     </td>
                 </tr>
@@ -193,8 +193,9 @@
 
 
                 <tr>
-                    <td class="hideOnNoExpirayDate" colspan="4" style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;">
+                    <td class="hideOnNoExpirayDate" colspan="4">
                         <!-- Orange line ke liye empty space -->
+<%--                         style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
                     </td>
                 </tr>
 
@@ -233,9 +234,9 @@
                 </tr>
 
                 <tr>
-                    <td colspan="4" style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;">
+                    <td colspan="4" >
                         
-
+<%--                        style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
 
                     </td>
                 </tr>
@@ -393,9 +394,9 @@
 
 
                 <tr>
-                    <td colspan="4" style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;">
+                    <td colspan="4">
                         
-
+<%--                         style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
 
                     </td>
                 </tr>
