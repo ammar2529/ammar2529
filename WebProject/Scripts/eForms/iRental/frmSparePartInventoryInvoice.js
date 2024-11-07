@@ -1163,20 +1163,21 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 return;
             }
         }
-        
+        debugger
         // All fields are valid, proceed with server call
         executeServerCall();
     });
 
     function executeServerCall()
     {
-
+       
         var InvoiceDetails = val('InvoiceDetails', t.el);
         var InvoicePaymentRecId = $('[argumentid="InvoicePaymentRecId"]', t.el).val();
+        var ServiceNo = val('ServiceNo', t.el);
         /*var InvoiceDetails= $('[argumentid="InvoiceDetails"]', t.el).val();*/
 
       
-        ServerCallCtx($('.trNoDynamic', t.el)[0], { DBAction: 'AddLineItem', InvoiceDetails: InvoiceDetails, InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), command: 'UPD_InvoiceDetails' }, function (res)
+        ServerCallCtx($('.trNoDynamic', t.el)[0], { DBAction: 'AddLineItem', InvoiceDetails: InvoiceDetails, InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), ServiceNo: ServiceNo, command: 'UPD_InvoiceDetails' }, function (res)
         {
             var res = decJSON(res);
             if (res.status === 'OK')

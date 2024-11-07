@@ -87,7 +87,7 @@
                     <td class="ftitle" style="width:20%">
                         <nobr>Customer Code*:</nobr></td>
                     <td style="text-align: center; width:30%">
-                        <span class="ftitle" style="font-size: 12px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
+                        <span class="ftitle" style="font-size: 11px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
                     </td>
                 </tr>
 
@@ -194,8 +194,9 @@
 
                 <tr>
                     <td class="hideOnNoExpirayDate" colspan="4">
-                        <!-- Orange line ke liye empty space -->
-<%--                         style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
+
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+
                     </td>
                 </tr>
 
@@ -234,10 +235,12 @@
                 </tr>
 
                 <tr>
-                    <td colspan="4" >
-                        
-<%--                        style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
+                   
 
+                        <%--                        style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
+
+                    <td colspan="4">
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
                 <tr>
@@ -395,9 +398,7 @@
 
                 <tr>
                     <td colspan="4">
-                        
-<%--                         style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
-
+                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>
 
@@ -524,7 +525,56 @@
                 </tr>--%>
 
 
+                
+                        <%-- Data Grid  --%>
+                <tr>
+                    <td colspan="4">
 
+
+
+                        <div style="width: 100%;">
+
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="ItemsModifyListt">
+                                <thead>
+                                    <tr>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 10%">Invoice No.</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Type</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 7%">ItemID</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 15%">Item Code</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;width: 35%"">Description</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">From</th>
+                                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Qty</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Unit Price</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="ItemTRR">
+                                    </tr>
+
+                                </tbody>
+                                <tfoot>
+                                    <tr class="NoRecordsTR">
+
+                                        <td class="NoRecords w-grid-norecords-msg" colspan="9">
+                                            <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                                        </td>
+                                    </tr>
+
+                                </tfoot>
+
+                            </table>
+                        </div>
+
+
+
+                    </td>
+                </tr>
+
+         
+               
+                <%--<%-- End Data Grid --%>
 
 
 

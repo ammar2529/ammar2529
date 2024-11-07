@@ -312,14 +312,15 @@
          
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
 
-
+            $('table.ItemsModifyListt tfoot tr').show();
+            $('table.ItemsModifyListt tbody tr').remove();
         }
      
     });
 
     //On Change of Payment Mode  $('option:selected', elem)
 
-    t.on('onLoadedValues', function (res)
+    t.on('onLoadedValues', function (args)
     {
       
 
@@ -476,7 +477,7 @@
 
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.FileUploadForCarServiceDetails(t);
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState(t);
-            debugger
+            
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState(t);
             AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState(t);
 
@@ -486,6 +487,65 @@
                 $('.hideOnNoExpirayDate', t.el).hide();
             } else {
                 $('.hideOnNoExpirayDate', t.el).show();
+            }
+
+
+
+            debugger
+            if (args.res.status == 'OK') {
+
+                if (args.res.Response.Rows.length > 0) {
+
+                    var rows = args.res.Response.Rows;
+                    console.log(row);
+
+                    for (var i = 0; i < rows.length; i++) {
+
+                        var row = rows[i];
+                        var recId = row.RecId;
+                        var RecCode = row.RecCode
+                       /* var InvRecCode = row.InvRecCode;*/
+
+                        var params = {
+                            Command: 'UPD_InvoiceDetails',
+                            DBAction: 'GetLinesItemsInJobCard',
+                            ServiceNo: `${RecCode}`,
+                           /* InvRecCode: `${InvRecCode}`*/
+
+
+                        };
+
+                        /*  Assuming ServerCall is a function to make an API call*/
+                        ServerCall(params, function (res) {
+
+                            var res = decJSON(res)
+
+
+                            if (res.status === 'OK') {
+
+
+                                AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList(res, t)
+
+
+
+
+                            }
+
+
+
+
+
+                        }, 'GetData');
+
+
+                    }//end for loop
+
+
+
+
+                }
+
+
             }
 
         }
@@ -1197,7 +1257,86 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function 
         }
 
         return null; // Invalid date
-    }
+}
+
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t) {
+
+
+    
+    if (res.status == 'OK') {
+        if (res.Response.Rows.length > 0) {
+            var rows = res.Response.Rows;
+            //var tblUFL = $('table.CustomerModifyList', t.el);
+            //$('.ItemTR', tblUFL).show();
+            //$('.NoRecordsTR', tblUFL).hide();
+
+
+            var tblUFL = $('table.ItemsModifyListt', t.el);
+            $('table.ItemsModifyListt tfoot tr').hide();
+            $('table.ItemsModifyListt tbody tr').show();
+
+            /*invoiceno,warrantytype*/
+
+            var tblRowsHTML = "";
+
+
+            for (var i = 0; i < rows.length; i++) {
+
+                var row = rows[i];
+                var InvRecCode = row.InvRecCode;
+                var ItemId = row.ItemId;
+                var PurchasingFrom = row.PurchasingFrom;
+                var SelectQuantity = row.SelectQuantity;
+                var SparePartName = row.SparePartName;
+                var SparePartUnitPrice = row.SparePartUnitPrice;
+                var TotalPrice = row.TotalPrice;
+                var SparePartSerialNo = row.SparePartSerialNo;
+                var PurchasingFrom = row.PurchasingFrom;
+                var InvoiceType = row.InvoiceType;
+                
+
+
+
+                var genHtml = ` 
+                    
+                                      
+
+                            <tr>
+                            <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${InvRecCode}</td>
+                         <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${InvoiceType}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${ItemId}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SparePartSerialNo}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SelectQuantity}</td>
+                             <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SparePartUnitPrice.toFixed(3)}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3)}</td>
+                            </tr>
+
+                                                `;
+
+                tblRowsHTML += genHtml;
+
+
+
+            }  // for loop;
+
+
+
+            $('tbody ', tblUFL).html(tblRowsHTML);
+        } else {
+            //var tblUFL = $('table.CustomerModifyListt', t.el);
+            //$('tbody', tblUFL).hide();
+            ///* $('.NoRecordsTR', tblUFL).show();*/
+            //$('table.CustomerModifyListt tfoot tr').show();
+
+            $('table.ItemsModifyListt tfoot tr').show();
+            $('table.ItemsModifyListt tbody tr').hide();
+        }
+    } //  if (res.status == 'OK')
+
+}
 
 
 

@@ -296,15 +296,15 @@
                 <tr>
                     <td colspan="4">
 
-                      
 
-                        <div style="width: 100%;" >
-                       
+
+                        <div style="width: 100%;">
+
                             <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="CustomerModifyListt">
                                 <thead>
                                     <tr>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Code</th>
-                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width:30%">Customer Name</th>
+                                        <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 30%">Customer Name</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Nationality</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">National ID No</th>
                                         <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Mobile</th>
@@ -313,21 +313,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
-                                    <tr class="ItemTRR">
 
+                                    <tr class="ItemTRR">
                                     </tr>
-                                   
+
                                 </tbody>
                                 <tfoot>
-                                    <tr class="NoRecordsTR" >
+                                    <tr class="NoRecordsTR">
 
                                         <td class="NoRecords w-grid-norecords-msg" colspan="7">
                                             <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
                                         </td>
                                     </tr>
-    
-                                 </tfoot>
+
+                                </tfoot>
 
                             </table>
                         </div>
