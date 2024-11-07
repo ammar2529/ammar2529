@@ -526,7 +526,7 @@
 
                                 AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList(res, t)
 
-
+                                AsyncWidgets.WidgetScripts.frmCarServiceDetails.ChangeColor(t)
 
 
                             }
@@ -1260,29 +1260,106 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function 
 }
 
 
+//AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t) {
+
+
+
+//    if (res.status == 'OK') {
+//        if (res.Response.Rows.length > 0) {
+//            var rows = res.Response.Rows;
+//            //var tblUFL = $('table.CustomerModifyList', t.el);
+//            //$('.ItemTR', tblUFL).show();
+//            //$('.NoRecordsTR', tblUFL).hide();
+
+
+//            var tblUFL = $('table.ItemsModifyListt', t.el);
+//            $('table.ItemsModifyListt tfoot tr').hide();
+//            $('table.ItemsModifyListt tbody tr').show();
+
+//            /*invoiceno,warrantytype*/
+
+//            var tblRowsHTML = "";
+
+//            var serialMap = {};  // To store the serial number for each unique InvRecCode
+//            var serialCounter = 1;  // Starting serial number
+
+//            for (var i = 0; i < rows.length; i++) {
+
+//                var row = rows[i];
+//                var InvRecCode = row.InvRecCode;
+//                var ItemId = row.ItemId;
+//                var PurchasingFrom = row.PurchasingFrom;
+//                var SelectQuantity = row.SelectQuantity;
+//                var SparePartName = row.SparePartName;
+//                var SparePartUnitPrice = row.SparePartUnitPrice;
+//                var TotalPrice = row.TotalPrice;
+//                var SparePartSerialNo = row.SparePartSerialNo;
+//                var PurchasingFrom = row.PurchasingFrom;
+//                var InvoiceType = row.InvoiceType;
+
+
+//                // Check if this InvRecCode already exists in the serialMap
+//                if (serialMap[InvRecCode]) {
+//                    serialCounter = serialMap[InvRecCode];  // Use the existing serial number
+//                } else {
+//                    serialCounter = 1;  // Start a new serial count for this InvRecCode
+//                }
+
+//                var genHtml = `
+
+
+
+//                            <tr class='TableTr'>
+//                            <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${serialCounter}</td>
+//                            <td class="ColTemplate w-grid-cell-border colIndex-4 ChangeColor" style="padding: 5px; background: white; color: black;">${InvRecCode}</td>
+//                         <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${InvoiceType}</td>
+//                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${ItemId}</td>
+//                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SparePartSerialNo}</td>
+//                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
+//                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
+//                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SelectQuantity}</td>
+//                             <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SparePartUnitPrice.toFixed(3)}</td>
+//                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3)}</td>
+//                            </tr>
+
+//                                                `;
+
+//                tblRowsHTML += genHtml;
+
+
+
+//            }  // for loop;
+
+
+
+//            $('tbody ', tblUFL).html(tblRowsHTML);
+//            serialMap[InvRecCode] = serialCounter + 1;
+//        } else {
+//            //var tblUFL = $('table.CustomerModifyListt', t.el);
+//            //$('tbody', tblUFL).hide();
+//            ///* $('.NoRecordsTR', tblUFL).show();*/
+//            //$('table.CustomerModifyListt tfoot tr').show();
+
+//            $('table.ItemsModifyListt tfoot tr').show();
+//            $('table.ItemsModifyListt tbody tr').hide();
+//        }
+//    } //  if (res.status == 'OK')
+
+//};
+
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t) {
-
-
-    
     if (res.status == 'OK') {
         if (res.Response.Rows.length > 0) {
             var rows = res.Response.Rows;
-            //var tblUFL = $('table.CustomerModifyList', t.el);
-            //$('.ItemTR', tblUFL).show();
-            //$('.NoRecordsTR', tblUFL).hide();
-
-
             var tblUFL = $('table.ItemsModifyListt', t.el);
             $('table.ItemsModifyListt tfoot tr').hide();
             $('table.ItemsModifyListt tbody tr').show();
 
-            /*invoiceno,warrantytype*/
-
             var tblRowsHTML = "";
-
+            var serialMap = {};  // To store the serial number for each unique InvRecCode
+            var serialCounter = 1;  // Starting serial number
 
             for (var i = 0; i < rows.length; i++) {
-
                 var row = rows[i];
                 var InvRecCode = row.InvRecCode;
                 var ItemId = row.ItemId;
@@ -1292,55 +1369,128 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
                 var SparePartUnitPrice = row.SparePartUnitPrice;
                 var TotalPrice = row.TotalPrice;
                 var SparePartSerialNo = row.SparePartSerialNo;
-                var PurchasingFrom = row.PurchasingFrom;
                 var InvoiceType = row.InvoiceType;
-                
 
-
+                // Check if the InvRecCode already exists in serialMap
+                if (serialMap[InvRecCode]) {
+                    // If InvRecCode exists, use the existing serial number
+                    var serialNumber = serialMap[InvRecCode];
+                } else {
+                    // If InvRecCode is new, assign the current serial number and increment for the next one
+                    var serialNumber = serialCounter;
+                    serialMap[InvRecCode] = serialNumber;
+                    serialCounter++;
+                }
 
                 var genHtml = ` 
-                    
-                                      
-
-                            <tr>
-                            <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${InvRecCode}</td>
-                         <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${InvoiceType}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${ItemId}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SparePartSerialNo}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SelectQuantity}</td>
-                             <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${SparePartUnitPrice.toFixed(3)}</td>
-                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3)}</td>
-                            </tr>
-
-                                                `;
+                    <tr class='TableTr'>
+                        <!-- Serial Number Column -->
+                        <td class="ColTemplate w-grid-cell-border colIndex-1" style="padding: 5px; background: white; color: black;text-align: center;">${serialNumber}</td>
+                        
+                        <!-- Other Columns -->
+                        <td class="ColTemplate w-grid-cell-border colIndex-4 ChangeColor" style="padding: 5px; background: white; color: black;">${InvRecCode}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${InvoiceType}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${ItemId}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartSerialNo}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartName}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${PurchasingFrom}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SelectQuantity}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice.toFixed(3)}</td>
+                        <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3)}</td>
+                    </tr>
+                `;
 
                 tblRowsHTML += genHtml;
+            }
 
-
-
-            }  // for loop;
-
-
-
-            $('tbody ', tblUFL).html(tblRowsHTML);
+            $('tbody', tblUFL).html(tblRowsHTML);
         } else {
-            //var tblUFL = $('table.CustomerModifyListt', t.el);
-            //$('tbody', tblUFL).hide();
-            ///* $('.NoRecordsTR', tblUFL).show();*/
-            //$('table.CustomerModifyListt tfoot tr').show();
-
             $('table.ItemsModifyListt tfoot tr').show();
             $('table.ItemsModifyListt tbody tr').hide();
         }
-    } //  if (res.status == 'OK')
-
-}
-
+    }
+};
 
 
 
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.ChangeColor = function (t) {
+
+    const colors = ["maroon", "darkblue"]; // Alternate between red and blue
+    let colorMap = {}; // Store assigned color for each unique text
+    let colorIndex = 0; // Start with the first color
+
+    $('.ChangeColor').each(function () {
+        let text = $(this).text().trim(); // Get text of the item
+
+        // Check if this number already has a color assigned
+        if (!colorMap[text]) {
+            colorMap[text] = colors[colorIndex % 2]; // Assign a color
+            colorIndex++; // Alternate to the next color for next unique text
+        }
+
+        $(this).css("color", colorMap[text]); // Apply the assigned color
+    });
+
+    //const colors = ["red", "blue"]; // Alternate colors
+    //let colorMap = {}; // Store color status for each unique text
+
+    //$('.ChangeColor').each(function () {
+    //    let text = $(this).text().trim(); // Get text of the item
+
+    //    // Check if this number already has a color assigned
+    //    if (!colorMap[text]) {
+    //        colorMap[text] = 0; // Start with the first color (red)
+    //    }
+
+    //    $(this).css("color", colors[colorMap[text] % 2]); // Apply color
+
+    //    // Toggle color for the next occurrence of the same text
+    //    colorMap[text] = (colorMap[text] + 1) % 2;
+    //});
+
+    //const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#FF8F33"]; // Color list
+    //let colorMap = {}; // Object to store number-color mapping
+    //let colorIndex = 0;
+
+    //    $('.ChangeColor').each(function () {
+    //    let text = $(this).text().trim(); // Get text of the item
+
+    //    // Check if this number already has a color assigned
+    //    if (!colorMap[text]) {
+    //        colorMap[text] = colors[colorIndex % colors.length]; // Assign a color
+    //        colorIndex++; // Move to the next color
+    //    }
+
+    //    $(this).css("color", colorMap[text]); // Apply color to the item
+    //});
+
+};
+
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetDynamicallySerielNo = function (t) {
+    var serialMap = {};  // To store the serial number for each unique InvRecCode
+    var serialCounter = 1;  // Starting serial number
+
+    $('tr').each(function () {
+        var invRecCode = $(this).find('td:nth-child(2)').text().trim();  // Get InvRecCode from the second column
+
+        if (invRecCode) {
+            // Check if this InvRecCode already exists in the serialMap
+            if (serialMap[invRecCode]) {
+                serialCounter = serialMap[invRecCode];  // Use the existing serial number
+            } else {
+                serialCounter = 1;  // Start a new serial count for this InvRecCode
+            }
+
+            // Assign the serial number to the first column (serialNo)
+            $(this).find('td:nth-child(1)').text(serialCounter);
+
+            // Increment the serial counter for this InvRecCode
+            serialMap[invRecCode] = serialCounter + 1;
+        }
+    });
+
+
+};
 
 
 
