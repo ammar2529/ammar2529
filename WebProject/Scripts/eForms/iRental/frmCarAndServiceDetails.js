@@ -333,7 +333,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
                     var MobileTelephone1 = row.MobileTelephone1;
                     var CreatedBy = row.CreatedBy;
                     var DateCreated = row.DateCreated;
-
+                  
 
 
                     var genHtml = ` 

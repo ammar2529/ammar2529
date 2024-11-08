@@ -314,6 +314,12 @@
 
             $('table.ItemsModifyListt tfoot tr').show();
             $('table.ItemsModifyListt tbody tr').remove();
+
+
+            var zero = 0;
+            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3));
+            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3));
+            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3))
         }
      
     });
@@ -1036,31 +1042,33 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsNll = function (t)
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsClosedState = function (t)
 {
-    if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
+    setTimeout(function () {
+        if ($('[argumentid="StateId"]', t.el).text() == 'ClosedState') {
 
 
-        $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
+            $('.common-button,.CommonDisableClass', t.el).attr('disabled', 'disabled');
 
 
-        //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
-        //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
+            //$(',.Problem, .ActionTaken, .CarCondition', t.el).removeAttr('disabled', 'disabled');
+            //$('.Problem, .ActionTaken, .CarCondition', t.el).removeClass('ElemDisabled');
 
-        $('[argumentid="ManualID"],.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
-        $('[argumentid="ManualID"],.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
-        $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
-        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
-        $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+            $('[argumentid="ManualID"],.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+            $('[argumentid="ManualID"],.common-button,.CommonDisableClass,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+            $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+            $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
+            $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
 
-        $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
-        $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-        $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
-        $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+            $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+            $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
+            $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
+            $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
 
-        $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
+            $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
 
 
-        AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
-    }
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
+        }
+    }, 2000);
 };
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function (t)
 {
@@ -1113,28 +1121,30 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsOpenState = function 
 };
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.IfStateIdIsCanceledState = function (t)
 {
-    if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
-        
-
-        $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
+    setTimeout(function () {
+        if ($('[argumentid="StateId"]', t.el).text() == 'CanceledState') {
 
 
-        $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
-        $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
-        $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
-        $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
-        $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
-        $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
-        $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
-        $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
-
-        $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
+            $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).attr('disabled', 'disabled');
 
 
-        AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
+            $('[argumentid="ManualID"],.common-button,.CommonDisableClass, .Problem, .ActionTaken, .CarCondition,.AlwaysDisableJC,.CarDeliverdStartTime,.NextServiceStartTime', t.el).addClass('ElemDisabled');
+            $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+            $('[argumentid="CarToBeDeliverdDate"]', t.el).next('img').hide();
+            $('[argumentid="CarDeliverdDate"]', t.el).next('img').hide();
+            $('[argumentid="CarRecivedDate"]', t.el).next('img').hide();
+            $('[argumentid="NextServiceDate"]', t.el).next('img').hide();
+            $('[argumentid="DocType"]').val($('[argumentid="DocType"] option').eq(3).val());
+            $('.grgbtnSave3,.CarServiceButton_Edit ', t.el).show();
+
+            $('.AddRequired', t.el).removeClass('required').removeAttr('requirederr', '*');
 
 
-    }
+            AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk(t);
+
+
+        }
+    }, 2000);
 };
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk = function (t) {
@@ -1359,7 +1369,16 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
             var serialMap = {};  // To store the serial number for each unique InvRecCode
             var serialCounter = 1;  // Starting serial number
 
+            var totalSubTotal = 0;
+            var totalDiscount = 0;
+            var totalGrandTotal = 0;
+            var totalTotalPrice = 0
+
+            // Create a Set to track unique InvRecCode
+            var uniqueInvRecCodes = new Set();
+
             for (var i = 0; i < rows.length; i++) {
+                
                 var row = rows[i];
                 var InvRecCode = row.InvRecCode;
                 var ItemId = row.ItemId;
@@ -1371,6 +1390,23 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
                 var SparePartSerialNo = row.SparePartSerialNo;
                 var InvoiceType = row.InvoiceType;
 
+                var SubTotal = row.SubTotal;
+                var Discount = row.Discount;
+                var GrandTotal = row.GrandTotal;
+
+                // Add to accumulators
+
+                /* Check if the InvRecCode is already in the Set*/
+                if (!uniqueInvRecCodes.has(InvRecCode)) {
+                    // If InvRecCode is unique, add its values to the sums
+                    totalSubTotal += SubTotal;
+                    totalDiscount += Discount;
+                    totalGrandTotal += GrandTotal;
+
+                    // Add the InvRecCode to the Set to track it as counted
+                    uniqueInvRecCodes.add(InvRecCode);
+                }
+                totalTotalPrice += TotalPrice
                 // Check if the InvRecCode already exists in serialMap
                 if (serialMap[InvRecCode]) {
                     // If InvRecCode exists, use the existing serial number
@@ -1401,12 +1437,33 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
                 `;
 
                 tblRowsHTML += genHtml;
+
+               
             }
 
             $('tbody', tblUFL).html(tblRowsHTML);
+            var zero = 0;
+            console.log("Total SubTotal:", totalSubTotal.toFixed(3));
+            console.log("Total Discount:", totalDiscount.toFixed(3));
+            console.log("Total GrandTotal:", totalGrandTotal.toFixed(3));
+            console.log("Total Price:", totalTotalPrice.toFixed(3));
+
+            // Setting the text in the elements and converting to numbers
+            var totalTotalPriceRes = parseFloat($('[argumentid="totalTotalPrice"]', t.el).text(totalTotalPrice.toFixed(3))) || zero;
+            var totalDiscountRes = parseFloat($('[argumentid="totalDiscount"]', t.el).text(totalDiscount.toFixed(3))) || zero;
+
+            // Calculating the result
+            var Result = totalTotalPrice - totalDiscount;
+
+            // Displaying the result
+            $('[argumentid="totalGrandTotalRes"]', t.el).text(Result.toFixed(3)) || zero.toFixed(3);
         } else {
+            var zero = 0;
             $('table.ItemsModifyListt tfoot tr').show();
             $('table.ItemsModifyListt tbody tr').hide();
+            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3));
+            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3));
+            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3));
         }
     }
 };

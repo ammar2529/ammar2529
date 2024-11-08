@@ -10,8 +10,8 @@
 
 
 <style type="text/css">
-    .auto-style1 {
-        height: 29px;
+    .auto-style2 {
+        height: 25px;
     }
 </style>
 
@@ -525,8 +525,49 @@
                 </tr>--%>
 
 
-                
+                <tr >
+                    <td colspan="4" >
+                        <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+
+                            <tr >
+
+                                <td class="ftitle" style="width:100px">
+                                
+                                    Total Amount:
+                                </td>
+                                <td>
+                                
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalTotalPrice" style="width:100px"></span>
+                                </td>
+                                <td class="ftitle" style="width:100px">Discount:
+                                </td>
+
+
+                                <td>
+                                   <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalDiscount" style="width:100px"></span>
+                                </td>
+                               <td class="ftitle" style="width:100px">Grand Total:
+</td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalGrandTotalRes" style="width:100px"></span>
+                                </td>
+                               
+                         
+
+                            </tr>
+
+
+
+                        </table>
+
+
+                    </td>
+
+
+
+                </tr>
                         <%-- Data Grid  --%>
+               
                 <tr>
                     <td colspan="4">
 
