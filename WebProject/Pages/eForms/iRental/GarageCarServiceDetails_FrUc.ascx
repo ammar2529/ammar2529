@@ -9,11 +9,7 @@
 
 
 
-<style type="text/css">
-    .auto-style2 {
-        height: 25px;
-    }
-</style>
+
 
 
 
@@ -524,35 +520,32 @@
                     </td>
                 </tr>--%>
 
-
-                <tr >
-                    <td colspan="4" >
+                <tr>
+                    <td colspan="4">
                         <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-                            <tr >
+                            <tr style="background-color: navajowhite;">
 
-                                <td class="ftitle" style="width:100px">
-                                
-                                    Total Amount:
+                                <td class="ftitle" style="width: 100px">Total Amount:
                                 </td>
                                 <td>
-                                
-                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalTotalPrice" style="width:100px"></span>
+
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalTotalPrice" style="width: 100px"></span>
                                 </td>
-                                <td class="ftitle" style="width:100px">Discount:
+                                <td class="ftitle" style="width: 100px">Discount:
                                 </td>
 
 
                                 <td>
-                                   <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalDiscount" style="width:100px"></span>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalDiscount" style="width: 100px"></span>
                                 </td>
-                               <td class="ftitle" style="width:100px">Grand Total:
-</td>
+                                <td class="ftitle" style="width: 100px">Grand Total:
+                                </td>
                                 <td>
-                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalGrandTotalRes" style="width:100px"></span>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="totalGrandTotalRes" style="width: 100px"></span>
                                 </td>
-                               
-                         
+
+
 
                             </tr>
 

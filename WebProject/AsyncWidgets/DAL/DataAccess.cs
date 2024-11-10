@@ -77,21 +77,55 @@ namespace WebProject.AsyncWidgets.DAL
              ConfigurationManager.ConnectionStrings[ConnName].ProviderName 
             );
         }
-         public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
-        {
-            DbConnContainer RetConn;
-            switch (ProviderName)
-            {
-                case "System.Data.SqlClient":
-                    RetConn =new DbConnContainer( new SqlConnection(ConnectionString),ProviderName );
-                    break;
-                default:
-                    return null;
-                    break;
+        // public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
+        //{
+        //    DbConnContainer RetConn;
+        //    switch (ProviderName)
+        //    {
+        //        case "System.Data.SqlClient":
+        //            RetConn =new DbConnContainer( new SqlConnection(ConnectionString),ProviderName );
+        //            break;
+        //        default:
+        //            return null;
+        //            break;
 
+        //    }
+        //    RetConn.DbConnection.Open();
+        //    return RetConn; 
+        //}
+        public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
+        {
+            DbConnContainer RetConn = null;
+
+            try
+            {
+                switch (ProviderName)
+                {
+                    case "System.Data.SqlClient":
+                        RetConn = new DbConnContainer(new SqlConnection(ConnectionString), ProviderName);
+                        break;
+                    default:
+                        return null;
+                }
+
+                // Attempt to open the connection
+                RetConn.DbConnection.Open();
+                return RetConn;
             }
-            RetConn.DbConnection.Open();
-            return RetConn; 
+            catch (InvalidOperationException ex)
+            {
+                // Handle specific connection-related exceptions, such as timeout
+                Console.WriteLine("Failed to obtain a connection from the pool: " + ex.Message);
+                RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
+                return null;
+            }
+            catch (Exception ex)
+            {
+                // Handle other potential exceptions
+                Console.WriteLine("An error occurred: " + ex.Message);
+                RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
+                return null;
+            }
         }
 
         public static DataSet GetDataSet(string SQLText)

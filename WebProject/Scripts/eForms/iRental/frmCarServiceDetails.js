@@ -317,9 +317,9 @@
 
 
             var zero = 0;
-            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3));
-            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3));
-            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3))
+            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3)).css('color', 'red');
         }
      
     });
@@ -330,7 +330,8 @@
     {
       
 
-    
+        $('table.ItemsModifyListt tfoot tr').show();
+        $('table.ItemsModifyListt tbody tr').remove();
 
 
         if (t.FormMode == 'update')
@@ -342,7 +343,7 @@
             $('.StatusTR', t.el).show();
             $('.OnNewForm', t.el).show();
 
-
+           
  
 
      
@@ -496,8 +497,8 @@
             }
 
 
-
-            debugger
+            
+            
             if (args.res.status == 'OK') {
 
                 if (args.res.Response.Rows.length > 0) {
@@ -530,9 +531,11 @@
                             if (res.status === 'OK') {
 
 
-                                AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList(res, t)
+                                setTimeout(function () {
+                                    AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList(res, t)
 
-                                AsyncWidgets.WidgetScripts.frmCarServiceDetails.ChangeColor(t)
+                                    AsyncWidgets.WidgetScripts.frmCarServiceDetails.ChangeColor(t)
+                                }, 1000)
 
 
                             }
@@ -1358,8 +1361,10 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function 
 //};
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t) {
-    if (res.status == 'OK') {
-        if (res.Response.Rows.length > 0) {
+    if (res.status == 'OK')
+    {
+        if (res.Response.Rows.length > 0)
+        {
             var rows = res.Response.Rows;
             var tblUFL = $('table.ItemsModifyListt', t.el);
             $('table.ItemsModifyListt tfoot tr').hide();
@@ -1418,7 +1423,8 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
                     serialCounter++;
                 }
 
-                var genHtml = ` 
+                var genHtml =
+                `
                     <tr class='TableTr'>
                         <!-- Serial Number Column -->
                         <td class="ColTemplate w-grid-cell-border colIndex-1" style="padding: 5px; background: white; color: black;text-align: center;">${serialNumber}</td>
@@ -1434,7 +1440,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
                         <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${SparePartUnitPrice.toFixed(3)}</td>
                         <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TotalPrice.toFixed(3)}</td>
                     </tr>
-                `;
+                ` ;
 
                 tblRowsHTML += genHtml;
 
@@ -1443,27 +1449,27 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
 
             $('tbody', tblUFL).html(tblRowsHTML);
             var zero = 0;
-            console.log("Total SubTotal:", totalSubTotal.toFixed(3));
-            console.log("Total Discount:", totalDiscount.toFixed(3));
-            console.log("Total GrandTotal:", totalGrandTotal.toFixed(3));
-            console.log("Total Price:", totalTotalPrice.toFixed(3));
+            //console.log("Total SubTotal:", totalSubTotal.toFixed(3));
+            //console.log("Total Discount:", totalDiscount.toFixed(3));
+            //console.log("Total GrandTotal:", totalGrandTotal.toFixed(3));
+            //console.log("Total Price:", totalTotalPrice.toFixed(3));
 
             // Setting the text in the elements and converting to numbers
-            var totalTotalPriceRes = parseFloat($('[argumentid="totalTotalPrice"]', t.el).text(totalTotalPrice.toFixed(3))) || zero;
-            var totalDiscountRes = parseFloat($('[argumentid="totalDiscount"]', t.el).text(totalDiscount.toFixed(3))) || zero;
+            var totalTotalPriceRes = parseFloat($('[argumentid="totalTotalPrice"]', t.el).text(totalTotalPrice.toFixed(3)).css('color', 'green')) || zero;
+            var totalDiscountRes = parseFloat($('[argumentid="totalDiscount"]', t.el).text(totalDiscount.toFixed(3)).css('color', 'green')) || zero;
 
             // Calculating the result
             var Result = totalTotalPrice - totalDiscount;
 
             // Displaying the result
-            $('[argumentid="totalGrandTotalRes"]', t.el).text(Result.toFixed(3)) || zero.toFixed(3);
+            $('[argumentid="totalGrandTotalRes"]', t.el).text(Result.toFixed(3)).css('color','green') || zero.toFixed(3);
         } else {
             var zero = 0;
             $('table.ItemsModifyListt tfoot tr').show();
             $('table.ItemsModifyListt tbody tr').hide();
-            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3));
-            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3));
-            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3));
+            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3)).css('color', 'red');
         }
     }
 };
