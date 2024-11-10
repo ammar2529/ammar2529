@@ -22,28 +22,30 @@
                 <%--<tr id="trNote">
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>--%>
+                <tr>
+                    <td colspan="4">
+                        <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
+                            <tr class="StatusTR">
+                                <td class="ftitle">
+                                    <nobr>Service No.:</nobr>
+                                </td>
+                                <td class="ftitle">
+                                    <span class="ftitle" style="color: red;" groupid="GarageCarServiceDetails" argumentid="RecCode">New contract no. will be generated on saving</span>
+                                </td>
+                                <td class="ftitle">
+                                    <nobr>Service Status:</nobr>
+                                </td>
+                                <td class="ftitle" width="30%">
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="StateName"></span>
 
-                <tr class="StatusTR">
-                    <td class="ftitle">
-                        <nobr>Service No.:</nobr>
-                    </td>
-                    <td class="ftitle">
-                        <span class="ftitle" style="color: red;" groupid="GarageCarServiceDetails" argumentid="RecCode">New contract no. will be generated on saving</span>
-                    </td>
-                    <td class="ftitle">
-                        <nobr>Service Status:</nobr>
-                    </td>
-                    <td class="ftitle" width="30%">
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="StateName"></span>
+                                    <div style="display: none">
+                                        <span groupid="GarageCarServiceDetails" argumentid="StateId"></span>
 
-                        <div style="display: none">
-                            <span groupid="GarageCarServiceDetails" argumentid="StateId"></span>
+                                    </div>
 
-                        </div>
-
-                    </td>
-                </tr>
-                <%-- <tr>
+                                </td>
+                            </tr>
+                            <%-- <tr>
                     <td class="ftitle" style="width: 170px">
                         <nobr>Service No:</nobr>
                     </td>
@@ -62,157 +64,163 @@
 
 
 
-                <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
-                <tr>
-                    <td class="ftitle" style="width:20%">
-                        <nobr>Car No.*:</nobr>
-                    </td>
-                    <td style="width: 30%;">
-                        <input type="hidden" name="RecId" groupid="GarageCarServiceDetails" argumentid="RecId" />
-                        <input type="hidden" name="FileGuid" groupid="GarageCarServiceDetails" argumentid="FileGuid" />
+                            <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
+                            <tr>
+                                <td class="ftitle" style="width: 20%">
+                                    <nobr>Car No.*:</nobr>
+                                </td>
+                                <td style="width: 30%;">
+                                    <input type="hidden" name="RecId" groupid="GarageCarServiceDetails" argumentid="RecId" />
+                                    <input type="hidden" name="FileGuid" groupid="GarageCarServiceDetails" argumentid="FileGuid" />
 
 
 
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text LOVPopup required CommonDisableClass"
-                            groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="CarNumber" />
+                                    <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text LOVPopup required CommonDisableClass"
+                                        groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="CarNumber" />
 
-                        <%--<input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="30" class="LOVPopup text  CommonDisableClass  "
+                                    <%--<input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="30" class="LOVPopup text  CommonDisableClass  "
                                 groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="ChassisNo"   />--%>
                         
-                    </td>
-                    <td class="ftitle" style="width:20%">
-                        <nobr>Customer Code*:</nobr></td>
-                    <td style="text-align: center; width:30%">
-                        <span class="ftitle" style="font-size: 11px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
+                                </td>
+                                <td class="ftitle" style="width: 20%">
+                                    <nobr>Customer Code*:</nobr></td>
+                                <td style="text-align: center; width: 30%">
+                                    <span class="ftitle" style="font-size: 11px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
+                                </td>
+                            </tr>
+
+                            <%--///////////////////// End: Select Car and Customer popup ///////////////////////////////////////--%>
+
+
+
+
+
+                            <tr>
+                                <td class="ftitle">
+                                    <nobr>Chassis No.:</nobr>
+                                </td>
+                                <td>
+                                    <%--                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CarNumber"></span>--%>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="ChassisNo"></span>
+
+                                </td>
+                                <td class="ftitle">
+                                    <nobr>Name:</nobr>
+                                </td>
+                                <td style="text-align: center">
+                                    <span class="ftitle" style="font-size: 16px;" groupid="GarageCarServiceDetails" argumentid="CustomerName"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ftitle">
+                                    <nobr>Brand:</nobr>
+                                </td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Brand"></span>
+                                </td>
+                                <td class="ftitle">
+
+                                    <nobr>National ID No.:</nobr>
+
+                                </td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="NationalIDNo"></span>
+                                    <input type="hidden" argumentid="NationalityID" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ftitle">
+                                    <nobr>Model:</nobr>
+                                </td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Model"></span>
+                                </td>
+                                <td class="ftitle">
+                                    <nobr>Mobile Telephone:</nobr>
+
+                                </td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="MobileTelephone1"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ftitle">
+                                    <nobr>Year:</nobr>
+                                </td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CarYear"></span>
+                                </td>
+                                <td class="ftitle">
+                                    <nobr>Temp Telephone:</nobr>
+                                </td>
+                                <td>
+                                    <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass " groupid="GarageCarServiceDetails" argumentid="TempMobile" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ftitle">
+                                    <nobr>Color:</nobr>
+                                </td>
+                                <td>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Color"></span>
+                                </td>
+                                <td class="ftitle">Manual ID:</td>
+                                <td class="ftitle">
+
+
+                                    <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass " groupid="GarageCarServiceDetails" argumentid="ManualID" /></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="ftitle">
+                                    <nobr>Type:</nobr>
+                                </td>
+                                <td class="">
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Type"></span>
+                                </td>
+                                <td class="ftitle">&nbsp;</td>
+                                <td>&nbsp;</td>
+
+
+
+                            </tr>
+
+                        </table>
                     </td>
                 </tr>
 
-                <%--///////////////////// End: Select Car and Customer popup ///////////////////////////////////////--%>
 
 
-
-
-
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Chassis No.:</nobr>
-                    </td>
-                    <td>
-                        <%--                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CarNumber"></span>--%>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="ChassisNo"></span>
-
-                    </td>
-                    <td class="ftitle">
-                        <nobr>Name:</nobr>
-                    </td>
-                    <td style="text-align: center">
-                        <span class="ftitle" style="font-size: 16px;" groupid="GarageCarServiceDetails" argumentid="CustomerName"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Brand:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Brand"></span>
-                    </td>
-                    <td class="ftitle">
-                        
-                        <nobr>National ID No.:</nobr>
-                                            
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="NationalIDNo"></span>
-                        <input type="hidden" argumentid="NationalityID" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Model:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Model"></span>
-                    </td>
-                    <td class="ftitle">
-                        <nobr>Mobile Telephone:</nobr>
-
-                    </td>
-                    <td>
-                         <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="MobileTelephone1"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Year:</nobr>
-                    </td>
-                    <td >
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CarYear"></span>
-                    </td>
-                    <td class="ftitle">
-                        <nobr>Temp Telephone:</nobr>
-                    </td>
-                    <td >
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass " groupid="GarageCarServiceDetails" argumentid="TempMobile" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Color:</nobr>
-                    </td>
-                    <td>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Color"></span>
-                    </td>
-                    <td class="ftitle">
-                        Manual ID:</td>
-                    <td class="ftitle">
-                       
-
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass " groupid="GarageCarServiceDetails" argumentid="ManualID" /></td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Type:</nobr>
-                    </td>
-                    <td class="">
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="Type"></span>
-                    </td>
-                    <td class="ftitle">&nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-
-
-
-                </tr>
-
-
-
-
-
-                <tr>
+                <%--<tr>
                     <td class="hideOnNoExpirayDate" colspan="4">
 
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
 
                     </td>
-                </tr>
+                </tr>--%>
+
+                   <tr class="hideOnNoExpirayDate">
+       <td colspan="4">
+           <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
 
                 <tr class="hideOnNoExpirayDate">
 
 
-                    <td class="ftitle">
+                    <td class="ftitle" style="width: 20%">
                         <nobr>Full Insurance:</nobr>
                     </td>
 
-                    <td>
-                        <span class="ftitle CommonDisable " groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId"></span>
+                    <td style="width: 30%">
+                        <span class="ftitle CommonDisable " groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId" ></span>
                     </td>
 
 
 
-                    <td class="ftitle">
+                    <td class="ftitle" style="width: 20%">
                         <nobr class=""></nobr>
                     </td>
-                    <td>
+                    <td style="width: 30%">
                         <%--   <input type="text" class="ftitle CommonDisableClass " style="text-align: center; width: 150px;"  groupid="GarageCarServiceDetails" argumentid="ManualID" />--%>
                         
                     </td>
@@ -230,25 +238,33 @@
                     <td><span class="ftitle CommonDisable" groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry"></span></td>
                 </tr>
 
-                <tr>
+               </table>
+           </td>
+                       </tr>
+
+               <%-- <tr>--%>
                    
 
                         <%--                        style="border-top: 2px solid orange;border-bottom: 2px solid orange;border-left: 2px solid orange;border-right: 2px solid orange;height: 1px;padding: 0px;"--%>
 
-                    <td colspan="4">
+            <%--        <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
-                </tr>
+                </tr>--%>
+
                 <tr>
-                    <td class="ftitle">
+    <td colspan="4">
+        <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
+                <tr>
+                    <td class="ftitle" style="width: 20%">
                         <nobr>Last Service Date:</nobr>
                     </td>
-                    <td>
+                    <td style="width: 30%">
 
                         <span class="ftitle dateLabel onDisable" groupid="GarageCarServiceDetails" argumentid="LastCarServiceDate"></span>
                     </td>
-                    <td class="ftitle">Last Service KM:</td>
-                    <td>
+                    <td class="ftitle" style="width: 20%">Last Service KM:</td>
+                    <td style="width: 30%">
 
                         <span class="ftitle CommonDisable CommonCommaText" groupid="GarageCarServiceDetails" argumentid="LastServiceKm"></span>
                     </td>
@@ -390,30 +406,32 @@
 
                 </tr>
 
+      
 
-
-                <tr>
+               <%-- <tr>
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
-                </tr>
+                </tr>--%>
 
-                <tr>
-                    <td valign="center" class="ftitle">
-                        <nobr>Problem*:</nobr>
-                    </td>
-                    <td colspan="3">
-                        <textarea class="textarea required Problem CommonDisableClass" rows="4" style="width: 84.5%; height: 60px; box-sizing: border-box; resize: none;"
-                            argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
+                
 
-                    </td>
+                            <tr>
+                                <td valign="center" class="ftitle" style="width: 20%">
+                                    <nobr>Problem*:</nobr>
+                                </td>
+                                <td colspan="3" style="width: 30%">
+                                    <textarea class="textarea required Problem CommonDisableClass" rows="4" style="width: 84.5%; height: 60px; box-sizing: border-box; resize: none;"
+                                        argumentid="Problem" groupid="GarageCarServiceDetails"></textarea>
 
-                </tr>
+                                </td>
+
+                            </tr>
 
 
 
 
-                <%--  <tr>
+                            <%--  <tr>
                     <td valign="center" class="ftitle">
                         <nobr>Car Condition:</nobr>
                     </td>
@@ -426,16 +444,19 @@
 
 
 
-                <tr>
-                    <td valign="center" class="AddAsterisk ftitle">Action Taken:</td>
-                    <td colspan="3">
-                        <textarea class="textarea ActionTaken CommonDisableClass AddRequired OnStartState"
-                            rows="4"
-                            style="width: 84.5%; height: 60px; box-sizing: border-box; resize: none;"
-                            argumentid="ActionTaken"
-                            groupid="GarageCarServiceDetails"></textarea>
+                            <tr>
+                                <td valign="center" class="AddAsterisk ftitle" style="width: 20%">Action Taken:</td>
+                                <td colspan="3" style="width: 30%">
+                                    <textarea class="textarea ActionTaken CommonDisableClass AddRequired OnStartState"
+                                        rows="4"
+                                        style="width: 84.5%; height: 60px; box-sizing: border-box; resize: none;"
+                                        argumentid="ActionTaken"
+                                        groupid="GarageCarServiceDetails"></textarea>
 
 
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
 
@@ -522,7 +543,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
 
                             <tr style="background-color: navajowhite;">
 
