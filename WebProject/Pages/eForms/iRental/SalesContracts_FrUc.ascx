@@ -858,14 +858,14 @@
                  
 
                    <tr>
-                    <td >
+                    <td class="ftitle">
                         <nobr>Contract Created By:</nobr>
                     </td>
                     <td style="text-align: center" >
                         <span class="ftitle"  groupid="SalesContractsForm" argumentid="CreatedBy"></span>
                     </td>
                    
-                       <td >
+                       <td class="ftitle">
                         <nobr>Contract Date & Time:</nobr>
                     </td>
                     <td style="text-align: center" >
