@@ -48,8 +48,12 @@
         </td>
     </tr>--%>
     
+              <tr >
+<td colspan="4" >
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+
     <tr>
-        <td class="ftitle">
+        <td class="ftitle" style="width:20%">
     <nobr>Purchasing From*:</nobr>
 </td>
         <td class="ftitle">
@@ -229,13 +233,15 @@
         </td>
     </tr>
 
+        </table>
+    </td>
+                  </tr>
 
-
-    <tr>
+<%--    <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
+    </tr>--%>
 
 <%--    <tr>
     <td class="ftitle">
@@ -250,8 +256,12 @@
     </td>
 </tr>--%>
 
+              <tr>
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+
     <tr>
-    <td class="ftitle">
+    <td class="ftitle" style="width:20%">
         <nobr>Image:</nobr>
     </td>
     <td>
@@ -265,12 +275,14 @@
     </td>
 </tr>
 
-   
-    <tr>
+   </table>
+    </td>
+                  </tr>
+   <%-- <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
+    </tr>--%>
 
    <%-- <tr>
         <td class="ftitle" valign="top">
@@ -286,8 +298,12 @@
         </td>
     </tr>--%>
 
+              <tr>
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+
     <tr>
-        <td>
+        <td style="width:20%">
             <img src="App_Themes/eForms_Theme/Images/spacer.gif" />
             </td>
         <td>
@@ -299,5 +315,8 @@
 
         </td>
     </tr>
+        </table>
+    </td>
+                  </tr>
 </table>
 

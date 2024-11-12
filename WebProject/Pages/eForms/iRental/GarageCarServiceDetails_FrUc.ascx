@@ -18,13 +18,13 @@
 
     <tr tabid="GarageCarServiceDetails">
         <td style="padding-top: 1px;">
-            <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+            <table cellspacing="1" cellpadding="0" width="100%" border="0" class="w-form-table">
                 <%--<tr id="trNote">
                     <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
                 </tr>--%>
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
+                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr class="StatusTR">
                                 <td class="ftitle">
                                     <nobr>Service No.:</nobr>
@@ -84,8 +84,8 @@
                                 </td>
                                 <td class="ftitle" style="width: 20%">
                                     <nobr>Customer Code*:</nobr></td>
-                                <td style="text-align: center; width: 30%">
-                                    <span class="ftitle" style="font-size: 11px;" groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
+                                <td class="ftitle" style="text-align: center; width: 30%">
+                                    <span  groupid="GarageCarServiceDetails" argumentid="CustomerRecCode"></span>
                                 </td>
                             </tr>
 
@@ -107,8 +107,8 @@
                                 <td class="ftitle">
                                     <nobr>Name:</nobr>
                                 </td>
-                                <td style="text-align: center">
-                                    <span class="ftitle" style="font-size: 16px;" groupid="GarageCarServiceDetails" argumentid="CustomerName"></span>
+                                <td class="ftitle" style="text-align: center">
+                                    <span  groupid="GarageCarServiceDetails" argumentid="CustomerName"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -202,7 +202,7 @@
 
                    <tr class="hideOnNoExpirayDate">
        <td colspan="4">
-           <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
+           <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
 
                 <tr class="hideOnNoExpirayDate">
 
@@ -254,7 +254,7 @@
 
                 <tr>
     <td colspan="4">
-        <table cellspacing="2" cellpadding="0" width="100%" border="1" class="w-form-table">
+        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
                 <tr>
                     <td class="ftitle" style="width: 20%">
                         <nobr>Last Service Date:</nobr>

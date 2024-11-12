@@ -78,37 +78,16 @@
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-           <%--    <tr id="trNote">
-             <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-             </tr>--%>
-               <%--  <tr class="hideCarandService">
-                     <td class="ftitle">
-                        <nobr>Service Status:</nobr>
-
-                    </td>
-                    <td>
-                       
-                      <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="ServiceState"></span>
-                        
-                         
-                 </td>
-
-                      <td class="ftitle" width="20%">
-                        <nobr>Date:</nobr>
-                          </td>
-                    <td class="ftitle" width="30%">
-                        
-
-                        
-                        <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  " groupid="SparePartInventoryInvoice" maxlength="10" style="width: 75px;" type="text" /></td>
-                </tr>--%>
-
+     
+                <tr>
+    <td colspan="4">
+        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
                                 <tr class="StatusRow">
                      <td class="ftitle" style="width: 20%;">
                         <nobr>Invoice No.:</nobr>
 
                     </td>
-                    <td>
+                    <td style="width:30%">
                        
                       <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
                          <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
@@ -321,18 +300,23 @@
 
                     </td>
                 </tr>
-
-                <tr>
+            </table>
+        </td>
+                    </tr>
+                <%--<tr>
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
-                </tr>
+                </tr>--%>
 
                 <!-- New row with labels and 8 columns starts here -->
-              
+              <tr class="HideOnNewForm">
+    <td colspan="4">
+        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+
               <tr class="LineOfItemRow HideOnNewForm">
     <td colspan="4">
-        <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
+        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRows">
             <tr>
                 <td class="ftitle" style="width:2px">
                     <label for="column1">Item ID</label></td>
@@ -439,7 +423,9 @@
   
 
 </tr>
-
+</table>
+        </td>
+                  </tr>
 
                 <tr class="HideOnNewForm">
                     <td colspan="4">
@@ -491,63 +477,16 @@
                     </td>
                 </tr>
 
-                 <tr class="HideOnNewForm">
+               <%--  <tr class="HideOnNewForm">
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                      
                     </td>
-                </tr>
-                <%--<tr>
-                    <td class="ftitle">
-                        <nobr>SubTotal:</nobr></td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="SubTotal" /></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Discount:</nobr></td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="Discount" /></td>
-                    <td></td>
-                    <td></td>
-
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Grand Total:</nobr></td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="GrandTotal" /></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Paid:</nobr></td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="Paid" /></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="ftitle">
-                        <nobr>Balance:</nobr></td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text "
-                            groupid="SparePartInventoryInvoice" argumentid="Balance" /></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                 <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
                 </tr>--%>
+               
+                          <tr class="HideOnNewForm">
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
 
                 <tr class="HideOnNewForm">
 
@@ -613,7 +552,9 @@
 
 
                     </tr>
-
+        </table>
+    </td>
+                              </tr>
                      <%--<tr class="hideOnQuotation HideOnNewForm" >
                     <td colspan="4">
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
@@ -665,24 +606,29 @@
                     </td>
                 </tr>
 
+                          <tr >
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
 
                 <tr>
-                    <td class="ftitle">
+                    <td class="ftitle" style="width:20%">
                         <nobr>Contract Created By:</nobr>
                     </td>
-                    <td style="text-align: center">
+                    <td style="text-align: center; width:30%">
                         <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="CreatedBy"></span>
                     </td>
 
-                    <td class="ftitle">
+                    <td class="ftitle" style="width:20%">
                         <nobr>Contract Date & Time:</nobr>
                     </td>
-                    <td style="text-align: center">
+                    <td style="text-align: center;width:30%">
                         <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="InvDateCreated"></span>
                         <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="DateCreatedTime"></span>
                     </td>
                 </tr>
-
+        </table>
+    </td>
+                              </tr>
             </table>
         </td>
     </tr>
