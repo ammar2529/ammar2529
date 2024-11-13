@@ -96,10 +96,10 @@
                        
                  </td>
 
-                      <td class="ftitle" >
+                      <td class="ftitle" style="width: 20%;">
                         <nobr>Invoice Status:</nobr>
                     </td>
-                    <td class="ftitle" style="width:33%">
+                    <td class="ftitle" style="width:30%">
                         <span class="ftitle" groupid="SparePartInventoryInvoice" argumentid="StateName"></span>
 
                         <div style="display: none">
@@ -109,22 +109,22 @@
                         </td>
                 </tr>
                 <tr>
-                    <td class="ftitle">
+                    <td class="ftitle" style="width: 20%;">
                         <nobr>Invoice For:</nobr>
 
                     </td>
-                    <td class="ftitle" width="32%">
+                    <td class="ftitle" style="width: 30%;">
 
                         <input type="radio" class="   ServiceInvoice  " checked="checked" default="default" value="ServiceInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Service</label>
                         <input type="radio" class="  PartsInvoice  " value="PartsInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Parts</label>
                         <input type="radio" class="  QuotationInvoice  " value="QuotationInvoice" name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails" /><label>Quotation</label>
                     </td>
 
-                    <td class="ftitle" width="20%">
+                    <td class="ftitle" style="width: 20%;">
                         <nobr>Invoice Date:</nobr>
 
                     </td>
-                    <td class="ftitle" width="30%">
+                    <td class="ftitle" style="width: 20%;">
 
                         <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 150px;text-align:center" type="text" /></td>
 
@@ -225,10 +225,10 @@
 
                 <tr class="hideTrForINVCust">
                    
-                     <td class="ftitle">
+                     <td class="ftitle" >
                       
                         <nobr class="serv">Customer Code</nobr></td>
-                    <td class="ftitle">
+                    <td class="ftitle" >
                     
 
                        <input  type="text" class="ftitle CommonSPCust serv" style="display: inline-block;font-size: 15px;background: transparent;color: rgb(98, 130, 150);
@@ -490,15 +490,15 @@
 
                 <tr class="HideOnNewForm">
 
-                    <td class="ftitle">
+                    <td class="ftitle" style="width: 20%;">
                         <nobr>Sub Total:</nobr></td>
-                    <td>
+                    <td style="width: 30%;">
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text SubTotal ElemDisabled"
                             groupid="SparePartInventoryInvoice" argumentid="SubTotal" disabled="disabled" />
 
                     </td>
-                    <td class="ftitle ">
-                        <nobr class="onQuotation">Card:</nobr
+                    <td class="ftitle " style="width: 20%;">
+                        <nobr class="onQuotation" style="width: 30%;">Card:</nobr
 
                     </td>
                     <td>
