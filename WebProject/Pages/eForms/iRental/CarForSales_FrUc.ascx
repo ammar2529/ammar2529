@@ -6,13 +6,23 @@
 
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
+      <tr>
+      <td colspan="4">
+          <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr id="trNote">
         <td colspan="2" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory
         </td>
     </tr>
+              </table>
+          </td>
+          </tr>
+
+      <tr>
+      <td colspan="4">
+          <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr>
-        <td class="ftitle">Car Type*:</td>
-        <td  width="32%">
+        <td class="ftitle" style="width:20%">Car Type*:</td>
+        <td  >
 
             <input type="radio" class="CommonDisable"   value="N" default="default"  checked="checked" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required" /><label>New Car</label>
             <input type="radio" class="CommonDisable" value="U" name="CarType" groupid="SalesCarsForm" argumentid="CarType" required="required"/><label>Used Car</label>
@@ -116,20 +126,26 @@
             </select>
         </td>
     </tr>
-    <tr>
+              </table>
+          </td>
+          </tr>
+
+<%--    <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
+    </tr>--%>
 
 
 
 
 
-
+      <tr>
+      <td colspan="4">
+          <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
         
                                 <tr>
-                            <td class="ftitle">
+                            <td class="ftitle" style="width:20%">
                                 
                             </td>
                             <td>
@@ -169,15 +185,21 @@
                             </td>
                         </tr>
 
-    <tr>
-                            <td colspan="2">
-                                <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1"/>
-                            </td>
-                        </tr>
+              </table>
+          </td>
+          </tr>
 
+<%--    <tr>
+        <td colspan="2">
+            <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
+        </td>
+    </tr>--%>
 
+      <tr>
+      <td colspan="4">
+          <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr>
-        <td class="ftitle">
+        <td class="ftitle" style="width:20%">
             <nobr>Current Mileage*:</nobr>
         </td>
         <td>
@@ -212,27 +234,40 @@
             <span class="ftitle" groupid="SalesCarsForm" argumentid="ContractNo" style="padding-left: 20px; color: red"></span>
         </td>
     </tr>
-    <tr>
+              </table>
+          </td>
+          </tr>
+ <%--   <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
+    </tr>--%>
+
+      <tr>
+      <td colspan="4">
+          <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr>
-        <td class="ftitle" valign="top">
+        <td class="ftitle" valign="top" style="width:20%">
             <nobr>Comments:</nobr>
         </td>
         <td width="100%">
-            <textarea class="textarea" rows="6" wrap="1" cols="37" argumentid="CurrentCondition" groupid="SalesCarsForm"></textarea>
+            <textarea class="textarea" rows="6" wrap="1" cols="37" argumentid="CurrentCondition" groupid="SalesCarsForm" style="width: 70%;height: 45px;resize: none;"></textarea>
         </td>
     </tr>
-    <tr>
+              </table>
+          </td>
+          </tr>
+   <%-- <tr>
+        
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
-
+    </tr>--%>
+      <tr>
+      <td colspan="4">
+          <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr>
-        <td>
+        <td style="width:20%">
             <img src="App_Themes/eForms_Theme/Images/spacer.gif" />
         </td>
         <td>
@@ -242,5 +277,8 @@
 
         </td>
     </tr>
+              </table>
+          </td>
+          </tr>
 </table>
 

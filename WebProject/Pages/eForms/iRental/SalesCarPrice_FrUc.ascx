@@ -3,14 +3,24 @@
 
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
+   
+    <tr>
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr id="trNote">
-        <td colspan="2" style="padding-top:10px;padding-bottom:10px">
+        <td colspan="2" style="padding-top:10px;padding-bottom:10px;">
             Use the form below to update the details, fields marked with an asterisk (*) are mandatory
         </td>
     </tr>
+        </table>
+    </td>
+        </tr>
 
     <tr>
-        <td class="ftitle">
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+    <tr>
+        <td class="ftitle" style="width:20%">
             <nobr>Brand*:</nobr>
         </td>
         <td>
@@ -40,14 +50,20 @@
     </select>
         </td>
     </tr>
-    <tr>
+        </table>
+    </td>
+        </tr>
+
+    <%--<tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
-
+    </tr>--%>
     <tr>
-        <td class="ftitle">
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+    <tr>
+        <td class="ftitle" style="width:20%">
             <nobr>Car Price*:</nobr>
         </td>
         <td>
@@ -57,29 +73,39 @@
 
         </td>
     </tr>
-
-
+</table>
+    </td>
+        </tr>
 
     <tr>
-        <td class="ftitle">
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+    <tr>
+        <td class="ftitle" style="width:20%">
             <nobr>Comments:</nobr>
         </td>
         <td>
 
-            <textarea class="textarea " rows="6" wrap="1" cols="30" argumentid="Comments" groupid="SalesCarsPriceForm"></textarea>
+            <textarea class="textarea " rows="6" wrap="1" cols="30" argumentid="Comments" groupid="SalesCarsPriceForm" style="height: 45px;resize: none;"></textarea>
         </td>
     </tr>
 
+</table>
+    </td>
+        </tr>
 
-
-    <tr>
+   <%-- <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
-    </tr>
+    </tr>--%>
 
+        <tr>
+<td colspan="4">
+    <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+    
     <tr>
-        <td>
+        <td style="width:20%">
             <img src="App_Themes/eForms_Theme/Images/spacer.gif" />
         </td>
         <td>
@@ -89,4 +115,7 @@
 
         </td>
     </tr>
+        </table>
+    </td>
+            </tr>
 </table>
