@@ -39,12 +39,6 @@
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <script src="../../../JQuery/Common.js"></script>
 
-<style type="text/css">
-    .auto-style1 {
-        height: 21px;
-    }
-</style>
-
 <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
@@ -66,7 +60,7 @@
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-                <tr>
+            <%--    <tr>
                     <td colspan="4">
                         <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr id="trNote">
@@ -74,11 +68,11 @@
                             </tr>
                         </table>
                     </td>
-                </tr>
+                </tr>--%>
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
 
                             <tr class="OnNewHide">
                                 <td class="ftitle" style="width:20%">
@@ -109,38 +103,15 @@
                                 </td>
                                 <td class="financeCompanyTD" style="width:30%">
 
-                                    <%--   <select class="financeCompany " loadon="FirstVisible" 
-               groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
-                <option value="" selected="selected">Select Finance Company</option>
-            </select>--%>
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist required financeCompany CommonDisableClass  " style="width: 270px;" groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
-                                        <option value="" selected="selected">Select Finance Company</option>
+                              
+                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist required financeCompany CommonDisableClass  " style="width: 258px;" groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}" requirederr='*'>
+                                        <option value="" selected="selected" >Select Finance Company</option>
                                     </select>
 
 
                                 </td>
                             </tr>
-                            <%--     <tr class="trOnHideFinaceSelect">
-                           <td class="ftitle" width="18%">
-                        <nobr> Number:</nobr></td>
-                    
-                    <td >
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass ElemDisabled"
-                            groupid="SalesContractsForm" argumentid="LPONumber" />
-                    </td>
-
-                        <td class="ftitle" width="18%">
-                        <nobr>LPO Date:</nobr>
-
-                        </td>
-                    <td>
-                        <input type="text" groupid="SalesContractsForm" maxlength="10"
-                            style="width: 75px;" class="text  date CommonDisableClass ElemDisabled"  argumentid="LPODate" />
-                    </td>
-                    
-                    
-
-                </tr>--%>
+                           
                             <tr>
 
                                 <td class="ftitle" >
@@ -336,7 +307,7 @@
                                 <td class="ftitle">
                                     <nobr>Car Owner National ID No.:</nobr></td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 250px; font-size: 16px;" maxlength="12" class="text ftitle CommonDisableClass ElemDisabled"
+                                    <input type="text" style="text-align: center; width: 253px; font-size: 16px;" maxlength="12" class="text ftitle CommonDisableClass ElemDisabled"
                                         groupid="SalesContractsForm" argumentid="CarOwnerNationalIdNumber" />
                                 </td>
                             </tr>
@@ -349,7 +320,7 @@
                                 <td class="ftitle">
                                     <nobr>Car Owner Name:</nobr></td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 250px; font-size: 16px;" maxlength="199" class="text ftitle CommonDisableClass ElemDisabled"
+                                    <input type="text" style="text-align: center; width: 253px; font-size: 16px;" maxlength="199" class="text ftitle CommonDisableClass ElemDisabled"
                                         groupid="SalesContractsForm" argumentid="CarOwnerName" /></td>
                             </tr>
 
@@ -362,9 +333,9 @@
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>--%>
-                <tr>
+                <tr class="hideOnNoExpirayDateInSales">
                     <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
 
                             <tr>
 
@@ -410,7 +381,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
                                 <td class="ftitle" style="width:20%">
                                     <nobr>Reservation Date:</nobr>
@@ -502,54 +473,42 @@
                                 <td class="ftitle" style="width: 20%">
                                     <nobr>Engine Warranty:</nobr>
                                 </td>
-                                <td style="width: 30%">KM:
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
+                                <td style="width: 30%"><input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
                             groupid="SalesContractsForm" argumentid="EngineWarranty" />
+                                    <nobr class="ftitle">:KM</nobr>
                                 </td>
                                 <td class="ftitle" style="width: 20%">
-                                    <nobr>OR</nobr>
+                                    <nobr>OR Years: </nobr>
                                 </td>
-                                <td style="width: 30%">Years: 
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " id="a" style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                                <td style="width: 30%"><select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " id="a" style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                                         <option value="" selected="selected">Select Years</option>
-                                    </select>
-                                </td>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td class="ftitle">
                                     <nobr>Gear Warranty:</nobr>
                                 </td>
-                                <td>KM:
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
-                            groupid="SalesContractsForm" argumentid="GearWarranty" />
-                                </td>
+                                <td><input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
+                            groupid="SalesContractsForm" argumentid="GearWarranty" /> <nobr class="ftitle">:KM</nobr></td>
                                 <td class="ftitle">
-                                    <nobr>OR</nobr>
+                                    <nobr>OR Years:</nobr>
                                 </td>
-                                <td>Years:
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " id="b" style="width: 155px;" groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                                <td><select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " id="b" style="width: 155px;" groupid="SalesContractsForm" argumentid="GearYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                                         <option value="" selected="selected">Select Years</option>
-                                    </select>
-                                </td>
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td class="ftitle">
                                     <nobr>Car Warranty:</nobr>
                                 </td>
-                                <td>KM:
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
-                            groupid="SalesContractsForm" argumentid="CarWarranty" />
-                                </td>
+                                <td><input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
+                            groupid="SalesContractsForm" argumentid="CarWarranty" /> <nobr class="ftitle">:KM</nobr></td>
                                 <td class="ftitle">
-                                    <nobr>OR</nobr>
+                                    <nobr>OR Years:</nobr>
                                 </td>
-                                <td>Years:
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " id="c" style="width: 155px;" groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                                <td><select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass   " id="c" style="width: 155px;" groupid="SalesContractsForm" argumentid="CarYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                                         <option value="" selected="selected">Select Years</option>
-                                    </select>
-
-
-                                </td>
+                                    </select></td>
                             </tr>
 
 
@@ -560,10 +519,8 @@
                                 <td class="ftitle">
                                     <nobr>Free Service - KM:</nobr>
                                 </td>
-                                <td>KM: 
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
-                            groupid="SalesContractsForm" argumentid="FreeServiceKM" />
-                                </td>
+                                <td><input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
+                            groupid="SalesContractsForm" argumentid="FreeServiceKM" /> <nobr class="ftitle">:KM</nobr></td>
 
                                 <td class="ftitle">
 
@@ -611,7 +568,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
                                 <td class="ftitle" >
 
@@ -650,7 +607,7 @@
 
                                     <%--                        style="width: 367px; height:37px" --%>
 
-                                    <textarea class="textarea   " style="width: 98.5%; height: 50px; box-sizing: border-box; resize: none;"
+                                    &nbsp;<textarea class="textarea   " style="width: 96%; height: 50px; box-sizing: border-box; resize: none;vertical-align: middle;"
                                         argumentid="fComments" groupid="SalesContractsForm"></textarea>
 
 
@@ -699,7 +656,7 @@
                                     <nobr>Salesman:</nobr>
                                 </td>
                                 <td style="width: 30%">
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " style="width: 204px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " style="width: 155px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
                                         <option value="" selected="selected">Select Salesman</option>
                                     </select>
                                 </td>
@@ -873,7 +830,7 @@
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
                                 <td class="ftitle" style="width:20%">
                                     <nobr>Contract Created By:</nobr>
@@ -912,8 +869,16 @@
  
  
 
-<GridConfig>
-<script>
+                
+ 
+ 
+
+ 
+
+
+
+                <GridConfig>
+                    <script>
                         cf = {
                             cols: {
                                 Sequence: { width: '0px' },
@@ -938,14 +903,14 @@
                             }
                         };
                     </script>
-</GridConfig>
-<Scripts>
-<script>
+                </GridConfig>
+                <Scripts>
+                    <script>
                         var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
                     </script>
-</Scripts>
-<RowDetail>
-<pre class="" colindex="4">
+                </Scripts>
+                <RowDetail>
+                    <pre class="" colindex="4">
                     <AW:container id="conSalesPaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -992,9 +957,9 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
-</RowDetail>
+                </RowDetail>
 
-</AW:DataGrid>
+            </AW:DataGrid>
 
             <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
                 

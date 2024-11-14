@@ -47,13 +47,19 @@ namespace WebProject.AsyncWidgets.WebServices
             //LogFileSW.Close();
             //LogFileSW = null;
             string Response = @"{{status:""{0}"" {1}}}", ret;
+            Trace.TraceInformation("DoAction called with ActorId: {0}, ActionId: {1}", ActorId, ActionId);
+
             try
             {
                 var session =  System.Web.HttpContext.Current.Session;
                 if (session["UserId"]==null && ActorId!= "Authentication")
                 {
+                 Trace.TraceWarning("User not logged in while calling action: {0}", ActionId);
+
                     return string.Format(Response, "UserNotLoggedIn", ",Response:{Message:'User Not Logged in'}");
                 }
+                Trace.TraceInformation("Executing action in ActorFacade for ActorId: {0}, ActionId: {1}", ActorId, ActionId);
+
                 object obj = ActorFacade.ExecuteAction(ActorId, ActionId, ServiceInfo);
                 if (obj.GetType().Name != "String")
                 {
@@ -63,11 +69,13 @@ namespace WebProject.AsyncWidgets.WebServices
                 {
                     ret = obj.ToString();
                 }
+                Trace.TraceInformation("Action executed successfully for ActorId: {0}, ActionId: {1}", ActorId, ActionId);
 
                 return string.Format(Response, "OK", ",Response:" + ret);
             }
             catch (Exception ex)
             {
+                Trace.TraceError("Exception in DoAction: {0}\nStack Trace: {1}", ex.Message, ex.StackTrace);
 
                 return string.Format(Response, "Exception",
                                 string.Format(",detail:{{message:'{0}',stackTrace:'{1}'}}",

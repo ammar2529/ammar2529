@@ -124,7 +124,7 @@
                         <nobr>Invoice Date:</nobr>
 
                     </td>
-                    <td class="ftitle" style="width: 20%;">
+                    <td class="ftitle" style="width: 30%;">
 
                         <input argumentid="InvoiceDate" class="text  date DisableOnClose CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" maxlength="10" style="width: 150px;text-align:center" type="text" /></td>
 
@@ -135,7 +135,7 @@
                         <nobr>Invoice Type:</nobr>
 
                     </td>
-                    <td class="ftitle" width="32%">
+                    <td class="ftitle" >
 
                         <input type="radio" class="   CashInvoice  InvoiceTypeCommon" checked="checked" default="default" value="CashInvoice" name="InvoiceType" groupid="SparePartInventoryInvoice" argumentid="InvoiceType" /><label>Cash</label>
                         <input type="radio" class="  WarrentyInvoice InvoiceTypeCommon " value="WarrantyInvoice" name="InvoiceType" groupid="SparePartInventoryInvoice" argumentid="InvoiceType" /><label>Warranty </label>
@@ -498,11 +498,11 @@
 
                     </td>
                     <td class="ftitle " style="width: 20%;">
-                        <nobr class="onQuotation" style="width: 30%;">Card:</nobr
+                        <nobr class="onQuotation">Card:</nobr
 
                     </td>
-                    <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text onQuotation"
+                    <td style="width: 30%;">
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text CommonDisableClass CommonDisableClasss onQuotation"
                             groupid="SparePartInventoryInvoice" argumentid="Card" />
                     </td>
 
@@ -525,7 +525,7 @@
                     <td class="ftitle ">
                         <nobr class="onQuotation">Cash:</nobr></td>
                     <td>
-                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text onQuotation"
+                        <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="10" class="text CommonDisableClass CommonDisableClasss onQuotation"
                             groupid="SparePartInventoryInvoice" argumentid="Cash" />
                     </td>
 
@@ -654,8 +654,33 @@
  
 
 
-                <GridConfig>
-                    <script>
+                
+                
+ 
+ 
+ 
+
+
+ 
+
+
+
+
+
+ 
+                 
+ 
+ 
+
+
+ 
+
+
+
+
+
+ <GridConfig>
+                     <script>
      cf = {
          cols: {
              Sequence: { width: '0px' },
@@ -680,14 +705,14 @@
          }
      };
  </script>
-                </GridConfig>
-                <Scripts>
-                    <script>
+                     </GridConfig>
+                 <Scripts>
+                     <script>
      //var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
  </script>
-                </Scripts>
-                <RowDetail>
-                    <pre class="" colindex="4">
+                     </Scripts>
+                 <RowDetail>
+                     <pre class="" colindex="4">
                     <AW:container id="conInvoicePaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -734,10 +759,10 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
-                </RowDetail>
+                     </RowDetail>
 
 
-            </AW:DataGrid>
+                 </AW:DataGrid>
 
             <AW:Form ID="frmInvoicePaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/Invoice_PD_FrUc.ascx">
                 <WidgetConfig>

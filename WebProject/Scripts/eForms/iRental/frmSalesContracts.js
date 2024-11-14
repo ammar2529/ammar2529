@@ -489,7 +489,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
                 });
-               
+
+                $('.hideOnNoExpirayDateInSales', t.el).show();
                 
             } 
 
@@ -658,6 +659,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             if (t.FormMode == 'update')
             {
+                                                          
+                var FullInsuranceExpiry = $('[argumentid="FullInsuranceExpiry"]', t.el).text();
+                if (FullInsuranceExpiry === '' | FullInsuranceExpiry == null) {
+                    $('.hideOnNoExpirayDateInSales', t.el).hide();
+                } else {
+                    $('.hideOnNoExpirayDateInSales', t.el).show();
+                }
                 
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed')
                 {

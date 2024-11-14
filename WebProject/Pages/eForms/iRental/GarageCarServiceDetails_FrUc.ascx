@@ -108,7 +108,7 @@
                                     <nobr>Name:</nobr>
                                 </td>
                                 <td class="ftitle" style="text-align: center">
-                                    <span  groupid="GarageCarServiceDetails" argumentid="CustomerName"></span>
+                                    <span  groupid="GarageCarServiceDetails" argumentid="CustomerName" style="font-size: 16px;"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -634,26 +634,30 @@
                 <%--<%-- End Data Grid --%>
 
 
-
-
                 <tr>
-                    <td class="ftitle">
-                        <nobr>Contract Created By:</nobr>
-                    </td>
-                    <td style="text-align: center">
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CreatedBy"></span>
-                    </td>
+                    <td colspan="4">
+                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-                    <td class="ftitle">
-                        <nobr>Contract Date & Time:</nobr>
-                    </td>
-                    <td style="text-align: center">
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="DateCreated"></span>
-                        <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="DateCreatedTime"></span>
+                            <tr>
+                                <td class="ftitle" style="width:20%">
+                                    <nobr>Contract Created By:</nobr>
+                                </td>
+                                <td style="text-align: center;width:30%">
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="CreatedBy"></span>
+                                </td>
+
+                                <td class="ftitle" style="width:20%">
+                                    <nobr>Contract Date & Time:</nobr>
+                                </td>
+                                <td style="text-align: center;width:30%">
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="DateCreated"></span>
+                                    <span class="ftitle" groupid="GarageCarServiceDetails" argumentid="DateCreatedTime"></span>
+                                </td>
+                            </tr>
+
+                        </table>
                     </td>
                 </tr>
-
-
 
 
 
