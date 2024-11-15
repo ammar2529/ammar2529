@@ -289,6 +289,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     $('.BillsBtn', t.el).click(function ()
     { //
+
+        var dt = new Date();
+        $('[argumentid="BillDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
@@ -403,6 +407,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
         $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.BillsBtn', t.el).removeClass('ElemDisabled');
         $('[argumentid="ContractStartDate"]', t.el).next('img').show();
+        $('[argumentid="BillDate"]', t.el).next('img').show();
         $('[argumentid="ReservationDate"]', t.el).next('img').show();
         $('[argumentid="ContractDate"]', t.el).next('img').show();
         $('[argumentid="DeliveryDate"]', t.el).next('img').show();
@@ -669,18 +674,22 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractClosed')
                 {
-
+                    
                     setTimeout(function () {
 
-                        $('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
+                        $('.btnSave,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
+                        $('.CloseContract,.CancelContract,.btnSave,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                        $('[argumentid="BillDate"]', t.el).next('img').hide();
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
+                        $('.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeAttr('disabled');
+                        $('.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeClass('ElemDisabled');
+
                     }, 1000);
                     
                 }
@@ -697,6 +706,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ReservationDate"]', t.el).next('img').show();
                         $('[argumentid="ContractDate"]', t.el).next('img').show();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').show();
+                        $('[argumentid="BillDate"]', t.el).next('img').show();
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', false);*/
                         AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
                     }, 1000);
@@ -718,6 +728,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                        $('[argumentid="BillDate"]', t.el).next('img').hide();
                         /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                     }, 1000);
                    
@@ -734,6 +745,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                        $('[argumentid="BillDate"]', t.el).next('img').hide();
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                         $('.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeAttr('disabled', 'disabled');
                         $('.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeClass('ElemDisabled');
@@ -755,6 +767,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                        $('[argumentid="BillDate"]', t.el).next('img').hide();
                         /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                         $('.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled', 'disabled');
                             $('.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeClass('ElemDisabled');
@@ -1415,7 +1428,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('.LPONumberTitle nobr', t.el).hide();
         $('[argumentid="LPONumber"]', t.el).hide();
         $('[argumentid="LPODate"]', t.el).hide();
-        $('.LPONumberDateField>img',t.el).hide();
+        $('.LPONumberDateField>img', t.el).hide();
+        $('[argumentid="LPOAmount"]', t.el).hide();
         /*$(".trOnHideFinaceSelect",t.el).hide();*/
    
     } else {
@@ -1427,6 +1441,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('[argumentid="LPONumber"]', t.el).show();
         $('[argumentid="LPODate"]', t.el).show();
         $('.LPONumberDateField>img', t.el).show();
+        $('[argumentid="LPOAmount"]', t.el).show();
     //    $(".trOnHideFinaceSelect", t.el).show();
     }
 };

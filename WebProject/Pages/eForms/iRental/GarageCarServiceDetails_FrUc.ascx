@@ -399,8 +399,8 @@
                     <td>
                         <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number   CommonDisableClass OnStartState AddRequiredOnNXKM CommonCommaVal"
                             groupid="GarageCarServiceDetails" argumentid="NextServiceKm" />
-                        <input type="button" style="width: 40px; margin-right: 0px; cursor: pointer;" value="5KD" class="ButtonStyle CommonDisableClass OnStartState btn5KD" />
-                        <input type="button" style="width: 40px; cursor: pointer;" value="10KD" class="ButtonStyle CommonDisableClass OnStartState btn10KD" />
+                        <input type="button" style="width: 40px; margin-right: 0px; cursor: pointer;" value="5K" class="ButtonStyle CommonDisableClass OnStartState btn5KD" />
+                        <input type="button" style="width: 40px; cursor: pointer;" value="10K" class="ButtonStyle CommonDisableClass OnStartState btn10KD" />
 
                     </td>
 
