@@ -7,13 +7,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
     //t.on('onLoad', function ()
     //{
-    //    
+    //
 
     //});
 
     //t.on('onComboFilled', function (params)
     //{
-        
+
 
     //    $('[argumentid="EnginYearsWarranty"]').val($('[argumentid="EnginYearsWarranty"] option').eq(15).val());
     //    $('[argumentid="GearYearsWarranty"]').val($('[argumentid="GearYearsWarranty"] option').eq(6).val());
@@ -22,6 +22,31 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
     //});
+
+
+    $('[argumentid="CarOwnerNationalIdNumber"]', t.el).on('blur', function () {
+        var inputVal = $(this).val(); // Get the value of the input
+        debugger
+        if (inputVal.length !== 12) {
+            // If length is not exactly 12, show error message
+            $('[argumentid="CarOwnerNationalIdNumber"]', t.el).val('');
+            $.showMessage('Please Enter 12 Digit Only');
+            return false;
+        } 
+    });
+    $('[argumentid="BillAmount"]', t.el).on('blur', function () {
+
+        var BillAmount = parseFloat($(this).val()) || 0;
+        $('[argumentid="BillAmount"]', t.el).val(BillAmount.toFixed(3));
+    });
+
+    $('[argumentid="LPOAmount"]', t.el).on('blur', function () {
+
+        var LPOAmount = parseFloat($(this).val()) || 0;
+        $('[argumentid="LPOAmount"]', t.el).val(LPOAmount.toFixed(3));
+    });
+
+
         t.on('aftereDataAction', function (params)
         {
 
@@ -289,20 +314,32 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     $('.BillsBtn', t.el).click(function ()
     { //
-
+        
+        var btn = $(this);
         var dt = new Date();
         $('[argumentid="BillDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
-        console.log(strlink);
-        var width = 920;
-        var height = 600;
-        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
-        var top = parseInt((screen.availHeight / 2) - (height / 2));
-        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
-        console.log('Click on BillsBtn Button');
+        if (btn.hasClass('BillsBtn'))
+        {
+            t.submit(btn);
+            /*$.showMessage("working.");*/
+               
+        }
 
-        return false;
+        setTimeout(function () {
+
+            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+            console.log(strlink);
+            var width = 920;
+            var height = 600;
+            var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+            var top = parseInt((screen.availHeight / 2) - (height / 2));
+            window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+            console.log('Click on BillsBtn Button');
+
+            return false;
+
+        }, 1000);
     });
 
     //Statement
@@ -824,9 +861,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
 
             
-
+            var BillAmount = $('[argumentid="BillAmount"]', t.el).val();
+            var BillAmountFloat = parseFloat(BillAmount) || 0;
+            $('[argumentid="BillAmount"]', t.el).val(BillAmountFloat.toFixed(3));
            
-
+            var LPOAmount = $('[argumentid="LPOAmount"]', t.el).val();
+            var LPOAmountFloat = parseFloat(LPOAmount) || 0;
+            $('[argumentid="LPOAmount"]', t.el).val(LPOAmountFloat.toFixed(3));
     });
     // End of On Loaded Values
 }

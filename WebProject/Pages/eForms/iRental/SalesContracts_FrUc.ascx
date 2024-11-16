@@ -31,7 +31,13 @@
     }
 </script>
 
-
+<style>
+  /* Customizing the placeholder */
+  input::placeholder {
+    opacity: 0.5; /* Make placeholder text semi-transparent */
+    color: gray;  /* Optional: Change placeholder color */
+  }
+</style>
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
@@ -295,7 +301,7 @@
                                     <nobr>Car Owner National ID No.:</nobr></td>
                                 <td class="ftitle">
                                     <input type="text" style="text-align: center; width: 223px; font-size: 11px;" maxlength="12" class="text number CommonDisableClass ElemDisabled"
-                                        groupid="SalesContractsForm" argumentid="CarOwnerNationalIdNumber" /></td>
+                                        groupid="SalesContractsForm" argumentid="CarOwnerNationalIdNumber" placeholder="Enter 12 digits Only"/></td>
                             </tr>
 
 
@@ -709,7 +715,8 @@
                             </tr>
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%">
-                                     <input type="button" value="  Bill  " style="width: 70px" class="ButtonStyle BillsBtn common-button" />
+                                     <input type="button" value="  Bill  " ignorevalidate="ReservationDate DocType"  style="width: 70px;margin-left: 80px;" class="ButtonStyle BillsBtn common-button" 
+                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,ShowActionMsg:false, Requery:false,GroupId:'SalesContractsForm'}"/>
                                 </td>
                             </tr>
                         </table>
