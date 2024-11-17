@@ -716,7 +716,7 @@
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%">
                                      <input type="button" value="  Bill  " ignorevalidate="ReservationDate DocType"  style="width: 70px;margin-left: 80px;" class="ButtonStyle BillsBtn common-button" 
-                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false,ShowActionMsg:false, Requery:false,GroupId:'SalesContractsForm'}"/>
+                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false,ShowActionMsg:false, Requery:true,GroupId:'SalesContractsForm'}"/>
                                 </td>
                             </tr>
                         </table>
