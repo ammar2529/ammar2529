@@ -10,6 +10,9 @@ using System.Configuration;
 using System.Collections;
 using System.Xml;
 using WebProject.AsyncWidgets.Utility;
+using NLog;
+using NLog.Fluent;
+using System.ServiceModel.Channels;
 namespace WebProject.AsyncWidgets.DAL
 {
  
@@ -21,6 +24,7 @@ namespace WebProject.AsyncWidgets.DAL
         DbConnection _DbConnection;
         string _Provider;
         bool Disposed = false;
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public DbConnContainer(DbConnection DbConnection, string Provider)
         {
             _DbConnection = DbConnection;
@@ -40,6 +44,7 @@ namespace WebProject.AsyncWidgets.DAL
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+            DbConnection.Dispose();
         }
         private void Dispose(bool Disposing)
         {
@@ -59,8 +64,9 @@ namespace WebProject.AsyncWidgets.DAL
     }
      public  class DBHelper
     {
-        
-         public static DbConnContainer GetConnection()
+        //private static DbConnContainer RetConn = null;
+        private static Dictionary<string, DbConnContainer> Connections = new Dictionary<string, DbConnContainer>();
+        public static DbConnContainer GetConnection()
          {
              return GetConnection(
                     ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
@@ -95,35 +101,65 @@ namespace WebProject.AsyncWidgets.DAL
         //}
         public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
         {
-            DbConnContainer RetConn = null;
+            if (Connections.ContainsKey(ConnectionString) && Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+            {
+                    return Connections[ConnectionString];
+            }
+            else
+            {
+                if (Connections.ContainsKey(ConnectionString))
+                {
+                    Connections[ConnectionString].DbConnection.Dispose();
+                    Connections.Remove(ConnectionString);
+                }
+            }
 
             try
             {
+                DbConnContainer retConn;
                 switch (ProviderName)
                 {
                     case "System.Data.SqlClient":
-                        RetConn = new DbConnContainer(new SqlConnection(ConnectionString), ProviderName);
+                        retConn = new DbConnContainer(new SqlConnection(ConnectionString), ProviderName);
+                       
+                        
                         break;
                     default:
                         return null;
                 }
 
                 // Attempt to open the connection
-                RetConn.DbConnection.Open();
-                return RetConn;
+                Connections.Add(ConnectionString, retConn);
+                retConn.DbConnection.Open();
+                return retConn;
             }
-            catch (InvalidOperationException ex)
-            {
-                // Handle specific connection-related exceptions, such as timeout
-                Console.WriteLine("Failed to obtain a connection from the pool: " + ex.Message);
-                RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
-                return null;
-            }
+//            catch (InvalidOperationException ex)
+//            {
+//                Log.Info($@"exception occured:
+//{ex.Message}
+//-----------------------------------------------------------------------
+//{ex.StackTrace}
+//-----------------------------------------------------------------------
+//{ex.InnerException?.Message}
+//");
+//                // Handle specific connection-related exceptions, such as timeout
+//                //Console.WriteLine("Failed to obtain a connection from the pool: " + ex.Message);
+//                //RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
+//                return null;
+//            }
             catch (Exception ex)
             {
+                Log.Info($@"exception occured:
+{ex.Message}
+-----------------------------------------------------------------------
+{ex.StackTrace}
+-----------------------------------------------------------------------
+{ex.InnerException?.Message}
+");
+
                 // Handle other potential exceptions
-                Console.WriteLine("An error occurred: " + ex.Message);
-                RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
+                // Console.WriteLine("An error occurred: " + ex.Message);
+                // RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
                 return null;
             }
         }

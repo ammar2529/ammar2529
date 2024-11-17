@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace WebProject
 {
     public class Global : HttpApplication
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
@@ -28,7 +30,7 @@ namespace WebProject
             Session["StartTime"] = DateTime.Now;
 
             // Log session start event (Example: using a custom logging method)
-            LogSessionEvent("Session started at " + Session["StartTime"] );
+            //LogSessionEvent("Session started at " + Session["StartTime"] );
         }
 
         public void Session_OnEnd()

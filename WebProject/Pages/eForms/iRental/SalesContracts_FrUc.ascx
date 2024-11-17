@@ -301,7 +301,7 @@
                                     <nobr>Car Owner National ID No.:</nobr></td>
                                 <td class="ftitle">
                                     <input type="text" style="text-align: center; width: 223px; font-size: 11px;" maxlength="12" class="text number CommonDisableClass ElemDisabled"
-                                        groupid="SalesContractsForm" argumentid="CarOwnerNationalIdNumber" placeholder="Enter 12 digits Only"/></td>
+                                        groupid="SalesContractsForm" argumentid="CarOwnerNationalIdNumber" placeholder="Enter 12 Digits "/></td>
                             </tr>
 
 
@@ -662,9 +662,9 @@
                     <td colspan="4">
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
-                                <td style="width: 20%" class="ftitle">Bill Amount:
-                                    <input argumentid="BillAmount" class="text  number CommonDisableClass  " groupid="SalesContractsForm" maxlength="10" style="text-align: center;width: 67px;" type="text" />
-
+                                <td style="width: 20%" class="ftitle">Bill Amt:
+                                    <input argumentid="BillAmount" class="text  number CommonDisableClass  " groupid="SalesContractsForm" maxlength="10" style="text-align: center;width: 80px;margin-left: 5px;" type="text" />
+                                    <input type="button" title="Set Current Car Price" value="↓" style="width: 20px;  cursor: pointer;height: 16px;" class="ButtonStyle ftitle  CommonDisableClass btnGetCarPrice" />
                                 </td>
                                 <td rowspan="3">
                                    <div style="width:100%;justify-items: center;"" >
@@ -711,11 +711,11 @@
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%" class="ftitle">Bill Date:
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
-                        style="width: 67px;margin-left: 19px;" class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
+                       style="width:80px;text-align:center"class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
                             </tr>
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%">
-                                     <input type="button" value="  Bill  " ignorevalidate="ReservationDate DocType"  style="width: 70px;margin-left: 80px;" class="ButtonStyle BillsBtn common-button" 
+                                     <input type="button" value="  Bill  " ignorevalidate="ReservationDate DocType"  style="width: 70px;margin-left: 70px;" class="ButtonStyle BillsBtn common-button" 
                                          conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false,ShowActionMsg:false, Requery:true,GroupId:'SalesContractsForm'}"/>
                                 </td>
                             </tr>
@@ -854,39 +854,8 @@
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Payments\',KeysCol:\'RecId\'}}}">
-              
-                
-
-                
- 
- 
-
-                
- 
- 
-
- 
-
-
-
-                
- 
- 
-
- 
-
-
-
- 
-
-
-
-
-
-
-
- <GridConfig>
- <script>
+<GridConfig>
+<script>
                         cf = {
                             cols: {
                                 Sequence: { width: '0px' },
@@ -911,14 +880,14 @@
                             }
                         };
                     </script>
- </GridConfig>
- <Scripts>
- <script>
+</GridConfig>
+<Scripts>
+<script>
                         var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
                     </script>
- </Scripts>
- <RowDetail>
- <pre class="" colindex="4">
+</Scripts>
+<RowDetail>
+<pre class="" colindex="4">
                     <AW:container id="conSalesPaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -965,9 +934,9 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
- </RowDetail>
+</RowDetail>
 
- </AW:DataGrid>
+</AW:DataGrid>
 
             <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
                 

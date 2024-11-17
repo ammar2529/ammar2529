@@ -24,15 +24,25 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     //});
 
 
+    $('.btnGetCarPrice', t.el).on('click', function () {
+        var Price = parseFloat($('[argumentid="Price"]', t.el).val()) || 0;
+
+        $('[argumentid="BillAmount"]', t.el).val(Price.toFixed(3));
+
+    });
     $('[argumentid="CarOwnerNationalIdNumber"]', t.el).on('blur', function () {
         var inputVal = $(this).val(); // Get the value of the input
-        debugger
-        if (inputVal.length !== 12) {
+        
+        if (inputVal === '' || inputVal.length === 0) {
+            return false
+        }
+        else if (inputVal.length < 12) {
             // If length is not exactly 12, show error message
-            $('[argumentid="CarOwnerNationalIdNumber"]', t.el).val('');
-            $.showMessage('Please Enter 12 Digit Only');
+            $('[argumentid="CarOwnerNationalIdNumber"]', t.el).focus()
+            $.showMessage('Please enter 12 digits!');
             return false;
-        } 
+        }
+       
     });
     $('[argumentid="BillAmount"]', t.el).on('blur', function () {
 
@@ -438,7 +448,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     {
         $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
        /* $('[argumentid="StateName"]', t.el).text('Start State');*/
-
+       
         $('.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn,.BillsBtn  ', t.el).removeAttr('disabled', 'disabled');
 
         $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
@@ -448,6 +458,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('[argumentid="ReservationDate"]', t.el).next('img').show();
         $('[argumentid="ContractDate"]', t.el).next('img').show();
         $('[argumentid="DeliveryDate"]', t.el).next('img').show();
+
+        if ($(".finance",t.el).is(":checked")) {
+            $('[argumentid="LPODate"]', t.el).next('img').show();
+        }
+        
         /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
 
     });
@@ -558,6 +573,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 $('[argumentid="ReservationDate"]', t.el).next('img').show();
                 $('[argumentid="ContractDate"]', t.el).next('img').show();
                 $('[argumentid="DeliveryDate"]', t.el).next('img').show();
+                /*$('[argumentid="LPODate"]', t.el).next('img').show();*/
                 /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
             }
             
@@ -650,38 +666,38 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             {
 
 
-            // Highlight dates as red which have expired
-            //var HLD = function (arg, arg2) {
-            //    var expDate = t.GetArgVal(arg).replace(/3rd - /g, '').replace(/Full - /g, '');
-            //    if ($.trim(expDate) != '') {
-            //        if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
-            //            $('span[argumentid="' + arg + '"]', t.el).css('color', 'red');
-            //            $('span[argumentid="' + arg2 + '"]', t.el).css('color', 'red');
-            //        }
-            //    }
-            //    return HLD;
-            //};
-            //HLD('PassportExpiry', 'CustomerName')('NationalIDExpiryDate', 'CustomerName')('DrivingLicenseExpiry', 'CustomerName');
-            // End of Highlight of expired dates
+                    // Highlight dates as red which have expired
+                    //var HLD = function (arg, arg2) {
+                    //    var expDate = t.GetArgVal(arg).replace(/3rd - /g, '').replace(/Full - /g, '');
+                    //    if ($.trim(expDate) != '') {
+                    //        if (Math.floor(dateDiff(new Date(), cDate(expDate))) >= 0) {
+                    //            $('span[argumentid="' + arg + '"]', t.el).css('color', 'red');
+                    //            $('span[argumentid="' + arg2 + '"]', t.el).css('color', 'red');
+                    //        }
+                    //    }
+                    //    return HLD;
+                    //};
+                    //HLD('PassportExpiry', 'CustomerName')('NationalIDExpiryDate', 'CustomerName')('DrivingLicenseExpiry', 'CustomerName');
+                    // End of Highlight of expired dates
 
-            $('.OnNewHide', t.el).show();
-            $('.SimpleTab', t.el).removeAttr('disabled');
+                    $('.OnNewHide', t.el).show();
+                    $('.SimpleTab', t.el).removeAttr('disabled');
 
-            //Load Commas if both numbers are there
-                if (!!$('[argumentid="WorkTelephone"]', t.el).text() && !!$('[argumentid="ResidenceTelephone"]', t.el).text()) 
-           {
-                $('.CommaWR', t.el).show();
-            }
+                    //Load Commas if both numbers are there
+                        if (!!$('[argumentid="WorkTelephone"]', t.el).text() && !!$('[argumentid="ResidenceTelephone"]', t.el).text()) 
+                    {
+                        $('.CommaWR', t.el).show();
+                    }
 
-            if (!!$('[argumentid="MobileTelephone1"]', t.el).text() && !!$('[argumentid="MobileTelephone2"]', t.el).text()) {
-                $('.CommaM12', t.el).show();
-            }
-            //End Commas if both numbers are there
+                    if (!!$('[argumentid="MobileTelephone1"]', t.el).text() && !!$('[argumentid="MobileTelephone2"]', t.el).text()) {
+                        $('.CommaM12', t.el).show();
+                    }
+                    //End Commas if both numbers are there
 
            
 
-            $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-            $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
+                    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
+                    $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
 
 
            
@@ -692,16 +708,17 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             
             //AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN();
             
-            $('.btnReserve', t.el).hide();
-            $('.btnSave ', t.el).show();
-            $('.SaveBtn ', t.el).show();
+           
             
          
 
 
             if (t.FormMode == 'update')
             {
-                                                          
+                $('.btnReserve', t.el).hide();
+                $('.btnSave ', t.el).show();
+                $('.SaveBtn ', t.el).show();
+                
                 var FullInsuranceExpiry = $('[argumentid="FullInsuranceExpiry"]', t.el).text();
                 if (FullInsuranceExpiry === '' | FullInsuranceExpiry == null) {
                     $('.hideOnNoExpirayDateInSales', t.el).hide();
@@ -723,6 +740,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
                         $('[argumentid="BillDate"]', t.el).next('img').hide();
+                        if ($(".finance", t.el).is(":checked")) {
+                            $('[argumentid="LPODate"]', t.el).next('img').hide();
+                        }
+
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                         $('.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeAttr('disabled');
                         $('.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeClass('ElemDisabled');
@@ -744,6 +765,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ContractDate"]', t.el).next('img').show();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').show();
                         $('[argumentid="BillDate"]', t.el).next('img').show();
+                        if ($(".finance", t.el).is(":checked")) {
+                            $('[argumentid="LPODate"]', t.el).next('img').show();
+                        }
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', false);*/
                         AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
                     }, 1000);
@@ -766,6 +790,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
                         $('[argumentid="BillDate"]', t.el).next('img').hide();
+                        if ($(".finance", t.el).is(":checked")) {
+                            $('[argumentid="LPODate"]', t.el).next('img').hide();
+                        }
                         /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                     }, 1000);
                    
@@ -783,6 +810,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
                         $('[argumentid="BillDate"]', t.el).next('img').hide();
+                        if ($(".finance", t.el).is(":checked")) {
+                            $('[argumentid="LPODate"]', t.el).next('img').hide();
+                        }
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                         $('.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeAttr('disabled', 'disabled');
                         $('.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeClass('ElemDisabled');
@@ -805,6 +835,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
                         $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
                         $('[argumentid="BillDate"]', t.el).next('img').hide();
+
+                        if ($(".finance", t.el).is(":checked")) {
+                            $('[argumentid="LPODate"]', t.el).next('img').hide();
+                        }
                         /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
                         $('.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled', 'disabled');
                             $('.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeClass('ElemDisabled');
@@ -816,58 +850,58 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     //
                     //var AmountDue = $('[AmountDueC]', t.el).text();
                    
+                var CarPrice = $('[argumentid="Price"]', t.el).val();
+                var CarPriceInFloat = parseFloat(CarPrice);
+                $('[argumentid="Price"]', t.el).val(CarPriceInFloat.toFixed(3));
 
+                var AdditionalAmount = $('[argumentid="AdditionalAmount"]', t.el).val();
+                var AdditionalAmountInFloat = parseFloat(AdditionalAmount);
+                $('[argumentid="AdditionalAmount"]', t.el).val(AdditionalAmountInFloat.toFixed(3));
+
+                var Discount = $('[argumentid="Discount"]', t.el).val();
+                var DiscountFloat = parseFloat(Discount);
+                $('[argumentid="Discount"]', t.el).val(DiscountFloat.toFixed(3));
+
+                var TotalAmount = $('[argumentid="TotalAmount"]', t.el).val();
+                var TotalAmountInFloat = parseFloat(TotalAmount);
+                $('[argumentid="TotalAmount"]', t.el).val(TotalAmountInFloat.toFixed(3));
+
+                //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
+                //var PaymentAmountInFloat = parseFloat(PaymentAmount);
+                //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
+                var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
+                $('[argumentid="AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
+                $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
+
+                var AmountDueInFloat = parseFloat(AmountDue);
+                $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
+                var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
+
+                var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab));
+                if (isNaN(decAmountReceived)) {
+                    setField('PaymentAmount', '0.000', SalesContractTab);
+                    //$('[argumentid="PaymentAmount"]', t.el).text('0.000');
+                }
+                else {
+                    setField('PaymentAmount', decAmountReceived.toFixed(3), SalesContractTab);
+                    // $('[argumentid="PaymentAmount"]',t.el).text();
+                }
+
+
+                var BillAmount = $('[argumentid="BillAmount"]', t.el).val();
+                var BillAmountFloat = parseFloat(BillAmount) || 0;
+                $('[argumentid="BillAmount"]', t.el).val(BillAmountFloat.toFixed(3));
+
+                var LPOAmount = $('[argumentid="LPOAmount"]', t.el).val();
+                var LPOAmountFloat = parseFloat(LPOAmount) || 0;
+                $('[argumentid="LPOAmount"]', t.el).val(LPOAmountFloat.toFixed(3));
                 
                 
             }
 
              
              
-            var CarPrice = $('[argumentid="Price"]', t.el).val();
-            var CarPriceInFloat = parseFloat(CarPrice);
-            $('[argumentid="Price"]', t.el).val(CarPriceInFloat.toFixed(3));
-
-            var AdditionalAmount = $('[argumentid="AdditionalAmount"]', t.el).val();
-            var AdditionalAmountInFloat = parseFloat(AdditionalAmount);
-            $('[argumentid="AdditionalAmount"]', t.el).val(AdditionalAmountInFloat.toFixed(3));
-
-            var Discount = $('[argumentid="Discount"]', t.el).val();
-            var DiscountFloat = parseFloat(Discount);
-            $('[argumentid="Discount"]', t.el).val(DiscountFloat.toFixed(3));
-
-            var TotalAmount = $('[argumentid="TotalAmount"]', t.el).val();
-            var TotalAmountInFloat = parseFloat(TotalAmount);
-            $('[argumentid="TotalAmount"]', t.el).val(TotalAmountInFloat.toFixed(3));
-
-            //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
-            //var PaymentAmountInFloat = parseFloat(PaymentAmount);
-            //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
-            var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
-            $('[argumentid="AmountInWordsGrandSalesContract"]',t.el).val(getAmountInWordsSalesContract(AmountDue));
-            $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
-
-            var AmountDueInFloat = parseFloat(AmountDue);
-            $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
-            var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
-
-            var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab));
-            if (isNaN(decAmountReceived)) {
-                setField('PaymentAmount', '0.000', SalesContractTab);
-                //$('[argumentid="PaymentAmount"]', t.el).text('0.000');
-            }
-            else {
-                setField('PaymentAmount', decAmountReceived.toFixed(3), SalesContractTab);
-                // $('[argumentid="PaymentAmount"]',t.el).text();
-            }
-
-            
-            var BillAmount = $('[argumentid="BillAmount"]', t.el).val();
-            var BillAmountFloat = parseFloat(BillAmount) || 0;
-            $('[argumentid="BillAmount"]', t.el).val(BillAmountFloat.toFixed(3));
            
-            var LPOAmount = $('[argumentid="LPOAmount"]', t.el).val();
-            var LPOAmountFloat = parseFloat(LPOAmount) || 0;
-            $('[argumentid="LPOAmount"]', t.el).val(LPOAmountFloat.toFixed(3));
     });
     // End of On Loaded Values
 }
