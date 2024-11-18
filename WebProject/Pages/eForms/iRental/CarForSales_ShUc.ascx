@@ -5,21 +5,21 @@
         <%-- <td style=" text-align: left;" class="ftitle">
                     <span>Car For</span>
                 </td>--%>
-        <td style="text-align: left;" >
+        <td style="text-align: left;" class="ftitle" >
             <span style="white-space: nowrap">Car No.</span></td>
         <td style="text-align: left;" >
-            <span style="white-space: nowrap">Chassis No.</span></td>
+            <span style="white-space: nowrap" class="ftitle" >Chassis No.</span></td>
         <td style="text-align: left;" >
-            <span style="white-space: nowrap">Brand</span></td>
+            <span style="white-space: nowrap" class="ftitle" >Brand</span></td>
         <td style="text-align: left;" >
 
-            <span style="white-space: nowrap">Model</span></td>
+            <span style="white-space: nowrap" class="ftitle" >Model</span></td>
         <%--<td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Car Location</span></td>--%>
         <td style="text-align: left;" >
-            <span style="white-space: nowrap">Year</span></td>
+            <span style="white-space: nowrap" class="ftitle" >Year</span></td>
         <td style="text-align: left;" >
-            <span style="white-space: nowrap">Type</span></td>
+            <span style="white-space: nowrap" class="ftitle" >Type</span></td>
     </tr>
     <tr>
         <%--    <td style=" text-align: left;">
@@ -69,12 +69,7 @@
             </select></td>
          
     </tr>
-    <tr>
-
-        <td colspan="7">&nbsp;
-        </td>
-
-    </tr>
+   
 
     <tr>
         <td style="text-align: left;" class="ftitle">
