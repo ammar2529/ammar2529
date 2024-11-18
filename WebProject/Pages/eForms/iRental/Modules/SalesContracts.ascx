@@ -80,6 +80,7 @@
                                      <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>
                                      <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
                                         <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
+                                    <div class="ftitle" style="color:#808000; display:none">{ReceiptId}</div>
                     
                                      <div class="ftitle" style="color:#101080">{Salesman}</div>
                                       

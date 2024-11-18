@@ -854,8 +854,9 @@
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Payments\',KeysCol:\'RecId\'}}}">
-<GridConfig>
-<script>
+                
+                <GridConfig>
+                    <script>
                         cf = {
                             cols: {
                                 Sequence: { width: '0px' },
@@ -880,14 +881,14 @@
                             }
                         };
                     </script>
-</GridConfig>
-<Scripts>
-<script>
+                </GridConfig>
+                <Scripts>
+                    <script>
                         var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
                     </script>
-</Scripts>
-<RowDetail>
-<pre class="" colindex="4">
+                </Scripts>
+                <RowDetail>
+                    <pre class="" colindex="4">
                     <AW:container id="conSalesPaymentDetails_Audit" hidden="true" runat="server">
                     <childern>
                     <div style="padding:15px">
@@ -934,9 +935,9 @@
                    </script></Scripts></AW:DataGrid>
                 </div></Childern></AW:container>
                      </pre>
-</RowDetail>
+                </RowDetail>
 
-</AW:DataGrid>
+            </AW:DataGrid>
 
             <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
                 

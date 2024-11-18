@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CarForSales_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CarForSales_ShUc" %>
 
-<table class="w-form-table" cellspacing="2" style="width: 100%">
+<table class="w-form-table" cellspacing="0" style="width: 100%">
     <tr>
         <%-- <td style=" text-align: left;" class="ftitle">
                     <span>Car For</span>
@@ -110,7 +110,6 @@
 
             &nbsp;</td>
         <td style="text-align: left;">
-            <%--<input type="text" style="width: 115px;" class="text number" argumentid="NormalInsuranceExpiryDays"  groupid="schCarForSalesDetails"/>--%>
 
             <select class="dropdownlist" style="width:115px" argumentid="CarType"  groupid="schCarForSalesDetails" name="D1">
                         <option value="" >Select Car Type</option>
@@ -119,30 +118,24 @@
                         
                     </select></td>
         <td style="text-align: left;">
-            <%--<select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                 groupid="schCarForSalesDetails" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
-                <option value="" selected="selected">Select Insurance</option>
-            </select>--%>
+         
 
             <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
                  groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
                 <option value="" selected="selected">Select Status</option>
             </select></td>
       
-                <td style="text-align: left;">
-            <%--<select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                 groupid="schCarForSalesDetails" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
-                <option value="" selected="selected">Select Insurance</option>
-            </select>--%>
+     <td style="text-align: center; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
+    <!-- View Button -->
+    <a href="javascript:void(0);" class="search ViewButton">
+        <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
 
-            <a href="javascript:void(0);" class="search ViewButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" conf="{Params:{DBAction:'SearchChassisNo'}}" />
-            </a>
-            <a href="javascript:void(0);" class="reset ClearButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" />
-            </a>
-
-        </td>
+    <!-- Clear Button -->
+    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+        <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" style="height: 22px">
+    </a>
+</td>
         
     </tr>
 </table>

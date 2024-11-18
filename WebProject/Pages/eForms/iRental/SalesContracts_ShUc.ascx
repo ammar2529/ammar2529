@@ -70,25 +70,33 @@
     //});
 </script>
 
-<table class="w-form-table" cellspacing="2" style="width: 100%">
+<table class="w-form-table" cellspacing="0" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span>Contract No.</span>
+            <%--<span>Contract No.</span>--%>
+            <nobr>Contract No.</nobr>
         </td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
-            <span class="ftitle"  style="white-space: nowrap">LPO Number</span><%--            <span style="white-space: nowrap">Year</span>--%></td>
+            <%--<span class="ftitle"  style="white-space: nowrap">LPO Number</span>--%>
+            <nobr>LPO Number</nobr>
+        </td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span class="ftitle"  style="white-space: nowrap">Finance Company</span></td>
+            <%--<span class="ftitle"  style="white-space: nowrap">Finance Company</span>--%>
+            <nobr>Finance Company</nobr>
+        </td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Salesman</span></td>
+<%--            <span style="white-space: nowrap">Salesman</span>--%>
+            <nobr>Salesman</nobr>
+        </td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Contract Status</span>
+<%--            <span style="white-space: nowrap">Contract Status</span>--%>
+            <nobr>Contract Status</nobr>
         </td>
     </tr>
       
-    <tr style="height:35px">
+    <tr <%--style="height:35px"--%>>
         <td style="text-align: left;">
             <input type="text" class="text" argumentid="RecCode" groupid="schSalesContractDetails" style="width:155Px;"/>
         </td>
@@ -148,20 +156,29 @@
         </td>
         <td style="text-align: left;" class="ftitle" width="20%">
 
-            <span style="white-space: nowrap">Chassis No.</span></td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span>Brand</span>
+<%--            <span style="white-space: nowrap">Chassis No.</span>--%>
+                        <nobr>Chassis No.</nobr>
+
         </td>
         <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Model</span></td>
+<%--            <span>Brand</span>--%>
+            <nobr>Brand</nobr>
+        </td>
+        <td style="text-align: left;" class="ftitle" width="20%">
+<%--            <span style="white-space: nowrap">Model</span>--%>
+            <nobr>Model</nobr>
+        </td>
 
         <td style="text-align: left;" class="ftitle" width="20%">
 <%--            <span style="white-space: nowrap">Salesman</span>--%>
 
-            <span style="white-space: nowrap">Color</span></td>
+<%--            <span style="white-space: nowrap">Color</span>--%>
+            <nobr>Color</nobr>
+
+        </td>
     </tr>
       
-    <tr style="height:35px">
+    <tr <%--style="height:35px"--%>>
         <td style="text-align: left;">
           <%-- <input type="radio" class="  Arrive  "  value="CarArrived" name="CarReservationMode"  groupid="schSalesContractDetails" argumentid="CarReservationMode" /><label>Arrived</label>
                         <input type="radio" class=" NotArrive NoArrive " value="CarNotArrive" name="CarReservationMode" groupid="schSalesContractDetails" argumentid="CarReservationMode" /><label>Not Arrive </label>--%>
@@ -221,18 +238,18 @@
     <tr>
         <td style="text-align: left;" class="ftitle">
 
-            <span style="white-space: nowrap">Customer Name</span></td>
+            <nobr >Customer Name</nobr></td>
         <td style="text-align: left;" class="ftitle">
 
-            <span style="white-space: nowrap">National ID No.</span></td>
+            <nobr>National ID No.</nobr></td>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Mobile Telephone</span></td>
+            <nobr>Mobile Telephone</nobr></td>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Car Owner National ID No.</span></td>
+            <nobr>Car Owner National ID No.</nobr></td>
         <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
+            Manual Receipt ID</td>
     </tr>
-    <tr style="height:35px">
+    <tr <%--style="height:35px"--%>>
         <td style="text-align: left;">
             <input type="text" class="text" argumentid="CustomerName" groupid="schSalesContractDetails" style="width:155Px;"/></td>
         <td style="text-align: left;">
@@ -246,20 +263,60 @@
                             groupid="schSalesContractDetails" argumentid="CarOwnerNationalIdNumber" /></td>
   
         
-        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
+        <td style="text-align: left;">
        <!-- View Button -->
-       <a href="javascript:void(0);" class="search ViewButton">
+   <%--    <a href="javascript:void(0);" class="search ViewButton">
            <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
        </a>
 
        <!-- Clear Button -->
        <a href="javascript:void(0);" class="reset clearCheck ClearButton">
            <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-       </a>
-   </td>
+       </a>--%>
+
+         <input type="text" style="text-align: left; width: 155px;" maxlength="12" class="text "
+                         groupid="schSalesContractDetails" argumentid="ReceiptId" /></td>
             
     </tr>
     
-    
+<%--      <tr>
+      <td style="text-align: left;" class="ftitle">
 
+          <span style="white-space: nowrap"></span></td>
+      <td style="text-align: left;" class="ftitle">
+
+          <span style="white-space: nowrap"></span></td>
+      <td style="text-align: left;" class="ftitle">
+          <span style="white-space: nowrap"></span></td>
+      <td style="text-align: left;" class="ftitle">
+          <span style="white-space: nowrap"></span></td>
+      <td style="text-align: left;" class="ftitle">
+          &nbsp;</td>
+  </tr>--%>
+     <tr style="height:35px">
+     <td style="text-align: left;">
+         &nbsp;</td>
+     <td style="text-align: left;">
+         &nbsp;</td>
+     <td style="text-align: left;">
+         &nbsp;</td>
+     <td style="text-align: left;">
+
+         &nbsp;</td>
+  
+     
+     <td style="text-align: center; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
+    <!-- View Button -->
+    <a href="javascript:void(0);" class="search ViewButton">
+        <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+
+    <!-- Clear Button -->
+    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+        <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
+    </a>
+</td>
+         
+ </tr>
+    
 </table>

@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GarageCarServiceDetails_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.Modules.GarageCarServiceDetails_ShUc" %>
-<table class="w-form-table" cellspacing="2" style="width: 100%">
+<table class="w-form-table" cellspacing="0" style="width: 100%">
   
         <tr>
         <td style="text-align: left;" class="ftitle" width="20%">
