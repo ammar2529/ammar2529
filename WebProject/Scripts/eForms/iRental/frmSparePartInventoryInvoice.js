@@ -156,8 +156,26 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
         
         if (btn.hasClass('ClosedInvoice')) {
+            debugger
+            const isWarrantyChecked = $('.WarrentyInvoice', t.el).is(':checked'); // Warranty checkbox
+            const isCashChecked = $('.CashInvoice', t.el).is(':checked'); // Cash checkbox
+
+            // Agar warranty checked hai, submit hona chahiye
+            if (isWarrantyChecked) {
+                console.log("Warranty checked. Submitting the invoice...");
+                t.submit(btn);
+                return false;
+            }
+
+            // Agar cash checked hai, submit nahi hona chahiye
+            //if (isCashChecked) {
+            //    $.showMessage("Cash option selected. Cannot submit the invoice.");
+            //    return false;
+            //}
+
             // If QuotationInvoice is checked, skip balance check
-            if ($('[argumentid="QuotationInvoice"]',t.el).is(':checked') && GrandTotal === 0 && Total === 0) {
+            if ($('[argumentid="QuotationInvoice"]', t.el).is(':checked') && GrandTotal === 0 && Total === 0)
+            {
                 $.showMessage("Amount due must be zero to close the invoice.");
                 return false;
             }
@@ -179,6 +197,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                 $.showMessage("Items must be added before closing the invoice.");
                 return false;
             }
+
+
         }
 
         // Condition for CanceledInvoice
@@ -200,7 +220,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
 
   
-    $(".ServiceInvoice, .PartsInvoice,.QuotationInvoice").click(function () {
+    $(".ServiceInvoice, .PartsInvoice,.QuotationInvoice,.CashInvoice,.WarrentyInvoice",t.el).click(function () {
        
     
         
@@ -944,6 +964,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CalculateDiscount = func
                 $('[argumentid="Total"]').css('color', 'green');
 
             }
+            if ($('.WarrentyInvoice').is(":checked")) {
+
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+
+            }
             var zero = 0;
             $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
             $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
@@ -1056,6 +1082,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.EnableDisableLineOfItems
         $('.OnNewForm', t.el).show();
         $('.InvoiceButton_Edit,.InvoiceOpenBtn', t.el).hide();
         $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
+
+        if ($('.WarrentyInvoice').is(":checked")) {
+
+            $('.onQuotation', t.el).hide();
+        } else if ($('.CashInvoice').is(":checked")) {
+            $('.onQuotation', t.el).show();
+        }
         
     });
 
@@ -1309,6 +1342,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
                             }
 
+                            if ($('.WarrentyInvoice').is(":checked")) {
+
+                                $('[argumentid="GrandTotal"]').css('color', 'green');
+                                $('[argumentid="Total"]').css('color', 'green');
+
+                            }
+
                             var zero = 0;
                             $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
                             $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
@@ -1426,6 +1466,13 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
 
                     if ($('.QuotationInvoice').is(":checked")) {
                         
+                        $('[argumentid="GrandTotal"]').css('color', 'green');
+                        $('[argumentid="Total"]').css('color', 'green');
+
+                    }
+
+                    if ($('.WarrentyInvoice').is(":checked")) {
+
                         $('[argumentid="GrandTotal"]').css('color', 'green');
                         $('[argumentid="Total"]').css('color', 'green');
 
@@ -1790,6 +1837,12 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
                 $('[argumentid="Total"]').css('color', 'green');
 
             }
+            if ($('.WarrentyInvoice').is(":checked")) {
+
+                $('[argumentid="GrandTotal"]').css('color', 'green');
+                $('[argumentid="Total"]').css('color', 'green');
+
+            }
             var zero = 0;
             $('[argumentid="Card"]', t.el).val(zero.toFixed(3));
             $('[argumentid="Cash"]', t.el).val(zero.toFixed(3));
@@ -1917,8 +1970,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage,InvoiceType) {
     var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
 
+
     
-  
     if ($('.ServiceInvoice').is(":checked"))
     {
 
@@ -1958,22 +2011,24 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
 
                 if (InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice' && InvoiceType != null) {
 
-                    if ($('.CashInvoice').is(":checked")) {
-                        $('.WarrentyInvoice').prop('disabled', true);
+                    if ($('.CashInvoice', t.el).is(":checked")) {
+                        $('.WarrentyInvoice', t.el).prop('disabled', true);
                     } else {
-                        $('.WarrentyInvoice').prop('disabled', false);
+                        $('.WarrentyInvoice', t.el).prop('disabled', false);
                     }
 
-                    if ($('.WarrentyInvoice').is(":checked")) {
-                        $('.CashInvoice').prop('disabled', true);
+                    if ($('.WarrentyInvoice', t.el).is(":checked")) {
+                        $('.CashInvoice', t.el).prop('disabled', true);
                     } else {
-                        $('.CashInvoice').prop('disabled', false);
+                        $('.CashInvoice', t.el).prop('disabled', false);
                     }
 
                 } else
                 {
-                    $('.InvoiceTypeCommon').prop('disabled', false);
+                    $('.InvoiceTypeCommon', t.el).prop('disabled', false);
                 }
+
+             
                 
             }
             else if(trimMessage){
@@ -1987,6 +2042,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
           
             }
 
+          
         }
 
        
@@ -2008,6 +2064,14 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
                 $('.HideOnNewForm', t.el).show();
             }
         }
+        if ($('.WarrentyInvoice', t.el).is(":checked")) {
+            $('.onQuotation', t.el).hide();
+
+        }
+        else if ($('.CashInvoice', t.el).is(":checked")) {
+            $('.onQuotation', t.el).show();
+        }
+
     }
 
 
@@ -2146,6 +2210,6 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = functio
     }
 
     
-
+    
 };
 
