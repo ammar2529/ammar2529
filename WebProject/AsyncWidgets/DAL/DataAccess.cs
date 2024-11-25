@@ -99,57 +99,121 @@ namespace WebProject.AsyncWidgets.DAL
         //    RetConn.DbConnection.Open();
         //    return RetConn; 
         //}
+        //        public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
+        //        {
+        //            if (Connections.ContainsKey(ConnectionString) && Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+        //            {
+        //                    return Connections[ConnectionString];
+        //            }
+        //            else
+        //            {
+        //                if (Connections.ContainsKey(ConnectionString))
+        //                {
+        //                    Connections[ConnectionString].DbConnection.Dispose();
+        //                    Connections.Remove(ConnectionString);
+        //                }
+        //            }
+
+        //            try
+        //            {
+        //                DbConnContainer retConn;
+        //                switch (ProviderName)
+        //                {
+        //                    case "System.Data.SqlClient":
+        //                        retConn = new DbConnContainer(new SqlConnection(ConnectionString), ProviderName);
+
+
+        //                        break;
+        //                    default:
+        //                        return null;
+        //                }
+
+        //                // Attempt to open the connection
+        //                Connections.Add(ConnectionString, retConn);
+
+        //                if(Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+        //                {
+        //                    retConn.DbConnection.Close();
+        //                }
+        //                retConn.DbConnection.Open();
+        //                return retConn;
+        //            }
+        ////            catch (InvalidOperationException ex)
+        ////            {
+        ////                Log.Info($@"exception occured:
+        ////{ex.Message}
+        ////-----------------------------------------------------------------------
+        ////{ex.StackTrace}
+        ////-----------------------------------------------------------------------
+        ////{ex.InnerException?.Message}
+        ////");
+        ////                // Handle specific connection-related exceptions, such as timeout
+        ////                //Console.WriteLine("Failed to obtain a connection from the pool: " + ex.Message);
+        ////                //RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
+        ////                return null;
+        ////            }
+        //            catch (Exception ex)
+        //            {
+        //                Log.Info($@"exception occured:
+        //{ex.Message}
+        //-----------------------------------------------------------------------
+        //{ex.StackTrace}
+        //-----------------------------------------------------------------------
+        //{ex.InnerException?.Message}
+        //");
+
+        //                // Handle other potential exceptions
+        //                // Console.WriteLine("An error occurred: " + ex.Message);
+        //                // RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
+        //                return null;
+        //            }
+        //        }
+
+        private static readonly object _lock = new object();
+
         public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
         {
-            if (Connections.ContainsKey(ConnectionString) && Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+            // Lock the code section to ensure only one thread can enter
+            lock (_lock)
             {
+                if (Connections.ContainsKey(ConnectionString) && Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+                {
                     return Connections[ConnectionString];
-            }
-            else
-            {
-                if (Connections.ContainsKey(ConnectionString))
-                {
-                    Connections[ConnectionString].DbConnection.Dispose();
-                    Connections.Remove(ConnectionString);
                 }
-            }
-
-            try
-            {
-                DbConnContainer retConn;
-                switch (ProviderName)
+                else
                 {
-                    case "System.Data.SqlClient":
-                        retConn = new DbConnContainer(new SqlConnection(ConnectionString), ProviderName);
-                       
-                        
-                        break;
-                    default:
-                        return null;
+                    if (Connections.ContainsKey(ConnectionString))
+                    {
+                        Connections[ConnectionString].DbConnection.Dispose();
+                        Connections.Remove(ConnectionString);
+                    }
                 }
 
-                // Attempt to open the connection
-                Connections.Add(ConnectionString, retConn);
-                retConn.DbConnection.Open();
-                return retConn;
-            }
-//            catch (InvalidOperationException ex)
-//            {
-//                Log.Info($@"exception occured:
-//{ex.Message}
-//-----------------------------------------------------------------------
-//{ex.StackTrace}
-//-----------------------------------------------------------------------
-//{ex.InnerException?.Message}
-//");
-//                // Handle specific connection-related exceptions, such as timeout
-//                //Console.WriteLine("Failed to obtain a connection from the pool: " + ex.Message);
-//                //RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
-//                return null;
-//            }
-            catch (Exception ex)
-            {
-                Log.Info($@"exception occured:
+                try
+                {
+                    DbConnContainer retConn;
+                    switch (ProviderName)
+                    {
+                        case "System.Data.SqlClient":
+                            retConn = new DbConnContainer(new SqlConnection(ConnectionString), ProviderName);
+                            break;
+                        default:
+                            return null;
+                    }
+
+                    // Attempt to open the connection
+                    Connections.Add(ConnectionString, retConn);
+
+                    if (Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+                    {
+                        retConn.DbConnection.Close();
+                    }
+                    retConn.DbConnection.Open();
+                    return retConn;
+                }
+                catch (Exception ex)
+                {
+                    Log.Info($@"exception occured:
 {ex.Message}
 -----------------------------------------------------------------------
 {ex.StackTrace}
@@ -157,12 +221,12 @@ namespace WebProject.AsyncWidgets.DAL
 {ex.InnerException?.Message}
 ");
 
-                // Handle other potential exceptions
-                // Console.WriteLine("An error occurred: " + ex.Message);
-                // RetConn?.DbConnection.Dispose(); // Ensure disposal of partially created objects
-                return null;
+                    // Handle other potential exceptions
+                    return null;
+                }
             }
         }
+
 
         public static DataSet GetDataSet(string SQLText)
         {
