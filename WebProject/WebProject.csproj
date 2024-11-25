@@ -1380,6 +1380,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="MasterPages\DummyMaster.master" />
     <Content Include="MasterPages\eForms.Master" />
+    <Content Include="NLogTestFile.aspx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx" />
@@ -2609,6 +2610,13 @@
     </Compile>
     <Compile Include="MasterPages\eForms.Master.designer.cs">
       <DependentUpon>eForms.Master</DependentUpon>
+    </Compile>
+    <Compile Include="NLogTestFile.aspx.cs">
+      <DependentUpon>NLogTestFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NLogTestFile.aspx.designer.cs">
+      <DependentUpon>NLogTestFile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Common\AccessDenied.ascx.cs">
       <DependentUpon>AccessDenied.ascx</DependentUpon>

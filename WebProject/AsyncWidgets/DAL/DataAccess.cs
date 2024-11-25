@@ -208,6 +208,7 @@ namespace WebProject.AsyncWidgets.DAL
                     {
                         retConn.DbConnection.Close();
                     }
+                    Log.Info($@"Opening connection:");
                     retConn.DbConnection.Open();
                     return retConn;
                 }
