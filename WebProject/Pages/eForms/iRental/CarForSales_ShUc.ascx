@@ -73,21 +73,28 @@
 
     <tr>
         <td style="text-align: left;" class="ftitle">
-
-            &nbsp;</td>
+    <span style="white-space: nowrap">Location</span></td>
         <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
+         <%-- <span style="white-space: nowrap">Car Type</span>--%>
+            <span>Car Status</span>
+        </td>
 
         <td style="text-align: left;" class="ftitle">
-            &nbsp;</td>
+            <%--<span>Car Status</span>--%>
+
+        </td>
         <td style="text-align: left;" class="ftitle">
 <%--            <span style="white-space: nowrap">Expiry (Days)</span>--%>
 
-            <span style="white-space: nowrap">Car Type</span></td>
+            <%--<span style="white-space: nowrap">Car Type</span>--%>
+
+        </td>
         <td style="text-align: left;" class="ftitle">
 <%--            <span style="white-space: nowrap">Full Insurance</span>--%>
 
-            <span>Car Status</span></td>
+           <%-- <span>Car Status</span>--%>
+
+        </td>
 
                 <td style="text-align: left;" class="ftitle">
 <%--            <span style="white-space: nowrap">Full Insurance</span>--%>
@@ -97,28 +104,43 @@
     <tr>
         <td style="text-align: left;">
                         <input type="hidden"  value="SearchChassisNo" groupid="schCarForSalesDetails" argumentid="SearchChassisN" />
+
+     <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
+          groupid="schCarForSalesDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
+         <option value="" selected="selected">Select Location</option>
+     </select>
+ </td>
+         
+        <td style="text-align: left;">
+           <%--  <select class="dropdownlist" style="width:115px" argumentid="CarType"  groupid="schCarForSalesDetails" name="D1">
+             <option value="" >Select Car Type</option>
+             <option value="N">New Car</option>
+              <option value="U">Used Car</option>
+             
+         </select>--%>
+
+             <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
+      groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
+     <option value="" selected="selected">Select Status</option>
+ </select>
+            </td>
+        <td style=" text-align: left;">
+            
+           <%-- <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
+                 groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
+                <option value="" selected="selected">Select Status</option>
+            </select>--%>
             </td>
         <td style="text-align: left;">
 
-            &nbsp;</td>
-        <td style=" text-align: left;">
+           
 
-            &nbsp;</td>
-        <td style="text-align: left;">
-
-            <select class="dropdownlist" style="width:115px" argumentid="CarType"  groupid="schCarForSalesDetails" name="D1">
-                        <option value="" >Select Car Type</option>
-                        <option value="N">New Car</option>
-                         <option value="U">Used Car</option>
-                        
-                    </select></td>
+        </td>
         <td style="text-align: left;">
          
 
-            <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
-                 groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
-                <option value="" selected="selected">Select Status</option>
-            </select></td>
+
+        </td>
       
      <td style="text-align: center; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
     <!-- View Button -->

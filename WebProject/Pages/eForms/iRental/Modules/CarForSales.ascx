@@ -43,14 +43,14 @@
                             CarFor: { width: '70px' },
                             BrandId: { caption: 'Brand', width: '80px' },
                             ModelId: { caption: 'Model', width: '100px' },
-                            TypeId: { caption: 'Type', width: '80px' },
+                            TypeId: { caption: 'Type', width: '50px' },
                             YearId: { caption: 'Year', width: '55px' },
-                            ColorId: { caption: 'Color', width: '90px' },
+                            ColorId: { caption: 'Color', width: '60px' },
                             //CurrentMileage: { caption: 'Mileage', width: '75px' },
                             /*CarType: { caption: 'CarType', width: '55px' },*/
-                            Price: { caption: 'Car Price.', width: '80px' },
-                            CarLocationId: { caption: 'Car Location', width: '100px' },
-                            CarStatusId: { caption: 'Car Status', width: '87px' }
+                            Price: { caption: 'Price.', width: '80px' },
+                            CarLocationId: { caption: 'Location', width: '75px' },
+                            CarStatusId: { caption: 'Status', width: '63px' }
                         },
                         forms: {
                             NewFormId: 'frmCarForSales',

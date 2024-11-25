@@ -6,7 +6,7 @@
 
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-      <tr>
+<%--      <tr>
       <td colspan="4">
           <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
     <tr id="trNote">
@@ -15,7 +15,7 @@
     </tr>
               </table>
           </td>
-          </tr>
+          </tr>--%>
 
       <tr>
       <td colspan="4">
@@ -115,7 +115,20 @@
             </select>
         </td>
     </tr>
+
+              <tr>
+                  <td class="ftitle">
+                      <nobr>Interior Color:</nobr>
+                  </td>
+                  <td>
+                      <select loadon="FirstVisible" class="dropdownlist " style="width: 155px;"
+                          groupid="SalesCarsForm" argumentid="InteriorColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'45'}]}">
+                          <option value="" selected="selected">Select Interior Color</option>
+                      </select>
+                  </td>
+              </tr>
     <tr>
+
         <td class="ftitle">
             <nobr>Type*:</nobr>
         </td>
