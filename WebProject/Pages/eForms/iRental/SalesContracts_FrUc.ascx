@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts_FrUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_FrUc" %>
+
 <%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
@@ -9,7 +10,7 @@
     // American Numbering System
     var th = ['', 'thousand', 'million', 'billion', 'trillion'];
     // uncomment this line for English Number System
-    // var th = ['','thousand','million', 'milliard','billion'];
+    // var th = ['','thousand','million', 'milliard','billion']; 
 
     var dg = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
     var tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
@@ -17,7 +18,7 @@
     function toWords(s) {
         s = s.toString(); s = s.replace(/[\, ]/g, '');
         if (s != parseFloat(s)) return 'not a number'; var x = s.indexOf('.');
-        if (x == -1) x = s.length; if (x > 15) return 'too big'; var n = s.split(''); var str = '';
+        if (x == -1) x = s.length; if (x > 15) return 'too big'; var n = s.split(''); var str = ''; 
         var sk = 0;
         for (var i = 0; i < x; i++) {
             if ((x - i) % 3 == 2) {
@@ -29,7 +30,7 @@
         if (x != s.length) { var y = s.length; str += 'point '; for (var i = x + 1; i < y; i++) str += dg[n[i]] + ' '; }
         return str.replace(/\s+/g, ' ');
     }
-</script>
+</script> 
 
 <style>
   /* Customizing the placeholder */
@@ -282,6 +283,27 @@
                                     <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone1"></span>
                                     <nobr class="CommaM12">, </nobr>
                                     <span class="ftitle" groupid="SalesContractsForm" argumentid="MobileTelephone2"></span>
+                                </td>
+                            </tr>
+                            <tr class="DropDownTR">
+                                <td class="ftitle">
+                                    <nobr>Interior Color:</nobr>
+                                </td>
+                                <td>
+                                    <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="InteriorColor"></span>
+
+                                    <div class="DropDownDIV">
+                                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
+                                            groupid="SalesContractsForm" argumentid="SalesInteriorColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'45'}]}">
+                                            <option value="" selected="selected">Select Interior Color</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="ftitle">
+                                    <nobr></nobr>
+                                </td>
+                                <td class="ftitle">
+                                   
                                 </td>
                             </tr>
                             <tr class="DropDownTR">
@@ -959,7 +981,7 @@
                         
                         var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
 
-                    </script>
+ </script>
  </Scripts>
  </AW:Form>
 
@@ -967,3 +989,4 @@
     </tr>
 
 </table>
+

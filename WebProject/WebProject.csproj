@@ -1400,6 +1400,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoice.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_FrUc.ascx" />
@@ -1421,7 +1422,6 @@
     <Content Include="Pages\eForms\iRental\SalesCarPrice_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_Cars_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_CS_FrUc.ascx" />
-    <Content Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_OC_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_PD_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_ShUc.ascx" />
@@ -1634,7 +1634,9 @@
     <Content Include="ReportDS\RentalContract_Statement.xsc">
       <DependentUpon>RentalContract_Statement.xsd</DependentUpon>
     </Content>
-    <Content Include="NLog.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ReportDS\RentalContract_Statement.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2979,6 +2981,13 @@
     <Compile Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx.designer.cs">
       <DependentUpon>Invoice_ItemCode_ShUc.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx.cs">
+      <DependentUpon>SalesContracts_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx.designer.cs">
+      <DependentUpon>SalesContracts_FrUc.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx.cs">
       <DependentUpon>SparePartInventoryInvoice_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3415,13 +3424,6 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesContracts_CS_FrUc.ascx.designer.cs">
       <DependentUpon>SalesContracts_CS_FrUc.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx.cs">
-      <DependentUpon>SalesContracts_FrUc.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx.designer.cs">
-      <DependentUpon>SalesContracts_FrUc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\RentalContracts_ShUc.ascx.cs">
       <DependentUpon>RentalContracts_ShUc.ascx</DependentUpon>

@@ -13,12 +13,14 @@ namespace WebProject
 {
     public class Global : HttpApplication
     {
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+       private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            NLog.LogManager.LoadConfiguration("NLog.config");
+            Logger.Info("Application Started");
         }
    
         public void Session_OnStart()
@@ -28,7 +30,7 @@ namespace WebProject
 
             // Initialize a new session variable
             Session["StartTime"] = DateTime.Now;
-
+            Logger.Info("New session Started");
             // Log session start event (Example: using a custom logging method)
             //LogSessionEvent("Session started at " + Session["StartTime"] );
         }

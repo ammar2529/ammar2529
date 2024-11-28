@@ -300,7 +300,8 @@
                         Status: { width: '100px' },
                         ContractNo: { caption: 'Contract No.' },
                         FullInsuranceCompanyId: { width: '0px' },
-                        FullInsurancePolicyNo: { width: '0px' }
+                        FullInsurancePolicyNo: { width: '0px' },
+                        InteriorColor: { width: '0px' }
 
 
                     }

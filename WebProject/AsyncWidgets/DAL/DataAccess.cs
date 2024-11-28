@@ -64,6 +64,7 @@ namespace WebProject.AsyncWidgets.DAL
     }
      public  class DBHelper
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         //private static DbConnContainer RetConn = null;
         private static Dictionary<string, DbConnContainer> Connections = new Dictionary<string, DbConnContainer>();
         public static DbConnContainer GetConnection()
@@ -173,6 +174,7 @@ namespace WebProject.AsyncWidgets.DAL
 
         public static DbConnContainer GetConnection(string ConnectionString, string ProviderName)
         {
+
             // Lock the code section to ensure only one thread can enter
             lock (_lock)
             {
@@ -208,13 +210,13 @@ namespace WebProject.AsyncWidgets.DAL
                     {
                         retConn.DbConnection.Close();
                     }
-                    Log.Info($@"Opening connection:");
+                    Logger.Info($@"Opening connection:");
                     retConn.DbConnection.Open();
                     return retConn;
                 }
                 catch (Exception ex)
                 {
-                    Log.Info($@"exception occured:
+                    Logger.Error($@"exception occured:
 {ex.Message}
 -----------------------------------------------------------------------
 {ex.StackTrace}
@@ -309,22 +311,35 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
                     
 
                     SqlConnection SQLConn = (SqlConnection)ConnContainer.DbConnection;
-                    SqlCommand SQLCMD = SQLConn.CreateCommand();
-                    SQLCMD.CommandType = CommandType.StoredProcedure;
-                    SQLCMD.Connection = SQLConn;
-                    SQLCMD.CommandTimeout = 120;
-                    SQLCMD.CommandText = SPName;
-                    if (oParameterList != null)
+                    try
                     {
-                        IEnumerator oEnumerator = oParameterList.GetEnumerator();
-                        while (oEnumerator.MoveNext())
+                        using (SqlCommand SQLCMD = SQLConn.CreateCommand())
                         {
-                            if (oEnumerator.Current != null)
-                                SQLCMD.Parameters.Add(oEnumerator.Current);
+                            SQLCMD.CommandType = CommandType.StoredProcedure;
+                            SQLCMD.Connection = SQLConn;
+                            SQLCMD.CommandTimeout = 120;
+                            SQLCMD.CommandText = SPName;
+                            if (oParameterList != null)
+                            {
+                                IEnumerator oEnumerator = oParameterList.GetEnumerator();
+                                while (oEnumerator.MoveNext())
+                                {
+                                    if (oEnumerator.Current != null)
+                                        SQLCMD.Parameters.Add(oEnumerator.Current);
+                                }
+                            }
+                            SqlDataAdapter daFrom = new SqlDataAdapter(SQLCMD);
+
+                            daFrom.Fill(dsFrom, "tTable");
+                            daFrom.Dispose();
+                            daFrom = null;
                         }
                     }
-                    SqlDataAdapter daFrom = new SqlDataAdapter(SQLCMD);
-                    daFrom.Fill(dsFrom, "tTable");
+                    catch (Exception ex)
+                    {
+                        var st = ex.StackTrace;
+                       // throw ex;
+                    }
                     break;
                 default:
                     return null;
@@ -345,18 +360,21 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
         public static string InvokeSP(string SPName, ParamDictionary<string, QueryParameter> Params, DbConnContainer ConnContainer)
         {
             SqlConnection SQLConn = (SqlConnection)ConnContainer.DbConnection;
-            SqlCommand SQLCMD = SQLConn.CreateCommand();
-            SQLCMD.CommandType = CommandType.StoredProcedure;
-            SQLCMD.Connection = SQLConn;
-            SQLCMD.CommandTimeout = 120;
-            SQLCMD.CommandText = SPName;
-
-            SQLCMD.Parameters.AddRange(GetSPParams(SPName,Params,ConnContainer ));
-            SQLCMD.ExecuteNonQuery();
             string Status = "";
-            if (SQLCMD.Parameters.Contains("@Status"))
+            using (SqlCommand SQLCMD = SQLConn.CreateCommand())
             {
-                Status = SQLCMD.Parameters["@Status"].Value.ToString();
+                SQLCMD.CommandType = CommandType.StoredProcedure;
+                SQLCMD.Connection = SQLConn;
+                SQLCMD.CommandTimeout = 120;
+                SQLCMD.CommandText = SPName;
+
+                SQLCMD.Parameters.AddRange(GetSPParams(SPName, Params, ConnContainer));
+                SQLCMD.ExecuteNonQuery();
+
+                if (SQLCMD.Parameters.Contains("@Status"))
+                {
+                    Status = SQLCMD.Parameters["@Status"].Value.ToString();
+                }
             }
             return Status;
         }
@@ -372,52 +390,60 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
 
              SqlParameter[] arrSqlParams = new SqlParameter[1];
              arrSqlParams[0] = GetSQLParam("@procedure_name", SqlDbType.VarChar, 390, SPName, ParameterDirection.Input);
+
+            try
+            {
+                DataTable dtProcParams;
+                var ds = GetDataTableProc("sp_sproc_columns", arrSqlParams, ConnContainer);
+                dtProcParams = ds.Tables[0];
+                if (dtProcParams.Rows.Count == 0)
+                {
+                    throw new Exception("Stored procedure not found!");
+                }
+
+                arrSqlParams = new SqlParameter[dtProcParams.Rows.Count - 1];
+                int iRow = 0;
+
+                foreach (DataRow DR in dtProcParams.Rows)
+                {
+                    if (iRow == 0) { iRow++; continue; }
+                    string ParamValue;
+                    string ParamName = DR["Column_Name"].ToString();
+
+                    SqlDbType ParamDBType = (SqlDbType)Enum.Parse(typeof(SqlDbType),
+                        DR["Type_Name"].ToString().Replace("numeric", "Decimal"), true); // GetSQLDataType(DR["Type_Name"].ToString());
+                    int ParamLen = Convert.ToInt32(DR["Length"]);
+                    ParameterDirection ParamDirection = (Convert.ToInt32(DR["COLUMN_TYPE"]) == 1 ? ParameterDirection.Input : ParameterDirection.InputOutput);
+                    if (ParamName.Substring(1).Equals("Status", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        arrSqlParams[iRow - 1] = GetSQLParam(ParamName, ParamDBType, ParamLen, "", ParameterDirection.Output);
+                    }
+                    else if (Params.ContainsKey(ParamName.Substring(1)))
+                    {
+                        ParamValue = Params[ParamName.Substring(1)].ParameterValue;//SPanel.SearchFields[ParamName.Substring(1)].FieldValueWithNull.ToString();
+
+                        arrSqlParams[iRow - 1] = GetSQLParam(ParamName, ParamDBType, ParamLen, SetEmptyValues(ParamValue, ParamDBType), ParamDirection);
+                    }
+                    else
+                    {
+                        ParamValue = "@EV"; //then pass null to stored procedure
+                        arrSqlParams[iRow - 1] = GetSQLParam(ParamName, ParamDBType, ParamLen, SetEmptyValues(ParamValue, ParamDBType), ParamDirection);
+                    }
+                    iRow++;
+                }
+                ds.Dispose();
+                ds = null;
+                dtProcParams.Dispose();
+                dtProcParams = null;
+                return arrSqlParams;
+
+
+            }
+            catch (Exception ex) {
+                throw ex; 
             
-             try
-             {
-                 DataTable dtProcParams;
-                 dtProcParams = GetDataTableProc("sp_sproc_columns", arrSqlParams, ConnContainer).Tables[0];
-                 if (dtProcParams.Rows.Count == 0)
-                 {
-                     throw new Exception("Stored procedure not found!");
-                 }
-
-                     arrSqlParams = new SqlParameter[dtProcParams.Rows.Count - 1];
-                     int iRow = 0;
-
-                     foreach (DataRow DR in dtProcParams.Rows)
-                     {
-                         if (iRow == 0) { iRow++; continue; }
-                         string ParamValue;
-                         string ParamName = DR["Column_Name"].ToString();
-
-                         SqlDbType ParamDBType = (SqlDbType)Enum.Parse(typeof(SqlDbType), 
-                             DR["Type_Name"].ToString().Replace("numeric","Decimal"), true); // GetSQLDataType(DR["Type_Name"].ToString());
-                         int ParamLen = Convert.ToInt32(DR["Length"]);
-                         ParameterDirection ParamDirection = (Convert.ToInt32(DR["COLUMN_TYPE"]) == 1 ? ParameterDirection.Input : ParameterDirection.InputOutput);
-                         if (ParamName.Substring(1).Equals("Status", StringComparison.CurrentCultureIgnoreCase))
-                         {
-                             arrSqlParams[iRow - 1] = GetSQLParam(ParamName, ParamDBType, ParamLen, "", ParameterDirection.Output);
-                         }
-                         else if (Params.ContainsKey(ParamName.Substring(1)))
-                         {
-                             ParamValue = Params[ParamName.Substring(1)].ParameterValue;//SPanel.SearchFields[ParamName.Substring(1)].FieldValueWithNull.ToString();
-
-                             arrSqlParams[iRow - 1] = GetSQLParam(ParamName, ParamDBType, ParamLen, SetEmptyValues(ParamValue, ParamDBType), ParamDirection);
-                         }
-                         else
-                         {
-                             ParamValue = "@EV"; //then pass null to stored procedure
-                             arrSqlParams[iRow - 1] = GetSQLParam(ParamName, ParamDBType, ParamLen, SetEmptyValues(ParamValue, ParamDBType), ParamDirection);
-                         }
-                         iRow++;
-                     }
-                     return arrSqlParams;
-                 
-
-             }
-             catch (Exception ex) { throw ex; }
-         }
+            }
+        }
        
          private static object SetEmptyValues(string Value, SqlDbType ParamDBType)
          {
@@ -607,6 +633,7 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
             }
             catch (Exception ex)
             {
+                Log.Info(ex.Message);
                 throw ex;
             }
         }
