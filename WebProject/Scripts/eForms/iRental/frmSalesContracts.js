@@ -1532,6 +1532,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
         $('.CommonSP', t.el).show();
         $('[argumentid="ChassisNo"]', t.el).prop('disabled', false).removeClass('ElemDisabled');
         $('[argumentid="ChassisNo"]', t.el).css('display', 'block');
+        $('.a', t.el).hide().removeClass('required');
 
 
     }
@@ -1543,6 +1544,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
         $('[argumentid="ChassisNo"]', t.el).prop('disabled', true).addClass('ElemDisabled');
        /* $('[argumentid="ChassisNo"]', t.el).val('');*/
         $('[argumentid="ChassisNo"]', t.el).css('display', 'none');
+        $('.a', t.el).show().removeClass('required');
 
 
     }

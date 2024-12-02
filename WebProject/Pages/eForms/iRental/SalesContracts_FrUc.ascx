@@ -293,7 +293,7 @@
                                     <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="InteriorColor"></span>
 
                                     <div class="DropDownDIV">
-                                        <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass" style="width: 155px;"
+                                        <select loadon="FirstVisible" class="dropdownlist a CommonDD CommonDisableClass" style="width: 155px;"
                                             groupid="SalesContractsForm" argumentid="SalesInteriorColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'45'}]}">
                                             <option value="" selected="selected">Select Interior Color</option>
                                         </select>

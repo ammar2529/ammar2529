@@ -60,7 +60,7 @@
             <AW:Form ID="frmComingSoon" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ComingSoon.ascx" />
             <AW:Form ID="frmiDashboard" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/iDashboard/Home_iDashboard.ascx">
                 <Scripts>
-                    <script>
+                    <script type="text/javascript">
 
 
                        var fn = function () {
