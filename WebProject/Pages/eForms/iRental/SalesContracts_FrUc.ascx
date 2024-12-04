@@ -334,7 +334,7 @@
                                 <td class="ftitle">
                                     <nobr>Car Owner Name:</nobr></td>
                                 <td class="ftitle">
-                                    <input type="text" style="text-align: center; width: 223px; font-size: 11px;;font-weight:bold;" maxlength="199" class="text  CommonDisableClass ElemDisabled"
+                                    <input type="text" style="text-align: center; width: 223px; font-size: 11px;font-weight:bold;" maxlength="199" class="text  CommonDisableClass ElemDisabled"
                                         groupid="SalesContractsForm" argumentid="CarOwnerName" /></td>
                             </tr>
 
