@@ -762,7 +762,7 @@
             <span class="allowedFile" style="display:none;"></span>
           
 
-            <button class="upload-button ">Upload</button>
+            <button class="upload-button DataAction" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'FileUpload'},HideOnSuccess:false, Requery:false,ShowActionMsg:false,GroupId:'SalesContractsForm'}">Upload</button>
 
         </div>
 
@@ -775,7 +775,7 @@
         <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly="readonly" />
 
         <%-- Data Grid  --%>
-        <div style="width: 100%;" class="CommonDisableClass">
+        <%--<div style="width: 100%;" class="CommonDisableClass">
         <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; style="width:100%;"  text-align: left" class="uploadedFileList">
             <tbody>
                 <tr class="HeaderTR">
@@ -836,7 +836,53 @@
                 </tr>
             </tbody>
         </table>
-            </div>
+            </div>--%>
+
+
+                <%-- Data Grid  --%>
+               
+<tr>
+    <td colspan="4">
+
+
+
+        <div style="width: 100%;">
+
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 99%;" class="uploadedFileList">
+               <thead>
+                   <tr>
+                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 40%;">File Name</th>
+                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">File Size</th>
+                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">File Type</th>
+                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Uploaded By</th>
+                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Upload Date</th>
+                       <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4"></th>
+
+                   </tr>
+               </thead>
+               <tbody>
+               </tbody>
+               <tfoot>
+                   <tr class="NoRecordsTR">
+
+                       <td class="NoRecords w-grid-norecords-msg" colspan="7">
+                           <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
+                       </td>
+                   </tr>
+
+               </tfoot>
+
+           </table>
+        </div>
+
+
+
+    </td>
+</tr>
+
+         
+               
+<%--<%-- End Data Grid --%>
         <%--<%-- End Data Grid --%>
    
         

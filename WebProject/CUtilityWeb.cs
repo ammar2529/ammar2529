@@ -14,12 +14,17 @@ using System.Collections;
 using System.Text;
 using System.Data.OleDb ;
 using WebProject.ReportsEngine;
+using System.Configuration.Provider;
+using NLog.Fluent;
+using NLog;
+using static CUtilityWeb;
 
 /// <summary>
 /// Summary description for CUtilityWeb
 /// </summary>
 public class CUtilityWeb
 {
+    private static readonly Logger Log = LogManager.GetCurrentClassLogger();
     public enum ConnType // test git commit
     {
         eFormsDB,
@@ -40,9 +45,13 @@ public class CUtilityWeb
     {
         try
         {
-            SqlCommand sCmd = new SqlCommand(SSQL, getConnection(connType));
-            sCmd.CommandTimeout = 180;
-            return sCmd.ExecuteReader();
+
+            using (var conn = getConnection(connType))
+            {
+                SqlCommand sCmd = new SqlCommand(SSQL, conn);
+                sCmd.CommandTimeout = 180;
+                return sCmd.ExecuteReader();
+            }
         }
         catch (Exception ex)
         {
@@ -54,9 +63,13 @@ public class CUtilityWeb
     {
         try
         {
-            SqlCommand sCmd = new SqlCommand(SSQL, getConnection(connType));
-            sCmd.CommandTimeout = 180;
-            return sCmd.ExecuteReader(CmdBehavior);
+            using (var conn = getConnection(connType))
+            {
+
+                SqlCommand sCmd = new SqlCommand(SSQL, conn);
+                sCmd.CommandTimeout = 180;
+                return sCmd.ExecuteReader(CmdBehavior);
+            }
         }
         catch (Exception ex)
         {
@@ -225,7 +238,9 @@ public class CUtilityWeb
                 break;
         }
         RetConn = new SqlConnection(strConn);
+        Log.Info("Opening Connection for Reports");
         RetConn.Open();
+        Log.Info("Opened Connection for Reports");
         return RetConn;
     }
     public static void CloseConnection(ConnType conntype)
@@ -297,13 +312,19 @@ public class CUtilityWeb
                 exec(@tableddl)
                 end
         ";
-        ExecScript(TableSQL, getConnection(ConnType.eFormsDB));
+        using (var conn = getConnection(ConnType.eFormsDB))
+        {
+
+            ExecScript(TableSQL, conn);
+        }
     }
+
+
     static public void AddError(Exception ex, string ErrDescription, string SQLString, string ErrorArguments)
     {
 
-        string StackTrace = ex!=null ? ex.StackTrace:"------";
-        string ErrorMessage = ex != null ? ex.Message : "------"; 
+        string StackTrace = ex != null ? ex.StackTrace : "------";
+        string ErrorMessage = ex != null ? ex.Message : "------";
         CreateErrorTable();
         string SSQL =
             @"
@@ -311,7 +332,10 @@ public class CUtilityWeb
                     values('";
 
         SSQL += "SQL:\t\n\t\n{0}\t\n\t\nStack Trace\t\n\t\n{1}\t\n\t\nError Message\t\n\t\n{2}\t\n\t\nError Description\t\n\t\n{3}Error Arguments{4}\')";
-        ExecScript(String.Format(SSQL, StackTrace.Replace("'", "''"), ErrorMessage.Replace("'", "''"), ErrDescription.Replace("'", "''"), SQLString.Replace("'", "''"), ErrorArguments.Replace("'", "''")), getConnection(ConnType.eFormsDB));
+        using (var conn = getConnection(ConnType.eFormsDB))
+        {
+            ExecScript(String.Format(SSQL, StackTrace.Replace("'", "''"), ErrorMessage.Replace("'", "''"), ErrDescription.Replace("'", "''"), SQLString.Replace("'", "''"), ErrorArguments.Replace("'", "''")), conn);
+        }
     }
 
     static public Int64 getMaxID(ConnType conntype, string TableName, string FieldName, string WhereClause)
@@ -320,18 +344,21 @@ public class CUtilityWeb
         object o;
 
         string SQLMax = "SELECT max(" + FieldName + ")+1 FROM " + TableName + " " + WhereClause;
-        SqlCommand SQLCMD = new SqlCommand(SQLMax, getConnection(ConnType.eFormsDB));
-        //ValList=(string)(((int) SQLCMD.ExecuteScalar. )+1) + ",";
-        o = SQLCMD.ExecuteScalar();
-        if (o == DBNull.Value)
+        using (var conn = getConnection(ConnType.eFormsDB))
         {
-            NewCounter = 1;
+            SqlCommand SQLCMD = new SqlCommand(SQLMax, conn);
+            //ValList=(string)(((int) SQLCMD.ExecuteScalar. )+1) + ",";
+            o = SQLCMD.ExecuteScalar();
+            if (o == DBNull.Value)
+            {
+                NewCounter = 1;
+            }
+            else
+            {
+                NewCounter = Convert.ToInt64(o);
+            }
+            return NewCounter;
         }
-        else
-        {
-            NewCounter = Convert.ToInt64(o);
-        }
-        return NewCounter;
     }
     //static public Int64 getMaxID(ConnType conntype, string TableName, string FieldName)
     //{
@@ -358,15 +385,18 @@ public class CUtilityWeb
         object o;
         CondValue = IsString ? "\'" + CondValue + "\'" : CondValue;
         string strSQL = "select count(*) NoOfRecs from " + tableName + " where FirstName=" + CondValue;
-        SqlCommand SQLCMD = new SqlCommand(strSQL, getConnection(conntype));
-        o = SQLCMD.ExecuteScalar();
-        if (Convert.ToInt32(o) > 0)
+        using (var conn = getConnection(conntype))
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            SqlCommand SQLCMD = new SqlCommand(strSQL, conn);
+            o = SQLCMD.ExecuteScalar();
+            if (Convert.ToInt32(o) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
     //static public OracleConnection   getOracleConnection()

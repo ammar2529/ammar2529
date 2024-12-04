@@ -370,7 +370,7 @@
             //});
 
             $('.btnCurrentServiceKm', t.el).on('click', function () {
-                debugger
+                
                 var CurrentServiceKm = $('[argumentid="CurrentServiceKm"]',t.el).val();
                 $('[argumentid="OutKm"]', t.el).val(CurrentServiceKm);
 

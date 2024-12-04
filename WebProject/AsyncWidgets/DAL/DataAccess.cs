@@ -13,6 +13,7 @@ using WebProject.AsyncWidgets.Utility;
 using NLog;
 using NLog.Fluent;
 using System.ServiceModel.Channels;
+using System.Configuration.Provider;
 namespace WebProject.AsyncWidgets.DAL
 {
  
@@ -43,8 +44,11 @@ namespace WebProject.AsyncWidgets.DAL
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
+            // GC.SuppressFinalize(this);
+            //DbConnection.Close();
+            
             DbConnection.Dispose();
+            Log.Info("Disposed Connection");
         }
         private void Dispose(bool Disposing)
         {
@@ -176,20 +180,20 @@ namespace WebProject.AsyncWidgets.DAL
         {
 
             // Lock the code section to ensure only one thread can enter
-            lock (_lock)
-            {
-                if (Connections.ContainsKey(ConnectionString) && Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
-                {
-                    return Connections[ConnectionString];
-                }
-                else
-                {
-                    if (Connections.ContainsKey(ConnectionString))
-                    {
-                        Connections[ConnectionString].DbConnection.Dispose();
-                        Connections.Remove(ConnectionString);
-                    }
-                }
+            //lock (_lock)
+            //{
+                //if (Connections.ContainsKey(ConnectionString) && Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+                //{
+                //    return Connections[ConnectionString];
+                //}
+                //else
+                //{
+                //    if (Connections.ContainsKey(ConnectionString))
+                //    {
+                //        Connections[ConnectionString].DbConnection.Dispose();
+                //        Connections.Remove(ConnectionString);
+                //    }
+                //}
 
                 try
                 {
@@ -203,20 +207,23 @@ namespace WebProject.AsyncWidgets.DAL
                             return null;
                     }
 
-                    // Attempt to open the connection
-                    Connections.Add(ConnectionString, retConn);
+                    //// Attempt to open the connection
+                    //Connections.Add(ConnectionString, retConn);
 
-                    if (Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
-                    {
-                        retConn.DbConnection.Close();
-                    }
+                    //if (Connections[ConnectionString].DbConnection.State == ConnectionState.Open)
+                    //{
+                    //    Logger.Info($@"closing connection:");
+                    //    retConn.DbConnection.Close();
+                    //    Logger.Info($@"closed connection:");
+                    //}
                     Logger.Info($@"Opening connection:");
                     retConn.DbConnection.Open();
+                    Logger.Info($@"Connection Opened");
                     return retConn;
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error($@"exception occured:
+                    Logger.Error($@"failed to open connection: exception occured:
 {ex.Message}
 -----------------------------------------------------------------------
 {ex.StackTrace}
@@ -228,7 +235,7 @@ namespace WebProject.AsyncWidgets.DAL
                     return null;
                 }
             }
-        }
+        //}
 
 
         public static DataSet GetDataSet(string SQLText)
@@ -285,17 +292,26 @@ namespace WebProject.AsyncWidgets.DAL
 
         public static DataSet GetDataTableProc(string SPName, ParamDictionary<string, QueryParameter> Params)
         {
-            return GetDataTableProc(SPName,Params, GetConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
-ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
+            using (var conn= GetConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
+ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName)) {
+
+                return GetDataTableProc(SPName, Params,conn );
+            }
         }
         public static DataSet GetDataTableProc(string SPName, ParamDictionary<string, QueryParameter> Params, string ConnName)
         {
-            return GetDataTableProc(SPName, Params, GetConnection(ConfigurationManager.ConnectionStrings[ConnName].ConnectionString,
- ConfigurationManager.ConnectionStrings[ConnName].ProviderName));
+            using (var conn = GetConnection(ConfigurationManager.ConnectionStrings[ConnName].ConnectionString,
+ ConfigurationManager.ConnectionStrings[ConnName].ProviderName))
+            {
+                return GetDataTableProc(SPName, Params, conn);
+            }
         }
         public static DataSet GetDataTableProc(string SPName, ParamDictionary<string, QueryParameter> Params, string ConnectionString, string ProviderName)
         {
-            return GetDataTableProc(SPName, Params, GetConnection(ConnectionString, ProviderName));
+            using (var conn = GetConnection(ConnectionString, ProviderName))
+            {
+                return GetDataTableProc(SPName, Params, conn);
+            }
         }
         public static DataSet GetDataTableProc(string SPName, ParamDictionary<string, QueryParameter> Params, DbConnContainer ConnContainer)
         {
@@ -350,12 +366,18 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
          
         public static string InvokeSP(string SPName, ParamDictionary<string, QueryParameter> Params)
         {
-          return  InvokeSP(SPName, Params, GetConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
-ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
+            using (var conn = GetConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
+ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName))
+            {
+                return InvokeSP(SPName, Params,conn);
+            }
         }
         public static string  InvokeSP(string SPName, ParamDictionary<string, QueryParameter> Params ,string ConnectionString, string ProviderName)
         {
-          return InvokeSP(SPName, Params, GetConnection(ConnectionString, ProviderName));
+            using (var conn= GetConnection(    ConnectionString,ProviderName))
+            {
+                return InvokeSP(SPName, Params, conn);
+            }
         }
         public static string InvokeSP(string SPName, ParamDictionary<string, QueryParameter> Params, DbConnContainer ConnContainer)
         {
@@ -600,9 +622,10 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
         }
         public static Boolean RecordExists(ParamDictionary<string, QueryParameter> Params, string TableName, string UniqueKeys)
         {
-
-            return RecordExists(Params, TableName, UniqueKeys, GetConnection());
-
+            using (var conn = GetConnection())
+            {
+                return RecordExists(Params, TableName, UniqueKeys, conn);
+            }
         }
         //public static Boolean RecordExists(ParamDictionary<string, QueryParameter> Params, DbConnection Conn)
         //{
@@ -613,7 +636,11 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName));
 
         public static object ExecutScaler(string SQLText)
         {
-            return ExecutScaler(SQLText, GetConnection());
+
+            using (var conn = GetConnection())
+            {
+                return ExecutScaler(SQLText, conn);
+            }
         }
         static object ExecutScaler(string SQLText, DbConnContainer ConnContainer)
         {

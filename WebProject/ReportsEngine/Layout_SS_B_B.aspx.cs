@@ -287,26 +287,28 @@ namespace WebProject.ReportsEngine
         }
         void FetchRoles(string EmailID)
         {
-            //Authorised Roles are storedd as a session variable.........
-            SqlConnection myConnection = CUtilityWeb.getConnection(CUtilityWeb.ConnType.eFormsDB);//ConfigurationSettings.AppSettings["ReportConnectionString"];
-            string CommandText = "";
-            string strAuthorisedRoles = "";
-
-            //CommandText = "select RoleName from Admin_UserRole_RoleName_V where EmailID ='" +EmailID+ "'";
-            CommandText = "EXECUTE sp_GetUserInfo '" + EmailID + "'";
-
-            //SqlConnection myConnection = new SqlConnection(ConnectionString);
-            SqlDataAdapter myCommand = new SqlDataAdapter(CommandText, myConnection);
             DataSet ds = new DataSet();
-            try
-            {
-                myCommand.Fill(ds);
-            }
-            catch (Exception ex)
-            {
-                //txtError.Text = ex.Message;
-            }
+            //Authorised Roles are storedd as a session variable.........
+            using (SqlConnection myConnection = CUtilityWeb.getConnection(CUtilityWeb.ConnType.eFormsDB))
+            { //ConfigurationSettings.AppSettings["ReportConnectionString"];
+                string CommandText = "";
+                string strAuthorisedRoles = "";
 
+                //CommandText = "select RoleName from Admin_UserRole_RoleName_V where EmailID ='" +EmailID+ "'";
+                CommandText = "EXECUTE sp_GetUserInfo '" + EmailID + "'";
+
+                //SqlConnection myConnection = new SqlConnection(ConnectionString);
+                SqlDataAdapter myCommand = new SqlDataAdapter(CommandText, myConnection);
+                
+                try
+                {
+                    myCommand.Fill(ds);
+                }
+                catch (Exception ex)
+                {
+                    //txtError.Text = ex.Message;
+                }
+            }
             if (ds.Tables[0].Rows.Count >= 3)
             {
                 //Session["OrganizationIDs"] = ds.Tables[0].Rows[0][0].ToString();

@@ -484,25 +484,25 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             console.log($('.file-list', t.el).length);
             $('.file-list', t.el).html('');
             console.log($('.file-list', t.el).length);
-        //Always Move to First Tab on Show
-        var li = $('li[tabid="SalesContractDetails"]', t.el), tbl;
-        li.parent().children('li.active').removeClass('active');
-        li.addClass('active');
-        tbl = li.closest('table').children();
-        tbl.children('tr:not(:first)').hide();
-        tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-        $('.tabid', t.el).val(li.attr('tabid'));
-        //End Always Move to First Tab on Show
+                   //Always Move to First Tab on Show
+                var li = $('li[tabid="SalesContractDetails"]', t.el), tbl;
+                li.parent().children('li.active').removeClass('active');
+                li.addClass('active');
+                tbl = li.closest('table').children();
+                tbl.children('tr:not(:first)').hide();
+                tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
+                $('.tabid', t.el).val(li.attr('tabid'));
+                //End Always Move to First Tab on Show
 
-        // Hide Edit For Normal Users
+                // Hide Edit For Normal Users
             $('[roles]', t.el).hide().each(function ()
             {
-               
+
                 if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1)
                 {
-                $(this).show();
+                    $(this).show();
                 }
-        });
+            });
 
         $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
         $('.ElemDisabled', t.el).removeClass('ElemDisabled');
@@ -525,10 +525,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 //// Disable the button
                 //$(".ContractPrintBtn").prop("disabled", true);
 
-                var tblUFL = $('table.uploadedFileList', t.el);
-                $('table.uploadedFileList .ItemTR .ItemTableRow').remove();
-               /* $('.ItemTR > td', tblUFL).empty();*/
-                $('.NoRecordsTR', tblUFL).show();
+                var a = $('table.uploadedFileList .ItemTableRow').hide();
+                $('table.uploadedFileList .NoRecordsTR').show();
+                a.html("");
                 $('.btnSave ', t.el).hide();
                 $('.SaveBtn', t.el).hide();
                 $('[argumentid="CustomerRecCode"]', t.el).prop('disabled', false);
@@ -895,6 +894,15 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 var LPOAmount = $('[argumentid="LPOAmount"]', t.el).val();
                 var LPOAmountFloat = parseFloat(LPOAmount) || 0;
                 $('[argumentid="LPOAmount"]', t.el).val(LPOAmountFloat.toFixed(3));
+
+
+
+                $('[roles]', t.el).hide().each(function () {
+
+                    if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1) {
+                        $(this).show();
+                    }
+                });
                 
                 
             }
@@ -1080,17 +1088,50 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             success: function (response)
             {
                 objRes = JSON.parse(response)
+                
                 var rows = objRes.Response.Rows;
                 for (var i = 0; i < rows.length; i++)
                 {
                     var row = rows[i];
                     var fileName = row.FileName;
+                    var FileGuid = row.FileGuid
+                   
                     var msg = (`File [${fileName}] uploaded successfully.`);
                     $(".file-input", t.el).val('');
                     $('[argumentid = "DocType"]').val('');
 
                 }
-                
+
+                var RecId = $('[argumentid="RecId"]', t.el).val();
+
+                //var params = {
+                //    Command: 'UPD_iRental_SalesContracts',
+                //    RecId,
+                //    FileGuid,
+                //    Action: 'update'
+                //   };
+
+                //ServerCall(params, function (res) {
+                //    debugger
+                //    var res = decJSON(res)
+
+
+                //    if (res.status === 'OK') {
+                //        if (res.Response.Rows.length > 0) {
+
+                            
+
+                //        }
+
+
+                //    }
+
+
+
+
+
+                //});
+
                 AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(objRes, t);
                 $.showMessage(msg);
                
@@ -1188,19 +1229,33 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
     t.on('onLoadedValues', function (p)
     {
 
-        console.log(p);
-         var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+        setTimeout(function () {
+            var FileGuid = val('FileGuid', t.el);
 
-        SInfo = getForm(null, null, params);
-        var inv = new AsyncWidgets.RAInvoker();
-        inv.on('onSuccess', function (res)
-        {
-            var res = decJSON(res);
-            AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(res, t);
-            $(t.el).unmask();
-        });
-        inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
+            debugger
 
+            console.log(p);
+            if (FileGuid && FileGuid.trim() !== "") {
+                var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
+
+                SInfo = getForm(null, null, params);
+                var inv = new AsyncWidgets.RAInvoker();
+                inv.on('onSuccess', function (res) {
+                    var res = decJSON(res);
+
+                    AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(res, t);
+                    $(t.el).unmask();
+                });
+                inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
+            }
+            else {
+
+               var a =  $('table.uploadedFileList .ItemTableRow').hide();
+                $('table.uploadedFileList .NoRecordsTR').show();
+                a.html("");
+             
+            }
+        }, 1000)
     });
 };
 
@@ -1214,8 +1269,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
             var $fileList = $(".file-list", t.el);
             var loggedUser = $('.LoggedUser').text();
             var tblRowsHTML = "";
-            $('.ItemTR', tblUFL).show();
-            $('.NoRecordsTR', tblUFL).hide();
+            var tblUFL = $('table.uploadedFileList', t.el);
+            $('table.uploadedFileList .ItemTableRow').show();
+            $('table.uploadedFileList .NoRecordsTR').hide();
             for (var i = 0; i < rows.length; i++) {
 
                 var row = rows[i];
@@ -1244,42 +1300,40 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
                 //
                 var fileNameElement = `<span class="file-name">${fileLink}</span>`;
               
-                var genHtml = ` <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                var genHtml = `
 
 
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-3" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; " colid="FileName">
-                                                        <div class="ColValue w-grid-label linkFileName" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; ">${fileLink}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileSize">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${fileSize}</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="FileType">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${fileType}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="CreatedBy">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${loggedUser}</div>
-                                                    </td>
-                                                    <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 110px;" colid="DateCreated">
-                                                        <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 100px;">${dateCreated}</div>
-                                                    </td>
-                                                     <td class="ColTemplate w-grid-cell-border colIndex-4" style="white-space: nowrap; overflow: hidden; cursor: pointer; padding: 0px; width: 45px;" colid="Delete">
-                                                            <div class="ColValue w-grid-label" style="white-space: nowrap; cursor: pointer; overflow: hidden; margin-left: 10px; width: 35px;">
-                                                             <span class="remove-button" recid="${recId}" filename="${fileName}">X</span>
-                                                            </div>
-                                                        </td>
+                                  
+                                                
 
-                                                </tr>`;
+                             <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                               <td class="ColTemplate w-grid-cell-border colIndex-4 linkFileName" style="padding: 5px; background: white; color: black;">${fileLink}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${fileSize}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${fileType}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${loggedUser}</td>
+                              <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"> ${dateCreated}</td>
+                             <td class="ColTemplate w-grid-cell-border colIndex-4  remove-button" style="text-align: center;" recid="${recId}" filename="${fileName}">X</td>
+                              </tr>
+                                                
+                                                `
+
+
+                    ;
 
                 tblRowsHTML += genHtml;
 
              
 
             }  // for loop;
-
+            //$('.ItemTR', tblUFL).show();
+            //$('.NoRecordsTR', tblUFL).hide();
             var tblUFL = $('table.uploadedFileList', t.el); // get the main table
 
-            $('.ItemTR tbody', tblUFL).html(tblRowsHTML); //inject html of the download file list table
-            $('.remove-button', tblUFL).click(function () {
+            $('tbody', tblUFL).html(tblRowsHTML);  //inject html of the download file list table
+           
+
+            $('.remove-button', tblUFL).click(function ()
+            {
                 var btn = $(this);
                 var recId = btn.attr("recId");
                 var fileName = btn.attr("fileName");
@@ -1302,10 +1356,16 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles = function (res
 
 
         } // if length>0
-        else {
-            var tblUFL = $('table.uploadedFileList', t.el);
-            $('.ItemTR', tblUFL).hide();
-            $('.NoRecordsTR', tblUFL).show();
+        else
+        {
+            setTimeout(function () {
+                //var tblUFL = $('table.uploadedFileList', t.el);
+                //$('.ItemTR', tblUFL).hide();
+                //$('.NoRecordsTR', tblUFL).show();
+
+                $('table.uploadedFileList .ItemTableRow').hide();
+                $('table.uploadedFileList .NoRecordsTR').show();
+            }, 1000)
         }
     } //  if (res.status == 'OK')
 

@@ -121,7 +121,9 @@ WHERE     (ObjectID = '{0}') AND (ObjectParentID = '{0}') ", txtGridID.Text)
             //   daFrom.Fill(dsFrom, "tTable");
             //   SQLConn.Close();
             //   SQLConn = null;
-            return CUtilityWeb.getDataTable(SSQL, CUtilityWeb.getConnection(CUtilityWeb.ConnType.eFormsDB));
+            using (var conn = CUtilityWeb.getConnection(CUtilityWeb.ConnType.eFormsDB)) {
+                return CUtilityWeb.getDataTable(SSQL,conn);
+            }
 
         }
 
