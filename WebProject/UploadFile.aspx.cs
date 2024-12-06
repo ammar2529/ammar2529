@@ -127,6 +127,7 @@ namespace WebProject
 
         static string GetUploadedFileList()
         {
+            var a = 0;
             var PD = GetParamsFromPost();
             //
             PD.Add("DBAction", new QueryParameter("GetUploadedFiles")); // Add DBAction parameter

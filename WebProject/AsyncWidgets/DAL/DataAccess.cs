@@ -275,9 +275,29 @@ namespace WebProject.AsyncWidgets.DAL
                         SqlConnection SQLConn = (SqlConnection)ConnContainer;
                             SqlDataAdapter daFrom = new SqlDataAdapter(SQLText, SQLConn);
                             daFrom.Fill(dsFrom, "tTable");
+
+                        if (dsFrom.Tables.Count < 1)
+                        {
+                            Logger.Error($@"
+No datatable fetch using the below Query:
+{SQLText}
+");
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Logger.Error($@"Error while fetching data using query :
+{SQLText}
+-----------------------------------------------------------------------
+{ex.Message}
+-----------------------------------------------------------------------
+{ex.StackTrace}
+-----------------------------------------------------------------------
+{ex.InnerException?.Message}
+");
+
+                        // Handle other potential exceptions
+                        return null;
                         throw ex;
                     }
                     return dsFrom;
@@ -346,15 +366,28 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName)) {
                             }
                             SqlDataAdapter daFrom = new SqlDataAdapter(SQLCMD);
 
-                            daFrom.Fill(dsFrom, "tTable");
+                            daFrom.Fill(dsFrom, SPName);
                             daFrom.Dispose();
                             daFrom = null;
+                            if (dsFrom.Tables.Count < 1)
+                            {
+                                Logger.Error($@"
+No datatable fetch using the below Query:
+{SPName}
+");
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        var st = ex.StackTrace;
-                       // throw ex;
+                        Logger.Error($@"Error while executing the SP {SPName}:
+{ex.Message}
+-----------------------------------------------------------------------
+{ex.StackTrace}
+-----------------------------------------------------------------------
+{ex.InnerException?.Message}
+");
+                        // throw ex;
                     }
                     break;
                 default:
@@ -660,7 +693,7 @@ ConfigurationManager.ConnectionStrings["DefaultConnection"].ProviderName))
             }
             catch (Exception ex)
             {
-                Log.Info(ex.Message);
+                Logger.Info(ex.Message);
                 throw ex;
             }
         }
