@@ -351,7 +351,7 @@
                 </tr>--%>
 
                 <%--class="hideOnNoExpirayDateInSales"--%>
-                <tr >
+                <tr class="hideOnCarNotArrived">
                     <td colspan="4">
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
 
@@ -363,10 +363,10 @@
                                 </td>
 
                                 <td style="width:30%">
-                                    <span class="ftitle CommonDisable FullInsurance CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId2"></span>
+                                    <span class="ftitle CommonDisable FullInsurance CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId"></span>
 
                                     <select loadon="FirstVisible" class="dropdownlist CommonEdit" style="width: 155px;display: none"
-                                        groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
+                                        groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId2" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
                                         <option value="" selected="selected">Select Insurance</option>
                                     </select>
 
@@ -376,10 +376,13 @@
 
 
                                 <td class="ftitle" style="width:20%">
-                                    <%-- <nobr>Full Insurance Expiry:</nobr>--%>
+                                     Expiry Date:
                                 </td>
-                                <td style="width:30%">
-                                    <%--<span class="ftitle CommonDisable" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry"></span> --%>
+                                <td style="width: 30%">
+                                    <span class="ftitle CommonDisable ExpiryDate CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry"></span>
+
+                                    <input type="text" groupid="SalesContractsForm" maxlength="10"
+                                        style="width: 150px; display: none" class="text  date   FullInsuranceExpiry CommonEdit" argumentid="FullInsuranceExpiry2" />
                                 </td>
                             </tr>
 
@@ -388,37 +391,23 @@
                                     <nobr>PolicyNo.:</nobr>
                                 </td>
                                 <td>
-                                    <span class="ftitle CommonDisable PolicyNo CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsurancePolicyNo2"></span>
+                                    <span class="ftitle CommonDisable PolicyNo CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsurancePolicyNo"></span>
                                    
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
-                                        style="width: 150px;display: none" class="text   CommonEdit " argumentid="FullInsurancePolicyNo" />
+                                        style="width: 150px;display: none" class="text   CommonEdit " argumentid="FullInsurancePolicyNo2" />
                                 </td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
                                 <td class="ftitle">
-                                       Expiry Date:
+                                  
                                 </td>
-
-                                <td class="ftitle">
-                                    <span class="ftitle CommonDisable ExpiryDate CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry2"></span>
-
-                                    <input type="text" groupid="SalesContractsForm" maxlength="10"
-                                        style="width: 150px; display: none" class="text  date   FullInsuranceExpiry CommonEdit" argumentid="FullInsuranceExpiry" />
-
-                                </td>
-                                <td></td>
-                                <td style="text-align:right">
-                                   
-                                    <input type="button" style="width: 70px"  value="  Edit  " class="ButtonStyle Edit_Insrance" />
-                                   
-                                    <input type="button" style="width: 70px" value="  Update  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle   Update_Insurance " 
+                                <td style="text-align:center">
+                                    <input type="button" style="width: 70px" value="  Edit  " class="ButtonStyle Edit_Insrance common-disable-button" />
+                                    <input type="button" style="width: 70px; display: none" value="  Clear  " class="ButtonStyle Clear_Insrance common-disable-button" />
+                                    <input type="button" style="width: 70px;display: none" value="  Update  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle common-disable-button   Update_Insurance "
                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{Action:'UpdateInsurance'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
-
                                 </td>
                             </tr>
+
+                        
                         </table>
                     </td>
                 </tr>
@@ -750,7 +739,7 @@
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
                              <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
-                            <input type="button" style="width: 70px" value="  Reserve  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+                            <input type="button" style="width: 70px" value="  Reserve  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'RRCCreatedState'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
                            <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
 
 
