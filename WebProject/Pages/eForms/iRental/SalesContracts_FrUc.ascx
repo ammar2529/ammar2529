@@ -335,7 +335,9 @@
                                     <nobr>Car Owner Name:</nobr></td>
                                 <td class="ftitle">
                                     <input type="text" style="text-align: center; width: 223px; font-size: 11px;font-weight:bold;" maxlength="199" class="text  CommonDisableClass ElemDisabled"
-                                        groupid="SalesContractsForm" argumentid="CarOwnerName" /></td>
+                                        groupid="SalesContractsForm" argumentid="CarOwnerName" />
+
+                                </td>
                             </tr>
 
                         </table>
@@ -347,7 +349,9 @@
                         <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
                     </td>
                 </tr>--%>
-                <tr class="hideOnNoExpirayDateInSales">
+
+                <%--class="hideOnNoExpirayDateInSales"--%>
+                <tr >
                     <td colspan="4">
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
 
@@ -359,7 +363,14 @@
                                 </td>
 
                                 <td style="width:30%">
-                                    <span class="ftitle CommonDisable " groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId"></span>
+                                    <span class="ftitle CommonDisable FullInsurance CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId2"></span>
+
+                                    <select loadon="FirstVisible" class="dropdownlist CommonEdit" style="width: 155px;display: none"
+                                        groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
+                                        <option value="" selected="selected">Select Insurance</option>
+                                    </select>
+
+
                                 </td>
 
 
@@ -374,13 +385,39 @@
 
                             <tr>
                                 <td class="ftitle">
-                                    <nobr>PolicyNo. - Expiry Date:</nobr>
+                                    <nobr>PolicyNo.:</nobr>
                                 </td>
                                 <td>
-                                    <span class="ftitle CommonDisable " groupid="SalesContractsForm" argumentid="FullInsurancePolicyNo"></span>- <span class="ftitle CommonDisable" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry"></span>
+                                    <span class="ftitle CommonDisable PolicyNo CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsurancePolicyNo2"></span>
+                                   
+                                    <input type="text" groupid="SalesContractsForm" maxlength="10"
+                                        style="width: 150px;display: none" class="text   CommonEdit " argumentid="FullInsurancePolicyNo" />
                                 </td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+
+                            <tr>
+                                <td class="ftitle">
+                                       Expiry Date:
+                                </td>
+
+                                <td class="ftitle">
+                                    <span class="ftitle CommonDisable ExpiryDate CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry2"></span>
+
+                                    <input type="text" groupid="SalesContractsForm" maxlength="10"
+                                        style="width: 150px; display: none" class="text  date   FullInsuranceExpiry CommonEdit" argumentid="FullInsuranceExpiry" />
+
+                                </td>
+                                <td></td>
+                                <td style="text-align:right">
+                                   
+                                    <input type="button" style="width: 70px"  value="  Edit  " class="ButtonStyle Edit_Insrance" />
+                                   
+                                    <input type="button" style="width: 70px" value="  Update  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle   Update_Insurance " 
+                                        conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{Action:'UpdateInsurance'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -846,7 +883,7 @@
 
 
 
-        <div style="width: 100%;">
+        <div style="width: 100%;padding: 4px;">
 
               <table cellspacing="0" cellpadding="0" border="0" style="width: 99%;" class="uploadedFileList">
                <thead>

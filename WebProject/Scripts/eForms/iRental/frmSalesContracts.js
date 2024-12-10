@@ -23,6 +23,39 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     //});
 
+    $('.Edit_Insrance', t.el).on('click', function () {
+
+        $('.FullInsuranceExpiry', t.el).show().next('img').show();
+        $('.CommonEdit', t.el).show()
+        $('.CommonUpdate', t.el).hide();
+
+    });
+
+     
+    $('.Update_Insurance', t.el).on('click', function () {
+        $('.FullInsuranceExpiry', t.el).hide().next('img').hide();
+
+        $('.CommonEdit', t.el).hide()
+        $('.CommonUpdate', t.el).show();
+
+        var btn = $(this);
+        if (btn.hasClass('MyDataAction'))
+        {
+            var ChassisNo = $('[argumentid="ChassisNo"]', t.el).val();
+
+            if (ChassisNo == 'null' || ChassisNo == '') {
+                $.showMessage('ChassisNo must not be empty');
+                
+                return false
+            } else {
+                t.submit(btn);
+              
+            }
+            return false;
+        }
+    });
+
+
 
     $('.btnGetCarPrice', t.el).on('click', function () {
         var Price = parseFloat($('[argumentid="Price"]', t.el).val()) || 0;

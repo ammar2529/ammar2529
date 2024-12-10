@@ -155,7 +155,8 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         var Total = parseFloat($('[argumentid="Total"]').val()) || 0;
 
         
-        if (btn.hasClass('ClosedInvoice')) {
+        if (btn.hasClass('ClosedInvoice'))
+        {
             debugger
             const isWarrantyChecked = $('.WarrentyInvoice', t.el).is(':checked'); // Warranty checkbox
             const isCashChecked = $('.CashInvoice', t.el).is(':checked'); // Cash checkbox

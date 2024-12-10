@@ -38,15 +38,15 @@
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
                                    
-                                <tpl if="CarNumber">
+                               <%-- <tpl if="CarNumber">--%>
                                   <div style="font-size:11px;">
                                     <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>
                                     <tpl if="Brand">&nbsp;-&nbsp;{Brand}</tpl>
                                     <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
                                     <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
                                   </div>
-                                </tpl>
-                                <tpl else>
+                               <%-- </tpl>--%>
+                            <%--    <tpl else>
                                   <div style="font-size:11px;">
                                     <nobr style="color:#602010">
                                       <tpl if="SalesBrandId">{SalesBrandId}</tpl>
@@ -54,7 +54,17 @@
                                       <tpl if="SalesColorId">&nbsp;-&nbsp;{SalesColorId}</tpl>
                                     </nobr>
                                   </div>
-                                </tpl>
+                                </tpl>--%>
+
+                                       <%--  <tpl else>
+                                   <div style="font-size:11px;">
+                                     <nobr style="color:#602010">
+                                       <tpl if="Brand">{Brand}</tpl>
+                                       <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
+                                       <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
+                                     </nobr>
+                                   </div>
+                                 </tpl>--%>
 
 
 
