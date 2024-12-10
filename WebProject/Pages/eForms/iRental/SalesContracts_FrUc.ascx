@@ -399,11 +399,12 @@
                                 <td class="ftitle">
                                   
                                 </td>
-                                <td style="text-align:center">
-                                    <input type="button" style="width: 70px" value="  Edit  " class="ButtonStyle Edit_Insrance common-disable-button" />
-                                    <input type="button" style="width: 70px; display: none" value="  Clear  " class="ButtonStyle Clear_Insrance common-disable-button" />
-                                    <input type="button" style="width: 70px;display: none" value="  Update  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle common-disable-button   Update_Insurance "
-                                        conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{Action:'UpdateInsurance'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+                                <td style="text-align:left">
+                                    <input type="button" style="width: 70px;cursor:pointer;" value="  Edit  " class="ButtonStyle Edit_Insrance common-disable-button" />
+                                    <input type="button" style="width: 70px;display: none;cursor:pointer;" value="  Save  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle common-disable-button   Update_Insurance "
+    conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{Action:'UpdateInsurance'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+                                    <input type="button" style="width: 70px; display: none;cursor:pointer;" value="  Close  " class="ButtonStyle Clear_Insrance common-disable-button" />
+                                    
                                 </td>
                             </tr>
 
@@ -711,7 +712,7 @@
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
                                 <td style="width: 20%" class="ftitle">Bill Amt:
-                                    <input argumentid="BillAmount" class="text  number CommonDisableClass  " groupid="SalesContractsForm" maxlength="10" style="text-align: center;width: 80px;margin-left: 5px;" type="text" />
+                                    <input argumentid="BillAmount" class="text  number CommonDisableClass  " groupid="SalesContractsForm" maxlength="10" style="text-align: center;width: 75px;margin-left: 5px;" type="text" />
                                     <input type="button" title="Set Current Car Price" value="↓" style="width: 20px;  cursor: pointer;height: 16px;" class="ButtonStyle ftitle  CommonDisableClass btnGetCarPrice" />
                                 </td>
                                 <td rowspan="3">
@@ -738,9 +739,9 @@
 
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                             <input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
+                             <input type="button" style="width: 70px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
                             <input type="button" style="width: 70px" value="  Reserve  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'RRCCreatedState'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
-                           <input type="button" style="width: 50px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+                           <input type="button" style="width: 70px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
 
 
                             <input type="button" value="  Quotation  "style="width: 70px" class="ButtonStyle QuotationBtn common-button" />
@@ -749,7 +750,7 @@
                             <%--<input type="button" value="  Bill  " style="width: 70px" class="ButtonStyle BillsBtn common-button" />--%>
                             <input type="button"  value="Statement" style="width: 70px" class=" ButtonStyle Statement common-button" />
 
-                            <input type="button" style="width: 50px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
+                            <input type="button" style="width: 70px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
                               
                             </div>
@@ -759,7 +760,7 @@
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%" class="ftitle">Bill Date:
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
-                       style="width:80px;text-align:center"class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
+                       style="width:75px;text-align:center"class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
                             </tr>
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%">
