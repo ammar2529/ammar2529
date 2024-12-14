@@ -1558,9 +1558,7 @@
     <Content Include="UploadFileForCarServiceDetails.aspx" />
     <Content Include="UploadSparePartImages.aspx" />
     <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
-    <Content Include="Web.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="WebForm4.aspx" />
     <Content Include="DataSets\SalesContractDS.xsc">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
@@ -2235,11 +2233,9 @@
     <Content Include="Bundle.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

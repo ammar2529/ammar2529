@@ -1286,7 +1286,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
         setTimeout(function () {
             var FileGuid = val('FileGuid', t.el);
 
-            debugger
+            
 
             console.log(p);
             if (FileGuid && FileGuid.trim() !== "") {

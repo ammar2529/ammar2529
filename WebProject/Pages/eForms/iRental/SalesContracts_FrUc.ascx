@@ -785,7 +785,7 @@
             </select>
 
 
-            <input type="file" class="file-input    " accept=".pdf,.jpg,.png,.txt,.docx" />
+            <input type="file" class="file-input    " accept=".pdf,.jpg,jpeg,.png,.txt,.docx" />
             <span class="allowedFile" style="display:none;"></span>
           
 
