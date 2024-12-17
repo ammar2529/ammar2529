@@ -29,26 +29,56 @@ var th = ['','thousand','million', 'billion','trillion'];
         return str.replace(/\s+/g, ' ');
     }
 </script>
-<%--<style type="text/css">
-    .auto-style1 {
-        float: left;
-        width: 824px;
-    }
-    .auto-style3 {
-        width: 667px;
-    }
-    .auto-style4 {
-        float: left;
-        width: 300px;
-    }
-</style>--%>
+ 
 
 
 <script type="text/javascript" src="../../../Scripts/eForms/iRental/SalesContracts.js">
 
 </script>
 
+<%--<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
+  <tr tabid="SalesContractDetails">
+      <td style="padding-top: 1px;">
+          <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+          <tr>
+              <td class="ftitle" style="width:20%">Contract No.:</td>
+              <td class="ftitle" style="width:30%"></td>
+              <td style="width:20%"></td>
+              <td style="width:30%"></td>
+          </tr>
 
+    <tr>
+    <td class="ftitle" >Car No.:</td>
+    <td class="ftitle" ></td>
+        <td class="ftitle" >Customer Name:</td>
+        <td class="ftitle" ></td>
+</tr>
+
+    <tr>
+    <td class="ftitle" >Amount Due:</td>
+    <td class="ftitle" ></td>
+        <td class="ftitle" >Amount Received:</td>
+        <td class="ftitle" ></td>
+</tr>
+
+              <tr>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+              </tr>
+
+               <tr>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+ </tr>
+              </table>
+          </td>
+      </tr>
+
+    </table>--%>
 
 <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table b">
 
@@ -85,6 +115,9 @@ var th = ['','thousand','million', 'billion','trillion'];
 
         </td>
     </tr>--%>
+
+   
+  
       <tr>
         <td width="20%" class="ftitle" valign="top">
         <nobr>System ID</nobr>
@@ -135,13 +168,19 @@ var th = ['','thousand','million', 'billion','trillion'];
         </td>
         <td >
             <div class=" parentDiv">
-                <select loadon="FirstVisible" class="dropdownlist PaymentMode" requirederr='*' style="width: 155px;"
+                <select loadon="FirstVisible" class="dropdownlist PaymentMode" requirederr='*' style="width: 155px;margin-right:5px"
                     groupid="Sales_Payments" argumentid="PaymentMode" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
                     <option value="" selected="selected">Select Payment Mode</option>
                 </select>
-                &nbsp;
+                 &nbsp;
 
-                                   
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <nobr class="ftitle bankLabel">Bank*:</nobr><select loadon="FirstVisible" class="dropdownlist BankName" style="width: 170px; margin-left: 5px;"
+     groupid="Sales_Payments" requirederr='*' argumentid="BankName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" name="D2">
+     <option value="" selected="selected"  >Select Bank</option>
+     
+ </select>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr class="ftitle ChequeLable">Cheque No.: </nobr><input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text number ChequeNo"
+                                     groupid="Sales_Payments" argumentid="ChequeNo"  requirederr='*'/>         
                   </div>
              
             </td>
@@ -152,15 +191,11 @@ var th = ['','thousand','million', 'billion','trillion'];
 
                                    
                
-            <nobr style="font-style: italic; font-weight: bold;" float="left" class="BankName">&nbsp;Bank*:</nobr>
-            
-            <select loadon="FirstVisible" class="dropdownlist BankName" style="width: 155px; margin-left: 5px;"
-                groupid="Sales_Payments" requirederr='*' argumentid="BankName" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" name="D2">
-                <option value="" selected="selected"  >Select Bank</option>
-                
-            </select><nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">&nbsp; Cheque No*:</nobr> 
-                <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text number ChequeNo"
-                                                     groupid="Sales_Payments" argumentid="ChequeNo"  requirederr='*'/>&nbsp;
+            <nobr style="font-style: italic; font-weight: bold;" float="left" class="BankName"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    
+                <span class="ftitle">Cheque From: </span><input type="text" style="text-align: center; width: 165px;margin-right:4px" maxlength="100" class="text  "
+groupid="Sales_Payments" alphconf="{allow:'.'}"  argumentid="ChequeFrom" />   <nobr style="font-style: italic; font-weight: bold; class="ChequeNo a"></nobr> 
+                &nbsp;
             <nobr style="font-style: italic; font-weight: bold; class="ChequeNo a">Cheque Date*:</nobr>
                 <input argumentid="ChequeDate" class="text required date ChequeDate CommonDisable" groupid="Sales_Payments" maxlength="10" requirederr=" *" style="width: 75px;" type="text" />
 
@@ -224,8 +259,8 @@ var th = ['','thousand','million', 'billion','trillion'];
             <img src="App_Themes/eForms_Theme/Images/spacer.gif"/>
         </td>
         <td >
-            <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts_Payments',HideOnSuccess:true}" />
-            <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
+            <input type="button" value="  Save  " class="DataAction ButtonStyle SaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts_Payments',HideOnSuccess:true }" />
+            <input type="button" value="  Cancel  " class="CloseForm ButtonStyle closedForm" />
         </td>
     </tr>
 

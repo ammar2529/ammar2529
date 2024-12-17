@@ -942,9 +942,68 @@
         </td>
     </tr>
 
-    <tr tabid="SalesPaymentDetails" style="display: none;">
-        <td style="padding-top: 1px;">
+<%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
 
+    <tr tabid="SalesPaymentDetails" style="display: none;">
+       
+        <td style="padding-top: 1px;">
+            <div class="SalesPaymentPanelDiv">
+         <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="SalesPaymentPanel">
+  <tr>
+      <td style="padding-top: 1px;">
+          <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+          <tr>
+              <td class="ftitle" style="width:20%">Contract No.:</td>
+              <td class="ftitle" style="width:30%">
+           <span class="ftitle" groupid="SalesContractsForm" argumentid="RecCodePanel"></span>
+
+              </td>
+              <td style="width:20%"></td>
+              <td style="width:30%"></td>
+          </tr>
+
+    <tr>
+    <td class="ftitle" >Car No.:</td>
+    <td class="ftitle" >
+      <span class="ftitle" groupid="SalesContractsForm" argumentid="CarNumberPanel"></span>
+
+    </td>
+        <td class="ftitle" >Customer Name:</td>
+        <td class="ftitle" >
+            <span class="ftitle" groupid="SalesContractsForm" argumentid="CustomerNamePanel"></span>
+        </td>
+</tr>
+
+    <tr>
+    <td class="ftitle" >Amount Due:</td>
+    <td class="ftitle" >
+           <span class="ftitle" groupid="SalesContractsForm" argumentid="AmountDuePanel"></span>
+    </td>
+        <td class="ftitle" >Amount Received:</td>
+        <td class="ftitle" >
+              <span class="ftitle" groupid="SalesContractsForm" argumentid="PaymentAmountPanel"></span>
+        </td>
+</tr>
+
+       <%--       <tr>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+              </tr>
+
+               <tr>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+ </tr>--%>
+              </table>
+          </td>
+      </tr>
+
+    </table>
+            </div>
             <AW:DataGrid ID="grdSalesContractsPaymentDetails" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"

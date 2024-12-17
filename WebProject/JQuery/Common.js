@@ -269,7 +269,8 @@ function compareDates(date1, date2) {
 
 
     // Simple function to set dropdown value by the option's value
-    var setDropdownValue = function (dropdownSelector, optionValue) {
+var setDropdownValue = function (dropdownSelector, optionValue)
+{
         // Get the dropdown element by the selector
         var dropdownElement = $(dropdownSelector);
 
@@ -288,7 +289,40 @@ function compareDates(date1, date2) {
         } else {
             console.log("Failed to select value " + optionValue);
         }
-    };
+};
+
+
+
+var calculateNetPayment = function () {
+        let totalReceipt = 0;
+        let totalReturn = 0;
+
+        $('[colid="PaymentAmount"]').each(function () {
+            let paymentType = $(this).siblings('[colid="PaymentType"]').text().trim();
+            let paymentAmountText = $(this).text().trim();
+            let paymentAmount = parseFloat(paymentAmountText.replace('-', '')); // Remove minus sign
+
+            if (!isNaN(paymentAmount)) {
+                if (paymentType === 'Receipt') {
+                    totalReceipt += paymentAmount;
+                } else if (paymentType === 'Return') {
+                    totalReturn += paymentAmount;
+                }
+            }
+        });
+
+        let netPayment = totalReceipt - totalReturn;
+        console.log('Total Receipt: ' + totalReceipt);
+        console.log('Total Return: ' + totalReturn);
+        console.log('Net Payment: ' + netPayment);
+
+        return netPayment;
+    }
+
+    // Call the function
+    
+
+
 
     // Example usage:
     

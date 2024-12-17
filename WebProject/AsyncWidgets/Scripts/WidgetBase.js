@@ -2059,15 +2059,21 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     bindEvents: function () { //form widget
         var t = this, nestChilds = $('div[conf] *', t.el);
         $('.submit', t.el).not(nestChilds).click(function () { t.submit(this); return false; });
+
         $('.search', t.el).not(nestChilds).click(function () { t.search(this); return false; });
+
         $('#Close', t.el).click(function () {
             t.parent.show();
         });
+
+
         $('.CloseForm', t.el).not(nestChilds).click(function () {
             t.fireEvent("FormClosing");
             t.hide();
             t.fireEvent("FormClosed");
         });
+
+
         $('#Next', t.el).click(function () {
             t.showRec(t.RecNo + 1);
         });

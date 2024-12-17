@@ -89,7 +89,48 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             AsyncWidgets.get('frmSalesContactsPaymentDetails').show()
         }, 3000);
 
-//        var fn = function () {
+        //        var fn = function () {
+
+        $('.closedForm', t.el).on('click', function () {
+
+            setTimeout(function () {
+                
+                var a = $('div.SalesPaymentPanelDiv')
+                if ($('table.SalesPaymentPanel', a).length > 0) {
+                    $('table.SalesPaymentPanel', a).show();
+                }
+
+            }, 2000);
+        })
+
+        
+        
+
+        $('[tabid="SalesPaymentDetails"]', t.el).on('click', function () {
+
+            setTimeout(function () {
+                
+                var a = $('div.SalesPaymentPanelDiv')
+                if ($('table.SalesPaymentPanel', a).length > 0) {
+                    $('table.SalesPaymentPanel', a).show();
+                }
+
+            }, 1000);
+        })
+
+
+
+        $('.SaveBtn', t.el).on('click', function () {
+            debugger
+            setTimeout(function () {
+
+                var a = $('div.SalesPaymentPanelDiv')
+                if ($('table.SalesPaymentPanel', a).length > 0) {
+                    AsyncWidgets.get('grdSalesContractsPaymentDetails').Requery();
+                }
+
+            }, 2000);
+        })
         function cnvrt2Upper(str) {
             return str.toLowerCase().replace(/\b[a-z]/g, cnvrt);
             function cnvrt() {
@@ -115,10 +156,12 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
         }
         
         t.on('show', function (args) {
+            
             $('.ChequeNo', t.el).hide();
             $('.BankName', t.el).hide(); 
             $('.ChequeDate', t.el).hide();
             $('nobr:contains("Cheque No*:")', t.el).hide();
+            $('.bankLabel, .ChequeLable',t.el).hide();
             $('nobr:contains("Cheque Date*:")', t.el).hide();
             $('.PaymentMetthodDetails td>.ui-datepicker-trigger').hide();
             $('div>.ui-datepicker-trigger').hide();
@@ -135,13 +178,27 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             var dt = new Date();
             if (t.FormMode == "new")
             {
+               
                 $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
+                setTimeout(function () {
+                
+                    var a = $('div.SalesPaymentPanelDiv')
+                    if ($('table.SalesPaymentPanel', a).length > 0) {
+                        $('table.SalesPaymentPanel', a).hide();
+                    }
+
+                }, 1000)
+                
             }
 
             //$('[argumentid="PaymentMode"] option:nth(1)', t.el).attr('selected', 'selected');
             //$('[argumentid="PaymentMode"]', t.el).attr('rowvaluetoset', 'Cash');
 
-            setListValue($('.PaymentMode',t.el), 'Cash')
+            setListValue($('.PaymentMode', t.el), 'Cash');
+
+          
+            
         });
 
             //On Change of Payment Mode  $('option:selected', elem)
@@ -162,7 +219,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('div.a>nobr ').show();
                 $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).addClass('required');
                 $('tr.PaymentMetthodDetails').show();
-                $('tr.PaymentModedd>td.ftitle').attr("rowspan", "2")
+                $('tr.PaymentModedd>td.ftitle').attr("rowspan", "2");
+                $('.bankLabel, .ChequeLable', t.el).show();
             }
             else {
                 $('.ChequeNo', t.el).hide();
@@ -178,7 +236,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('.PaymentMetthodDetails td>.ChequeDate', t.el).val('');
                 $('[argumentid="BankName"],[argumentid="ChequeNo"],[argumentid="ChequeDate"]', t.el).removeClass('required');
                 $('tr.PaymentMetthodDetails').hide();
-                $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan")
+                $('tr.PaymentModedd>td.ftitle').removeAttr("rowspan");
+                $('.bankLabel, .ChequeLable', t.el).hide();
             }
             });
             //End On Change of Payment Mode
@@ -214,11 +273,18 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 {
                     setListValue($('.PaymentMode', t.el), paymentMode)
                 }, 2000)
+
+
+                var a = $('div.SalesPaymentPanelDiv')
+                if ($('table.SalesPaymentPanel', a).length > 0) {
+                    $('table.SalesPaymentPanel', a).hide();
+                }
+
              
             }
 
 
-
+            
 
 
         });
@@ -232,11 +298,9 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
  */
 Sales.SalesContracts.grdSalesContractsPaymentDetails =
-    function (t)
-    {
-        t.on('beforeSearchGetForm', function (P)
-        {
-            
+    function (t) {
+        t.on('beforeSearchGetForm', function (P) {
+
             var frm = AsyncWidgets.get('frmSalesContracts');
             P.ParentRecId = frm.GetArgVal('RecId');
         });
@@ -251,14 +315,84 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
         t.on('rowsRendered', function ()
         {
 
+           
             var frm = AsyncWidgets.get('frmSalesContracts');
             var strMainStateId = frm.GetArgVal('StateId');
+            
+            //var RecCode = $('[argumentid="RecCode"]', frm.el).text();
+            var RecId = $('[argumentid="RecId"]', frm.el).val();
+            //var CarNumber = $('[argumentid="CarNumber"]', frm.el).text();
+            //var CustomerName = $('[argumentid="CustomerName"]', frm.el).text();
+            //var AmountDue = parseFloat($('[argumentid="AmountDue"]', frm.el).text());
+            //var PaymentAmount = parseFloat($('[argumentid="PaymentAmount"]', frm.el).text());
+            
+            //var a = $('div.SalesPaymentPanelDiv')
+            //$('[argumentid="RecCodePanel"]', a).text(RecCode);
+            //$('[argumentid="CarNumberPanel"]', a).text(CarNumber);
+            //$('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
+            //$('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+            //$('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
 
-         
+
+            
+
+
+            var params = {
+                Command: 'SEL_iRental_SalesContracts',
+                RecId: `${RecId}`,
+
+
+            };
+
+            // Assuming ServerCall is a function to make an API call
+            ServerCall(params, function (res) {
+
+                var res = decJSON(res)
+
+
+                if (res.status === 'OK') {
+                    debugger
+                    if (res.Response.Rows.length > 0) {
+                        var rows = res.Response.Rows;
+                        for (var i = 0; i < rows.length; i++) {
+                            var row = rows[i];
+                            var RecCode = row.RecCode;
+                            var CarNumber = row.CarNumber;
+                            var CustomerName = row.CustomerName;
+                            var AmountDue = row.AmountDue;
+                            var PaymentAmount = row.PaymentAmount;
+
+
+
+                        }
+
+                        setTimeout(function () {
+
+
+
+                            var a = $('div.SalesPaymentPanelDiv')
+                            $('[argumentid="RecCodePanel"]', a).text(RecCode);
+                            $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
+                            $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
+                            $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+                            $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
+
+
+
+                        }, 2000);
+                    }
+
+                }
+
+
+
+
+            }, 'GetData');
+            
 
             $('[colid="PaymentType"]:not(".w-grid-head-cell")').each(function ()
             {
-                ;
+                
                 var ptr = $(this).closest('tr');
                 if ($(this).text().toLowerCase() == "return") {
                     $('[colid="PaymentAmount"] div', ptr).css({ 'font-weight': 'bold', 'color': 'red' });
@@ -292,6 +426,14 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
                     $('td:nth-child(4)', ptr).css(cur);
                 }
+
+                //$('[colid="PaymentAmount"]:not(".w-grid-head-cell")').each(function () {
+
+                //    var ptr = $(this).closest('tr');
+                //    pr = $('[colid="PaymentAmount"] div', ptr).text(parseFloat($('[colid="PaymentAmount"] div', ptr).text()).fix(3));
+
+                //});
+               
             });
 
 
@@ -313,12 +455,21 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
                 $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
             }
             //End If Main State ID = RRCContractClosed or RRCContractCancelled
+
+            //let result = calculateNetPayment();
+            //var res = AmountDue - result
+            //$('[argumentid="PaymentAmountPanel"]', a).text(result.toFixed(3));
+            //$('[argumentid="AmountDuePanel"]', a).text(res.toFixed(3));
+
+           /* console.log('Calculated Net Payment: ' + result);*/
         });
 
-        t.on('onNoRecords', function () {
-            t.fireEvent('rowsRendered');
+        t.on('onNoRecords', function ()
+        {
+             t.fireEvent('rowsRendered');
         });
-        t.on('rowsRendered', function () {
+        t.on('rowsRendered', function ()
+        {
             $('.PrintReport', t.el).click(function () { //
                 var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintSalesPaymentReceiptVoucherFrPg.aspx?FormId=" + $(this).text() + "&ContractType=RNT"; // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
@@ -329,8 +480,9 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
                 window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
                 return false;
             });
-        });
-        t.on('onItemColGenerated', function (cf) {
+            });
+           t.on('onItemColGenerated', function (cf)
+        {
             if (cf.colId == 'PrintId') {
 
                 var cur = {
@@ -356,6 +508,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 Sales.SalesContracts.grdOtherCharges =
 function(t) {
 
+    
     t.on('beforeSearchGetForm', function (P) {
         var frm = AsyncWidgets.get('frmSalesContracts');
         P.ParentRecId = frm.GetArgVal('RecId');
