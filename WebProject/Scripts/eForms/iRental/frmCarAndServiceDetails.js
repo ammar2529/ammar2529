@@ -293,6 +293,8 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
         } else {
             $('.hideOnSales', t.el).show();
         }
+
+     
     });
     // End of On Loaded Values
 
