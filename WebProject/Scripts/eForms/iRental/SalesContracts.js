@@ -89,10 +89,10 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             param.ParentRecId = frm.GetArgVal('RecId');
         });
 
-        setTimeout(function ()
-        {
-            AsyncWidgets.get('frmSalesContactsPaymentDetails').show()
-        }, 3000);
+        //setTimeout(function ()
+        //{
+        //    AsyncWidgets.get('frmSalesContactsPaymentDetails').show()
+        //}, 3000);
 
         //        var fn = function () {
 
@@ -105,7 +105,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                     $('table.SalesPaymentPanel', a).show();
                 }
 
-            }, 2000);
+            }, 1000);
         })
 
         
@@ -125,17 +125,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
 
 
-        $('.SaveBtn', t.el).on('click', function () {
-            
-            setTimeout(function () {
-
-                var a = $('div.SalesPaymentPanelDiv')
-                if ($('table.SalesPaymentPanel', a).length > 0) {
-                    AsyncWidgets.get('grdSalesContractsPaymentDetails').Requery();
-                }
-
-            }, 2000);
-        })
+      
         function cnvrt2Upper(str) {
             return str.toLowerCase().replace(/\b[a-z]/g, cnvrt);
             function cnvrt() {
@@ -289,7 +279,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                     
 
 
-                }, 4000)
+                }, 1000)
 
                 
             }
@@ -326,7 +316,8 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
         t.on('rowsRendered', function ()
         {
 
-           
+            debugger
+            var frmPayment = AsyncWidgets.get('frmSalesContactsPaymentDetails').el;
             var frm = AsyncWidgets.get('frmSalesContracts');
             var strMainStateId = frm.GetArgVal('StateId');
             
@@ -345,7 +336,9 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
             //$('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
 
 
-            
+            if (frmPayment) {
+                
+            }
 
 
             var params = {
@@ -474,6 +467,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
            /* console.log('Calculated Net Payment: ' + result);*/
         });
+        
 
         t.on('onNoRecords', function ()
         {
