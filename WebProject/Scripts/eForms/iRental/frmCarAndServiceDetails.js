@@ -287,6 +287,12 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
 
 
         }
+
+        if ($(".Rental", t.el).is(":checked") || $(".Lease", t.el).is(":checked")) {
+            $('.hideOnSales', t.el).hide();
+        }else {
+            $('.hideOnSales', t.el).show();
+        }
     });
     // End of On Loaded Values
 
