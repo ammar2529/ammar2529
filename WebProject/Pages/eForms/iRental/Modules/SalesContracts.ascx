@@ -45,6 +45,7 @@
                                     <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
                                     <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
                                   </div>
+                                    <div><nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr></div>
                                <%-- </tpl>--%>
                             <%--    <tpl else>
                                   <div style="font-size:11px;">
@@ -86,8 +87,8 @@
                                    
                                 </pre>
                 <pre columnid="CreationDetails"> 
-                                     <div class="ftitle" style="color:#808000; display:none">{ChassisNo}</div>
-                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>
+                                     <div class="ftitle" style="color:#808000; display:none"></div>
+<%--                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>--%>
                                      <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
                                         <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
 <%--                                    <div class="ftitle" style="color:#808000; display:none">{ReceiptId}</div>--%>
@@ -97,6 +98,19 @@
 
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
                                    <div class="ftitle" style="color:#808000">{FinanceCompany}</div>
+
+                                 <%--   <tpl>
+                                        <div class="ftitle" style="color:#808000; ">
+                                            <tpl if="LPONumber">&nbsp;-&nbsp;</tpl>
+                                           - 
+                                            <tpl if="LPOAmount">{LPOAmount:fix(3)}</tpl>
+                                            </div> 
+                                    </tpl>--%>
+
+                    <tpl if="LPONumber">
+                        <div class="ftitle" style="color:#602010"">Lpo No.: {LPONumber}</div>
+                    </tpl>
+                                    
 
                     
                                     

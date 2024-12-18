@@ -80,7 +80,7 @@ var th = ['','thousand','million', 'billion','trillion'];
 
     </table>--%>
 
-<table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table b">
+<table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table b SalesPaymentFRPanel">
 
     <tr id="trNote">
         <td colspan="2" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory
@@ -149,6 +149,8 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td >
             <input type="text" groupid="Sales_Payments" maxlength="10"
                 style="width: 150px;" class="text required date" requirederr='*' argumentid="PaymentDate" />
+            <nobr style="margin-left:62px;" class="ftitle">Salesman: </nobr><span class="ftitle" groupid="Sales_Payments" argumentid="Salesman"></span>
+
         </td>
     </tr>
 

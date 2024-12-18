@@ -41,20 +41,14 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
 
         // Hide the dropdown for Sales, Rental, and Lease; show otherwise
 
-        //var otherDropdowns = $('.CommonCarDropdown',t.el);
-        //if (toShow === 'carPopupCutomerAndCarDetailsForSales' || toShow === 'carPopupCutomerAndCarDetailsForRental' || toShow === 'carPopupCutomerAndCarDetailsForLease')
-        //{
-        //    otherDropdowns.removeClass('required').hide();
-        //    $('.ChassisNo', t.el).show();
-        //    $('.carCutomerAndCarDetailsForOther', t.el).hide();
-        //    $('.hideTr',t.el).show()
-        //} else
-        //{
-        //    otherDropdowns.addClass('required').show();
-        //    $('.carCutomerAndCarDetailsForOther', t.el).show();
-        //    $('.ChassisNo', t.el).hide();
-        //    $('.hideTr',t.el).hide();
-        //}
+       
+        if ( toShow === 'carPopupCutomerAndCarDetailsForRental' || toShow === 'carPopupCutomerAndCarDetailsForLease')
+        {
+            $('.hideOnSales', t.el).hide();
+        } else
+        {
+            $('.hideOnSales', t.el).show();
+        }
     });
 
 
@@ -213,6 +207,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
             $('.StatusTR', t.el).hide();
             $('.btnSave2', t.el).hide();
             $('.btnSave', t.el).show();
+            $('.hideOnSales', t.el).show();
         }
 
 

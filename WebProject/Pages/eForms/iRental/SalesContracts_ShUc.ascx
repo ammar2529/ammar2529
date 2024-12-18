@@ -312,7 +312,7 @@
     </a>
 
     <!-- Clear Button -->
-    <a href="javascript:void(0);" class="reset clearCheck ClearButton">
+    <a href="javascript:void(0);" class="reset clearCheck ClearButton" resetonpopupshow="resetonpopupshow">
         <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
     </a>
 </td>

@@ -261,8 +261,95 @@
                                 <td></td>
 
                             </tr>
+
+                           
+
                         </table>
                     </td>
+                </tr>
+
+                <tr class="hideOnSales">
+                    <td colspan="4">
+                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+
+                            <tr>
+
+
+                                <td class="ftitle">
+                                    <nobr>Contract Date:</nobr>
+                                </td>
+                                <td>
+                                    <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="ContractDate"></span>
+
+                                <td class="ftitle">
+
+                                    <%--<nobr>Service Book No.:</nobr>--%>
+                                </td>
+                                <td>
+
+
+                                <%--    <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  CommonDisableClass  "
+                                        groupid="SalesContractsForm" argumentid="ServiceBookNo" />--%>
+
+                                </td>
+                            </tr>
+
+                                        <tr>
+                                            <td class="ftitle" style="width: 20%">
+                                                <nobr>Engine Warranty - KM:</nobr></td>
+                                            <td style="width: 30%">
+                                             
+                                                <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="EngineWarranty"></span>
+                                            </td>
+                                            <td class="ftitle" style="width: 20%">
+                                                <nobr>Years: </nobr>
+                                            </td>
+                                            <td style="width: 30%">
+                                               
+
+                                                <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="EnginYearsWarranty"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ftitle">
+                                                <nobr>Gear Warranty - KM:</nobr>
+                                            </td>
+                                            <td>
+                                           
+
+                                                <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="GearWarranty"></span>
+                                            </td>
+                                            <td class="ftitle">
+                                                <nobr>Years:</nobr>
+                                            </td>
+                                            <td>
+                                              
+                                                <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="GearYearsWarranty"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ftitle">
+                                                <nobr>Car Warranty - KM:</nobr>
+                                            </td>
+                                            <td>
+                                         
+
+                                                <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="CarWarranty"></span>
+                                            </td>
+                                            <td class="ftitle">
+                                                <nobr>Years:</nobr>
+                                            </td>
+                                            <td>
+                                          
+                                                <span class="ftitle CommonDisable" groupid="CarAndCustomersDetails" argumentid="CarYearsWarranty"></span>
+                                            </td>
+                                        </tr>
+
+
+
+
+                                    </table>
+                             
                 </tr>
                 <%--       <tr>
                     <td colspan="4">

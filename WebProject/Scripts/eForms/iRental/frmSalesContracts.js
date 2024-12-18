@@ -23,6 +23,20 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     //});
 
+    $('.btnCancel', t.el).on('click', function () {
+      
+        //var a = $('.search', AsyncWidgets.get('frmSalesContracts_ShUc').el).click();
+
+        var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
+
+        setTimeout(function () {
+            
+            
+            $('[resetonpopupshow="resetonpopupshow"]', a).click();
+            $('.search', a).click();
+        }, 1000)
+    });
+
     $('.Edit_Insrance', t.el).on('click', function () {
 
         $('.FullInsuranceExpiry', t.el).show().next('img').show();

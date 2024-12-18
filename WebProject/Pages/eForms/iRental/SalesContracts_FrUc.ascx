@@ -975,13 +975,13 @@
 </tr>
 
     <tr>
-    <td class="ftitle" >Amount Due:</td>
+    <td class="ftitle" style="color:red" >Amount Due:</td>
     <td class="ftitle" >
-           <span class="ftitle" groupid="SalesContractsForm" argumentid="AmountDuePanel"></span>
+           <span class="ftitle" style="color:red" groupid="SalesContractsForm" argumentid="AmountDuePanel"></span>
     </td>
-        <td class="ftitle" >Amount Received:</td>
+        <td class="ftitle" style="color:green" >Amount Received:</td>
         <td class="ftitle" >
-              <span class="ftitle" groupid="SalesContractsForm" argumentid="PaymentAmountPanel"></span>
+              <span class="ftitle" style="color:green"  groupid="SalesContractsForm" argumentid="PaymentAmountPanel"></span>
         </td>
 </tr>
 

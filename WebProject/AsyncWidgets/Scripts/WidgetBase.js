@@ -15,6 +15,8 @@ Number.prototype.fix = function (prec) {
     var f = Math.pow(10, prec);
     return (Math.floor(this * f) / f).toFixed(prec);
 };
+
+
 Number.prototype.numberWithCommas = function () {
     var x = this;
     var parts = x.toString().split(".");
@@ -1646,6 +1648,7 @@ function addAttr(obj, conf) {
 }
 var setListValue = function (ctl,val,valType,ctx) // can be DOM or jquery
 {
+    
     valType = valType || "text";    
     //////////////////////////////////////////
     if (typeof ctl == "string")
@@ -1938,6 +1941,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 return;
             }
 
+            debugger
             if ($('.reset[resetonpopupshow]').length) {
                 // Trigger the reset action
                 $('.reset[resetonpopupshow]').click();
@@ -1945,6 +1949,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 
             }
+
+          
+
             setTimeout(function () {
                 if ($('.ItemId[ShowOnFocusPopup]').length) {
                     $('.ItemId[ShowOnFocusPopup]').focus();
@@ -2307,84 +2314,88 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     
     LoadCombo: function (t, cbo, ParentKey, cf) {
-      //  ;
-        var ch = cbo.filter('select'), sInfo = ch.attr('storeinfo');
-        if (!sInfo) {
-            console.log('Store info not found for: ' + ch.attr('argumentid'));
-            return;
-        }
-        sInfo = decJSON(sInfo);
-        sInfo["ParentKey"] = ParentKey;
-        sInfo.IsParentSTR = !!sInfo.IsParentSTR || false;
-        cf = cf || {};
-        if (!!sInfo.Params) {
-            Ext.apply(sInfo, t.GetArgs(sInfo.Params, t.el));
-            delete sInfo.Params;
-        }
-        if (!!cf.params) { // cf.params is the object which can contain key:value pairs as paramsvis
-            Ext.apply(sInfo, cf.params);
-        }
-        var inv = new AsyncWidgets.RAInvoker();
-        inv.on('onSuccess', function (res) {
+        //  ;
+        
+        
+            
+            var ch = cbo.filter('select'), sInfo = ch.attr('storeinfo');
+            if (!sInfo) {
+                console.log('Store info not found for: ' + ch.attr('argumentid'));
+                return;
+            }
+            sInfo = decJSON(sInfo);
+            sInfo["ParentKey"] = ParentKey;
+            sInfo.IsParentSTR = !!sInfo.IsParentSTR || false;
+            cf = cf || {};
+            if (!!sInfo.Params) {
+                Ext.apply(sInfo, t.GetArgs(sInfo.Params, t.el));
+                delete sInfo.Params;
+            }
+            if (!!cf.params) { // cf.params is the object which can contain key:value pairs as paramsvis
+                Ext.apply(sInfo, cf.params);
+            }
+            var inv = new AsyncWidgets.RAInvoker();
+            inv.on('onSuccess', function (res) {
 
-            var res = decJSON(res), itemAttrs = "";
-            if (res.status == 'OK' && res.Response.Rows.length > 0) {
+                var res = decJSON(res), itemAttrs = "";
+                if (res.status == 'OK' && res.Response.Rows.length > 0) {
 
-                if (!!sInfo.ItemExtraAttrs) {
-                    var k = "", arr = sInfo.ItemExtraAttrs, i;
-                    for (i = 0; i < arr.length; i++) {
-                        itemAttrs += String.format(" {0}='{{1}}' ", arr[i], arr[i]);
+                    if (!!sInfo.ItemExtraAttrs) {
+                        var k = "", arr = sInfo.ItemExtraAttrs, i;
+                        for (i = 0; i < arr.length; i++) {
+                            itemAttrs += String.format(" {0}='{{1}}' ", arr[i], arr[i]);
+                        }
+                    }
+                    // rowTemplate = '<tpl for="."><option  value="{' + sInfo.ValCol + '}">{[this.getField(values,\'' + sInfo.TextCol + '\') ]}</option></tpl>';
+                    rowTemplate = String.format('<tpl for="."><option {2} value="{{0}}">{{1}}</option></tpl>', sInfo.ValCol, sInfo.TextCol, itemAttrs);
+                    var rowTpl = new Ext.XTemplate(rowTemplate,
+                        {
+                            compiled: true,
+                            disableFormats: true
+                        });
+                    rowTpl.compile();
+                    var tt = rowTpl.applyTemplate(res.Response.Rows);
+
+                    if (!isList(ch))
+                        //$('option:first', ch).after($(tt));
+                        $('option:first', ch).after(tt);
+                    else
+                        ch.html(tt);
+                    //  ch.html($(tt));
+                    //to prevent a combobox from getting enabled automatically, add attribute "no-enable-on-values-loaded" with a value set to "true"
+                    var NoEnableOnValuesLoaded = ch.attr("no-enable-on-values-loaded") || "false";
+                    // NoEnableOnValuesLoaded = NoEnableOnValuesLoaded.toLowerCase();
+                    if (NoEnableOnValuesLoaded.toLowerCase() == "false") {
+                        ch[0].disabled = false;
+                    }
+
+                    var vl = ch.attr('rowvaluetoset');
+                    if (!!vl) {
+                        ch.attr('rowvaluetoset', '');
+                        setField(ch, vl, t.el);
                     }
                 }
-                // rowTemplate = '<tpl for="."><option  value="{' + sInfo.ValCol + '}">{[this.getField(values,\'' + sInfo.TextCol + '\') ]}</option></tpl>';
-                rowTemplate = String.format('<tpl for="."><option {2} value="{{0}}">{{1}}</option></tpl>', sInfo.ValCol, sInfo.TextCol, itemAttrs);
-                var rowTpl = new Ext.XTemplate(rowTemplate,
-                    {
-                        compiled: true,
-                        disableFormats: true
-                    });
-                rowTpl.compile();
-                var tt = rowTpl.applyTemplate(res.Response.Rows);
-
-                if (!isList(ch))
-                //$('option:first', ch).after($(tt));
-                    $('option:first', ch).after(tt);
-                else
-                    ch.html(tt);
-                //  ch.html($(tt));
-                //to prevent a combobox from getting enabled automatically, add attribute "no-enable-on-values-loaded" with a value set to "true"
-                var NoEnableOnValuesLoaded = ch.attr("no-enable-on-values-loaded") || "false";
-               // NoEnableOnValuesLoaded = NoEnableOnValuesLoaded.toLowerCase();
-                if (NoEnableOnValuesLoaded.toLowerCase() =="false") {
-                    ch[0].disabled = false;
-                }
-
-                var vl = ch.attr('rowvaluetoset');
-                if (!!vl) {
-                    ch.attr('rowvaluetoset', '');
-                    setField(ch, vl, t.el);
-                }
-            }
-            ch.removeAttr("ccloading");
-            ch.attr("loaded", "true");
-            t.fireEvent('onComboFilled', { combo: ch, Response: res, valueToSet: vl });
-            t.$el.unmask();
-        });
-        inv.on('onFailure', function (res) {
-            t.$el.unmask();
-            ch.removeAttr("ccloading", "");
-        });
-        ch[0].disabled = true;
-        if (!isList(ch))
-            $('option:not(:first)', ch).remove();
-        else
-            $('option', ch).remove();
-        var args = { combo: ch, params: sInfo };
-        t.fireEvent('beforeComboFill', args);
-        var ServiceInfo = getForm(null, null, sInfo);
-        ch.attr("ccloading", "Loading");
-        t.$el.mask('Please wait while loading ... ');
-        inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "ChildComboRows", "ServiceInfo", ServiceInfo] });
+                ch.removeAttr("ccloading");
+                ch.attr("loaded", "true");
+                t.fireEvent('onComboFilled', { combo: ch, Response: res, valueToSet: vl });
+                t.$el.unmask();
+            });
+            inv.on('onFailure', function (res) {
+                t.$el.unmask();
+                ch.removeAttr("ccloading", "");
+            });
+            ch[0].disabled = true;
+            if (!isList(ch))
+                $('option:not(:first)', ch).remove();
+            else
+                $('option', ch).remove();
+            var args = { combo: ch, params: sInfo };
+            t.fireEvent('beforeComboFill', args);
+            var ServiceInfo = getForm(null, null, sInfo);
+            ch.attr("ccloading", "Loading");
+            t.$el.mask('Please wait while loading ... ');
+            inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "ChildComboRows", "ServiceInfo", ServiceInfo] });
+       
     },
 
     onCBOChanged: function (t, cbo) {
