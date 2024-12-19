@@ -1480,6 +1480,7 @@ function val(elem, ctx) {//framework function to read a field value from a conte
             return $(elem).val();
           }
         else if (elem.type.toLowerCase() == 'radio') {
+            
          //   var rdo = elem.name.toLowerCase(), grpid = elem.getAttribute('groupid');
             var rdo = elem.name, grpid = elem.getAttribute('groupid');
             //  var arr = $("[name='" + elem.name + "']", ctx).map(function () { if ($(this).attr('checked')) return this.value; });
@@ -1941,91 +1942,73 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 return;
             }
 
-            debugger
-            if ($('.reset[resetonpopupshow]').length) {
-                // Trigger the reset action
-                $('.reset[resetonpopupshow]').click();
-                $('.search', AsyncWidgets.get('frmInvoiceItemCode').el).click();
+           
+            //if ($('.reset[resetonpopupshow]', searchForm.el).length) {
+            //    // Trigger the reset action
+            //    $('.reset[resetonpopupshow]', searchForm.el).click();
+            //    $('.search', searchForm.el).click();
 
                 
+            //}
+            if (!popup[0].init) {
+                resGrd.on('rowClicked', function HandleRowClick(args) {
+                    if ($("tr", args.row).attr('disabled') == "disabled") {
+                        return;
+                    }
+                    args.canceled = false;
+                    t.setParams({ params: args.rowData, isRow: true });
+                    popup.hide();
+                    args.popupId = popId;
+                    t.fireEvent('LOVPopupClosed', args);
+                    $(t.el).unmask();
+                    //resGrd.removeListener('rowClicked', HandleRowClick);
+                });
+
+                //  popup.css({ position: 'absolute', top: top, left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
+
+
+                $(searchForm.el).on('keydown', function (event) {
+                    if (event.key === "Enter") {
+                        $('.Default', searchForm.el).click();
+                        event.preventDefault();
+                    }
+                    
+                });
+                resGrd.on("rowsRendered", function () {
+                    if (resGrd.rows.length == 1) {
+                      //  $('table[itemno]', resGrd.el).click(); // Auto-click the single row
+                        // if (!window.__debug) {
+                        t.setParams({
+                            params: resGrd.rows[0],
+                            isRow: true
+                        });
+
+                      //  $('.CloseLOVPopup', popup).click();
+                       // t.fireEvent('LOVPopupClosed');
+                        // }
+                        $('.CloseLOVPopup', popup).click();
+                        t.fireEvent('LOVPopupClosed', { grd: resGrd, rowData: resGrd.rows[0], popupId: popId, row: $('table[itemno]',  resGrd.el)[0] });
+                    }
+                });
+                
+                $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
+                    // $('body').css('overflow', 'clip');
+                    popup.hide();
+                    $(t.el).unmask();
+                    // $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
+
+                    t.fireEvent('LOVPopupClosed', { popupId: popId });
+                });
+                popup[0].init = true;
             }
-
-          
-
-            setTimeout(function () {
-                if ($('.ItemId[ShowOnFocusPopup]').length) {
-                    $('.ItemId[ShowOnFocusPopup]').focus();
-                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).unbind('click.SaveBtn')
-                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).removeClass('SaveBtn');
-
-                    $(document).on('keydown', function (event) {
-                        // Check if the Enter key (key code 13) is pressed
-                        if (event.key === "Enter") {
-                            // Simulate a click on the link
-                            $('.search[FocusOnSerach]').click();
-                            setTimeout(function () {
-                                
-                                if (resGrd && resGrd.rows.length === 1) {
-                                    $('table[itemno]').click(); // Auto-click the single row
-                                    t.setParams({
-                                        params: resGrd.rows[0],
-                                        isRow: true
-                                    });
-                                    popup.hide();
-                                    $(t.el).unmask();
-                                    resGrd.removeListener('table[itemno]');
-                                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).bind('click.SaveBtn')
-                                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).addClass('SaveBtn');
-                                    $('.reset[resetonpopupshow]').click();
-                                }
-                            }, 1300)
-                           
-                            event.preventDefault();
-
-                        }
-                    });
-                }
-            }, 1000);
-
-            setTimeout(function () {
-                if ($('.CarNumber[ShowOnFocusPopup]').length) {
-                    $('.CarNumber[ShowOnFocusPopup]').focus();
-                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).unbind('click.SaveBtn')
-                    $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).removeClass('SaveBtn');
-
-                    $(document).on('keydown', function (event) {
-                        // Check if the Enter key (key code 13) is pressed
-                        if (event.key === "Enter") {
-                            // Simulate a click on the link
-                            $('.search[FocusOnSerach]').click();
-
-                            event.preventDefault();
-                        }
-                    });
-                }
-            }, 1000);
-            
-            
-            resGrd.on('rowClicked', function HandleRowClick(args) {
-                if ($("tr", args.row).attr('disabled') == "disabled") {
-                    return;
-                }
-                args.canceled = false;
-                t.setParams({ params: args.rowData, isRow: true });
-                popup.hide();
-                t.fireEvent('LOVPopupClosed', args);
-                $(t.el).unmask();
-                resGrd.removeListener('rowClicked', HandleRowClick);
-                $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).bind('click.SaveBtn')
-                $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).addClass('SaveBtn');
-            });
             $(t.el).mask("");
             $('.loadmask-msg', t.el).hide();
-          //  popup.css({ position: 'absolute', top: top, left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
             searchForm.show();
-
             resGrd.show();
+            $('.OnPopupShowFocus', searchForm.el).focus();
+            $('.reset[resetonpopupshow]', searchForm.el).click();
             searchForm.search();
+               
 
 
 
@@ -2048,18 +2031,11 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             $('.loadmask-msg', t.el).hide();
            
             t.fireEvent('LOVPopupShown', popup);
+            popup[0].init = true;
+        }
+        if (!popup[0].init) {
 
         }
-
-        $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
-           // $('body').css('overflow', 'clip');
-            popup.hide();
-            $(t.el).unmask();
-            $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
-            t.fireEvent('LOVPopupClosed');
-            $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).bind('click.SaveBtn')
-            $('[SaveButton="SaveButton"]', AsyncWidgets.get('frmSparePartInventoryInvoice').el).addClass('SaveBtn');
-        });
 
     },//end of show popup function of form widget
 

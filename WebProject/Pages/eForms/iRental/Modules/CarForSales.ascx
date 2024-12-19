@@ -111,30 +111,30 @@
          <Scripts>
                     <script>
                         var fn = function () {
-                            t.on('show', function (args) {
-                                $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                                $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).removeAttr('disabled');
-                            });
+                            //t.on('show', function (args) {
+                            //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
+                            //    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).removeAttr('disabled');
+                            //});
 
-                            t.on('onLoadedValues', function (args) {
-                                $('[argumentid="action"]', t.el).val("update");
-                                if ($('[argumentid="ContractNo"]', t.el).text() != '') {
-                                    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
-                                }
+                            //t.on('onLoadedValues', function (args) {
+                            //    $('[argumentid="action"]', t.el).val("update");
+                            //    if ($('[argumentid="ContractNo"]', t.el).text() != '') {
+                            //        $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
+                            //    }
                                 
-                                //var res = args.res;
+                            //    //var res = args.res;
 
-                                //if (res.status == 'OK')
-                                //{
+                            //    //if (res.status == 'OK')
+                            //    //{
 
 
-                                //}
-                            });
+                            //    //}
+                            //});
 
-                            t.on('onComboFilled', function () {
-                                $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                                $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
-                            });
+                            //t.on('onComboFilled', function () {
+                            //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
+                            //    $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
+                            //});
 
                           
                         }

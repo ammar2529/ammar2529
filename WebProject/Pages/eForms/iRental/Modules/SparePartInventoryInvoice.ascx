@@ -805,12 +805,20 @@
              }
 
 
-             $('table[itemno]', t.el).click(function (event)
+             //$('table[itemno]', t.el).click(function (event)
+             //{
+
+
+             //    calcData(this);
+
+
+
+
+             //});
+             function calcData(row)
              {
-
-
-                 var SparePartUnitPrice = parseFloat($('[colid="SparePartUnitPrice"] .ColValue', this).text()) || 0;
-                 var SparePartQuantity = parseFloat($('[colid="SparePartQuantity"] .ColValue', this).text()) || 0;
+                 var SparePartUnitPrice = parseFloat($('[colid="SparePartUnitPrice"] .ColValue', row).text()) || 0;
+                 var SparePartQuantity = parseFloat($('[colid="SparePartQuantity"] .ColValue', row).text()) || 0;
                  var SelectQuantity = 1;
                  if (SparePartQuantity === 0) {
                      var c = $('[argumentid="SelectQuantity"]', f.el).val(0)
@@ -826,11 +834,7 @@
                      $('[argumentid="SelectQuantity"]', f.el).focus().select();
 
                  }
-
-
-
-
-             });
+             }
          });
 
   

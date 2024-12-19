@@ -7,10 +7,44 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
 
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
-    $(document).on("keydown", function (event) {
+    t.on('LOVPopupClosed', function (args) {
+        debugger;
+        if (args.popupId == "ItemCodePopup") {
+            calcData(args.row);
+            
+            //var SparePartUnitPrice = parseFloat(val("SparePartUnitPrice", t.el)) || 0;
+           // var SparePartQuantity = parseFloat(val("SparePartQuantity", t.el)) || 0;
+
+        }
+    });
+
+    function calcData(row) {
+        var f = t;
+        var SparePartUnitPrice = parseFloat($('[colid="SparePartUnitPrice"] .ColValue', row).text()) || 0;
+        var SparePartQuantity = parseFloat($('[colid="SparePartQuantity"] .ColValue', row).text()) || 0;
+        var SelectQuantity = 1;
+        if (SparePartQuantity === 0) {
+            var c = $('[argumentid="SelectQuantity"]', f.el).val(0)
+            var b = $('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+            var a = $('[argumentid="TotalPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+            $('[argumentid="SelectQuantity"]', f.el).focus().select();
+
+        } else {
+            var Result = SelectQuantity * SparePartUnitPrice;
+            var a = $('[argumentid="TotalPrice"]', f.el).val(Result.toFixed(3));
+            var b = $('[argumentid="SparePartUnitPrice"]', f.el).val(SparePartUnitPrice.toFixed(3));
+            var c = $('[argumentid="SelectQuantity"]', f.el).val(SelectQuantity)
+            $('[argumentid="SelectQuantity"]', f.el).focus().select();
+
+        }
+    }
+
+
+    $(".myTableInvoice",t.el).on("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
-            $(".SaveBtn").click(); // Trigger the Save button click
+
+            $(".trNoDynamic .SaveBtn", this).click(); // Trigger the Save button click
          
         }
     });
@@ -1130,7 +1164,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         let selectQuantityValue = null;
         let sparePartUnitPriceValue = null;
 
-        $('.trNoDynamic').find('[argumentid]').each(function () {
+        $('.trNoDynamic [argumentid]').each(function () {
             const $element = $(this);
             const argumentid = $element.attr('argumentid');
             const value = $element.val().trim();
@@ -1139,7 +1173,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             if (['ItemId', 'SelectQuantity', 'SparePartUnitPrice'].includes(argumentid)) {
                 if (value === '') {
                     isValid = false;
-                    $.showMessage(`Argument ID: ${argumentid} is empty`);
+                    $.showMessage(`Field ${argumentid.splitCamel()} is empty`);
                     $element.css('border', '1px solid red');
                     return false; // Breaks out of the .each loop
                 } else {

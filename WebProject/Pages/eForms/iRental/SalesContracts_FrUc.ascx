@@ -139,8 +139,8 @@
 
                                 </td>
                                 <td class="ftitle" >
+                                 <input type="radio" class="CommonDisableClass ElemDisabled  Arrive  " checked="checked" default="default" value="CarArrived" name="CarReservationMode" groupid="SalesContractsForm" argumentid="CarReservationMode" /><label>Car Arrived</label>
 
-                                    <input type="radio" class="CommonDisableClass ElemDisabled  Arrive  " checked="checked" default="default" value="CarArrived" name="CarReservationMode" groupid="SalesContractsForm" argumentid="CarReservationMode" /><label>Car Arrived</label>
                                     <input type="radio" class="CommonDisableClass ElemDisabled NotArrive  " value="CarNotArrive" name="CarReservationMode" groupid="SalesContractsForm" argumentid="CarReservationMode" /><label>Car Not Arrive</label></td>
                                 <td class="ftitle LPONumberTitle">
                                     <nobr>LPO Amount:</nobr></td>
