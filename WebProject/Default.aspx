@@ -87,7 +87,7 @@
 
             <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
             <Scripts>
-                <script></script>
+                <script type="text/javascript"></script>
             </Scripts>
             
             </AW:Form>
@@ -158,6 +158,20 @@
             $('[showwidget = "conInvoice"]').on('click', function () {
                 
                 AsyncWidgets.get('grdSparePartCustomerAndInvoiceDetails').Requery();
+
+            });
+        }
+
+        if ($('[showwidget="conSalesContracts"]').length > 0) {
+            /*$('[showwidget="conInvoice"]').trigger('click');*/
+
+            $('[showwidget="conSalesContracts"]').on('click', function () {
+                debugger
+                var c = $('[showwidget="conSalesContracts"]'); 
+                var a =   AsyncWidgets.get('frmSalesContracts_ShUc')
+             
+                $('.reset', a.el).click();
+                $('.search ', a.el).click();
 
             });
         }
