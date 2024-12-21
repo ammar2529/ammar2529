@@ -22,20 +22,30 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
     //});
+    
 
-    $('.btnCancel', t.el).on('click', function () {
-      
-        //var a = $('.search', AsyncWidgets.get('frmSalesContracts_ShUc').el).click();
+   
+        //$('.btnCancel', t.el).on('click', function () {
+        //    // Get references to the elements
+        //    var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
+        //    var b = AsyncWidgets.get('grdSalesContracts').el;
+        //    debugger
+        //    // Get the current page number value
+        //    var pageNoValue = $('.w-grid-pg-text').find('.PageNoToGo').val();
+        //  var p =   $('.PageNoToGo', b).val(pageNoValue);
+        //    //setTimeout(function () {
+        //    //    // Reset the form
+        //    //   /* $('[resetonpopupshow="resetonpopupshow"]', a).click();*/
 
-        var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
+        //    //    // Set the page number in the form to search that page
+               
 
-        setTimeout(function () {
-            
-            
-            $('[resetonpopupshow="resetonpopupshow"]', a).click();
-            $('.search', a).click();
-        }, 1000)
-    });
+        //    //    // Trigger the search
+        //    //    /*$('.search', a).click();*/
+        //    //}, 1000);
+        //});
+    
+
 
     $('.Edit_Insrance', t.el).on('click', function () {
 
@@ -145,17 +155,23 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //});
 
     //only test purpose
-    $('[argumentid="ChassisNo"]').focus(function () {
+    //$('[argumentid="ChassisNo"]').focus(function () {
       
-        
-     
-        //$('[argumentid="AdditionalAmount"]').val('0.000');
-        //$('[argumentid="Discount"]').val('0.000');
+    //    debugger
+    //    var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
+    //    var b = AsyncWidgets.get('grdSalesContracts').el;
+
+    //    $('.reset', a).click();
+    //    $('.search', a).click();
+
+
+    //    //$('[argumentid="AdditionalAmount"]').val('0.000');
+    //    //$('[argumentid="Discount"]').val('0.000');
   
-        /*$('[argumentid="CarNumber"]').text("");*/
+    //    /*$('[argumentid="CarNumber"]').text("");*/
 
       
-    });
+    //});
 
    
 

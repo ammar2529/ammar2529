@@ -1903,7 +1903,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             autoShowControls = $(ctrl).attr('auto-show-popup-controls');
             searchFormId = $(ctrl).attr('lovsearchformid');
             resGrdId = $(ctrl).attr('lovresultgridid');
-            top = cf.top|| $(ctrl).offset().top;
+            top = cf.top || $(ctrl).offset().top;
+
 
         }
         else { // if control is not give
@@ -1975,6 +1976,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     
                 });
                 resGrd.on("rowsRendered", function () {
+                    
                     if (resGrd.rows.length == 1) {
                       //  $('table[itemno]', resGrd.el).click(); // Auto-click the single row
                         // if (!window.__debug) {
@@ -3495,7 +3497,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     }
                     showHide(t.State.PageNo, r.Pages, pager);
-
+                    
                     if (!pager.attr('events')) {
 
                         $('.Last', pager).click(function () {
@@ -3538,6 +3540,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                         .focus(function () { $(this).addClass('w-ui-textbox-focus'); })
                         .blur(function () { $(this).removeClass('w-ui-textbox-focus'); });
                         $('.GoToPage', t.el).click(function () {
+                            
                             gotoPage(parseInt($.trim($('.PageNoToGo', $(this).parent()).val())));
                             return false;
                         });
