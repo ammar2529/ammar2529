@@ -166,12 +166,12 @@
             /*$('[showwidget="conInvoice"]').trigger('click');*/
 
             $('[showwidget="conSalesContracts"]').on('click', function () {
-                debugger
+                
                 var c = $('[showwidget="conSalesContracts"]'); 
                 var a =   AsyncWidgets.get('frmSalesContracts_ShUc')
              
                 $('.reset', a.el).click();
-                $('.search ', a.el).click();
+                $('.search', a.el).click();
 
             });
         }
