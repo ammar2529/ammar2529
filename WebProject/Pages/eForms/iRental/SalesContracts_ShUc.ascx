@@ -98,10 +98,10 @@
       
     <tr <%--style="height:35px"--%>>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="RecCode" groupid="schSalesContractDetails" style="width:155Px;"/>
+            <input type="text" class="text CommonEmpty" argumentid="RecCode" groupid="schSalesContractDetails" style="width:155Px;"/>
         </td>
         <td style="text-align: left;">
-            <input type="text" style="text-align: center; width: 155px;" maxlength="29" class="text  "
+            <input type="text" style="text-align: center; width: 155px;" maxlength="29" class="text  CommonEmpty"
                             groupid="schSalesContractDetails" argumentid="LPONumber" /></td>
         <td style="text-align: left;">
             <select class="dropdownlist" style="width: 160px;" loadon="FirstVisible"  groupid="schSalesContractDetails" argumentid="FinanceCompany" 
@@ -183,11 +183,11 @@
           <%-- <input type="radio" class="  Arrive  "  value="CarArrived" name="CarReservationMode"  groupid="schSalesContractDetails" argumentid="CarReservationMode" /><label>Arrived</label>
                         <input type="radio" class=" NotArrive NoArrive " value="CarNotArrive" name="CarReservationMode" groupid="schSalesContractDetails" argumentid="CarReservationMode" /><label>Not Arrive </label>--%>
                         <%-- CommonDisableClass ElemDisabled default="default" --%>
-                        <input type="text" class="text" argumentid="CarNumber" groupid="schSalesContractDetails" style="width:155Px;"/>
+                        <input type="text" class="text CommonEmpty" argumentid="CarNumber" groupid="schSalesContractDetails" style="width:155Px;"/>
         </td>
         <td style="text-align: left;">
            
-            <input type="text"  class="text" argumentid="ChassisNo" groupid="schSalesContractDetails" style="width:155Px;"/></td>
+            <input type="text"  class="text CommonEmpty" argumentid="ChassisNo" groupid="schSalesContractDetails" style="width:155Px;"/></td>
 
         <td style="text-align: left;">
            
@@ -251,15 +251,15 @@
     </tr>
     <tr <%--style="height:35px"--%>>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="CustomerName" groupid="schSalesContractDetails" style="width:155Px;"/></td>
+            <input type="text" class="text CommonEmpty" argumentid="CustomerName" groupid="schSalesContractDetails" style="width:155Px;"/></td>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="NationalIDNo" groupid="schSalesContractDetails" style="width:155Px;"/></td>
+            <input type="text" class="text CommonEmpty" argumentid="NationalIDNo" groupid="schSalesContractDetails" style="width:155Px;"/></td>
         <td style="text-align: left;">
-            <input type="text" class="text" argumentid="MobileTelephone1" groupid="schSalesContractDetails" style="width:155Px;"/>
+            <input type="text" class="text CommonEmpty" argumentid="MobileTelephone1" groupid="schSalesContractDetails" style="width:155Px;"/>
         </td>
         <td style="text-align: left;">
 
-            <input type="text" style="text-align: center; width: 155px;" maxlength="12" class="text "
+            <input type="text" style="text-align: center; width: 155px;" maxlength="12" class="text CommonEmpty"
                             groupid="schSalesContractDetails" argumentid="CarOwnerNationalIdNumber" /></td>
   
         
@@ -274,7 +274,7 @@
            <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
        </a>--%>
 
-         <input type="text" style="text-align: left; width: 155px;" maxlength="12" class="text "
+         <input type="text" style="text-align: left; width: 155px;" maxlength="12" class="text CommonEmpty"
                          groupid="schSalesContractDetails" argumentid="ReceiptId" /></td>
             
     </tr>

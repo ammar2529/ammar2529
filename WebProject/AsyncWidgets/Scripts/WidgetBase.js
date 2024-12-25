@@ -2889,7 +2889,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var t = this;
         t.base.refresh.call(t);
     },
-    Requery: function (cf) {
+    Requery: function (cf) {//form widget
         this.loadValues(cf);
     },
     loadValues: function (cf, success)
@@ -3205,7 +3205,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 gf.forms[cf.FormId].show();
         }
     },
-    Requery: function () {
+    Requery: function () { //grid widget
         this.setPage(this.State.PageNo);
     },
     RequeryGrid: function () {

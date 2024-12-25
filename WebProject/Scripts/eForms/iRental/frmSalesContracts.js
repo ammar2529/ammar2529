@@ -29,20 +29,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //    // Get references to the elements
         //    var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
         //    var b = AsyncWidgets.get('grdSalesContracts').el;
-        //    debugger
-        //    // Get the current page number value
-        //    var pageNoValue = $('.w-grid-pg-text').find('.PageNoToGo').val();
-        //  var p =   $('.PageNoToGo', b).val(pageNoValue);
-        //    //setTimeout(function () {
-        //    //    // Reset the form
-        //    //   /* $('[resetonpopupshow="resetonpopupshow"]', a).click();*/
 
-        //    //    // Set the page number in the form to search that page
-               
+        //    $('.CommonEmpty', a).val('');
 
-        //    //    // Trigger the search
-        //    //    /*$('.search', a).click();*/
-        //    //}, 1000);
+      
         //});
     
 
