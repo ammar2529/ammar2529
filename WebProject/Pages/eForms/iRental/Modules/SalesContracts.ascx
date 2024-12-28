@@ -108,7 +108,7 @@
                                     </tpl>--%>
 
                     <tpl if="LPONumber">
-                        <div class="ftitle" style="color:#602010"">Lpo No.: {LPONumber}</div>
+                        <div class="ftitle" style="color:#602010"">LPO No.: {LPONumber}</div>
                     </tpl>
                                     
 
