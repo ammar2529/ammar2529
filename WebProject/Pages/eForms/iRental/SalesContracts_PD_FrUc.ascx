@@ -149,7 +149,7 @@ var th = ['','thousand','million', 'billion','trillion'];
         <td >
             <input type="text" groupid="Sales_Payments" maxlength="10"
                 style="width: 150px;" class="text required date" requirederr='*' argumentid="PaymentDate" />
-            <nobr style="margin-left:62px;" class="ftitle">Salesman: </nobr><span class="ftitle" groupid="Sales_Payments" argumentid="Salesman"></span>
+            <nobr style="margin-left:56px;" class="ftitle">Salesman: </nobr><span style="margin-left:9px" class="ftitle" groupid="Sales_Payments" argumentid="Salesman"></span>
 
         </td>
     </tr>
