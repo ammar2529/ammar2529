@@ -1400,6 +1400,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoice.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
@@ -2976,6 +2977,13 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx.designer.cs">
       <DependentUpon>Invoice_ItemCode_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx.cs">
+      <DependentUpon>SalesContracts_AdditionalAmount_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx.designer.cs">
+      <DependentUpon>SalesContracts_AdditionalAmount_FrUc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx.cs">
       <DependentUpon>SalesContracts_FrUc.ascx</DependentUpon>

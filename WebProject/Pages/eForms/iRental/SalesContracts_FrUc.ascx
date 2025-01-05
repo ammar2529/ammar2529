@@ -53,8 +53,20 @@
                 <li class="active" tabid="SalesContractDetails">
                     <div>Contract Details </div>
                 </li>
+                
+                 <li tabid="AdditionalAmount" style="border-right: 1px solid #8298B0;">
+                    <div>
+                        Additional Amount
+                    </div>
+                </li>
+
                 <li tabid="SalesPaymentDetails" style="border-right: 1px solid #8298B0;">
                     <div>Payment Details </div>
+                </li>
+
+                    <li tabid="SalesContractComments" style="border-right: 1px solid #8298B0;">
+                    <div>
+                        Comments</div>
                 </li>
 
             </ul>
@@ -627,8 +639,8 @@
                                     <nobr>Additional Amount:</nobr>
                                 </td>
                                 <td>
-                                    <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number CommonDisableClass  "
-                                        groupid="SalesContractsForm" argumentid="AdditionalAmount" />
+                                    <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number   AlwaysDisable "
+                                        groupid="SalesContractsForm" argumentid="AdditionalAmount"  disabled="disabled" />
 
                                 </td>
                                 <td colspan="2" class="ftitle">
@@ -1117,6 +1129,618 @@
  </Scripts>
  </AW:Form>
 
+        </td>
+    </tr>
+
+ <%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
+
+<%--    <tr class="AdditionalAmountTR">
+        <td class="AdditionalAmountTD">
+
+        </td>
+    </tr>--%>
+
+    <tr tabid="AdditionalAmount" style="display: none;">
+        <td style="padding-top: 1px;">
+
+           <div class="SalesAdditionalAmountPanelDiv">
+         <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="SalesAdditonalAmountPanel">
+  <tr>
+      <td style="padding-top: 1px;">
+          <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+          <tr>
+              <td class="ftitle" style="width:20%">Contract No.:</td>
+              <td class="ftitle" style="width:30%">
+           <span class="ftitle" groupid="SalesContractsForm" argumentid="RecCodePanel"></span>
+
+              </td>
+              <td style="width:20%"></td>
+              <td style="width:30%"></td>
+          </tr>
+
+    <tr>
+    <td class="ftitle" >Car No.:</td>
+    <td class="ftitle" >
+      <span class="ftitle" groupid="SalesContractsForm" argumentid="CarNumberPanel"></span>
+
+    </td>
+        <td class="ftitle" >Customer Name:</td>
+        <td class="ftitle" >
+            <span class="ftitle" groupid="SalesContractsForm" argumentid="CustomerNamePanel"></span>
+        </td>
+</tr>
+
+    <tr>
+    <td class="ftitle" style="color:red" >Amount Due:</td>
+    <td class="ftitle" >
+           <span class="ftitle" style="color:red" groupid="SalesContractsForm" argumentid="AmountDuePanel"></span>
+    </td>
+        <td class="ftitle" style="color:green" >Amount Received:</td>
+        <td class="ftitle" >
+              <span class="ftitle" style="color:green"  groupid="SalesContractsForm" argumentid="PaymentAmountPanel"></span>
+        </td>
+</tr>
+
+       <%--       <tr>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+              </tr>
+
+               <tr>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+ </tr>--%>
+              </table>
+          </td>
+      </tr>
+
+    </table>
+            </div>
+
+            <AW:DataGrid ID="grdAdditionalAmount" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
+                EmptyHeight="201px" AllowNew="true" SelectableRow="true"
+                PageSize="10" DataSource="SEL_iRental_SalesContracts_AdditionalAmount" ContainerMargin="2px" GridTemplate="jQueryUI"
+                GridHeadText="Additional Amount" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_AdditionalAmount\',KeysCol:\'RecId\'}}}">
+
+                <GridConfig>
+                    <script>
+                        cf = {
+                            cols: {
+                                Sequence: { width: '0px' },
+                                RecId: { width: '70px', caption: 'ID' },
+                                ParentRecId: { width: '0px' },
+                                Description: { caption: 'Description',width: '380px' },
+                                AdditionalAmount: { caption: 'Amount', width: '80px' },
+                                DateCreated: { caption: 'Date Created', width: '130px' },
+                                CreatedBy: { caption: 'Created By', width: '100px' },
+                                StateId: { width: '0px' }
+                            },
+                            forms: {
+                                NewFormId: 'frmAdditionalAmount',
+                                EditFormId: 'frmAdditionalAmount',
+                                Keys: 'RecId'
+                            }
+                        };
+                    </script>
+                </GridConfig>
+                <Scripts>
+                    <script>
+                        var fn = function ()
+                        {
+                            t.on('beforeSearchGetForm', function (P) {
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+                                P.ParentRecId = frm.GetArgVal('RecId');
+                            });
+                            t.on('beforeRowDelete', function (P) {
+                                var fRow = $('td.Item table .chkRowSelect:first', t.Repeater).closest('tr'), pVal;
+                                pVal = $('[colid="ParentRecId"] .ColValue', fRow).text();
+                                P.cf['ParentRecId'] = pVal;
+                            });
+                            t.on('rowsRendered', function ()
+                            {
+
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+                                var strMainStateId = frm.GetArgVal('StateId');
+
+                                $('[colid="AdditionalAmount"]:not(".w-grid-head-cell")').each(function () {
+                                    var ptr = $(this).closest('tr');
+                                    $('[colid="AdditionalAmount"] div', ptr).text(parseFloat($('[colid="AdditionalAmount"] div', ptr).text()).fix(3));
+                                });
+
+                                $('[colid="StateId"]:not(".w-grid-head-cell")').each(function () {
+                                    var ptr = $(this).closest('tr');
+                                    if ($(this).text().toLowerCase() == "deleted") {
+                                        ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                        $('[colid="Charges"] div', ptr).css({ 'text-decoration': 'line-through' });
+                                        $('.chkRowSelect', ptr).attr('disabled', 'disabled');
+                                        $('td:nth-child(3)', ptr).css('cursor', '').unbind();
+
+                                        var cur = {
+                                            'background-image': 'url(' + ROOT_PATH + 'AsyncWidgets/Widgets/resources/images/RowEditForm_Disabled.png)',
+                                            'background-repeat': 'no-repeat',
+                                            'background-position': 'center center'
+                                        };
+                                        $('td:nth-child(3)', ptr).css(cur);
+                                    }
+                                });
+
+                                //If Main State ID = RRCContractClosed or RRCContractCancelled
+                                if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
+                                    $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
+                                    $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
+                                    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
+                                }
+                                else {
+                                    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
+                                }
+                                //End If Main State ID = RRCContractClosed or RRCContractCancelled
+                                debugger
+
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+                            
+
+                                //var RecCode = $('[argumentid="RecCode"]', frm.el).text();
+                                var RecId = $('[argumentid="RecId"]', frm.el).val();
+
+                                var params = {
+                                    Command: 'SEL_iRental_SalesContracts',
+                                    RecId: `${RecId}`,
+
+
+                                };
+
+                                // Assuming ServerCall is a function to make an API call
+                                ServerCall(params, function (res) {
+
+                                    var res = decJSON(res)
+
+
+                                    if (res.status === 'OK') {
+
+                                        if (res.Response.Rows.length > 0) {
+                                            var rows = res.Response.Rows;
+                                            for (var i = 0; i < rows.length; i++) {
+                                                var row = rows[i];
+                                                var RecCode = row.RecCode;
+                                                var CarNumber = row.CarNumber;
+                                                var CustomerName = row.CustomerName;
+                                                var AmountDue = row.AmountDue;
+                                                var PaymentAmount = row.PaymentAmount;
+
+
+
+                                            }
+
+                                            setTimeout(function () {
+
+
+
+                                                var a = $('div.SalesAdditionalAmountPanelDiv')
+                                                $('[argumentid="RecCodePanel"]', a).text(RecCode);
+                                                $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
+                                                $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
+                                                $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+                                                $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
+
+
+
+                                            }, 2000);
+                                        }
+
+                                    }
+
+
+
+
+                                }, 'GetData');
+
+
+
+                                var a = $('div.SalesAdditionalAmountPanelDiv')
+
+
+                                if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                    $('table.SalesAdditonalAmountPanel', a).show();
+                                }
+
+
+                            });//end of rows renderd
+
+                            t.on('onNoRecords', function () {
+                                t.fireEvent('rowsRendered');
+                            });
+
+
+
+
+                            $('.ADCloseForm', t.el).on('click', function () {
+
+                                setTimeout(function () {
+
+                                    var a = $('div.SalesAdditionalAmountPanelDiv')
+                                    if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                        $('table.SalesAdditonalAmountPanel', a).show();
+                                    }
+
+                                }, 1000);
+                            });
+
+
+
+
+                            $('[tabid="AdditionalAmount"]', t.el).on('click', function () {
+                                
+                                setTimeout(function () {
+
+                                    var a = $('div.SalesAdditionalAmountPanelDiv')
+                                    if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                        $('table.SalesAdditonalAmountPanel', a).show();
+                                    }
+
+                                }, 1000);
+                            });
+
+                        }
+                    </script>
+                </Scripts>
+                <RowDetail>
+                    <pre class="" colindex="3">
+                    <AW:container id="conAdditionalAmount_Audit" hidden="true" runat="server">
+                    <childern>
+                    <div style="padding:15px">
+                         <AW:DataGrid ID="grdAdditionalAmount_Audit" LoadOnInit="true" ShowOnLoad="false" runat="server"
+                Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="false" RelativeKeys="RecId"
+                PageSize="30" DataSource="SEL_iRental_SalesContracts_AdditionalAmount_Audit" ContainerMargin="2px"  ShowGridHead="false"
+                GridTemplate="jQueryUI" GridHeadText="Amount Details" GridButtons="{\'delete\':{visible:false},\'new\':{visible:false}}" >
+                           <GridConfig>
+                    <script>
+                        cf = {
+                            cols: {
+                                AuditTrailId: { width: '0px', caption: 'Audit ID' },
+                                StateId: { caption: 'Status', width: '111px' },
+                                RecId: { width: '0px' },
+                                ParentRecId: { width: '0px' },
+                                Description: { caption: 'Description', width: '380px' },
+                                AdditionalAmount: { caption: 'Amount', width: '80px' },
+                                DateCreated: { caption: 'Date Created', width: '130px' },
+                                CreatedBy: { caption: 'Created By', width: '132px' }
+                            }
+                        };
+                    </script>
+                </GridConfig>
+                                <Scripts>
+                    <script>
+                        var fn = function () {
+                            t.on('rowsRendered', function () {
+                                $('[colid="AdditionalAmount"]:not(".w-grid-head-cell")').each(function () {
+                                    var ptr = $(this).closest('tr');
+                                    $('[colid="AdditionalAmount"] div', ptr).text(parseFloat($('[colid="AdditionalAmount"] div', ptr).text()).fix(3));
+                                });
+                            });
+                            t.on('onNoRecords', function () {
+                                $('.BottomTR', t.Repeater).hide();
+                            });
+                        }
+                    </script>
+                </Scripts>
+                </AW:DataGrid>
+                </div>
+                    </Childern>
+                    </AW:container>
+                     </pre>
+                </RowDetail>
+            </AW:DataGrid>
+
+            <AW:Form ID="frmAdditionalAmount" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+                AsyncForm="~/Pages/eForms/iRental/SalesContracts_AdditionalAmount_FrUc.ascx">
+                <WidgetConfig>
+                    <script>
+                        cf = {
+
+                            header: {
+                                Style: {},
+                                Visible: true,
+                                Collapsed: false,
+                                HeadText: 'Additional Amount'
+                            }
+                        }
+                    </script>
+                </WidgetConfig>
+                <Scripts>
+                    <script>
+                        var fn = function () {
+
+                            t.on('show', function (args) {
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+                                $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
+
+                                var a = $('div.SalesAdditionalAmountPanelDiv')
+                                if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                    $('table.SalesAdditonalAmountPanel', a).hide();
+                                }
+                            });
+
+
+                            t.on('onLoadedValues', function (p) {
+                                debugger;
+
+                                if (p.res.status == "OK") {
+
+                                    if (p.res.Response.Rows) {
+
+                                        var row = p.res.Response.Rows;
+
+                                        for (var i = 0; i < row.length; i++) {
+                                            var ResRow = row[i];
+
+                                            var AdditionalAmount = ResRow.AdditionalAmount;
+
+
+                                        }
+                                    }
+
+                                    $('[argumentid="AdditionalAmount"]', t.el).val(AdditionalAmount.toFixed(3));
+                                }
+
+                                //var frm = AsyncWidgets.get('frmAdditionalAmount');
+
+                                //var AdditionalAmount = val('AdditionalAmount',frm.el)
+                                var a = $('div.SalesAdditionalAmountPanelDiv')
+                                if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                    $('table.SalesAdditonalAmountPanel', a).hide();
+                                }
+
+                            });
+                        }
+                    </script>
+                </Scripts>
+            </AW:Form>
+
+        </td>
+    </tr>
+    <%--------------------------------------------------------------------------------------------------------------------------------------------%>
+    <tr tabid="SalesContractComments" style="display: none;">
+        <td style="padding-top: 1px;">
+
+            <div class="SalesCommentsPanelDiv">
+         <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="SalesCommentsPanel">
+  <tr>
+      <td style="padding-top: 1px;">
+          <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
+          <tr>
+              <td class="ftitle" style="width:20%">Contract No.:</td>
+              <td class="ftitle" style="width:30%">
+           <span class="ftitle" groupid="SalesContractsForm" argumentid="RecCodePanel"></span>
+
+              </td>
+              <td style="width:20%"></td>
+              <td style="width:30%"></td>
+          </tr>
+
+    <tr>
+    <td class="ftitle" >Car No.:</td>
+    <td class="ftitle" >
+      <span class="ftitle" groupid="SalesContractsForm" argumentid="CarNumberPanel"></span>
+
+    </td>
+        <td class="ftitle" >Customer Name:</td>
+        <td class="ftitle" >
+            <span class="ftitle" groupid="SalesContractsForm" argumentid="CustomerNamePanel"></span>
+        </td>
+</tr>
+
+    <tr>
+    <td class="ftitle" style="color:red" >Amount Due:</td>
+    <td class="ftitle" >
+           <span class="ftitle" style="color:red" groupid="SalesContractsForm" argumentid="AmountDuePanel"></span>
+    </td>
+        <td class="ftitle" style="color:green" >Amount Received:</td>
+        <td class="ftitle" >
+              <span class="ftitle" style="color:green"  groupid="SalesContractsForm" argumentid="PaymentAmountPanel"></span>
+        </td>
+</tr>
+
+       <%--       <tr>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+                  <td class="ftitle"></td>
+              </tr>
+
+               <tr>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+     <td class="ftitle"></td>
+ </tr>--%>
+              </table>
+          </td>
+      </tr>
+
+    </table>
+            </div>
+
+            <AW:DataGrid ID="grdSalesContractComments" LoadOnInit="true" ShowOnLoad="false" runat="server"
+                Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
+                PageSize="10" DataSource="SEL_iRental_SalesContracts_Comments" ContainerMargin="2px"
+                GridTemplate="jQueryUI" GridHeadText="Comments" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Comments\',KeysCol:\'RecId\'}}}">
+                <GridConfig>
+                    <script>
+                        cf = {
+                            cols: {
+                                Sequence: { width: '0px' },
+                                RecId: { width: '0px' },
+                                ParentRecId: { width: '0px' },
+                                Comments: { caption: 'Comments' },
+                                DateCreated: { caption: 'Date Created', width: '130px' },
+                                CreatedBy: { caption: 'Created By', width: '150px' }
+                            },
+                            forms: {
+                                NewFormId: 'frmSalesComments',
+                                EditFormId: 'frmSalesComments',
+                                Keys: 'RecId'
+                            }
+                        };
+                    </script>
+                </GridConfig>
+                <Scripts>
+                    <script>
+                        var fn = function () {
+                            t.on('beforeSearchGetForm', function (P) {
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+                                P.ParentRecId = frm.GetArgVal('RecId');
+                            });
+
+
+                            t.on('rowsRendered', function () {
+
+                                
+
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+
+
+                                //var RecCode = $('[argumentid="RecCode"]', frm.el).text();
+                                var RecId = $('[argumentid="RecId"]', frm.el).val();
+
+                                var params = {
+                                    Command: 'SEL_iRental_SalesContracts',
+                                    RecId: `${RecId}`,
+
+
+                                };
+
+                                // Assuming ServerCall is a function to make an API call
+                                ServerCall(params, function (res) {
+
+                                    var res = decJSON(res)
+
+
+                                    if (res.status === 'OK') {
+
+                                        if (res.Response.Rows.length > 0) {
+                                            var rows = res.Response.Rows;
+                                            for (var i = 0; i < rows.length; i++) {
+                                                var row = rows[i];
+                                                var RecCode = row.RecCode;
+                                                var CarNumber = row.CarNumber;
+                                                var CustomerName = row.CustomerName;
+                                                var AmountDue = row.AmountDue;
+                                                var PaymentAmount = row.PaymentAmount;
+
+
+
+                                            }
+
+                                            setTimeout(function () {
+
+
+
+                                                var a = $('div.SalesCommentsPanelDiv')
+                                                $('[argumentid="RecCodePanel"]', a).text(RecCode);
+                                                $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
+                                                $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
+                                                $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+                                                $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
+
+
+
+                                            }, 2000);
+                                        }
+
+                                    }
+
+
+
+
+                                }, 'GetData');
+
+
+
+                                var a = $('div.SalesCommentsPanelDiv')
+
+
+                                if ($('table.SalesCommentsPanel', a).length > 0) {
+                                    $('table.SalesCommentsPanel', a).show();
+                                }
+
+                            });
+
+                            $('.CSCloseForm', t.el).on('click', function () {
+
+                                setTimeout(function () {
+
+                                    var a = $('div.SalesCommentsPanelDiv')
+                                    if ($('table.SalesCommentsPanel', a).length > 0) {
+                                        $('table.SalesCommentsPanel', a).show();
+                                    }
+
+                                }, 1000);
+                            });
+
+
+
+
+                            $('[tabid="SalesContractComments"]', t.el).on('click', function () {
+                                
+                                setTimeout(function () {
+
+                                    var a = $('div.SalesCommentsPanelDiv')
+                                    if ($('table.SalesCommentsPanel', a).length > 0) {
+                                        $('table.SalesCommentsPanel', a).show();
+                                    }
+
+                                }, 1000);
+                            });
+                        }
+                    </script>
+                </Scripts>
+            </AW:DataGrid>
+            <AW:Form ID="frmSalesComments" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+                AsyncForm="~/Pages/eForms/iRental/SalesContracts_CS_FrUc.ascx">
+                <WidgetConfig>
+                    <script>
+                        cf = {
+
+                            header: {
+                                Style: {},
+                                Visible: true,
+                                Collapsed: false,
+                                HeadText: 'Comments'
+                            }
+                        }
+                    </script>
+                </WidgetConfig>
+                <Scripts>
+                    <script>
+                        var fn = function () {
+
+                            t.on('show', function (args) {
+                                var frm = AsyncWidgets.get('frmSalesContracts');
+                                debugger
+                                var b = $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
+
+                                var a = $('div.SalesCommentsPanelDiv')
+                                if ($('table.SalesCommentsPanel', a).length > 0) {
+                                    $('table.SalesCommentsPanel', a).hide();
+                                }
+                            });
+
+                            t.on('onLoadedValues', function (p) {
+
+                                var a = $('div.SalesCommentsPanelDiv')
+                                if ($('table.SalesCommentsPanel', a).length > 0) {
+                                    $('table.SalesCommentsPanel', a).hide();
+                                }
+
+                            });
+                        }
+                    </script>
+                </Scripts>
+            </AW:Form>
         </td>
     </tr>
 

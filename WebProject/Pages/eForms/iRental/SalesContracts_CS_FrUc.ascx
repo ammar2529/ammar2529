@@ -12,9 +12,9 @@
                               <nobr>Comments*:</nobr>
                             </td>
                             <td width="80%">
-                             <div style="display:none"><span groupid="Rental_Comments" argumentid="RecId"></span></div>
-                                    <div style="display:none"><span groupid="Rental_Comments" argumentid="ParentRecId"></span></div>
-                              <textarea class="textarea" rows="6" wrap="1" cols="60" argumentid="Comments" groupid="Rental_Comments" ></textarea></td>
+                             <div style="display:none"><span groupid="Sales_Comments" argumentid="RecId"></span></div>
+                                    <div style="display:none"><span groupid="Sales_Comments" argumentid="ParentRecId"></span></div>
+                              <textarea class="textarea" rows="6" wrap="1" cols="60" argumentid="Comments" groupid="Sales_Comments" ></textarea></td>
                         </tr>
                      
                         <tr>
@@ -29,7 +29,7 @@
                             </td>
                             <td>
                       <input type="button" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts_Comments',HideOnSuccess:true}">
-                      <input type="button" value="  Cancel  " class="CloseForm ButtonStyle">
+                      <input type="button" value="  Cancel  " class="CloseForm CSCloseForm ButtonStyle">
                             </td>
                         </tr>
                     </table>

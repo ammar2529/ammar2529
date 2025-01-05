@@ -99,14 +99,14 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
         $('.closedForm', t.el).on('click', function () {
 
             setTimeout(function () {
-                
+
                 var a = $('div.SalesPaymentPanelDiv')
                 if ($('table.SalesPaymentPanel', a).length > 0) {
                     $('table.SalesPaymentPanel', a).show();
                 }
 
             }, 1000);
-        })
+        });
 
         
         
@@ -114,14 +114,14 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
         $('[tabid="SalesPaymentDetails"]', t.el).on('click', function () {
 
             setTimeout(function () {
-                
+
                 var a = $('div.SalesPaymentPanelDiv')
                 if ($('table.SalesPaymentPanel', a).length > 0) {
                     $('table.SalesPaymentPanel', a).show();
                 }
 
             }, 1000);
-        })
+        });
 
 
 
@@ -299,13 +299,16 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 
  */
 Sales.SalesContracts.grdSalesContractsPaymentDetails =
-    function (t) {
-        t.on('beforeSearchGetForm', function (P) {
+    function (t)
+    {
+        t.on('beforeSearchGetForm', function (P)
+        {
 
             var frm = AsyncWidgets.get('frmSalesContracts');
             P.ParentRecId = frm.GetArgVal('RecId');
         });
-        t.on('beforeRowDelete', function (P) {
+        t.on('beforeRowDelete', function (P)
+        {
                                 /**/;
 
             var fRow = $('td.Item table .chkRowSelect:first', t.Repeater).closest('tr'), pVal;
@@ -465,8 +468,18 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
             //$('[argumentid="PaymentAmountPanel"]', a).text(result.toFixed(3));
             //$('[argumentid="AmountDuePanel"]', a).text(res.toFixed(3));
 
-           /* console.log('Calculated Net Payment: ' + result);*/
-        });
+            /* console.log('Calculated Net Payment: ' + result);*/
+
+
+            var a = $('div.SalesPaymentPanelDiv')
+
+
+            if ($('table.SalesPaymentPanel', a).length > 0) {
+                $('table.SalesPaymentPanel', a).show();
+            }
+
+
+        });///end of rows renderd
         
 
         t.on('onNoRecords', function ()
@@ -486,7 +499,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
                 return false;
             });
             });
-           t.on('onItemColGenerated', function (cf)
+        t.on('onItemColGenerated', function (cf)
         {
             if (cf.colId == 'PrintId') {
 

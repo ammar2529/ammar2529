@@ -468,6 +468,25 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //}
             
         }
+        else if (li.attr('tabid') == 'AdditionalAmount')
+        {
+            AsyncWidgets.get('grdAdditionalAmount').show().Requery();
+
+            if ($('[widgetid="frmAdditionalAmount"]', t.el).length > 0) {
+                $('[widgetid="frmAdditionalAmount"]', t.el).hide();
+            }
+
+        }
+
+        else if (li.attr('tabid') == 'SalesContractComments') {
+            AsyncWidgets.get('grdSalesContractComments').show().Requery();
+
+            if ($('[widgetid="frmSalesComments"]', t.el).length > 0) {
+                $('[widgetid="frmSalesComments"]', t.el).hide();
+            }
+
+        }
+
 
         else if (li.attr('tabid') == 'SalesPaymentDetails') {
             AsyncWidgets.get('grdSalesContractsPaymentDetails').show().Requery();
@@ -924,19 +943,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     //var AmountDue = $('[AmountDueC]', t.el).text();
                    
                 var CarPrice = $('[argumentid="Price"]', t.el).val();
-                var CarPriceInFloat = parseFloat(CarPrice);
+                var CarPriceInFloat = parseFloat(CarPrice) || 0;
                 $('[argumentid="Price"]', t.el).val(CarPriceInFloat.toFixed(3));
 
                 var AdditionalAmount = $('[argumentid="AdditionalAmount"]', t.el).val();
-                var AdditionalAmountInFloat = parseFloat(AdditionalAmount);
+                var AdditionalAmountInFloat = parseFloat(AdditionalAmount) || 0;
                 $('[argumentid="AdditionalAmount"]', t.el).val(AdditionalAmountInFloat.toFixed(3));
 
                 var Discount = $('[argumentid="Discount"]', t.el).val();
-                var DiscountFloat = parseFloat(Discount);
+                var DiscountFloat = parseFloat(Discount) || 0;
                 $('[argumentid="Discount"]', t.el).val(DiscountFloat.toFixed(3));
 
                 var TotalAmount = $('[argumentid="TotalAmount"]', t.el).val();
-                var TotalAmountInFloat = parseFloat(TotalAmount);
+                var TotalAmountInFloat = parseFloat(TotalAmount) || 0;
                 $('[argumentid="TotalAmount"]', t.el).val(TotalAmountInFloat.toFixed(3));
 
                 //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
@@ -946,11 +965,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 $('[argumentid="AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
                 $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
 
-                var AmountDueInFloat = parseFloat(AmountDue);
+                var AmountDueInFloat = parseFloat(AmountDue) || 0;
                 $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
                 var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
 
-                var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab));
+                var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab)) || 0;
                 if (isNaN(decAmountReceived)) {
                     setField('PaymentAmount', '0.000', SalesContractTab);
                     //$('[argumentid="PaymentAmount"]', t.el).text('0.000');
@@ -981,8 +1000,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 
             }
 
-             
-             
+            
+            /*CarPriceInFloat, AdditionalAmountInFloat, DiscountFloat, TotalAmountInFloat, AmountDueInFloat, decAmountReceived*/
+
+            /*calculation Additional Amount*/
+
+            var CarPriceRes = CarPriceInFloat + AdditionalAmountInFloat - DiscountFloat;
+
+            $('[argumentid="TotalAmount"]', t.el).val(CarPriceRes.toFixed(3));
+
+            var AmountDueRes = CarPriceRes - decAmountReceived;
+
+            $('[argumentid="AmountDue"]', t.el).text(AmountDueRes.toFixed(3));
+
            
     });
     // End of On Loaded Values
