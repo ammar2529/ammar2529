@@ -8,7 +8,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t = t;
 
     t.on('LOVPopupClosed', function (args) {
-        debugger;
+        
         if (args.popupId == "ItemCodePopup") {
             calcData(args.row);
             
@@ -45,7 +45,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             event.preventDefault();
 
             $(".trNoDynamic .SaveBtn", this).click(); // Trigger the Save button click
-         
+            $('[argumentid="ItemId"]', f.el).focus().select();
         }
     });
 
