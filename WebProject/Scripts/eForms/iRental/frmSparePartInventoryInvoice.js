@@ -40,14 +40,38 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
     }
 
 
-    $(".myTableInvoice",t.el).on("keydown", function (event) {
+    //$(".myTableInvoice",t.el).on("keydown", function (event) {
+    //    if (event.key === "Enter") {
+    //        event.preventDefault();
+
+    //        $(".trNoDynamic .SaveBtn", this).click(); // Trigger the Save button click
+    //        $('[argumentid="SelectQuantity"]', t.el).blur();
+    //        $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
+          
+    //    }
+    //});
+
+    $(".myTableInvoice", t.el).on("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
 
             $(".trNoDynamic .SaveBtn", this).click(); // Trigger the Save button click
-            $('[argumentid="ItemId"]', f.el).focus().select();
+            $('[argumentid="SelectQuantity"]', t.el).blur();
+
+            // Blink the border 3 times
+            let blinkCount = 0;
+            const blinkInterval = setInterval(function () {
+                $('[argumentid="ItemId"]', t.el).css('border', blinkCount % 2 === 0 ? '1px solid #ff5555' : 'none');
+                blinkCount++;
+                if (blinkCount === 6) { // 6 blinks equals 3 complete blinks (border on and off 3 times)
+                    clearInterval(blinkInterval);
+                    // Make sure the border ends up visible
+                    $('[argumentid="ItemId"]', t.el).css('border', '1px solid #ff5555');
+                }
+            }, 500); // Change interval duration as needed (in milliseconds)
         }
     });
+
 
     t.on('LOVPopupShown', (popup) => {
          ;
@@ -1231,7 +1255,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                 return;
             }
         }
-        debugger
+        
         // All fields are valid, proceed with server call
         executeServerCall();
     });

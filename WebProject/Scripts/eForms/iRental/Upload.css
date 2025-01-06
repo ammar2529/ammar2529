@@ -91,7 +91,7 @@ span.file-name > a{
     cursor: pointer;
     /* Transition for smooth hover effect */
     transition: background-color 0.3s ease;
-    margin-left:25px;
+    /*margin-left:25px;*/
 }
 
     /* Hover effect */

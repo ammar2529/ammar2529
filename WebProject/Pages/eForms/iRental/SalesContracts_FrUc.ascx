@@ -772,11 +772,11 @@
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%" class="ftitle">Bill Date:
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
-                       style="width:75px;text-align:center"class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
+                       style="width:75px;text-align:center; margin-left:2px" class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
                             </tr>
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%">
-                                     <input type="button" value="  Bill  " ignorevalidate="ReservationDate DocType"  style="width: 70px;margin-left: 70px;" class="ButtonStyle BillsBtn common-button" 
+                                     <input type="button" value="  Bill  " ignorevalidate="ReservationDate DocType"  style="width: 67px;margin-left: 70px;" class="ButtonStyle BillsBtn common-button" 
                                          conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false,ShowActionMsg:false, Requery:true,GroupId:'SalesContractsForm'}"/>
                                 </td>
                             </tr>
