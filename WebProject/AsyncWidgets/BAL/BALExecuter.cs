@@ -31,7 +31,37 @@ namespace WebProject.AsyncWidgets.BAL
         }
         public object RecordExists(string ServiceInfo)
         {
-            ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
+           var PD = LoadForm(ServiceInfo).GetFirstFormParams();
+            // PD.FormName
+            //string TableName = PD["StoreName"].ParameterValue
+          //  return DBHelper.RecordExists(PD, PD.FormName, PD.UniqueKeys).ToString().ToLower();
+            return RecordExists(PD);
+
+        }
+        public object RecordExists(Dictionary<string, string> ServiceInfo)
+        {
+            ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD =GetPDfromDictionary(ServiceInfo);
+
+
+            return RecordExists(PD);
+
+        }
+
+        private ParamDictionary<string, QueryParameter> GetPDfromDictionary(Dictionary<string, string> serviceInfo)
+        {
+            var PD =new ParamDictionary<string, AsyncWidgets.DAL.QueryParameter>("MyForm","");
+            foreach (var prm in serviceInfo.Keys)
+            {
+                PD.Add(prm, new QueryParameter(serviceInfo[prm]));
+
+            }
+
+            return PD;
+        }
+
+        public object RecordExists(ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD)
+        {
+           // ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
             // PD.FormName
             //string TableName = PD["StoreName"].ParameterValue
             return DBHelper.RecordExists(PD, PD.FormName, PD.UniqueKeys).ToString().ToLower();

@@ -10,6 +10,7 @@ using System.Xml;
 
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace WebProject.AsyncWidgets.BAL
 {
@@ -94,15 +95,25 @@ namespace WebProject.AsyncWidgets.BAL
              
             return ret;
         }
-        public  string AuthenticateUser(string ServiceInfo)
+        //public string AuthenticateUser(Dictionary<string, string> ServiceInfo)
+        //{
+        //    return AuthenticateUser(ServiceInfo["UserName"], ServiceInfo[ "Password"]);
+        //}
+        public string AuthenticateUser(string ServiceInfo)
+        {
+            ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
+            string UserName = PD["UserName"].ParameterValue, Password = PD["UserPassword"].ParameterValue;
+            return authenticateUser( UserName,  Password);
+        }
+        public  string authenticateUser(string UserName , string Password)
         {
             System.Web.HttpContext ctx = System.Web.HttpContext.Current;
             //return string.Format("{{Authenticated:{0},FirstName:'{1}',LastName:'{2}',Roles:'{3}'}}", "true", "Muhammed", "Qasim", "Admin");
-            ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
+            
             string passPhrase = "Pas5pr@se";        // can be any string
             string initVector = "@1B2c3D4e5F6g7H8", strAutKey = ""; // must be 16 bytes
             bool bValid = false;
-            string UserName = PD["UserName"].ParameterValue, Password = PD["UserPassword"].ParameterValue;
+           
             DataSet dsUser = DAL.Authentication.GetUserData(UserName);
             if (dsUser != null && dsUser.Tables.Count > 0 && dsUser.Tables[0].Rows.Count > 0)
                 strAutKey = dsUser.Tables[0].Rows[0]["Password"].ToString();

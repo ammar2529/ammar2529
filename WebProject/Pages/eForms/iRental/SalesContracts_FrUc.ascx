@@ -1268,10 +1268,6 @@
 
                                             }
 
-                                            setTimeout(function ()
-                                            {
-
-
 
                                                 var a = $('div.SalesAdditionalAmountPanelDiv')
                                                 $('[argumentid="RecCodePanel"]', a).text(RecCode);
@@ -1282,7 +1278,7 @@
 
 
 
-                                            }, 2000);
+                                            
                                         }
 
                                     }
@@ -1366,14 +1362,14 @@
 
                             $('.ADCloseForm', t.el).on('click', function () {
 
-                                setTimeout(function () {
+                               
 
                                     var a = $('div.SalesAdditionalAmountPanelDiv')
                                     if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
                                         $('table.SalesAdditonalAmountPanel', a).show();
                                     }
 
-                                }, 1000);
+                               
                             });
 
 
@@ -1381,14 +1377,14 @@
 
                             $('[tabid="AdditionalAmount"]', t.el).on('click', function () {
                                 
-                                setTimeout(function () {
+                               
 
                                     var a = $('div.SalesAdditionalAmountPanelDiv')
                                     if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
                                         $('table.SalesAdditonalAmountPanel', a).show();
                                     }
 
-                                }, 1000);
+                             
                             });
 
                         }
@@ -1467,7 +1463,7 @@
 
                                 var a = $('div.SalesAdditionalAmountPanelDiv')
                                 if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
-                                    $('table.SalesAdditonalAmountPanel', a).hide();
+                                    $('table.SalesAdditonalAmountPanel', a).show();
                                 }
                             });
 
@@ -1498,7 +1494,7 @@
                                 //var AdditionalAmount = val('AdditionalAmount',frm.el)
                                 var a = $('div.SalesAdditionalAmountPanelDiv')
                                 if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
-                                    $('table.SalesAdditonalAmountPanel', a).hide();
+                                    $('table.SalesAdditonalAmountPanel', a).show();
                                 }
 
                             });
@@ -1628,7 +1624,7 @@
 
                                 var a = $('div.SalesCommentsPanelDiv')
                                 if ($('table.SalesCommentsPanel', a).length > 0) {
-                                    $('table.SalesCommentsPanel', a).hide();
+                                    $('table.SalesCommentsPanel', a).show();
                                 }
                             });
 
@@ -1636,16 +1632,14 @@
 
                                 var a = $('div.SalesCommentsPanelDiv')
                                 if ($('table.SalesCommentsPanel', a).length > 0) {
-                                    $('table.SalesCommentsPanel', a).hide();
+                                    $('table.SalesCommentsPanel', a).show();
                                 }
 
                             });
 
                             $('.CSCloseForm', t.el).on('click', function ()
                             {
-                                debugger
-                                setTimeout(function ()
-                                {
+                             
 
                                     var a = $('div.SalesCommentsPanelDiv')
                                     if ($('table.SalesCommentsPanel', a).length > 0)
@@ -1653,8 +1647,10 @@
                                         $('table.SalesCommentsPanel', a).show();
                                     }
 
-                                }, 1000);
+                               
                             });
+
+                            /*$()*/
                         }
                     </script>
                 </Scripts>

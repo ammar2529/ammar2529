@@ -176,14 +176,14 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                
                 $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
-                setTimeout(function () {
+               
                 
                     var a = $('div.SalesPaymentPanelDiv')
                     if ($('table.SalesPaymentPanel', a).length > 0) {
-                        $('table.SalesPaymentPanel', a).hide();
+                        $('table.SalesPaymentPanel', a).show();
                     }
 
-                }, 1000)
+                
                 
             }
 
@@ -269,13 +269,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                     setListValue($('.PaymentMode', t.el), paymentMode);
 
                     
-                    var a = $('div.SalesPaymentPanelDiv')
-                    
-                  
-                        if ($('table.SalesPaymentPanel', a).length > 0) {
-                            $('table.SalesPaymentPanel', a).hide();
-                        }
-
+                
                     
 
 
@@ -285,7 +279,13 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             }
 
 
-            
+            var a = $('div.SalesPaymentPanelDiv')
+
+
+            if ($('table.SalesPaymentPanel', a).length > 0) {
+                $('table.SalesPaymentPanel', a).show();
+            }
+
             return false;
 
         });
@@ -319,7 +319,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
         t.on('rowsRendered', function ()
         {
 
-            debugger
+            
             var frmPayment = AsyncWidgets.get('frmSalesContactsPaymentDetails').el;
             var frm = AsyncWidgets.get('frmSalesContracts');
             var strMainStateId = frm.GetArgVal('StateId');
@@ -373,7 +373,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
                         }
 
-                        setTimeout(function () {
+                      
 
 
 
@@ -386,7 +386,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
 
 
-                        }, 2000);
+                   
                     }
 
                 }
