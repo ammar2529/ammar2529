@@ -183,8 +183,19 @@
           <%-- <input type="radio" class="  Arrive  "  value="CarArrived" name="CarReservationMode"  groupid="schSalesContractDetails" argumentid="CarReservationMode" /><label>Arrived</label>
                         <input type="radio" class=" NotArrive NoArrive " value="CarNotArrive" name="CarReservationMode" groupid="schSalesContractDetails" argumentid="CarReservationMode" /><label>Not Arrive </label>--%>
                         <%-- CommonDisableClass ElemDisabled default="default" --%>
-                        <input type="text" class="text CommonEmpty" argumentid="CarNumber" groupid="schSalesContractDetails" style="width:155Px;"/>
-        </td>
+                        <input type="text" class="text CommonEmpty" argumentid="CarNumber" groupid="schSalesContractDetails" style="width:100Px;"/>
+            <select class="dropdownlist" style="width: 50px;"
+                groupid="schSalesContractDetails" argumentid="CarNumberStatus" name="D13">
+                <option value="" selected="selected">Select Status</option>
+                <option value="">-----------------------------</option>
+                <option value="0">No</option>
+                <option value="">-----------------------------</option>
+
+                <option value="1" >Yes</option>
+                <option value="">-----------------------------</option>
+               
+
+            </select></td>
         <td style="text-align: left;">
            
             <input type="text"  class="text CommonEmpty" argumentid="ChassisNo" groupid="schSalesContractDetails" style="width:155Px;"/></td>

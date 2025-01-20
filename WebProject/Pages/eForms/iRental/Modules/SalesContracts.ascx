@@ -39,14 +39,34 @@
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
                                    
                                <%-- <tpl if="CarNumber">--%>
-                                  <div style="font-size:11px;">
-                                    <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>
-                                    <tpl if="Brand">&nbsp;-&nbsp;{Brand}</tpl>
+                                 
+                                    
+                                <%--    <div style="font-size:11px;">
+                                    <nobr class="ftitle" style="color:#008080">{CarNumber}&nbsp;-&nbsp;</nobr>
+                                    <tpl if="Brand">{Brand}</tpl>
                                     <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
                                     <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
                                   </div>
-                                    <div><nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr></div>
-                               <%-- </tpl>--%>
+                                    <div><nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr></div>--%>
+                            
+                                    
+                                    <div style="font-size:11px;">
+    <tpl if="CarNumber">
+        <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>
+        <tpl if="Brand">&nbsp;-&nbsp;{Brand}</tpl>
+        <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
+        <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
+    </tpl>
+    <tpl if="!CarNumber">
+        <tpl if="Brand">{Brand}</tpl>
+        <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
+        <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
+    </tpl>
+</div>
+<div><nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr></div>
+
+
+                                    <%-- </tpl>--%>
                             <%--    <tpl else>
                                   <div style="font-size:11px;">
                                     <nobr style="color:#602010">
