@@ -75,12 +75,11 @@
         <td style="text-align: left;" class="ftitle">
     <span style="white-space: nowrap">Location</span></td>
         <td style="text-align: left;" class="ftitle">
-         <%-- <span style="white-space: nowrap">Car Type</span>--%>
-            <span>Car Status</span>
+          <span style="white-space: nowrap">Registration Date From</span>
         </td>
 
         <td style="text-align: left;" class="ftitle">
-            <%--<span>Car Status</span>--%>
+            Registration Date To
 
         </td>
         <td style="text-align: left;" class="ftitle">
@@ -93,6 +92,8 @@
 <%--            <span style="white-space: nowrap">Full Insurance</span>--%>
 
            <%-- <span>Car Status</span>--%>
+
+            <span>Car Status</span>
 
         </td>
 
@@ -112,24 +113,14 @@
  </td>
          
         <td style="text-align: left;">
-           <%--  <select class="dropdownlist" style="width:115px" argumentid="CarType"  groupid="schCarForSalesDetails" name="D1">
-             <option value="" >Select Car Type</option>
-             <option value="N">New Car</option>
-              <option value="U">Used Car</option>
-             
-         </select>--%>
+                     <input type="text" groupid="schCarForSalesDetails" maxlength="10"
+                            style="width: 97px;"  class="text  date   "  argumentid="RegistrationDateFrom" />
 
-             <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
-      groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
-     <option value="" selected="selected">Select Status</option>
- </select>
-            </td>
+             </td>
         <td style=" text-align: left;">
             
-           <%-- <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
-                 groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
-                <option value="" selected="selected">Select Status</option>
-            </select>--%>
+           <input type="text" groupid="schCarForSalesDetails" maxlength="10"
+                            style="width: 93px;"  class="text  date   "  argumentid="RegistrationDateTo" />
             </td>
         <td style="text-align: left;">
 
@@ -140,7 +131,10 @@
          
 
 
-        </td>
+             <select loadon="FirstVisible" class="dropdownlist" style="width: 115px;"
+      groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
+     <option value="" selected="selected">Select Status</option>
+ </select></td>
       
      <td style="text-align: center; padding-bottom: 0px; white-space: nowrap; padding-top: 6px;">
     <!-- View Button -->

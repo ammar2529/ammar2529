@@ -28,6 +28,9 @@ Sales.SalesContracts.grdSalesContracts = function (t) {
             if ($(this).text().indexOf('Contract Closed - Payment Cleared') > -1) {
                 ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
             }
+            if ($(this).text().indexOf('Payment Cleared - Car NR') > -1) {
+                ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+            }
             else if ($(this).text().indexOf('Contract Cancelled') > -1) {
                 ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
             }

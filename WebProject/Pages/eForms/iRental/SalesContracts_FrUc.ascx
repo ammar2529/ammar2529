@@ -746,6 +746,9 @@
 
                         <input type="button" style="width: 175px;" ignorevalidate="DocType" value="Pending Payment - Car In" class="DataAction ButtonStyle PendingPaymentCarIn"
                                 conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPendingPaymentCarIn'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}" />
+
+                             <input type="button" style="width: 175px;" ignorevalidate="DocType" value="Payment Cleared - Car NR" class="DataAction ButtonStyle PaymentClearedCarNR"
+                                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPaymentClearedCarNR'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}" />
                        
                         </div>
 

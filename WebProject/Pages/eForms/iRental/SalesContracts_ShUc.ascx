@@ -141,6 +141,8 @@
                 <option value="">-----------------------------</option>
                  <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
                  <option value="">-----------------------------</option>
+                 <option value="RRCPaymentClearedCarNR">Payment Cleared - Car NR</option>
+                  <option value="">-----------------------------</option>
 
             </select></td>
     </tr>

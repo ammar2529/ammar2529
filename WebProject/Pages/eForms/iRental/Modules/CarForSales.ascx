@@ -46,6 +46,7 @@
                             TypeId: { caption: 'Type', width: '50px' },
                             YearId: { caption: 'Year', width: '55px' },
                             ColorId: { caption: 'Color', width: '60px' },
+                            RegistrationDate: { caption: "Reg'Date", width: '90px' },
                             //CurrentMileage: { caption: 'Mileage', width: '75px' },
                             /*CarType: { caption: 'CarType', width: '55px' },*/
                             Price: { caption: 'Price.', width: '80px' },

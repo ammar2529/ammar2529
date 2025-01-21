@@ -37,6 +37,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     
 
 
+
     $('.Edit_Insrance', t.el).on('click', function () {
 
         $('.FullInsuranceExpiry', t.el).show().next('img').show();
@@ -256,19 +257,23 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
     //});
 
-    //$('.NotArrive', t.el).on('click', function ()
-    //{
+    $('.NotArrive', t.el).on('click', function ()
+    {
 
-    //    $('[argumentid="ChassisNo"]', t.el).val('');
-    //    $('.CommonSP', t.el).each(function ()
-    //    {
+        //$('[argumentid="ChassisNo"]', t.el).val('');
+        //$('.CommonSP', t.el).each(function ()
+        //{
 
-    //        var a = $(this).text('');
-    //        console.log(a)
-    //        // Ya $(this).prop('selectedIndex', 0);
-    //    });
+        //    var a = $(this).text('');
+        //    console.log(a)
+        //    // Ya $(this).prop('selectedIndex', 0);
+        //});
+        if ($('[argumentid="CarNumber"]', t.el).text() == null || $('[argumentid="CarNumber"]', t.el).text() === '' || typeof $('[argumentid="CarNumber"]', t.el).text() === 'undefined') {
+            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+        }
 
-    //});
+
+    });
 
     
 
@@ -538,10 +543,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('[argumentid="StateId"]', t.el).text('RRCCreatedState');
        /* $('[argumentid="StateName"]', t.el).text('Start State');*/
        
-        $('.common-disable-button,.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn,.BillsBtn  ', t.el).removeAttr('disabled', 'disabled');
+        $('.common-disable-button,.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,.BillsBtn  ', t.el).removeAttr('disabled', 'disabled');
 
         $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
-        $('.common-disable-button,.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.BillsBtn', t.el).removeClass('ElemDisabled');
+        $('.common-disable-button,.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,.BillsBtn', t.el).removeClass('ElemDisabled');
         $('[argumentid="ContractStartDate"]', t.el).next('img').show();
         $('[argumentid="BillDate"]', t.el).next('img').show();
         $('[argumentid="ReservationDate"]', t.el).next('img').show();
@@ -551,7 +556,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         if ($(".finance",t.el).is(":checked")) {
             $('[argumentid="LPODate"]', t.el).next('img').show();
         }
-        
+        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled', 'disabled').removeClass('ElemDisabled');
+        } else {
+            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+        }
         /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
 
     });
@@ -664,6 +673,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 $('[argumentid="DeliveryDate"]', t.el).next('img').show();
                 /*$('[argumentid="LPODate"]', t.el).next('img').show();*/
                 /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
+                if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+                    $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+                } else {
+                    $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+                }
             }
             
 
@@ -820,10 +834,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     
                     setTimeout(function () {
                         
-                        $('.common-disable-button,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.common-disable-button,.CloseContract,.CancelContract,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
+                        $('.common-disable-button,.CloseContract,.CancelContract,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -837,6 +851,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeAttr('disabled');
                         $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeClass('ElemDisabled');
 
+                        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+                            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+                        } else {
+                            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+                        }
+
                     }, 1000);
                     
                 }
@@ -845,10 +865,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 {
                     setTimeout(function () {
 
-                        $('.common-disable-button,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.Statement,.CloseContract,.CancelContract ,.PendingPaymentCarOut,.PendingPaymentCarIn ', t.el).removeAttr('disabled', 'disabled');
+                        $('.common-disable-button,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.Statement,.CloseContract,.CancelContract ,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,', t.el).removeAttr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).removeAttr('disabled', 'disabled');
-                        $('.common-disable-button,.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.Statement,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).removeClass('ElemDisabled');
+                        $('.common-disable-button,.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.Statement,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,', t.el).removeClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').show();
                         $('[argumentid="ReservationDate"]', t.el).next('img').show();
                         $('[argumentid="ContractDate"]', t.el).next('img').show();
@@ -859,6 +879,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         }
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', false);*/
                         AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode();
+
+                        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+                            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+                        } else {
+                            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+                        }
                     }, 1000);
                  
 
@@ -870,10 +896,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCContractCancelled')
                 {
                     setTimeout(function () {
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.common-disable-button,.CloseContract,.CancelContract,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
+                        $('.common-disable-button,.CloseContract,.CancelContract,.QuotationBtn,.ContractPrintBtn,.Statement,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -893,10 +919,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCPendingPaymentCarOut')
                 {
                     setTimeout(function () {
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarOut,.BillsBtn', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarOut,.PaymentClearedCarNR,.BillsBtn', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarOut,.BillsBtn', t.el).addClass('ElemDisabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarOut,.PaymentClearedCarNR,.BillsBtn', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -906,8 +932,8 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                             $('[argumentid="LPODate"]', t.el).next('img').hide();
                         }
                         /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
-                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeAttr('disabled', 'disabled');
-                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarIn', t.el).removeClass('ElemDisabled');
+                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarIn,.PaymentClearedCarNR', t.el).removeAttr('disabled', 'disabled');
+                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarIn,.PaymentClearedCarNR', t.el).removeClass('ElemDisabled');
                     }, 1000);
                  
                 }
@@ -918,10 +944,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     setTimeout(function ()
                     {
 
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarIn,.BillsBtn', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarIn,.PaymentClearedCarNR,.BillsBtn', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarIn,.BillsBtn', t.el).addClass('ElemDisabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarIn,.PaymentClearedCarNR,.BillsBtn', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -932,13 +958,41 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                             $('[argumentid="LPODate"]', t.el).next('img').hide();
                         }
                         /*$('[argumentid="DocType"]', t.el).prop('disabled', true);*/
-                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled', 'disabled');
-                            $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarOut', t.el).removeClass('ElemDisabled');
+                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarOut,.PaymentClearedCarNR', t.el).removeAttr('disabled', 'disabled');
+                        $('.btnSave,.CancelContract,.CloseContract,.PendingPaymentCarOut,.PaymentClearedCarNR', t.el).removeClass('ElemDisabled');
                     }, 1000);
                 }
 
               
-                    
+                if ($('[argumentid="StateId"]', t.el).text() == 'RRCPaymentClearedCarNR') {
+                    setTimeout(function () {
+
+                        $('.common-disable-button,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR,', t.el).attr('disabled', 'disabled');
+
+                        $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.CloseContract,.CancelContract,.CloseContract,.CommonDisableClass,.PendingPaymentCarOut,.PendingPaymentCarIn,.PaymentClearedCarNR', t.el).addClass('ElemDisabled');
+                        $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
+                        $('[argumentid="ReservationDate"]', t.el).next('img').hide();
+                        $('[argumentid="ContractDate"]', t.el).next('img').hide();
+                        $('[argumentid="DeliveryDate"]', t.el).next('img').hide();
+                        $('[argumentid="BillDate"]', t.el).next('img').hide();
+                        if ($(".finance", t.el).is(":checked")) {
+                            $('[argumentid="LPODate"]', t.el).next('img').hide();
+                        }
+
+                        /* $('[argumentid="DocType"]', t.el).prop('disabled', true);*/
+                        $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeAttr('disabled');
+                        $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeClass('ElemDisabled');
+
+                        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+                            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+                        } else {
+                            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+                        }
+                    }, 1000);
+                }
+
+
                     //
                     //var AmountDue = $('[AmountDueC]', t.el).text();
                    
@@ -1690,7 +1744,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
     
     if ($('.Arrive').is(":checked"))
     {
-        
+        debugger
         $('.CommonDD', t.el).hide().removeClass('required');
         $('tr.DropDownTR td div.DropDownDIV').hide();
         $('.CommonSP', t.el).show();
@@ -1698,6 +1752,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
         $('[argumentid="ChassisNo"]', t.el).css('display', 'block');
         $('.a', t.el).hide().removeClass('required');
         $('.hideOnCarNotArrived', t.el).show();
+
+        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' &&  typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled', 'disabled').removeClass('ElemDisabled');
+        }
+
+
 
     }
     else
@@ -1710,6 +1770,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
         $('[argumentid="ChassisNo"]', t.el).css('display', 'none');
         $('.a', t.el).show().removeClass('required');
         $('.hideOnCarNotArrived', t.el).hide();
+
+        if ($('[argumentid="CarNumber"]', t.el).text() == null || $('[argumentid="CarNumber"]', t.el).text() === '' || typeof $('[argumentid="CarNumber"]', t.el).text() === 'undefined') {
+            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+        }
 
 
     }
