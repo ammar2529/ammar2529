@@ -851,11 +851,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeAttr('disabled');
                         $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeClass('ElemDisabled');
 
-                        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
-                            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-                        } else {
-                            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
-                        }
+                        //if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+                        //    $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+                        //} else {
+                        //    $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+                        //}
 
                     }, 1000);
                     
@@ -984,11 +984,11 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                         $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeAttr('disabled');
                         $('.btnSave,.QuotationBtn,.ContractPrintBtn ,.BillsBtn', t.el).removeClass('ElemDisabled');
 
-                        if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
-                            $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
-                        } else {
-                            $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
-                        }
+                        //if ($('[argumentid="CarNumber"]', t.el).text() != null && $('[argumentid="CarNumber"]', t.el).text() != '' && typeof $('[argumentid="CarNumber"]', t.el).text() != 'undefined') {
+                        //    $('.CloseContract,.PendingPaymentCarOut', t.el).removeAttr('disabled').removeClass('ElemDisabled');
+                        //} else {
+                        //    $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
+                        //}
                     }, 1000);
                 }
 
@@ -1771,7 +1771,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
         $('.a', t.el).show().removeClass('required');
         $('.hideOnCarNotArrived', t.el).hide();
 
-        if ($('[argumentid="CarNumber"]', t.el).text() == null || $('[argumentid="CarNumber"]', t.el).text() === '' || typeof $('[argumentid="CarNumber"]', t.el).text() === 'undefined') {
+        if ($('[argumentid="CarNumber"]', t.el).text() == null || $('[argumentid="CarNumber"]', t.el).text() === '' || typeof $('[argumentid="CarNumber"]', t.el).text() === 'undefined' || $('.NotArrive').is(":checked")) {
             $('.CloseContract,.PendingPaymentCarOut', t.el).attr('disabled', 'disabled').addClass('ElemDisabled');
         }
 
