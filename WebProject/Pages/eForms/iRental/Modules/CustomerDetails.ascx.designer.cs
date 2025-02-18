@@ -24,24 +24,6 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Container conCustomerManagement;
 
         /// <summary>
-        /// frmCustomerDetails_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmCustomerDetails_ShUc;
-
-        /// <summary>
-        /// grdCustomerDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdCustomerDetails;
-
-        /// <summary>
         /// frmCustomerDetails control.
         /// </summary>
         /// <remarks>

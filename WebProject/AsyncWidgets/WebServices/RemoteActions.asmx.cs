@@ -35,7 +35,7 @@ namespace WebProject.AsyncWidgets.WebServices
         private static readonly Logger log = LogManager.GetCurrentClassLogger();
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string DoAction(string ActorId, string ActionId, string ServiceInfo)
+        public object DoAction(string ActorId, string ActionId, string ServiceInfo)
         
         {
             // System.Threading.Thread.Sleep(5000);
@@ -59,7 +59,15 @@ namespace WebProject.AsyncWidgets.WebServices
                 {
                     // Trace.TraceWarning("User not logged in while calling action: {0}", ActionId);
                     
-                    return string.Format(Response, "UserNotLoggedIn", ",Response:{Message:'User Not Logged in'}");
+                    return new
+                    {
+                        status = "UserNotLoggedIn",
+                        Response = new
+                        {
+                            Message = "User Not Logged in"
+                        }
+                    };
+
                 }
 
                 stopwatch.Start();
@@ -77,20 +85,26 @@ Service Info, took more than 5 seconds:
 {ServiceInfo}
 ";
                 }
-              //  log.Info($@"executed  ActorFacade.ExecuteAction action in ActorFacade for ActorId: {ActorId}, ActionId: {ActionId}");
+                //  log.Info($@"executed  ActorFacade.ExecuteAction action in ActorFacade for ActorId: {ActorId}, ActionId: {ActionId}");
 
+                return new {
+                    status= "OK",
+                    Response=obj
+                };
 
-                if (obj.GetType().Name != "String")
-                {
-                    ret = JsonConvert.SerializeObject(obj);
-                }
-                else
-                {
-                    ret = obj.ToString();
-                }
+                //if (obj.GetType().Name != "String")
+                //{
+                //    ret = JsonConvert.SerializeObject(obj);
+                //}
+                //else
+                //{
+                //    ret = obj.ToString();
+                //}
                 //Trace.TraceInformation("Action executed successfully for ActorId: {0}, ActionId: {1}", ActorId, ActionId);
 
-                return string.Format(Response, "OK", ",Response:" + ret);
+                //return string.Format(Response, "OK", ",Response:" + ret);
+
+               // return string.Format(Response, "OK", ",Response:" + ret);
             }
             catch (Exception ex)
             {

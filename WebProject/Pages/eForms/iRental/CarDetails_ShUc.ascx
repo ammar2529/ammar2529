@@ -1,125 +1,118 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CarDetails_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CarDetails_ShUc" %>
 
- <table class="w-form-table" cellspacing="2" style="width:100%">
-            <tr>
-                <td style=" text-align: left;" class="ftitle">
-                    <span>Car For</span>
-                </td>
-                <td style=" text-align: left;" class="ftitle">
-                       <span style="white-space:nowrap">Brand</span></td>
-                <td style=" text-align: left;" class="ftitle">
-                      <span style="white-space:nowrap">Model</span></td>
-                <td style=" text-align: left;" class="ftitle">
-                      <span style="white-space:nowrap">Year</span></td>
-                       <td style=" text-align: left;" class="ftitle">
-                      <span style="white-space:nowrap">Type</span></td>
-                       <td style=" text-align: left;" class="ftitle">
-                      <span style="white-space:nowrap">Car Location</span></td>
-                <td style=" text-align: left;" class="ftitle">
-                    <span>Status</span></td>
-            </tr>
-            <tr>
-                <td style=" text-align: left;">
-
-                        <select class="dropdownlist" style="width:120px"  argumentid="CarFor" 
-                        groupid="schCarDetails" name="D1">
-                        <option value="" >Select Car For</option>
-                        <option value="Rental">Rental</option>
-                        <option value="Lease">Lease</option>
-                    </select></td>
-                <td style=" text-align: left;">
-
-                    <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+<div class="container text-center">
+    <div class="card">
+<%--        <div class="card-header d-flex justify-content-between align-items-center" id="headerFive" data-bs-toggle="collapse" data-bs-target="#cardContentFive" aria-expanded="true" aria-controls="cardContentFive" style="cursor: pointer;">
+            Car Details
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="cardContentFive" class="collapse show" aria-labelledby="headerFive">--%>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarFor">Car For</label>
+                        <select class="form-select form-select-sm dropdownlist" id="CarFor" argumentid="CarFor" groupid="schCarDetails" name="D1" ">
+                            <option value="">Select Car For</option>
+                            <option value="Rental">Rental</option>
+                            <option value="Lease">Lease</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="BrandId">Brand</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="BrandId" groupid="schCarDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" ">
                             <option value="" selected="selected">Select Brand</option>
-                    </select>
-                        </td>
-                <td style=" text-align: left;">
-                       <select class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="ModelId">Model</label>
+                        <select class="form-select form-select-sm dropdownlist" id="ModelId" groupid="schCarDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" ">
                             <option value="" selected="selected">Select Model</option>
-                        </select></td>
-                <td style=" text-align: left;">
-                                    <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarYear">Year</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarYear" groupid="schCarDetails" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}" ">
                             <option value="" selected="selected">Select Year</option>
-                    </select>
-                    </td>
-                                        <td style=" text-align: left;">
-                                                                  <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="TypeId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}">
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="TypeId">Type</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="TypeId" groupid="schCarDetails" argumentid="TypeId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}" ">
                             <option value="" selected="selected">Select Type</option>
-                    </select>
-
-</td>
-                                        <td style=" text-align: left;">
-
-                                            <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarLocationId">Location</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarLocationId" groupid="schCarDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}" ">
                             <option value="" selected="selected">Select Location</option>
-                    </select>
-                    </td>
-                <td style=" text-align: left;">
+                        </select>
+                    </div>
 
-                    <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'9'}]}">
+                </div>
+
+                                <div class="row mt-2">
+     <div class="col-sm-6 col-lg-2">
+                        <label for="CarStatusId">Status</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarStatusId" groupid="schCarDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'9'}]}" ">
                             <option value="" selected="selected">Select Status</option>
-                    </select>
-</td>
-            </tr>
-             <tr>
-
-             <td colspan="7">
-             &nbsp;
-             </td>
-
-             </tr>
-
-            <tr>
-                <td style=" text-align: left;" class="ftitle">
-                <span style="white-space:nowrap">Car No.</span></td>
-                <td style=" text-align: left;" class="ftitle">
-
-                <span style="white-space:nowrap">Chassis No.</span></td>
-                <td style=" text-align: left;" class="ftitle">
-                       <span style="white-space:nowrap">Normal Insurance</span></td>
-                <td style=" text-align: left;" class="ftitle">
-                      <span style="white-space:nowrap">Expiry (Days)</span></td>
-                                        <td style=" text-align: left;" class="ftitle">
-                        <span style="white-space:nowrap">Full Insurance</span>
-                        </td>
-                                        <td style=" text-align: left;" class="ftitle">
-                                        <span style="white-space:nowrap">Expiry (Days)</span></td>
-                <td style=" text-align: left;">
-
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td style=" text-align: left;">
-
-                 <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schCarDetails"></td>
-                <td style=" text-align: left;">
-
-                    <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schCarDetails"></td>
-                <td style=" text-align: left;">
-                 <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="InsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'8'}]}">
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarNumber">Car Number</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CarNumber" argumentid="CarNumber" groupid="schCarDetails"  style="height: 2px;">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="ChassisNo">Chassis No</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="ChassisNo" argumentid="ChassisNo" groupid="schCarDetails"  style="height: 2px;">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="InsuranceCompanyId">Insurance Company</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="InsuranceCompanyId" groupid="schCarDetails" argumentid="InsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'8'}]}"  width: 120px;">
                             <option value="" selected="selected">Select Insurance</option>
-                    </select>
-                 
-                 </td>
-                <td style=" text-align: left;">
-                       <input type="text" style="width: 115px;" class="text number" argumentid="NormalInsuranceExpiryDays" groupid="schCarDetails"></td>
-                                        <td style=" text-align: left;">
-                                                       <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                            groupid="schCarDetails" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}">
+                        </select>
+                    </div>
+
+                                        <div class="col-sm-6 col-lg-2">
+        <label for="NormalInsuranceExpiryDays">Expiry (Days)</label>
+        <input type="text" class="form-control form-control-sm CommonEmpty" id="NormalInsuranceExpiryDays" argumentid="NormalInsuranceExpiryDays" groupid="schCarDetails" style="height: 2px;">
+    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="FullInsuranceCompanyId">Full Insurance</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="FullInsuranceCompanyId" groupid="schCarDetails" argumentid="FullInsuranceCompanyId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'7'}]}"  width: 120px;">
                             <option value="" selected="selected">Select Insurance</option>
-                    </select></td>
-                                        <td style=" text-align: left;">
-                                        <input type="text" style="width: 115px;" class="text number" argumentid="FullInsuranceExpiryDays" groupid="schCarDetails"></td>
-                <td style="text-align: left;padding-bottom:0px">
-                                <a href="javascript:void(0);"  class="search ViewButton">
-                                     <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-<a href="javascript:void(0);"  class="reset ClearButton"><img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a></td>
-            </tr>
-            </table>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="FullInsuranceExpiryDays">Expiry (Days)</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="FullInsuranceExpiryDays" argumentid="FullInsuranceExpiryDays" groupid="schCarDetails" style="height: 2px;">
+                    </div>
+
+        <div class="col-sm-6 col-lg-2">
+
+        </div>
+                    
+        <div class="col-sm-6 col-lg-2">
+
+        </div>
+                    
+        <div class="col-sm-6 col-lg-2">
+
+        </div>
+                    
+        <div class="col-sm-6 col-lg-2">
+
+        </div>
+                    <div class="col-sm-6 col-lg-2 d-flex align-items-center"  padding-bottom: 0px;">
+                        <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" ">Search</button>
+                        <button href="javascript:void(0);" class="btn btn-secondary btn-sm reset ClearButton" ">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+

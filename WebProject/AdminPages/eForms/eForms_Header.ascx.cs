@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,34 +14,36 @@ namespace WebProject.AdminPages.eForms
         protected void Page_Load(object sender, EventArgs e)
         {
             MenuData.Mode = LiteralMode.PassThrough;
-            if (Session["UserId"] != null)//user logged in
-            {
-                frmMenu_Header.Hidden = false;
-                frmLogin_Header.Hidden = true;
+            if (Session["UserId"] != null)
+            {//user logged in
+             //    {
+             //        //frmMenu_Header.Hidden = false;
+             //        //frmLogin_Header.Hidden = true;
+             //    }
+             // else
+             //    {
+             //        //frmMenu_Header.Hidden = true;
+             //        //frmLogin_Header.Hidden = false;
+             //    }
+                var jsConfiguration = "";
+                if (Session["MenuData"] != null)
+                {
+                    jsConfiguration = $@"
+                window.MenuData = {JsonConvert.SerializeObject(Session["MenuData"])};
+            ";
+                }
+                if (Session["UserConf"] != null)
+                {
+                    jsConfiguration += $@"
+                         AsyncWidgets.user.conf={JsonConvert.SerializeObject(Session["UserConf"])};
+             ";
+                    ;
+                }
+                MenuData.Text = $@"<script type='text/javascript'>
+             {jsConfiguration}
+             </script>";
+                jsConfiguration = "";
             }
-            else
-            {
-                frmMenu_Header.Hidden = true;
-                frmLogin_Header.Hidden = false;
-            }
-            var jsConfiguration = "";
-            if (Session["MenuData"] != null)
-            {
-                jsConfiguration = $@"
-            window.MenuData={ Session["MenuData"].ToString()};
-";
-            }
-            if (Session["UserConf"] != null)
-            {
-                jsConfiguration += $@"
-            AsyncWidgets.user.conf={ Session["UserConf"].ToString()};
-";
-                       ;
-            }
-            MenuData.Text = $@"<script type='text/javascript'>
-{jsConfiguration}
-</script>";
-            jsConfiguration = "";
         }
 
         protected override void CreateChildControls()

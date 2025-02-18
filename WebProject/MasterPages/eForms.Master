@@ -85,7 +85,7 @@
         cursor:wait;
     }
     .masked {
-        overflow: hidden !important;
+        overflow: hidden !important; 
     }
     .masked-relative {
         position: relative !important;

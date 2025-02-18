@@ -177,7 +177,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
                
-                
+                debugger
                     var a = $('div.SalesPaymentPanelDiv')
                     if ($('table.SalesPaymentPanel', a).length > 0) {
                         $('table.SalesPaymentPanel', a).show();

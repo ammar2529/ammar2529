@@ -24,24 +24,6 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Container conCarRateDetails;
 
         /// <summary>
-        /// frmCarRateDetails_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarRateDetails_ShUc;
-
-        /// <summary>
-        /// grdCarRateDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdCarRateDetails;
-
-        /// <summary>
         /// frmCarRateDetails control.
         /// </summary>
         /// <remarks>

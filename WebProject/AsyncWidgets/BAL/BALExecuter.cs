@@ -73,17 +73,34 @@ namespace WebProject.AsyncWidgets.BAL
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
             return "'"+ DBHelper.InvokeSP(PD["Command"].ParameterValue + "_SP", PD).ToString() +"'";
         }
-        public string GetData(string ServiceInfo)
+        public object GetData(string ServiceInfo)
         {
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
             DataSet ds = DBHelper.GetDataTableProc(PD["Command"].ParameterValue + "_SP", PD);
             if (ds.Tables[0].Rows.Count > 0)
             {
-               return string.Format("{{Rows:{0},Count:{1}}}", JsonConvert.SerializeObject(ds.Tables[0], new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()), 0);
+               //return string.Format("{{Rows:{0},Count:{1}}}", JsonConvert.SerializeObject(ds.Tables[0], new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()), 0);
+
+                var res = new
+                {
+                    Rows = ds.Tables[0].ToDictionaryList(),
+                    Count = 0,
+                  
+                };
+
+                return res;
             }
             else
             {
-                return string.Format("{{Rows:{0},Count:{1}}}", "[]",  0);
+                //return string.Format("{{Rows:{0},Count:{1}}}", "[]",  0);
+
+                var res = new
+                {
+                    Rows = new object() { },
+                    Count = 0,
+
+                };
+                return res;
             }
         }
         public string DeleteRows(string ServiceInfo)
@@ -92,7 +109,7 @@ namespace WebProject.AsyncWidgets.BAL
           //  DataSet ds = DBHelper.GetDataTableProc(PD["Command"].ParameterValue + "_SP", PD);
             return "'" + DBHelper.InvokeSP(PD["Command"].ParameterValue + "_SP", PD).ToString() + "'";
         }
-        public string Search(string ServiceInfo)
+        public object Search(string ServiceInfo)
         {
 
             ServiceInfo = ServiceInfo.Replace("&nbsp;","");
@@ -114,32 +131,53 @@ namespace WebProject.AsyncWidgets.BAL
                     LastRec = PageNo * PageSize,
                     FirstRec = LastRec - PageSize + 1;
                 decimal Pages = ((decimal)ds.Tables[0].Rows.Count) / PageSize;
+
+            
                 if (PageSize > -1)
                 {
-                    return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
-                                            JsonConvert.SerializeObject(DataRows(ds.Tables[0], FirstRec, LastRec), new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
-                                            ds.Tables[0].Rows.Count,
-                                            Math.Ceiling(Pages));
+                     var res = new
+                    {
+                        Rows = DataRows(ds.Tables[0], FirstRec, LastRec),
+                        Count = ds.Tables[0].Rows.Count,
+                        Pages = Math.Ceiling(Pages)
+
+                    };
+                    return res;
                 }
                 else
                 {
-                    return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
-                            JsonConvert.SerializeObject(ds.Tables[0], new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
-                            ds.Tables[0].Rows.Count,
-                            Math.Ceiling(Pages));
+
+                    var res = new
+                    {
+                        Rows = ds.Tables[0].ToDictionaryList(),
+                        Count = ds.Tables[0].Rows.Count,
+                        Pages = Math.Ceiling(Pages)
+
+                    };
+                    return res;
+
+                  
                 }
 
             }
             else
             {
-                return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}", "[]", 0, 0);
+                var res = new
+                {
+                    Rows = new object() { },
+                    Count = 0,
+                    Pages = 0
+
+                };
+                return res;
+              
             }
         }
-        public DataTable DataRows(DataTable table, int StartIndex, int EndIndex)
+        public List<Dictionary<string, object>> DataRows(DataTable table, int StartIndex, int EndIndex)
         {
             DataTable dtNew = table.Clone();
             int PageSize = EndIndex - StartIndex + 1;
-            DataRow[] DRs = new DataRow[PageSize];
+           // DataRow[] DRs = new DataRow[PageSize];
             for (int i = StartIndex - 1; i < EndIndex && i < table.Rows.Count; i++)
             {
                 //    DRs[i % PageSize] = table.Rows[i];
@@ -147,7 +185,7 @@ namespace WebProject.AsyncWidgets.BAL
                 //table.Rows.Remove(dr);
                 dtNew.ImportRow(table.Rows[i]);
             }
-            return dtNew;
+            return dtNew.ToDictionaryList();
 
         }
         public string AutoComplete(string ServiceInfo)
@@ -178,7 +216,7 @@ namespace WebProject.AsyncWidgets.BAL
             }
            // return "'" + DBHelper.InvokeSP(PD["Command"].ParameterValue + "_SP", PD).ToString() + "'";
         }
-        public string ChildComboRows(string ServiceInfo)
+        public object ChildComboRows(string ServiceInfo)
         {
 
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
@@ -188,7 +226,16 @@ namespace WebProject.AsyncWidgets.BAL
             {
                 string Command = PD["Command"].ParameterValue + "_SP";
 
-                return string.Format("{{Rows:{0}}}", JsonConvert.SerializeObject(AsyncWidgets.DAL.DBHelper.GetDataTableProc(Command, PD).Tables[0]));
+                //return string.Format("{{Rows:{0}}}", JsonConvert.SerializeObject(AsyncWidgets.DAL.DBHelper.GetDataTableProc(Command, PD).Tables[0]));
+
+                var resp = new
+                {
+                    Rows = (AsyncWidgets.DAL.DBHelper.GetDataTableProc(Command, PD).Tables[0].ToDictionaryList())
+                    //
+
+                };
+
+                return resp;
             }
             else
             {
@@ -238,7 +285,13 @@ namespace WebProject.AsyncWidgets.BAL
                 Parentkey = Parentkey == "" ? "" : " = " + Parentkey;
                 SSQL = string.Format("select {0} from {1} where 1=1  {2}  {3}", Cols, StoreId, ParentCol, Parentkey);
                 DataSet DSQuery = AsyncWidgets.DAL.DBHelper.GetDataSet(SSQL);
-                return string.Format("{{Rows:{0}}}", JsonConvert.SerializeObject(DSQuery.Tables[0]));
+                var resp = new {
+                    Rows = DSQuery.Tables[0].ToDictionaryList()
+                    //
+
+                };
+                return resp;
+                //return string.Format("{{Rows:{0}}}", JsonConvert.SerializeObject(DSQuery.Tables[0]));
             }
         }
         public DataTable GetDataSet()

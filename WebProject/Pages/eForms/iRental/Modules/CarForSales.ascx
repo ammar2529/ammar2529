@@ -20,7 +20,7 @@
                         header: {
                             Style: {},
                             Visible: true,
-                            Collapsed: true,
+                            Collapsed: false,
                             HeadText: 'Search'
                         }
                     }
@@ -94,7 +94,7 @@
 </uc5:Container>
 
 <uc8:Form ID="frmCarForSales" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
-    AsyncForm="~/Pages/eForms/iRental/CarForSales_FrUc.ascx">
+    AsyncForm="~/Pages/eForms/iRental/CarForSales_FrUc2.ascx">
     <WidgetConfig>
         <script>
             cf = {

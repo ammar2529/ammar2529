@@ -25,7 +25,7 @@
 
 <%--            <AW:RentalContracts runat="server" ID="RentalContracts" />--%>
 
-<%--          <AW:SalesContracts runat="server" id="SalesContracts" />--%>
+          <AW:SalesContracts runat="server" id="SalesContracts" />
 <%--            <AW:CarForSales runat="server" id="CarForSales" />--%>
 
 <%--            <AW:CarDetails runat="server" ID="CarDetails" />--%>
@@ -34,12 +34,43 @@
     </div>
             </div>
     <script type="text/javascript">
-
+        async function delay(duration) {
+            return new Promise((resolve, reject) => setTimeout(() => resolve(duration), duration));
+        };
         $().ready(function () {
-            setTimeout(function () { AsyncWidgets.get(StartupWidgetId).show(); }, 500);
 
-
+            delay(500).then(() => AsyncWidgets.get(StartupWidgetId).show() );
         });
+  
+            function handleSubmit(event) {
+                // Prevent the form from submitting
+                event.preventDefault();
+
+                // Custom JS code here
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Example of using the values (you can replace with your own logic)
+                console.log("Username:", username);
+                console.log("Password:", password);
+
+                // You can also show an alert or perform other actions
+                alert('Form submitted! But using custom JS.');
+            }
     </script>
+
+
+<%--    <h2>Login Form</h2>
+    <form id="loginForm" onsubmit="handleSubmit(event)">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>--%>
+
+
 </asp:Content>
 

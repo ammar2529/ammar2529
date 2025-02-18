@@ -696,11 +696,11 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
         //End Always Move to First Tab on Show
 
         // Hide Edit For Normal Users
-        $('[roles]', t.el).hide().each(function () {
-            if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1) {
-                $(this).show();
-            }
-        });
+        //$('[roles]', t.el).hide().each(function () {
+        //    if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1) {
+        //        $(this).show();
+        //    }
+        //});
 
         $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
         $('.ElemDisabled', t.el).removeClass('ElemDisabled');

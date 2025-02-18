@@ -13,7 +13,7 @@
                         header: {
                             Style: {},
                             Visible: true,
-                            Collapsed: true,
+                            Collapsed: false,
                             HeadText: 'Search'
                         }
                     }

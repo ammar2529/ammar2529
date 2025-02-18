@@ -1,44 +1,48 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmployeeDatabase_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.Employee.EmployeeDatabase_ShUc" %>
 
-  <table class="w-form-table" cellspacing="2" style="width:100%">
-            <tr>
-                <td style=" text-align: left;" class="ftitle">
-                    <span>Emp ID</span>
-                </td>
-                <td style=" text-align: left;" class="ftitle">
-                <span style="white-space:nowrap">Civil ID</span></td> 
-                <td style=" text-align: left;" class="ftitle">
-                       <span style="white-space:nowrap">Employee Name</span></td>
-                <td style=" text-align: left;" class="ftitle"> 
-                      <span style="white-space:nowrap">Job Title</span></td>
-                <td style=" text-align: left;" class="ftitle">
-                    <span>Status</span></td>
-                <td style=" text-align: left;"> 
-                    </td>
-            </tr>
-            <tr>
-                <td style=" text-align: left;">
 
-                        <input type="text" class="text" 
-                        argumentid="EmpId" groupid="schEmployeeDatabase"></td>
-                <td style=" text-align: left;">
-                 <input type="text" class="text" 
-                        argumentid="CivilId" groupid="schEmployeeDatabase"></td>
-                <td style=" text-align: left;">
-                         <input type="text" class="text" 
-                        argumentid="NameInEnglish" groupid="schEmployeeDatabase"></td>
-                <td style=" text-align: left;">
-                          <input type="text" class="text" 
-                        argumentid="JobTitle" groupid="schEmployeeDatabase"></td>
-                <td style=" text-align: left;">
-                    <select loadon="FirstVisible" class="dropdownlist" style="width: 165px;"
-                            groupid="schEmployeeDatabase" argumentid="EmpStatus" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'24'}]}">
+
+
+<div class="container text-center">
+    <div class="card">
+        <div class="card-header collapsible-header" data-bs-toggle="collapse" data-bs-target="#collapsePanel" aria-expanded="true" aria-controls="collapsePanel">
+            <span>Data Grid Example</span>
+            <span id="collapse-icon">-</span>
+        </div>
+        <div id="collapsePanel" class="collapse show">
+            <div class="card-body">
+                 <div class="row">
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="EmpId">Emp ID</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="EmpId" argumentid="EmpId" groupid="schEmployeeDatabase" style="height: 2px;">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CivilId">Civil ID</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CivilId" argumentid="CivilId" groupid="schEmployeeDatabase" style="height: 2px;">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="NameInEnglish">Name In English</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="NameInEnglish" argumentid="NameInEnglish" groupid="schEmployeeDatabase" style="height: 2px;">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="JobTitle">Job Title</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="JobTitle" argumentid="JobTitle" groupid="schEmployeeDatabase" style="height: 2px;">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="EmpStatus">Emp Status</label>
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="EmpStatus" groupid="schEmployeeDatabase" argumentid="EmpStatus" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'24'}]}" >
                             <option value="" selected="selected">Select Employee Status</option>
-                        </select></td>
-                <td style="text-align: left;padding-bottom:0px"> 
-                <a href="javascript:void(0);"  class="search ViewButton">
-                                     <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-<a href="javascript:void(0);"  class="reset ClearButton">
-                                     <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a></td>
-            </tr>
-            </table>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3"  padding-bottom: 0px;">
+                        <button href="javascript:void(0);"  class="btn btn-primary btn-sm search ViewButton me-2" >Search</button>
+                        <button href="javascript:void(0);"  class="btn btn-secondary btn-sm reset ClearButton" >Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

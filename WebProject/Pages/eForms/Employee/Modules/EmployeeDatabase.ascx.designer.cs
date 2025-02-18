@@ -24,33 +24,6 @@ namespace WebProject.Pages.eForms.Employee.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Container conEmployeeDatabase;
 
         /// <summary>
-        /// frmEmployeeDatabase_ShUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmEmployeeDatabase_ShUc;
-
-        /// <summary>
-        /// grdEmployeeDatabase control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdEmployeeDatabase;
-
-        /// <summary>
-        /// frmEmployeeDatabase_KPIUc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmEmployeeDatabase_KPIUc;
-
-        /// <summary>
         /// frmEmployeeDatabase control.
         /// </summary>
         /// <remarks>

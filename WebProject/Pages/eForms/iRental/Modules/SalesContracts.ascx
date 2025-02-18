@@ -19,7 +19,7 @@
                             Style: {},
                             Visible: true,
                             Collapsed: false,
-                            HeadText: 'Search'
+                            HeadText: '<p class="h5 mt-2">Search</p>'
                         }
                     }
                 </script>
@@ -264,7 +264,7 @@
 
 
 
-<AW:Form ID="frmSalesContracts" Hidden="true" DataSource="SEL_iRental_SalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_FrUc.ascx">
+<AW:Form ID="frmSalesContracts" Hidden="true" DataSource="SEL_iRental_SalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_FrUc2.ascx">
     <WidgetConfig>
         <script>
             cf = {
@@ -335,8 +335,8 @@
  <Scripts>
  <script>
                 var fn = function () {
-                    var conCar = AsyncWidgets.get("conRentalContracts_Cars");
-                    var f = conCar._frm;
+                    //var conCar = AsyncWidgets.get("conRentalContracts_Cars");
+                    //var f = conCar._frm;
                     t.on('beforeSearchGetForm', function (p)
                     {
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/

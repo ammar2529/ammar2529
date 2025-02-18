@@ -26,22 +26,7 @@
                     }
                     </script>
                 </WidgetConfig>
-                 <%--   <Scripts>
-                        <script>
-                            //test code for contrct no:12054
-                            debugger;
-                            var fn = function () { 
-                                var tt = t;
-
-                                tt.on("show", function () {
-                                    setTimeout(() => {
-                                        $('[argumentid="RecCode"]', tt.el).val("12054");
-                                        $('.search').trigger("click");
-                                    }, 1250);
-                                });
-                            }
-                        </script>
-                    </Scripts>--%>
+         
                 </AW:Form>
                 <AW:DataGrid ID="grdLeaseContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLeaseContracts_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" 

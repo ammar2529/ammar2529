@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/eForms.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebProject.Default" %>
-
+<%--
 <%@ Register Src="AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
@@ -20,14 +20,7 @@
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SparePartInventory.ascx" TagPrefix="AW" TagName="SparePartInventory" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/GarageCarServiceDetails.ascx" TagPrefix="AW" TagName="GarageCarServiceDetails" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SparePartInventoryInvoice.ascx" TagPrefix="AW" TagName="SparePartInventoryInvoice" %>
-<%@ Register Src="~/Pages/eForms/iRental/Modules/CarAndCustomerDetails.ascx" TagPrefix="AW" TagName="CarAndCustomerDetails" %>
-
-
-
-
-
-
-
+<%@ Register Src="~/Pages/eForms/iRental/Modules/CarAndCustomerDetails.ascx" TagPrefix="AW" TagName="CarAndCustomerDetails" %>--%>
 
 
 
@@ -48,7 +41,7 @@
     }
 </script>--%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<%--<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
      <asp:TextBox ID="RndNo" runat="server" class="rndno" Style="display: none" />
     <div id="MainDiv"> 
@@ -77,7 +70,7 @@
          
             <AW:Form ID="frmLogout" Hidden="true" runat="server" AsyncForm="~/Pages/Common/Logout.ascx" />
 
-            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx"/>
+            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx"/>--%>
                    <%--     <Scripts>
                       <script></script>
                         </Scripts>
@@ -85,7 +78,7 @@
             </AW:Form>--%>  
            
 
-            <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
+         <%--   <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
             <Scripts>
                 <script type="text/javascript"></script>
             </Scripts>
@@ -110,7 +103,7 @@
             <AW:CarAndCustomerDetails runat="server" id="CarAndCustomerDetails" />
 
         </div>
-    </div>
+    </div>--%>
 
    <%-- <script>
 
@@ -149,10 +142,10 @@
 
 </script>--%>
 
-    <script type="text/javascript">
-    var onReady = () => {
+  <%--  <script type="text/javascript">
+    var onReady = () => {--%>
         //console.log("finding menu...");
-        if ($('[showwidget="conInvoice"]').length > 0) {
+       <%-- if ($('[showwidget="conInvoice"]').length > 0) {
             /*$('[showwidget="conInvoice"]').trigger('click');*/
 
             $('[showwidget = "conInvoice"]').on('click', function () {
@@ -160,12 +153,12 @@
                 AsyncWidgets.get('grdSparePartCustomerAndInvoiceDetails').Requery();
 
             });
-        }
+        }--%>
 
-        if ($('[showwidget="conSalesContracts"]').length > 0) {
+      <%--  if ($('[showwidget="conSalesContracts"]').length > 0) {--%>
             /*$('[showwidget="conInvoice"]').trigger('click');*/
 
-            $('[showwidget="conSalesContracts"]').on('click', function () {
+          <%--  $('[showwidget="conSalesContracts"]').on('click', function () {
                 
                 var c = $('[showwidget="conSalesContracts"]'); 
                 var a =   AsyncWidgets.get('frmSalesContracts_ShUc')
@@ -176,8 +169,8 @@
             });
         }
 
-        else {
-            //var outterFun = arguments.callee;
+        else {--%>
+           <%-- //var outterFun = arguments.callee;
             setTimeout(onReady, 3000);
         }
     };
@@ -189,5 +182,5 @@
     </script>
 
 
-</asp:Content>
+</asp:Content>--%>
 

@@ -13,23 +13,5 @@ namespace WebProject.Pages.eForms.iRental
 
     public partial class CarForSales_FrUc
     {
-
-        /// <summary>
-        /// FullInsuranceExpiry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FullInsuranceExpiry;
-
-        /// <summary>
-        /// FullInsurancePolicyNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FullInsurancePolicyNo;
     }
 }

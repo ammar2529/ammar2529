@@ -23,7 +23,7 @@ namespace WebProject.AsyncWidgets.BAL
     {
         public string LogoutUser(string ServiceInfo)
         {
-            Trace.WriteLine($"Session abandoning at {DateTime.Now}, sessionid: {Session.SessionID}" );
+            Trace.WriteLine($"Session abandoning at {DateTime.Now}, sessionid: {Session.SessionID}");
             Session.Abandon();
             return "true";
         }
@@ -50,7 +50,7 @@ namespace WebProject.AsyncWidgets.BAL
             string Status = "";
             System.Web.HttpContext ctx = System.Web.HttpContext.Current;
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
-            
+
             string hash = PD["password"].ParameterValue == "****" ? "@EV" :
                 GetAuthHash(
                ctx.Session["UserId"].ToString(),
@@ -76,44 +76,88 @@ namespace WebProject.AsyncWidgets.BAL
             return rijndaelKey.Encrypt(UserEmail + "@|" + PassHash + "@|" + UserRoles);
         }
         public Authentication() { }
-        public string GetUserMenu(string ServiceInfo)
+
+        public object GetUserMenuRows(string ServiceInfo)
         {
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
-            DataSet ds = DBHelper.GetDataTableProc(PD["Command"].ParameterValue + "_SP", PD);
-            string ret="",Response = @"{{status:""{0}"" {1}}}";
+            DataSet ds = DBHelper.GetDataTableProc("FX_SEL_SimpleMenu_SP", PD);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                Session["MenuData"] =  string.Format(Response, "OK", ",Response:" +string.Format("{{Rows:{0},Count:{1}}}", JsonConvert.SerializeObject(ds.Tables[0]), 0));
-             ret=string.Format("{{Rows:{0},Count:{1}}}", JsonConvert.SerializeObject(ds.Tables[0]), 0);
-               
+
+               return new
+                {
+                    Rows = ds.Tables[0].ToDictionaryList(),
+                    Count = 0
+                };
+
+
+            }
+            return null;
+        }
+
+        public object GetUserMenu(string ServiceInfo)
+        {
+
+            object ret = "";
+                //Response = @"{{status:""{0}"" {1}}}";
+            var rows = GetUserMenuRows(ServiceInfo);
+            if (rows != null)
+            {
+                var Result = new
+                {
+                    status = "OK",
+                    Response = rows
+                };
+
+                Session["MenuData"] = Result;
+
+                ret = Result;
+
+
+
             }
             else
             {
-                Session["MenuData"] = string.Format(Response, "OK", ",Response:{{Rows:[],Count:0}}");
-               ret= string.Format("{{Rows:{0},Count:{1}}}", "[]", 0);
+                Session["MenuData"] = new
+                {
+                    status = "OK",
+                    Response = new
+                    {
+                        Rows = new object[] { },
+                        Count = 0
+                    }
+                };
+
+                ret = new
+                {
+                    Rows = new object[] { },
+                    Count = 0
+                };
+
+       
             }
-             
+
             return ret;
         }
         //public string AuthenticateUser(Dictionary<string, string> ServiceInfo)
         //{
         //    return AuthenticateUser(ServiceInfo["UserName"], ServiceInfo[ "Password"]);
         //}
-        public string AuthenticateUser(string ServiceInfo)
+        public object AuthenticateUser(string ServiceInfo)
         {
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
             string UserName = PD["UserName"].ParameterValue, Password = PD["UserPassword"].ParameterValue;
-            return authenticateUser( UserName,  Password);
+            return authenticateUser(UserName, Password);
         }
-        public  string authenticateUser(string UserName , string Password)
+        public object authenticateUser(string UserName, string Password)
         {
             System.Web.HttpContext ctx = System.Web.HttpContext.Current;
             //return string.Format("{{Authenticated:{0},FirstName:'{1}',LastName:'{2}',Roles:'{3}'}}", "true", "Muhammed", "Qasim", "Admin");
-            
+
             string passPhrase = "Pas5pr@se";        // can be any string
             string initVector = "@1B2c3D4e5F6g7H8", strAutKey = ""; // must be 16 bytes
             bool bValid = false;
-           
+
             DataSet dsUser = DAL.Authentication.GetUserData(UserName);
             if (dsUser != null && dsUser.Tables.Count > 0 && dsUser.Tables[0].Rows.Count > 0)
                 strAutKey = dsUser.Tables[0].Rows[0]["Password"].ToString();
@@ -135,17 +179,48 @@ namespace WebProject.AsyncWidgets.BAL
             }
             if (bValid)
             {
-                ctx.Session["UserId"] = UserName;
-                ctx.Session["Name"] = dsUser.Tables[0].Rows[0]["Name"].ToString();
+                Session["UserId"] = UserName;
+                Session["Name"] = dsUser.Tables[0].Rows[0]["Name"].ToString();
                 Session["Roles"] = dsUser.Tables[0].Rows[0]["Roles"].ToString();
                 Session["UserConf"] = string.Format("{{OrgId:{0},UnitId:{1},ShowEmpInfo:{2},Roles:'{3}' }}", dsUser.Tables[0].Rows[0]["OrgId"].ToString(), dsUser.Tables[0].Rows[0]["UnitId"].ToString(), dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString(), dsUser.Tables[0].Rows[0]["Roles"].ToString());
-                Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID},userid: {Session["userid"]}");
-                return string.Format("{{Authenticated:{0},Name:'{1}',Roles:'{2}',Conf:{{OrgId:{3},UnitId:{4},ShowEmpInfo:{5},Roles:'{2}' }} }}", "true", dsUser.Tables[0].Rows[0]["Name"].ToString(), dsUser.Tables[0].Rows[0]["Roles"].ToString(), dsUser.Tables[0].Rows[0]["OrgId"].ToString(), dsUser.Tables[0].Rows[0]["UnitId"].ToString(), dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString());
-                            Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID}");
+                //Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID},userid: {Session["userid"]}");
+                //Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID}");
+                var MenuData = GetUserMenuRows("<root><dummy></dummy></root>");
+                Session["MenuData"] = MenuData;
+                return new
+                {
+                    Authenticated = true,
+                    Name = dsUser.Tables[0].Rows[0]["Name"].ToString(),
+                    Roles = dsUser.Tables[0].Rows[0]["Roles"].ToString(),
+                    Conf = new
+                    {
+                        OrgId = dsUser.Tables[0].Rows[0]["OrgId"].ToString(),
+                        UnitId = dsUser.Tables[0].Rows[0]["UnitId"].ToString(),
+                        ShowEmpInfo = dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString(),
+                        Roles = dsUser.Tables[0].Rows[0]["Roles"].ToString(),
+                        MenuData = MenuData
+                    }
+                };
+
+
             }
-            
+
             else
-                return string.Format("{{Authenticated:{0},Name:'{1}',Roles:'{2}'}}", "false", "", "");
+            {
+                Session["UserId"] = null;
+                Session["Name"] = null;
+                Session["Roles"] = null;
+                Session["UserConf"] = null;
+                Session["MenuData"] = null;
+                return  new
+                {
+                    Authenticated = false,
+                    Name = "",
+                    Roles = ""
+                };
+
+
+            }
         }
 
 

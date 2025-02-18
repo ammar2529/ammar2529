@@ -37,55 +37,49 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     
 
 
+    // Show Update Mode, Hide Edit Mode, and Show Action Buttons
     $('.Edit_Insrance', t.el).on('click', function () {
+        $('div.CommonEdit', t.el).hide();
+        $('div.CommonUpdate', t.el).show();
 
-        $('.FullInsuranceExpiry', t.el).show().next('img').show();
-        $('.CommonEdit', t.el).show();
-        $('.CommonUpdate', t.el).hide();
         $('.Edit_Insrance', t.el).hide();
         $('.Clear_Insrance', t.el).show();
         $('.Update_Insurance', t.el).show();
     });
 
-     
+    // Handle Update Insurance Button Click
     $('.Update_Insurance', t.el).on('click', function () {
-        $('.FullInsuranceExpiry', t.el).hide().next('img').hide();
-
-        $('.CommonEdit', t.el).hide()
-        $('.CommonUpdate', t.el).show();
-        
+        $('div.CommonEdit', t.el).hide();
+        $('div.CommonUpdate', t.el).show();
 
         var btn = $(this);
-        if (btn.hasClass('MyDataAction'))
-        {
+        if (btn.hasClass('MyDataAction')) {
             var ChassisNo = $('[argumentid="ChassisNo"]', t.el).val();
 
+            // Validate ChassisNo Field
             if (ChassisNo == 'null' || ChassisNo == '') {
                 $.showMessage('ChassisNo must not be empty');
-                
-                return false
+                return false;
             } else {
                 t.submit(btn);
                 $('.Edit_Insrance', t.el).show();
                 $('.Clear_Insrance', t.el).hide();
                 $('.Update_Insurance', t.el).hide();
-              
             }
             return false;
         }
     });
 
-
+    // Handle Clear Button Click
     $('.Clear_Insrance', t.el).on('click', function () {
-
-       /* $('.CommonEdit', t.el).val('');*/
         $('.Edit_Insrance', t.el).show();
         $('.Clear_Insrance', t.el).hide();
-        $('.CommonEdit', t.el).hide()
-        $('.CommonUpdate', t.el).show();
+        $('.CommonEdit', t.el).show();
+        $('.CommonUpdate', t.el).hide();
         $('.FullInsuranceExpiry', t.el).hide().next('img').hide();
         $('.Update_Insurance', t.el).hide();
     });
+
     
 
     $('.btnGetCarPrice', t.el).on('click', function () {
@@ -574,24 +568,31 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             $('.file-list', t.el).html('');
             console.log($('.file-list', t.el).length);
                    //Always Move to First Tab on Show
-                var li = $('li[tabid="SalesContractDetails"]', t.el), tbl;
-                li.parent().children('li.active').removeClass('active');
-                li.addClass('active');
-                tbl = li.closest('table').children();
-                tbl.children('tr:not(:first)').hide();
-                tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-                $('.tabid', t.el).val(li.attr('tabid'));
+            
+            //    var li = $('li[tabid="SalesContractDetails"]', t.el), tbl;
+            //li.parent().children('li.active').removeClass('active');
+            //    li.addClass('active');
+            //    tbl = li.closest('table').children();
+            //    tbl.children('tr:not(:first)').hide();
+            //tbl.children('div[tabid="' + li.attr('tabid') + '"]').show();
+            //    $('.tabid', t.el).val(li.attr('tabid'));
                 //End Always Move to First Tab on Show
 
-                // Hide Edit For Normal Users
-            $('[roles]', t.el).hide().each(function ()
-            {
-
-                if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1)
-                {
-                    $(this).show();
-                }
+            $('li[tabid].active', t.el).each(function () {
+                var li = $(this), tabid = li.attr('tabid'), tbl;
+                tbl = li.closest('.container').find('.table-responsive').not(':first');
+                tbl.hide();
+                tbl.filter('[tabid="' + tabid + '"]').show();
             });
+                // Hide Edit For Normal Users
+            //$('[roles]', t.el).hide().each(function ()
+            //{
+
+            //    if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1)
+            //    {
+            //        $(this).show();
+            //    }
+            //});
 
         $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
         $('.ElemDisabled', t.el).removeClass('ElemDisabled');
@@ -1687,7 +1688,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = function ()
 {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
-    
+    debugger
     if ($('.Arrive').is(":checked"))
     {
         

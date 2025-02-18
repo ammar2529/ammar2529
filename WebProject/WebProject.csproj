@@ -264,6 +264,7 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -327,6 +328,7 @@
     <Content Include="AdminPages\eForms\eForms_Header_Login.ascx" />
     <Content Include="AdminPages\eForms\eForms_Header_Menu.ascx" />
     <Content Include="AdminPages\eForms\eForms_Search.ascx" />
+    <Content Include="AdminPages\eForms\Login.aspx" />
     <Content Include="App_Themes\Blue\images\default_image.png" />
     <Content Include="App_Themes\Blue\images\spacer.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-login.gif" />
@@ -583,8 +585,10 @@
     <Content Include="App_Themes\eForms_Theme\Images\workflow.jpg" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_ara.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_eng.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\testCSS.css" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_ara.gif" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_eng.gif" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_Small_ara.gif" />
@@ -1248,11 +1252,14 @@
     <Content Include="AsyncWidgets\Forms\UserManagment\frmAddUser.ascx" />
     <Content Include="AsyncWidgets\Forms\UserManagment\frmSearchUsers.ascx" />
     <Content Include="AsyncWidgets\Scripts\Custom-Ext.js" />
+    <Content Include="AsyncWidgets\Scripts\ExtTest.js" />
+    <Content Include="AsyncWidgets\Scripts\FormWidget.js" />
     <Content Include="AsyncWidgets\Scripts\frmUserManagement.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.alphanumeric.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.autocomplete.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.jclock.js" />
     <Content Include="AsyncWidgets\Scripts\jquery.js" />
+    <Content Include="AsyncWidgets\Scripts\jquery.slim.js" />
     <Content Include="AsyncWidgets\Scripts\jQueryUI\jquery-ui.js" />
     <Content Include="AsyncWidgets\Scripts\WidgetBase.js" />
     <Content Include="AsyncWidgets\WebServices\RemoteActions.asmx" />
@@ -1363,16 +1370,20 @@
     <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs-sprite.gif" />
     <Content Include="AsyncWidgets\Widgets\resources\images\Widgets\TabPanel\tabs.gif" />
     <Content Include="AsyncWidgets\Widgets\TabPanel.ascx" />
+    <Content Include="BudastoorHome.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Default2.aspx" />
+    <Content Include="ExtTest.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="gitignore.gitignore" />
     <Content Include="Global.asax" />
+    <Content Include="Home2.aspx" />
     <Content Include="JQuery\Common.js" />
     <Content Include="JQuery\jquery.form.js" />
     <Content Include="KeepSessionAlive.aspx" />
@@ -1380,11 +1391,13 @@
     <Content Include="Logout.aspx" />
     <Content Include="MasterPages\DummyMaster.master" />
     <Content Include="MasterPages\eForms.Master" />
+    <Content Include="MasterPages\TestNewForms.aspx" />
     <Content Include="NLogTestFile.aspx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarForSales_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\GRG_CarAndCustomerDetails_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\GRG_CarServiceDetails_Car_ShUc.ascx" />
@@ -1401,6 +1414,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SalesContracts_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventoryInvoice_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc.ascx" />
@@ -1428,6 +1442,8 @@
     <Content Include="Pages\eForms\iRental\SalesContracts_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\TestForm.ascx" />
+    <Content Include="Pages\eForms\iRental\testPage.html" />
+    <Content Include="Pages\eForms\iRental\WebUserControl1.ascx" />
     <Content Include="Releas2_New\DBArtifactslist.txt" />
     <Content Include="Releas2_New\SalesContracts2\01AllTABLES.sql" />
     <Content Include="Releas2_New\SalesContracts2\02AllSP.sql" />
@@ -1483,6 +1499,7 @@
     <Content Include="ReportsEngine\FusionMaps\FusionMaps.js_FromAsif" />
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\crsmarttag.jsp" />
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\preview.jsp" />
+    <Content Include="responsiveTab.html" />
     <Content Include="SaveLineOfItems.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1498,9 +1515,11 @@
     <Content Include="Scripts\eForms\iRental\grdCarAndServiceDetailsContracts_Cust.js" />
     <Content Include="Scripts\eForms\iRental\grdSalesContractComments.js" />
     <Content Include="Scripts\eForms\iRental\grdInvoicePaymentDetails.js" />
+    <Content Include="Scripts\eForms\iRental\Menu.js" />
     <Content Include="Scripts\eForms\iRental\RemoveButton.css" />
     <Content Include="Scripts\eForms\iRental\SalesContracts.js" />
     <Content Include="Scripts\eForms\iRental\scripts.js" />
+    <Content Include="Scripts\eForms\iRental\Searchcollapsible.js" />
     <Content Include="Scripts\eForms\iRental\Upload.css" />
     <Content Include="Scripts\eForms\iRental\TestForm.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1512,6 +1531,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\frmRentalContractst.js" />
+    <Content Include="AsyncWidgets\Scripts\DataGrid.js" />
     <Content Include="Scripts_21-11-2023\Procedure\EL_iRental_SalesContracts_Payments_SP.sql" />
     <Content Include="Scripts_21-11-2023\Procedure\FX_UPD_FileUpload_SP.sql" />
     <Content Include="Scripts_21-11-2023\Procedure\RNTSalesContract_Print_SalesContract_SP.sql" />
@@ -1571,6 +1591,7 @@
     <Content Include="CarServiceDetailsDataSet\CarServiceDetails.xsc">
       <DependentUpon>CarServiceDetails.xsd</DependentUpon>
     </Content>
+    <Content Include="BuDastoor.Master" />
     <None Include="CarServiceDetailsDataSet\CarServiceDetails.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2276,6 +2297,13 @@
     <Compile Include="AdminPages\eForms\eForms_Search.ascx.designer.cs">
       <DependentUpon>eForms_Search.ascx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPages\eForms\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\eForms\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AsyncWidgets\BAL\Authentication.cs" />
@@ -2293,6 +2321,7 @@
       <DependentUpon>eFormsAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AsyncWidgets\Enums.cs" />
+    <Compile Include="AsyncWidgets\Extensions.cs" />
     <Compile Include="AsyncWidgets\Forms\EPG\EmployeeInfo.ascx.cs">
       <DependentUpon>EmployeeInfo.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2525,6 +2554,20 @@
     <Compile Include="AsyncWidgets\Widgets\TabPanel.ascx.designer.cs">
       <DependentUpon>TabPanel.ascx</DependentUpon>
     </Compile>
+    <Compile Include="BuDastoor.Master.cs">
+      <DependentUpon>BuDastoor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BuDastoor.Master.designer.cs">
+      <DependentUpon>BuDastoor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="BudastoorHome.aspx.cs">
+      <DependentUpon>BudastoorHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudastoorHome.aspx.designer.cs">
+      <DependentUpon>BudastoorHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CarServiceDetailsDataSet\CarServiceDetails.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2557,10 +2600,24 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default2.aspx.cs">
+      <DependentUpon>Default2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default2.aspx.designer.cs">
+      <DependentUpon>Default2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="eForms\Web\UI\BlockTags.cs" />
     <Compile Include="eForms\Web\UI\PWCLightPage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Home2.aspx.cs">
+      <DependentUpon>Home2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home2.aspx.designer.cs">
+      <DependentUpon>Home2.aspx</DependentUpon>
     </Compile>
     <Compile Include="InvoiceDataSet\Invoice.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2608,8 +2665,12 @@
       <DependentUpon>eForms.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPages\eForms.Master.designer.cs">
-      <DependentUpon>eForms.Master</DependentUpon>
+    <Compile Include="MasterPages\TestNewForms.aspx.cs">
+      <DependentUpon>TestNewForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\TestNewForms.aspx.designer.cs">
+      <DependentUpon>TestNewForms.aspx</DependentUpon>
     </Compile>
     <Compile Include="NLogTestFile.aspx.cs">
       <DependentUpon>NLogTestFile.aspx</DependentUpon>
@@ -2856,6 +2917,12 @@
     <Compile Include="Pages\eForms\iRental\CarDetails_ShUc.ascx.designer.cs">
       <DependentUpon>CarDetails_ShUc.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\CarForSales_FrUc2.ascx.cs">
+      <DependentUpon>CarForSales_FrUc2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarForSales_FrUc2.ascx.designer.cs">
+      <DependentUpon>CarForSales_FrUc2.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx.cs">
       <DependentUpon>GarageCarServiceDetails_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2985,6 +3052,10 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx.designer.cs">
       <DependentUpon>SalesContracts_AdditionalAmount_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc2.ascx.cs">
+      <DependentUpon>SalesContracts_FrUc2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx.cs">
       <DependentUpon>SalesContracts_FrUc.ascx</DependentUpon>
@@ -3501,6 +3572,13 @@
     <Compile Include="Pages\eForms\iRental\TestForm.ascx.designer.cs">
       <DependentUpon>TestForm.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\ITSSD\ITSSDProjects_FrUc.ascx.cs">
       <DependentUpon>ITSSDProjects_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3897,6 +3975,7 @@
     <Compile Include="Skins\Defalut.EO.Calendar.ascx.designer.cs">
       <DependentUpon>Defalut.EO.Calendar.ascx</DependentUpon>
     </Compile>
+    <Compile Include="StaticCache.cs" />
     <Compile Include="test2.aspx.cs">
       <DependentUpon>test2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3976,6 +4055,7 @@
     <Folder Include="AdminPages\Common\" />
     <Folder Include="App_Data\" />
     <Folder Include="AsyncWidgets\Widgets\resources\images\Widgets\Grid\" />
+    <Folder Include="Scripts\Widgets\" />
     <Folder Include="UploadSparePartImage\" />
   </ItemGroup>
   <ItemGroup>

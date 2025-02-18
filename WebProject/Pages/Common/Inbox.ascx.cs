@@ -11,7 +11,14 @@ namespace WebProject.Pages.Common
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var student = new
+            {
+                name = "Ammar",
+                city = "GWA"
+            };
+            var objStudent = student;
 
+            var nm = objStudent.name;
         }
     }
 }

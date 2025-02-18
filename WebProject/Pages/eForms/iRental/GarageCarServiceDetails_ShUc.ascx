@@ -1,109 +1,66 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GarageCarServiceDetails_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.Modules.GarageCarServiceDetails_ShUc" %>
-<table class="w-form-table" cellspacing="0" style="width: 100%">
-  
-        <tr>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Service </span><span>No.</span>
-        </td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">Car No.</span></td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-
-            <span style="white-space: nowrap">Customer Name</span></td>
-        <td style="text-align: left;" class="ftitle" width="20%">
-            <span style="white-space: nowrap">National ID No.</span></td>
-
-        <td style="text-align: left;" class="ftitle" width="20%">
-
-            <span style="white-space: nowrap">Mobile Telephone</span></td>
-            
-    </tr>
-      
-    <tr style="height: 35px";>
-        <td style="text-align: left;">
-
-            <input type="text" style="width:155px;"  class="text" argumentid="RecCode"  groupid="schCarServiceDetails" />
-        </td>
-        <td style="text-align: left;">
-            <input type="text"  class="text " style="width:155px;" 
-                                groupid="schCarServiceDetails"  argumentid="CarNumber" /></td>
-        <td style="text-align: left;">
-            <input type="text" style="width:155px;" class="text" argumentid="CustomerName" groupid="schCarServiceDetails" /></td>
-        <td style="text-align: left;">
-            
-            <input type="text" class="text" style="width:155px;"   argumentid="NationalIDNo" groupid="schCarServiceDetails" />
-           </td>
-
-        <td style="text-align: left;">
-            <input type="text" class="text" style="width:155px;" argumentid="MobileTelephone1" groupid="schCarServiceDetails" /></td>
-        
-    </tr>
 
 
-
-
-
-
-    <tr>
-        <td style="text-align: left;" class="ftitle">Receive Date</td>
-        <td style="text-align: left;" class="ftitle">Deliverd Date</td>
-        <td style="text-align: left;" class="ftitle">Status</td>
-        <td style="text-align: left;" class="ftitle">&nbsp;</td>
-        <td style="text-align: left;" class="ftitle">&nbsp;</td>
-
-    </tr>
-   
-    
-    <tr>
-        <td style="text-align: left;">
-            <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                style="width: 135px;" class="text  date   " argumentid="CarRecivedDate" /></td>
-        <td style="text-align: left;">
-
-            <input type="text" groupid="schCarServiceDetails" maxlength="10"
-                style="width: 135px;" class="text  date   " argumentid="CarDeliverdDate" /></td>
-        <td style="text-align: left;">
-
-            <select class="dropdownlist" style="width: 160px;"
-                groupid="schCarServiceDetails" argumentid="StateId" name="D4">
-                <option value="" selected="selected">Select Status</option>
-                <%--<option value="">-----------------------------</option>
-                <option value="RRCCreatedState">Created - Reservation</option>
-                <option value="">-----------------------------</option>--%>
-                <option value="">-----------------------------</option>
-                <option value="OpenState">Open</option>
-                <option value="">-----------------------------</option>
-                <option value="ClosedState">Closed</option>
-                <option value="">-----------------------------</option>
-                <option value="CanceledState">Canceled</option>
-                <option value="">-----------------------------</option>
-
-            </select></td>
-        <td style="text-align: left;">
-
-            &nbsp;</td>
-
-
-        <td style="text-align: left; padding-bottom: 0px; white-space: nowrap;padding-top: 6px;">
-            <!-- View Button -->
-            <a href="javascript:void(0);" class="search ViewButton">
-                <img alt="View" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-            </a>
-
-            <!-- Clear Button -->
-            <a href="javascript:void(0);" class="reset clearCheck ClearButton">
-                <img alt="Clear" height="22" width="47" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0">
-            </a>
-        </td>
-
-    </tr>
-
-    
-
-
-   
-      
-   
-  
-
-</table>
+<div class="container text-center">
+    <div class="card">
+<%--        <div class="card-header d-flex justify-content-between align-items-center" id="headerNineteen" data-bs-toggle="collapse" data-bs-target="#cardContentNineteen" aria-expanded="true" aria-controls="cardContentNineteen" style="cursor: pointer;">
+            Car Service Details
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="cardContentNineteen" class="collapse show" aria-labelledby="headerNineteen">--%>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="RecCode">Rec Code</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="RecCode" argumentid="RecCode" groupid="schCarServiceDetails" style="height: 2px; ">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarNumber">Car Number</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CarNumber" argumentid="CarNumber" groupid="schCarServiceDetails" style="height: 2px; ">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CustomerName">Customer Name</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CustomerName" argumentid="CustomerName" groupid="schCarServiceDetails" style="height: 2px; ">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="NationalIDNo">National ID No</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="NationalIDNo" argumentid="NationalIDNo" groupid="schCarServiceDetails" style="height: 2px; ">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="MobileTelephone1">Mobile Telephone</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="MobileTelephone1" argumentid="MobileTelephone1" groupid="schCarServiceDetails" style="height: 2px; ">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarRecivedDate">Car Received Date</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty date" id="CarRecivedDate" groupid="schCarServiceDetails" argumentid="CarRecivedDate" maxlength="10" style="height: 2px; ">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="CarDeliverdDate">Car Delivered Date</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty date" id="CarDeliverdDate" groupid="schCarServiceDetails" argumentid="CarDeliverdDate" maxlength="10" style="height: 2px; ">
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <label for="StateId">Status</label>
+                        <select class="form-select form-select-sm dropdownlist" id="StateId" groupid="schCarServiceDetails" argumentid="StateId" name="D4" >
+                            <option value="" selected="selected">Select Status</option>
+                            <option value="">-----------------------------</option>
+                            <option value="OpenState">Open</option>
+                            <option value="">-----------------------------</option>
+                            <option value="ClosedState">Closed</option>
+                            <option value="">-----------------------------</option>
+                            <option value="CanceledState">Canceled</option>
+                            <option value="">-----------------------------</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <!-- Empty Cell -->
+                    </div>
+                    <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3">
+                        <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" style="height: 2px;">View</button>
+                        <button href="javascript:void(0);" class="btn btn-secondary btn-sm reset clearCheck ClearButton" >Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

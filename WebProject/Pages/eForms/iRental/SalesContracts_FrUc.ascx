@@ -4,8 +4,9 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 <%@ Register Src="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx" TagPrefix="AW" TagName="CustomerDetails_FrUc" %>
-
+<link href="../../../App_Themes/eForms_Theme/StyleSheets/ResponsiveTable.css" rel="stylesheet" />
 <script src="../../../Scripts/eForms/iRental/grdSalesContractComments.js"></script>
+
 <script>
     // American Numbering System
     var th = ['', 'thousand', 'million', 'billion', 'trillion'];
@@ -38,7 +39,19 @@
     opacity: 0.5; /* Make placeholder text semi-transparent */
     color: gray;  /* Optional: Change placeholder color */
   }
+
 </style>
+  <script>
+      $(document).ready(function () {
+          $('#myTab .nav-link').on('click', function () {
+              var target = $(this).attr('href');
+              $('#myTabContent .tab-pane').removeClass('show active');
+              $(target).addClass('show active');
+              $('#myTab .nav-link').removeClass('active');
+              $(this).addClass('active');
+          });
+      });
+    </script>
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
 <link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
@@ -46,30 +59,30 @@
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <script src="../../../JQuery/Common.js"></script>
 
-<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
+
+        <div class="table-responsive">
+            <table class="table myTable w-form-table">
     <tr>
         <td style="padding-top: 0px; padding-left: 2px;">
-            <ul class="SimpleTab" style="margin: 0px;">
-                <li class="active" tabid="SalesContractDetails">
-                    <div>Contract Details </div>
-                </li>
-                
-                 <li tabid="AdditionalAmount" style="border-right: 1px solid #8298B0;">
-                    <div>
-                        Additional Amount
-                    </div>
-                </li>
 
-                <li tabid="SalesPaymentDetails" style="border-right: 1px solid #8298B0;">
-                    <div>Payment Details </div>
-                </li>
 
-                    <li tabid="SalesContractComments" style="border-right: 1px solid #8298B0;">
-                    <div>
-                        Comments</div>
-                </li>
+                <ul class="SimpleTab nav nav-tabs" id="myTab" role="tablist" style="margin: 0px;">
+                    <li class="nav-item active" tabid="SalesContractDetails">
+                        <div class="nav-link active" id="contract-details-tab" data-toggle="tab" href="#contract-details" role="tab" aria-controls="contract-details" aria-selected="true">Contract Details</div>
+                    </li>
+                    
+                    <li class="nav-item" tabid="AdditionalAmount" style="border-right: 1px solid #8298B0;">
+                        <div class="nav-link" id="additional-amount-tab" data-toggle="tab" href="#additional-amount" role="tab" aria-controls="additional-amount" aria-selected="false">Additional Amount</div>
+                    </li>
 
-            </ul>
+                    <li class="nav-item" tabid="SalesPaymentDetails" style="border-right: 1px solid #8298B0;">
+                        <div class="nav-link" id="payment-details-tab" data-toggle="tab" href="#payment-details" role="tab" aria-controls="payment-details" aria-selected="false">Payment Details</div>
+                    </li>
+
+                    <li class="nav-item" tabid="SalesContractComments" style="border-right: 1px solid #8298B0;">
+                        <div class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments</div>
+                    </li>
+                </ul>
         </td>
     </tr>
 
@@ -79,15 +92,7 @@
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
 
-            <%--    <tr>
-                    <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
-                            <tr id="trNote">
-                                <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>--%>
+  
 
                 <tr>
                     <td colspan="4">
@@ -202,16 +207,16 @@
 
 
                             <tr>
-                                <td class="ftitle">
+                                <td class="auto-style1">
                                     <nobr>Car No:</nobr>
                                 </td>
-                                <td>
+                                <td class="auto-style1">
                                     <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="CarNumber"></span>
                                 </td>
-                                <td class="ftitle">
+                                <td class="auto-style1">
                                     <nobr>Name:</nobr>
                                 </td>
-                                <td style="text-align: center">
+                                <td style="text-align: center" class="auto-style1">
                                     <span class="ftitle" style="font-size: 16px;" groupid="SalesContractsForm" argumentid="CustomerName"></span>
                                 </td>
                             </tr>
@@ -356,12 +361,6 @@
                     </td>
                 </tr>
 
-               <%-- <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
-                </tr>--%>
-
                 <%--class="hideOnNoExpirayDateInSales"--%>
                 <tr class="hideOnCarNotArrived">
                     <td colspan="4">
@@ -370,11 +369,11 @@
                             <tr>
 
 
-                                <td class="ftitle" style="width:20%">
+                                <td class="ftitle" >
                                     <nobr>Full Insurance:</nobr>
                                 </td>
 
-                                <td style="width:30%">
+                                <td >
                                     <span class="ftitle CommonDisable FullInsurance CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceCompanyId"></span>
 
                                     <select loadon="FirstVisible" class="dropdownlist CommonEdit" style="width: 155px;display: none"
@@ -387,10 +386,10 @@
 
 
 
-                                <td class="ftitle" style="width:20%">
+                                <td class="ftitle" >
                                      Expiry Date:
                                 </td>
-                                <td style="width: 30%">
+                                <td >
                                     <span class="ftitle CommonDisable ExpiryDate CommonUpdate" groupid="SalesContractsForm" argumentid="FullInsuranceExpiry"></span>
 
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
@@ -424,47 +423,29 @@
                         </table>
                     </td>
                 </tr>
-                <%--<tr>
-
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
-                </tr>--%>
 
 
                 <tr>
                     <td colspan="4">
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
-                                <td class="ftitle" style="width:20%">
+                                <td class="ftitle" >
                                     <nobr>Reservation Date:</nobr>
                                 </td>
-                                <td style="width:30%">
+                                <td >
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
                                         style="width: 150px;" class="text  date CommonDisableClass  " argumentid="ContractStartDate" />
 
-                                    <%--<input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
-                                        groupid="SalesContractsForm" argumentid="ContractStartDay" />
-
-                                    <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
-                                        groupid="SalesContractsForm" argumentid="ContractStartTime" />--%>
-
                                 </td>
 
-                                <td class="ftitle" style="width:20%">
+                                <td class="ftitle" >
                                     <nobr>Reservation End Date:</nobr>
                                 </td>
-                                <td style="width:30%">
+                                <td >
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
                                         style="width: 150px;" class="text  date DisableOnClose CommonDisableClass  " argumentid="ReservationDate" />
 
-                                 <%--   <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
-                                        groupid="SalesContractsForm" argumentid="ReservationWeekDays" />
 
-
-
-                                    <input type="text" style="text-align: center; width: 30px;" maxlength="10" class="text AlwaysDisable"
-                                        groupid="SalesContractsForm" argumentid="ReservationDays" />--%>
 
                                 </td>
 
@@ -480,11 +461,7 @@
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
                             style="width: 150px;" class="text  date CommonDisableClass  "  argumentid="ContractDate" />
 
-                       <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="ContractWeekDay" />
 
-                        <input type="text" style="text-align: center; width: 55px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="ContractTime" />--%>
 
                     </td>
 
@@ -495,8 +472,6 @@
                         <input type="text" groupid="SalesContractsForm" maxlength="10"
                             style="width: 150px;" class="text  date DisableOnClose CommonDisableClass  " requirederr='  ' argumentid="DeliveryDate" />
 
-                        <%--<input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text AlwaysDisable"
-                            groupid="SalesContractsForm" argumentid="DeliveryWeekDays" />--%>
 
                     </td>
 
@@ -505,25 +480,21 @@
         </table>
     </td>
 </tr>
-               <%-- <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
-                </tr>--%>
 
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table class="table table-bordered">
+                            <tbody>
                             <tr>
-                                <td class="ftitle" style="width: 20%">
+                                <td class="ftitle" >
                                     <nobr>Engine Warranty - KM:</nobr></td>
-                                <td style="width: 30%"><input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
+                                <td ><input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass  "
                             groupid="SalesContractsForm" argumentid="EngineWarranty" /></td>
-                                <td class="ftitle" style="width: 20%">
+                                <td class="ftitle" >
                                     <nobr>Years: </nobr>
                                 </td>
-                                <td style="width: 30%"><select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " id="a" style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
+                                <td ><select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " id="a" style="width: 155px;" groupid="SalesContractsForm" argumentid="EnginYearsWarranty" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'37'}]}">
                                         <option value="" selected="selected">Select Years</option>
                                     </select></td>
                             </tr>
@@ -594,20 +565,16 @@
                                     <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  CommonDisableClass  "
                                         groupid="SalesContractsForm" argumentid="RoadServiceNo" /></td>
                             </tr>
+                                </tbody>
                         </table>
                     </td>
                 </tr>
-                <%--<tr>
-
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
-                </tr>--%>
-
+  
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
+                                                <table class="table table-bordered">
+                            <tbody>
                             <tr>
                                 <td class="ftitle" >
 
@@ -687,41 +654,44 @@
                                     <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text number AlwaysDisable bgr"
                                         groupid="SalesContractsForm" argumentid="TotalAmount" /></td>
                             </tr>
-
+                                </tbody>
                         </table>
                     </td>
                 </tr>
 
-                
-
-
-                   <tr>
-       <td colspan="4">
-           <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
-                <tr>
-                    <td class="ftitle" style="width:20%">
-                      <nobr style="color: Red; font-size: 12px">Amount Due:</nobr>
-                    </td>
-                    <td style="text-align: center;width:30%" >
-                        <span class="ftitle AmountDueC" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
-                    </td>
-                    <td class="ftitle"style="width:20%">
-
-                        <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr></td>
-                    <td style="text-align: center;width:30%">
-                       <span class="ftitle PaymentAmountC" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
-
-                    </td>
-                </tr>
-            </table>
-           </td>
-                       </tr>
 
 
 
                 <tr>
                     <td colspan="4">
-                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="ftitle" style="width: 20%">
+                                        <nobr style="color: Red; font-size: 12px">Amount Due:</nobr>
+                                    </td>
+                                    <td style="text-align: center; width: 30%">
+                                        <span class="ftitle AmountDueC" style="color: Red; font-size: 12px" groupid="SalesContractsForm" argumentid="AmountDue"></span>
+                                    </td>
+                                    <td class="ftitle" style="width: 20%">
+
+                                        <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr></td>
+                                    <td style="text-align: center; width: 30%">
+                                        <span class="ftitle PaymentAmountC" style="color: Green; font-size: 12px" groupid="SalesContractsForm" argumentid="PaymentAmount"></span>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td colspan="4">
+                         <table class="table table-bordered">
+                            <tbody>
                             <tr>
                                 <td style="width: 20%" class="ftitle">Bill Amt:
                                     <input argumentid="BillAmount" class="text  number CommonDisableClass  " groupid="SalesContractsForm" maxlength="10" style="text-align: center;width: 75px;margin-left: 5px;" type="text" />
@@ -780,6 +750,7 @@
                                          conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false,ShowActionMsg:false, Requery:true,GroupId:'SalesContractsForm'}"/>
                                 </td>
                             </tr>
+                                </tbody>
                         </table>
                     </td>
                 </tr>
@@ -814,68 +785,7 @@
         <input type="hidden" groupid="SalesContractsForm" argumentid="FileGuid" readonly="readonly" />
 
         <%-- Data Grid  --%>
-        <%--<div style="width: 100%;" class="CommonDisableClass">
-        <table cellspacing:"0" cellpadding:"0" border="0" style: 5%; style="width:100%;"  text-align: left" class="uploadedFileList">
-            <tbody>
-                <tr class="HeaderTR">
-                    <td class="Header w-grid-border">
-                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header">
-                            <tbody>
-                                <tr class="w-grid-head-back">
 
-                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-3" colindex="3" colid="FileName" style="padding-left: 0px; padding-right: 0px;">
-                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px;">
-                                            <span href="#" class="w-grid-head ColName sort">File Name</span>
-                                        </div>
-                                    </td>
-                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                            <span href="#" class="w-grid-head ColName sort">File Size</span>
-                                        </div>
-                                    </td>
-                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileType" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                            <span href="#" class="w-grid-head ColName sort">File Type</span>
-                                        </div>
-                                    </td>
-                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedBy" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                            <span href="#" class="w-grid-head ColName sort">Uploaded By</span>
-                                        </div>
-                                    </td>
-                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="CreatedDate" style="padding-left: 0px; padding-right: 0px; width: 110px;">
-                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 100px;">
-                                            <span href="#" class="w-grid-head ColName sort">Uploade Date</span>
-                                        </div>
-                                    </td>
-                                    <td class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" colindex="4" colid="FileSize" style="padding-left: 0px; padding-right: 0px; width: 45px;">
-                                        <div style="white-space: nowrap; overflow: hidden; margin-left: 10px; width: 35px;">
-                                            <span href="#" class="w-grid-head ColName sort"></span>
-                                        </div>
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr class="ItemTR">
-                    <td class="Item w-grid-border">
-                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; table-layout: fixed" itemno="10" class="w-grid-row-odd">
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr class="NoRecordsTR" style="display: none;">
-                    <td class="NoRecords w-grid-norecords-msg">
-                        <div style="padding: 10px; background-color: transparent" class="PWCNoDataMessage">No records available.</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-            </div>--%>
 
 
                 <%-- Data Grid  --%>
@@ -1109,21 +1019,21 @@
                 
  <WidgetConfig>
  <script>
-                        cf = {
+     cf = {
 
-                            header: {
-                                Style: {},
-                                Visible: true,
-                                Collapsed: false,
-                                HeadText: 'Sales Payment Details'
-                            }
-                        }
-                    </script>
+         header: {
+             Style: {},
+             Visible: true,
+             Collapsed: false,
+             HeadText: 'Sales Payment Details'
+         }
+     }
+ </script>
  </WidgetConfig>
  <Scripts>
  <script>
-                        
-                        var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
+
+     var fn = Sales.SalesContracts.frmSalesContactsPaymentDetails;
 
  </script>
  </Scripts>
@@ -1213,7 +1123,7 @@
                                 Sequence: { width: '0px' },
                                 RecId: { width: '70px', caption: 'ID' },
                                 ParentRecId: { width: '0px' },
-                                Description: { caption: 'Description',width: '380px' },
+                                Description: { caption: 'Description', width: '380px' },
                                 AdditionalAmount: { caption: 'Amount', width: '80px' },
                                 DateCreated: { caption: 'Date Created', width: '130px' },
                                 CreatedBy: { caption: 'Created By', width: '100px' },
@@ -1229,11 +1139,10 @@
                 </GridConfig>
                 <Scripts>
                     <script>
-                        var fn = function ()
-                        {
+                        var fn = function () {
                             t.on('beforeSearchGetForm', function (P) {
                                 var frm = AsyncWidgets.get('frmSalesContracts');
-                                var RecId =  P.ParentRecId = frm.GetArgVal('RecId');
+                                var RecId = P.ParentRecId = frm.GetArgVal('RecId');
 
                                 var params = {
                                     Command: 'SEL_iRental_SalesContracts',
@@ -1243,21 +1152,17 @@
                                 };
 
                                 // Assuming ServerCall is a function to make an API call
-                                ServerCall(params, function (res)
-                                {
+                                ServerCall(params, function (res) {
 
                                     var res = decJSON(res)
 
 
-                                    if (res.status === 'OK')
-                                    {
+                                    if (res.status === 'OK') {
 
-                                        if (res.Response.Rows.length > 0)
-                                        {
+                                        if (res.Response.Rows.length > 0) {
                                             var rows = res.Response.Rows;
-                                            for (var i = 0; i < rows.length; i++)
-                                            {
-                                                var row = rows[ i ];
+                                            for (var i = 0; i < rows.length; i++) {
+                                                var row = rows[i];
                                                 var RecCode = row.RecCode;
                                                 var CarNumber = row.CarNumber;
                                                 var CustomerName = row.CustomerName;
@@ -1269,16 +1174,16 @@
                                             }
 
 
-                                                var a = $('div.SalesAdditionalAmountPanelDiv')
-                                                $('[argumentid="RecCodePanel"]', a).text(RecCode);
-                                                $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
-                                                $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
-                                                $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
-                                                $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
+                                            var a = $('div.SalesAdditionalAmountPanelDiv')
+                                            $('[argumentid="RecCodePanel"]', a).text(RecCode);
+                                            $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
+                                            $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
+                                            $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+                                            $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
 
 
 
-                                            
+
                                         }
 
                                     }
@@ -1293,8 +1198,7 @@
                                 pVal = $('[colid="ParentRecId"] .ColValue', fRow).text();
                                 P.cf['ParentRecId'] = pVal;
                             });
-                            t.on('rowsRendered', function ()
-                            {
+                            t.on('rowsRendered', function () {
 
                                 var frm = AsyncWidgets.get('frmSalesContracts');
                                 var strMainStateId = frm.GetArgVal('StateId');
@@ -1331,15 +1235,15 @@
                                     $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
                                 }
                                 //End If Main State ID = RRCContractClosed or RRCContractCancelled
-                                
+
 
                                 var frm = AsyncWidgets.get('frmSalesContracts');
-                            
+
 
                                 //var RecCode = $('[argumentid="RecCode"]', frm.el).text();
                                 var RecId = $('[argumentid="RecId"]', frm.el).val();
 
-                               
+
 
 
 
@@ -1362,29 +1266,29 @@
 
                             $('.ADCloseForm', t.el).on('click', function () {
 
-                               
 
-                                    var a = $('div.SalesAdditionalAmountPanelDiv')
-                                    if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
-                                        $('table.SalesAdditonalAmountPanel', a).show();
-                                    }
 
-                               
+                                var a = $('div.SalesAdditionalAmountPanelDiv')
+                                if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                    $('table.SalesAdditonalAmountPanel', a).show();
+                                }
+
+
                             });
 
 
 
 
                             $('[tabid="AdditionalAmount"]', t.el).on('click', function () {
-                                
-                               
 
-                                    var a = $('div.SalesAdditionalAmountPanelDiv')
-                                    if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
-                                        $('table.SalesAdditonalAmountPanel', a).show();
-                                    }
 
-                             
+
+                                var a = $('div.SalesAdditionalAmountPanelDiv')
+                                if ($('table.SalesAdditonalAmountPanel', a).length > 0) {
+                                    $('table.SalesAdditonalAmountPanel', a).show();
+                                }
+
+
                             });
 
                         }
@@ -1593,7 +1497,7 @@
                 <Scripts>
                     <script>
                         var fn = function () {
-                          
+
                         }
                     </script>
                 </Scripts>
@@ -1637,17 +1541,15 @@
 
                             });
 
-                            $('.CSCloseForm', t.el).on('click', function ()
-                            {
-                             
+                            $('.CSCloseForm', t.el).on('click', function () {
 
-                                    var a = $('div.SalesCommentsPanelDiv')
-                                    if ($('table.SalesCommentsPanel', a).length > 0)
-                                    {
-                                        $('table.SalesCommentsPanel', a).show();
-                                    }
 
-                               
+                                var a = $('div.SalesCommentsPanelDiv')
+                                if ($('table.SalesCommentsPanel', a).length > 0) {
+                                    $('table.SalesCommentsPanel', a).show();
+                                }
+
+
                             });
 
                             /*$()*/
@@ -1660,3 +1562,4 @@
 
 </table>
 
+            </div>
