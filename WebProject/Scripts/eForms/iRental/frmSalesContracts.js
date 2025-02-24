@@ -442,6 +442,22 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         return false;
     });
 
+
+    //DeliveryNote
+    $('.DeliveryNote', t.el).click(function ()
+    { //
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintDeliveryNoteSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on BillsBtn Button');
+
+        return false;
+    });
+
     //End On Click of BillsBtn Contract Button
 
     // To Select Tabs

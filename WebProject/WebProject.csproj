@@ -1397,6 +1397,7 @@
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventory.ascx" />
     <Content Include="Pages\eForms\iRental\Modules\SparePartInventoryInvoice.ascx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintCarServiceDetails.aspx" />
+    <Content Include="Pages\eForms\iRental\Reports\PrintDeliveryNoteSalesContracts.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoice.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx" />
@@ -1562,7 +1563,7 @@
     <Content Include="Uploads\1_9b6ad392-6140-49ed-83e6-c0a1356ea055_New Text Document.txt" />
     <Content Include="Web.config" />
     <Content Include="WebForm4.aspx" />
-    <Content Include="DataSets\SalesContractDS.xsc">
+    <Content Include="eForms\SalesContractDS.xsc">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
     </Content>
     <Content Include="DataSets\SalesContactsDsForUAT.xsc">
@@ -1587,12 +1588,23 @@
     <Content Include="DataSets\SalesContactsDsForUAT.xss">
       <DependentUpon>SalesContactsDsForUAT.xsd</DependentUpon>
     </Content>
-    <None Include="DataSets\SalesContractDS.xsd">
+    <Content Include="eForms\DatasetSalesDeliveryNote.xsc">
+      <DependentUpon>DatasetSalesDeliveryNote.xsd</DependentUpon>
+    </Content>
+    <None Include="eForms\DatasetSalesDeliveryNote.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatasetSalesDeliveryNote.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="eForms\DatasetSalesDeliveryNote.xss">
+      <DependentUpon>DatasetSalesDeliveryNote.xsd</DependentUpon>
+    </Content>
+    <None Include="eForms\SalesContractDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SalesContractDS.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DataSets\SalesContractDS.xss">
+    <Content Include="eForms\SalesContractDS.xss">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
     </Content>
     <Content Include="ReportDS\ReportDS.xsc">
@@ -1614,6 +1626,17 @@
     </Content>
     <Content Include="InvoiceDataSet\Invoice.xsc">
       <DependentUpon>Invoice.xsd</DependentUpon>
+    </Content>
+    <Content Include="eForms\testDataSet.xsc">
+      <DependentUpon>testDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="eForms\testDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>testDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="eForms\testDataSet.xss">
+      <DependentUpon>testDataSet.xsd</DependentUpon>
     </Content>
     <None Include="InvoiceDataSet\Invoice.xsd">
       <SubType>Designer</SubType>
@@ -2537,10 +2560,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesContactsDsForUAT.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\SalesContractDS.cs">
+    <Compile Include="eForms\DatasetSalesDeliveryNote.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatasetSalesDeliveryNote.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eForms\SalesContractDS.cs">
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\SalesContractDS.Designer.cs">
+    <Compile Include="eForms\SalesContractDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesContractDS.xsd</DependentUpon>
@@ -2556,6 +2584,11 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="eForms\testDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>testDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="eForms\Web\UI\BlockTags.cs" />
     <Compile Include="eForms\Web\UI\PWCLightPage.cs" />
@@ -2939,6 +2972,19 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintCarServiceDetails.aspx.designer.cs">
       <DependentUpon>PrintCarServiceDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintDeliveryNoteSalesContracts.aspx.cs">
+      <DependentUpon>PrintDeliveryNoteSalesContracts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintDeliveryNoteSalesContracts.aspx.designer.cs">
+      <DependentUpon>PrintDeliveryNoteSalesContracts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\Reports\PrintDeliveryNoteSalesContracts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintDeliveryNoteSalesContracts.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Pages\eForms\iRental\Reports\PrintInvoice.aspx.cs">
       <DependentUpon>PrintInvoice.aspx</DependentUpon>
@@ -4081,6 +4127,10 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoiceReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintInvoiceReport.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pages\eForms\iRental\Reports\PrintDeliveryNoteSalesContracts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintDeliveryNoteSalesContracts.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

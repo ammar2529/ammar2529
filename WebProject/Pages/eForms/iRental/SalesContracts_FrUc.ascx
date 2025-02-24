@@ -764,6 +764,7 @@
                             <input type="button" value="  Contract  " style="width: 70px" class="ButtonStyle ContractPrintBtn  common-button" />
                             <%--<input type="button" value="  Bill  " style="width: 70px" class="ButtonStyle BillsBtn common-button" />--%>
                             <input type="button"  value="Statement" style="width: 70px" class=" ButtonStyle Statement common-button" />
+                            <input type="button"  value="Delivery Note" style="width: 90px" class=" ButtonStyle DeliveryNote common-button" />
 
                             <input type="button" style="width: 70px" value="  Close  " class="CloseForm ButtonStyle btnCancel common-button" />
                         </div>
