@@ -84,7 +84,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
 
         // Assuming ServerCall is a function to make an API call
         ServerCall(params, function (res) {
-            var res = decJSON(res);
+            //var res = decJSON(res);
 
 
             if (res.status === 'OK') {
@@ -188,10 +188,11 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
             var myMessage = "Generate New ItemID Successfully";
             var trimMyMessage = myMessage.trim();
             var parts = params.res.Response.split('||');
-            var code = parts[0];
+            var code1 = parts[0];
+            var code= code1.replace("'", "")
             var messageStatus = parts[1];
-            var message = parts[2];
-
+            var message1 = parts[2];
+            var message = message1.replace("'", "")
 
             if (message !== undefined) {
                 var trimMessage = message.trim();

@@ -39,6 +39,13 @@ namespace WebProject.AdminPages.eForms
              ";
                     ;
                 }
+
+                if (Session["Name"] != null)
+                {
+                    jsConfiguration += $@"
+                AsyncWidgets.user.name = {JsonConvert.SerializeObject(Session["Name"])};
+            ";
+                }
                 MenuData.Text = $@"<script type='text/javascript'>
              {jsConfiguration}
              </script>";

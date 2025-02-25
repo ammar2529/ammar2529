@@ -65,6 +65,9 @@
         background-color: gray;
         margin-top: 56px;
     }
+    .UserName {
+ text-decoration: none !important; /* Remove underline */
+    }
 
     @media (min-width: 992px) {
         .navbar-nav .dropdown:hover .dropdown-menu {
@@ -91,26 +94,16 @@
                     </ul>
                 </div>
                 <div class="d-flex align-items-center">
-                    <%--                    <a class="text-reset me-3" href="#">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>--%>
-                    <%--                    <div class="dropdown">
-                        <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
-                            <i class="fas fa-bell"></i>
-                            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Some news</a></li>
-                            <li><a class="dropdown-item" href="#">Another news</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>--%>
                     <div class="dropdown">
                         <a class="dropdown-toggle d-flex align-items-center hidden-arrow" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
-                            <i class="fa-solid fa-user"></i></a>
+                            <span class="UserName me-2"></span>
+                            <!-- Add the user's name here -->
+                            <i class="fa-solid fa-user"></i>
+                            <!-- User icon -->
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                            <%--             <li><a class="dropdown-item" href="#">My profile</a></li>
-             <li><a class="dropdown-item" href="#">Settings</a></li>--%>
+                            <%-- <li><a class="dropdown-item" href="#">My profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li> --%>
                             <li><a class="dropdown-item logout">Logout</a></li>
                         </ul>
                     </div>
@@ -126,7 +119,9 @@
         var menuData = MenuData.Rows;
 
         //var userRoles = decJSON(AsyncWidgets.user.conf);
+        var userName = AsyncWidgets.user.name;
 
+        debugger
         function renderMenu() {
             var menuText = '';
 
@@ -179,7 +174,7 @@
 
         renderMenu();
         AsyncWidgets.WidgetManager.bind($('#menuContainer [showwidget]'));
-
+       
 
         $('.logout').click(function () {
 
@@ -196,6 +191,9 @@
             });
         });
 
+        if (userName) {
+            $('.UserName').text(userName);
+        }
     });
 
 

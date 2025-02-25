@@ -99,7 +99,7 @@
 </uc5:Container>
 <script src="../../../../Scripts/eForms/iRental/frmSparePartInventory.js"></script>
 <uc8:Form ID="frmSparePartInventory" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
-    AsyncForm="~/Pages/eForms/iRental/SparePartInventory_FrUc.ascx">
+    AsyncForm="~/Pages/eForms/iRental/SparePartInventory_FrUc2.ascx">
     <WidgetConfig>
         <script>
             cf = {

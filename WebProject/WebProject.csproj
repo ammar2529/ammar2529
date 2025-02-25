@@ -1397,6 +1397,7 @@
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx" />
+    <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\CarForSales_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\GRG_CarAndCustomerDetails_ShUc.ascx" />
@@ -1413,6 +1414,7 @@
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoice.aspx" />
     <Content Include="Pages\eForms\iRental\Reports\PrintInvoicePaymentReceiptVoucher.aspx" />
     <Content Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SalesCarPrice_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_FrUc.ascx" />
@@ -1440,6 +1442,7 @@
     <Content Include="Pages\eForms\iRental\SalesContracts_OC_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_PD_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_ShUc.ascx" />
+    <Content Include="Pages\eForms\iRental\SparePartInventory_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\TestForm.ascx" />
     <Content Include="Pages\eForms\iRental\testPage.html" />
@@ -2903,6 +2906,13 @@
     <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx.designer.cs">
       <DependentUpon>CarAndCustomerDetails_FrUc.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc2.ascx.cs">
+      <DependentUpon>CarAndCustomerDetails_FrUc2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc2.ascx.designer.cs">
+      <DependentUpon>CarAndCustomerDetails_FrUc2.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\iRental\CarDetails_FrUc.ascx.cs">
       <DependentUpon>CarDetails_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2919,6 +2929,7 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\CarForSales_FrUc2.ascx.cs">
       <DependentUpon>CarForSales_FrUc2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\eForms\iRental\CarForSales_FrUc2.ascx.designer.cs">
       <DependentUpon>CarForSales_FrUc2.ascx</DependentUpon>
@@ -3045,6 +3056,13 @@
     </Compile>
     <Compile Include="Pages\eForms\iRental\Invoice_ItemCode_ShUc.ascx.designer.cs">
       <DependentUpon>Invoice_ItemCode_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesCarPrice_FrUc2.ascx.cs">
+      <DependentUpon>SalesCarPrice_FrUc2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SalesCarPrice_FrUc2.ascx.designer.cs">
+      <DependentUpon>SalesCarPrice_FrUc2.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SalesContracts_AdditionalAmount_FrUc.ascx.cs">
       <DependentUpon>SalesContracts_AdditionalAmount_FrUc.ascx</DependentUpon>
@@ -3557,6 +3575,13 @@
     <Compile Include="Pages\eForms\iRental\SalesContracts_ShUc.ascx.cs">
       <DependentUpon>SalesContracts_ShUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventory_FrUc2.ascx.cs">
+      <DependentUpon>SparePartInventory_FrUc2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\iRental\SparePartInventory_FrUc2.ascx.designer.cs">
+      <DependentUpon>SparePartInventory_FrUc2.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx.cs">
       <DependentUpon>SparePartInventory_ShUc.ascx</DependentUpon>

@@ -299,7 +299,7 @@
 
 
 
-<AW:Form ID="frmCarAndServiceDetails" Hidden="true" DataSource="SEL_GRG_CarAndCustomerDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarAndCustomerDetails_FrUc.ascx">
+<AW:Form ID="frmCarAndServiceDetails" Hidden="true" DataSource="SEL_GRG_CarAndCustomerDetails" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarAndCustomerDetails_FrUc2.ascx">
     <WidgetConfig>
         <script>
             cf = {

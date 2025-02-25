@@ -919,7 +919,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
             Ext.applyIf(cf, { ShowActionMsg: true });
-            var res = decJSON(res);
+            /*var res = decJSON(res);*/
 
             if (res.status == 'OK') {
                 params = res.Response.split('||');

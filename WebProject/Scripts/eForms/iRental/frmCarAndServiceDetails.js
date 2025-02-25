@@ -65,7 +65,8 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
             var parts = params.res.Response.split('||');
             var code = parts[ 0 ];
             var messageStatus = parts[ 1 ];
-            var message = parts[ 2 ];
+            var message1 = parts[2];
+            var message = message1.replace("'","");
             if (message !== undefined)
             {
                 var trimMessage = message.trim();
@@ -89,7 +90,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
             ServerCall(params, function (res)
             {
                 
-                var res = decJSON(res)
+           /*     var res = decJSON(res)*/
 
 
                 if (res.status === 'OK')

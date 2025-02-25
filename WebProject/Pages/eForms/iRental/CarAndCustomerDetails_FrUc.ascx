@@ -48,14 +48,7 @@
                                     <input type="radio" class="CommonDisableClass ElemDisabled RadioButtons Sales " default="default" value="Sales" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" /><label>Sales</label>
                                     <input type="radio" class="CommonDisableClass ElemDisabled RadioButtons Rental" value="Rental" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" /><label>Rental</label>
                                     <input type="radio" class="CommonDisableClass ElemDisabled RadioButtons Lease " value="Lease" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" /><label>Lease</label>
-                                    <%--                        <input type="radio" class="CommonDisableClass ElemDisabled RadioButtons Other " value="Other" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor"  /><label>Other</label>--%>
 
-
-                                    <%--                    
-     <input type="radio" class="CommonDisableClass ElemDisabled Sales" value="Sales" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" onclick="AsyncWidgets.WidgetScripts.frmCarAndServiceDetails.toggleDropdownCarSearchDetails()" /><label>Sales</label>
-    <input type="radio" class="CommonDisableClass ElemDisabled Rental" value="Rental" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" onclick="AsyncWidgets.WidgetScripts.frmCarAndServiceDetails.toggleDropdownCarSearchDetails()" /><label>Rental</label>
-    <input type="radio" class="CommonDisableClass ElemDisabled Lease" value="Lease" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" onclick="AsyncWidgets.WidgetScripts.frmCarAndServiceDetails.toggleDropdownCarSearchDetails()" /><label>Lease</label>
-    <input type="radio" class="CommonDisableClass ElemDisabled Other" value="Other" name="CarFor" groupid="CarAndCustomersDetails" argumentid="CarFor" onclick="AsyncWidgets.WidgetScripts.frmCarAndServiceDetails.toggleDropdownCarSearchDetails()" /><label>Other</label>--%>
 
                                 </td>
                                 <td style="width: 20%"></td>
