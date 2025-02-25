@@ -381,7 +381,7 @@ namespace WebProject.AsyncWidgets.BAL
             Type type = this.GetType();
 
             //  return ((string) type.GetMethod(ActionId).Invoke(this,new object[] {ServiceInfo} ));
-            return type.GetMethod(ActionId).Invoke(this, new object[] { ServiceInfo });
+            return type.GetMethod(ActionId, new Type[] { typeof(string) }).Invoke(this, new object[] { ServiceInfo });
         }
 
         #endregion
