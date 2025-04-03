@@ -1760,7 +1760,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
     
     if ($('.Arrive').is(":checked"))
     {
-        debugger
+        
         $('.CommonDD', t.el).hide().removeClass('required');
         $('tr.DropDownTR td div.DropDownDIV').hide();
         $('.CommonSP', t.el).show();

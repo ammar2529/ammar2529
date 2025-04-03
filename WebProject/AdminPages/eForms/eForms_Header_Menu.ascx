@@ -2,9 +2,15 @@
 
 <table cellspacing="0" cellpadding="0" width="100%" border="0">
     <tbody>
-        <tr>
+        <tr id="targetRow">
             <td width="100%" class="menuContainer" nowrap="nowrap" style="padding: 0px 5px 0px 0px;">
+
             </td>
+            <!-- Color Picker Added Here -->
+            <td>
+                <input type="color" id="colorPicker2" value="#ff0000" />
+            </td>
+
             <td>
                 <img height="20" width="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
             </td>
@@ -51,3 +57,10 @@
         </tr>
     </tbody>
 </table>
+
+<script>
+    // Color Picker event listener
+    document.getElementById("colorPicker2").addEventListener("input", function () {
+        document.getElementById("targetRow").style.backgroundColor = this.value;
+    });
+</script>

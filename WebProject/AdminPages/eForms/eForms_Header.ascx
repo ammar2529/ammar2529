@@ -341,6 +341,7 @@
                                                    
                                                 });
                                                 var getMenu = function (rws) {
+                                                    
                                                     var i, j, mnuHTML = "&lt;ul id='jsddm' style='z-index:999'>";
                                                     for (i = 0; i < rws.length && rws[i].ParentMenuId == 0; i++) {
                                                         var prntId = rws[i].MenuId;

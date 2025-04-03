@@ -38,6 +38,10 @@
     opacity: 0.5; /* Make placeholder text semi-transparent */
     color: gray;  /* Optional: Change placeholder color */
   }
+    .auto-style1 {
+        width: 20%;
+        height: 38px;
+    }
 </style>
 
 <link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
@@ -126,19 +130,26 @@
                                         <option value="" selected="selected" >Select Finance Company</option>
                                     </select></td>
                             </tr>
-                           
+
                             <tr>
 
-                                <td class="ftitle" >
+                                <td class="ftitle">
                                     <nobr>Car Type*:</nobr></td>
                                 <td class="ftitle">
 
-                                    <input type="radio" class="CommonDisableClass ElemDisabled  " default="default" value="N" name="CarType" groupid="SalesContractsForm" argumentid="CarType" /><label>New Car</label>
-                                    <input type="radio" class="CommonDisableClass ElemDisabled  " value="U" name="CarType" groupid="SalesContractsForm" argumentid="CarType" /><label>Used Car</label></td>
-                                <td class="ftitle LPONumberTitle" >
+                                    <%--  <input type="radio" class="CommonDisableClass ElemDisabled  " default="default" value="N" name="CarType" groupid="SalesContractsForm" argumentid="CarType" /><label>New Car</label>
+                                    <input type="radio" class="CommonDisableClass ElemDisabled  " value="U" name="CarType" groupid="SalesContractsForm" argumentid="CarType" /><label>Used Car</label>--%>
+
+                                    <input type="radio" class="CommonDisableClass ElemDisabled" checked="checked" default="default" value="N" name="CarType" groupid="SalesContractsForm" argumentid="CarType" />
+                                    <label>New Car</label>
+                                    <input type="radio" class="CommonDisableClass ElemDisabled" value="U" name="CarType" groupid="SalesContractsForm" argumentid="CarType" />
+                                    <label>Used Car</label>
+
+                                </td>
+                                <td class="ftitle LPONumberTitle">
                                     <nobr>LPO Number & Date:</nobr></td>
                                 <td class="LPONumberDateField">
-                                    <input type="text" style="text-align: center; width: 150px;" maxlength="29" class="text PriceC  CommonDisableClass   "
+                                    <input type="text" style="text-align: center; width: 150px;" maxlength="29" class="text PriceC  CommonDisableClass"
                                         groupid="SalesContractsForm" argumentid="LPONumber" />
 
                                     <input type="text" groupid="SalesContractsForm" maxlength="10"
@@ -723,7 +734,7 @@
                     <td colspan="4">
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-form-table">
                             <tr>
-                                <td style="width: 20%" class="ftitle">Bill Amt:
+                                <td class="auto-style1">Bill Amt:
                                     <input argumentid="BillAmount" class="text  number CommonDisableClass  " groupid="SalesContractsForm" maxlength="10" style="text-align: center;width: 75px;margin-left: 5px;" type="text" />
                                     <input type="button" title="Set Current Car Price" value="↓" style="width: 20px;  cursor: pointer;height: 16px;" class="ButtonStyle ftitle  CommonDisableClass btnGetCarPrice" />
                                 </td>
@@ -754,7 +765,9 @@
 
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                             <input type="button" style="width: 70px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />
+                           
+                             <input type="button" style="width: 70px" roles="iRen_Contracts_Admin" value="  Edit  " class="bt btn-secondary ButtonStyle SalesButton_Edit" />
+                                
                             <input type="button" style="width: 70px" value="  Reserve  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'RRCCreatedState'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
                            <input type="button" style="width: 70px" value="  Save  " ignorevalidate="ReservationDate DocType" class="DataAction ButtonStyle SaveBtn common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
 
@@ -775,8 +788,8 @@
                             </tr>
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%" class="ftitle">Bill Date:
-                                    <input type="text" groupid="SalesContractsForm" maxlength="10"
-                       style="width:75px;text-align:center; margin-left:2px" class="text  date CommonDisableClass  " argumentid="BillDate" /></td>
+                                    <input type="text"  maxlength="10"
+                       style="width:75px;text-align:center; margin-left:2px" class="text  date CommonDisableClass  " groupid="SalesContractsForm" argumentid="BillDate" /></td>
                             </tr>
                             <tr style="border: 1px solid black">
                                 <td style="width: 20%">

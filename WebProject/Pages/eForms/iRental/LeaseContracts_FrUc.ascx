@@ -58,7 +58,7 @@
                     <td class="ftitle" width="32%">
                          <select loadon="FirstVisible" class="dropdownlist required CommonDisable" style="width: 155px;"
                             groupid="LeaseContractsForm" argumentid="OutLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
-                            <option value="" selected="selected">Select Location</option>
+                            <option value="" selected="selected">OutLocationId</option>
                         </select>
                     </td>
                     <td class="ftitle" width="20%">

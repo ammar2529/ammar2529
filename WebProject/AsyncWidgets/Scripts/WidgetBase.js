@@ -1729,7 +1729,7 @@ var setField = function (ctl, param, ctx)
         }
 
     }
-
+    
     else if (!ctl.tagName) { // if not DOM object
         if (ctl.length > 0) {
             ctl = ctl[0];
@@ -1739,7 +1739,7 @@ var setField = function (ctl, param, ctx)
             return;
         }
     }
-    //console.log(`setting value: ${$(ctl).attr("argumentid")}-${param.val}`);
+   // console.log(`setting value: ${$(ctl).attr("argumentid")}-${param.val}`);
     tag = ctl.tagName;
     if (tag == 'SELECT') {
         if (val == '') {
@@ -1811,6 +1811,7 @@ var setField = function (ctl, param, ctx)
         }
         else if (ctl.type == 'radio') {
             var rdo = ctl.name, grpid = ctl.getAttribute('groupid');
+            //debugger
             if ($("[name='" + rdo + "'][checked]", ctx).length>0)
                 $("[name='" + rdo + "'][checked]", ctx)[0].checked = false;
             if (("" + val) != '') {
@@ -2678,6 +2679,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             {
 
                 //var $fld = ctx.find('[argumentid="' + param + '"]'),
+                console.log(`${param} - ${cf.params[param]}`);
                 fld = null;
 
 

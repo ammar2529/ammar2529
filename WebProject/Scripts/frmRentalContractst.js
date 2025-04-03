@@ -260,6 +260,7 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
     };
 
     $('[argumentid="ContractStartDate"]', t.el).change(GetDays)[0].onDateSelect = GetDays;
+    debugger
     $('[argumentid="ContractExpiryDate"]', t.el).change(GetDays)[0].onDateSelect = GetDays;
     // End On Start & Expiry Date Selection Get Day Time and Days
 
@@ -310,7 +311,7 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
         $('[argumentid="ActualContractDays"]', t.el).val(days);
     };
 
-
+ 
     $('[argumentid="ContractEndDate"]', t.el).change(function () { GetActualDays(); CalculateRentalContractChargesOnSuperEdit(); })[0].onDateSelect = function () { GetActualDays(); CalculateRentalContractChargesOnSuperEdit(); };
     //$('[argumentid="ContractEndDate"]', t.el).change(CalculateRentalContractChargesOnSuperEdit)[0].onDateSelect = CalculateRentalContractChargesOnSuperEdit;
     // End On Start & Expiry Date Selection Get Day Time and Days
