@@ -43,7 +43,7 @@
         <form id="frmMain" runat="server">
             <div id="MainContainer">
                 <WP:eForms_Header ID="eForms_Header" runat="server" />
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <asp:ContentPlaceHolder ID="BuDastoorHome" runat="server">
                 </asp:ContentPlaceHolder>
                 <WP:eForms_Footer ID="eForms_Footer" runat="server" />
                 <asp:HiddenField ID="_CurrentLang" runat="server" />

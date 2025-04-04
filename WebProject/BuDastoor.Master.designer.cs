@@ -42,13 +42,13 @@ namespace WebProject
         protected global::WebProject.AdminPages.eForms.eForms_Header eForms_Header;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// BuDastoorHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder BuDastoorHome;
 
         /// <summary>
         /// eForms_Footer control.

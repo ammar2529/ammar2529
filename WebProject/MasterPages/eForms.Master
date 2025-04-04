@@ -51,7 +51,7 @@
     
 <%--    <script src="../AsyncWidgets/Scripts/jquery.form.js" type="text/javascript"></script>--%>
    
-    <style>
+  <%--  <style>
     /*----------- loading mask CSS --------------------------*/
     .loadmask {
         z-index: 100;
@@ -93,9 +93,9 @@
     .masked-hidden {
         visibility: hidden !important;
     }
-</style>
+</style>--%>
 </head>
-<body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #dae2e3; overflow:scroll;overflow-x:visible">
+<%--<body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #dae2e3; overflow:scroll;overflow-x:visible">--%>
 
     <%--<form id="frmMain" runat="server">
        
@@ -167,5 +167,5 @@
 		$('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);;
 	});
 	</script>--%>
-</body>
+<%--</body>--%>
 </html>

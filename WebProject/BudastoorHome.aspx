@@ -25,14 +25,7 @@
 
 
 
-
-
-
-
-
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="BuDastoorHome" runat="server">
     <asp:TextBox ID="RndNo" runat="server" class="rndno" Style="display: none" />
 
     <div id="MainDiv">
