@@ -110,7 +110,7 @@
                 </div>
             </div>
         </nav>
-        <div>new div</div>
+<%--        <div>new div</div>--%>
     </div>
 </div>
 
