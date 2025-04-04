@@ -465,15 +465,15 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                                 t2.addClass('colIndex-' + i).attr('colindex', i).attr('colid', cl); // Add your specific class here
 
-                                if (ShowOnMDDevice !== null && ShowOnMDDevice !== undefined) {
-                                    tt.addClass(ShowOnMdDevices); // Visible on md, lg, xl
-                                    t2.addClass(ShowOnMdDevices);
-                                }
+                                //if (ShowOnMDDevice !== null && ShowOnMDDevice !== undefined) {
+                                //    tt.addClass(ShowOnMdDevices); // Visible on md, lg, xl
+                                //    t2.addClass(ShowOnMdDevices);
+                                //}
 
-                                if (HideOnAllSmallDevices !== null && HideOnAllSmallDevices !== undefined) {
-                                    tt.addClass(ShowOnlyLargeDevices); // Visible on md, lg, xl
-                                    t2.addClass(ShowOnlyLargeDevices);
-                                }
+                                //if (HideOnAllSmallDevices !== null && HideOnAllSmallDevices !== undefined) {
+                                //    tt.addClass(ShowOnlyLargeDevices); // Visible on md, lg, xl
+                                //    t2.addClass(ShowOnlyLargeDevices);
+                                //}
 
 
 
