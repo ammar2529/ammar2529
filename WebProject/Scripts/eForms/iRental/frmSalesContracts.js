@@ -166,37 +166,47 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     ///Calculation of Payments.
 
    /* $('[argumentid="FinanceCompany"]').prop('disabled', true);*/
-    $('[argumentid="AdditionalAmount"],[argumentid="Discount"],[argumentid="Price"]').blur(function () {
-       
-        var carPrice = parseFloat($('[argumentid="Price"]',t.el).val());
-        var additionalAmount = parseFloat($('[argumentid="AdditionalAmount"]',t.el).val());
-        var discount = parseFloat($('[argumentid="Discount"]').val());
-        /* var totalAmount = parseFloat($('[argumentid="TotalAmount"]').val());*/
-        var PaymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).text());
-        var roundedAmount = Math.round(PaymentAmount * 1000) / 1000; // Isse .001 ko .000 mein convert kiya jaega
-        var formattedAmount = roundedAmount.toFixed(3);
-        var parsePaymentAmount = parseFloat(formattedAmount);
-        var totalCarPrice = carPrice + additionalAmount;
-        totalAmount = totalCarPrice - discount;
-        
-        var totalAmountDue = totalAmount - parsePaymentAmount
-        $('[argumentid="TotalAmount"]', t.el).val(`${totalAmount.toFixed(3)}`);
-        $('[argumentid="AmountDue"]', t.el).text(`${totalAmountDue.toFixed(3)}`);
+    $('[argumentid="AdditionalAmount"], [argumentid="Discount"], [argumentid="Price"]').blur(function () {
+        ; // Pause execution for debugging
 
-        
-        if (totalAmountDue === 0)
-        {
+        // Retrieve and parse input values
+        var carPrice = parseFloat($('[argumentid="Price"]', t.el).val()) || 0;
+        var additionalAmount = parseFloat($('[argumentid="AdditionalAmount"]', t.el).val()) || 0;
+        var discount = parseFloat($('[argumentid="Discount"]',t.el).val()) || 0;
+
+        // Retrieve Payment Amount (as a number) and round it
+        var paymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).text()) || 0;
+        var roundedAmount = Math.round(paymentAmount * 1000) / 1000; // Ensures rounding to three decimal places
+        var formattedAmount = roundedAmount.toFixed(3); // Formats the amount to three decimal places
+        var parsePaymentAmount = parseFloat(formattedAmount);
+
+        // Calculate total car price and total amount
+        var totalCarPrice = carPrice + additionalAmount - discount;
+        var totalAmount = totalCarPrice 
+
+        // Calculate the total amount due
+        var totalAmountDue = totalAmount - parsePaymentAmount;
+
+        // Update Total Amount and Amount Due fields
+        $('[argumentid="TotalAmount"]', t.el).val(totalAmount.toFixed(3));
+        $('[argumentid="AmountDue"]', t.el).text(totalAmountDue.toFixed(3));
+
+        // Reset totalAmountDue to an empty string if fully paid
+        if (totalAmountDue === 0) {
             totalAmountDue = "";
         }
-        $('[ argumentid = "AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
-        $('[ argumentid = "AmountInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(carPrice));
-        $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
 
+        // Update Amount in Words fields
+        $('[argumentid="AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
+        $('[argumentid="AmountInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(carPrice));
+        $('[argumentid="AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(totalAmountDue));
+
+        // Format the input value to three decimal places
         var value = $(this).val();
         value = parseFloat(value).toFixed(3);
         $(this).val(value);
+    });
 
-    })
 
     
         //////////////////////////////////////////////
@@ -353,7 +363,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //On Click of Print Contract Button
         
      $('.ContractPrintBtn', t.el).click(function () { //
-         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/SalesContractsTreatyReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/SalesContractsTreatyReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
                 var width = 920;
                 var height = 600;
@@ -370,7 +380,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     //On Click of QuotationBtn Contract Button
 
     $('.QuotationBtn', t.el).click(function () { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintQuotationSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintQuotationSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;
@@ -402,7 +412,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
         setTimeout(function () {
 
-            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
             console.log(strlink);
             var width = 920;
             var height = 600;
@@ -419,7 +429,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     //Statement
     $('.Statement', t.el).click(function ()
     { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStatementSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintStatementSalesContracts.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;
@@ -436,19 +446,20 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function () {
         var li = $(this), tbl;
-        if (!!$(this).parent().attr('disabled'))
-            return;
-        if (li.parent().children('li.active').attr('tabid') == li.attr('tabid'))
-            return false;
-        li.parent().children('li.active').removeClass('active'); //make all tabs inactive
-        li.addClass('active'); // make current tabe active
-        tbl = li.closest('table').children(); // get table container which contains the tabs and table pages
-        tbl.children('tr:not(:first)').hide();
-        tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-        $('.tabid', t.el).val(li.attr('tabid'));
+        if (!!$(this).parent().attr('disabled')) return;
 
-        if (li.attr('tabid') == 'SalesContractDetails')
+       // if (li.parent().children().children('a.nav-link').attr('tabid') == li.children().attr('tabid')) return false;
+
+        //li.parent().children('li.active').removeClass('active'); //make all tabs inactive
+        //li.addClass('active'); // make current tabe active
+        //tbl = li.closest('table').children(); // get table container which contains the tabs and table pages
+        //tbl.children('tr:not(:first)').hide();
+        //tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
+        $('.tabid', t.el).val(li.attr('tabid'));
+        
+        if (li.children().attr('tabid') == 'SalesContractDetails')
         {
+            debugger
             var wg = AsyncWidgets.get('frmSalesContracts');
             
             var cf = {
@@ -462,9 +473,9 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //}
             
         }
-        else if (li.attr('tabid') == 'AdditionalAmount')
+        else if (li.children().attr('tabid') == 'AdditionalAmount')
         {
-            AsyncWidgets.get('grdAdditionalAmount').show().Requery();
+            AsyncWidgets.get('grdSalesAdditionalAmount').show().Requery();
 
             if ($('[widgetid="frmAdditionalAmount"]', t.el).length > 0) {
                 $('[widgetid="frmAdditionalAmount"]', t.el).hide();
@@ -472,7 +483,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
         }
 
-        else if (li.attr('tabid') == 'SalesContractComments') {
+        else if (li.children().attr('tabid') == 'SalesContractComments') {
             AsyncWidgets.get('grdSalesContractComments').show().Requery();
 
             if ($('[widgetid="frmSalesComments"]', t.el).length > 0) {
@@ -480,9 +491,16 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             }
 
         }
+        else if (li.children().attr('tabid') == 'SalesOtherCharges') {
+            AsyncWidgets.get('grdSalesAdditionalAmount').show().Requery();
 
+            if ($('[widgetid="frmSalesComments"]', t.el).length > 0) {
+                $('[widgetid="frmSalesComments"]', t.el).hide();
+            }
 
-        else if (li.attr('tabid') == 'SalesPaymentDetails') {
+        }
+
+        else if (li.children().attr('tabid') == 'SalesPaymentDetails') {
             AsyncWidgets.get('grdSalesContractsPaymentDetails').show().Requery();
 
             if ($('[widgetid="frmSalesContactsPaymentDetails"]', t.el).length > 0)
@@ -754,7 +772,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             if (res.status == 'OK')
             {
-
+                
 
                     // Highlight dates as red which have expired
                     //var HLD = function (arg, arg2) {
@@ -1660,7 +1678,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
     if ($(".cash").is(":checked")) {
        /* $('[argumentid="FinanceCompany"]', t.el).prop('disabled', true);*/
-        $('[argumentid="FinanceCompany"]', t.el).hide();
+        $('[argumentid="FinanceCompany"],.financeCompany,.lpoNumber,.lpoDate', t.el).hide();
         $('[argumentid="FinanceCompany"]', t.el).val('');
         $(".financeCompany").removeClass("required"); 
         $('.ftitle.lb nobr').hide();
@@ -1674,7 +1692,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
    
     } else {
       /*  $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);*/
-        $('[argumentid="FinanceCompany"]', t.el).show();
+        $('[argumentid="FinanceCompany"],.financeCompany,.lpoNumber,.lpoDate', t.el).show();
         $(".financeCompany").addClass("required");
         $('.ftitle.lb nobr').show();
         $('.LPONumberTitle nobr', t.el).show();
@@ -1688,17 +1706,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = function ()
 {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
-    debugger
+  
     if ($('.Arrive').is(":checked"))
     {
+     
+            $('.CommonDD', t.el).hide().removeClass('required');
+            $('tr.DropDownTR td div.DropDownDIV').hide();
+            $('.CommonSP', t.el).show();
+            $('[argumentid="ChassisNo"]', t.el).prop('disabled', false).removeClass('ElemDisabled');
+            $('[argumentid="ChassisNo"]', t.el).css('display', 'block');
+            $('.a', t.el).hide().removeClass('required');
+            $('.hideOnCarNotArrived,.ChassisNo', t.el).show();
         
-        $('.CommonDD', t.el).hide().removeClass('required');
-        $('tr.DropDownTR td div.DropDownDIV').hide();
-        $('.CommonSP', t.el).show();
-        $('[argumentid="ChassisNo"]', t.el).prop('disabled', false).removeClass('ElemDisabled');
-        $('[argumentid="ChassisNo"]', t.el).css('display', 'block');
-        $('.a', t.el).hide().removeClass('required');
-        $('.hideOnCarNotArrived', t.el).show();
+
 
     }
     else
@@ -1710,7 +1730,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
        /* $('[argumentid="ChassisNo"]', t.el).val('');*/
         $('[argumentid="ChassisNo"]', t.el).css('display', 'none');
         $('.a', t.el).show().removeClass('required');
-        $('.hideOnCarNotArrived', t.el).hide();
+        $('.hideOnCarNotArrived,.ChassisNo', t.el).hide();
 
 
     }

@@ -38,19 +38,19 @@
                             Sequence: { width: '0px' },
                             RecId: { width: '0px' },
                             RecCode: { width: '0px' },
-                            CarNumber: { caption: 'Car No.', width: '80px' },
-                            ChassisNo: { caption: 'ChassisNo.', width: '135px' },
+                            CarNumber: { caption: 'Car No.', width: '80px', bootstrapClass: "", smallDeviceWitdh: "80px" },
+                            ChassisNo: { caption: 'ChassisNo.', width: '135px', bootstrapClass: "", smallDeviceWitdh: "160px" },
                             CarFor: { width: '70px' },
                             BrandId: { caption: 'Brand', width: '80px' },
                             ModelId: { caption: 'Model', width: '100px' },
-                            TypeId: { caption: 'Type', width: '50px' },
+                            TypeId: { caption: 'Type', width: '50px', hideOnMeduimDevice: "200px" },
                             YearId: { caption: 'Year', width: '55px' },
-                            ColorId: { caption: 'Color', width: '60px' },
-                            //CurrentMileage: { caption: 'Mileage', width: '75px' },
-                            /*CarType: { caption: 'CarType', width: '55px' },*/
-                            Price: { caption: 'Price.', width: '80px' },
-                            CarLocationId: { caption: 'Location', width: '75px' },
-                            CarStatusId: { caption: 'Status', width: '63px' }
+                            ColorId: { caption: 'Color', width: '60px', hideOnMeduimDevice: "200px" },
+
+                            Price: { caption: 'Price', width: '80px', hideOnMeduimDevice: "200px" },
+                            CarLocationId: { caption: 'Location', width: '75px', hideOnMeduimDevice: "200px" },
+                            CarStatusId: { caption: 'Status', width: '63px', hideOnMeduimDevice: "200px" },
+                            RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" }
                         },
                         forms: {
                             NewFormId: 'frmCarForSales',
@@ -59,7 +59,7 @@
                         }
                         ,
                         DataActionParams: {
-                            DBAction : 'SearchChassisNo'
+                            DBAction: 'SearchChassisNo'
                         }
                     };
                 </script>
@@ -67,13 +67,10 @@
             <Scripts>
                 <script>
 
-                    var fn = function ()
-                    {
-                        t.on('rowsRendered', function () 
-                        {
-                            $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
-                            {
-                              
+                    var fn = function () {
+                        t.on('rowsRendered', function () {
+                            $('[colid="Price"]:not(".w-grid-head-cell")').each(function () {
+
                                 var ptr = $(this).closest('tr');
                                 $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
 
@@ -81,13 +78,13 @@
 
                         });
 
-                       
+
                     }
-                   
+
                 </script>
             </Scripts>
         </uc5:DataGrid>
-       
+
         <br />
     </Childern>
 
@@ -108,38 +105,38 @@
             }
         </script>
     </WidgetConfig>
-         <Scripts>
-                    <script>
-                        var fn = function () {
-                            //t.on('show', function (args) {
-                            //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                            //    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).removeAttr('disabled');
-                            //});
+    <Scripts>
+        <script>
+            var fn = function () {
+                //t.on('show', function (args) {
+                //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
+                //    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).removeAttr('disabled');
+                //});
 
-                            //t.on('onLoadedValues', function (args) {
-                            //    $('[argumentid="action"]', t.el).val("update");
-                            //    if ($('[argumentid="ContractNo"]', t.el).text() != '') {
-                            //        $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
-                            //    }
-                                
-                            //    //var res = args.res;
+                //t.on('onLoadedValues', function (args) {
+                //    $('[argumentid="action"]', t.el).val("update");
+                //    if ($('[argumentid="ContractNo"]', t.el).text() != '') {
+                //        $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
+                //    }
 
-                            //    //if (res.status == 'OK')
-                            //    //{
+                //    //var res = args.res;
+
+                //    //if (res.status == 'OK')
+                //    //{
 
 
-                            //    //}
-                            //});
+                //    //}
+                //});
 
-                            //t.on('onComboFilled', function () {
-                            //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                            //    $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
-                            //});
+                //t.on('onComboFilled', function () {
+                //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
+                //    $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
+                //});
 
-                          
-                        }
-                           
-                    </script>
-                </Scripts>
+
+            }
+
+        </script>
+    </Scripts>
 
 </uc8:Form>

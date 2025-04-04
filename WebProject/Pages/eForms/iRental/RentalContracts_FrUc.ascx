@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RentalContracts_FrUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.RentalContracts_FrUc" %>
 
-<%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
+<%--<%@ Register Src="~/AsyncWidgets/Widgets/DataGrid.ascx" TagName="DataGrid" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="AW" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 
@@ -13,10 +13,7 @@
                         Contract Details
                     </div>
                 </li>
-                <%--                <li tabid="AdditionalDrivers" >
-                    <div> 
-                        Additional Drivers</div>
-                </li> --%>
+
                 <li tabid="PaymentDetails">
                     <div>
                         Payment Details
@@ -455,49 +452,7 @@
         </td>
     </tr>
 
-    <%-- <tr tabid="AdditionalDrivers" style="display: none;">
-        <td style="padding-top: 1px;">
-        <AW:DataGrid ID="grdAdditionalDrivers" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
-            EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
-            PageSize="10" DataSource="SEL_iRental_Contracts_Drivers" ContainerMargin="2px" GridTemplate="jQueryUI"
-            GridHeadText="Additional Drivers"  GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_Customers\',KeysCol:\'RecId\'}}}">
-          
-            <GridConfig>
-            <script>
-                cf = {
-                    cols: {
-                        Sequence: { width: '0px' },
-                        RecId: { width: '0px'},
-                        ParentRecId: { width: '0px' },
-                        CustomerRecCode: { caption: 'Code', width: '100px' },
-                        CustomerName: { caption: 'Name'},
-                        Nationality: { caption: 'Nationality', width: '150px' },
-                        DrivingLicenseNo: { caption: 'Driving License No.', width: '150px' },
-                        DrivingLicenseExpiry: { caption: 'Expiry Date', width: '150px' },
-                        DateCreated: { caption: 'Date Created', width: '0px' },
-                        CreatedBy: { caption: 'Created By', width: '0px' }
-                    },
-                    forms: {
-                        NewFormId: 'frmPaymentDetails',
-                        EditFormId: 'frmPaymentDetails',
-                        Keys: 'RecId'
-                    }
-                };
-            </script>
-            </GridConfig>
-            <Scripts>
-                <script>
-                    var fn = function () {
-                        t.on('beforeSearchGetForm', function (P) {
-                            var frm = AsyncWidgets.get('frmRentalContracts');
-                            P.ParentRecId = frm.GetArgVal('RecId');
-                        });
-                    }
-                </script>
-            </Scripts>
-            </AW:DataGrid>
-                      </td>
-                    </tr>--%>
+  
     <script src="Scripts/eForms/iRental/frmiRentalPaymentsDetail.js"></script>
 
     <tr tabid="PaymentDetails" style="display: none;">
@@ -617,7 +572,7 @@
                         var fn = function ()
                         {
 
-                            //On Change of Amount Update Amount in Words
+                           
                         }
                     </script>
                 </Scripts>
@@ -880,4 +835,4 @@
     </tr>
 
 
-</table>
+</table>--%>

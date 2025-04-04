@@ -33,10 +33,10 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <asp:TextBox ID="RndNo" runat="server" class="rndno" Style="display: none" />
+    <asp:TextBox ID="RndNo" runat="server" class="rndno" Style="display: none" />
 
     <div id="MainDiv">
-           <div id="mainpanel">
+        <div id="mainpanel">
             <AW:Form ID="frmHome" Hidden="false" runat="server" AsyncForm="~/Pages/Common/Home.ascx" />
             <AW:Form ID="frmTerms" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/Terms.ascx" />
             <AW:Form ID="frmPrivacy" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/Privacy.ascx" />
@@ -47,7 +47,7 @@
                     <script type="text/javascript">
 
 
-                       var fn = function () {
+                        var fn = function () {
                             t.on('show', function () {
                                 console.log('showing iframe');
                                 var iframe = $('iframe');
@@ -58,42 +58,64 @@
                     </script>
                 </Scripts>
             </AW:Form>
-         
+
             <AW:Form ID="frmLogout" Hidden="true" runat="server" AsyncForm="~/Pages/Common/Logout.ascx" />
 
-            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx"/>
-      
+            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox" AsyncForm="~/Pages/Common/Inbox.ascx" />
 
-         <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
-            <Scripts>
-                <script type="text/javascript"></script>
-            </Scripts>
-            
+
+            <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx">
+                <Scripts>
+                    <script type="text/javascript"></script>
+                </Scripts>
+
             </AW:Form>
 
             <AW:Administration ID="Administration" runat="server" />
 
-               <AW:EmployeeDatabase ID="EmployeeDatabase" runat="server" />
-               <AW:CustomerDetails ID="CustomerDetails" runat="server" />
-               <AW:CarDetails ID="CarDetails" runat="server" />
-               <AW:CarRateDetails ID="CarRateDetails" runat="server" />
-               <AW:CarTransfers ID="CarTransfers" runat="server" />
-              <AW:RentalContracts ID="RentalContracts" runat="server" />
+            <AW:EmployeeDatabase ID="EmployeeDatabase" runat="server" />
+            <AW:CustomerDetails ID="CustomerDetails" runat="server" />
+            <AW:CarDetails ID="CarDetails" runat="server" />
+            <AW:CarRateDetails ID="CarRateDetails" runat="server" />
+            <AW:CarTransfers ID="CarTransfers" runat="server" />
+            <AW:RentalContracts ID="RentalContracts" runat="server" />
 
-               <AW:SalesCarPrice runat="server" ID="SalesCarPrice" />
-               <AW:CarForSales runat="server" ID="CarForSales" />
-               <AW:SparePartInventory runat="server" ID="SparePartInventory" />
-             <AW:SparePartInventoryInvoice runat="server" ID="SparePartInventoryInvoice" />
-             <AW:GarageCarServiceDetails runat="server" ID="GarageCarServiceDetails" />
-               <AW:CarAndCustomerDetails runat="server" ID="CarAndCustomerDetails" />
-                              <AW:LeaseContracts runat="server" ID="LeaseContracts" />
+            <AW:SalesCarPrice runat="server" ID="SalesCarPrice" />
+            <AW:CarForSales runat="server" ID="CarForSales" />
+            <AW:SparePartInventory runat="server" ID="SparePartInventory" />
+            <AW:SparePartInventoryInvoice runat="server" ID="SparePartInventoryInvoice" />
+            <AW:GarageCarServiceDetails runat="server" ID="GarageCarServiceDetails" />
+            <AW:CarAndCustomerDetails runat="server" ID="CarAndCustomerDetails" />
+            <AW:LeaseContracts runat="server" ID="LeaseContracts" />
 
-          <AW:SalesContracts runat="server" ID="SalesContracts" />
-
-
+            <AW:SalesContracts runat="server" ID="SalesContracts" />
 
 
-           </div>
+
+
+        </div>
     </div>
+
+    
+  <script type="text/javascript">
+      var onReady = () => {
+
+          console.log("finding menu...");
+         
+          if ($('[showwidget="conSalesContracts"]').length > 0) {
+              $('[showwidget="conSalesContracts"]').trigger('click');
+          }
+
+          else {
+              //var outterFun = arguments.callee;
+              setTimeout(onReady, 3000);
+          }
+      };
+
+
+
+      $().ready(setTimeout(onReady,1000));
+
+  </script>
 
 </asp:Content>

@@ -134,38 +134,41 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
 
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function () {
+
         var li = $(this), tbl;
         if (!!$(this).parent().attr('disabled')) return;
-        if (li.parent().children('li.active').attr('tabid') == li.attr('tabid')) return false;
-        li.parent().children('li.active').removeClass('active');
-        li.addClass('active');
-        tbl = li.closest('table').children();
-        tbl.children('tr:not(:first)').hide();
-        tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-        $('.tabid', t.el).val(li.attr('tabid'));
 
-        if (li.attr('tabid') == 'ContractDetails') {
+        if (li.parent().children().children('a.nav-link').attr('tabid') == li.children().attr('tabid')) return false;
+        //li.parent().children('li.active').removeClass('active');
+        //li.addClass('active');
+
+        //tbl = li.closest('div.Rental').children();
+        //tbl.children('div:not(:first)').hide();
+        //tbl.children('div[tabid="' + li.attr('tabid') + '"]').show();
+        //$('.tabid', t.el).val(li.attr('tabid'));
+
+        if (li.children().attr('tabid') == 'LeaseContractDetails') {
             AsyncWidgets.get('frmLeaseContracts').loadValues();
         }
 
-        if (li.attr('tabid') == 'OtherCharges') {
+        if (li.children().attr('tabid') == 'AdditionalDrivers') {
+            AsyncWidgets.get('grdAdditionalDrivers').show().Requery();
+        }
+
+        if (li.children().attr('tabid') == 'LeaseOtherCharges') {
             AsyncWidgets.get('grdLeaseOtherCharges').show().Requery();
         }
 
-        if (li.attr('tabid') == 'PaymentDetails')
-        {
-            
+        if (li.children().attr('tabid') == 'LeasePaymentDetails') {
             AsyncWidgets.get('grdLeasePaymentDetails').show().Requery();
-            if ($('[widgetid="frmLeasePaymentDetails"]', t.el).length > 0)
-            {
-                $('[widgetid="frmLeasePaymentDetails"]', t.el).hide();
-            }
         }
 
-        if (li.attr('tabid') == 'ContractComments') {
+        if (li.children().attr('tabid') == 'LeaseContractComments') {
             AsyncWidgets.get('grdLeaseContractComments').show().Requery();
         }
+        if (li.children().attr('tabid') == 'CloseBtn') {
 
+        }
         return false;
     });
     // End
@@ -552,7 +555,9 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
         $('[argumentid="LeaseLastPaymentDate"]', t.el).next('img').hide().addClass('AlwaysDisable');
         $('.contDetailsIcon', t.el).addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
 
-        $('.SimpleTab', t.el).attr('disabled', 'disabled');
+        if (t.FormMode == "new") {
+            $('.SimpleTab .nav-link').attr('disabled', 'disabled');
+        }
 
         var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
         var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
@@ -622,7 +627,7 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
             // End of Highlight of expired dates
 
             $('.OnNewHide', t.el).show();
-            $('.SimpleTab', t.el).removeAttr('disabled');
+            $('.SimpleTab .nav-link', t.el).removeAttr('disabled');
 
             //Load Commas if both numbers are there
             if (!!$('[argumentid="WorkTelephone"]', t.el).text() && !!$('[argumentid="ResidenceTelephone"]', t.el).text()) {
@@ -781,7 +786,7 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
 
 
     function CalculateDiscount() {
-        debugger
+        
         var ContractDiscount = parseFloat($('[argumentid="ContractDiscount"]',t.el).val()) || 0;
         var AmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text()) || 0;
         var ContractOtherCharges = parseFloat($('[argumentid="ContractOtherCharges"]', t.el).text()) || 0;

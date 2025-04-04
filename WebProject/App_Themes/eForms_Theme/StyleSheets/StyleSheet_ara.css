@@ -1,4 +1,4 @@
-/*BODY {
+BODY {
 	FONT-SIZE: 12px; COLOR: #628296; LINE-HEIGHT: 18px; FONT-FAMILY: Tahoma, Verdana, helvetica, sans-serif
 }
 TD {
@@ -433,37 +433,37 @@ TABLE.ctable TD.f {
 	background-image: url('/App_Themes/eForms_Theme/TemplateImages/headl_ara.gif');
 }
 .head-login
-{*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_cl_ara.gif');*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_caption.gif');
+{
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_cl_ara.gif');
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_caption.gif');
 }
 .head-menu
-{*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_sn_ara.gif');*/
-		/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_caption.gif');
+{
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_sn_ara.gif');
+		background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_caption.gif');
 }
 .head-search
-{*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_ara.gif');*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_caption.gif');
+{
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_ara.gif');
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_caption.gif');
 }
 .head-free
-{*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/free_ara.gif');
+{
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_eng.gif');
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/free_ara.gif');
 	background-repeat:no-repeat;
 }
 .head-placeyourad
-{*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/placeyourad_ara.gif');
+{
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_eng.gif');
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/placeyourad_ara.gif');
 	background-repeat:no-repeat;
 	display:inline-block;
 }
 .head-mandoupservice
-{*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('/App_Themes/eForms_Theme/TemplateImages/mandoup_ara.gif');
+{
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/head_qs_eng.gif');
+	background-image: url('/App_Themes/eForms_Theme/TemplateImages/mandoup_ara.gif');
 	background-repeat:no-repeat;
 	display:inline-block;
 }
@@ -479,9 +479,9 @@ TABLE.ctable TD.f {
 	position: relative;
 	top: -29px;
 	left:-95px;
-}*/
+}
 
-/*
+
 .navidation-le-0
 {
 	background-image: url('/App_Themes/eForms_Theme/TemplateImages/arrow-re-0.gif');
@@ -534,9 +534,9 @@ TABLE.ctable TD.f {
 	background-repeat:no-repeat;
 	display:block; 
 }
-*/
 
-/*.bg-header
+
+.bg-header
 {
 	background-image: url('/App_Themes/eForms_Theme/TemplateImages/bg_header_ara.jpg');
 	background-repeat:no-repeat;
@@ -658,10 +658,10 @@ TABLE.ctable TD.f {
 }
 
 #SitePageMenu {
-    padding: 0 0 0 10px;*/
-    /*font-family: Tahoma, Arial,Helvetica,sans-serif;
-   border-style: solid solid none;*/
-/*}
+    padding: 0 0 0 10px;
+    font-family: Tahoma, Arial,Helvetica,sans-serif;
+   border-style: solid solid none;
+}
 
 #SitePageMenu a {
     color: #7F7F7F;
@@ -714,6 +714,6 @@ TABLE.ctable TD.f {
     font-size: 11px;
     line-height:normal;
 	 
-}*/
+}
 
 

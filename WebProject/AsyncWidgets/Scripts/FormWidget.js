@@ -265,6 +265,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.AutoComplete();
     },
     AutoComplete: function (ctx) {
+        return;
         var t = this;
         ctx = ctx || t.el;
         if (!!$('.AutoComplete', ctx).length) {
@@ -466,7 +467,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
-
+            
             var itemAttrs = "";
             try {
                 res.Response = decJSON(res.Response);
@@ -530,6 +531,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var ServiceInfo = getForm(null, null, sInfo);
         ch.attr("ccloading", "Loading");
         t.$el.mask('Please wait while loading ... ');
+        
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "ChildComboRows", "ServiceInfo", ServiceInfo] });
 
     },
@@ -682,8 +684,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         var datePickerCF = {};
 
 
-        t.fireEvent('SettingDatePicker', datePickerCF);
-        setDatePicker(t.el, datePickerCF);
+       // t.fireEvent('SettingDatePicker', datePickerCF);
+        //setDatePicker(t.el, datePickerCF);
         t.bindEvents();
         t.validator = new AsyncWidgets.Validater(t.el, '', { widget: t });
         t.HtmlLoaded = true;
@@ -904,6 +906,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
     },
     submit: function (btn) {//form widget
+        debugger
         var t = this;
         var cf = decJSON($(btn).attr('conf'));
         btn.cf = cf;
@@ -1010,6 +1013,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
     },
     show: function () {//form widget
+       // debugger;
         var t = this, st = t.State;
         var onLoad = function () {
             t.removeListener("onLoad", onLoad);
@@ -1029,11 +1033,12 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 t.LoadCombo(t, $(this), "");
             });
         }
-        if (!t.loaded) {
+        if (!t.loaded) { // if loading is not done yet
             t.on('onLoad', onLoad);
             t.load();
         }
-        else {
+        else { // if has been loaded then run the load logic 
+           
             onLoad();
         }
 
@@ -1054,7 +1059,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         Ext.applyIf(cf, { Command: st.DALInfo, GroupId: null, ActorId: 'DataHelper', ActionId: 'Search', readFormValues: true, Params: {} });
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
-            res = decJSON(res);
+          // res = decJSON(res);
             t.fireEvent('onLoadingValues', { res: res });
             if (res.status == 'OK') {
                 if (res.Response.Rows.length > 0) {

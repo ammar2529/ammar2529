@@ -52,7 +52,7 @@
            </Childern>
             </uc5:Container>
 
-           <uc8:Form ID="frmCarRateDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarRateDetails_FrUc.ascx" >
+           <uc8:Form ID="frmCarRateDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CarRateDetails_FrUc2.ascx" >
                             <WidgetConfig>
                 <script>
                     cf = {

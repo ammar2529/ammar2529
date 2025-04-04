@@ -73,20 +73,20 @@
                                 </div>
                                 </pre>
                
-                <pre columnid="CustomerDetails">
+                <pre columnid="CustomerDetails" HideOnAllSmallDevices="HideOnAllSmallDevices">
                                 <center>
                                      <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>
                                      <div style="font-size:11px;">ID: {NationalIDNo}&nbsp;-&nbsp;{Nationality}</div>
                                       <div style="font-size:11px;">{MobileTelephone1}&nbsp;&nbsp;{MobileTelephone2}</div>
                                 </center>
                                 </pre>
-                <pre columnid="ContractDateTimeDetails">
+                <pre columnid="ContractDateTimeDetails" HideOnAllSmallDevices="HideOnAllSmallDevices">
                                      <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
                                      <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>
-                <pre columnid="CreationDetails"> 
+                <pre columnid="CreationDetails" HideOnAllSmallDevices="HideOnAllSmallDevices"> 
                                      <div class="ftitle" style="color:#808000; display:none"></div>
 <%--                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>--%>
                                      <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>

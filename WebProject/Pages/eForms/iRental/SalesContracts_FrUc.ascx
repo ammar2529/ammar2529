@@ -40,6 +40,10 @@
     color: gray;  /* Optional: Change placeholder color */
   }
 
+    .auto-style1 {
+        height: 22px;
+    }
+
 </style>
   <script>
       $(document).ready(function () {
@@ -221,10 +225,10 @@
                                 </td>
                             </tr>
                             <tr class="DropDownTR">
-                                <td class="ftitle">
+                                <td class="auto-style1">
                                     <nobr>Brand:</nobr>
                                 </td>
-                                <td>
+                                <td class="auto-style1">
                                     <span class="ftitle CommonSP" groupid="SalesContractsForm" argumentid="Brand"></span>
                                     <div class="DropDownDIV">
                                         <select loadon="FirstVisible" class="dropdownlist required CommonDD CommonDisableClass " style="width: 155px;"
@@ -233,10 +237,10 @@
                                             <%--SalesModelId--%>
                                         </select></div>
                                 </td>
-                                <td class="ftitle">
+                                <td class="auto-style1">
                                     <nobr>Nationality:</nobr>
                                 </td>
-                                <td>
+                                <td class="auto-style1">
                                     <span class="ftitle" groupid="SalesContractsForm" argumentid="Nationality"></span>
                                 </td>
                             </tr>
@@ -775,7 +779,8 @@
             <button class="upload-button DataAction" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'FileUpload'},HideOnSuccess:false, Requery:false,ShowActionMsg:false,GroupId:'SalesContractsForm'}">Upload</button>
 
         </div>
-
+        </td>
+                    </tr>
 
 
 

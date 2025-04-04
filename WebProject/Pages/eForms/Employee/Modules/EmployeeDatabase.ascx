@@ -105,7 +105,7 @@
     </Childern>
 </uc5:Container>
 <uc8:Form ID="frmEmployeeDatabase" Hidden="true" LoadOnInit="false" ShowOnLoad="true"
-    runat="server" AsyncForm="~/Pages/eForms/Employee/EmployeeDatabase_FrUc.ascx">
+    runat="server" AsyncForm="~/Pages/eForms/Employee/EmployeeDatabase_FrUc2.ascx">
     <WidgetConfig>
         <script>
             cf = {
@@ -122,17 +122,48 @@
     <Scripts>
         <script>
             fn = function () {
-                $('.SimpleTab li', t.el).click(function () {
-                    //if (!t.EmpInfo) return false;
-                    var li = $(this), tbl;
-                    li.parent().children('li.active').removeClass('active');
-                    li.addClass('active');
-                    tbl = li.closest('table').children();
-                    tbl.children('tr:not(:first)').hide();
-                    tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-                    $('.tabid', t.el).val(li.attr('tabid'));
+                //$('.SimpleTab li', t.el).click(function () {
+                //    debugger
+                //    //if (!t.EmpInfo) return false;
+                //    var li = $(this), tbl;
+                //    li.parent().children('li.active').removeClass('active');
+                //    li.addClass('active');
+                //    tbl = li.closest('div').children();
+                //    tbl.children('div:not(:first)').hide();
+                //    tbl.children('div[tabid="' + li.attr('tabid') + '"]').show();
+                //    $('.tabid', t.el).val(li.attr('tabid'));
+                //    return false;
+                //});
+                $('.SimpleTab li').on('click', function (e) {
+                    e.preventDefault(); // Prevent default behavior
+                    
+                    // Get the clicked tab
+                    var li = $(this),
+                        tbl;
+
+                    // Remove active class and inline style from all tabs
+                    li.parent().children('li.active').removeClass('active');//.css('background-color', '');
+
+                    // Add active class and set color to blue for the clicked tab
+                    li.addClass('active');//.css('color', 'blue');
+
+                    // Hide all tab content sections
+                    tbl = li.closest('div').children();
+                    tbl.children('div').hide(); // Hide all content sections
+
+                    // Show the current tab's content
+                    tbl.children('div[tabid="' + li.attr('tabid') + '"]').show();
+
+                    // Set a hidden input field value for the active tab ID
+                    $('.tabid').val(li.attr('tabid'));
+
                     return false;
                 });
+
+                // Show the first tab and its content by default
+                $('.SimpleTab li:first-child').addClass('active');//.css('background-color', '#0d6efd'); // Default active tab with blue color
+                $('div[tabid]:not(:first)').hide(); // Hide all tab content except the first
+           
             }
         </script>
     </Scripts>

@@ -93,7 +93,7 @@
                             return false;
                         };
                         t.on('rowsRendered', function () {
-
+                            debugger;
                             $('.StateName', t.el).each(function () {
                                 //if ($(this).text().indexOf('Created - Reservation') > -1) {
                                     //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
@@ -359,7 +359,7 @@
            </Childern>
             </AW:Container>
            <script type="text/javascript" src="/Scripts/eForms/iRental/frmLeaseContracts.js" ></script>
-           <AW:Form ID="frmLeaseContracts" Hidden="true" DataSource="SEL_iRental_Lease_Contracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/LeaseContracts_FrUc.ascx" >
+           <AW:Form ID="frmLeaseContracts" Hidden="true" DataSource="SEL_iRental_Lease_Contracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/LeaseContracts_FrUc2.ascx" >
              <WidgetConfig>
                 <script>
                     cf = {

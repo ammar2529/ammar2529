@@ -1,4 +1,4 @@
-/*BODY {
+BODY {
 	FONT-SIZE: 11px; COLOR: #628296; LINE-HEIGHT: 18px; FONT-FAMILY: verdana, helvetica, sans-serif
 }
 TD {
@@ -404,9 +404,9 @@ TABLE.ctable TD.f {
 	BORDER-LEFT: #aaaaaa 1px solid;
 	COLOR: #525252; 
 	BORDER-BOTTOM: #aaaaaa 1px solid; 
-	FONT-FAMILY: verdana, helvetica;*/ 
-	/*xletter-spacing: 0px*/
-/*}
+	FONT-FAMILY: verdana, helvetica; 
+	xletter-spacing: 0px
+}
 
 .text-align-positive
 {
@@ -441,38 +441,38 @@ TABLE.ctable TD.f {
 	background-image: url('../TemplateImages/headl_eng.gif');
 }
 .head-login
-{*/
-	/*background-image: url('../TemplateImages/head_cl_eng.gif');*/
-	/*background-image: url('../TemplateImages/head_caption.gif');
+{
+	background-image: url('../TemplateImages/head_cl_eng.gif');
+	background-image: url('../TemplateImages/head_caption.gif');
 }
 .head-menu
-{*/
-	/*background-image: url('../TemplateImages/head_sn_eng.gif');*/
-	/*background-image: url('../TemplateImages/head_caption.gif');
+{
+	background-image: url('../TemplateImages/head_sn_eng.gif');
+	background-image: url('../TemplateImages/head_caption.gif');
 }
 .head-search
-{*/
-	/*background-image: url('../TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('../TemplateImages/head_caption.gif');
+{
+	background-image: url('../TemplateImages/head_qs_eng.gif');
+	background-image: url('../TemplateImages/head_caption.gif');
 
 }
 .head-free
-{*/
-	/*background-image: url('../TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('../TemplateImages/free_eng.gif');
+{
+	background-image: url('../TemplateImages/head_qs_eng.gif');
+	background-image: url('../TemplateImages/free_eng.gif');
 	background-repeat:no-repeat;
 }
 .head-placeyourad
-{*/
-	/*background-image: url('../TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('../TemplateImages/placeyourad_eng.gif');
+{
+	background-image: url('../TemplateImages/head_qs_eng.gif');
+	background-image: url('../TemplateImages/placeyourad_eng.gif');
 	background-repeat:no-repeat;
 	display:inline-block;
 }
 .head-mandoupservice
-{*/
-	/*background-image: url('../TemplateImages/head_qs_eng.gif');*/
-	/*background-image: url('../TemplateImages/mandoup_eng.gif');
+{
+	background-image: url('../TemplateImages/head_qs_eng.gif');
+	background-image: url('../TemplateImages/mandoup_eng.gif');
 	background-repeat:no-repeat;
 	display:inline-block;
 }
@@ -495,9 +495,9 @@ TABLE.ctable TD.f {
 	position: relative;
 	top: -29px;
 	right:-95px;
-}*/
+}
 
-/*
+
 .navidation-le-0
 {
 	background-image: url('../TemplateImages/arrow-le-0.gif');
@@ -550,9 +550,9 @@ TABLE.ctable TD.f {
 	background-repeat:no-repeat;
 	display:block; 
 }
-*/
 
-/*.bg-header
+
+.bg-header
 {
 	background-image: url('../TemplateImages/bg_header_eng.jpg');
 	background-repeat:no-repeat;
@@ -745,10 +745,10 @@ TABLE.ctable TD.f {
 }
 
 #SitePageMenu {
-     padding: 0 10px 0 0;*/
-    /*font-family: Arial,Helvetica,sans-serif;
-     border-style: solid solid none;*/
-/*}
+     padding: 0 10px 0 0;
+    font-family: Arial,Helvetica,sans-serif;
+     border-style: solid solid none;
+}
 
 #SitePageMenu a {
     color: #7F7F7F;
@@ -841,10 +841,10 @@ DIV.viewBasket A:hover {
     BORDER-LEFT: silver 1px solid; 
     BORDER-TOP: silver 1px solid;
     BORDER-BOTTOM: silver 1px solid; 
-}*/
+}
 
-/* menu styles */
-/*#jsddm
+ menu styles 
+#jsddm
 {	margin: 0;
 	padding: 0}
 
@@ -889,12 +889,12 @@ DIV.viewBasket A:hover {
 				}
 			
 			#jsddm li ul li a:hover
-			{	background: #24313C}*/
+			{	background: #24313C}
 
 
 
-/*----------------For Proxy Panel-------------------*/
-/*.ProxyList {
+----------------For Proxy Panel-------------------
+.ProxyList {
 	BORDER-RIGHT: #7895ac 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #7895ac 1px solid; DISPLAY: none; 
 	PADDING-LEFT: 1px; FONT-SIZE: 11px; 
 	PADDING-BOTTOM: 1px; 
@@ -918,8 +918,8 @@ width:20px;
 }
 .ProxyListSC {
 	white-space:nowrap;PADDING-LEFT: 5px; BORDER-BOTTOM: #c5cacd 1px dashed; 
-	BACKGROUND-COLOR: #f4fbff;*//*#E1E9EC;*/
-	/*color:#105678;
+	BACKGROUND-COLOR: #f4fbff;#E1E9EC;
+	color:#105678;
 	font-size:11px;
 	padding-right:22px;
 	text-align:left;
@@ -951,12 +951,12 @@ width:20px;
 }
 .unselectable {
 	-moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; -o-user-select: none; user-select: none
-}*/
+}
 
 
-/*------------------------------- Tab Control -----------------------------*/
+------------------------------- Tab Control -----------------------------
 
-    /*.SimpleTab
+    .SimpleTab
     {
         height: 21px;
         cursor: pointer;
@@ -1035,4 +1035,4 @@ width:20px;
 
 .diasbleScrollbars {
 	overflow: hidden;
-}*/
+}

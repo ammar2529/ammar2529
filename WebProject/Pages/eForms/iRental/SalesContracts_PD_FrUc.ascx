@@ -36,51 +36,181 @@ var th = ['','thousand','million', 'billion','trillion'];
 
 </script>
 
-<%--<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
-  <tr tabid="SalesContractDetails">
-      <td style="padding-top: 1px;">
-          <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
-          <tr>
-              <td class="ftitle" style="width:20%">Contract No.:</td>
-              <td class="ftitle" style="width:30%"></td>
-              <td style="width:20%"></td>
-              <td style="width:30%"></td>
-          </tr>
 
-    <tr>
-    <td class="ftitle" >Car No.:</td>
-    <td class="ftitle" ></td>
-        <td class="ftitle" >Customer Name:</td>
-        <td class="ftitle" ></td>
-</tr>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12 p-4 bg-light shadow rounded">
+            <div class="alert alert-info text-center">
+                Use the form below to update the details. Fields marked with an asterisk (*) are mandatory.
+            </div>
+            <div style="display: none">
+                <span groupid="Sales_Payments" argumentid="ParentRecId"></span>
+                <span groupid="Sales_Payments" argumentid="RecId"></span>
 
-    <tr>
-    <td class="ftitle" >Amount Due:</td>
-    <td class="ftitle" ></td>
-        <td class="ftitle" >Amount Received:</td>
-        <td class="ftitle" ></td>
-</tr>
+            </div>
+            <!-- System ID and Manual ID -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control AlwaysDisable" id="systemID" placeholder="System ID"
+                            groupid="Sales_Payments" argumentid="LocationReceiptId" />
+                        <label for="systemID">System ID</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="manualID" placeholder="Manual ID"
+                            groupid="Sales_Payments" argumentid="ReceiptId" />
+                        <label for="manualID">Manual ID</label>
+                    </div>
+                </div>
+            </div>
 
-              <tr>
-                  <td class="ftitle"></td>
-                  <td class="ftitle"></td>
-                  <td class="ftitle"></td>
-                  <td class="ftitle"></td>
-              </tr>
+            <!-- Payment Date and Salesman -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="date" class="form-control date required" id="paymentDate" placeholder="Payment Date"
+                            groupid="Sales_Payments" argumentid="PaymentDate" />
+                        <label for="paymentDate">Payment Date *</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="salesman" placeholder="Salesman"
+                            groupid="Sales_Payments" argumentid="Salesman" disabled />
+                        <label for="salesman">Salesman</label>
+                    </div>
+                </div>
+            </div>
 
-               <tr>
-     <td class="ftitle"></td>
-     <td class="ftitle"></td>
-     <td class="ftitle"></td>
-     <td class="ftitle"></td>
- </tr>
-              </table>
-          </td>
-      </tr>
+            <!-- Payment Type -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label class="fw-bold">Payment Type *</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="PaymentType" id="receipt" value="0" checked
+                            groupid="Sales_Payments" argumentid="PaymentType" />
+                        <label class="form-check-label" for="receipt">Receipt</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="PaymentType" id="return" value="1"
+                            groupid="Sales_Payments" argumentid="PaymentType" />
+                        <label class="form-check-label" for="return">Return</label>
+                    </div>
+                </div>
+            </div>
 
-    </table>--%>
+            <!-- Payment Mode -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select PaymentMode required" id="paymentMode" 
+                            groupid="Sales_Payments" argumentid="PaymentMode"  loadon="FirstVisible" 
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
+                            <option value="" selected>Select Payment Mode</option>
+                        </select>
+                        <label for="paymentMode">Payment Mode *</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select BankName required" id="bankName"
+                            groupid="Sales_Payments" argumentid="BankName" loadon="FirstVisible" 
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}">
+                            <option value="" selected>Select Bank</option>
+                        </select>
+                        <label for="bankName" class="BankName">Bank *</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cheque Fields (Below Payment Mode and Bank) -->
+            <div class="row mb-3 BankName ">
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control text number ChequeNo" id="chequeNo" placeholder="Cheque No."
+                            maxlength="50" groupid="Sales_Payments" argumentid="ChequeNo" requirederr="*" />
+                        <label for="chequeNo">Cheque No.</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control text" id="chequeFrom" placeholder="Cheque From"
+                            maxlength="100" groupid="Sales_Payments" alphconf="{allow:'.'}" argumentid="ChequeFrom" />
+                        <label for="chequeFrom">Cheque From</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="date" class="form-control text required date ChequeDate CommonDisable" id="chequeDate"
+                            placeholder="Cheque Date" maxlength="10" groupid="Sales_Payments" argumentid="ChequeDate" requirederr="*" />
+                        <label for="chequeDate">Cheque Date *</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Payment Amount -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control number required" id="paymentAmount" placeholder="Payment Amount"
+                            groupid="Sales_Payments" argumentid="PaymentAmount" />
+                        <label for="paymentAmount">Payment Amount *</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control bg-light AlwaysDisable" id="amountInWords"
+                            placeholder="Amount In Words" groupid="Sales_Payments" argumentid="AmountInWords" disabled />
+                        <label for="amountInWords">Amount In Words</label>
+                    </div>
+                </div>
+            </div>
 
-<table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table b SalesPaymentFRPanel">
+            <!-- Payment For -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Payment For" id="paymentFor" rows="4"
+                            groupid="Sales_Payments" argumentid="PaymentFor"></textarea>
+                        <label for="paymentFor">Payment For</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Comments" id="paymentComments" rows="4"
+                            groupid="Sales_Payments" argumentid="PaymentComments"></textarea>
+                        <label for="paymentComments">Comments</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 d-flex justify-content-end mb-2">
+        <button type="button" class="btn btn-primary SaveBtn DataAction w-100"
+            conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts_Payments',HideOnSuccess:true}">
+            Save
+        </button>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 d-flex justify-content-start mb-2">
+        <button type="button" class="btn btn-secondary CloseForm closedForm w-100">
+            Cancel
+        </button>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<%--<table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table b SalesPaymentFRPanel">
 
     <tr id="trNote">
         <td colspan="2" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory
@@ -88,35 +218,6 @@ var th = ['','thousand','million', 'billion','trillion'];
     </tr>
 
 
-<%--    <tr>
-        <td width="10%" class="ftitle" valign="top">
-            <nobr>System ID</nobr>
-        </td>
-        <td  >
-            <div class="auto-style4">
-                <input type="text" style="text-align: center; width: 150px; font-weight: bold; background-color: #F1F1F1" maxlength="50" class="text AlwaysDisable"
-                    groupid="Sales_Payments" argumentid="LocationReceiptId" />
-                &nbsp;
-                                    <nobr style="font-style: italic; font-weight: bold; float: right">Manual ID:</nobr>
-               
-            </div>
-            
-            &nbsp;
-                                 <input type="text" style="text-align: center; width: 150px; font-weight: bold" maxlength="10" class="text number"
-                                     groupid="Sales_Payments" argumentid="ReceiptId" />
-           
-          
-
-            <div style="display: none">
-                <span groupid="Sales_Payments" argumentid="ParentRecId"></span>
-                <span groupid="Sales_Payments" argumentid="RecId"></span>
-            </div>
-
-
-        </td>
-    </tr>--%>
-
-   
   
       <tr>
         <td width="20%" class="ftitle" valign="top">
@@ -219,21 +320,10 @@ groupid="Sales_Payments" alphconf="{allow:'.'}"  argumentid="ChequeFrom" />   <n
             &nbsp;
                                       <input type="text" style="text-align: center; width: 400px; background-color: #F1F1F1" maxlength="255" class="text AlwaysDisable" argumentid="AmountInWords"  groupid="Sales_Payments"/>
 
-            <%--                                <input type="hidden" name="ParentRecId"  groupid="Sales_Payments" argumentid="ParentRecId"  />--%>
-            <%--                                        <input type="hidden" name="RecId"  groupid="Sales_Payments" argumentid="RecId"  />--%>
         </td>
     </tr>
 
-<%--    <tr>
-         <td class="ftitle">
-            <nobr>Payment For:</nobr>
-        </td>
-        <td>
-            <input type="text" style="text-align: center; width: 152px;" maxlength="10" class="text number "
-                    groupid="Sales_Payments" alphconf="{allow:'.'}"  argumentid="PaymentFor" />
 
-        </td>
-    </tr>--%>
      <tr>
         <td class="ftitle" valign="top">
             <nobr>Payment For:</nobr>
@@ -269,4 +359,4 @@ groupid="Sales_Payments" alphconf="{allow:'.'}"  argumentid="ChequeFrom" />   <n
 
 
 </table>
-
+--%>

@@ -13,59 +13,5 @@ namespace WebProject.Pages.eForms.iRental
 
     public partial class RentalContracts_FrUc
     {
-
-        /// <summary>
-        /// grdPaymentDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdPaymentDetails;
-
-        /// <summary>
-        /// frmPaymentDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmPaymentDetails;
-
-        /// <summary>
-        /// grdOtherCharges control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdOtherCharges;
-
-        /// <summary>
-        /// frmOtherCharges control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmOtherCharges;
-
-        /// <summary>
-        /// grdContractComments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdContractComments;
-
-        /// <summary>
-        /// frmComments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmComments;
     }
 }

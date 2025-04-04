@@ -110,9 +110,11 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
     success: function (res) {
         res = res.d || res;
         var t = this;
+      
         if (res.status=="UserNotLoggedIn")
         {
-            window.location.reload();
+            AsyncWidgets.user.logged = true;
+            //window.location.reload();
             return;
         }
         t.fireEvent('onSuccess', res);
@@ -173,14 +175,20 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
             },
             body: JSON.stringify(paramList)
         })
-            .then(response => response.json())
+            .then(
+                response => {
+                    var res = response.json();
+                    console.log(res);
+                    return res;
+                }
+            )
             .then(data => successFn(data))
             .catch(error => function () {
                debugger
                 errorFN(error)
             });
 
-        AsyncWidgets.user.action();
+        //AsyncWidgets.user.action();
     }
 });
 ////////////////////////// Check if user is logged in or not //////////////////////////////////
@@ -210,6 +218,7 @@ AsyncWidgets.user = function () {
             if (isFirst || limitElap) {
                 var inv = new AsyncWidgets.RAInvoker();
                 inv.on('onSuccess', function (res) {
+                   
                     var Res = decJSON(res), ret;
                     if (Res.status == "OK") {
                         if (Res.Response) {
@@ -220,6 +229,7 @@ AsyncWidgets.user = function () {
                         else {
                             AsyncWidgets.user.logged = false;
                             if (!!cb) cb(false);
+
                             Observer.fireEvent('loggedOut');
                         }
                     }
@@ -410,13 +420,15 @@ var _IsIE = false,
   
 (function ($) {
     $.showMessage = function (message, options, secondCall) {
-
-        return;
-        if(!secondCall){
-            $.showMessage.defer(500,this,[message,options,true]);
+        // Immediately return if it's the first call; defer for 500ms
+        debugger
+        if (!secondCall) {
+            $.showMessage.defer(500, this, [message, options, true]);
             return;
         }
-       settings = $.extend({
+
+        // Default settings
+        const settings = $.extend({
             id: 'sliding_message_box',
             position: 'top',
             size: '20',
@@ -426,87 +438,115 @@ var _IsIE = false,
             fontSize: '11px'
         }, options);
 
-        var elem = $('#' + settings.id);
-        var delayed;
+        let elem = $('#' + settings.id);
 
-        // generate message div if it doesn't exist
-        if (elem.length == 0) {
+        // Generate message div if it doesn't exist
+        if (elem.length === 0) {
             elem = $('<div><div class="conmsg"></div></div>').attr('id', settings.id);
+
+            // Hover behavior for the message box
             elem.hover(
-                function () { 
-                    $(this).css("background-color", "#FFFFCF"); 
+                function () {
+                    $(this).css("background-color", "#FFFFCF");
                     $.showMessage.hideDT.delay(999999999);
-            }, 
-                function () { 
-                    $(this).css("background-color", "#FFFFAA"); 
+                },
+                function () {
+                    $(this).css("background-color", "#FFFFAA");
                     $.showMessage.hideDT.delay(1000);
-            });
-                var lf=0;width="100%";
-                if( !!$('.left-border').length){
-                    lf= $('.left-border').offset().left +15;
-                    width='942px';
                 }
-                elem.css({ 'z-index': '999',
-                'cursor':'pointer',
+            );
+
+            // Set message box position and styling
+            let leftOffset = 0, width = "100%";
+            if (!!$('.left-border').length) {
+                leftOffset = $('.left-border').offset().left + 15;
+                width = '942px';
+            }
+
+            elem.css({
+                'z-index': '999',
+                'cursor': 'pointer',
                 'background-color': settings.backgroundColor,
                 'text-align': 'center',
                 'position': 'absolute',
-                'left':  lf,
-                'top':'0',
+                'left': leftOffset,
+                'top': '0',
                 'width': width,
                 'line-height': settings.size + 'px',
-                'font-family': 'verdana,sans-serif,trebuchet ms,arial',
+                'font-family': 'verdana, sans-serif, trebuchet ms, arial',
                 'font-size': settings.fontSize,
-                'font-weight':'bold',
+                'font-weight': 'bold',
                 'color': '#333333',
                 'border-bottom': '1px solid #73ABCB',
                 'padding': '5px 0'
             });
+
             $('body').append(elem);
         }
+
+        // Update the message content
         message = message || 'Data updated successfully!';
-        var conmsg = $('.conmsg', elem).html(message);
-        var cf = {} ,win = $(window),setElem;
-		
-        cf[settings.position] = 0;
-        setElem =function(op){
-			op =op||"slow";
-            elem.stop().animate({ "marginTop": win.scrollTop() +"px" },op,
-            function () {
-				(function (dl) { 
-					(function () { 
-						conmsg.css('visibility', (conmsg.css('visibility') == 'hidden' ? 'visible' : 'hidden')); 
-					}).defer(dl,this); 
-				 return arguments.callee; 
-				 })(0)(500)(1000)(1500);
-			}
-            );
+        const conmsg = $('.conmsg', elem).html(message);
+
+        const win = $(window);
+        let elemHidden = false;
+
+        // Function to set element position
+        const setElem = function (op = "slow") {
+            elem.stop().animate({ "marginTop": win.scrollTop() + "px" }, op);
         };
-        var ElemHidden=false;
-        function animateElem(){
-        console.log('anim called');
-            if(!ElemHidden){
-                if(elem.css('marginTop') != '0px')
-                {
-                    elem.css('marginTop','-35');
-                    setElem('fast');
-                    animateElem.defer(300);
-                    console.log('anim called');
-                }
-            }
-        }
+
+        // Show the message
         setElem('fast');
-        win.bind('scroll.showmsg',setElem);
+        win.bind('scroll.showmsg', setElem);
+
+        // Function to hide the message
         function hideMSG() {
-            $("#" + settings.id).stop().animate({ "marginTop":  "-35px" }, "slow");
+            $("#" + settings.id).stop().animate({ "marginTop": "-35px" }, "slow");
             win.unbind('scroll.showmsg');
-            ElemHidden=true;
+            elemHidden = true;
+
+            // Show Bootstrap Toast after the message is hidden
+            showBootstrapToast(message);
         }
+
         elem.click(hideMSG);
-        if (!$.showMessage.hideDT) $.showMessage.hideDT = new Ext.util.DelayedTask(hideMSG);
+
+        // Delayed task for hiding the message
+        if (!$.showMessage.hideDT) {
+            $.showMessage.hideDT = new Ext.util.DelayedTask(hideMSG);
+        }
         $.showMessage.hideDT.delay(settings.delay);
+    };
+
+    // Function to display Bootstrap Toast
+    function showBootstrapToast(message) {
+        const toastHTML = `
+            <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        `;
+
+        // Append the toast element to the body
+        const toastElement = $(toastHTML);
+        $('body').append(toastElement);
+
+        // Initialize and show the toast
+        const toast = new bootstrap.Toast(toastElement[0]);
+        toast.show();
+
+        // Remove the toast element after hiding
+        toastElement.on('hidden.bs.toast', function () {
+            $(this).remove();
+        });
     }
 })(jQuery);
+
 String.prototype.splitCamel = function () { return this.replace(/([a-z])([A-Z])/g, "$1 $2"); };
 
 decJSON = Ext.util.JSON.decode, encJSON = Ext.util.JSON.encode;
@@ -767,10 +807,12 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
         AsyncWidgets.widgetContainer.superclass.constructor.call(t, config);
     },
     show: function () { //WidgetBase Class
+        
         var t = this;
         AsyncWidgets.WidgetManager.hideLast(t);
         $(t.el).show();
         t.visible = true;
+
         t.fireEvent('show');
         return t;
     },
@@ -800,6 +842,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
         });
     },
     invokeRA: function (action, ops) {
+       
         ops = ops || {};
         var onSuccessv = ops.onSuccess || this.RASuccess.createDelegate(this);
         var onFailurev = ops.onFailure || this.RAFailure.createDelegate(this);
@@ -813,6 +856,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
             }
         }
         $(this.el).mask('Please wait while loading ... ');
+
         this.callWS(this.State.FacadePath + "/" + facade,
             ['Controller', this.State.Controller,
             'WidgetState', encJSON(this.State).replace(/"/g, '\\\"')
@@ -821,6 +865,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
         );
     },
     RASuccess: function (response) {
+       
         if (!!response.d) response = response.d;
         Ext.apply(this.State, response.State, {});
         if (response.innerHTML != "") {
@@ -851,6 +896,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
     loadHtml: function () {//widget baseclass
         var t = this, st = t.State;
         $('body').mask(Msgs.PleaseWait[_Lang]);
+        
         //t.$el.mask('Please wait while loading ... ');
         //        for (var i = 0; i < 500000; i++) {
         //           var c = 9898999 / (3.67+i);
@@ -875,6 +921,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
 
     },
     callWS: function (webMethod, parameters, successFn, errorFN) {
+        
         var paramList = '';
         if (parameters.length > 0) {
             for (var i = 0; i < parameters.length; i += 2) {
@@ -1519,7 +1566,8 @@ function val(elem, ctx) {//framework function to read a field value from a conte
         return $(elem).val();
     }
     else if (elem.tagName.toLowerCase() == 'input') {
-        if ("textpasswordhidden".indexOf(elem.type.toLowerCase()) > -1) { 
+
+        if ("textpasswordhiddendate".indexOf(elem.type.toLowerCase()) > -1) { 
             return $(elem).val();
           }
         else if (elem.type.toLowerCase() == 'radio') {
@@ -1553,7 +1601,7 @@ function val(elem, ctx) {//framework function to read a field value from a conte
 function SetDateFormat(date, returnType) {
     returnType = returnType||"string"
     var dttmAr = date.split(' '), dt, tm, nDate;
-    dt = dttmAr[0].split('/');
+    dt = dttmAr[0].split('-');
     if (dttmAr.length > 1) {
         tm = dttmAr[1].split(':');
         return new Date(dt[2], dt[1] - 1, dt[0], tm[0], tm[1], tm[2]);
@@ -1635,11 +1683,11 @@ function getForm(container, ContainerGroup, DALInfo,Fields,NoEsacpe,cf) {
             if (t)
             {
 
-                if (jqThis.attr("argumentid") == 'LastCarServiceDate')
-                {
+                //if (jqThis.attr("argumentid") == 'LastCarServiceDate')
+                //{
                     
-                }
-                fldVal = jqThis.hasClass('date') || jqThis.hasClass('dateLabel') ?SetDateFormat( fldVal) : fldVal;
+                //}
+               // fldVal = jqThis.hasClass('date') || jqThis.hasClass('dateLabel') ?SetDateFormat( fldVal) : fldVal;
                 groups[currentGroup].attr(jqThis.attr("argumentid"), fldVal);
             }
             else {//if field have no value
@@ -1853,27 +1901,71 @@ var setField = function (ctl, param, ctx)
     }
 
     else if (tag == 'INPUT') {
-        if ('textareapasswordhidden'.indexOf(ctl.type) > -1) {
+        if (ctl.type == "date") {
+            if (!!val) {
+                let arrVal = val.split("/");
+                val = `${arrVal[2]}-${arrVal[1]}-${arrVal[0]}`;
+            }
+            
             $(ctl).val(val);
         }
-        else if (ctl.type == 'radio') {
-            var rdo = ctl.name, grpid = ctl.getAttribute('groupid');
-            if ($("[name='" + rdo + "'][checked]", ctx).length>0)
-                $("[name='" + rdo + "'][checked]", ctx)[0].checked = false;
-            if (("" + val) != '') {
-                if ($("[name='" + rdo + "'][value='" + val + "']", ctx).length > 0) {
-                    $("[name='" + rdo + "'][value='" + val + "']", ctx).attr('checked', 'checked')
-                }
-                else {
+        else if ('textareapasswordhidden'.indexOf(ctl.type) > -1) {
+            $(ctl).val(val);
+        }
+        //else if (ctl.type == 'radio') {
+        //    var rdo = ctl.name, grpid = ctl.getAttribute('groupid');
+        //    if ($("[name='" + rdo + "'][checked]", ctx).length > 0)
+
+        //      //  $("[name='" + rdo + "']", ctx).removeAttr('checked');
+
+        //        $("[name='" + rdo + "'][checked]", ctx)[0].checked = false;
+        //    if (("" + val) != '') {
+        //        if ($("[name='" + rdo + "'][value='" + val + "']", ctx).length > 0) {
+        //            $("[name='" + rdo + "'][value='" + val + "']", ctx).attr('checked', 'checked')
+        //        }
+        //        else {
+        //            if (val == null) {
+        //                if ($("[name='" + rdo + "'][default='default']", ctx).length > 0)
+        //                     $("[name='" + rdo + "'][default='default']", ctx)[0].checked = true;
+        //            }
+        //            else
+        //                $("[name='" + rdo + "'][textvalue='" + val.toUpperCase() + "']", ctx).attr('checked', 'checked');
+        //        }
+        //    }
+            //}
+        if (ctl.type === 'radio') {
+            const rdo = ctl.name;
+     
+
+            // Uncheck the currently checked radio button
+            const checkedRadio = $("[name='" + rdo + "'][checked]", ctx);
+            if (checkedRadio.length > 0) {
+                checkedRadio.prop('checked', false).removeAttr('checked');
+            }
+
+            // Check the radio button with the specified value
+            if (("" + val) !== '') {
+                const targetRadio = $("[name='" + rdo + "'][value='" + val + "']", ctx);
+                if (targetRadio.length > 0) {
+                    targetRadio.prop('checked', true).attr('checked', 'checked');
+                } else {
                     if (val == null) {
-                        if ($("[name='" + rdo + "'][default='default']", ctx).length > 0)
-                             $("[name='" + rdo + "'][default='default']", ctx)[0].checked = true;
+                        // Set default radio button if value is null
+                        const defaultRadio = $("[name='" + rdo + "'][default='default']", ctx);
+                        if (defaultRadio.length > 0) {
+                            defaultRadio.prop('checked', true).attr('checked', 'checked');
+                        }
+                    } else {
+                        // Handle case where value doesn't match but text value does
+                        const textValueRadio = $("[name='" + rdo + "'][textvalue='" + val.toUpperCase() + "']", ctx);
+                        if (textValueRadio.length > 0) {
+                            textValueRadio.prop('checked', true).attr('checked', 'checked');
+                        }
                     }
-                    else
-                        $("[name='" + rdo + "'][textvalue='" + val.toUpperCase() + "']", ctx).attr('checked', 'checked');
                 }
             }
         }
+
         else if (ctl.type == ('checkbox')) {
             ctl.checked = !!(~ ~param.val);
         }
@@ -2105,10 +2197,16 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
         var expReg = /^((0[1-9]|[12]\d)\/(0[1-9]|1[0-2])|30\/(0[13-9]|1[0-2])|31\/(0[13578]|1[02]))\/(19|20)?\d{2}$/;
 
         var aRet = true,
-        input = elem,
-        value = input.attr('value'),
-        arrV = value.split('/');
+            input = elem,
+        value = elem.val();
+        var arrV = value.split('-'); // the incoming formate is yyyy-mm-dd
+        let dateYear = arrV[0]; // save year in a temporary variable 1/0/2020
+        arrV[0] = arrV[2]; // swap day to place of year
+        arrV[2] = dateYear;
         if (arrV.length == 3) {
+            if (arrV[0] == undefined) {
+                return false;
+            }
             if (arrV[0].length == 1) arrV[0] = '0' + arrV[0];
             if (arrV[1].length == 1) arrV[1] = '0' + arrV[1];
             value = arrV[0] + '/' + arrV[1] + '/' + arrV[2];
@@ -2334,7 +2432,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
             return $(elem).val();
         }
         else if (elem.tagName.toLowerCase() == 'input') {
-            if ("textareapassword".indexOf(elem.type.toLowerCase()) > -1)
+            if ("textareapassworddate".indexOf(elem.type.toLowerCase()) > -1)
                 return $(elem).val();
             else if (elem.type.toLowerCase() == 'radio') {
                 var rdo = elem.name.toLowerCase();
@@ -2345,6 +2443,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
             else if (elem.type.toLowerCase() == 'checkbox') {
                 return $(elem).attr('checked') ? "1" : "";
             }
+
 
         }
         else if (elem.tagName == 'SPAN' || elem.tagName == 'DIV') {
@@ -2605,7 +2704,7 @@ AsyncWidgets.Widgets.ItemRepeater = Ext.extend(AsyncWidgets.widgetContainer, {
             alert('Problem occured while connection to web server');
 
         });
-        t.status = "sav"; //saving
+        t.status = "save"; //saving
         var ServiceInfo = getForm(t.el, "RegisterNewUser", { RegisterNewUser: 'User_RegisterUser' });
         inv.invokeRA({ params: ["ActorId", "Authentication", "ActionId", "RegisterNewUser", "ServiceInfo",
         ServiceInfo]

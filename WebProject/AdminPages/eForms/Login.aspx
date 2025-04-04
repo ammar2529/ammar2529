@@ -78,6 +78,7 @@
                              
                              AsyncWidgets.user.conf = res.Response.Conf;
                              AsyncWidgets.user.conf2 = res.Response.Name;
+                             /*window.location = "/testDataTable.aspx"*/
                              window.location = "/BuDastoorHome.aspx"
 
                             

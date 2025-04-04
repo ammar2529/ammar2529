@@ -101,18 +101,18 @@
            </Childern>
             </uc5:Container>
 
-            <uc8:Form ID="frmCustomerDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx" >
-                            <WidgetConfig>
-                <script>
-                    cf = {
+<uc8:Form ID="frmCustomerDetails" DataSource="SEL_iRental_Customers" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc2.ascx">
+    <WidgetConfig>
+        <script>
+            cf = {
 
-                        header: {
-                            Style: {},
-                            Visible: true,
-                            Collapsed: false,
-                            HeadText: 'Customer Management'
-                        }
-                    }
-                </script>
-                </WidgetConfig>
-            </uc8:Form>
+                header: {
+                    Style: {},
+                    Visible: true,
+                    Collapsed: false,
+                    HeadText: 'Customer Management'
+                }
+            }
+        </script>
+    </WidgetConfig>
+</uc8:Form>

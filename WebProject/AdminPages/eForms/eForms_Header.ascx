@@ -110,6 +110,7 @@
                 </div>
             </div>
         </nav>
+        <div>new div</div>
     </div>
 </div>
 
@@ -121,7 +122,7 @@
         //var userRoles = decJSON(AsyncWidgets.user.conf);
         var userName = AsyncWidgets.user.name;
 
-        debugger
+        
         function renderMenu() {
             var menuText = '';
 
@@ -135,7 +136,7 @@
                 if (parentMenu.MenuId == 0) {
                     menuText += '<li class="nav-item">';
                     menuText += '<a class="nav-link home" returntype="true" showwidget="frmInbox">';
-                    menuText += '<i class="fa-solid fa-house-user fa-shake"></i> ' + parentMenu.MenuName; // Add icon here
+                    menuText += '<i class="fa-solid fa-house"></i> ' + parentMenu.MenuName; // Add icon here
                     menuText += '</a>';
                     menuText += '</li>';
                 } else if (hasChild(parentMenu.MenuId)) {
@@ -192,7 +193,9 @@
         });
 
         if (userName) {
-            $('.UserName').text(userName);
+            var a = $('#menuContainer')
+            $('.UserName',a).text(userName);
+            $('.UserName', a).css('text-decoration', 'none')
         }
     });
 

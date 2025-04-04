@@ -97,7 +97,7 @@
 </head>
 <body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #dae2e3; overflow:scroll;overflow-x:visible">
 
-    <form id="frmMain" runat="server">
+    <%--<form id="frmMain" runat="server">
        
     <center>
         <table cellspacing="0" cellpadding="0" width="973" border="0">
@@ -160,12 +160,12 @@
             </tbody>
         </table>
     </center>
-    </form>
-	<script>
+    </form>--%>
+<%--	<script>
 	$().ready(function(){
 
 		$('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);;
 	});
-	</script>
+	</script>--%>
 </body>
 </html>

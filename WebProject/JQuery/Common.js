@@ -352,9 +352,23 @@ function isHTML(elem) {
 
     }
     return res;
+};
+
+function getViewportSize() {
+    var width = window.innerWidth;
+
+    if (width >= 1200) {
+        return 'xl'; // Extra-large devices (≥1200px)
+    } else if (width >= 992) {
+        return 'lg'; // Large devices (≥992px)
+    } else if (width >= 768) {
+        return 'md'; // Medium devices (≥768px)
+    } else if (width >= 576) {
+        return 'sm'; // Small devices (≥576px)
+    } else {
+        return 'xs'; // Extra-small devices (<576px)
+    }
 }
-
-
 
 // Example usage
 //var username = getCookie('username');

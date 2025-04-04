@@ -111,8 +111,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
         
         
 
-        $('[tabid="SalesPaymentDetails"]', t.el).on('click', function () {
-
+        $('.SalesPaymentDetails', t.el).on('click', function () {
+            
             setTimeout(function () {
 
                 var a = $('div.SalesPaymentPanelDiv')
@@ -177,7 +177,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
                
-                debugger
+                
                     var a = $('div.SalesPaymentPanelDiv')
                     if ($('table.SalesPaymentPanel', a).length > 0) {
                         $('table.SalesPaymentPanel', a).show();
@@ -301,6 +301,21 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
 Sales.SalesContracts.grdSalesContractsPaymentDetails =
     function (t)
     {
+
+      
+    
+        // Event listener for the collapse element
+        $('#collapseSalesPayment').on('show.bs.collapse', function () {
+            $('.toggle-icon').removeClass('fa-plus').addClass('fa-minus');
+        });
+
+        $('#collapseSalesPayment').on('hide.bs.collapse', function () {
+            $('.toggle-icon').removeClass('fa-minus').addClass('fa-plus');
+        });
+   
+        
+
+
         t.on('beforeSearchGetForm', function (P)
         {
 
@@ -318,7 +333,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
         });
         t.on('rowsRendered', function ()
         {
-
+            
             
             var frmPayment = AsyncWidgets.get('frmSalesContactsPaymentDetails').el;
             var frm = AsyncWidgets.get('frmSalesContracts');
@@ -354,7 +369,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
             // Assuming ServerCall is a function to make an API call
             ServerCall(params, function (res) {
 
-                var res = decJSON(res)
+               // var res = decJSON(res)
 
 
                 if (res.status === 'OK') {
@@ -373,11 +388,11 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
                         }
 
-                      
+
+                        
 
 
-
-                            var a = $('div.SalesPaymentPanelDiv')
+                        var a = $('.container.SalesPaymentDetailsPannel')
                             $('[argumentid="RecCodePanel"]', a).text(RecCode);
                             $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
                             $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);

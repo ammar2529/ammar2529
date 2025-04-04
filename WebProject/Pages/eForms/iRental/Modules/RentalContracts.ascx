@@ -300,15 +300,15 @@
                                 }
 
                                 $('[argumentid="CarNumber"]', f.el).val($('[colid="CarNumber"] .ColValue', this).text());
-                                $('[argumentid="ChassisNo"]', f.el).text($('[colid="ChassisNo"] .ColValue', this).text());
-                                $('[argumentid="Brand"]', f.el).text($('[colid="BrandId"] .ColValue', this).text());
-                                $('[argumentid="Model"]', f.el).text($('[colid="ModelId"] .ColValue', this).text());
-                                $('[argumentid="CarYear"]', f.el).text($('[colid="CarYear"] .ColValue', this).text());
-                                $('[argumentid="Color"]', f.el).text($('[colid="ColorId"] .ColValue', this).text());
-                                $('[argumentid="Type"]', f.el).text($('[colid="TypeId"] .ColValue', this).text());
-                                $('[argumentid="InsuranceExpiry"]', f.el).text($('[colid="frmInsuranceExpiry"] .ColValue', this).text());
-                                $('[argumentid="FullInsuranceExpiry"]', f.el).text($('[colid="frmFullInsuranceExpiry"] .ColValue', this).text());
-                                $('[argumentid="CarPreviousKM"]', f.el).text($('[colid="CurrentMileage"] .ColValue', this).text());
+                                $('[argumentid="ChassisNo"]', f.el).val($('[colid="ChassisNo"] .ColValue', this).text());
+                                $('[argumentid="Brand"]', f.el).val($('[colid="BrandId"] .ColValue', this).text());
+                                $('[argumentid="Model"]', f.el).val($('[colid="ModelId"] .ColValue', this).text());
+                                $('[argumentid="CarYear"]', f.el).val($('[colid="CarYear"] .ColValue', this).text());
+                                $('[argumentid="Color"]', f.el).val($('[colid="ColorId"] .ColValue', this).text());
+                                $('[argumentid="Type"]', f.el).val($('[colid="TypeId"] .ColValue', this).val());
+                                $('[argumentid="InsuranceExpiry"]', f.el).val($('[colid="frmInsuranceExpiry"] .ColValue', this).text());
+                                $('[argumentid="FullInsuranceExpiry"]', f.el).val($('[colid="frmFullInsuranceExpiry"] .ColValue', this).text());
+                                $('[argumentid="CarPreviousKM"]', f.el).val($('[colid="CurrentMileage"] .ColValue', this).text());
                                 $('[argumentid="ContractKMOut"]', f.el).val($('[colid="CurrentMileage"] .ColValue', this).text());
 
                                 // Date Difference Function
@@ -361,7 +361,7 @@
            </Childern>
             </uc5:Container>
 
-           <uc8:Form ID="frmRentalContracts" Hidden="true" DataSource="SEL_iRental_Contracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/RentalContracts_FrUc.ascx" >
+           <uc8:Form ID="frmRentalContracts" Hidden="true" DataSource="SEL_iRental_Contracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/RentalContracts_FrUc2.ascx" >
                             <WidgetConfig>
                 <script>
                     cf = {

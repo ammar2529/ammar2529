@@ -16,7 +16,7 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
             conGrd._Masked.mask();
 
         }
-        var txt = $(this), trow = txt.closest('tr');
+        var txt = $(this), trow = txt.closest('div');
         if (!t._LOVCon) {
             var rtop = trow.offset().top, lf = trow.offset().left, rw = trow.width();
             t._LOVCon = $('<div style="padding:0px;display:none;position:absolute;border:1px solid #8298B0;background:#EEEEFF;"></div>')
@@ -49,7 +49,7 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
             conCar._Masked.mask();
 
         }
-        var txt = $(this), trow = txt.closest('tr');
+        var txt = $(this), trow = txt.closest('div');
         if (!t._LOVConCar) {
             var rtop = trow.offset().top, lf = trow.offset().left, rw = trow.width();
             t._LOVConCar = $('<div style="padding:0px;display:none;position:absolute;border:1px solid #8298B0;background:#EEEEFF;"></div>')
@@ -66,22 +66,24 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
     //End On Focus of Car Number to Get Cars Popup Selection
 
     //On Click Plus Sign to Show hide More details of Customer & Cars
-    $('.contDetailsIcon', t.el).click(function () {
-        var ic = $(this);
-        if (ic.hasClass('w-ui-panel-icon-opened')) {
-            ic.addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
+    $('.contDetailsIconMD', t.el).click(function () {
+        var ic = $(this); // Get the clicked icon
+        if (ic.hasClass('fa-circle-minus')) {
+            // Change to "plus" icon and hide content
+            ic.addClass('fa-circle-plus').removeClass('fa-circle-minus');
             $('.OnLoadHideCarCust', t.el).hide();
-        }
-        else {
-            ic.addClass('w-ui-panel-icon-opened').removeClass('w-ui-panel-icon-closed');
+        } else {
+            // Change to "minus" icon and show content
+            ic.addClass('fa-circle-minus').removeClass('fa-circle-plus');
             $('.OnLoadHideCarCust', t.el).show();
         }
     });
+
     //End On Click Plus Sign to Show hide More details of Customer & Cars
 
     //On Click of Print Contract Button
     $('.btn_9', t.el).click(function () { //
-        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenContractFrPg.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintOpenContractFrPg.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
         console.log(strlink);
         var width = 920;
         var height = 600;
@@ -106,40 +108,41 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
 
     // To Select Tabs
     $('.SimpleTab li', t.el).click(function () {
+       
         var li = $(this), tbl;
         if (!!$(this).parent().attr('disabled')) return;
-        if (li.parent().children('li.active').attr('tabid') == li.attr('tabid')) return false;
-        li.parent().children('li.active').removeClass('active');
-        li.addClass('active');
-        tbl = li.closest('table').children();
-        tbl.children('tr:not(:first)').hide();
-        tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
-        $('.tabid', t.el).val(li.attr('tabid'));
+        
+        if (li.parent().children().children('a.nav-link').attr('tabid') == li.children().attr('tabid')) return false;
+        //li.parent().children('li.active').removeClass('active');
+        //li.addClass('active');
+            
+        //tbl = li.closest('div.Rental').children();
+        //tbl.children('div:not(:first)').hide();
+        //tbl.children('div[tabid="' + li.attr('tabid') + '"]').show();
+        //$('.tabid', t.el).val(li.attr('tabid'));
 
-        if (li.attr('tabid') == 'ContractDetails') {
+        if (li.children().attr('tabid') == 'RentalContractDetails') {
             AsyncWidgets.get('frmRentalContracts').loadValues();
         }
 
-        if (li.attr('tabid') == 'AdditionalDrivers') {
+        if (li.children().attr('tabid') == 'AdditionalDrivers') {
             AsyncWidgets.get('grdAdditionalDrivers').show().Requery();
         }
 
-        if (li.attr('tabid') == 'OtherCharges') {
-            AsyncWidgets.get('grdOtherCharges').show().Requery();
+        if (li.children().attr('tabid') == 'RentalOtherCharges') {
+            AsyncWidgets.get('grdRentalOtherCharges').show().Requery();
         }
 
-        if (li.attr('tabid') == 'PaymentDetails') {
-            AsyncWidgets.get('grdPaymentDetails').show().Requery();
-            if ($('[widgetid="frmPaymentDetails"]', t.el).length > 0)
-            {
-                $('[widgetid="frmPaymentDetails"]', t.el).hide();
-            }
+        if (li.children().attr('tabid') == 'RentalPaymentDetails') {
+            AsyncWidgets.get('grdRentalPaymentDetails').show().Requery();
         }
 
-        if (li.attr('tabid') == 'ContractComments') {
-            AsyncWidgets.get('grdContractComments').show().Requery();
+        if (li.children().attr('tabid') == 'RentalContractComments') {
+            AsyncWidgets.get('grdRentalContractComments').show().Requery();
         }
-
+        if (li.children().attr('tabid') == 'CloseBtn') {
+           
+        }
         return false;
     });
     // End
@@ -206,125 +209,253 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
 
 
     // On Start & Expiry Date Selection Get Day Time and Days
+    //var GetDays = function (e, vl, dt) {
+
+
+    //    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    //    var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
+
+    //    cH = cH < 10 ? '0' + cH : cH;
+    //    cM = cM < 10 ? '0' + cM : cM;
+
+    //    sDate = $('[argumentid="ContractStartDate"]', t.el).val();
+    //    if ($(e).attr('argumentid') == 'ContractStartDate') {
+    //        if (sDate.toString() == 'NaN') {
+    //            $('[argumentid="ContractStartDay"],[argumentid="ContractStartTime"]', t.el).val('');
+    //            sts = 1;
+    //        }
+    //        else {
+    //            $('[argumentid="ContractStartDay"]', t.el).val(weekday[sDate.getDay()]);
+    //            $('[argumentid="ContractStartTime"]', t.el).val(cH + ':' + cM);
+    //        }
+    //    }
+
+    //    eDate = getDate($('[argumentid="ContractExpiryDate"]', t.el).val());
+    //    if ($(e).attr('argumentid') == 'ContractExpiryDate') {
+    //        if (eDate.toString() == 'NaN') {
+    //            $('[argumentid="ContractExpiryDay"],[argumentid="ContractExpiryTime"],[argumentid="ContractDays"]', t.el).val('');
+    //            sts = 1;
+    //        }
+    //        else {
+    //            $('[argumentid="ContractExpiryDay"]', t.el).val(weekday[eDate.getDay()]);
+    //            $('[argumentid="ContractExpiryTime"]', t.el).val(cH + ':' + cM);
+    //        }
+    //    }
+
+    //    if (sts) {
+    //        return false;
+    //    }
+
+    //    if (sDate > eDate) {
+    //        if ($(e).attr('argumentid') == 'ContractStartDate') {
+    //            alert('Contract Start Date has to be less than Contract Expiry Date');
+    //            $('[argumentid="ContractStartDate"],[argumentid="ContractStartDay"],[argumentid="ContractStartTime"],[argumentid="ContractDays"]', t.el).val('');
+
+    //        }
+    //        else {
+    //            alert('Contract Expiry Date has to be greater than Contract Start Date');
+    //            $('[argumentid="ContractExpiryDate"],[argumentid="ContractExpiryDay"],[argumentid="ContractExpiryTime"],[argumentid="ContractDays"]', t.el).val('');
+    //        }
+    //        return false;
+    //    }
+
+    //    diff = new Date();
+    //    diff.setTime(Math.abs(sDate.getTime() - eDate.getTime()));
+    //    days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+
+    //    if (days.toString() == 'NaN') {
+    //        days = '';
+    //    }
+    //    else if (days > 1) {
+    //        days = days - 1;
+    //    }
+
+    //    $('[argumentid="ContractDays"]', t.el).val(days);
+
+    //    GetActualDays();
+    //    CalculateRentalContractChargesOnSuperEdit();
+
+    //};
+
+
     var GetDays = function (e, vl, dt) {
-
-
         var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
+        var sts = 0, sDate, eDate, cDate = new Date();
+        var cH = cDate.getHours(), cM = cDate.getMinutes();
 
+        // Format Hours and Minutes
         cH = cH < 10 ? '0' + cH : cH;
         cM = cM < 10 ? '0' + cM : cM;
 
-        sDate = getDate($('[argumentid="ContractStartDate"]', t.el).val());
-        if ($(e).attr('argumentid') == 'ContractStartDate') {
-            if (sDate.toString() == 'NaN') {
+        // Parse Start Date
+        var sDateValue = $('[argumentid="ContractStartDate"]', t.el).val();
+        sDate = new Date(sDateValue); // Convert to Date object
+        if ($(e).attr('argumentid') === 'ContractStartDate') {
+            if (isNaN(sDate.getTime())) { // Validate the parsed date
                 $('[argumentid="ContractStartDay"],[argumentid="ContractStartTime"]', t.el).val('');
                 sts = 1;
-            }
-            else {
-                $('[argumentid="ContractStartDay"]', t.el).val(weekday[sDate.getDay()]);
-                $('[argumentid="ContractStartTime"]', t.el).val(cH + ':' + cM);
+            } else {
+                $('[argumentid="ContractStartDay"]', t.el).val(weekday[sDate.getDay()]); // Set weekday name
+                $('[argumentid="ContractStartTime"]', t.el).val(cH + ':' + cM); // Use current time
             }
         }
 
-        eDate = getDate($('[argumentid="ContractExpiryDate"]', t.el).val());
-        if ($(e).attr('argumentid') == 'ContractExpiryDate') {
-            if (eDate.toString() == 'NaN') {
+        // Parse Expiry Date
+        var eDateValue = $('[argumentid="ContractExpiryDate"]', t.el).val();
+        eDate = new Date(eDateValue); // Convert to Date object
+        if ($(e).attr('argumentid') === 'ContractExpiryDate') {
+            if (isNaN(eDate.getTime())) { // Validate the parsed date
                 $('[argumentid="ContractExpiryDay"],[argumentid="ContractExpiryTime"],[argumentid="ContractDays"]', t.el).val('');
                 sts = 1;
-            }
-            else {
-                $('[argumentid="ContractExpiryDay"]', t.el).val(weekday[eDate.getDay()]);
-                $('[argumentid="ContractExpiryTime"]', t.el).val(cH + ':' + cM);
+            } else {
+                $('[argumentid="ContractExpiryDay"]', t.el).val(weekday[eDate.getDay()]); // Set weekday name
+                $('[argumentid="ContractExpiryTime"]', t.el).val(cH + ':' + cM); // Use current time
             }
         }
 
+        // Stop execution if dates are invalid
         if (sts) {
             return false;
         }
 
-        if (sDate > eDate) {
-            if ($(e).attr('argumentid') == 'ContractStartDate') {
-                alert('Contract Start Date has to be less than Contract Expiry Date');
+        // Validate Date Order
+        if (sDate.getTime() > eDate.getTime()) {
+            if ($(e).attr('argumentid') === 'ContractStartDate') {
+                alert('Contract Start Date must be earlier than Contract Expiry Date.');
                 $('[argumentid="ContractStartDate"],[argumentid="ContractStartDay"],[argumentid="ContractStartTime"],[argumentid="ContractDays"]', t.el).val('');
-
-            }
-            else {
-                alert('Contract Expiry Date has to be greater than Contract Start Date');
+            } else {
+                alert('Contract Expiry Date must be later than Contract Start Date.');
                 $('[argumentid="ContractExpiryDate"],[argumentid="ContractExpiryDay"],[argumentid="ContractExpiryTime"],[argumentid="ContractDays"]', t.el).val('');
             }
             return false;
         }
 
-        diff = new Date();
-        diff.setTime(Math.abs(sDate.getTime() - eDate.getTime()));
-        days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+        // Calculate Difference in Days
+        var diffTime = Math.abs(eDate.getTime() - sDate.getTime());
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // Include both start and end date
 
-        if (days.toString() == 'NaN') {
+        // Adjust Days if Necessary
+        if (isNaN(days)) {
             days = '';
-        }
-        else if (days > 1) {
-            days = days - 1;
+        } else if (days > 1) {
+            days -= 1; // Optionally exclude one day if required
         }
 
+        // Set Calculated Days
         $('[argumentid="ContractDays"]', t.el).val(days);
 
+        // Additional Function Calls
         GetActualDays();
         CalculateRentalContractChargesOnSuperEdit();
-
     };
+
+
 
     $('[argumentid="ContractStartDate"]', t.el).change(GetDays)[0].onDateSelect = GetDays;
     $('[argumentid="ContractExpiryDate"]', t.el).change(GetDays)[0].onDateSelect = GetDays;
     // End On Start & Expiry Date Selection Get Day Time and Days
 
     // On End Date Selection Get Day Time and Days
+    //var GetActualDays = function (e, vl, dt) {
+
+    //    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    //    var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
+
+    //    cH = cH < 10 ? '0' + cH : cH;
+    //    cM = cM < 10 ? '0' + cM : cM;
+
+    //    sDate = $('[argumentid="ContractStartDate"]', t.el).val();
+    //    if (sDate.toString() == 'NaN') {
+    //        sts = 1;
+    //    }
+
+    //    eDate = getDate($('[argumentid="ContractEndDate"]', t.el).val());
+    //    if (eDate.toString() == 'NaN') {
+    //        $('[argumentid="ContractEndDay"],[argumentid="ContractEndTime"],[argumentid="ActualContractDays"]', t.el).val('');
+    //        sts = 1;
+    //    }
+    //    else {
+    //        $('[argumentid="ContractEndDay"]', t.el).val(weekday[eDate.getDay()]);
+    //        $('[argumentid="ContractEndTime"]', t.el).val(cH + ':' + cM);
+    //    }
+
+    //    if (sts) {
+    //        return false;
+    //    }
+
+    //    if (sDate > eDate) {
+    //        alert('Contract End Date has to be greater than Contract Start Date');
+    //        $('[argumentid="ContractEndDate"],[argumentid="ContractEndDay"],[argumentid="ContractEndTime"],[argumentid="ActualContractDays"]', t.el).val('');
+    //        return false;
+    //    }
+
+    //    diff = new Date();
+    //    diff.setTime(Math.abs(sDate.getTime() - eDate.getTime()));
+    //    days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+
+    //    if (days.toString() == 'NaN') {
+    //        days = '';
+    //    }
+    //    else if (days > 1) {
+    //        days = days - 1;
+    //    }
+    //    $('[argumentid="ActualContractDays"]', t.el).val(days);
+    //};
+
     var GetActualDays = function (e, vl, dt) {
-
         var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var sts = 0, sDate, eDate, cDate = new Date(), cH = cDate.getHours(), cM = cDate.getMinutes();
+        var sts = 0, sDate, eDate, cDate = new Date();
+        var cH = cDate.getHours(), cM = cDate.getMinutes();
 
+        // Format hours and minutes
         cH = cH < 10 ? '0' + cH : cH;
         cM = cM < 10 ? '0' + cM : cM;
 
-        sDate = getDate($('[argumentid="ContractStartDate"]', t.el).val());
-        if (sDate.toString() == 'NaN') {
+        // Parse Start Date
+        var sDateValue = $('[argumentid="ContractStartDate"]', t.el).val();
+        sDate = new Date(sDateValue); // Convert to Date object
+        if (isNaN(sDate.getTime())) { // Check for invalid date
             sts = 1;
         }
 
-        eDate = getDate($('[argumentid="ContractEndDate"]', t.el).val());
-        if (eDate.toString() == 'NaN') {
+        // Parse End Date
+        var eDateValue = $('[argumentid="ContractEndDate"]', t.el).val();
+        eDate = new Date(eDateValue); // Convert to Date object
+        if (isNaN(eDate.getTime())) { // Check for invalid date
             $('[argumentid="ContractEndDay"],[argumentid="ContractEndTime"],[argumentid="ActualContractDays"]', t.el).val('');
             sts = 1;
-        }
-        else {
+        } else {
+            // Set weekday and current time for End Date
             $('[argumentid="ContractEndDay"]', t.el).val(weekday[eDate.getDay()]);
             $('[argumentid="ContractEndTime"]', t.el).val(cH + ':' + cM);
         }
 
+        // Stop execution if any date is invalid
         if (sts) {
             return false;
         }
 
-        if (sDate > eDate) {
-            alert('Contract End Date has to be greater than Contract Start Date');
+        // Validate that Start Date <= End Date
+        if (sDate.getTime() > eDate.getTime()) {
+            alert('Contract End Date must be later than or equal to Contract Start Date.');
             $('[argumentid="ContractEndDate"],[argumentid="ContractEndDay"],[argumentid="ContractEndTime"],[argumentid="ActualContractDays"]', t.el).val('');
             return false;
         }
 
-        diff = new Date();
-        diff.setTime(Math.abs(sDate.getTime() - eDate.getTime()));
-        days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+        // Calculate Difference in Days
+        var diffTime = Math.abs(eDate.getTime() - sDate.getTime());
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // Include both start and end date
 
-        if (days.toString() == 'NaN') {
+        // Handle NaN or Adjust Days
+        if (isNaN(days)) {
             days = '';
+        } else if (days > 1) {
+            days -= 1; // Adjust day count if necessary
         }
-        else if (days > 1) {
-            days = days - 1;
-        }
+
+        // Set Calculated Actual Contract Days
         $('[argumentid="ActualContractDays"]', t.el).val(days);
     };
-
 
     $('[argumentid="ContractEndDate"]', t.el).change(function () { GetActualDays(); CalculateRentalContractChargesOnSuperEdit(); })[0].onDateSelect = function () { GetActualDays(); CalculateRentalContractChargesOnSuperEdit(); };
     //$('[argumentid="ContractEndDate"]', t.el).change(CalculateRentalContractChargesOnSuperEdit)[0].onDateSelect = CalculateRentalContractChargesOnSuperEdit;
@@ -684,14 +815,15 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
 
     // On Form Show
     t.on('show', function (args) {
-
+        
         //Always Move to First Tab on Show
-        var li = $('li[tabid="ContractDetails"]', t.el), tbl;
-        li.parent().children('li.active').removeClass('active');
-        li.addClass('active');
-        tbl = li.closest('table').children();
-        tbl.children('tr:not(:first)').hide();
-        tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
+        var li = $('a[tabid="ContractDetails"]', t.el), tbl;
+        //li.parent().children('a.nav-link').removeClass('active');
+        //li.addClass('active');
+        //li.children().addClass('active')
+        //tbl = li.closest('div.container').children();
+        //tbl.children('div:not(:first)').hide();
+        //tbl.children('div[tabid="' + li.attr('tabid') + '"]').show();
         $('.tabid', t.el).val(li.attr('tabid'));
         //End Always Move to First Tab on Show
 
@@ -710,26 +842,46 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
         $('[argumentid="ContractStartDate"]', t.el).next('img').show().addClass('CommonDisable');
         $('[argumentid="ContractExpiryDate"]', t.el).next('img').show().addClass('DisableOnClose');
         $('[argumentid="ContractEndDate"]', t.el).next('img').hide().addClass('AlwaysDisable').addClass('OnLoadHide');
-        $('.contDetailsIcon', t.el).addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
+        //$('.contDetailsIcon', t.el).addClass('w-ui-panel-icon-closed').removeClass('w-ui-panel-icon-opened');
+   
+        $('.contDetailsIconMD', t.el).addClass('fa-circle-plus').removeClass('fa-circle-minus'); 
 
+        if (t.FormMode == "new") {
+            $('.SimpleTab .nav-link').attr('disabled', 'disabled');
 
-        $('.SimpleTab', t.el).attr('disabled', 'disabled');
-
+        }
         SHMileageType(); // This function is called to hide show Mileage Type Related Fields on Value Loaded
 
         $('[argumentid="CarRateType"] option:not(:first)', t.el).remove(); //Clear Car Rate Type
 
-        var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
+        //var CurrentDate = new Date(); //Get Current Date to set Start Date On New for particular states
+        //var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
+        //var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
+        //var cY = CurrentDate.getFullYear();
+
+        // Get Current Date
+        var CurrentDate = new Date();
+
+        // Extract Day and Format it as Two Digits
         var cD = CurrentDate.getDate() < 10 ? '0' + CurrentDate.getDate() : CurrentDate.getDate();
+
+        // Extract Month (Zero-Based) and Format it as Two Digits
         var cM = (CurrentDate.getMonth() + 1) < 10 ? '0' + (CurrentDate.getMonth() + 1) : (CurrentDate.getMonth() + 1);
+
+        // Extract Year
         var cY = CurrentDate.getFullYear();
+
+        // Format the Date in 'YYYY-MM-DD' Format
+        var formattedDate = cY + '-' + cM + '-' + cD;
+
+
 
         if ($('[argumentid="StateId"]', t.el).text() == '') {
             $('[argumentid="StateId"]', t.el).text('RRCStartState');
             $('[argumentid="StateName"]', t.el).text('Start State');
             $('.btn_1,.btn_2,.btn_3,.btn_4,.btn_5,.btn_6,.btn_7,.btn_8,.btn_9', t.el).attr('disabled', 'disabled');
             $('.Button_Edit', t.el).hide();
-            $('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
+            $('[argumentid="ContractStartDate"]', t.el).val(formattedDate);
             //$('[argumentid="ContractStartDate"]', t.el).change(GetDays)[0].onDateSelect = GetDays;
             //sdebugger;
             GetDays($('[argumentid="ContractStartDate"]', t.el));
@@ -781,7 +933,8 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
             // End of Highlight of expired dates
 
             $('.OnNewHide', t.el).show();
-            $('.SimpleTab', t.el).removeAttr('disabled');
+            $('.SimpleTab .nav-link', t.el).removeAttr('disabled');
+ 
 
             SHMileageType(); // This function is called to hide show Mileage Type Related Fields on Value Loaded
 

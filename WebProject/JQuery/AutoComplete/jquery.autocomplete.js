@@ -49,372 +49,372 @@
         }
     });
 
-    $.Autocompleter = function(input, options) {
+   // $.Autocompleter = function(input, options) {
 
-        var KEY = {
-            UP: 38,
-            DOWN: 40,
-            DEL: 46,
-            TAB: 9,
-            RETURN: 13,
-            ESC: 27,
-            COMMA: 188,
-            PAGEUP: 33,
-            PAGEDOWN: 34,
-            BACKSPACE: 8
-        };
+   //     var KEY = {
+   //         UP: 38,
+   //         DOWN: 40,
+   //         DEL: 46,
+   //         TAB: 9,
+   //         RETURN: 13,
+   //         ESC: 27,
+   //         COMMA: 188,
+   //         PAGEUP: 33,
+   //         PAGEDOWN: 34,
+   //         BACKSPACE: 8
+   //     };
 
-        // Create $ object for input element
-        var $input = $(input).attr("autocomplete", "off").addClass(options.inputClass);
+   //     // Create $ object for input element
+   //     var $input = $(input).attr("autocomplete", "off").addClass(options.inputClass);
 
-        var timeout;
-        var previousValue = "";
-        var cache = $.Autocompleter.Cache(options);
-        var hasFocus = 0;
-        var lastKeyPressCode;
-        var config = {
-            mouseDownOnSelect: false
-        };
-        var select = $.Autocompleter.Select(options, input, selectCurrent, config);
+   //     var timeout;
+   //     var previousValue = "";
+   //     var cache = $.Autocompleter.Cache(options);
+   //     var hasFocus = 0;
+   //     var lastKeyPressCode;
+   //     var config = {
+   //         mouseDownOnSelect: false
+   //     };
+   //     var select = $.Autocompleter.Select(options, input, selectCurrent, config);
 
-        var blockSubmit;
+   //     var blockSubmit;
 
-        // prevent form submit in opera when selecting with return key
-        $.browser.opera && $(input.form).bind("submit.autocomplete", function() {
-            if (blockSubmit) {
-                blockSubmit = false;
-                return false;
-            }
-        });
+   //     // prevent form submit in opera when selecting with return key
+   //     //$.browser.opera && $(input.form).bind("submit.autocomplete", function() {
+   //     //    if (blockSubmit) {
+   //     //        blockSubmit = false;
+   //     //        return false;
+   //     //    }
+   //     //});
 
-        // only opera doesn't trigger keydown multiple times while pressed, others don't work with keypress at all
-        $input.bind(($.browser.opera ? "keypress" : "keydown") + ".autocomplete", function(event) {
-            // a keypress means the input has focus
-            // avoids issue where input had focus before the autocomplete was applied
-            hasFocus = 1;
-            // track last key pressed
-            lastKeyPressCode = event.keyCode;
-            switch (event.keyCode) {
+   //     // only opera doesn't trigger keydown multiple times while pressed, others don't work with keypress at all
+   //     $input.bind(($.browser.opera ? "keypress" : "keydown") + ".autocomplete", function(event) {
+   //         // a keypress means the input has focus
+   //         // avoids issue where input had focus before the autocomplete was applied
+   //         hasFocus = 1;
+   //         // track last key pressed
+   //         lastKeyPressCode = event.keyCode;
+   //         switch (event.keyCode) {
 
-                case KEY.UP:
-                    event.preventDefault();
-                    if (select.visible()) {
-                        select.prev();
-                    } else {
-                        onChange(0, true);
-                    }
-                    break;
+   //             case KEY.UP:
+   //                 event.preventDefault();
+   //                 if (select.visible()) {
+   //                     select.prev();
+   //                 } else {
+   //                     onChange(0, true);
+   //                 }
+   //                 break;
 
-                case KEY.DOWN:
-                    event.preventDefault();
-                    if (select.visible()) {
-                        select.next();
-                    } else {
-                        onChange(0, true);
-                    }
-                    break;
+   //             case KEY.DOWN:
+   //                 event.preventDefault();
+   //                 if (select.visible()) {
+   //                     select.next();
+   //                 } else {
+   //                     onChange(0, true);
+   //                 }
+   //                 break;
 
-                case KEY.PAGEUP:
-                    event.preventDefault();
-                    if (select.visible()) {
-                        select.pageUp();
-                    } else {
-                        onChange(0, true);
-                    }
-                    break;
+   //             case KEY.PAGEUP:
+   //                 event.preventDefault();
+   //                 if (select.visible()) {
+   //                     select.pageUp();
+   //                 } else {
+   //                     onChange(0, true);
+   //                 }
+   //                 break;
 
-                case KEY.PAGEDOWN:
-                    event.preventDefault();
-                    if (select.visible()) {
-                        select.pageDown();
-                    } else {
-                        onChange(0, true);
-                    }
-                    break;
+   //             case KEY.PAGEDOWN:
+   //                 event.preventDefault();
+   //                 if (select.visible()) {
+   //                     select.pageDown();
+   //                 } else {
+   //                     onChange(0, true);
+   //                 }
+   //                 break;
 
-                // matches also semicolon         
-                case options.multiple && $.trim(options.multipleSeparator) == "," && KEY.COMMA:
-                case KEY.TAB:
-                case KEY.RETURN:
-                    if (selectCurrent()) {
-                        // stop default to prevent a form submit, Opera needs special handling
-                        event.preventDefault();
-                        blockSubmit = true;
-                        return false;
-                    }
-                    break;
+   //             // matches also semicolon         
+   //             case options.multiple && $.trim(options.multipleSeparator) == "," && KEY.COMMA:
+   //             case KEY.TAB:
+   //             case KEY.RETURN:
+   //                 if (selectCurrent()) {
+   //                     // stop default to prevent a form submit, Opera needs special handling
+   //                     event.preventDefault();
+   //                     blockSubmit = true;
+   //                     return false;
+   //                 }
+   //                 break;
 
-                case KEY.ESC:
-                    select.hide();
-                    break;
+   //             case KEY.ESC:
+   //                 select.hide();
+   //                 break;
 
-                default:
-                    clearTimeout(timeout);
-                    timeout = setTimeout(onChange, options.delay);
-                    break;
-            }
-        }).focus(function() {
-            // track whether the field has focus, we shouldn't process any
-            // results if the field no longer has focus
-            hasFocus++;
-        }).blur(function() {
-            hasFocus = 0;
-            var SearchVisible = typeof select.visible() === "undefined" ? false : select.visible();
+   //             default:
+   //                 clearTimeout(timeout);
+   //                 timeout = setTimeout(onChange, options.delay);
+   //                 break;
+   //         }
+   //     }).focus(function() {
+   //         // track whether the field has focus, we shouldn't process any
+   //         // results if the field no longer has focus
+   //         hasFocus++;
+   //     }).blur(function() {
+   //         hasFocus = 0;
+   //         var SearchVisible = typeof select.visible() === "undefined" ? false : select.visible();
 
-            if ($input.val().length < options.minChars && !SearchVisible) {
-                $input.val("");
-                $input.trigger("result", null);
-                return;
-            }
+   //         if ($input.val().length < options.minChars && !SearchVisible) {
+   //             $input.val("");
+   //             $input.trigger("result", null);
+   //             return;
+   //         }
 
-            if (!config.mouseDownOnSelect) {
-                hideResults();
-            }
-            hasFocus = 0;
-        }).click(function() {
-            // show select when clicking in a focused field
-            if (hasFocus++ > 1 && !select.visible()) {
-                onChange(0, true);
-            }
-        }).bind("search", function() {
-            // TODO why not just specifying both arguments?
-            var fn = (arguments.length > 1) ? arguments[1] : null;
-            function findValueCallback(q, data) {
-                var result;
-                if (data && data.length) {
-                    for (var i = 0; i < data.length; i++) {
-                        if (data[i].result.toLowerCase() == q.toLowerCase()) {
-                            result = data[i];
-                            break;
-                        }
-                    }
-                }
-                if (typeof fn == "function") fn(result);
-                else $input.trigger("result", result && [result.data, result.value]);
-            }
-            $.each(trimWords($input.val()), function(i, value) {
-                request(value, findValueCallback, findValueCallback);
-            });
-        }).bind("flushCache", function() {
-            cache.flush();
-        }).bind("setOptions", function() {
-            $.extend(options, arguments[1]);
-            // if we've updated the data, repopulate
-            if ("data" in arguments[1])
-                cache.populate();
-        }).bind("unautocomplete", function() {
-            select.unbind();
-            $input.unbind();
-            $(input.form).unbind(".autocomplete");
-        });
+   //         if (!config.mouseDownOnSelect) {
+   //             hideResults();
+   //         }
+   //         hasFocus = 0;
+   //     }).click(function() {
+   //         // show select when clicking in a focused field
+   //         if (hasFocus++ > 1 && !select.visible()) {
+   //             onChange(0, true);
+   //         }
+   //     }).bind("search", function() {
+   //         // TODO why not just specifying both arguments?
+   //         var fn = (arguments.length > 1) ? arguments[1] : null;
+   //         function findValueCallback(q, data) {
+   //             var result;
+   //             if (data && data.length) {
+   //                 for (var i = 0; i < data.length; i++) {
+   //                     if (data[i].result.toLowerCase() == q.toLowerCase()) {
+   //                         result = data[i];
+   //                         break;
+   //                     }
+   //                 }
+   //             }
+   //             if (typeof fn == "function") fn(result);
+   //             else $input.trigger("result", result && [result.data, result.value]);
+   //         }
+   //         $.each(trimWords($input.val()), function(i, value) {
+   //             request(value, findValueCallback, findValueCallback);
+   //         });
+   //     }).bind("flushCache", function() {
+   //         cache.flush();
+   //     }).bind("setOptions", function() {
+   //         $.extend(options, arguments[1]);
+   //         // if we've updated the data, repopulate
+   //         if ("data" in arguments[1])
+   //             cache.populate();
+   //     }).bind("unautocomplete", function() {
+   //         select.unbind();
+   //         $input.unbind();
+   //         $(input.form).unbind(".autocomplete");
+   //     });
 
 
-        function selectCurrent() {
-            var selected = select.selected();
-            if (!selected)
-                return false;
+   //     function selectCurrent() {
+   //         var selected = select.selected();
+   //         if (!selected)
+   //             return false;
 
-            var v = selected.result;
-            previousValue = v;
+   //         var v = selected.result;
+   //         previousValue = v;
 
-            if (options.multiple) {
-                var words = trimWords($input.val());
-                if (words.length > 1) {
-                    var seperator = options.multipleSeparator.length;
-                    var cursorAt = $(input).selection().start;
-                    var wordAt, progress = 0;
-                    $.each(words, function(i, word) {
-                        progress += word.length;
-                        if (cursorAt <= progress) {
-                            wordAt = i;
-                            return false;
-                        }
-                        progress += seperator;
-                    });
-                    words[wordAt] = v;
-                    // TODO this should set the cursor to the right position, but it gets overriden somewhere
-                    //$.Autocompleter.Selection(input, progress + seperator, progress + seperator);
-                    v = words.join(options.multipleSeparator);
-                }
-                v += options.multipleSeparator;
-            }
+   //         if (options.multiple) {
+   //             var words = trimWords($input.val());
+   //             if (words.length > 1) {
+   //                 var seperator = options.multipleSeparator.length;
+   //                 var cursorAt = $(input).selection().start;
+   //                 var wordAt, progress = 0;
+   //                 $.each(words, function(i, word) {
+   //                     progress += word.length;
+   //                     if (cursorAt <= progress) {
+   //                         wordAt = i;
+   //                         return false;
+   //                     }
+   //                     progress += seperator;
+   //                 });
+   //                 words[wordAt] = v;
+   //                 // TODO this should set the cursor to the right position, but it gets overriden somewhere
+   //                 //$.Autocompleter.Selection(input, progress + seperator, progress + seperator);
+   //                 v = words.join(options.multipleSeparator);
+   //             }
+   //             v += options.multipleSeparator;
+   //         }
 
-            $input.val(v);
-            hideResultsNow();
-            $input.trigger("result", [selected.data, selected.value]);
-            if (options.onItemSelect) setTimeout(function() { options.onItemSelect(selected.data) }, 1);
-            return true;
-        }
+   //         $input.val(v);
+   //         hideResultsNow();
+   //         $input.trigger("result", [selected.data, selected.value]);
+   //         if (options.onItemSelect) setTimeout(function() { options.onItemSelect(selected.data) }, 1);
+   //         return true;
+   //     }
 
-        function onChange(crap, skipPrevCheck) {
-            if (lastKeyPressCode == KEY.DEL) {
-                select.hide();
-                return;
-            }
+   //     function onChange(crap, skipPrevCheck) {
+   //         if (lastKeyPressCode == KEY.DEL) {
+   //             select.hide();
+   //             return;
+   //         }
 
-            var currentValue = $input.val();
+   //         var currentValue = $input.val();
 
-            if (!skipPrevCheck && currentValue == previousValue)
-                return;
+   //         if (!skipPrevCheck && currentValue == previousValue)
+   //             return;
 
-            previousValue = currentValue;
+   //         previousValue = currentValue;
 
-            currentValue = lastWord(currentValue);
-            if (currentValue.length >= options.minChars) {
-                $input.addClass(options.loadingClass);
-                if (!options.matchCase)
-                    currentValue = currentValue.toLowerCase();
-                request(currentValue, receiveData, hideResultsNow);
-            } else {
-                stopLoading();
-                select.hide();
-            }
-        };
+   //         currentValue = lastWord(currentValue);
+   //         if (currentValue.length >= options.minChars) {
+   //             $input.addClass(options.loadingClass);
+   //             if (!options.matchCase)
+   //                 currentValue = currentValue.toLowerCase();
+   //             request(currentValue, receiveData, hideResultsNow);
+   //         } else {
+   //             stopLoading();
+   //             select.hide();
+   //         }
+   //     };
 
-        function trimWords(value) {
-            if (!value)
-                return [""];
-            if (!options.multiple)
-                return [$.trim(value)];
-            return $.map(value.split(options.multipleSeparator), function(word) {
-                return $.trim(value).length ? $.trim(word) : null;
-            });
-        }
+   //     function trimWords(value) {
+   //         if (!value)
+   //             return [""];
+   //         if (!options.multiple)
+   //             return [$.trim(value)];
+   //         return $.map(value.split(options.multipleSeparator), function(word) {
+   //             return $.trim(value).length ? $.trim(word) : null;
+   //         });
+   //     }
 
-        function lastWord(value) {
-            if (!options.multiple)
-                return value;
-            var words = trimWords(value);
-            if (words.length == 1)
-                return words[0];
-            var cursorAt = $(input).selection().start;
-            if (cursorAt == value.length) {
-                words = trimWords(value)
-            } else {
-                words = trimWords(value.replace(value.substring(cursorAt), ""));
-            }
-            return words[words.length - 1];
-        }
+   //     function lastWord(value) {
+   //         if (!options.multiple)
+   //             return value;
+   //         var words = trimWords(value);
+   //         if (words.length == 1)
+   //             return words[0];
+   //         var cursorAt = $(input).selection().start;
+   //         if (cursorAt == value.length) {
+   //             words = trimWords(value)
+   //         } else {
+   //             words = trimWords(value.replace(value.substring(cursorAt), ""));
+   //         }
+   //         return words[words.length - 1];
+   //     }
 
-        // fills in the input box w/the first match (assumed to be the best match)
-        // q: the term entered
-        // sValue: the first matching result
-        function autoFill(q, sValue) {
-            // autofill in the complete box w/the first match as long as the user hasn't entered in more data
-            // if the last user key pressed was backspace, don't autofill
-            if (options.autoFill && (lastWord($input.val()).toLowerCase() == q.toLowerCase()) && lastKeyPressCode != KEY.BACKSPACE) {
-                // fill in the value (keep the case the user has typed)
-                $input.val($input.val() + sValue.substring(lastWord(previousValue).length));
-                // select the portion of the value not typed by the user (so the next character will erase)
-                $(input).selection(previousValue.length, previousValue.length + sValue.length);
-            }
-        };
+   //     // fills in the input box w/the first match (assumed to be the best match)
+   //     // q: the term entered
+   //     // sValue: the first matching result
+   //     function autoFill(q, sValue) {
+   //         // autofill in the complete box w/the first match as long as the user hasn't entered in more data
+   //         // if the last user key pressed was backspace, don't autofill
+   //         if (options.autoFill && (lastWord($input.val()).toLowerCase() == q.toLowerCase()) && lastKeyPressCode != KEY.BACKSPACE) {
+   //             // fill in the value (keep the case the user has typed)
+   //             $input.val($input.val() + sValue.substring(lastWord(previousValue).length));
+   //             // select the portion of the value not typed by the user (so the next character will erase)
+   //             $(input).selection(previousValue.length, previousValue.length + sValue.length);
+   //         }
+   //     };
 
-        function hideResults() {
-            clearTimeout(timeout);
-            timeout = setTimeout(hideResultsNow, 200);
-        };
+   //     function hideResults() {
+   //         clearTimeout(timeout);
+   //         timeout = setTimeout(hideResultsNow, 200);
+   //     };
 
-        function hideResultsNow() {
-            var wasVisible = select.visible();
-            select.hide();
-            clearTimeout(timeout);
-            stopLoading();
+   //     function hideResultsNow() {
+   //         var wasVisible = select.visible();
+   //         select.hide();
+   //         clearTimeout(timeout);
+   //         stopLoading();
 
-            if (options.mustMatch) {
-                // call search and run callback
-                $input.search(
-				function(result) {
-				    // if no value found, clear the input box
-				    if (!result) {
-				        if (options.multiple) {
-				            var words = trimWords($input.val()).slice(0, -1);
-				            $input.val(words.join(options.multipleSeparator) + (words.length ? options.multipleSeparator : ""));
-				        }
-				        else {
-				            $input.val("");
-				            $input.trigger("result", null);
-				        }
-				    }
-				}
-			);
-            }
-        };
+   //         if (options.mustMatch) {
+   //             // call search and run callback
+   //             $input.search(
+			//	function(result) {
+			//	    // if no value found, clear the input box
+			//	    if (!result) {
+			//	        if (options.multiple) {
+			//	            var words = trimWords($input.val()).slice(0, -1);
+			//	            $input.val(words.join(options.multipleSeparator) + (words.length ? options.multipleSeparator : ""));
+			//	        }
+			//	        else {
+			//	            $input.val("");
+			//	            $input.trigger("result", null);
+			//	        }
+			//	    }
+			//	}
+			//);
+   //         }
+   //     };
 
-        function receiveData(q, data) {
-            if (data && data.length && hasFocus) {
-                stopLoading();
-                select.display(data, q);
-                autoFill(q, data[0].value);
-                select.show();
-            } else {
-                hideResultsNow();
-            }
-        };
+   //     function receiveData(q, data) {
+   //         if (data && data.length && hasFocus) {
+   //             stopLoading();
+   //             select.display(data, q);
+   //             autoFill(q, data[0].value);
+   //             select.show();
+   //         } else {
+   //             hideResultsNow();
+   //         }
+   //     };
 
-        function request(term, success, failure) {
-            if (!options.matchCase)
-                term = term.toLowerCase();
-            var data = cache.load(term);
-            // recieve the cached data
-            if (data && data.length) {
-                success(term, data);
-                // if an AJAX url has been supplied, try loading the data now
-            } else if ((typeof options.url == "string") && (options.url.length > 0)) {
+   //     function request(term, success, failure) {
+   //         if (!options.matchCase)
+   //             term = term.toLowerCase();
+   //         var data = cache.load(term);
+   //         // recieve the cached data
+   //         if (data && data.length) {
+   //             success(term, data);
+   //             // if an AJAX url has been supplied, try loading the data now
+   //         } else if ((typeof options.url == "string") && (options.url.length > 0)) {
 
-                var extraParams = {
-                    timestamp: +new Date()
-                };
-                $.each(options.extraParams, function(key, param) {
-                    extraParams[key] = typeof param == "function" ? param() : param;
-                });
+   //             var extraParams = {
+   //                 timestamp: +new Date()
+   //             };
+   //             $.each(options.extraParams, function(key, param) {
+   //                 extraParams[key] = typeof param == "function" ? param() : param;
+   //             });
 
-                $.ajax({
-                    // try to leverage ajaxQueue plugin to abort previous requests
-                    mode: "abort",
-                    // limit abortion to this input
-                    port: "autocomplete" + input.name,
-                    dataType: options.dataType,
-                    url: options.url,
-                    data: $.extend({
-                        q: lastWord(term),
-                        limit: options.max
-                    }, extraParams),
-                    success: function(data) {
-                        var parsed = options.parse && options.parse(data) || parse(data);
-                        cache.add(term, parsed);
-                        success(term, parsed);
-                    }
-                });
-            } else {
-                // if we have a failure, we need to empty the list -- this prevents the the [TAB] key from selecting the last successful match
-                select.emptyList();
-                failure(term);
-            }
-        };
+   //             $.ajax({
+   //                 // try to leverage ajaxQueue plugin to abort previous requests
+   //                 mode: "abort",
+   //                 // limit abortion to this input
+   //                 port: "autocomplete" + input.name,
+   //                 dataType: options.dataType,
+   //                 url: options.url,
+   //                 data: $.extend({
+   //                     q: lastWord(term),
+   //                     limit: options.max
+   //                 }, extraParams),
+   //                 success: function(data) {
+   //                     var parsed = options.parse && options.parse(data) || parse(data);
+   //                     cache.add(term, parsed);
+   //                     success(term, parsed);
+   //                 }
+   //             });
+   //         } else {
+   //             // if we have a failure, we need to empty the list -- this prevents the the [TAB] key from selecting the last successful match
+   //             select.emptyList();
+   //             failure(term);
+   //         }
+   //     };
 
-        function parse(data) {
-            var parsed = [];
-            var rows = data.split("\n");
-            for (var i = 0; i < rows.length; i++) {
-                var row = $.trim(rows[i]);
-                if (row) {
-                    row = row.split(options.cellSeparator);
-                    parsed[parsed.length] = {
-                        data: row,
-                        value: row[0],
-                        result: options.formatResult && options.formatResult(row, row[0]) || row[0]
-                    };
-                }
-            }
-            return parsed;
-        };
+   //     function parse(data) {
+   //         var parsed = [];
+   //         var rows = data.split("\n");
+   //         for (var i = 0; i < rows.length; i++) {
+   //             var row = $.trim(rows[i]);
+   //             if (row) {
+   //                 row = row.split(options.cellSeparator);
+   //                 parsed[parsed.length] = {
+   //                     data: row,
+   //                     value: row[0],
+   //                     result: options.formatResult && options.formatResult(row, row[0]) || row[0]
+   //                 };
+   //             }
+   //         }
+   //         return parsed;
+   //     };
 
-        function stopLoading() {
-            $input.removeClass(options.loadingClass);
-        };
+   //     function stopLoading() {
+   //         $input.removeClass(options.loadingClass);
+   //     };
 
-    };
+   // };
 
     $.Autocompleter.defaults = {
         inputClass: "ac_input",
