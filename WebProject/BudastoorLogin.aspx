@@ -1,10 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebProject.AdminPages.eForms.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BudastoorLogin.aspx.cs" Inherits="WebProject.BudastoorLogin" %>
+
 <!DOCTYPE html>
-<html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <script language='javascript' type='text/javascript' > ROOT_PATH = ''; BASE_PATH = "";</script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Login Page</title>
+        <script language='javascript' type='text/javascript' > ROOT_PATH = ''; BASE_PATH = "";</script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <style>
         body {
             display: flex;
@@ -57,53 +59,52 @@
 
 
 
-             $('.btnLogin').click(function (e)
-             {
-                 
+             $('.btnLogin').click(function (e) {
+
                  e.preventDefault();
                  ServerCallCtx($("body")[0], null, function (res) {
-                    
+
                      if (res.status == 'OK') {
-                         
+
                          if (res.Response.Authenticated) {
                              $('.card').hide();
                              var arRoles = res.Response.Roles.split(',');
-                             
+
                              if (arRoles.length) {
                                  for (var i = 0; i < arRoles.length; i++) {
                                      //if(arRoles[i])
                                      $('[displayroles*=' + arRoles[i] + ']').show();
                                  }
                              }
-                             
+
                              AsyncWidgets.user.conf = res.Response.Conf;
                              AsyncWidgets.user.conf2 = res.Response.Name;
                              /*window.location = "/testDataTable.aspx"*/
                              window.location = "/BuDastoorHome.aspx"
 
-                            
-                         
+
+
 
                              //****End****//
 
                          }
                      }
-                     
-                    
+
+
                  }, null, "AuthenticateUser", "Authentication");
                  // getForm()
 
                  //var params = {};
 
                  //ServerCall(params, function (res) {
-                 
+
                  //    console.log(res);
                  //}, 'GetUserMenu', 'Authentication');
 
                  return false;
              });
-           
-             
+
+
              //if (!window.callGetCookie) {
              //    console.log('inside in getCookie');
              //    setTimeout(function () {
@@ -117,7 +118,7 @@
 
              //}
 
- 
+
 
 
              function callGetCookie() {
@@ -125,24 +126,24 @@
                      setTimeout(function () {
 
                          //setCookie('autoLogin', 'true', 7)
-                       
+
                          callGetCookie();
                      }, 500)
-                 } else{
+                 } else {
                      $("#UserName").val("amirza");
                      $("#UserPassword").val("sasa");
                      $('.btnLogin').click();
                  }
 
              }
-  /*           callGetCookie();*/
+             /*           callGetCookie();*/
              //if (getCookie("autoLogin") == "true") {
              //    //setCookie('autoLogin', 'true', 7)
              //    $("#UserName").val("amirza");
              //    $("#UserPassword").val("sasa");
              //    $('.btnLogin').click();
              //}
-         
+
          });
 
          function showAlert() {
@@ -162,6 +163,5 @@
          showAlert(); // To show the alert
 
      </script>
-    
 </body>
 </html>

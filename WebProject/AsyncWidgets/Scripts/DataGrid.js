@@ -386,15 +386,44 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     }
                     var frms = t.GridConf.forms;
+                    //if (!!frms.EditFormId) {
+                    //    var childRow = $('<td style="width:19px;"><div style="width:25px;overflow:hidden">&nbsp;</div></td>');
+                    //    t.Header.repCon.append(childRow.clone().addClass('EditForm w-grid-head-back w-grid-cell-border ColName colIndex-' + i).attr('colid', 'EditForm'));
+                    //    t.Item.repCon.append(childRow.clone().addClass('EditForm ColValue  w-grid-cell-border colIndex-' + i++).css('cursor', 'pointer'));
+                    //}
+                    //if (!!t.ChildGrids) {
+                    //    var childRow = $('<td style="width:19px;"><div style="width:19px;overflow:hidden">&nbsp;</div></td>');
+                    //    t.Header.repCon.append(childRow.clone().addClass('ChildGrid DataGridHead ColName colIndex-' + i).attr('colid', 'ChildGrid'));
+                    //    t.Item.repCon.append(childRow.clone().addClass('ChildGrid ColValue colIndex-' + i++).css('cursor', 'pointer'));
+                    //}
                     if (!!frms.EditFormId) {
-                        var childRow = $('<td style="width:19px;"><div style="width:25px;overflow:hidden">&nbsp;</div></td>');
-                        t.Header.repCon.append(childRow.clone().addClass('EditForm w-grid-head-back w-grid-cell-border ColName colIndex-' + i).attr('colid', 'EditForm'));
-                        t.Item.repCon.append(childRow.clone().addClass('EditForm ColValue  w-grid-cell-border colIndex-' + i++).css('cursor', 'pointer'));
+                        var childRow = $('<td style="width:12px;"></td>');
+                        var editIcon = $('<i class="fa-regular fa-pen-to-square"></i>'); // Font Awesome edit icon
+
+                        t.Header.repCon.append(
+                            childRow.clone().addClass('EditForm w-grid-head-back w-grid-cell-border ColName colIndex-' + i)
+                                .attr('colid', 'EditForm')
+                        );
+
+                        t.Item.repCon.append(
+                            childRow.clone().addClass('EditForm ColValue w-grid-cell-border colIndex-' + i++)
+                                .css('cursor', 'pointer')
+                                .append(editIcon) // Append the edit icon here
+                        );
                     }
+
                     if (!!t.ChildGrids) {
-                        var childRow = $('<td style="width:19px;"><div style="width:19px;overflow:hidden">&nbsp;</div></td>');
-                        t.Header.repCon.append(childRow.clone().addClass('ChildGrid DataGridHead ColName colIndex-' + i).attr('colid', 'ChildGrid'));
-                        t.Item.repCon.append(childRow.clone().addClass('ChildGrid ColValue colIndex-' + i++).css('cursor', 'pointer'));
+                        var childRow = $('<td style="width:12px;">/td>');
+
+                        t.Header.repCon.append(
+                            childRow.clone().addClass('ChildGrid DataGridHead ColName colIndex-' + i)
+                                .attr('colid', 'ChildGrid')
+                        );
+
+                        t.Item.repCon.append(
+                            childRow.clone().addClass('ChildGrid ColValue colIndex-' + i++)
+                                .css('cursor', 'pointer')
+                        );
                     }
                     if (t.State.RowEditForm) {
 
@@ -449,7 +478,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                                 var HideOnAllSmallDevices = _t[iLoop].getAttribute('HideOnAllSmallDevices');
                                 var ShowOnMdDevices = 'd-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block';
                                 var ShowOnlyLargeDevices = 'd-none d-sm-none d-xs-none d-md-none d-lg-block d-xl-block';
-                                debugger
+                                
                                 colCF = t.GridConf.cols[cl] || {};
                                 colCap = colCF.caption == undefined ? cl.splitCamel() : colCF.caption;
                                 tt = $('<TD  class="w-grid-head-cell w-grid-head-back w-grid-cell-border" ><DIV><SPAN class="w-grid-head ColName sort"></SPAN></DIV></TD>');

@@ -31,13 +31,13 @@
                         cols: {
                             Sequence: { width: '0px' },
                             RecId: { width: '0px' },
-                            EmpId: { caption: 'Emp ID', width: '70px' },
-                            CivilId: { caption: 'Civil ID', width: '105px' },
+                            EmpId: { caption: 'Emp ID', width: '70px', smallDeviceWitdh: "80px" },
+                            CivilId: { caption: 'Civil ID', width: '105px', smallDeviceWitdh: "80px" },
                             NameInEnglish: { caption: 'Employee Name', width: '175px' },
-                            ResidencyExpiryDate: { caption: 'Residency Expiry', width: '135px' },
-                            GrossSalary: { width: '105px' },
+                            ResidencyExpiryDate: { caption: 'Residency Expiry', width: '135px', hideOnMeduimDevice: "200px" },
+                            GrossSalary: { width: '105px', hideOnMeduimDevice: "200px" },
                             Gender: { width: '0px' },
-                            EmpStatus: { caption: 'Status', width: '125px' }
+                            EmpStatus: { caption: 'Status', width: '125px', hideOnMeduimDevice: "200px" }
                         },
                         forms: {
                             NewFormId: 'frmEmployeeDatabase',

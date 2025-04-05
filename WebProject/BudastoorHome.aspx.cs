@@ -14,7 +14,8 @@ namespace WebProject
             if (Session["userid"] == null)
             {
                 {
-                    Response.Redirect("~/AdminPages/eForms/Login.aspx");
+                   // Response.Redirect("~/AdminPages/eForms/Login.aspx");
+                    Response.Redirect("BudastoorLogin.aspx");
 
                     //frmHome.Hidden = false;
                     frmInbox.Hidden = true;
