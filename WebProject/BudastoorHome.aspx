@@ -95,8 +95,8 @@
 
       //    console.log("finding menu...");
          
-      //    if ($('[showwidget="conSalesContracts"]').length > 0) {
-      //        $('[showwidget="conSalesContracts"]').trigger('click');
+      //    if ($('[showwidget="conCarServiceDetails"]').length > 0) {
+      //        $('[showwidget="conCarServiceDetails"]').trigger('click');
       //    }
 
       //    else {

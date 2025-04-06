@@ -9,19 +9,704 @@
 
 
 
+<div class="container">
+
+    <div class="row my-3 justify-content-md-center">
+      <div class="alert alert-info mt-3" role="alert">
+        Use the form below to update the details, fields marked with an asterisk (*) are mandatory
+      </div>
+      <div style="display: none">
+        <span groupid="GarageCarServiceDetails" argumentid="RecId"></span>
+        <span groupid="GarageCarServiceDetails" argumentid="FileGuid"></span>
+        <span groupid="GarageCarServiceDetails" argumentid="StateId"></span>
+      </div>
+    </div>
+
+    <!-- Service No. and Service Status -->
+<div class="container">
+  <div class="row mb-3 justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+      <div class="form-floating">
+        <input type="text" class="form-control-plaintext text-center fw-bold text-danger" id="RecCode"  argumentid="RecCode"
+               placeholder="Service No." readonly value="New contract no. will be generated on saving">
+        <label for="RecCode">Service No.</label>
+      </div>
+    </div>
+    
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-floating">
+        <input type="text" class="form-control-plaintext text-center" id="StateName" argumentid="StateName"
+               placeholder="Service Status" readonly>
+        <label for="StateName">Service Status</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Car No. and Customer Code -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control text LOVPopup required CommonDisableClass" id="CarNumber" 
+                 placeholder="Car No.*" style="text-align: center; font-weight: bold; color: red;" 
+                 maxlength="10" groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="CarNumber">
+          <label for="CarNumber">Car No.*</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext text fw-bold" id="CustomerRecCode" placeholder="Customer Code*" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="CustomerRecCode">
+          <label for="CustomerRecCode">Customer Code*</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Chassis No. and Name -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext text fw-bold" id="ChassisNo" placeholder="Chassis No." 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="ChassisNo">
+          <label for="ChassisNo">Chassis No.</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="CustomerName" placeholder="Name" 
+                 style="text-align: center; font-size: 16px;" readonly groupid="GarageCarServiceDetails" argumentid="CustomerName">
+          <label for="CustomerName">Name</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Brand and National ID No. -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="Brand" placeholder="Brand" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="Brand">
+          <label for="Brand">Brand</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="NationalIDNo" placeholder="National ID No." 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="NationalIDNo">
+          <label for="NationalIDNo">National ID No.</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Model and Mobile Telephone -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="Model" placeholder="Model" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="Model">
+          <label for="Model">Model</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 ">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="MobileTelephone1" placeholder="Mobile Telephone" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="MobileTelephone1">
+          <label for="MobileTelephone1">Mobile Telephone</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Year and Temp Telephone -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="CarYear" placeholder="Year" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="CarYear">
+          <label for="CarYear">Year</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text CommonDisableClass" id="TempMobile" placeholder="Temp Telephone" 
+                 style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="TempMobile">
+          <label for="TempMobile">Temp Telephone</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Color and Manual ID -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text" id="Color" placeholder="Color" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="Color">
+          <label for="Color">Color</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control text CommonDisableClass" id="ManualID" placeholder="Manual ID" 
+                 style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="ManualID">
+          <label for="ManualID">Manual ID</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Type -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold  text" id="Type" placeholder="Type" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="Type">
+          <label for="Type">Type</label>
+        </div>
+      </div>
+              <div class="col-12 col-md-none col-sm-none col-lg-4"></div>
+      <div class="col-12 col-md-none col-sm-none col-lg-6"></div>
+    </div>
+
+    <!-- Full Insurance and Policy No. -->
+    <div class="row mb-3 hideOnNoExpirayDate">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text CommonDisable" id="FullInsuranceCompanyId" 
+                 placeholder="Full Insurance" style="text-align: center;" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="FullInsuranceCompanyId">
+          <label for="FullInsuranceCompanyId">Full Insurance</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text CommonDisable" id="FullInsurancePolicyNo" 
+                 placeholder="Policy No." style="text-align: center;" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="FullInsurancePolicyNo">
+          <label for="FullInsurancePolicyNo">Policy No.</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Expiry Date -->
+    <div class="row mb-3 hideOnNoExpirayDate">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text CommonDisable" id="FullInsuranceExpiry" 
+                 placeholder="Expiry Date" style="text-align: center;" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="FullInsuranceExpiry">
+          <label for="FullInsuranceExpiry">Expiry Date</label>
+        </div>
+      </div>
+              <div class="col-12 col-md-none col-sm-none col-lg-4"></div>
+      <div class="col-12 col-md-none col-sm-none col-lg-6"></div>
+    </div>
+
+    <!-- Last Service Date and Last Service KM -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold text dateLabel onDisable" id="LastCarServiceDate" 
+                 placeholder="Last Service Date" style="text-align: center;" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="LastCarServiceDate">
+          <label for="LastCarServiceDate">Last Service Date</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control-plaintext fw-bold  text CommonDisable CommonCommaText" id="LastServiceKm" 
+                 placeholder="Last Service KM" style="text-align: center;" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="LastServiceKm">
+          <label for="LastServiceKm">Last Service KM</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Service Type and Adviser Name -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+       <%-- <label><small><b>Service Type:</b></small></label>--%>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input ServiceCHK CommonDisableClass" type="radio" id="Service" 
+                 checked="checked" value="Service" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType">
+          <label class="form-check-label fw-bold" for="Service">Service</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input ProblemCHK CommonDisableClass" type="radio" id="Problems" 
+                 value="Problem" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType">
+          <label class="form-check-label fw-bold" for="Problem">Problem</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input BothCHK CommonDisableClass" type="radio" id="Both" 
+                 value="Both" name="ServiceType" groupid="GarageCarServiceDetails" argumentid="ServiceType">
+          <label class="form-check-label fw-bold" for="Both">Both</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <select class="form-select dropdownlist CommonDisableClass fw-bold" id="AdviserName" 
+                  loadon="FirstVisible" groupid="GarageCarServiceDetails" argumentid="AdviserName" 
+                  storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'44'}]}">
+            <option value="" selected="selected">Select Adviser Name</option>
+          </select>
+          <label for="AdviserName">Adviser Name</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Warranty and Mechanic Name -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+      <%--  <label><small><b>Warranty:</b></small></label>--%>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input WarrentyYes CommonDisableClass" type="radio" id="WarrantyYes" 
+                 checked="checked" value="Yes" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty">
+          <label class="form-check-label fw-bold" for="WarrantyYes">In Warranty</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input WarrentyNo CommonDisableClass" type="radio" id="WarrantyNo" 
+                 value="No" name="Warranty" groupid="GarageCarServiceDetails" argumentid="Warranty">
+          <label class="form-check-label fw-bold" for="WarrantyNo">Out of Warranty </label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <select class="form-select dropdownlist CommonDisableClass fw-bold"  id="MechanicName" 
+                  loadon="FirstVisible" groupid="GarageCarServiceDetails" argumentid="MechanicName" 
+                  storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'43'}]}">
+            <option value="" selected="selected">Select Mechanic Name</option>
+          </select>
+          <label for="MechanicName">Mechanic Name</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Service Date and In KM -->
+<%--    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="date" class="form-control text date CommonDisableClass required fw-bold" id="CarRecivedDate" 
+                 placeholder="Service Date*" maxlength="10" groupid="GarageCarServiceDetails" argumentid="CarRecivedDate">
+          <label for="CarRecivedDate">Service Date*</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control text number1 required CommonDisableClass CommonCommaVal fw-bold" id="CurrentServiceKm" 
+                 placeholder="In KM*" style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm">
+          <label for="CurrentServiceKm">In KM*</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>--%>
+
+    <div class="container mt-3">
+  <div class="row mb-3 justify-content-center">
+    
+    <!-- Service Date -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="form-floating">
+        <input type="date" class="form-control text date CommonDisableClass required fw-bold text-center" 
+               id="CarRecivedDate" placeholder="Service Date*" maxlength="10" 
+               groupid="GarageCarServiceDetails" argumentid="CarRecivedDate">
+        <label for="CarRecivedDate">Service Date*</label>
+      </div>
+    </div>
+
+    <!-- Service Start Day -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="form-floating">
+        <input type="text" class="form-control text AlwaysDisableJC text-center fw-bold" 
+               id="ServiceStartDay" placeholder="Start Day" maxlength="10" readonly
+               groupid="GarageCarServiceDetails" argumentid="ServiceStartDay">
+        <label for="ServiceStartDay">Start Day</label>
+      </div>
+    </div>
+
+    <!-- Form Group for Service Start Time -->
+    <div class="col-12 col-md-4 col-lg-2">
+      <div class="form-group d-flex align-items-center">
+        <div class="form-floating flex-grow-1">
+          <input type="text" class="form-control text timePick CommonDisableClass text-center fw-bold" 
+                 id="ServiceStartTime" placeholder="Start Time" maxlength="10" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="ServiceStartTime">
+          <label for="ServiceStartTime">Time</label>
+        </div>
+        <i title="Set current date & time" class="fa-regular fa-clock ms-2 CommonDisableClass btnGetNewDateR"></i>
+      </div>
+    </div>
+
+    <!-- In KM -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-floating">
+        <input type="text" class="form-control text number1 required CommonDisableClass CommonCommaVal fw-bold text-center" 
+               id="CurrentServiceKm" placeholder="In KM*" maxlength="100" 
+               groupid="GarageCarServiceDetails" argumentid="CurrentServiceKm">
+        <label for="CurrentServiceKm">In KM*</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <div class="container mt-3">
+  <div class="row mb-3 justify-content-center">
+    
+    <!-- Service Date -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="form-floating">
+          <input type="date" class="form-control text date AddRequired CommonDisableClass OnStartState fw-bold" id="CarDeliverdDate" 
+                 placeholder="Delivered Date" maxlength="10" groupid="GarageCarServiceDetails" argumentid="CarDeliverdDate">
+          <label for="CarDeliverdDate" class="AddAsterisk">Delivered Date</label>
+      </div>
+    </div>
+
+    <!-- Service Start Day -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="form-floating">
+        <input type="text" class="form-control text AlwaysDisableJC text-center fw-bold" 
+               id="CarDeliverdStartDay" placeholder="Start Day" maxlength="10" readonly
+               groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartDay">
+        <label for="CarDeliverdStartDay">Start Day</label>
+      </div>
+    </div>
+
+    <!-- Form Group for Service Start Time -->
+    <div class="col-12 col-md-4 col-lg-2">
+      <div class="form-group d-flex align-items-center">
+        <div class="form-floating flex-grow-1">
+          <input type="text" class="form-control text timePick CommonDisableClass text-center fw-bold" 
+                 id="CarDeliverdStartTime" placeholder="Start Time" maxlength="10" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime">
+          <label for="CarDeliverdStartTime">Time</label>
+        </div>
+        <i title="Set current date & time" class="fa-regular fa-clock ms-2 OnStartState CommonDisableClass btnGetNewDateD"></i>
+      </div>
+    </div>
+
+            <!-- out KM -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="form-group d-flex align-items-center">
+                    <div class="form-floating flex-grow-1">
+                        <input type="text" class="form-control text number AddRequired CommonDisableClass OnStartState CommonCommaVal fw-bold" id="OutKm"
+                            placeholder="Out KM" style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="OutKm">
+                        <label for="OutKm" class="AddAsterisk">Out KM</label>
+                    </div>
+                            <i title="Set current date & time" class="fa-solid fa-file-arrow-down ms-2 CommonDisableClass OnStartState btnCurrentServiceKm"></i>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <!-- Delivered Date and Out KM -->
+<%--    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="date" class="form-control text date AddRequired CommonDisableClass OnStartState fw-bold" id="CarDeliverdDate" 
+                 placeholder="Delivered Date" maxlength="10" groupid="GarageCarServiceDetails" argumentid="CarDeliverdDate">
+          <label for="CarDeliverdDate" class="AddAsterisk">Delivered Date</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control text number AddRequired CommonDisableClass OnStartState CommonCommaVal fw-bold" id="OutKm" 
+                 placeholder="Out KM" style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="OutKm">
+          <label for="OutKm" class="AddAsterisk">Out KM</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>--%>
+
+
+            <div class="container mt-3">
+  <div class="row mb-3 justify-content-center">
+    
+    <!-- Service Date -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="form-floating">
+          <input type="date" class="form-control text date CommonDisableClass OnStartState AddRequiredOnNXKM fw-bold" id="NextServiceDate" 
+                 placeholder="Next Service Date" maxlength="10" groupid="GarageCarServiceDetails" argumentid="NextServiceDate">
+          <label for="NextServiceDate" class="AddAsterisk">Next Service Date</label>
+      </div>
+    </div>
+
+    <!-- Service Start Day -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="form-group d-flex align-items-center">
+
+                    <div class="form-floating flex-grow-1">
+                        <input type="text" class="form-control text AlwaysDisableJC text-center fw-bold"
+                            id="NextServiceStartDay" placeholder="Start Day" maxlength="10" readonly
+                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay">
+                        <label for="NextServiceStartDay">Start Day</label>
+                    </div>
+                    <i  class="fa-solid fa-3 ms-2 OnStartState CommonDisableClass btn3 btn btn-primary"></i>
+                    <i  class="fa-solid fa-6 ms-2 OnStartState CommonDisableClass btn6 btn btn-primary"></i>
+                    <i  class="fa-solid fa-12 ms-2 OnStartState CommonDisableClass btn12 btn btn-primary">12</i>
+
+                    
+                </div>
+            </div>
+
+    <!-- Form Group for Service Start Time -->
+    <div class="col-12 col-md-4 col-lg-1">
+ <%--     <div class="form-group d-flex align-items-center">
+        <div class="form-floating flex-grow-1">
+          <input type="text" class="form-control text timePick CommonDisableClass text-center fw-bold" 
+                 id="CarDeliverdStartTime" placeholder="Start Time" maxlength="10" readonly 
+                 groupid="GarageCarServiceDetails" argumentid="CarDeliverdStartTime">
+          <label for="CarDeliverdStartTime">Time</label>
+        </div>
+        <i title="Set current date & time" class="fa-regular fa-clock ms-2 OnStartState CommonDisableClass btnGetNewDateD"></i>
+      </div>--%>
+    </div>
+
+            <!-- out KM -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="form-group d-flex align-items-center">
+                    <div class="form-floating flex-grow-1">
+          <input type="text" class="form-control text number CommonDisableClass OnStartState AddRequiredOnNXKM CommonCommaVal fw-bold" id="NextServiceKm"
+              placeholder="Next Service KM" style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="NextServiceKm">
+                        <label for="NextServiceKm" class="AddAsterisk">Next Service KM</label>
+                    </div>
+                    <i title="Set current date & time" class="fa-solid fa-10 ms-2 btn btn-primary CommonDisableClass OnStartState btn5KD">5K</i>
+                    <i title="Set current date & time" class="fa-solid fa-10 ms-2 btn btn-primary CommonDisableClass OnStartState btn10KD">10K</i>
+                  
+
+                </div>
+            </div>
+            </div>
+            </div>
+
+    <!-- Next Service Date and Next Service KM -->
+<%--        <div class="container mt-3">
+  <div class="row mb-3 justify-content-center">
+     
+      <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="date" class="form-control text date CommonDisableClass OnStartState AddRequiredOnNXKM fw-bold" id="NextServiceDate" 
+                 placeholder="Next Service Date" maxlength="10" groupid="GarageCarServiceDetails" argumentid="NextServiceDate">
+          <label for="NextServiceDate" class="AddAsterisk">Next Service Date</label>
+        </div>
+      </div>
+            <div class="col-12 col-md-6 col-lg-2">
+                <div class="form-group d-flex align-items-center">
+
+                    <div class="form-floating flex-grow-1">
+                        <input type="text" class="form-control text AlwaysDisableJC text-center fw-bold"
+                            id="NextServiceStartDay" placeholder="Start Day" maxlength="10" readonly
+                            groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay">
+                        <label for="NextServiceStartDay">Start Day</label>
+                    </div>
+                    <i  class="fa-solid fa-3 ms-2 OnStartState CommonDisableClass btn3 btn btn-primary"></i>
+                    <i  class="fa-solid fa-6 ms-2 OnStartState CommonDisableClass btn6 btn btn-primary"></i>
+                    <i  class="fa-solid fa-12 ms-2 OnStartState CommonDisableClass btn12 btn btn-primary"></i>
+
+                    
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control text number CommonDisableClass OnStartState AddRequiredOnNXKM CommonCommaVal fw-bold" id="NextServiceKm" 
+                 placeholder="Next Service KM" style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="NextServiceKm">
+          <label for="NextServiceKm" class="AddAsterisk">Next Service KM</label>
+        </div>
+      </div>
+     
+    </div>
+            </div>--%>
+    
+    <!-- Problem -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-12 col-lg-8">
+        <div class="form-floating">
+          <textarea class="form-control textarea required Problem CommonDisableClass" id="Problem" 
+                    placeholder="Problem*" style="height: 100px; resize: none;" groupid="GarageCarServiceDetails" argumentid="Problem"></textarea>
+          <label for="Problem">Problem*</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Action Taken -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+      <div class="col-12 col-md-12 col-lg-8">
+        <div class="form-floating">
+          <textarea class="form-control textarea ActionTaken CommonDisableClass AddRequired OnStartState" id="ActionTaken" 
+                    placeholder="Action Taken" style="height: 100px; resize: none;" groupid="GarageCarServiceDetails" argumentid="ActionTaken"></textarea>
+          <label for="ActionTaken">Action Taken</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row mt-4 justify-content-md-center mb-3">
+      <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm OnCreateInvoice grgbtnSave3">
+        <button type="button" class="btn btn-primary w-100 DataAction ButtonStyle grgbtnSave3 common-button OnNewForm OnCreateInvoice" 
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false,Requery:true,GroupId:'GarageCarServiceDetails'}">
+          Open
+        </button>
+      </div>
+      <div class="col-12 col-md-2 mb-3 mb-md-0 grgbtnClosed OnNewForm OnCreateInvoice">
+        <button type="button" class="btn btn-success w-100 DataAction ButtonStyle grgbtnClosed common-button OnNewForm OnCreateInvoice" 
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'ClosedState'},HideOnSuccess:true,Requery:false,GroupId:'GarageCarServiceDetails'}">
+          Close
+        </button>
+      </div>
+      <div class="col-12 col-md-2 grgbtnCanceled OnNewForm OnCreateInvoice">
+        <button type="button" class="btn btn-danger w-100 DataAction ButtonStyle grgbtnCanceled common-button OnNewForm OnCreateInvoice" 
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',Params:{NewStateId:'CanceledState'},HideOnSuccess:true,Requery:false,GroupId:'GarageCarServiceDetails'}">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+
+    <div class="row mt-2 justify-content-md-center mb-3">
+      <div class="col-12 col-md-1 mb-3 mb-md-0 CarServiceButton_Edit OnNewForm OnCreateInvoice">
+        <button type="button" class="btn btn-secondary w-100 ButtonStyle CarServiceButton_Edit OnNewForm OnCreateInvoice" roles="iRen_Contracts_Admin">
+          Edit
+        </button>
+      </div>
+      <div class="col-12 col-md-1 mb-3 mb-md-0 grgbtnSave common-button">
+        <button type="button" class="btn btn-primary w-100 DataAction ButtonStyle grgbtnSave common-button" 
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:true,Requery:true,GroupId:'GarageCarServiceDetails'}">
+          Open
+        </button>
+      </div>
+      <div class="col-12 col-md-1 mb-3 mb-md-0 grgbtnSave2 common-button">
+        <button type="button" class="btn btn-primary w-100 DataAction ButtonStyle grgbtnSave2 common-button" 
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{DBAction:'NoStateId'},Command:'UPD_iRental_CarServiceDetails',HideOnSuccess:false,Requery:true,GroupId:'GarageCarServiceDetails'}">
+          Save
+        </button>
+      </div>
+      <div class="col-12 col-md-1 OnNewForm">
+        <button type="button" class="btn btn-secondary w-100 ButtonStyle PrintJobCard OnNewForm">
+          Print
+        </button>
+      </div>
+      <div class="col-12 col-md-1 btnCancel">
+        <button type="button" class="btn btn-secondary w-100 CloseForm ButtonStyle btnCancel">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Total Amount, Discount, Grand Total -->
+    <div class="row mb-3 justify-content-md-center">
+      <div class="col-12 col-md-2 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control text" id="totalTotalPrice" placeholder="Total Amount" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="totalTotalPrice">
+          <label for="totalTotalPrice">Total Amount</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-2 col-lg-4 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control text" id="totalDiscount" placeholder="Discount" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="totalDiscount">
+          <label for="totalDiscount">Discount</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-2 col-lg-4">
+        <div class="form-floating">
+          <input type="text" class="form-control text" id="totalGrandTotalRes" placeholder="Grand Total" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="totalGrandTotalRes">
+          <label for="totalGrandTotalRes">Grand Total</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Items Table -->
+    <div class="container mt-3">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover ItemsModifyListt">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Sr.</th>
+          <th scope="col">Invoice No.</th>
+          <th scope="col">Type</th>
+          <th scope="col">ItemID</th>
+          <th scope="col">Item Code</th>
+          <th scope="col">Description</th>
+          <th scope="col">From</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Unit Price</th>
+          <th scope="col">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ItemTRR">
+          <!-- Add dynamic rows here -->
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="NoRecordsTR">
+          <td colspan="10" class="text-center">
+            <div class="p-3 bg-light text-muted">No records available.</div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+    <!-- Contract Created By and Date -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-0">
+        <div class="form-floating">
+          <input type="text" class="form-control text" id="CreatedBy" placeholder="Contract Created By" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="CreatedBy">
+          <label for="CreatedBy">Contract Created By</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="form-floating">
+          <input type="text" class="form-control text" id="DateCreated" placeholder="Contract Date & Time" 
+                 style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="DateCreated">
+          <label for="DateCreated">Contract Date & Time</label>
+        </div>
+      </div>
+    </div>
+  </div>
 
  
 
 
 
-<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
+<!--<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
 
     <tr tabid="GarageCarServiceDetails">
         <td style="padding-top: 1px;">
             <table cellspacing="1" cellpadding="0" width="100%" border="0" class="w-form-table">
-                <%--<tr id="trNote">
-                    <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-                </tr>--%>
+
                 <tr>
                     <td colspan="4">
                         <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
@@ -45,21 +730,7 @@
 
                                 </td>
                             </tr>
-                            <%-- <tr>
-                    <td class="ftitle" style="width: 170px">
-                        <nobr>Service No:</nobr>
-                    </td>
-                    <td class="" >
-                        <input type="text" groupid="GarageCarServiceDetails" maxlength="10"
-                            style="text-align: center; width: 75px;"  disabled="disabled" readonly="readonly" class="text   CommonDisableClass AlwaysDisable ElemDisabled "  argumentid="ServiceNo" />
-                    </td>
-                    <td class="ftitle" style="width: 170px">Invoice No.:</td>
-                       <td >
-                        <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text number CommonDisableClass AlwaysDisable ElemDisabled "
-                            groupid="GarageCarServiceDetails" disabled="disabled" readonly="readonly" argumentid="InvoiceNo" />
-                    </td>
-                  
-                </tr>--%>
+              
 
 
 
@@ -192,13 +863,6 @@
 
 
 
-                <%--<tr>
-                    <td class="hideOnNoExpirayDate" colspan="4">
-
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-
-                    </td>
-                </tr>--%>
 
                    <tr class="hideOnNoExpirayDate">
        <td colspan="4">
@@ -668,3 +1332,4 @@
 
 
 </table>
+--->

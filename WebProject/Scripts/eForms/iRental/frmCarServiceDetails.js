@@ -6,8 +6,9 @@
 
 
     $(".ServiceCHK, .ProblemCHK,.BothCHK").click(function () {
-        
+        debugger;
         AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk(t);
+
 
 
     });
@@ -109,8 +110,12 @@
 
     });
     $('.btnGetNewDateD').click(function () {
-        var dt = new Date();
-        $('[argumentid="CarDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+        let dt = new Date(); // Correctly define Date object
+
+        // Format date as YYYY-MM-DD for a date input field
+        let today = dt.toISOString().split('T')[0];
+        $('[argumentid="CarDeliverdDate"]',t.el).val(today); 
+      //  $('[argumentid="CarDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
         /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
 
         var cH = dt.getHours();
@@ -133,27 +138,24 @@
     });
 
     $('.btnGetNewDateR').click(function () {
-        var dt = new Date();
-        $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
-        /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
+        let dt = new Date(); // Correctly define Date object
 
-        var cH = dt.getHours();
-        var cM = dt.getMinutes();
+        // Format date as YYYY-MM-DD for a date input field
+        let today = dt.toISOString().split('T')[0];
+        $('[argumentid="CarRecivedDate"]').val(today); // Set date correctly
 
-        cH = cH < 10 ? '0' + cH : cH;
-        cM = cM < 10 ? '0' + cM : cM;
+        // Get time in HH:MM formatd
+        debugger
+        let cH = dt.getHours().toString().padStart(2, '0');
+        let cM = dt.getMinutes().toString().padStart(2, '0');
 
+        // Calculate day of the week from selected date
+        let csDate = $('[argumentid="CarRecivedDate"]').val();
+        let dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
 
-
-        var csDate = val('CarRecivedDate', t.el);
-
-        var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(csDate);
-
-
-        setField('ServiceStartDay', dow, t.el);
-
-        $('[argumentid="ServiceStartTime"]', t.el).val(cH + ':' + cM);
-        //$('[argumentid="CarToBeDeliverStartTime"]', t.el).val(cH + ':' + cM);
+        // Set fields
+        $('#ServiceStartDay').val(dow);
+        $('#ServiceStartTime').val(cH + ':' + cM);
     });
 
     $('.btn3').click(function () {
@@ -317,9 +319,9 @@
 
 
             var zero = 0;
-            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3)).css('color', 'red');
-            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3)).css('color', 'red');
-            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalTotalPrice"]', t.el).val(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalDiscount"]', t.el).val(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalGrandTotalRes"]', t.el).val(zero.toFixed(3)).css('color', 'red');
         }
      
     });
@@ -525,7 +527,7 @@
                         /*  Assuming ServerCall is a function to make an API call*/
                         ServerCall(params, function (res) {
 
-                            var res = decJSON(res)
+                           // var res = decJSON(res)
 
 
                             if (res.status === 'OK') {
@@ -852,14 +854,15 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.DeleteUploadFile = function (t, 
 //calculate weekday of start date
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate = function (csDate)
 {
+    let convertedDate = new Date(csDate);
 
-    if (!!csDate)
+    if (!!convertedDate)
     {
-        var oDate = csDate.convertDate();
-        if (!isNaN(oDate))
+      //  var oDate = csDate.convertDate();
+        if (!isNaN(convertedDate))
         {
             var weekdays = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
-            return weekdays[ oDate.getDay() ];
+            return weekdays[convertedDate.getDay() ];
 
 
 
@@ -936,7 +939,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.AllowedFiles = function (t)
 };
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.PrintJobCard = function (t) {
-    var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+    var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintCarServiceDetails.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).val(); // +'&amp;FormId=' + pm.SelectedKey;
     console.log(strlink);
     var width = 920;
     var height = 600;
@@ -1169,21 +1172,22 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.RemoveAsterisk = function (t) {
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
     // Labels with colons to be modified
-    const labels = ["Deliverd Date:", "Next Service Date:", "Out KM:", "Action Taken:", "Next Service KM:"];
+    const labels = ["Delivered Date", "Next Service Date", "Out KM", "Action Taken", "Next Service KM"];
     // Specific labels without colons to target when "Problem" is checked
     const labelss = ["Next Service Date", "Next Service KM"];
     
     // Check if either the "Service" or "Both" radio button is checked
     if ($('.ServiceCHK').is(':checked') || $('.BothCHK').is(':checked')) {
         // Filter and modify labels for asterisks
-        $("td.AddAsterisk").filter(function () {
+        $("label.AddAsterisk").filter(function () {
             const text = $(this).text().trim();
 
             // If the text matches one of the defined labels
             if (labels.includes(text)) {
                 // Replace the colon with an asterisk
-                const newText = text.replace(":", "*:");
-                $(this).text(newText);
+               // const newText = text.replace(":", "*:");
+                $(this).text(text + "*");
+
                 return true; // Continue processing
             }
             $('.AddRequiredOnNXKM', t.el).addClass('required').attr('requirederr', '*');
@@ -1194,7 +1198,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
     // Check if the "Problem" radio button is checked
     if ($('.ProblemCHK').is(':checked')) {
         // Iterate over each label in AddAsterisk
-        $("td.AddAsterisk", t.el).each(function () {
+        $("label.AddAsterisk", t.el).each(function () {
             // Retrieve the text and trim it
             let text = $(this).text().trim();
 
@@ -1202,7 +1206,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
             labelss.forEach(label => {
                 if (text.startsWith(label)) {
                     // If there's a match, revert to the original label with a colon
-                    $(this).text(label + ":");
+                    $(this).text(label + "");
                 }
             });
             $('.AddRequiredOnNXKM', t.el).removeClass('required').removeAttr('requirederr', '*');
@@ -1215,44 +1219,74 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk = function (t) {
 
 
 // Function to handle date calculation based on button click
-AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation = function (monthsToAdd,t) {
-        // Current date field value
-    var currentDateValue = $('[argumentid="CarRecivedDate"]', t.el).val();
+//AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation = function (monthsToAdd,t) {
+//        // Current date field value
+//    var currentDateValue = $('[argumentid="CarRecivedDate"]', t.el).val();
     
-        // Validate and parse the date
-    var currentDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate(currentDateValue);
+//        // Validate and parse the date
+//   // var currentDate = AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate(currentDateValue);
+//    let currentDate = new Date(currentDateValue);
+//        if (currentDate) {
+//            // Add specified months
+//            currentDate.setMonth(currentDate.getMonth() + monthsToAdd);
+//            // Check if the resulting date is a Friday
+//            if (currentDate.getDay() === 5) { // 5 represents Friday
+//                // Increment by one day to set to Saturday
+//                currentDate.setDate(currentDate.getDate() + 1);
+//            }
 
-        if (currentDate) {
-            // Add specified months
-            currentDate.setMonth(currentDate.getMonth() + monthsToAdd);
-            // Check if the resulting date is a Friday
-            if (currentDate.getDay() === 5) { // 5 represents Friday
-                // Increment by one day to set to Saturday
-                currentDate.setDate(currentDate.getDate() + 1);
-            }
-
-            // Format the date to DD/MM/YYYY
-            var nextServiceDate = currentDate.toLocaleDateString('en-GB');
-
-            // Save in the NextServiceDate field
-             $('[argumentid="NextServiceDate"]', t.el).val(nextServiceDate);
-            var a =$('[argumentid="NextServiceDate"]', t.el).val();
-            var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(a);
+//            // Format the date to DD/MM/YYYY
+//            var nextServiceDate = currentDate.toLocaleDateString('en-GB');
+//            let currenConverttDate = new Date(nextServiceDate);
+//            // Save in the NextServiceDate field
+//            $('[argumentid="NextServiceDate"]', t.el).val(currenConverttDate);
+//            var a =$('[argumentid="NextServiceDate"]', t.el).val();
+//            var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(a);
 
 
-            setField('NextServiceStartDay', dow, t.el);
-        } else {
-            $.showMessage("Please first select a valid <strong>Car Recived Date</strong> in the format DD/MM/YYYY.");
+//            setField('NextServiceStartDay', dow, t.el);
+//        } else {
+//            $.showMessage("Please first select a valid <strong>Car Recived Date</strong> in the format DD/MM/YYYY.");
 
-        }
-    }
+//        }
+//    }
 
     // Event handlers for buttons
+AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation = function (monthsToAdd, t) {
+    var currentDateValue = $('[argumentid="CarRecivedDate"]', t.el).val();
 
+    // Convert input date from YYYY-MM-DD format
+    let currentDate = new Date(currentDateValue);
+
+    if (!isNaN(currentDate.getTime())) { // Ensure it's a valid date
+        // Add specified months
+        currentDate.setMonth(currentDate.getMonth() + monthsToAdd);
+
+        // Adjust if the new date falls on a Friday (set to Saturday)
+        if (currentDate.getDay() === 5) { // 5 = Friday
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+
+        // Format date properly for input[type="date"]
+        let nextServiceDate = currentDate.toISOString().split('T')[0];
+
+        // Set the value correctly in the date input field
+        $('[argumentid="NextServiceDate"]', t.el).val(nextServiceDate);
+
+        // Fetch formatted date for day calculation
+        var a = $('[argumentid="NextServiceDate"]', t.el).val();
+        var dow = AsyncWidgets.WidgetScripts.frmCarServiceDetails.CalculateDayOfWeekCsDate(a);
+
+        setField('NextServiceStartDay', dow, t.el);
+
+    } else {
+        $.showMessage("Please first select a valid <strong>Car Recived Date</strong> in the format YYYY-MM-DD.");
+    }
+};
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function (dateString) {
         // Split the date string into day, month, and year
-        var parts = dateString.split('/');
+        var parts = dateString.split('-');
         if (parts.length !== 3) {
             return null; // Invalid format
         }
@@ -1362,7 +1396,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function 
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t) {
     if (res.status == 'OK')
-    {
+    {debugger
         if (res.Response.Rows.length > 0)
         {
             var rows = res.Response.Rows;
@@ -1455,21 +1489,21 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t
             //console.log("Total Price:", totalTotalPrice.toFixed(3));
 
             // Setting the text in the elements and converting to numbers
-            var totalTotalPriceRes = parseFloat($('[argumentid="totalTotalPrice"]', t.el).text(totalTotalPrice.toFixed(3)).css('color', 'green')) || zero;
-            var totalDiscountRes = parseFloat($('[argumentid="totalDiscount"]', t.el).text(totalDiscount.toFixed(3)).css('color', 'green')) || zero;
+            var totalTotalPriceRes = parseFloat($('[argumentid="totalTotalPrice"]', t.el).val(totalTotalPrice.toFixed(3)).css('color', 'green')) || zero;
+            var totalDiscountRes = parseFloat($('[argumentid="totalDiscount"]', t.el).val(totalDiscount.toFixed(3)).css('color', 'green')) || zero;
 
             // Calculating the result
             var Result = totalTotalPrice - totalDiscount;
 
             // Displaying the result
-            $('[argumentid="totalGrandTotalRes"]', t.el).text(Result.toFixed(3)).css('color','green') || zero.toFixed(3);
+            $('[argumentid="totalGrandTotalRes"]', t.el).val(Result.toFixed(3)).css('color','green') || zero.toFixed(3);
         } else {
             var zero = 0;
             $('table.ItemsModifyListt tfoot tr').show();
             $('table.ItemsModifyListt tbody tr').hide();
-            $('[argumentid="totalTotalPrice"]', t.el).text(zero.toFixed(3)).css('color', 'red');
-            $('[argumentid="totalDiscount"]', t.el).text(zero.toFixed(3)).css('color', 'red');
-            $('[argumentid="totalGrandTotalRes"]', t.el).text(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalTotalPrice"]', t.el).val(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalDiscount"]', t.el).val(zero.toFixed(3)).css('color', 'red');
+            $('[argumentid="totalGrandTotalRes"]', t.el).val(zero.toFixed(3)).css('color', 'red');
         }
     }
 };

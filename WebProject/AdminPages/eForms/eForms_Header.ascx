@@ -86,7 +86,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <a class="navbar-brand mt-2 mt-lg-0">
-                        <i class="fa-brands fa-opencart home" returntype="true" showwidget="frmInbox"></i>
+<%--                        <i class="fa-brands fa-opencart home" returntype="true" showwidget="frmInbox"></i>--%>
                         <h6 class="h6 home" returntype="true" showwidget="frmInbox">BuDastoor</h6>
                     </a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="dynamicMenu">
