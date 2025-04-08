@@ -91,23 +91,23 @@
 
     
   <script type="text/javascript">
-      //var onReady = () => {
+      var onReady = () => {
 
-      //    console.log("finding menu...");
+          console.log("finding menu...");
          
-      //    if ($('[showwidget="conCarServiceDetails"]').length > 0) {
-      //        $('[showwidget="conCarServiceDetails"]').trigger('click');
-      //    }
+          if ($('[showwidget="conInvoice"]').length > 0) {
+              $('[showwidget="conInvoice"]').trigger('click');
+          }
 
-      //    else {
-      //        //var outterFun = arguments.callee;
-      //        setTimeout(onReady, 3000);
-      //    }
-      //};
+          else {
+              //var outterFun = arguments.callee;
+              setTimeout(onReady, 3000);
+          }
+      };
 
 
 
-      //$().ready(setTimeout(onReady,1000));
+      $().ready(setTimeout(onReady,1000));
 
   </script>
 

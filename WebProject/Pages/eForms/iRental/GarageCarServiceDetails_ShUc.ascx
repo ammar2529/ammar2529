@@ -57,7 +57,7 @@
                         <!-- Empty Cell -->
                     </div>
                     <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3">
-                        <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" style="height: 2px;">View</button>
+                        <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" >Search</button>
                         <button href="javascript:void(0);" class="btn btn-secondary btn-sm reset clearCheck ClearButton" >Clear</button>
                     </div>
                 </div>

@@ -304,99 +304,170 @@ Ext.apply(AsyncWidgets, {
 });
 
 //*************************************JQuery Mask Plugin********************************************//
-(function (a) {
-    var _nm="";
-    a.fn.mask = function (c, b,nm) {
-    _nm=nm;
-        a(this).each(function () {
-            if (this.__maskCount == undefined) {
-                this.__maskCount = 1;
-            } 
-            else 
-            this.__maskCount++;
-            
-            if (b !== undefined && b > 0) {
-                var d = a(this);
-                d.data("_mask_timeout", setTimeout(function () {
-                    
-                    a.maskElement(d, c)
-                }, b))
+
+(function ($) {
+    debugger;
+    $.fn.mask = function (message, delay) {
+        return this.each(function () {
+            var $element = $(this);
+            $element.data("maskCount", ($element.data("maskCount") || 0) + 1);
+
+            if (delay) {
+                var timeout = setTimeout(() => maskElement($element, message), delay);
+                $element.data("_mask_timeout", timeout);
             } else {
-            
-                a.maskElement(a(this), c)
+                maskElement($element, message);
             }
-        })
+        });
     };
-    a.fn.unmask = function () {
-        a(this).each(function () {
-            this.__maskCount = this.__maskCount == undefined || this.__maskCount < 0 ? 0 : --this.__maskCount;
-            if (this.__maskCount > 0) return;
-            a.unmaskElement(a(this));
-        })
-    };
-    a.fn.isMasked = function () {
-        return this.hasClass("masked")
-    };
-    a.maskElement = function (d, c) {
-        
-        if (d.data("_mask_timeout") !== undefined) {
-            clearTimeout(d.data("_mask_timeout"));
-            d.removeData("_mask_timeout")
-        }
-        
-        if (d.isMasked()) {
-            a.unmaskElement(d)
-        }
-       
-        if (d.css("position") == "static") {
-            d.addClass("masked-relative")
-        }
-        d.addClass("masked");
 
-        var e =a('.loadmask',d).show();
-        if(e.length==0) 
-            e=a('<div class="loadmask"></div>');
+    $.fn.unmask = function () {
+        return this.each(function () {
+            var $element = $(this);
+            var maskCount = $element.data("maskCount") || 0;
+            $element.data("maskCount", Math.max(0, maskCount - 1));
 
-        if (navigator.userAgent.toLowerCase().indexOf("msie") > -1) {
-            e.height(d.height() + parseInt(d.css("padding-top")) + parseInt(d.css("padding-bottom")));
-            e.width(d.width() + parseInt(d.css("padding-left")) + parseInt(d.css("padding-right")))
-        }
-       
-        if (navigator.userAgent.toLowerCase().indexOf("msie 6") > -1) {
-            d.find("select").addClass("masked-hidden")
-        }
-        d.append(e);
-        if (c !== undefined) {
-            
-            //var b = a('<div class=" loadmask-msg" style="display:none;"></div>');
-           // b.append("<div>" + c + "</div>");
-            //d.append(b);
-            
-            var b = a('.loadmask-msg',d);
-             if(b.length==0)
-             {
-                 b=a('<div  class="loadmask-msg" style="display:none;"><div class="msgcon">'+ c +'</div></div>'); 
-                 d.append(b);
-            }
-            else 
-                a('msgcon',b).text(c);
-            b.css("top", Math.round(d.height() / 2 - (b.height() - parseInt(b.css("padding-top")) - parseInt(b.css("padding-bottom"))) / 2) + "px");
-            b.css("left", Math.round(d.width() / 2 - (b.width() - parseInt(b.css("padding-left")) - parseInt(b.css("padding-right"))) / 2) + "px");
-            b.show();
-        }
+            if ($element.data("maskCount") > 0) return;
+            unmaskElement($element);
+        });
     };
-    a.unmaskElement = function (b) {
-    
-        if (b.data("_mask_timeout") !== undefined) {
-            clearTimeout(b.data("_mask_timeout"));
-            b.removeData("_mask_timeout")
+
+    $.fn.isMasked = function () {
+        return this.hasClass("masked");
+    };
+
+    function maskElement($element, message) {
+        clearTimeout($element.data("_mask_timeout"));
+        $element.removeData("_mask_timeout");
+
+        if ($element.isMasked()) unmaskElement($element);
+
+        $element.css("position") === "static" && $element.addClass("masked-relative");
+        $element.addClass("masked");
+
+        var $mask = $('<div class="loadmask"></div>').appendTo($element).show();
+
+        if (message) {
+            var $msgBox = $('<div class="loadmask-msg spinner-border text-warning" role="status"><div class="msgcon"></div></div>');
+            $msgBox.find('.msgcon').text(message);
+            $element.append($msgBox);
+            centerMessage($msgBox, $element);
+            $msgBox.show();
         }
-        b.find(".loadmask-msg,.loadmask").hide();
-        b.removeClass("masked");
-        b.removeClass("masked-relative");
-        b.find("select").removeClass("masked-hidden")
+    }
+
+    function unmaskElement($element) {
+        clearTimeout($element.data("_mask_timeout"));
+        $element.removeData("_mask_timeout");
+        $element.find(".loadmask, .loadmask-msg").remove();
+        $element.removeClass("masked masked-relative");
+    }
+
+    function centerMessage($msgBox, $element) {
+        $msgBox.css({
+            "top": Math.round($element.height() / 2 - $msgBox.outerHeight() / 2) + "px",
+            "left": Math.round($element.width() / 2 - $msgBox.outerWidth() / 2) + "px"
+        });
     }
 })(jQuery);
+//(function (a) {
+//    var _nm="";
+//    a.fn.mask = function (c, b,nm) {
+//    _nm=nm;
+//        a(this).each(function () {
+//            if (this.__maskCount == undefined) {
+//                this.__maskCount = 1;
+//            } 
+//            else 
+//            this.__maskCount++;
+            
+//            if (b !== undefined && b > 0) {
+//                var d = a(this);
+//                d.data("_mask_timeout", setTimeout(function () {
+                    
+//                    a.maskElement(d, c)
+//                }, b))
+//            } else {
+            
+//                a.maskElement(a(this), c)
+//            }
+//        })
+//    };
+//    a.fn.unmask = function () {
+//        a(this).each(function () {
+//            this.__maskCount = this.__maskCount == undefined || this.__maskCount < 0 ? 0 : --this.__maskCount;
+//            if (this.__maskCount > 0) return;
+//            a.unmaskElement(a(this));
+//        })
+//    };
+//    a.fn.isMasked = function () {
+//        return this.hasClass("masked")
+//    };
+//    a.maskElement = function (d, c) {
+        
+//        if (d.data("_mask_timeout") !== undefined) {
+//            clearTimeout(d.data("_mask_timeout"));
+//            d.removeData("_mask_timeout")
+//        }
+        
+//        if (d.isMasked()) {
+//            a.unmaskElement(d)
+//        }
+       
+//        if (d.css("position") == "static") {
+//            d.addClass("masked-relative")
+//        }
+//        d.addClass("masked");
+
+//        var e =a('.loadmask',d).show();
+//        if(e.length==0) 
+//            e=a('<div class="loadmask"></div>');
+
+//        if (navigator.userAgent.toLowerCase().indexOf("msie") > -1) {
+//            e.height(d.height() + parseInt(d.css("padding-top")) + parseInt(d.css("padding-bottom")));
+//            e.width(d.width() + parseInt(d.css("padding-left")) + parseInt(d.css("padding-right")))
+//        }
+       
+//        if (navigator.userAgent.toLowerCase().indexOf("msie 6") > -1) {
+//            d.find("select").addClass("masked-hidden")
+//        }
+//        d.append(e);
+//        if (c !== undefined) {
+            
+//            //var b = a('<div class=" loadmask-msg" style="display:none;"></div>');
+//           // b.append("<div>" + c + "</div>");
+//            //d.append(b);
+
+//            //<div class="spinner-border text-primary" role="status">
+//            //    <span class="visually-hidden">Loading...</span>
+//            //</div>
+
+//            var b = a('.loadmask-msg',d);
+//             if(b.length==0)
+//             {
+//                // b = a('<div  class="loadmask-msg" style="display:none;"><div class="msgcon">' + c + '</div></div>'); 
+//                 b = a('<div  class="loadmask-msg spinner-border text-warning" style="display:none;" role="status"><div class="msgcon">' +  + '</div></div>'); 
+//                 d.append(b);
+//            }
+//            else 
+//                a('msgcon',b).text(c);
+//            b.css("top", Math.round(d.height() / 2 - (b.height() - parseInt(b.css("padding-top")) - parseInt(b.css("padding-bottom"))) / 2) + "px");
+//            b.css("left", Math.round(d.width() / 2 - (b.width() - parseInt(b.css("padding-left")) - parseInt(b.css("padding-right"))) / 2) + "px");
+//            b.show();
+//        }
+//    };
+//    a.unmaskElement = function (b) {
+    
+//        if (b.data("_mask_timeout") !== undefined) {
+//            clearTimeout(b.data("_mask_timeout"));
+//            b.removeData("_mask_timeout")
+//        }
+//        b.find(".loadmask-msg,.loadmask").hide();
+//        b.removeClass("masked");
+//        b.removeClass("masked-relative");
+//        b.find("select").removeClass("masked-hidden")
+//    }
+//})(jQuery);
 
 //(function (a) { a.fn.mask = function (c, b) { a(this).each(function () { if (this.__maskCount == undefined) { this.__maskCount = 1 } else this.__maskCount++; if (b !== undefined && b > 0) { var d = a(this); d.data("_mask_timeout", setTimeout(function () { a.maskElement(d, c) }, b)) } else { a.maskElement(a(this), c) } }) }; a.fn.unmask = function () { a(this).each(function () { this.__maskCount = this.__maskCount == undefined ? 0 : --this.__maskCount; if (this.__maskCount > 0) return; a.unmaskElement(a(this)) }) }; a.fn.isMasked = function () { return this.hasClass("masked") }; a.maskElement = function (d, c) { if (d.data("_mask_timeout") !== undefined) { clearTimeout(d.data("_mask_timeout")); d.removeData("_mask_timeout") } if (d.isMasked()) { a.unmaskElement(d) } if (d.css("position") == "static") { d.addClass("masked-relative") } d.addClass("masked"); var e = a('<div class="loadmask"></div>'); if (navigator.userAgent.toLowerCase().indexOf("msie") > -1) { e.height(d.height() + parseInt(d.css("padding-top")) + parseInt(d.css("padding-bottom"))); e.width(d.width() + parseInt(d.css("padding-left")) + parseInt(d.css("padding-right"))) } if (navigator.userAgent.toLowerCase().indexOf("msie 6") > -1) { d.find("select").addClass("masked-hidden") } d.append(e); if (c !== undefined) { var b = a('<div class="loadmask-msg" style="display:none;"></div>'); b.append("<div>" + c + "</div>"); d.append(b); b.css("top", Math.round(d.height() / 2 - (b.height() - parseInt(b.css("padding-top")) - parseInt(b.css("padding-bottom"))) / 2) + "px"); b.css("left", Math.round(d.width() / 2 - (b.width() - parseInt(b.css("padding-left")) - parseInt(b.css("padding-right"))) / 2) + "px"); b.show() } }; a.unmaskElement = function (b) { if (b.data("_mask_timeout") !== undefined) { clearTimeout(b.data("_mask_timeout")); b.removeData("_mask_timeout") } b.find(".loadmask-msg,.loadmask").remove(); b.removeClass("masked"); b.removeClass("masked-relative"); b.find("select").removeClass("masked-hidden") } })(jQuery);
 //(function (a) { a.showMessage = function (e, c) { settings = a.extend({ id: "sliding_message_box", position: "bottom", size: "30", backgroundColor: "rgb(143, 177, 240)", delay: 2500, speed: 500, fontSize: "18px" }, c); var d = a("#" + settings.id); var b; if (d.length == 0) { d = a("<div></div>").attr("id", settings.id); d.css({ "z-index": "999", "background-color": settings.backgroundColor, "text-align": "center", position: "absolute", position: "fixed", left: "0", width: "100%", "line-height": settings.size + "px", "font-size": settings.fontSize }); a("body").append(d) } d.html(e); d.css(settings.position, "-" + settings.size + "px"); var f = {}; f[settings.position] = 0; d.animate(f, settings.speed); if (!a.showMessage.hideDT) { a.showMessage.hideDT = new Ext.util.DelayedTask(function () { f = {}; f[settings.position] = "-" + settings.size + "px"; a("#" + settings.id).animate(f, settings.speed) }) } a.showMessage.hideDT.delay(settings.delay) } })(jQuery);

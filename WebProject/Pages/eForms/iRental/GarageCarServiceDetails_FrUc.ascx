@@ -3,8 +3,8 @@
 
 
 
-<link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
-<link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />
+<%--<link href="../../../Scripts/eForms/iRental/Upload.css" rel="stylesheet" />
+<link href="../../../Scripts/eForms/iRental/RemoveButton.css" rel="stylesheet" />--%>
 
 
 
@@ -607,7 +607,7 @@
           Save
         </button>
       </div>
-      <div class="col-12 col-md-1 OnNewForm">
+      <div class="col-12 col-md-1 mb-3  OnNewForm">
         <button type="button" class="btn btn-secondary w-100 ButtonStyle PrintJobCard OnNewForm">
           Print
         </button>

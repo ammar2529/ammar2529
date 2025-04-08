@@ -38,7 +38,7 @@
 
 <body id="mainPageBody">
 
-    <div class="container-sm mt-4 border">
+    <div class=" mt-4 border">
 
         <form id="frmMain" runat="server">
             <div id="MainContainer">

@@ -8,11 +8,461 @@
 <script src="../../../Scripts/eForms/iRental/frmInvoicePaymentDetails.js"></script>
 <script src="../../../Scripts/eForms/iRental/frmSparePartInventoryInvoice.js"></script>
 
-<style>
+
+
+
+<div class="container InvoiceDetails">
+    <!-- Alert Section -->
+    <div class="row my-3 justify-content-md-center">
+        <div class="alert alert-info mt-3" role="alert">
+            Use the form below to update the invoice details, fields marked with an asterisk (*) are mandatory
+        </div>
+        <div style="display: none">
+            <span groupid="SparePartInventoryInvoice" argumentid="RecId"></span>
+            <span groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId"></span>
+            <span groupid="SparePartInventoryInvoice" argumentid="StateId"></span>
+        </div>
+    </div>
+
+    <!-- Invoice No. and Status -->
+    <div class="row mb-3 justify-content-center StatusRow">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold text-danger" id="InvRecCode"
+                    groupid="SparePartInventoryInvoice" argumentid="InvRecCode" readonly 
+                    placeholder="Invoice No." value="New invoice no. will be generated on saving">
+                <label for="InvRecCode">Invoice No.</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center" id="StateName"
+                    groupid="SparePartInventoryInvoice" argumentid="StateName" readonly 
+                    placeholder="Invoice Status">
+                <label for="StateName">Invoice Status</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice For and Date -->
+    <div class="row mb-3 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-group">
+<%--                <label><b>Invoice For:</b></label>--%>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input ServiceInvoice" type="radio" id="ServiceInvoice" checked="checked" default="default" value="ServiceInvoice"
+                        name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails">
+                    <label class="form-check-label fw-bold" for="ServiceInvoice">Service Invoice</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input PartsInvoice" type="radio" id="PartsInvoice" value="PartsInvoice"
+                        name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails">
+                    <label class="form-check-label fw-bold" for="PartsInvoice">Parts Invoice</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input QuotationInvoice" type="radio" id="QuotationInvoice" value="QuotationInvoice"
+                        name="InvoiceDetails" groupid="SparePartInventoryInvoice" argumentid="InvoiceDetails">
+                    <label class="form-check-label fw-bold" for="QuotationInvoice">Quotation Invoice</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="date" class="form-control text-center DisableOnClose CommonDisableClass  CommonDisableClasss" id="InvoiceDate"
+                    groupid="SparePartInventoryInvoice" argumentid="InvoiceDate" maxlength="10" placeholder="Invoice Date">
+                <label for="InvoiceDate">Invoice Date</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Type and Customer/Service Codes -->
+    <div class="row mb-3 justify-content-center serv">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-group">
+<%--                <label><b>Invoice Type:</b></label>--%>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input CashInvoice  InvoiceTypeCommon" type="radio" id="CashInvoice" checked="checked" default="default" value="CashInvoice"
+                        name="InvoiceType" groupid="SparePartInventoryInvoice" argumentid="InvoiceType">
+                    <label class="form-check-label fw-bold" for="CashInvoice">Cash Invoice</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input WarrentyInvoice InvoiceTypeCommon" type="radio" id="WarrantyInvoice" value="WarrantyInvoice"
+                        name="InvoiceType" groupid="SparePartInventoryInvoice" argumentid="InvoiceType">
+                    <label class="form-check-label fw-bold" for="WarrantyInvoice">Warranty Invoice</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+
+        </div>
+    </div>
+
+
+    <div class="row mb-3 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center fw-bold text-danger LOVPopup required text  CommonDisableClass CommonDisableClasss"
+                    id="CustomerRecCode" groupid="SparePartInventoryInvoice" lovpopupid="customerInvoicePopup" argumentid="CustomerRecCode"
+                    maxlength="10" placeholder="Customer Code*" requirederr="*Required">
+                <label for="CustomerRecCode" class="cust">Customer Code*</label>
+
+                <input type="text" class="form-control text-center fw-bold text-danger LOVPopup required text  CommonDisableClass CommonDisableClasss"
+                    id="ServiceNo" groupid="SparePartInventoryInvoice" lovpopupid="carPopupGarageForInvoice" argumentid="ServiceNo" 
+                    maxlength="10" placeholder="Customer Code*" requirederr="*Required">
+                <label for="ServiceNo" class="serv">Service No.*</label>
+
+                <input type="text" class="form-control text-center fw-bold text-danger LOVPopup required text  CommonDisableClass CommonDisableClasss"
+                    id="CustomerRecCodeQuotation" groupid="SparePartInventoryInvoice" lovpopupid="QuotationInvoicePopup" argumentid="CustomerRecCodeQuotation" 
+                    maxlength="10" placeholder="Customer Code*" requirederr="*Required">
+                <label for="CustomerRecCodeQuotation" class="custQ">Customer Code*</label>
+
+
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating serv">
+                <input type="date" class=" text-center form-control-plaintext " id="ServiceDate"
+                    groupid="SparePartInventoryInvoice" argumentid="DateCreated" maxlength="10" placeholder="Invoice Date" disabled>
+                <label for="ServiceDate">Service Date</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Car Info Section -->
+    <div class="row mb-3 hideCarandService justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold" id="CarNumber"
+                    groupid="SparePartInventoryInvoice" argumentid="CarNumber" readonly placeholder="Car No.">
+                <label for="CarNumber">Car No.</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold" id="CarYear"
+                    groupid="SparePartInventoryInvoice" argumentid="CarYear" readonly placeholder="Year">
+                <label for="CarYear">Year</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 hideCarandService justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold" id="Brand"
+                    groupid="SparePartInventoryInvoice" argumentid="Brand" readonly placeholder="Brand">
+                <label for="Brand">Brand</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold" id="Model"
+                    groupid="SparePartInventoryInvoice" argumentid="Model" readonly placeholder="Model">
+                <label for="Model">Model</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Info Section -->
+    <div class="row mb-3 hideTrForINVCust justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating hideTrForINVCust">
+                <input type="text" class="form-control-plaintext text-center fw-bold CommonSPCust serv" id="SICustomerRecCode"
+                    groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" readonly placeholder="Customer Code"
+                    style="background: transparent; border: none; color: #628296;">
+                <label for="SICustomerRecCode ">Customer Code</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold CommonSPCust" id="NationalIDNo"
+                    groupid="SparePartInventoryInvoice" argumentid="NationalIDNo" readonly placeholder="National ID No.">
+                <label for="NationalIDNo">National ID No.</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 hideTrForINVCust justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold CommonSPCust" id="CustomerName"
+                    groupid="SparePartInventoryInvoice" argumentid="CustomerName" readonly placeholder="Name" style="font-size: 16px;">
+                <label for="CustomerName">Name</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center fw-bold CommonSPCust" id="MobileTelephone1"
+                    groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1" readonly placeholder="Mobile Telephone">
+                <label for="MobileTelephone1">Mobile Telephone</label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional Details -->
+    <div class="row mb-3 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0 ">
+            <div class="form-floating hideCarandService">
+                <input type="text" class="form-control-plaintext text-center fw-bold CommonSPINv" id="CurrentServiceKm"
+                    groupid="SparePartInventoryInvoice" argumentid="CurrentServiceKm" readonly placeholder="In KM">
+                <label for="CurrentServiceKm">In KM</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center common-disable" id="ManualID"
+                    groupid="SparePartInventoryInvoice" argumentid="ManualID" maxlength="100" placeholder="Manual ID">
+                <label for="ManualID">Manual ID</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Items Table -->
+
+    <div class="container mt-3 HideOnNewForm">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="dynamicRows">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" style="width: 2px;">Item ID</th>
+                    <th scope="col" style="width: 100px;">Item Code</th>
+                    <th scope="col" style="width: 300px;">Description</th>
+                    <th scope="col" style="width: 50px;">Qty'AVL</th>
+                    <th scope="col" style="width: 30px;">QTY</th>
+                    <th scope="col" style="width: 70px;">Unit Price</th>
+                    <th scope="col" style="width: 56px;">Total Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="trNoDynamic">
+                    <td style="display: none;">
+                        <input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="InvRecId" maxlength="10" disabled>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control text-center fw-bold text-danger lov-popup item-id-class common-disable elem-disabled" 
+                            groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId" maxlength="10">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" maxlength="10" disabled>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartName" maxlength="10" disabled>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control text-center fw-bold elem-disabled number" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" maxlength="10" disabled>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control text-center fw-bold number common-disable select-quantity" 
+                            groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" maxlength="10">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control text-center fw-bold elem-disabled common-disable" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" maxlength="10">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="TotalPrice" maxlength="10" disabled>
+                    </td>
+                    <td style="display: none;">
+                        <input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="StoreLocationID" maxlength="10" disabled>
+                    </td>
+                    <td style="display: none;">
+                        <input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartRackfNo" maxlength="10" disabled>
+                    </td>
+                    <td style="display: none;">
+                        <input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartShelfNo" maxlength="10" disabled>
+                    </td>
+                    <td style="display: none;">
+                        <input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="PurchasingFrom" maxlength="10" disabled>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary save-btn" recid="recId" SaveButton="SaveButton">Save</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+ <%--   <div class="container mt-3 HideOnNewForm">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover uploadedItemList">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Item ID</th>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Qty'AVL</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="trNoDynamic">
+                        <td><input type="text" class="form-control text-center fw-bold text-danger lov-popup common-disable elem-disabled" 
+                            groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="ItemId" maxlength="10"></td>
+                        <td><input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" maxlength="10" disabled></td>
+                        <td><input type="text" class="form-control fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartName" maxlength="10" disabled></td>
+                        <td><input type="text" class="form-control text-center fw-bold elem-disabled number" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" maxlength="10" disabled></td>
+                        <td><input type="text" class="form-control text-center fw-bold number common-disable select-quantity" 
+                            groupid="SparePartInventoryInvoice" argumentid="SelectQuantity" maxlength="10"></td>
+                        <td><input type="text" class="form-control text-center fw-bold elem-disabled common-disable" 
+                            groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice" maxlength="10"></td>
+                        <td><input type="text" class="form-control text-center fw-bold elem-disabled" 
+                            groupid="SparePartInventoryInvoice" argumentid="TotalPrice" maxlength="10" disabled></td>
+                        <td><button type="button" class="btn btn-primary save-btn" recid="recId">Save</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="NoRecordsTR">
+                        <td colspan="8" class="text-center NoRecords">
+                            <div class="p-3 bg-light text-muted">No records available.</div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>--%>
+
+    <!-- Totals Section -->
+    <div class="row mb-3 justify-content-center HideOnNewForm">
+        <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center elem-disabled" id="SubTotal"
+                    groupid="SparePartInventoryInvoice" argumentid="SubTotal" readonly placeholder="Sub Total">
+                <label for="SubTotal">Sub Total</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center common-disable" id="Discount"
+                    groupid="SparePartInventoryInvoice" argumentid="Discount" maxlength="100" placeholder="Discount">
+                <label for="Discount">Discount</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center elem-disabled" id="GrandTotal"
+                    groupid="SparePartInventoryInvoice" argumentid="GrandTotal" readonly placeholder="Grand Total">
+                <label for="GrandTotal">Grand Total</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Details -->
+    <div class="row mb-3 justify-content-center HideOnNewForm">
+        <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0 onQuotation">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center common-disable" id="Card"
+                    groupid="SparePartInventoryInvoice" argumentid="Card" maxlength="10" placeholder="Card">
+                <label for="Card">Card</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0 onQuotation">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center common-disable" id="Cash"
+                    groupid="SparePartInventoryInvoice" argumentid="Cash" maxlength="10" placeholder="Cash">
+                <label for="Cash">Cash</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 onQuotation">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center elem-disabled" id="Total"
+                    groupid="SparePartInventoryInvoice" argumentid="Total" readonly placeholder="Total Received">
+                <label for="Total">Total Received</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row mt-4 justify-content-md-center mb-3">
+        <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm">
+            <button type="button" class="btn btn-primary w-100 invoice-open-btn common-button OnNewForm"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+                Open
+            </button>
+        </div>
+        <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm">
+            <button type="button" class="btn btn-success w-100 closed-invoice common-button OnNewForm"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+                Close
+            </button>
+        </div>
+        <div class="col-12 col-md-2 OnNewForm">
+            <button type="button" class="btn btn-danger w-100 canceled-invoice common-button OnNewForm"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <div class="row mt-2 justify-content-md-center mb-3">
+        <div class="col-12 col-md-1 mb-3 mb-md-0 OnNewForm">
+            <button type="button" class="btn btn-secondary w-100 invoice-button-edit OnNewForm" roles="iRen_Contracts_Admin">
+                Edit
+            </button>
+        </div>
+        <div class="col-12 col-md-2 mb-3 mb-md-0">
+            <button type="button" class="btn btn-primary w-100 btn-save-invoice common-button"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+                Create Invoice
+            </button>
+        </div>
+        <div class="col-12 col-md-1 mb-3 mb-md-0">
+            <button type="button" class="btn btn-primary w-100 btn-save common-button"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+                Save
+            </button>
+        </div>
+        <div class="col-12 col-md-1 mb-3 OnNewForm">
+            <button type="button" class="btn btn-secondary w-100 print-bill OnNewForm">
+                Print
+            </button>
+        </div>
+        <div class="col-12 col-md-1">
+            <button type="button" class="btn btn-secondary w-100 btn-cancel close-form">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Created By and Date -->
+    <div class="row mb-3 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center" id="CreatedBy"
+                    groupid="SparePartInventoryInvoice" argumentid="CreatedBy" readonly placeholder="Contract Created By">
+                <label for="CreatedBy">Contract Created By</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-floating">
+                <input type="text" class="form-control-plaintext text-center" id="InvDateCreated"
+                    groupid="SparePartInventoryInvoice" argumentid="InvDateCreated" readonly placeholder="Contract Date & Time">
+                <label for="InvDateCreated">Contract Date & Time</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%--<style>--%>
     
 
-/* The Modal (background) */
-.modal {
+
+<%--.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -49,31 +499,19 @@
     text-decoration: none;
     cursor: pointer;
 }
-</style>
+</style>--%>
 
           <!-- The Popup Modal -->
-                <div id="popupModal" class="modal">
+<%--                <div id="popupModal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
                         <p>Functionality is still in progress.</p>
                     </div>
-                </div>
+                </div>--%>
 
-<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTableInvoice">
+<%--<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTableInvoice">
 
-  <%--     <tr>
-        <td style="padding-top: 0px; padding-left: 2px;">
-            <ul class="SimpleTab" style="margin: 0px;">
-                <li class="active" tabid="InvoiceDetails">
-                    <div>Invoice Details </div>
-                </li>
-                <li tabid="InvoicePaymentDetails" style="border-right: 1px solid #8298B0;">
-                    <div>Payment Details </div>
-                </li>
 
-            </ul>
-        </td>
-    </tr>--%>
     <tr tabid="InvoiceDetails">
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
@@ -92,7 +530,6 @@
                       <span class="ftitle" style="font-size: 12px;" groupid="SparePartInventoryInvoice" argumentid="InvRecCode"></span>
                          <input type="hidden" name="RecId" groupid="SparePartInventoryInvoice" argumentid="RecId" />
                            <input type="hidden" name="InvoiceRecId" groupid="SparePartInventoryInvoice" argumentid="InvoiceRecId" />
-                        <%--<input type="hidden" name="InvRecId"  argumentid="InvRecId" groupid="SparePartInventoryInvoice"/>--%>
                        
                  </td>
 
@@ -266,7 +703,7 @@
                     </td>
                     <td>
                         <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone1"></span>
-                        <%--  <nobr class="CommaM12">, </nobr>--%>
+                      
                         <span class="ftitle CommonSPCust" groupid="SparePartInventoryInvoice" argumentid="MobileTelephone2"></span>
                     </td>
 
@@ -295,7 +732,6 @@
                     <td class="ftitle">
                         <nobr class="">Manual ID:</nobr></td>
                     <td>
-<%--                        <input type="text" class="ftitle  CommonDisableClass  CommonDisableClasss" groupid="SparePartInventoryInvoice" argumentid="ManualID" style="text-align: center; width: 150px;" />--%>
                          <input type="text" style="text-align: center; width: 150px;" maxlength="100" class="text CommonDisableClass CommonDisableClasss"groupid="SparePartInventoryInvoice" argumentid="ManualID" />
 
                     </td>
@@ -303,13 +739,7 @@
             </table>
         </td>
                     </tr>
-                <%--<tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                    </td>
-                </tr>--%>
 
-                <!-- New row with labels and 8 columns starts here -->
               <tr class="HideOnNewForm">
     <td colspan="4">
         <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
@@ -343,8 +773,7 @@
 
                 </td>
                 <td>
-                   <%-- <input type="text" style="text-align: center; width: 80px;" maxlength="10" class="text PriceC ItemIdClass number CommonDisableClass  "
-                        groupid="SparePartInventoryInvoice" argumentid="ItemId" />--%>
+
 
 
                     <input type="text" style="text-align: center; width: 50px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled "
@@ -354,9 +783,6 @@
                     <input type="text" style="text-align: left; width: 130px; font-weight: bold;" maxlength="10" class="text ElemDisabled "
                         groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" disabled="disabled" />
 
-                <%--    
-                <input type="text" style="text-align: center; width: 80px; font-weight: bold; color: red" maxlength="10" class="LOVPopup text  CommonDisableClass ElemDisabled "
-                 groupid="SparePartInventoryInvoice" lovpopupid="ItemCodePopup" argumentid="SparePartSerialNo"  />--%>
                 </td>
 
 
@@ -381,7 +807,7 @@
                         groupid="SparePartInventoryInvoice" argumentid="TotalPrice" disabled="disabled"/>
 
                 </td>
-                <%--<td> display none </td>--%>
+           
                 <td style="display:none">
                     <input type="text" style="text-align: center; width: 80px; font-weight: bold; " maxlength="10" class="text ElemDisabled "
                         groupid="SparePartInventoryInvoice" argumentid="StoreLocationID" disabled="disabled"/>
@@ -408,7 +834,6 @@
                 </td>
 
 
-                <%--<td> display none </td>--%>
                  <td><button type = "button" recid="recId" class="SaveBtn" SaveButton="SaveButton">Save</button></td> <!-- Delete button -->
 
             </tr>
@@ -433,7 +858,7 @@
                         <input type="hidden" groupid="SparePartInventoryInvoice" argumentid="FileGuid" readonly="readonly" />
                         <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo" />
 
-                        <%-- Data Grid  --%>
+                 
 
 
                         <div style="width: 100%; padding: 4px;" class="ItemListDiv ">
@@ -471,18 +896,12 @@
 
                             </table>
                         </div>
-                        <%--<%-- End Data Grid --%>
+                      
                    
                         
                     </td>
                 </tr>
 
-               <%--  <tr class="HideOnNewForm">
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                     
-                    </td>
-                </tr>--%>
                
                           <tr class="HideOnNewForm">
 <td colspan="4">
@@ -520,8 +939,7 @@
                         <input type="text" style="text-align: center; width: 150px; font-weight: bold;" maxlength="100" class="text Discount CommonDisableClass CommonDisableClasss"
                             groupid="SparePartInventoryInvoice" argumentid="Discount" /></td>
 
-                    <%--<td colspan="2" rowspan="2" style="padding: 0; " >
-                        </td>--%>
+ 
                     <td class="ftitle ">
                         <nobr class="onQuotation">Cash:</nobr></td>
                     <td>
@@ -555,36 +973,7 @@
         </table>
     </td>
                               </tr>
-                     <%--<tr class="hideOnQuotation HideOnNewForm" >
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                     
-                    </td>
-                </tr>--%>
-                
-             <%--   <tr class="hideOnQuotation HideOnNewForm">
-                    <td class="ftitle ">
-                        <nobr style="color: Green; font-size: 12px">Amount Received (KD):</nobr>
-                    </td>
-                    <td style="text-align: center;" >
-                        <span class="ftitle Paid" style="color: Green; font-size: 12px" groupid="SparePartInventoryInvoice" argumentid="Paid"></span>
-                    </td>
-                    <td class="ftitle">
 
-                        <nobr style="color: Red; font-size: 12px">Amount Due:</nobr>
-                    </td>
-                    <td style="text-align: center;">
-                        <span class="ftitle AmountDueC" style="color: Red; font-size: 12px" groupid="SparePartInventoryInvoice" argumentid="Balance"></span>
-                    </td>
-                </tr>--%>
-            
-                    <%-- <tr class="HideOnNewForm">
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                     
-                    </td>
-                </tr>
-                --%>
                   <tr>
                     <td colspan="4" style="text-align: center;">
                            
@@ -644,72 +1033,39 @@
                 PageSize="20" DataSource="SEL_Invoice_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_Invoice_Payments\',KeysCol:\'RecId\'}}}">
                 
-     
-                
- 
- 
-                
- 
- 
- 
-
-
-                
-                
- 
- 
- 
-
-
- 
-
-
-
-
-
- 
-                 
- 
- 
-
-
- 
-
-
-
 
 
  <GridConfig>
                      <script>
-     cf = {
-         cols: {
-             Sequence: { width: '0px' },
-             RecId: { width: '0px', caption: 'ID' },
-             LocationReceiptId: { width: '130px', caption: 'ID' },
-             PrintId: { width: '30px', caption: '' },
-             ParentRecId: { width: '0px' },
-             PaymentType: { width: '65px', caption: 'Type' },
-             PaymentDate: { caption: 'Date', width: '90px' },
-             PaymentMode: { caption: 'Mode', width: '75px' },
-             ChequeNo: { width: '0px' },
-             PaymentAmount: { caption: 'Amount', width: '80px' },
-             ReceiptId: { caption: 'Manual ID' },
-             DateCreated: { caption: 'Date Created', width: '130px' },
-             CreatedBy: { caption: 'Created By', width: '150px' },
-             StateId: { width: '0px' }
-         },
-         forms: {
-             NewFormId: 'frmInvoicePaymentDetails',
-             EditFormId: 'frmInvoicePaymentDetails',
-             Keys: 'RecId'
-         }
-     };
- </script>
+                         cf = {
+                             cols: {
+                                 Sequence: { width: '0px' },
+                                 RecId: { width: '0px', caption: 'ID' },
+                                 LocationReceiptId: { width: '130px', caption: 'ID' },
+                                 PrintId: { width: '30px', caption: '' },
+                                 ParentRecId: { width: '0px' },
+                                 PaymentType: { width: '65px', caption: 'Type' },
+                                 PaymentDate: { caption: 'Date', width: '90px' },
+                                 PaymentMode: { caption: 'Mode', width: '75px' },
+                                 ChequeNo: { width: '0px' },
+                                 PaymentAmount: { caption: 'Amount', width: '80px' },
+                                 ReceiptId: { caption: 'Manual ID' },
+                                 DateCreated: { caption: 'Date Created', width: '130px' },
+                                 CreatedBy: { caption: 'Created By', width: '150px' },
+                                 StateId: { width: '0px' }
+                             },
+                             forms: {
+                                 NewFormId: 'frmInvoicePaymentDetails',
+                                 EditFormId: 'frmInvoicePaymentDetails',
+                                 Keys: 'RecId'
+                             }
+                         };
+                     </script>
                      </GridConfig>
                  <Scripts>
                      <script>
-     //var fn = Sales.SalesContracts.grdSalesContractsPaymentDetails;
- </script>
+               
+                     </script>
                      </Scripts>
                  <RowDetail>
                      <pre class="" colindex="4">
@@ -788,5 +1144,5 @@
 
         </td>
     </tr>
-</table>
+</table>--%>
 

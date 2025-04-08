@@ -62,7 +62,7 @@
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="MobileTelephone1" argumentid="MobileTelephone1" groupid="schInvoice" style="height: 2px; ">
                     </div>
                     <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3" >
-                        <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" >View</button>
+                        <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" >Search</button>
                         <button href="javascript:void(0);" class="btn btn-secondary btn-sm reset clearCheck ClearButton" >Clear</button>
                     </div>
             </div>

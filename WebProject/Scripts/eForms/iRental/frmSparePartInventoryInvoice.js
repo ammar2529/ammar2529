@@ -486,19 +486,19 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
             //End Always Move to First Tab on Show
 
             // Hide Edit For Normal Users
-            $('[roles]', t.el).hide().each(function ()
-            {
-                if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1)
-                {
-                    $(this).show();
-                }
-            });
+            //$('[roles]', t.el).hide().each(function ()
+            //{
+            //    if (AsyncWidgets.user.conf.Roles.indexOf($(this).attr('roles')) > -1)
+            //    {
+            //        $(this).show();
+            //    }
+            //});
 
             var dt = new Date();
 
-            $('[argumentid="InvoiceDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+          //  $('[argumentid="InvoiceDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
-
+            $('[argumentid="InvoiceDate"]', t.el).val(dt.toISOString().split('T')[0]);
             
 
             
@@ -603,7 +603,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
                 ServerCall(params, function (res)
                 {
 
-                    var res = decJSON(res)
+                   // var res = decJSON(res)
 
 
                     if (res.status === 'OK')
@@ -750,7 +750,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServer = function 
 
         function Success(res)
         {
-            var res = decJSON(res);
+           // var res = decJSON(res);
 
             if (res.status == 'OK')
             {
@@ -820,7 +820,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.CallToServerForItemCode 
         2
         function Success(res)
         {
-            var res = decJSON(res);
+            //var res = decJSON(res);
 
             if (res.status == 'OK')
             {
@@ -1271,7 +1271,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
       
         ServerCallCtx($('.trNoDynamic', t.el)[0], { DBAction: 'AddLineItem', InvoiceDetails: InvoiceDetails, InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), ServiceNo: ServiceNo, command: 'UPD_InvoiceDetails' }, function (res)
         {
-            var res = decJSON(res);
+           // var res = decJSON(res);
             if (res.status === 'OK')
             {
 
@@ -1330,7 +1330,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
             var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), DBAction: 'GetLinesItems' };
             ServerCall(params, function (res)
             {
-                var res = decJSON(res)
+                //var res = decJSON(res)
 
                 if (res.status === 'OK')
                 {
@@ -1433,7 +1433,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
                         ServerCall(params, function (res)
                         {
 
-                            var res = decJSON(res)
+                         //   var res = decJSON(res)
 
 
                             if (res.status === 'OK')
@@ -1502,7 +1502,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.SaveLineOfItem = functio
         ServerCall(params, function (res)
         {
             
-            var res = decJSON(res)
+            //var res = decJSON(res)
             
             if (res.status === 'OK')
             {
@@ -1817,7 +1817,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
     ServerCall(params, function (res)
     {
        
-        var res = decJSON(res)
+       // var res = decJSON(res)
       
 
         var parts = res.Response.split('||');
@@ -1932,7 +1932,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.DeleteUploadItem = funct
         ServerCall(params, function (res)
         {
             
-           var res = decJSON(res)
+          // var res = decJSON(res)
 
            
             if (res.status === 'OK')
@@ -1969,7 +1969,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
     var params = { Command: 'UPD_InvoiceDetails', InvoiceRecId: $('[argumentid="InvoiceRecId"]', t.el).val(), DBAction: 'GetLinesItems' };
     ServerCall(params, function (res)
     {
-        var res = decJSON(res)
+       // var res = decJSON(res)
         
         if (res.status === 'OK')
         {
@@ -2025,250 +2025,302 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.LoadInvoiceDetail = func
 
 }
 
-
-AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage,InvoiceType) {
+AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage, InvoiceType) {
     var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
+    var invoiceTypes = {
+        'ServiceInvoice': 'carPopupGarageForInvoice',
+        'PartsInvoice': 'customerInvoicePopup',
+        'QuotationInvoice': 'QuotationInvoicePopup'
+    };
 
+    var selectedInvoice = $('.ServiceInvoice').is(":checked") ? 'ServiceInvoice' :
+        $('.PartsInvoice').is(":checked") ? 'PartsInvoice' :
+            $('.QuotationInvoice').is(":checked") ? 'QuotationInvoice' : null;
+
+    if (!selectedInvoice) return;
+
+    var toShow = invoiceTypes[selectedInvoice];
+
+    // Toggle visibility & requirement dynamically
+    $('input[lovpopupid]', t.el).each(function () {
+        var elm = $(this);
+        elm.toggleClass('required', elm.attr('lovpopupid') === toShow).toggle(elm.attr('lovpopupid') === toShow);
+        if (elm.attr('lovpopupid') !== toShow) elm.next('span[errmsg]').remove();
+    });
+
+    if (selectedInvoice === 'ServiceInvoice') {
+        $('.cust,.custQ', t.el).hide();
+        $('.serv', t.el).show();
+        $('.PartsInvoice,.QuotationInvoice', t.el).prop('disabled', true);
+        $('.onQuotation', t.el).show();
+
+        if (t.FormMode === 'update') {
+            $('.InvoiceTypeCommon', t.el).prop('disabled', InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice');
+            $('.CashInvoice', t.el).prop('disabled', $('.WarrentyInvoice', t.el).is(":checked"));
+            $('.WarrentyInvoice', t.el).prop('disabled', $('.CashInvoice', t.el).is(":checked"));
+        }
+    } else {
+        $('.cust,.custQ', t.el).toggle(selectedInvoice !== 'ServiceInvoice');
+        $('.serv', t.el).toggle(selectedInvoice === 'ServiceInvoice');
+    }
+
+    // Ensure radio buttons are always enabled
+    $('.ServiceInvoice,.PartsInvoice,.QuotationInvoice', t.el).prop('disabled', false);
+
+    // Toggle elements visibility based on invoice type
+    $('.hideCarandService', t.el).toggle(selectedInvoice !== 'PartsInvoice');
+    $('.hideTrForINVCust', t.el).toggle(selectedInvoice !== 'PartsInvoice');
+    $('[tabid="InvoicePaymentDetails"], .hideOnQuotation', t.el).toggle(selectedInvoice !== 'QuotationInvoice');
+    $('.onQuotation', t.el).toggle(selectedInvoice !== 'QuotationInvoice');
+
+    if (t.FormMode === 'new') {
+        $('.HideOnNewForm', t.el).toggle(trimMessage);
+    }
+};
+
+//AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.toggleDropdown = function (trimMessage,InvoiceType) {
+//    var t = AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice.t;
 
     
-    if ($('.ServiceInvoice').is(":checked"))
-    {
+    
+//    if ($('.ServiceInvoice').is(":checked"))
+//    {
 
-        var kv = {
-            'ServiceInvoice': 'carPopupGarageForInvoice',
-            'PartsInvoice': 'customerInvoicePopup',
-            'QuotationInvoice': 'QuotationInvoicePopup'
-
-
-        };
-
-        //carPopupCutomerAndCarDetailsSales
-        var toShow = kv['ServiceInvoice'];
-        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"],input[lovpopupid="QuotationInvoicePopup"]', t.el)
-            .each(function () {
-                var elm = $(this);
-                if (elm.attr('lovpopupid') != toShow) {
-                    elm.removeClass('required')
-                        .hide();
-                    elm.next('span[errmsg]').remove();
-                }
-
-            });
+//        var kv = {
+//            'ServiceInvoice': 'carPopupGarageForInvoice',
+//            'PartsInvoice': 'customerInvoicePopup',
+//            'QuotationInvoice': 'QuotationInvoicePopup'
 
 
-        /*$(`.${toShow}`)*/
-        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+//        };
+
+//        //carPopupCutomerAndCarDetailsSales
+//        var toShow = kv['ServiceInvoice'];
+//        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"],input[lovpopupid="QuotationInvoicePopup"]', t.el)
+//            .each(function () {
+//                var elm = $(this);
+//                if (elm.attr('lovpopupid') != toShow) {
+//                    elm.removeClass('required')
+//                        .hide();
+//                    elm.next('span[errmsg]').remove();
+//                }
+
+//            });
+
+
+//        /*$(`.${toShow}`)*/
+//        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
         
-        if (toShow === 'carPopupGarageForInvoice') {
+//        if (toShow === 'carPopupGarageForInvoice') {
             
-            if (t.FormMode == 'update')
-            {
-                $('.cust', t.el).hide();
-                $('.serv', t.el).show();
-                $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
-                $('.onQuotation', t.el).show();
+//            if (t.FormMode == 'update')
+//            {
+//                $('.cust', t.el).hide();
+//                $('.serv', t.el).show();
+//                $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
+//                $('.onQuotation', t.el).show();
 
-                if (InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice' && InvoiceType != null) {
+//                if (InvoiceType === 'CashInvoice' || InvoiceType === 'WarrantyInvoice' && InvoiceType != null) {
 
-                    if ($('.CashInvoice', t.el).is(":checked")) {
-                        $('.WarrentyInvoice', t.el).prop('disabled', true);
-                    } else {
-                        $('.WarrentyInvoice', t.el).prop('disabled', false);
-                    }
+//                    if ($('.CashInvoice', t.el).is(":checked")) {
+//                        $('.WarrentyInvoice', t.el).prop('disabled', true);
+//                    } else {
+//                        $('.WarrentyInvoice', t.el).prop('disabled', false);
+//                    }
 
-                    if ($('.WarrentyInvoice', t.el).is(":checked")) {
-                        $('.CashInvoice', t.el).prop('disabled', true);
-                    } else {
-                        $('.CashInvoice', t.el).prop('disabled', false);
-                    }
+//                    if ($('.WarrentyInvoice', t.el).is(":checked")) {
+//                        $('.CashInvoice', t.el).prop('disabled', true);
+//                    } else {
+//                        $('.CashInvoice', t.el).prop('disabled', false);
+//                    }
 
-                } else
-                {
-                    $('.InvoiceTypeCommon', t.el).prop('disabled', false);
-                }
+//                } else
+//                {
+//                    $('.InvoiceTypeCommon', t.el).prop('disabled', false);
+//                }
 
              
                 
-            }
-            else if(trimMessage){
-                $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
-            }
-            else
-            {
-            $('.cust', t.el).hide();
-                $('.serv', t.el).show();
+//            }
+//            else if(trimMessage){
+//                $('.PartsInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
+//            }
+//            else
+//            {
+//                $('.cust,.custQ', t.el).hide();
+//                $('.serv', t.el).show();
 
           
-            }
+//            }
 
           
-        }
+//        }
 
        
     
 
 
 
-        $('.hideCarandService', t.el).show();
-        $('.hideTrForINVCust', t.el).show();
-        $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
-        $('.onQuotation', t.el).show();
+//        $('.hideCarandService', t.el).show();
+//        $('.hideTrForINVCust', t.el).show();
+//        $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
+//        $('.onQuotation', t.el).show();
 
-        if (t.FormMode == 'new') {
+//        if (t.FormMode == 'new') {
             
-            $('.HideOnNewForm', t.el).hide();
+//            $('.HideOnNewForm', t.el).hide();
 
-            if (trimMessage) {
+//            if (trimMessage) {
 
-                $('.HideOnNewForm', t.el).show();
-            }
-        }
-        if ($('.WarrentyInvoice', t.el).is(":checked")) {
-            $('.onQuotation', t.el).hide();
+//                $('.HideOnNewForm', t.el).show();
+//            }
+//        }
+//        if ($('.WarrentyInvoice', t.el).is(":checked")) {
+//            $('.onQuotation', t.el).hide();
 
-        }
-        else if ($('.CashInvoice', t.el).is(":checked")) {
-            $('.onQuotation', t.el).show();
-        }
+//        }
+//        else if ($('.CashInvoice', t.el).is(":checked")) {
+//            $('.onQuotation', t.el).show();
+//        }
 
-    }
-
-
-
-    if ($('.PartsInvoice').is(":checked")) {
-
-        var kv = {
-            'ServiceInvoice': 'carPopupGarageForInvoice',
-            'PartsInvoice': 'customerInvoicePopup',
-            'QuotationInvoice': 'QuotationInvoicePopup'
-
-        };
-
-        //carPopupCutomerAndCarDetailsSales
-        var toShow = kv['PartsInvoice'];
-        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"],input[lovpopupid="QuotationInvoicePopup"]', t.el)
-            .each(function () {
-                var elm = $(this);
-                if (elm.attr('lovpopupid') != toShow) {
-                    elm.removeClass('required')
-                        .hide();
-                    elm.next('span[errmsg]').remove();
-                }
-
-            });
+//    }
 
 
-        /*$(`.${toShow}`)*/
-        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
-        if (toShow === 'customerInvoicePopup') {
-            if (t.FormMode == 'update') {
-                $('.cust', t.el).show();
-                $('.serv', t.el).hide();
-                $('[argumentid="ChassisNo" ]', t.el).val('');
-                $('.ServiceInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
-                $('.CashInvoice').prop('checked', true);
-                $('.onQuotation', t.el).show();
-            }
-            else if (trimMessage)
-            {
-                $('.ServiceInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');            }
-            else {
-                $('.cust', t.el).show();
-                $('.serv', t.el).hide();
-                $('.ServiceInvoice,.QuotationInvoice', t.el).removeAttr('disabled', 'disabled');
-                $('.CashInvoice').prop('checked', true);
-                $('.onQuotation', t.el).show();
-            }
 
-        }
+//    if ($('.PartsInvoice').is(":checked")) {
+
+//        var kv = {
+//            'ServiceInvoice': 'carPopupGarageForInvoice',
+//            'PartsInvoice': 'customerInvoicePopup',
+//            'QuotationInvoice': 'QuotationInvoicePopup'
+
+//        };
+
+//        //carPopupCutomerAndCarDetailsSales
+//        var toShow = kv['PartsInvoice'];
+//        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"],input[lovpopupid="QuotationInvoicePopup"]', t.el)
+//            .each(function () {
+//                var elm = $(this);
+//                if (elm.attr('lovpopupid') != toShow) {
+//                    elm.removeClass('required')
+//                        .hide();
+//                    elm.next('span[errmsg]').remove();
+//                }
+
+//            });
+
+
+//        /*$(`.${toShow}`)*/
+//        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+//        if (toShow === 'customerInvoicePopup') {
+//            if (t.FormMode == 'update') {
+//                $('.cust', t.el).show();
+//                $('.serv', t.el).hide();
+//                $('[argumentid="ChassisNo" ]', t.el).val('');
+//                $('.ServiceInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');
+//                $('.CashInvoice').prop('checked', true);
+//                $('.onQuotation', t.el).show();
+//            }
+//            else if (trimMessage)
+//            {
+//                $('.ServiceInvoice,.QuotationInvoice', t.el).attr('disabled', 'disabled');            }
+//            else {
+//                $('.cust,.custQ', t.el).show();
+//                $('.serv', t.el).hide();
+//                $('.ServiceInvoice,.QuotationInvoice', t.el).removeAttr('disabled', 'disabled');
+//                $('.CashInvoice').prop('checked', true);
+//                $('.onQuotation', t.el).show();
+//            }
+
+//        }
       
 
 
 
-        $('.hideCarandService', t.el).hide();
-        $('.hideTrForINVCust', t.el).show();
-        $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
-        if (t.FormMode == 'new') {
+//        $('.hideCarandService', t.el).hide();
+//        $('.hideTrForINVCust', t.el).hide();
+//        $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).show();
+//        if (t.FormMode == 'new') {
 
-            $('.HideOnNewForm', t.el).hide();
+//            $('.HideOnNewForm', t.el).hide();
 
-            if (trimMessage) {
+//            if (trimMessage) {
 
-                $('.HideOnNewForm', t.el).show();
-            }
-        }
+//                $('.HideOnNewForm', t.el).show();
+//            }
+//        }
 
-    }
+//    }
 
-    if ($('.QuotationInvoice').is(":checked")) {
+//    if ($('.QuotationInvoice').is(":checked")) {
 
-        var kv = {
-            'ServiceInvoice': 'carPopupGarageForInvoice',
-            'PartsInvoice': 'customerInvoicePopup',
-            'QuotationInvoice': 'QuotationInvoicePopup'
+//        var kv = {
+//            'ServiceInvoice': 'carPopupGarageForInvoice',
+//            'PartsInvoice': 'customerInvoicePopup',
+//            'QuotationInvoice': 'QuotationInvoicePopup'
 
-        };
+//        };
         
-        //carPopupCutomerAndCarDetailsSales
-        var toShow = kv['QuotationInvoice'];
-        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"],input[lovpopupid="QuotationInvoicePopup"]', t.el)
-            .each(function () {
-                var elm = $(this);
-                if (elm.attr('lovpopupid') != toShow) {
-                    elm.removeClass('required')
-                        .hide();
-                    elm.next('span[errmsg]').remove();
-                }
+//        //carPopupCutomerAndCarDetailsSales
+//        var toShow = kv['QuotationInvoice'];
+//        $('input[lovpopupid="carPopupGarageForInvoice"],input[lovpopupid="customerInvoicePopup"],input[lovpopupid="QuotationInvoicePopup"]', t.el)
+//            .each(function () {
+//                var elm = $(this);
+//                if (elm.attr('lovpopupid') != toShow) {
+//                    elm.removeClass('required')
+//                        .hide();
+//                    elm.next('span[errmsg]').remove();
+//                }
 
-            });
-
-
-        /*$(`.${toShow}`)*/
-        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
-        if (toShow === 'QuotationInvoicePopup') {
-            if (t.FormMode == 'update') {
-                $('.cust', t.el).show();
-                $('.serv', t.el).hide();
-                $('[argumentid="ChassisNo" ]', t.el).val('');
-                $('.ServiceInvoice,.PartsInvoice', t.el).attr('disabled', 'disabled');
-                $('.CashInvoice').prop('checked', true);
-                $('.onQuotation', t.el).hide();
-
-            }
-            else if (trimMessage) {
-                $('.ServiceInvoice,.PartsInvoice', t.el).attr('disabled', 'disabled');
-            }
-            else {
-                $('.cust', t.el).show();
-                $('.serv', t.el).hide();
-                $('.ServiceInvoice,.PartsInvoice', t.el).removeAttr('disabled', 'disabled');
-                $('.CashInvoice').prop('checked', true);
-                $('.onQuotation', t.el).hide();
-            }
-
-        }
+//            });
 
 
-        if (t.FormMode == 'new') {
+//        /*$(`.${toShow}`)*/
+//        $(`input[lovpopupid="${toShow}"]`).addClass('required').show();
+//        if (toShow === 'QuotationInvoicePopup') {
+//            if (t.FormMode == 'update') {
+//                $('.cust', t.el).show();
+//                $('.serv', t.el).hide();
+//                $('[argumentid="ChassisNo" ]', t.el).val('');
+//                $('.ServiceInvoice,.PartsInvoice', t.el).attr('disabled', 'disabled');
+//                $('.CashInvoice').prop('checked', true);
+//                $('.onQuotation', t.el).hide();
 
-            $('.HideOnNewForm', t.el).hide();
-            $('.onQuotation', t.el).hide();
+//            }
+//            else if (trimMessage) {
+//                $('.ServiceInvoice,.PartsInvoice', t.el).attr('disabled', 'disabled');
+//            }
+//            else {
+//                $('.cust,.custQ', t.el).show();
+//                $('.serv', t.el).hide();
+//                $('.ServiceInvoice,.PartsInvoice', t.el).removeAttr('disabled', 'disabled');
+//                $('.CashInvoice').prop('checked', true);
+//                $('.onQuotation', t.el).hide();
+//            }
 
-            if (trimMessage) {
+//        }
 
-                $('.HideOnNewForm', t.el).show();
-                $('.onQuotation', t.el).hide();
-            }
-        }
 
-        $('.hideCarandService', t.el).hide();
-        $('.hideTrForINVCust', t.el).show();
-        $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).hide();
-        $('.onQuotation', t.el).hide();
+//        if (t.FormMode == 'new') {
 
-    }
+//            $('.HideOnNewForm', t.el).hide();
+//            $('.onQuotation', t.el).hide();
+
+//            if (trimMessage) {
+
+//                $('.HideOnNewForm', t.el).show();
+//                $('.onQuotation', t.el).hide();
+//            }
+//        }
+
+//        $('.hideCarandService', t.el).hide();
+//        $('.hideTrForINVCust', t.el).show();
+//        $('[tabid="InvoicePaymentDetails"],.hideOnQuotation', t.el).hide();
+//        $('.onQuotation', t.el).hide();
+
+//    }
 
     
     
-};
+//};
 
