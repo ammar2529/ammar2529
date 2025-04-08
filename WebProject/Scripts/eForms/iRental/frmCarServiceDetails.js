@@ -6,7 +6,7 @@
 
 
     $(".ServiceCHK, .ProblemCHK,.BothCHK").click(function () {
-        debugger;
+        ;
         AsyncWidgets.WidgetScripts.frmCarServiceDetails.AddAsterisk(t);
 
 
@@ -58,7 +58,7 @@
 
         }
         else if ($('.WarrentyYes').is(':checked')) {
-            debugger
+            
             $('[argumentid="NextServiceKm"]', t.el).val('');
 
             if (CurrentServiceKm == 0) {
@@ -93,7 +93,7 @@
 
         }
         else if ($('.WarrentyYes').is(':checked')) {
-            debugger
+            
             $('[argumentid="NextServiceKm"]', t.el).val('');
 
             if (CurrentServiceKm == 0) {
@@ -145,7 +145,7 @@
         $('[argumentid="CarRecivedDate"]').val(today); // Set date correctly
 
         // Get time in HH:MM formatd
-        debugger
+        
         let cH = dt.getHours().toString().padStart(2, '0');
         let cM = dt.getMinutes().toString().padStart(2, '0');
 
@@ -159,7 +159,7 @@
     });
 
     $('.btn3').click(function () {
-        debugger
+        
        var a =  AsyncWidgets.WidgetScripts.frmCarServiceDetails.handleDateCalculation(3,t); // 3 months
     });
 
@@ -975,7 +975,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.CarServiceButton_Edit = function
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.SetCurrentDateAndWeekDaysOnCarRecivedDateAndCarToBeDeliverdDate = function (t)
 {
-    debugger
+    
     var dt = new Date();
     $('[argumentid="CarRecivedDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
     /*$('[argumentid="CarToBeDeliverdDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());*/
@@ -1396,7 +1396,7 @@ AsyncWidgets.WidgetScripts.frmCarServiceDetails.validateAndParseDate = function 
 
 AsyncWidgets.WidgetScripts.frmCarServiceDetails.showItemsList = function (res, t) {
     if (res.status == 'OK')
-    {debugger
+    {
         if (res.Response.Rows.length > 0)
         {
             var rows = res.Response.Rows;
