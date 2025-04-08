@@ -306,7 +306,6 @@ Ext.apply(AsyncWidgets, {
 //*************************************JQuery Mask Plugin********************************************//
 
 (function ($) {
-    debugger;
     $.fn.mask = function (message, delay) {
         return this.each(function () {
             var $element = $(this);
@@ -345,10 +344,11 @@ Ext.apply(AsyncWidgets, {
         $element.css("position") === "static" && $element.addClass("masked-relative");
         $element.addClass("masked");
 
+        var $overlay = $('<div class="loadmask-overlay"></div>').appendTo($element).fadeIn();
         var $mask = $('<div class="loadmask"></div>').appendTo($element).show();
 
         if (message) {
-            var $msgBox = $('<div class="loadmask-msg spinner-border text-warning" role="status"><div class="msgcon"></div></div>');
+            var $msgBox = $('<div class="loadmask-msg spinner-border text-warning" role="status"></div></div>');
             $msgBox.find('.msgcon').text(message);
             $element.append($msgBox);
             centerMessage($msgBox, $element);
@@ -359,7 +359,7 @@ Ext.apply(AsyncWidgets, {
     function unmaskElement($element) {
         clearTimeout($element.data("_mask_timeout"));
         $element.removeData("_mask_timeout");
-        $element.find(".loadmask, .loadmask-msg").remove();
+        $element.find(".loadmask-overlay, .loadmask, .loadmask-msg").fadeOut(() => $(this).remove());
         $element.removeClass("masked masked-relative");
     }
 
