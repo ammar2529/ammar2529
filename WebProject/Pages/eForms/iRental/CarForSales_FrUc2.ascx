@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CarForSales_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CarForSales_FrUc2" %>
 
-<div class="container ">
+<div class=" ">
     <form>
     <div class="row my-3 justify-content-md-center">
         <div class="col-12 col-sm-6 col-lg-1 ">

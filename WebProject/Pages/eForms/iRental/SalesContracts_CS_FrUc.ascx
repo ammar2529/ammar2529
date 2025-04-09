@@ -2,9 +2,9 @@
 
 
 
-<div class="container mt-5">
+<div class=" mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-10 col-sm-12 p-4 bg-light shadow rounded">
+<%--        <div class="col-lg-12 col-md-10 col-sm-12 p-4 bg-light shadow rounded">--%>
             <!-- Instructional Note -->
             <div class="alert alert-info text-center mb-4">
                 Use the form below to update the details. Fields marked with an asterisk (*) are mandatory.
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-</div>
+<%--</div>--%>
 
 
 <%-- <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">

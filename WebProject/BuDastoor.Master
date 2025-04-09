@@ -4,6 +4,7 @@
 <%@ Register Src="~/AdminPages/eForms/eForms_Footer.ascx" TagName="eForms_Footer" TagPrefix="WP" %>
 <!DOCTYPE html>
 <html>
+
 <head runat="server">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +33,147 @@
 
 
 
-
     <asp:Literal ID="ltrScrpt" runat="server"></asp:Literal>
+<style>
+/* Default input styles */
+.form-floating .form-control,
+.form-floating .form-select {
+    border: none;
+    border-bottom: 2px solid #6c757d; /* Gray bottom border by default */
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    height: auto; /* Override any previous height */
+}
+
+/* Focus styles */
+.form-floating .form-control:focus,
+.form-floating .form-select:focus {
+    border-bottom: 3px solid #ff6200; /* Orange on focus */
+    outline: none;
+    box-shadow: none;
+}
+
+/* Filled styles */
+.form-floating .form-control:not(:placeholder-shown),
+.form-floating .form-select:not(:placeholder-shown) {
+    border-bottom: 3px solid #ff6200; /* Orange when filled */
+}
+
+/* Placeholder styles - hidden by default */
+.form-floating .form-control::placeholder {
+    color: transparent; /* Placeholder hidden by default */
+    opacity: 0; /* Extra assurance for cross-browser compatibility */
+}
+
+/* Label styles */
+.form-floating label {
+    color: #000; /* Default label color */
+    transition: color 0.2s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Label color when focused or filled */
+.form-floating .form-control:focus ~ label,
+.form-floating .form-control:not(:placeholder-shown) ~ label,
+.form-floating .form-select:focus ~ label,
+.form-floating .form-select:not(:placeholder-shown) ~ label {
+    color: #ff6200; /* Orange when focused or filled */
+}
+
+/* Adjust select height for floating label */
+.form-floating .form-select {
+    padding-top: 1.625rem; /* Match Bootstrap's default floating select padding */
+    padding-bottom: 0.625rem;
+}
+
+/* Style the default (unselected) option in select as a pseudo-placeholder */
+.form-floating .form-select option[value=""] {
+    color: #6c757d; /* Gray for the default 'Select...' option */
+}
+
+/* When select is focused or has a value, the label handles the color change */
+.form-floating .form-select:not(:placeholder-shown) {
+    color: #000; /* Ensure selected option text remains readable */
+}
+
+/* Button alignment */
+.d-flex.align-items-center .btn {
+    margin-top: 0; /* Remove extra margin if any */
+}
+
+/* Plaintext input styles */
+.form-floating .form-control-plaintext {
+    border-bottom: 2px dotted gray;
+    border-radius: 0;
+    padding-bottom: 5px; /* Optional: Spacing for better visibility */
+}
+
+.form-floating .form-control-plaintext:focus {
+    border-bottom: 2px dotted #808080; /* Slightly darker gray on focus */
+    outline: none;
+}
+
+/* Responsive margin adjustments */
+@media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
+    .form-floating {
+        margin-bottom: 1rem !important; /* Ensure spacing on small devices */
+    }
+    .row.mt-2 {
+        margin-top: 0.5rem !important; /* Reduce row spacing on small devices */
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) { /* Between 'sm' and 'lg' */
+    .form-floating {
+        margin-bottom: 1.5rem !important; /* Slightly more spacing */
+    }
+}
+</style>
+
+<%--   <style>
+.form-control {
+    border: none;
+    border-bottom: 2px solid gray; /* Blue bottom border */
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-bottom: 3px solid orange; /* Darker blue on focus */
+    outline: none;
+    box-shadow: none;
+}
+
+/* When input has value (filled state) */
+.form-control:not(:placeholder-shown) {
+    border-bottom: 3px solid orange; /* Matches focus color */
+}
+
+/* Label styles */
+.form-floating label {
+    color: #000; /* Default label color */
+    transition: color 0.2s ease; /* Smooth transition */
+}
+
+/* Label color when input is focused OR filled */
+.form-floating .form-control:focus ~ label,
+.form-floating .form-control:not(:placeholder-shown) ~ label {
+    color: orange; /* Matches border-bottom color */
+}
+
+/* Plaintext input styles */
+.form-floating .form-control-plaintext {
+    border-bottom: 2px dotted gray;
+    border-radius: 0;
+    padding-bottom: 5px; /* Optional: Spacing for better visibility */
+}
+
+.form-floating .form-control-plaintext:focus {
+    border-bottom: 2px dotted #808080; /* Slightly darker gray on focus */
+    outline: none;
+}
+</style>--%>
 </head>
 
 <body id="mainPageBody">

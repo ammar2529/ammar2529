@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CarAndCustomerDetails_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CarAndCustomerDetails_FrUc2" %>
 <script src="../../../Scripts/eForms/iRental/frmCarAndServiceDetails.js"></script>
-<div class="container">
+<div class="">
 
     <!-- Contract No. and Status -->
     <div class="row mt-2 justify-content-md-center StatusTR">

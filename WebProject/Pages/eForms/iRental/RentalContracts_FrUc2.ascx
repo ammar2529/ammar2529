@@ -10,7 +10,7 @@
         background-color: #cfcece;
     }
 </style>--%>
-<div class="container Rental">
+<div class=" Rental">
     <!-- Nav tabs -->
 <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
     <li class="nav-item">
@@ -44,7 +44,7 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div class="tab-pane container active" tabid="RentalContractDetails" id="RentalContractDetails">
+        <div class="tab-pane  active" tabid="RentalContractDetails" id="RentalContractDetails">
  
             <div class="row my-3 justify-content-md-center">
                 <div class="alert alert-info alert-dismissible fade show mt-3 position-relative" role="alert">

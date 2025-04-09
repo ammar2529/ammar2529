@@ -9,7 +9,7 @@
 
 
 
-<div class="container">
+<div class="">
 
     <div class="row my-3 justify-content-md-center">
       <div class="alert alert-info mt-3" role="alert">
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Service No. and Service Status -->
-<div class="container">
+<div class="">
   <div class="row mb-3 justify-content-center">
     <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
       <div class="form-floating">

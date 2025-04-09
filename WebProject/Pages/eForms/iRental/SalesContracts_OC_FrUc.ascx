@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts_OC_FrUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_OC_FrUc" %>
 
 
-<div class="container mt-5">
+<div class=" mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12 p-4 bg-light shadow rounded">
             <div class="alert alert-info text-center">

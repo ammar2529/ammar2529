@@ -4,7 +4,7 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 <script src="../../../Scripts/eForms/iRental/ConLeaseContracts.js"></script>
 
-<div class="container LeaseFormContainer">
+<div class=" LeaseFormContainer">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
         <li class="nav-item">

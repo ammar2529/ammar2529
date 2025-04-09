@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CustomerDetails_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CustomerDetails_FrUc2" %>
-<div class="container">
+<div class="">
     <form >
         <div class="row my-3 justify-content-md-center">
             <div class="alert alert-info mt-3" role="alert">

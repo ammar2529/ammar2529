@@ -37,9 +37,9 @@ var th = ['','thousand','million', 'billion','trillion'];
 </script>
 
 
-<div class="container mt-3">
+<div class=" mt-3">
     <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12 p-4 bg-light shadow rounded">
+      <%--  <div class="col-lg-8 col-md-10 col-sm-12 p-4 bg-light shadow rounded">--%>
             <div class="alert alert-info text-center">
                 Use the form below to update the details. Fields marked with an asterisk (*) are mandatory.
             </div>
@@ -206,7 +206,7 @@ var th = ['','thousand','million', 'billion','trillion'];
 
         </div>
     </div>
-</div>
+<%--</div>--%>
 
 
 

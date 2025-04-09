@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmployeeDatabase_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.Employee.EmployeeDatabase_FrUc2" %>
 
-<div class="container">
+<div class="">
 
     <!-- Nav tabs -->
 <ul class="nav nav-tabs SimpleTab mt-3" id="myTab" role="tablist">

@@ -11,7 +11,7 @@
 
 
 
-<div class="container InvoiceDetails">
+<div class=" InvoiceDetails">
     <!-- Alert Section -->
     <div class="row my-3 justify-content-md-center">
         <div class="alert alert-info mt-3" role="alert">

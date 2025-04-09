@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RentalContracts_PD_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.RentalContracts_PD_FrUc2" %>
 
-<div class="container mt-3">
+<div class=" mt-3">
     <form class="w-100">
         <!-- Instruction Note -->
 

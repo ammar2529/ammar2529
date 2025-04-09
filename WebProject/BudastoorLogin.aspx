@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Login Page</title>
-        <script language='javascript' type='text/javascript' > ROOT_PATH = ''; BASE_PATH = "";</script>
+    <script language='javascript' type='text/javascript' > ROOT_PATH = ''; BASE_PATH = "";</script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <style>
         body {
@@ -20,148 +20,130 @@
             width: 100%;
             max-width: 400px; /* Adjust this value as needed */
         }
+        /* Default input styles */
+        .form-floating .form-control {
+            border: none;
+            border-bottom: 2px solid #6c757d; /* Gray bottom border by default */
+            border-radius: 0;
+            outline: none;
+            box-shadow: none;
+            height: auto; /* Ensure proper height */
+        }
+        /* Focus styles */
+        .form-floating .form-control:focus {
+            border-bottom: 3px solid #ff6200; /* Orange on focus */
+            outline: none;
+            box-shadow: none;
+        }
+        /* Filled styles */
+        .form-floating .form-control:not(:placeholder-shown) {
+            border-bottom: 3px solid #ff6200; /* Orange when filled */
+        }
+        /* Placeholder styles - hidden by default */
+        .form-floating .form-control::placeholder {
+            color: transparent; /* Placeholder hidden by default */
+            opacity: 0; /* Extra assurance for cross-browser compatibility */
+        }
+        /* Label styles */
+        .form-floating label {
+            color: #000; /* Default label color */
+            transition: color 0.2s ease, transform 0.2s ease; /* Smooth transitions */
+        }
+        /* Label color when focused or filled */
+        .form-floating .form-control:focus ~ label,
+        .form-floating .form-control:not(:placeholder-shown) ~ label {
+            color: #ff6200; /* Orange when focused or filled */
+        }
+        /* Responsive margin adjustments */
+        @media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
+            .form-floating {
+                margin-bottom: 1rem !important; /* Ensure spacing on small devices */
+            }
+        }
+        @media (min-width: 576px) and (max-width: 991.98px) { /* Between 'sm' and 'lg' */
+            .form-floating {
+                margin-bottom: 1.5rem !important; /* Slightly more spacing */
+            }
+        }
     </style>
     <script src="../../AsyncWidgets/Scripts/jquery.js"></script>
 </head>
 <body>
-<%--    <form onsubmit="return false;">--%>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Login</h5>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">User ID:</label>
-                    <input id="UserName" type="text" class="form-control required" argumentid="UserName" groupid="UserLogin" value=""/>
-<%--                    <div id="emailHelp" class="form-text">We'll never share your ID with anyone else.</div>--%>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password:</label>
-                    <input type="password" class="form-control required" id="UserPassword" argumentid="UserPassword" groupid="UserLogin"/>
-                </div>
-            <%--    <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>--%>
-                <button type="button" class="btn btn-primary btnLogin" conf="{ActorId:'Authentication', ActionId:'AuthenticateUser', Action:'login'}">Login</button>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <div class="form-floating mb-3">
+                <input id="UserName" type="text" class="form-control required" argumentid="UserName" groupid="UserLogin" value="" placeholder="Enter User ID">
+                <label for="UserName">User ID</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control required" id="UserPassword" argumentid="UserPassword" groupid="UserLogin" placeholder="Enter Password">
+                <label for="UserPassword">Password</label>
+            </div>
+            <button type="button" class="btn btn-primary btnLogin" conf="{ActorId:'Authentication', ActionId:'AuthenticateUser', Action:'login'}">Login</button>
 
-                <div class="alert alert-light mt-3" role="alert" style="display:none" >
-                    Log Out SuccessFully!
-                </div>
+            <div class="alert alert-light mt-3" role="alert" style="display:none">
+                Log Out SuccessFully!
             </div>
         </div>
-<%--    </form>--%>
-    
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../../AsyncWidgets/Scripts/Custom-Ext.js"></script>
     <script src="../../AsyncWidgets/Scripts/WidgetBase.js"></script>
     <script src="../../JQuery/Common.js"></script>
-     <script>
-         $().ready(function () {
+    <script>
+        $().ready(function () {
+            $('.btnLogin').click(function (e) {
+                e.preventDefault();
+                ServerCallCtx($("body")[0], null, function (res) {
+                    if (res.status == 'OK') {
+                        if (res.Response.Authenticated) {
+                            $('.card').hide();
+                            var arRoles = res.Response.Roles.split(',');
 
+                            if (arRoles.length) {
+                                for (var i = 0; i < arRoles.length; i++) {
+                                    $('[displayroles*=' + arRoles[i] + ']').show();
+                                }
+                            }
 
+                            AsyncWidgets.user.conf = res.Response.Conf;
+                            AsyncWidgets.user.conf2 = res.Response.Name;
+                            /*window.location = "/testDataTable.aspx"*/
+                            window.location = "/BuDastoorHome.aspx"
+                        }
+                    }
+                }, null, "AuthenticateUser", "Authentication");
+                return false;
+            });
 
-             $('.btnLogin').click(function (e) {
+            function callGetCookie() {
+                if (!window.getCookie) {
+                    setTimeout(function () {
+                        callGetCookie();
+                    }, 500)
+                } else {
+                    $("#UserName").val("amirza");
+                    $("#UserPassword").val("sasa");
+                    $('.btnLogin').click();
+                }
+            }
+            /* callGetCookie(); */
 
-                 e.preventDefault();
-                 ServerCallCtx($("body")[0], null, function (res) {
+            function showAlert() {
+                $('#logoutAlert').show();
+                setTimeout(function () {
+                    hideAlert();
+                }, 4000);
+            }
 
-                     if (res.status == 'OK') {
+            function hideAlert() {
+                $('#logoutAlert').hide();
+            }
 
-                         if (res.Response.Authenticated) {
-                             $('.card').hide();
-                             var arRoles = res.Response.Roles.split(',');
-
-                             if (arRoles.length) {
-                                 for (var i = 0; i < arRoles.length; i++) {
-                                     //if(arRoles[i])
-                                     $('[displayroles*=' + arRoles[i] + ']').show();
-                                 }
-                             }
-
-                             AsyncWidgets.user.conf = res.Response.Conf;
-                             AsyncWidgets.user.conf2 = res.Response.Name;
-                             /*window.location = "/testDataTable.aspx"*/
-                             window.location = "/BuDastoorHome.aspx"
-
-
-
-
-                             //****End****//
-
-                         }
-                     }
-
-
-                 }, null, "AuthenticateUser", "Authentication");
-                 // getForm()
-
-                 //var params = {};
-
-                 //ServerCall(params, function (res) {
-
-                 //    console.log(res);
-                 //}, 'GetUserMenu', 'Authentication');
-
-                 return false;
-             });
-
-
-             //if (!window.callGetCookie) {
-             //    console.log('inside in getCookie');
-             //    setTimeout(function () {
-
-             //        //setCookie('autoLogin', 'true', 7)
-             //        $("#UserName").val("amirza");
-             //        $("#UserPassword").val("sasa");
-             //        $('.btnLogin').click();
-             //        getCookie('autoLogin');
-             //    }, 500)
-
-             //}
-
-
-
-
-             function callGetCookie() {
-                 if (!window.getCookie) {
-                     setTimeout(function () {
-
-                         //setCookie('autoLogin', 'true', 7)
-
-                         callGetCookie();
-                     }, 500)
-                 } else {
-                     $("#UserName").val("amirza");
-                     $("#UserPassword").val("sasa");
-                     $('.btnLogin').click();
-                 }
-
-             }
-             /*           callGetCookie();*/
-             //if (getCookie("autoLogin") == "true") {
-             //    //setCookie('autoLogin', 'true', 7)
-             //    $("#UserName").val("amirza");
-             //    $("#UserPassword").val("sasa");
-             //    $('.btnLogin').click();
-             //}
-
-         });
-
-         function showAlert() {
-             $('#logoutAlert').show();
-             // Hide the alert after 4 seconds
-             setTimeout(function () {
-                 hideAlert();
-             }, 4000);
-         }
-
-         // Function to disable Bootstrap alert
-         function hideAlert() {
-             $('#logoutAlert').hide();
-         }
-
-         // Example usage:
-         showAlert(); // To show the alert
-
-     </script>
+            showAlert(); // To show the alert
+        });
+    </script>
 </body>
 </html>

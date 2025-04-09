@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SparePartInventory_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SparePartInventory_FrUc2" %>
 
-<div class="container">
+<div class="">
     <!-- Note -->
     <div class="alert alert-info mt-3" role="alert">
         Use the form below to update the details, fields marked with an asterisk (*) are mandatory

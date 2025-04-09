@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RentalContracts_CS_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.RentalContracts_CS_FrUc2" %>
 
-<div class="container mt-3">
+<div class=" mt-3">
     <!-- Note Section -->
             <div class="row my-3 justify-content-md-center">
                 <div class="alert alert-info mt-3" role="alert">

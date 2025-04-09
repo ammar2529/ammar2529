@@ -15,7 +15,7 @@
 <script src="../../../JQuery/Common.js"></script>
 
 
-<div class="container Sales">
+<div class=" Sales">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
         <li class="nav-item">
@@ -46,7 +46,7 @@
 
         <div class="tab-pane container active" tabid="SalesContractDetails" id="SalesContractDetails">
                         <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-10 col-sm-12 p-4 bg-light shadow rounded mt-3">
+<%--        <div class="col-lg-12 col-md-10 col-sm-12 p-4 bg-light shadow rounded mt-3">--%>
             <div class="row my-3 justify-content-center">
                 <div class="alert alert-info alert-dismissible fade show mt-3 position-relative" role="alert">
                     Use the form below to update the details, fields marked with an asterisk (*) are mandatory
@@ -874,7 +874,7 @@
                 </div>
             </div>
         </div>
-            </div>
+            <%--</div>--%>
                
         <div class="tab-pane container fade" tabid="SalesPaymentDetails" id="SalesPaymentDetails">
 
