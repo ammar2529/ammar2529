@@ -462,10 +462,13 @@
                             groupid="GarageCarServiceDetails" argumentid="NextServiceStartDay">
                         <label for="NextServiceStartDay">Start Day</label>
                     </div>
-                    <i  class="fa-solid fa-3 ms-2 OnStartState CommonDisableClass btn3 btn btn-primary"></i>
+<%--                    <i  class="fa-solid fa-3 ms-2 OnStartState CommonDisableClass btn3 btn btn-primary"></i>
                     <i  class="fa-solid fa-6 ms-2 OnStartState CommonDisableClass btn6 btn btn-primary"></i>
-                    <i  class="fa-solid fa-12 ms-2 OnStartState CommonDisableClass btn12 btn btn-primary">12</i>
-
+                    <i  class="fa-solid fa-12 ms-2 OnStartState CommonDisableClass btn12 btn btn-primary">12</i>--%>
+                
+                    <button type="button" class="btn btn-outline-secondary OnStartState CommonDisableClass btn3 ">1</button>
+                    <button type="button" class="btn btn-outline-secondary OnStartState CommonDisableClass btn6 ">2</button>
+                    <button type="button" class="btn btn-outline-secondary OnStartState CommonDisableClass btn12">3</button>
                     
                 </div>
             </div>
@@ -491,8 +494,11 @@
               placeholder="Next Service KM" style="text-align: center;" maxlength="100" groupid="GarageCarServiceDetails" argumentid="NextServiceKm">
                         <label for="NextServiceKm" class="AddAsterisk">Next Service KM</label>
                     </div>
-                    <i title="Set current date & time" class="fa-solid fa-10 ms-2 btn btn-primary CommonDisableClass OnStartState btn5KD">5K</i>
-                    <i title="Set current date & time" class="fa-solid fa-10 ms-2 btn btn-primary CommonDisableClass OnStartState btn10KD">10K</i>
+<%--                    <i title="Set current date & time" class="fa-solid fa-10 ms-2 btn btn-primary CommonDisableClass OnStartState btn5KD">5K</i>
+                    <i title="Set current date & time" class="fa-solid fa-10 ms-2 btn btn-primary CommonDisableClass OnStartState btn10KD">10K</i>--%>
+                  
+                    <button type="button" class="btn btn-outline-secondary CommonDisableClass OnStartState btn5KD ">5K</button>
+                    <button type="button" class="btn btn-outline-secondary CommonDisableClass OnStartState btn10KD">10K</button>
                   
 
                 </div>
@@ -623,21 +629,21 @@
     <div class="row mb-3 justify-content-md-center">
       <div class="col-12 col-md-2 col-lg-4 mb-3 mb-md-0">
         <div class="form-floating">
-          <input type="text" class="form-control text" id="totalTotalPrice" placeholder="Total Amount" 
+          <input type="text" class="form-control-plaintext  text" id="totalTotalPrice" placeholder="Total Amount" 
                  style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="totalTotalPrice">
           <label for="totalTotalPrice">Total Amount</label>
         </div>
       </div>
       <div class="col-12 col-md-2 col-lg-4 mb-3 mb-md-0">
         <div class="form-floating">
-          <input type="text" class="form-control text" id="totalDiscount" placeholder="Discount" 
+          <input type="text" class="form-control-plaintext  text" id="totalDiscount" placeholder="Discount" 
                  style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="totalDiscount">
           <label for="totalDiscount">Discount</label>
         </div>
       </div>
       <div class="col-12 col-md-2 col-lg-4">
         <div class="form-floating">
-          <input type="text" class="form-control text" id="totalGrandTotalRes" placeholder="Grand Total" 
+          <input type="text" class="form-control-plaintext  text" id="totalGrandTotalRes" placeholder="Grand Total" 
                  style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="totalGrandTotalRes">
           <label for="totalGrandTotalRes">Grand Total</label>
         </div>
@@ -682,14 +688,14 @@
     <div class="row mb-3">
       <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-0">
         <div class="form-floating">
-          <input type="text" class="form-control text" id="CreatedBy" placeholder="Contract Created By" 
+          <input type="text" class="form-control-plaintext  text" id="CreatedBy" placeholder="Contract Created By" 
                  style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="CreatedBy">
           <label for="CreatedBy">Contract Created By</label>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-6">
         <div class="form-floating">
-          <input type="text" class="form-control text" id="DateCreated" placeholder="Contract Date & Time" 
+          <input type="text" class="form-control-plaintext  text" id="DateCreated" placeholder="Contract Date & Time" 
                  style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="DateCreated">
           <label for="DateCreated">Contract Date & Time</label>
         </div>

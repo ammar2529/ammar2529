@@ -492,7 +492,7 @@ var _IsIE = false,
 (function ($) {
     $.showMessage = function (message, options, secondCall) {
         // Immediately return if it's the first call; defer for 500ms
-        debugger
+        
         if (!secondCall) {
             $.showMessage.defer(500, this, [message, options, true]);
             return;

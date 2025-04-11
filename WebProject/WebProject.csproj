@@ -331,6 +331,7 @@
     <Content Include="AdminPages\eForms\Login.aspx" />
     <Content Include="App_Themes\Blue\images\default_image.png" />
     <Content Include="App_Themes\Blue\images\spacer.gif" />
+    <Content Include="App_Themes\eForms_Theme\fontawsome\all.css" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-login.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-view.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\AddToFavorites.png" />
@@ -583,6 +584,9 @@
     <Content Include="App_Themes\eForms_Theme\Images\Under_Warranty_show.png" />
     <Content Include="App_Themes\eForms_Theme\Images\vdiv2.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\workflow.jpg" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\all.min.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\bootstrap.bundle.min.js" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\bootstrap.min.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
@@ -1607,6 +1611,14 @@
       <DependentUpon>CarServiceDetails.xsd</DependentUpon>
     </Content>
     <Content Include="BuDastoor.Master" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-brands-400.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-brands-400.woff2" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-regular-400.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-regular-400.woff2" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-solid-900.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-solid-900.woff2" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-v4compatibility.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-v4compatibility.woff2" />
     <None Include="CarServiceDetailsDataSet\CarServiceDetails.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

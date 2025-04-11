@@ -68,7 +68,7 @@
         </div>
         <div class="col-12 col-md-6 col-lg-4">
             <div class="form-floating">
-                <input type="date" class="form-control text-center DisableOnClose CommonDisableClass  CommonDisableClasss" id="InvoiceDate"
+                <input type="date" class="form-control text-center DisableOnClose CommonDisableClass CommonDisableClasss" id="InvoiceDate"
                     groupid="SparePartInventoryInvoice" argumentid="InvoiceDate" maxlength="10" placeholder="Invoice Date">
                 <label for="InvoiceDate">Invoice Date</label>
             </div>
@@ -168,9 +168,8 @@
         <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
             <div class="form-floating hideTrForINVCust">
                 <input type="text" class="form-control-plaintext text-center fw-bold CommonSPCust serv" id="SICustomerRecCode"
-                    groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" readonly placeholder="Customer Code"
-                    style="background: transparent; border: none; color: #628296;">
-                <label for="SICustomerRecCode ">Customer Code</label>
+                    groupid="SparePartInventoryInvoice" argumentid="SICustomerRecCode" readonly placeholder="Customer Code">
+                <label for="SICustomerRecCode " class="CommonSPCust serv">Customer Code</label>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -219,7 +218,87 @@
 
     <!-- Items Table -->
 
-    <div class="container mt-3 HideOnNewForm">
+
+<div class="container mt-3 HideOnNewForm">
+    <table class="table table-striped table-bordered w-form-table HideOnNewForm" id="dynamicRows">
+        <thead class="table-dark">
+            <tr>
+                <th>Item ID</th>
+                <th>Item Code</th>
+                <th>Description</th>
+                <th>Qty AVL</th>
+                <th>QTY</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr class="LineOfItemRow HideOnNewForm trNoDynamic">
+            <td style="display: none">
+                <input type="text" class="form-control ElemDisabled text " groupid="SparePartInventoryInvoice" argumentid="InvRecId" disabled></td>
+            <td>
+                <input type="text" class="form-control LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled " lovpopupid="ItemCodePopup" groupid="SparePartInventoryInvoice" argumentid="ItemId"></td>
+            <td>
+                <input type="text" class="form-control text ElemDisabled"  argumentid="SparePartName"  disabled="disabled"></td>
+
+            <td>
+                <input type="text" class="form-control ElemDisabled text" groupid="SparePartInventoryInvoice" argumentid="SparePartSerialNo" disabled></td>
+            <td>
+                <input type="text" class="form-control ElemDisabled number text" groupid="SparePartInventoryInvoice" argumentid="SparePartQuantity" disabled></td>
+            <td>
+                <input type="text" class="form-control number text CommonDisableClass SelectQuantity" groupid="SparePartInventoryInvoice" argumentid="SelectQuantity"></td>
+            <td>
+                <input type="text" class="form-control ElemDisabled CommonDisableClass text" groupid="SparePartInventoryInvoice" argumentid="SparePartUnitPrice"></td>
+            <td>
+                <input type="text" class="form-control ElemDisabled text" groupid="SparePartInventoryInvoice" argumentid="TotalPrice" disabled></td>
+            <td>
+                <button class="btn btn-primary SaveBtn" type = "button" recid="recId"  SaveButton="SaveButton">Save</button></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+
+
+
+<div class="container mt-3 HideOnNewForm">
+    <input type="hidden" groupid="SparePartInventoryInvoice" argumentid="FileGuid">
+    <input type="hidden" groupid="SparePartInventoryInvoice" name="ChassisNo" argumentid="ChassisNo">
+
+    <div class="ItemListDiv p-2">
+        <table class="table table-striped table-bordered uploadedItemList HideOnNewForm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Item ID</th>
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>From</th>
+                    <th>Rack</th>
+                    <th>Shelf</th>
+                    <th>Store</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be inserted here -->
+            </tbody>
+            <tfoot>
+                <tr class="NoRecordsTR">
+                    <td class="NoRecords text-center" colspan="11">
+                        <div class="PWCNoDataMessage alert alert-warning">No records available.</div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+
+  <%--  <div class="container mt-3 HideOnNewForm">
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="dynamicRows">
             <thead class="table-dark">
@@ -291,7 +370,7 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>--%>
  <%--   <div class="container mt-3 HideOnNewForm">
         <div class="table-responsive">
             <table class="table table-bordered table-hover uploadedItemList">
@@ -346,24 +425,6 @@
                 <label for="SubTotal">Sub Total</label>
             </div>
         </div>
-        <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
-            <div class="form-floating">
-                <input type="text" class="form-control text-center common-disable" id="Discount"
-                    groupid="SparePartInventoryInvoice" argumentid="Discount" maxlength="100" placeholder="Discount">
-                <label for="Discount">Discount</label>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-            <div class="form-floating">
-                <input type="text" class="form-control text-center elem-disabled" id="GrandTotal"
-                    groupid="SparePartInventoryInvoice" argumentid="GrandTotal" readonly placeholder="Grand Total">
-                <label for="GrandTotal">Grand Total</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Details -->
-    <div class="row mb-3 justify-content-center HideOnNewForm">
         <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0 onQuotation">
             <div class="form-floating">
                 <input type="text" class="form-control text-center common-disable" id="Card"
@@ -371,6 +432,16 @@
                 <label for="Card">Card</label>
             </div>
         </div>
+    </div>
+    <div class="row mb-3 justify-content-center HideOnNewForm">
+        <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center common-disable" id="Discount"
+                    groupid="SparePartInventoryInvoice" argumentid="Discount" maxlength="100" placeholder="Discount">
+                <label for="Discount">Discount</label>
+            </div>
+        </div>
+
         <div class="col-12 col-md-4 col-lg-3 mb-3 mb-md-0 onQuotation">
             <div class="form-floating">
                 <input type="text" class="form-control text-center common-disable" id="Cash"
@@ -378,6 +449,16 @@
                 <label for="Cash">Cash</label>
             </div>
         </div>
+    </div>
+    <div class="row mb-3 justify-content-center HideOnNewForm">
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="form-floating">
+                <input type="text" class="form-control text-center elem-disabled" id="GrandTotal"
+                    groupid="SparePartInventoryInvoice" argumentid="GrandTotal" readonly placeholder="Grand Total">
+                <label for="GrandTotal">Grand Total</label>
+            </div>
+        </div>
+
         <div class="col-12 col-md-4 col-lg-3 onQuotation">
             <div class="form-floating">
                 <input type="text" class="form-control text-center elem-disabled" id="Total"
@@ -387,53 +468,55 @@
         </div>
     </div>
 
+
+
     <!-- Buttons -->
     <div class="row mt-4 justify-content-md-center mb-3">
-        <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm">
-            <button type="button" class="btn btn-primary w-100 invoice-open-btn common-button OnNewForm"
-                conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+        <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm common-button InvoiceOpenBtn">
+            <button type="button" class="DataAction btn btn-primary w-100 InvoiceOpenBtn common-button OnNewForm"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Params:{NewStateId:'OpenState'},Command:'UPD_Invoice',HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" >
                 Open
             </button>
         </div>
-        <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm">
-            <button type="button" class="btn btn-success w-100 closed-invoice common-button OnNewForm"
-                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+        <div class="col-12 col-md-2 mb-3 mb-md-0 OnNewForm common-button">
+            <button type="button" class="MyDataAction btn btn-success w-100 ClosedInvoice  common-button OnNewForm"
+               conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'ClosedState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" >
                 Close
             </button>
         </div>
-        <div class="col-12 col-md-2 OnNewForm">
-            <button type="button" class="btn btn-danger w-100 canceled-invoice common-button OnNewForm"
-                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+        <div class="col-12 col-md-2 OnNewForm CanceledInvoice  common-button">
+            <button type="button" class=" MyDataAction btn btn-danger w-100 CanceledInvoice  common-button OnNewForm"
+                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',Params:{NewStateId:'CanceledState'},HideOnSuccess:true, Requery:false,GroupId:'SparePartInventoryInvoice'}" >
                 Cancel
             </button>
         </div>
     </div>
 
     <div class="row mt-2 justify-content-md-center mb-3">
-        <div class="col-12 col-md-1 mb-3 mb-md-0 OnNewForm">
-            <button type="button" class="btn btn-secondary w-100 invoice-button-edit OnNewForm" roles="iRen_Contracts_Admin">
+        <div class="col-12 col-md-1 mb-3 mb-md-0 OnNewForm InvoiceButton_Edit">
+            <button type="button" class="btn btn-secondary w-100 InvoiceButton_Edit OnNewForm" roles="iRen_Contracts_Admin" >
                 Edit
             </button>
         </div>
-        <div class="col-12 col-md-2 mb-3 mb-md-0">
-            <button type="button" class="btn btn-primary w-100 btn-save-invoice common-button"
-                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+        <div class="col-12 col-md-2 mb-3 mb-md-0 btnSaveInvoice   common-button">
+            <button type="button" class="DataAction btn btn-primary w-100 btnSaveInvoice   common-button"
+                 conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}" >
                 Create Invoice
             </button>
         </div>
-        <div class="col-12 col-md-1 mb-3 mb-md-0">
-            <button type="button" class="btn btn-primary w-100 btn-save common-button"
-                conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false,Requery:false,GroupId:'SparePartInventoryInvoice'}">
+        <div class="col-12 col-md-1 mb-3 mb-md-0 btnSave common-button">
+            <button type="button" class="DataAction btn btn-primary w-100 btnSave common-button"
+                 conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Invoice',HideOnSuccess:false, Requery:false,GroupId:'SparePartInventoryInvoice'}">
                 Save
             </button>
         </div>
         <div class="col-12 col-md-1 mb-3 OnNewForm">
-            <button type="button" class="btn btn-secondary w-100 print-bill OnNewForm">
+            <button type="button" class="btn btn-secondary w-100 PrintBill OnNewForm ">
                 Print
             </button>
         </div>
-        <div class="col-12 col-md-1">
-            <button type="button" class="btn btn-secondary w-100 btn-cancel close-form">
+        <div class="col-12 col-md-1 btnCancel">
+            <button type="button" class="btn btn-secondary w-100 CloseForm  btnCancel">
                 Close
             </button>
         </div>
