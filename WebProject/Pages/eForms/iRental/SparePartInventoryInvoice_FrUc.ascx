@@ -238,7 +238,7 @@
             <td style="display: none">
                 <input type="text" class="form-control ElemDisabled text " groupid="SparePartInventoryInvoice" argumentid="InvRecId" disabled></td>
             <td>
-                <input type="text" class="form-control LOVPopup text ItemIdClass  CommonDisableClass ElemDisabled " lovpopupid="ItemCodePopup" groupid="SparePartInventoryInvoice" argumentid="ItemId"></td>
+                <input type="text" class="form-control LOVPopup text ItemIdClass  CommonDisableClass  " lovpopupid="ItemCodePopup" groupid="SparePartInventoryInvoice" argumentid="ItemId"></td>
             <td>
                 <input type="text" class="form-control text ElemDisabled"  argumentid="SparePartName"  disabled="disabled"></td>
 
@@ -288,7 +288,7 @@
             <tfoot>
                 <tr class="NoRecordsTR">
                     <td class="NoRecords text-center" colspan="11">
-                        <div class="PWCNoDataMessage alert alert-warning">No records available.</div>
+                        <div class="PWCNoDataMessage">No records available.</div>
                     </td>
                 </tr>
             </tfoot>

@@ -114,6 +114,15 @@
             outline: none;
         }
 
+
+.form-floating .form-control.invalid {
+    border-bottom: 3px solid red !important;
+}
+
+.form-floating label.invalid {
+    color: red !important;
+}
+
         /* Responsive margin adjustments */
         @media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
             .form-floating {
@@ -169,6 +178,18 @@
     <script type="text/javascript">
         $().ready(function () {
             $('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);
+
+            $('.form-floating .form-control').on('blur', function () {
+                debugger
+                if (!$(this).val()) {
+                    $(this).addClass('invalid');
+                    $(this).siblings('label').addClass('invalid');
+                } else {
+                    $(this).removeClass('invalid');
+                    $(this).siblings('label').removeClass('invalid');
+                }
+            });
+
         });
     </script>
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script></body>
