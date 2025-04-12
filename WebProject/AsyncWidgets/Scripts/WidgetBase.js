@@ -184,7 +184,7 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
             )
             .then(data => successFn(data))
             .catch(error => function () {
-               debugger
+             
                 errorFN(error)
             });
 
@@ -308,6 +308,7 @@ Ext.apply(AsyncWidgets, {
 (function ($) {
     $.fn.mask = function (message, delay) {
         return this.each(function () {
+            debugger
             var $element = $(this);
             $element.data("maskCount", ($element.data("maskCount") || 0) + 1);
 

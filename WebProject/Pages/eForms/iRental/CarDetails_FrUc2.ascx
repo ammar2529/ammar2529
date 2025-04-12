@@ -63,12 +63,12 @@
         <div class="row mt-2 justify-content-md-center">
             <div class="col-12 col-sm-12 col-lg-6">
                 <div class="form-floating">
-                    <select class="form-select form-select-sm dropdownlist required" id="BrandId" groupid="CarsForm" 
+                    <select class="form-select form-select-sm dropdownlist required" id="CRBrandId" groupid="CarsForm" 
                             argumentid="BrandId" loadon="FirstVisible" childcombo="ModelId"
                             storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                         <option value="" selected>Select Brand</option>
                     </select>
-                    <label for="BrandId">Brand*</label>
+                    <label for="CRBrandId">Brand*</label>
                 </div>
             </div>
         </div>

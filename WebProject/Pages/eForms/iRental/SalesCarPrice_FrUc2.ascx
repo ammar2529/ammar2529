@@ -10,10 +10,10 @@
         <div class="row mt-2 justify-content-md-center">
             <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
-                    <select loadon="FirstVisible"  id="brand" class="form-select form-control-sm required" groupid="SalesCarsPriceForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+                    <select loadon="FirstVisible"  id="CRbrand" class="form-select form-control-sm required" groupid="SalesCarsPriceForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                         <option value="" selected>Select Brand</option>
                     </select>
-                    <label for="brand">Brand*</label>
+                    <label for="CRbrand">Brand*</label>
                 </div>
             </div>
         </div>

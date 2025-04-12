@@ -1357,7 +1357,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
             
 
-            console.log(p);
+            //console.log(p);
             if (FileGuid && FileGuid.trim() !== "") {
                 var params = { Command: 'FX_UPD_FileUpload', FileGuid: val('FileGuid', t.el), DBAction: 'GetUploadedFiles' };
 

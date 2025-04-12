@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmployeeDatabase_FrUc.ascx.cs" Inherits="WebProject.Pages.eForms.Employee.EmployeeDatabase_FrUc" %>
 
-<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+<%--<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
     <tr>
         <td style="padding-top: 10px; padding-left: 2px;">
             <ul class="SimpleTab" style="margin: 0px;">
@@ -546,4 +546,4 @@
                 </table>
          </td>
          </tr>
-</table>
+</table>--%>

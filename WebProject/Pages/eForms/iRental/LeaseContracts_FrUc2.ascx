@@ -175,8 +175,8 @@
                 <!-- Brand -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control-plaintext" id="Brand" groupid="LeaseContractsForm" argumentid="Brand" placeholder="Brand" readonly>
-                        <label for="Brand">Brand</label>
+                        <input type="text" class="form-control-plaintext" id="LSBrand" groupid="LeaseContractsForm" argumentid="Brand" placeholder="Brand" readonly>
+                        <label for="LSBrand">Brand</label>
                     </div>
                 </div>
 

@@ -4,14 +4,11 @@
 
 
 
-<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
+<%--<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;" class="myTable">
 
     <tr tabid="CarAndCustomersDetails">
         <td style="padding-top: 1px;">
             <table cellspacing="2" cellpadding="0" width="100%" border="0" class="w-form-table">
-                <%--   <tr id="trNote">
-                    <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory </td>
-                </tr>--%>
 
 
                 <tr>
@@ -26,10 +23,10 @@
                                     <span class="ftitle" style="color: red;" groupid="CarAndCustomersDetails" argumentid="RecCode">New contract no. will be generated on saving</span>
                                 </td>
                                 <td class="ftitle" style="width: 20%">
-                                    <%--<nobr> Status:</nobr>--%>
+                            
                                 </td>
                                 <td class="ftitle" style="width: 30%">
-                                    <%-- <span class="ftitle" groupid="CarAndCustomersDetails" argumentid="StateName"></span>--%>
+
 
                                     <div style="display: none">
                                         <span groupid="CarAndCustomersDetails" argumentid="StateId"></span>
@@ -55,7 +52,6 @@
                                 <td style="width: 30%"></td>
                             </tr>
 
-                            <%--/////////////////////// Select Car and Customer popup //////////////////////////////////--%>
                             <tr>
                                 <td class="ftitle">
                                     <nobr>Car No.:</nobr>
@@ -66,7 +62,7 @@
 
                                     <input type="hidden" name="CarAndCustomersDetailsRecId" groupid="CarAndCustomersDetails" argumentid="CarAndCustomersDetailsRecId" />
 
-                                    <%--    <div class="carPopupCutomerAndCarDetails hidden"></div>--%>
+
 
 
                                     <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="text LOVPopup required  CommonDisableCarNumber "
@@ -78,8 +74,7 @@
                                     <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red; display: none;" maxlength="10" class="text LOVPopup required CommonDisableCarNumber"
                                         groupid="CarAndCustomersDetails" lovpopupid="carPopupCutomerAndCarDetailsForLease" argumentid="CarNumber" />
 
-                                    <%--  <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red; display:none;" maxlength="10" class="text LOVPopup  required CommonDisableCarNumber"
-                                groupid="CarAndCustomersDetails" lovpopupid="carPopupCutomerAndCarDetailsForOther" argumentid="CarNumber" />--%>
+
 
                           
          
@@ -90,11 +85,9 @@
                                     <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text   CommonDisableCarNumber"
                                         groupid="CarAndCustomersDetails" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required' />
 
-                                    <%--                         <span class="ftitle" style="font-size: 12px;" groupid="CarAndCustomersDetails" argumentid="CustomerRecCode"></span>--%>
                                 </td>
                             </tr>
 
-                            <%--///////////////////// End: Select Car and Customer popup ///////////////////////////////////////--%>
 
 
 
@@ -105,10 +98,9 @@
                                     <nobr>Chassis No.:</nobr>
                                 </td>
                                 <td>
-                                    <%--                        <span class="ftitle" groupid="CarAndCustomersDetails" argumentid="CarNumber"></span>--%>
+
                                     <span class="ftitle CommonDisable ChassisNo" groupid="CarAndCustomersDetails" argumentid="ChassisNo"></span>
-                                    <%--  <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red; display:none;" maxlength="10" class="text carCutomerAndCarDetailsForOther  CommonDisableCarNumber"
-                                groupid="CarAndCustomersDetails"  argumentid="OtherChassisNo" />--%>
+
 
                                 </td>
                                 <td class="ftitle">
@@ -124,10 +116,7 @@
                                 </td>
                                 <td>
                                     <span class="ftitle CommonDisable CommonSp" groupid="CarAndCustomersDetails" argumentid="Brand"></span>
-                                    <%--<select loadon="FirstVisible" class="dropdownlist CommonCarDropdown required" style="width: 155px;"
-                groupid="CarAndCustomersDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
-                <option value="" selected="selected">Select Brand</option>
-            </select>--%>
+
                                 </td>
                                 <td class="ftitle">
                                     <nobr>Nationality:</nobr>
@@ -207,13 +196,7 @@
                 <tr class="hideTr">
                     <td colspan="4">
                         <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
-                            <%-- <tr class="hideTr">
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                                                    
 
-                    </td>
-                </tr>--%>
 
 
                             <tr class="hideTr">
@@ -276,13 +259,10 @@
 
                                 <td class="ftitle">
 
-                                    <%--<nobr>Service Book No.:</nobr>--%>
                                 </td>
                                 <td>
 
 
-                                <%--    <input type="text" style="text-align: center; width: 150px;" maxlength="10" class="text  CommonDisableClass  "
-                                        groupid="SalesContractsForm" argumentid="ServiceBookNo" />--%>
 
                                 </td>
                             </tr>
@@ -344,16 +324,7 @@
                                     </table>
                              
                 </tr>
-                <%--       <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                                                    
 
-                    </td>
-                </tr>--%>
-
-
-                <%-- Data Grid  --%>
 
 
                 <tr>
@@ -406,16 +377,7 @@
                     </td>
                 </tr>
 
-                <%--<%-- End Data Grid --%>
-
-
-                <%--   <tr>
-                    <td colspan="4">
-                        <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
-                                                    
-
-                    </td>
-                </tr>--%>
+ 
 
                 <tr>
                     <td colspan="4" style="text-align: center;">
@@ -423,7 +385,6 @@
 
 
                         <div style="padding-top: 10px; padding-bottom: 10px">
-                            <%--<input type="button" style="width: 50px" roles="iRen_Contracts_Admin" value="  Edit  " class="ButtonStyle SalesButton_Edit" />--%>
                             <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:true, Requery:true,GroupId:'CarAndCustomersDetails'}" />
                             <input type="button" style="width: 50px" value="  Save  " class="DataAction ButtonStyle  btnSave2 common-button" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_GRG_CarAndCustomerDetails',HideOnSuccess:false, Requery:false,GroupId:'CarAndCustomersDetails'}" />
 
@@ -438,4 +399,4 @@
 
 
 
-</table>
+</table>--%>

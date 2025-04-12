@@ -461,10 +461,10 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="form-floating">
-                        <select class="form-select dropdownlist" id="BankName" loadon="FirstVisible" groupid="EmployeeDatabase" argumentid="BankName" childcombo="BankBranch" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'21'}]}">
+                        <select class="form-select dropdownlist" id="EMPBankName" loadon="FirstVisible" groupid="EmployeeDatabase" argumentid="BankName" childcombo="BankBranch" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'21'}]}">
                             <option value="" selected="selected">Select Bank</option>
                         </select>
-                        <label for="BankName">Bank Name</label>
+                        <label for="EMPBankName">Bank Name</label>
                     </div>
                 </div>
             </div>

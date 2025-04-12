@@ -14,10 +14,10 @@
                 </div>
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
-                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="BrandId" groupid="schCarRateDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CRTDBrandId" groupid="schCarRateDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                             <option value="" selected="selected">Select Brand</option>
                         </select>
-                        <label for="BrandId">Brand</label>
+                        <label for="CRTDBrandId">Brand</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">

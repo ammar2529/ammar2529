@@ -232,14 +232,14 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="form-floating">
                         <div class="form-floating CommonSP">
-                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Brand" groupid="SalesContractsForm" argumentid="Brand" readonly>
-                            <label for="Brand">Brand</label>
+                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="SLBrand" groupid="SalesContractsForm" argumentid="Brand" readonly>
+                            <label for="SLBrand">Brand</label>
                         </div>
-                        <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="BrandId" groupid="SalesContractsForm" argumentid="SalesBrandId" placeholder="Brand" loadon="FirstVisible" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+                        <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="SLBrandId" groupid="SalesContractsForm" argumentid="SalesBrandId" placeholder="Brand" loadon="FirstVisible" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                             <option value="" selected="selected">Select Brand</option>
                             <%--SalesModelId--%>
                         </select>
-                        <label for="BrandId" class="CommonDD">Brand</label>
+                        <label for="SLBrandId" class="CommonDD">Brand</label>
                     </div>
                 </div>
 

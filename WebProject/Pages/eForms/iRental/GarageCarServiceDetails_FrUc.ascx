@@ -89,9 +89,9 @@
       <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
       <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
         <div class="form-floating">
-          <input type="text" class="form-control-plaintext fw-bold text" id="Brand" placeholder="Brand" 
+          <input type="text" class="form-control-plaintext fw-bold text" id="GRGBrand" placeholder="Brand" 
                  style="text-align: center;" readonly groupid="GarageCarServiceDetails" argumentid="Brand">
-          <label for="Brand">Brand</label>
+          <label for="GRGBrand">Brand</label>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
