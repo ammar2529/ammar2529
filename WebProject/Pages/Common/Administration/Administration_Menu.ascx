@@ -1,5 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Administration_Menu.ascx.cs" Inherits="WebProject.Pages.Common.Administration.Administration_Menu" %>
 
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+          
  <table cellspacing="0" cellpadding="0" width="100%" border="0" style="padding-left: 5px;
         padding-right: 5px; padding-bottom: 0px; padding-top: 0px;">
             <tr> <td>
@@ -10,10 +20,7 @@
             <td style="padding-top:5px">
         
               <div id="SitePageMenu" class="SitePageMenu" style="margin-top: 10px;">
-                            <%--          <a class="SitePageMenuLinkBorder SitePageMenuLink" href="javascript:void(0);" style="border-color: rgb(139, 177, 222);" showwidget="{widgetId:'frmMyProfile',parentId:'conAdministration_Controls'}" >
-                                        <b class="SitePageMenuLabel">MY PROFILE</b><span >View / Update Profile</span></a> 
-                                        <a class="SitePageMenuLinkBorder SitePageMenuLink" href="javascript:void(0);" style="border-color: rgb(139, 177, 222);" showwidget="{widgetId:'frmMyProfile',parentId:'conAdministration_Controls'}" >
-                                        <b class="SitePageMenuLabel">PROXY ACCESS</b><span >Provide Proxy Access for Your Account to Other Users</span></a>--%>
+
 
                                                      <span id="Span1" class="SitePageMenuLinkBorder" href="javascript:void(0);" style="border-color:rgb(139, 177, 222); ; height:auto;" >
                                         <b class="SitePageMenuLabel" style="color: #0F99CA; display: block; font-size: 10px;">USER ADMINISTRATION</b>
@@ -29,12 +36,10 @@
                                         <li> <a class="SitePageMenuLink" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Organization Setup</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdUserManagement',parentId:'conAdministration_Controls'}" href="javascript:void(0);">User Management</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Menu Configuration</a></li>
-<%--                                        <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Ammar Menu Configuration</a></li>--%>
 
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}" href="javascript:void(0);">Role Management</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdListofValues',parentId:'conAdministration_Controls'}" href="javascript:void(0);">List of Values</a></li>
                                         <li><a class="SitePageMenuLink" showwidget="{widgetId:'grdKPI',parentId:'conAdministration_Controls'}" href="javascript:void(0);">KPI Setup</a></li>
-                                        <%--<li><b style="color: #0F99CA; display: block; font-size: 11px;">Rental Contracts</b></li>--%>
                                         </ul>
                                         </span> 
 
@@ -65,3 +70,5 @@
             </td>
             </tr>
     </table>
+      </div>
+    </div>

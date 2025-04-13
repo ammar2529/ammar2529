@@ -590,6 +590,7 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\spinner.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_ara.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_eng.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\testCSS.css" />
@@ -1522,6 +1523,7 @@
     <Content Include="SaveLineOfItems.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="AsyncWidgets\Scripts\spinner.js" />
     <Content Include="Scripts\eForms\iRental\frmCustomerRentalContracts.js" />
     <Content Include="Scripts\eForms\iRental\frmCarServiceDetails.js" />
     <Content Include="Scripts\eForms\iRental\frmInvoicePaymentDetails.js" />

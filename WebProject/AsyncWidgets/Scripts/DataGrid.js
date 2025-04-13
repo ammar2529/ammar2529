@@ -145,11 +145,13 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 t.fireEvent('beforeRowDelete', { cf: cf, flags: flags });
                 if (!flags.queryDelete) return; 0
                 var ServiceInfo = getForm(null, null, Ext.apply(cf, { RowsToDelete: rowsToDelete })); // "<root>" + $("<dummyform></dummyform>") + "</root>";
-                t.$el.mask('Please wait while loading ...');
+                // t.$el.mask('Please wait while loading ...');
+                showOverlay(); 
                 var inv = new AsyncWidgets.RAInvoker();
                 inv.on('onSuccess', function (res) {
                     t.fireEvent('afterRowDelete', { res: res });
-                    t.$el.unmask();
+                    // t.$el.unmask();
+                    hideOverlay();
                     var res = decJSON(res);
                     if (res.status == 'OK') {
                         params = res.Response.split('||');
@@ -168,7 +170,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 });
                 inv.on('onFailure', function (res) {
-                    t.$el.unmask();
+                    //t.$el.unmask();
+                     hideOverlay();
                 });
                 inv.invokeRA({ params: ["ActorId", cf.ActorId, "ActionId", cf.ActionId, "ServiceInfo", ServiceInfo] });
             }
@@ -1212,11 +1215,13 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                         return false;
                     });
                     t.bindEvents();
-                    $(t.el).unmask();
+                    //$(t.el).unmask();
+                     hideOverlay();
                 }
                 return;
             }
-            $(t.el).unmask();
+            // $(t.el).unmask();
+             hideOverlay();
         }
 
 
@@ -1228,9 +1233,11 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
         inv.on('onFailure', function (res) {
 
-            $(t.el).unmask();
+            //  $(t.el).unmask();
+            showOverlay()
         });
-        $(t.el).mask('Please wait while loading ...');
+        // $(t.el).mask('Please wait while loading ...');
+        showOverlay();
         inv.invokeRA({
             params: ["ActorId", "DataHelper", "ActionId", "Search", "ServiceInfo",
                 ServiceInfo]
@@ -1461,10 +1468,12 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
             }
 
-            $(t.el).unmask();
+            //$(t.el).unmask();
+             hideOverlay();
         });
         inv.on('onFailure', function (res) {
-            $(t.el).unmask();
+            // $(t.el).unmask();
+            hideOverlay();
             alert('Problem occured while connection to web server');
         });
         if (!!cf.ColumnParams) {
@@ -1480,7 +1489,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         //  Ext.apply(params, t.WCF.DataActionParams);
         //  t.fireEvent('beforeDataAction', params);
         //;
-        $(t.el).mask('Please wait while loading ...');
+        // $(t.el).mask('Please wait while loading ...');
+        showOverlay();
         //ServiceInfo = getForm(t.el, cf.GroupId || null, params, null, null, { filter: cf.filter });
         ServiceInfo = getForm(null, null, params);
         inv.invokeRA({
@@ -1790,7 +1800,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             /******************************************end: on hide handler**************************************************************/
             //Grid EditForm
             if (!!wFrm) {
-                $(t.el).mask(MSGWAIT);
+                //$(t.el).mask(MSGWAIT);
+                showOverlay();
                 wFrm.on('hide', onHide);
                 t.hide();
                 wFrm.setParams({ reset: true });
@@ -1816,7 +1827,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                             wFrm.fireEvent('onLoadedValues', { res: res });
                         }
                     }
-                    $(t.el).unmask();
+                    // $(t.el).unmask();
+                    hideOverlay();
                 });
                 inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "GetData", "ServiceInfo", SInfo] });
             }

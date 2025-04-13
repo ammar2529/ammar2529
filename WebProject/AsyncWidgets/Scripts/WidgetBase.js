@@ -305,72 +305,108 @@ Ext.apply(AsyncWidgets, {
 
 //*************************************JQuery Mask Plugin********************************************//
 
-(function ($) {
-    $.fn.mask = function (message, delay) {
-        return this.each(function () {
-            debugger
-            var $element = $(this);
-            $element.data("maskCount", ($element.data("maskCount") || 0) + 1);
 
-            if (delay) {
-                var timeout = setTimeout(() => maskElement($element, message), delay);
-                $element.data("_mask_timeout", timeout);
-            } else {
-                maskElement($element, message);
-            }
-        });
-    };
+//(function ($) {
+//    $.fn.mask = function (options) {
+//        var settings = $.extend({
+//            message: null, // Optional message to display
+//            delay: 0 // Optional delay in milliseconds
+//        }, options);
 
-    $.fn.unmask = function () {
-        return this.each(function () {
-            var $element = $(this);
-            var maskCount = $element.data("maskCount") || 0;
-            $element.data("maskCount", Math.max(0, maskCount - 1));
+//        return this.each(function () {
+//            var $element = $(this);
+//            // Increment mask count
+//            $element.data("maskCount", ($element.data("maskCount") || 0) + 1);
 
-            if ($element.data("maskCount") > 0) return;
-            unmaskElement($element);
-        });
-    };
+//            // Handle delay
+//            if (settings.delay) {
+//                var timeout = setTimeout(function () {
+//                    applyMask($element, settings.message);
+//                }, settings.delay);
+//                $element.data("_mask_timeout", timeout);
+//            } else {
+//                applyMask($element, settings.message);
+//            }
+//        });
+//    };
 
-    $.fn.isMasked = function () {
-        return this.hasClass("masked");
-    };
+//    $.fn.unmask = function () {
+//        return this.each(function () {
+//            var $element = $(this);
+//            var maskCount = $element.data("maskCount") || 0;
+//            $element.data("maskCount", Math.max(0, maskCount - 1));
 
-    function maskElement($element, message) {
-        clearTimeout($element.data("_mask_timeout"));
-        $element.removeData("_mask_timeout");
+//            // Only unmask if no masks remain
+//            if ($element.data("maskCount") === 0) {
+//                removeMask($element);
+//            }
+//        });
+//    };
 
-        if ($element.isMasked()) unmaskElement($element);
+//    $.fn.isMasked = function () {
+//        return this.hasClass("bs-masked");
+//    };
 
-        $element.css("position") === "static" && $element.addClass("masked-relative");
-        $element.addClass("masked");
+//    function applyMask($element, message) {
+//        // Clear any existing timeout
+//        clearTimeout($element.data("_mask_timeout"));
+//        $element.removeData("_mask_timeout");
 
-        var $overlay = $('<div class="loadmask-overlay"></div>').appendTo($element).fadeIn();
-        var $mask = $('<div class="loadmask"></div>').appendTo($element).show();
+//        // Remove existing mask if present
+//        if ($element.isMasked()) {
+//            removeMask($element);
+//        }
 
-        if (message) {
-            var $msgBox = $('<div class="loadmask-msg spinner-border text-warning" role="status"></div></div>');
-            $msgBox.find('.msgcon').text(message);
-            $element.append($msgBox);
-            centerMessage($msgBox, $element);
-            $msgBox.show();
-        }
-    }
+//        // Add relative positioning if needed
+//        if ($element.css("position") === "static") {
+//            $element.addClass("bs-masked-relative");
+//        }
+//        $element.addClass("bs-masked");
 
-    function unmaskElement($element) {
-        clearTimeout($element.data("_mask_timeout"));
-        $element.removeData("_mask_timeout");
-        $element.find(".loadmask-overlay, .loadmask, .loadmask-msg").fadeOut(() => $(this).remove());
-        $element.removeClass("masked masked-relative");
-    }
+//        // Create overlay
+//        var $overlay = $('<div class="bs-mask-overlay"></div>')
+//            .css({
+//                position: "absolute",
+//                top: 0,
+//                left: 0,
+//                width: "100%",
+//                height: "100%",
+//                background: "rgba(0, 0, 0, 0.5)",
+//                zIndex: 1050,
+//                display: "flex",
+//                justifyContent: "center",
+//                alignItems: "center"
+//            })
+//            .appendTo($element)
+//            .fadeIn("fast");
 
-    function centerMessage($msgBox, $element) {
-        $msgBox.css({
-            "top": Math.round($element.height() / 2 - $msgBox.outerHeight() / 2) + "px",
-            "left": Math.round($element.width() / 2 - $msgBox.outerWidth() / 2) + "px"
-        });
-    }
-})(jQuery);
+//        // Add Bootstrap 5.3 spinner
+//        var $spinner = $('<div class="spinner-border text-light" role="status"><span class="visually-hidden">Loading...</span></div>')
+//            .appendTo($overlay);
+
+//        // Add message if provided
+//        if (message) {
+//            var $msg = $('<span class="bs-mask-message text-light ms-2"></span>')
+//                .text(message)
+//                .appendTo($overlay);
+//        }
+//    }
+
+//    function removeMask($element) {
+//        // Clear timeout
+//        clearTimeout($element.data("_mask_timeout"));
+//        $element.removeData("_mask_timeout");
+
+//        // Fade out and remove overlay and its contents
+//        $element.find(".bs-mask-overlay").fadeOut("fast", function () {
+//            $(this).remove();
+//        });
+
+//        // Remove classes
+//        $element.removeClass("bs-masked bs-masked-relative");
+//    }
+//})(jQuery);
+
 //(function (a) {
 //    var _nm="";
 //    a.fn.mask = function (c, b,nm) {
@@ -745,6 +781,7 @@ AsyncWidgets.WidgetManager = function () {
     var me = this, containers = {};
     return {
         init: function () {
+            
             this.bind($('[showwidget]'));
             return me;
         },
@@ -927,8 +964,8 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
                 $(this.el).append($('<div id="EmptyHeightdiv" style="height:' + $(this.el).attr('EmptyHeight') + ';"></div>'))
             }
         }
-        $(this.el).mask('Please wait while loading ... ');
-
+       // $(this.el).mask('Please wait while loading ... ');
+        showOverlay(); 
         this.callWS(this.State.FacadePath + "/" + facade,
             ['Controller', this.State.Controller,
             'WidgetState', encJSON(this.State).replace(/"/g, '\\\"')
@@ -944,10 +981,12 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
             $('#EmptyHeightdiv', this.el).remove();
             this.el.innerHTML = response.WidgetHTML;
         }
-        $(this.el).unmask();
+        // $(this.el).unmask();
+         hideOverlay();
     },
     RAFailure: function (response) {
-        $(this.el).unmask();
+        // $(this.el).unmask();
+        hideOverlay();
     },
     loadJSFile: function () {
 
@@ -967,7 +1006,8 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
     },
     loadHtml: function () {//widget baseclass
         var t = this, st = t.State;
-        $('body').mask(Msgs.PleaseWait[_Lang]);
+        //$('body').mask(Msgs.PleaseWait[_Lang]);
+        showOverlay();
         
         //t.$el.mask('Please wait while loading ... ');
         //        for (var i = 0; i < 500000; i++) {
@@ -985,10 +1025,13 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
                 if (!!t.setTemplates)
                     t.setTemplates();
                 t.fireEvent('HTMLLoaded');
-                $('body').unmask();
+                // $('body').unmask();
+             hideOverlay();
                 //t.HtmlLoaded = true;
             }, function (res) {
-                $('body').unmask();
+                //  $('body').unmask();
+
+                hideOverlay();
             });
 
     },
@@ -1311,7 +1354,8 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
                     click(function () { t.RScroll(t) });
         // $(window).resize(function () { t.resized(t) }); //t.tabResized)
         // t.setSize.defer(250, t);
-        $('body').mask('Please wait ...');
+        // $('body').mask('Please wait ...');
+        showOverlay();
         (function () { t.resized(t); }).defer(1000);
         t.built = true;
     },
@@ -1325,7 +1369,8 @@ AsyncWidgets.Widgets.TabPanel = Ext.extend(Ext.util.Observable, {
         t.tabWrap.css('width', t.$el.width() - 2)
         t.tabEl.css({ height: t.$el.parent().height() });
         t.pnlBody.css({ height: t.$el.parent().height() - t.tabBar.height() - 5 });
-        $('body').unmask();
+        // $('body').unmask();
+        hideOverlay();
 
     },
     setSize: function () {
@@ -1920,12 +1965,14 @@ var setField = function (ctl, param, ctx)
             arguments.callee.defer(1000, this, Array.prototype.slice.call(arguments));
             if (!ctl.masked) {
                 ctl.masked = true;
-                $(ctx).mask('Please wait while loading ...');
+                // $(ctx).mask('Please wait while loading ...');
+                showOverlay(); 
             }
             return;
         }
         if (!!ctl.masked) {
-            $(ctx).unmask();
+            //$(ctx).unmask();
+            hideOverlay();
             ctl.masked = false;
         }
         let valType = $(ctl).attr("valtype") || "value";
@@ -2403,16 +2450,19 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
 
                     me.showErr(t, msgfnd[_Lang], msgfnd.color);
                 }
-                $(ctx).unmask();
+                //  $(ctx).unmask();
+                 hideOverlay();
 
             });
             inv.on('onFailure', function (res) {
 
-                $(ctx).unmask();
+                //$(ctx).unmask();
+                hideOverlay();
                 me.showErr(t, 'Unable to execute webservice');
 
             });
-            $(ctx).mask('Please wait while loading ... ');
+            // $(ctx).mask('Please wait while loading ... ');
+            showOverlay(); 
             var vls = { 'uniquekeys': t.attr('argumentid') };
             vls[t.attr('argumentid')] = t.val();
 
@@ -2592,11 +2642,15 @@ AsyncWidgets.Widgets.ItemRepeater = Ext.extend(AsyncWidgets.widgetContainer, {
         else {
             ServiceInfo = getForm(null, null, t1); // "<root>" + $("<dummyform></dummyform>") + "</root>";
         }
-        t.$el.mask('Please wait while loading ...');
+        // t.$el.mask('Please wait while loading ...');
+        showOverlay(); 
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) { //repeater widget;
             var Res = decJSON(res);
-            if (Res.status != "OK") { t.$el.unmask(); alert(Res.detail.message + "\t\n" + Res.detail.stackTrace); return; }
+            if (Res.status != "OK") { //t.$el.unmask(); 
+                 hideOverlay();
+                alert(Res.detail.message + "\t\n" + Res.detail.stackTrace); return;
+            }
             var rc = t.RowClose,
                 ro = t.RowOpen,
                 lastRow = (PgSz * pgCols),
@@ -2740,10 +2794,12 @@ AsyncWidgets.Widgets.ItemRepeater = Ext.extend(AsyncWidgets.widgetContainer, {
                 $('.whendata', t.GridHTML).css('display', 'none');
                 $('.whennodata', t.GridHTML).css('display', '');
             }
-            t.$el.unmask();
+            //t.$el.unmask();
+            hideOverlay();
         });
         inv.on('onFailure', function (res) {
-            t.$el.unmask();
+            // t.$el.unmask();
+            hideOverlay();
             //;
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "Search", "ServiceInfo",

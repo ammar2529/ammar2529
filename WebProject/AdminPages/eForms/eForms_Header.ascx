@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="eForms_Header.ascx.cs" Inherits="WebProject.AdminPages.eForms.eForms_Header" %>
 <asp:Literal ID="MenuData" runat="server">
 </asp:Literal>
-
 <style>
     /* First Navbar (Existing) */
     .navbar {
@@ -175,8 +174,8 @@
 
     <!-- Second Navbar -->
     <nav class="secondary-navbar disabled" id="secondaryNavbar">
-        <a class="nav-icon settings-icon" title="Settings"><i class="fas fa-cog" displayroles="Show_Administration" showwidget="conAdministration"></i></a>
-        <a class="nav-icon crystal-report-icon" title="Crystal Reports"><i class="fas fa-file-alt" displayroles="Show_iDashboard" showwidget="frmiDashboard" ></i></a>
+        <a class="nav-icon settings-icon" title="Settings"><i class="fas fa-cog" showwidget="conAdministration" displayroles="Show_Administration"></i></a>
+        <a class="nav-icon crystal-report-icon" title="Crystal Reports"><i class="fas fa-file-alt" showwidget="frmiDashboard" displayroles="Show_iDashboard"></i></a>
     </nav>
 </div>
 
@@ -243,9 +242,8 @@
         AsyncWidgets.WidgetManager.bind($('#menuContainer [showwidget]'));
 
         // Control second navbar visibility and state
-        var secondaryNavbar = $('#secondaryNavbar');
+        var secondaryNavbar = document.getElementById('secondaryNavbar');
 
-  
 
         // Settings icon click handler (example)
         $('.settings-icon').click(function () {
@@ -278,15 +276,16 @@
         });
 
         if (userName) {
-            
             var a = $('#menuContainer');
             $('.UserName', a).text(userName);
             $('.UserName', a).css('text-decoration', 'none');
+            if (userName == 'Asif Mirza') {
+                secondaryNavbar.classList.remove('disabled');
+                secondaryNavbar.classList.add('enabled');
+            } else {
+                secondaryNavbar.style.display = 'none'; // Explicitly hide
 
-            $('#secondaryNavbar').removeClass('disabled').addClass('enabled');
-        }
-        else {
-            $('#secondaryNavbar').hide(); // Hide element       
+            }
         }
     });
 </script>

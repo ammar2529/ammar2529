@@ -370,6 +370,8 @@ function getViewportSize() {
     }
 }
 
+
+
 // Example usage
 //var username = getCookie('username');
 //console.log(username); // Outputs the value of 'username' cookie

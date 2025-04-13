@@ -1,8 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BudastoorLogin.aspx.cs" Inherits="WebProject.BudastoorLogin" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head runat="server">
     <title>Login Page</title>
     <script language='javascript' type='text/javascript' > ROOT_PATH = ''; BASE_PATH = "";</script>
@@ -71,7 +70,7 @@
 <body>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Login</h5>
+<%--            <h5 class="card-title">Login</h5>
             <div class="form-floating mb-3">
                 <input id="UserName" type="text" class="form-control required" argumentid="UserName" groupid="UserLogin" value="" placeholder="Enter User ID" />
                 <label for="UserName">User ID</label>
@@ -84,9 +83,39 @@
 
             <div class="alert alert-light mt-3" role="alert" style="display:none">
                 Log Out SuccessFully!
+            </div>--%>
+             <h5 class="card-title text-center mb-3">Login</h5>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <input id="UserName" type="text" class="form-control required" placeholder="Enter User ID" argumentid="UserName" groupid="UserLogin">
+                            <label for="UserName">User ID</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control required" id="UserPassword" placeholder="Enter Password" argumentid="UserPassword" groupid="UserLogin">
+                            <label for="UserPassword">Password</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 text-center">
+                        <button type="button" class="btn btn-primary w-100 btnLogin" conf="{ActorId:'Authentication', ActionId:'AuthenticateUser', Action:'login'}">Login</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-light mt-3 text-center" role="alert" style="display:none">
+                Log Out SuccessFully!
             </div>
         </div>
     </div>
+
+       
+
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script>
     <script src="../../AsyncWidgets/Scripts/AsyncWidgets.js"></script>
     <script src="../../AsyncWidgets/Scripts/Custom-Ext.js"></script>

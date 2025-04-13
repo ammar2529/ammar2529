@@ -1,6 +1,84 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyProfile_FrUc.ascx.cs" Inherits="WebProject.Pages.Common.Administration.MyProfile_FrUc" %>
 
-<div style="text-align: center; margin: 0; background: #EEEEFF; padding: 10px;">
+<div class="profile-form">
+    <form id="frmMyProfile" class="w-form">
+        <!-- Hidden UserId -->
+        <div style="display: none;">
+            <span groupid="MyProfile" argumentid="UserId"></span>
+        </div>
+
+        <!-- Name -->
+        <div class="form-floating">
+            <input type="text" class="form-control-plaintext name" id="name" groupid="MyProfile" argumentid="Name" readonly>
+            <label for="name">Name</label>
+        </div>
+
+        <!-- Organization -->
+        <div class="form-floating">
+            <input type="text" class="form-control-plaintext" id="organization" groupid="MyProfile" argumentid="Organization" readonly>
+            <label for="organization">Organization</label>
+        </div>
+
+        <!-- Department -->
+        <div class="form-floating">
+            <input type="text" class="form-control-plaintext" id="department" groupid="MyProfile" argumentid="Department" readonly>
+            <label for="department">Department</label>
+        </div>
+
+        <!-- Email -->
+        <div class="form-floating">
+            <input type="text" class="form-control-plaintext" id="email" groupid="MyProfile" argumentid="Email" readonly>
+            <label for="email">Email</label>
+        </div>
+
+        <!-- Helpdesk Note -->
+        <div class="helpdesk-note">
+            <i>Please contact helpdesk or systems administrator to change above details if incorrect...</i>
+        </div>
+
+        <!-- Payroll Information -->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label form-label">Home - Payroll Information:</label>
+            <div class="col-sm-9">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ShowEmpInfo" id="showEmpInfoHide" value="0" checked="checked" groupid="MyProfile" argumentid="ShowEmpInfo">
+                    <label class="form-check-label" for="showEmpInfoHide">Hide</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ShowEmpInfo" id="showEmpInfoShow" value="1" groupid="MyProfile" argumentid="ShowEmpInfo">
+                    <label class="form-check-label" for="showEmpInfoShow">Show</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Notification -->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label form-label">Email Notification:</label>
+            <div class="col-sm-9">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="EmailNotification" id="emailNotificationEnable" value="1" checked="checked" groupid="MyProfile" argumentid="EmailNotification">
+                    <label class="form-check-label" for="emailNotificationEnable">Enable</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="EmailNotification" id="emailNotificationDisable" value="0" groupid="MyProfile" argumentid="EmailNotification">
+                    <label class="form-check-label" for="emailNotificationDisable">Disable</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Button -->
+        <div class="form-group row">
+            <div class="col-sm-12 text-center">
+<%--                <input type="button" value="Update" class="DataAction ButtonStyle btn btn-primary" conf="{ActorId:'DataHelper',ActionId:'DataAction',HideOnSuccess:false,Command:'FX_UPD_Users_MyProfile'}" />--%>
+                <button type="button" class="DataAction  btn btn-primary" conf="{ActorId:'DataHelper',ActionId:'DataAction',HideOnSuccess:false,Command:'FX_UPD_Users_MyProfile'}">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<%--<div style="text-align: center; margin: 0; background: #EEEEFF; padding: 10px;">
     <center>
         <table cellspacing="2" style="width: 100%" class="w-form-table">
             <tbody>
@@ -85,4 +163,4 @@
             </tbody>
         </table>
     </center>
-</div>
+</div>--%>

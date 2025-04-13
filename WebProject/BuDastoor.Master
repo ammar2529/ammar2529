@@ -16,6 +16,8 @@
     <script src="../Scripts/jquery-3.4.1.js"></script>
     <script language='javascript' type='text/javascript'> ROOT_PATH = ''; BASE_PATH = "";</script>
     <link href="App_Themes/eForms_Theme/StyleSheets/bootstrap.min.css" rel="stylesheet" />
+    <link href="App_Themes/eForms_Theme/StyleSheets/spinner.css" rel="stylesheet" />
+    <link href="App_Themes/eForms_Theme/fontawsome/all.css" rel="stylesheet" />
 
     <script src="AsyncWidgets/Scripts/jQueryUI/jquery-ui.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/Custom-Ext.js" type="text/javascript"></script>
@@ -25,7 +27,8 @@
     <script src="AsyncWidgets/Scripts/WidgetBase.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/DataGrid.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/FormWidget.js"></script>
-    <link href="App_Themes/eForms_Theme/fontawsome/all.css" rel="stylesheet" />
+    <script src="AsyncWidgets/Scripts/spinner.js"></script>
+
     <script src="Scripts/eForms/iRental/Searchcollapsible.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
 
@@ -174,10 +177,55 @@
                 padding: 1rem;
             }
         }
+
+/*        .bs-masked {
+            overflow: hidden;
+        }
+        .bs-masked-relative {
+            position: relative;
+        }
+        .bs-mask-overlay {
+            display: none;
+        }
+        .test-container {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+            padding: 20px;
+        }
+  */
+
     </style>
 </head>
 
 <body id="mainPageBody">
+
+        <!-- Navbar with Sidebar Toggle Button -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+                Open Sidebar
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar Offcanvas -->
+    <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">Admin Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li><a href="#" class="text-light">My Profile</a></li>
+                <li><a href="#" class="text-light">User Management</a></li>
+                <li><a href="#" class="text-light">Role Management</a></li>
+                <li><a href="#" class="text-light">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="page-wrapper">
         <form id="frmMain" runat="server">
             <div id="MainContainer">
@@ -213,6 +261,14 @@
         </form>
     </div>
 
+
+    <!-- Overlay with Spinner and Text -->
+    <div class="overlay" id="loadingOverlay" style="display:none">
+        <div class="spinner-container">
+            <div class="sleek-spinner"></div>
+            <div class="overlay-text">Please wait, loading your content...</div>
+        </div>
+    </div>
     <script type="text/javascript">
         $().ready(function () {
             $('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);
@@ -226,8 +282,11 @@
                     $(this).siblings('label').removeClass('invalid');
                 }
             });
+
+
         });
     </script>
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

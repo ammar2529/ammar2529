@@ -1,0 +1,57 @@
+﻿.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1050;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px); /* Subtle blur for elegance */
+}
+
+/* Spinner Container */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.1); /* Subtle background for contrast */
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Sleek Spinner */
+.sleek-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid transparent;
+    border-top: 4px solid #0d6efd; /* Bootstrap primary color */
+    border-right: 4px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; /* Smooth, elastic spin */
+}
+
+/* Text Styling */
+.overlay-text {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif; /* Clean font */
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -530,7 +530,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.fireEvent('beforeComboFill', args);
         var ServiceInfo = getForm(null, null, sInfo);
         ch.attr("ccloading", "Loading");
-        t.$el.mask('Please wait while loading ... ');
+        //t.$el.mask('Please wait while loading ... ');
+        showOverlay() ;
         
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "ChildComboRows", "ServiceInfo", ServiceInfo] });
 
@@ -756,14 +757,18 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     t.data = r;
                     fillData();
                 }
-                t.$el.unmask();
+                //  t.$el.unmask();
+                 t.hideOverlay();
             });
 
             inv.on('onFailure', function (res) {
-                t.$el.unmask();
+                //  t.$el.unmask();
+                t.hideOverlay();
+              
 
             });
-            t.$el.mask('Please wait while loading ...');
+            // t.$el.mask('Please wait while loading ...');
+            t.showOverlay();
             var t1 = { DALInfo: this.State.DALInfo, PageNo: nPageNo, PageSize: t.PageSize },
                 ServiceInfo = getForm(t.SF.el, null, t1);
             inv.invokeRA({
@@ -1055,7 +1060,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
         var t = this, st = t.State, ServiceInfo;
         cf = cf || {};
-        $(t.el).mask(MSGWAIT);
+        //$(t.el).mask(MSGWAIT);
+        showOverlay();
         Ext.applyIf(cf, { Command: st.DALInfo, GroupId: null, ActorId: 'DataHelper', ActionId: 'Search', readFormValues: true, Params: {} });
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
@@ -1075,11 +1081,13 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             if (!!success) {
                 success(res);
             }
-            $(t.el).unmask();
+            // $(t.el).unmask();
+            hideOverlay();
         });
 
         inv.on('onFailure', function (res) {
-            $(t.el).unmask();
+            //  $(t.el).unmask();
+             hideOverlay();
             alert('Problem occured while connection to web server');
         });
         t.fireEvent('beforeLoadedValues', { cf: cf });
