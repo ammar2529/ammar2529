@@ -274,10 +274,12 @@
         $().ready(function () {
             $('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);
 
-            $('.form-floating .form-control[required]').on('blur', function () {
-                var value = $(this).val().trim(); // Remove extra spaces
+            $('.form-floating .form-control').on('blur', function () {
                 debugger
-                if (!value) {
+                var isRequired = $(this).attr('required'); // Check if input has 'required' attribute
+                var value = $(this).val().trim(); // Remove extra spaces
+
+                if (isRequired && !value) { // Apply validation only if 'required' exists
                     $(this).addClass('invalid');
                     $(this).siblings('label').addClass('invalid');
                 } else {
@@ -287,7 +289,7 @@
             });
 
             // Remove error styling when user focuses on the input
-            $('.form-floating .form-control[required]').on('focus', function () {
+            $('.form-floating .form-control').on('focus', function () {
                 $(this).removeClass('invalid');
                 $(this).siblings('label').removeClass('invalid');
             });

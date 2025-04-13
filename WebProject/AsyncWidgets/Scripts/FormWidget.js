@@ -152,7 +152,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
                     // $('body').css('overflow', 'clip');
                     popup.hide();
-                    $(t.el).unmask();
+                    // $(t.el).unmask();
+                    hideOverlay();
                     // $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
 
                     t.fireEvent('LOVPopupClosed', { popupId: popId });
@@ -186,9 +187,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
             }
             // $('body').css('overflow', 'clip');
-            $(t.el).mask("");
-            $('.loadmask-msg', t.el).hide();
-
+           // $(t.el).mask("");
+            //$('.loadmask-msg', t.el).hide();
+            hideOverlay();
             t.fireEvent('LOVPopupShown', popup);
             popup[0].init = true;
         }
@@ -517,7 +518,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             ch.removeAttr("ccloading");
             ch.attr("loaded", "true");
             t.fireEvent('onComboFilled', { combo: ch, Response: res, valueToSet: vl });
-            t.$el.unmask();
+            // t.$el.unmask();
+            hideOverlay();
         });
         inv.on('onFailure', function (res) {
             // t.$el.unmask();
@@ -752,7 +754,11 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             var inv = new AsyncWidgets.RAInvoker();
             inv.on('onSuccess', function (res) {
                 var Res = decJSON(res);
-                if (Res.status != "OK") { t.$el.unmask(); alert(Res.detail.message + "\t\n" + Res.detail.stackTrace); return; }
+                if (Res.status != "OK") {
+                    //t.$el.unmask();
+                    hideOverlay();
+                    alert(Res.detail.message + "\t\n" + Res.detail.stackTrace); return;
+                }
                 var r = Res.Response;
                 if (r.Rows.length > 0) {
                     $("#Count", t.el).html(r.Count);
@@ -969,10 +975,12 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
             }
 
-            $(t.el).unmask();
+            // $(t.el).unmask();
+            hideOverlay();
         });
         inv.on('onFailure', function (res) {
-            $(t.el).unmask();
+            //  $(t.el).unmask();
+            hideOverlay();
             alert('Problem occured while connecting to web server');
         });
 
@@ -988,7 +996,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
         t.fireEvent('beforeDataAction', params);
         if (params.cancel) return;
-        t.$el.mask('Please wait while loading ...');
+        // t.$el.mask('Please wait while loading ...');
+        showOverlay();
 
         ServiceInfo = getForm(t.el, cf.GroupId || null, params, null, null, { filter: cf.filter });
         inv.invokeRA({
@@ -1021,7 +1030,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
     },
     show: function () {//form widget
-       // debugger;
+        debugger;
         var t = this, st = t.State;
         var onLoad = function () {
             t.removeListener("onLoad", onLoad);
