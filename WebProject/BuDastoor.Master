@@ -276,7 +276,7 @@
 
             $('.form-floating .form-control').on('blur', function () {
                 debugger
-                var isRequired = $(this).attr('required'); // Check if input has 'required' attribute
+                var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
                 var value = $(this).val().trim(); // Remove extra spaces
 
                 if (isRequired && !value) { // Apply validation only if 'required' exists
