@@ -116,7 +116,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     popup.hide();
                     args.popupId = popId;
                     t.fireEvent('LOVPopupClosed', args);
-                    $(t.el).unmask();
+                    //$(t.el).unmask();
+                    hideOverlay(); 
                     //resGrd.removeListener('rowClicked', HandleRowClick);
                 });
 
@@ -158,8 +159,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 });
                 popup[0].init = true;
             }
-            $(t.el).mask("");
-            $('.loadmask-msg', t.el).hide();
+            //$(t.el).mask("");
+             showOverlay();
+           // $('.loadmask-msg', t.el).hide();
             searchForm.show();
             resGrd.show();
             $('.OnPopupShowFocus', searchForm.el).focus();
@@ -518,7 +520,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             t.$el.unmask();
         });
         inv.on('onFailure', function (res) {
-            t.$el.unmask();
+            // t.$el.unmask();
+            hideOverlay(); 
             ch.removeAttr("ccloading", "");
         });
         ch[0].disabled = true;

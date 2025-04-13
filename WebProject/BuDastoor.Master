@@ -274,14 +274,22 @@
         $().ready(function () {
             $('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);
 
-            $('.form-floating .form-control').on('blur', function () {
-                if (!$(this).val()) {
+            $('.form-floating .form-control[required]').on('blur', function () {
+                var value = $(this).val().trim(); // Remove extra spaces
+                debugger
+                if (!value) {
                     $(this).addClass('invalid');
                     $(this).siblings('label').addClass('invalid');
                 } else {
                     $(this).removeClass('invalid');
                     $(this).siblings('label').removeClass('invalid');
                 }
+            });
+
+            // Remove error styling when user focuses on the input
+            $('.form-floating .form-control[required]').on('focus', function () {
+                $(this).removeClass('invalid');
+                $(this).siblings('label').removeClass('invalid');
             });
 
 
