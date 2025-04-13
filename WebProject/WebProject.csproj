@@ -590,6 +590,7 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\sidebar.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\spinner.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_ara.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_eng.css" />

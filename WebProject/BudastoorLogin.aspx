@@ -114,6 +114,15 @@
         </div>
     </div>
 
+    <div class="toast position-fixed bottom-0 end-0 m-3" id="errorToast" role="alert" aria-live="polite" aria-atomic="true">
+    <div class="toast-header bg-danger text-white">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Message will be dynamically set -->
+    </div>
+</div>
        
 
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script>
@@ -132,20 +141,46 @@
                             var arRoles = res.Response.Roles.split(',');
 
                             if (arRoles.length) {
-                                for (var i = 0; i < arRoles.length; i++) {
-                                    $('[displayroles*=' + arRoles[i] + ']').show();
-                                }
+                                arRoles.forEach(role => {
+                                    $('[displayroles*=' + role + ']').show();
+                                });
                             }
 
                             AsyncWidgets.user.conf = res.Response.Conf;
                             AsyncWidgets.user.conf2 = res.Response.Name;
-                            /*window.location = "/testDataTable.aspx"*/
-                            window.location = "/BuDastoorHome.aspx"
+                            window.location = "/BuDastoorHome.aspx";
+                        } else {
+                            showToast("Authentication failed! Please check your credentials.");
                         }
+                    } else {
+                        showToast("Server error! Please try again later.");
                     }
                 }, null, "AuthenticateUser", "Authentication");
                 return false;
             });
+            //    ServerCallCtx($("body")[0], null, function (res)
+            //    {
+            //        if (res.status == 'OK') {
+            //            debugger
+            //            if (res.Response.Authenticated) {
+            //                $('.card').hide();
+            //                var arRoles = res.Response.Roles.split(',');
+
+            //                if (arRoles.length) {
+            //                    for (var i = 0; i < arRoles.length; i++) {
+            //                        $('[displayroles*=' + arRoles[i] + ']').show();
+            //                    }
+            //                }
+
+            //                AsyncWidgets.user.conf = res.Response.Conf;
+            //                AsyncWidgets.user.conf2 = res.Response.Name;
+            //                /*window.location = "/testDataTable.aspx"*/
+            //                window.location = "/BuDastoorHome.aspx"
+            //            }
+            //        }
+            //    }, null, "AuthenticateUser", "Authentication");
+            //    return false;
+            //});
 
             function callGetCookie() {
                 if (!window.getCookie) {
@@ -172,6 +207,14 @@
             }
 
             showAlert(); // To show the alert
+
+            // Function to show Bootstrap Toast
+            function showToast(message) {
+                var toastEl = $('#errorToast');
+                toastEl.find('.toast-body').text(message);
+                var toast = new bootstrap.Toast(toastEl[0]);
+                toast.show();
+            }
         });
     </script>
 </body>

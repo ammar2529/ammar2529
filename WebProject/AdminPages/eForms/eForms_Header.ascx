@@ -174,7 +174,7 @@
 
     <!-- Second Navbar -->
     <nav class="secondary-navbar disabled" id="secondaryNavbar">
-        <a class="nav-icon settings-icon" title="Settings"><i class="fas fa-cog" showwidget="conAdministration" displayroles="Show_Administration"></i></a>
+        <a class="nav-icon settings-icon" title="Settings"><i class="fas fa-cog" showwidget="conAdministration" onclick="toggleSidebar()"></i></a>
         <a class="nav-icon crystal-report-icon" title="Crystal Reports"><i class="fas fa-file-alt" showwidget="frmiDashboard" displayroles="Show_iDashboard"></i></a>
     </nav>
 </div>
@@ -249,7 +249,7 @@
         $('.settings-icon').click(function () {
             if (secondaryNavbar.classList.contains('enabled')) {
                 // Add your settings logic here
-                alert('Settings clicked!');
+                //alert('Settings clicked!');
             }
         });
 
@@ -257,7 +257,7 @@
         $('.crystal-report-icon').click(function () {
             if (secondaryNavbar.classList.contains('enabled')) {
                 // Add your Crystal Reports logic here
-                alert('Crystal Reports clicked!');
+                //alert('Crystal Reports clicked!');
             }
         });
 

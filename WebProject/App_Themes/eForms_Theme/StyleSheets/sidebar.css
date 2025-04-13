@@ -1,0 +1,113 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar Container */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: -400px; /* Hidden by default */
+    background-color: #f8f9fa; /* Light background, replace with inbg.gif if needed */
+    transition: left 0.3s ease-in-out;
+    overflow-y: auto;
+    z-index: 5000;
+}
+
+    /* Sidebar when active */
+    .sidebar.active {
+        left: 0;
+    }
+
+/* Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    background-color: #0F99CA;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Menu Styling */
+.site-page-menu {
+    padding: 15px;
+}
+
+.menu-section {
+    margin-bottom: 20px;
+}
+
+.menu-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #0F99CA;
+    text-transform: uppercase;
+    padding: 10px 0;
+    display: block;
+}
+
+    .menu-title.red {
+        color: red;
+    }
+
+.menu-list {
+    list-style-type: disc;
+    padding-left: 30px;
+    margin: 0;
+}
+
+    .menu-list li {
+        margin: 5px 0;
+    }
+
+.menu-link {
+    color: #0F99CA;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .menu-link:hover {
+        color: #005f73;
+    }
+
+    .menu-link.bold {
+        font-weight: bold;
+    }
+
+    .menu-link.red {
+        color: red;
+    }
+
+/* Border Styling for Sections */
+.border-user-admin {
+    border-left: 3px solid rgb(139, 177, 222);
+    padding-left: 10px;
+}
+
+.border-system-admin {
+    border-left: 3px solid #ff004e;
+    padding-left: 10px;
+}
+
+.border-process-admin {
+    border-left: 3px solid rgb(126, 212, 211);
+    padding-left: 10px;
+}
+
+.border-idashboard {
+    border-left: 3px solid rgb(126, 212, 211);
+    padding-left: 10px;
+}
+
+/* Main Content (optional, to prevent overlap) */
+.main-content {
+    margin-left: 50px; /* Space for toggle button */
+    padding: 20px;
+}
