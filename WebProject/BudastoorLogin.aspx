@@ -21,38 +21,52 @@
         }
         /* Default input styles */
         .form-floating .form-control {
-            border: none;
-            border-bottom: 2px solid #6c757d; /* Gray bottom border by default */
-            border-radius: 0;
-            outline: none;
-            box-shadow: none;
-            height: auto; /* Ensure proper height */
+    border: none;
+    border-bottom: 3px solid #d9d9d9;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    height: auto;
+    padding-bottom: 0.1rem;
+    padding-top: 1rem;
+    width: 100%;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif; /* Corrected font-family */
+    padding:2px;
         }
         /* Focus styles */
         .form-floating .form-control:focus {
-            border-bottom: 3px solid #ff6200; /* Orange on focus */
-            outline: none;
-            box-shadow: none;
+        border-bottom: 3px solid rgb(255, 192, 41);
+        outline: none;
+        box-shadow: none;
         }
         /* Filled styles */
-        .form-floating .form-control:not(:placeholder-shown) {
-            border-bottom: 3px solid #ff6200; /* Orange when filled */
-        }
+        /*.form-floating .form-control:not(:placeholder-shown) {
+            border-bottom: 3px solid #ff6200;*/ /* Orange when filled */
+        /*}*/
         /* Placeholder styles - hidden by default */
-        .form-floating .form-control::placeholder {
-            color: transparent; /* Placeholder hidden by default */
-            opacity: 0; /* Extra assurance for cross-browser compatibility */
-        }
+        /*.form-floating .form-control::placeholder {
+            color: transparent;*/ /* Placeholder hidden by default */
+            /*opacity: 0;*/ /* Extra assurance for cross-browser compatibility */
+        /*}*/
         /* Label styles */
         .form-floating label {
-            color: #000; /* Default label color */
-            transition: color 0.2s ease, transform 0.2s ease; /* Smooth transitions */
+    color: #d9d9d9;
+    opacity: 1;
+    transform: translateY(0.8rem);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    padding-left: 1px;
         }
-        /* Label color when focused or filled */
+
         .form-floating .form-control:focus ~ label,
+.form-floating .form-select:focus ~ label {
+    color: rgb(255, 192, 41);
+}
+        /* Label color when focused or filled */
+        /*.form-floating .form-control:focus ~ label,
         .form-floating .form-control:not(:placeholder-shown) ~ label {
-            color: #ff6200; /* Orange when focused or filled */
-        }
+            color: #ff6200;*/ /* Orange when focused or filled */
+        /*}*/
         /* Responsive margin adjustments */
         @media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
             .form-floating {
