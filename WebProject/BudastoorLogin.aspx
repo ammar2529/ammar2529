@@ -91,7 +91,7 @@
                     <div class="col-12">
                         <div class="form-floating mb-3">
                             <input id="UserName" type="text" class="form-control required" placeholder="Enter User ID" argumentid="UserName" groupid="UserLogin">
-                            <label for="UserName">User ID</label>
+                            <label for="UserName">User ID*</label>
                         </div>
                     </div>
                     
@@ -215,6 +215,26 @@
                 var toast = new bootstrap.Toast(toastEl[0]);
                 toast.show();
             }
+
+            $('.form-floating .form-control').on('blur', function () {
+
+                var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
+                var value = $(this).val().trim(); // Remove extra spaces
+
+                if (isRequired && !value) { // Apply validation only if 'required' exists
+                    $(this).addClass('invalid');
+                    $(this).siblings('label').addClass('invalid');
+                } else {
+                    $(this).removeClass('invalid');
+                    $(this).siblings('label').removeClass('invalid');
+                }
+            });
+
+            // Remove error styling when user focuses on the input
+            $('.form-floating .form-control').on('focus', function () {
+                $(this).removeClass('invalid');
+                $(this).siblings('label').removeClass('invalid');
+            });
         });
     </script>
 </body>

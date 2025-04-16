@@ -76,7 +76,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
 
         if (popup.length < 1) {
-            $.showMessage('A LOV popup with id:"' + popId + '" not found!');
+            $(this).showMessage('A LOV popup with id:"' + popId + '" not found!');
             return;
         }
 
@@ -88,13 +88,13 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
             searchForm = AsyncWidgets.get(searchFormId);
             if (!searchForm) {
-                $.showMessage('LOV popup must contain at least a form - "' + popId + '"');
+                $(this).showMessage('LOV popup must contain at least a form - "' + popId + '"');
                 return;
             }
             resGrdId = !!resGrdId ? resGrdId : $('[wtype="DataGrid"]', popup).attr('widgetid');
             resGrd = AsyncWidgets.get(resGrdId);
             if (resGrd.length < 1) {
-                $.showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
+                $(this).showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
                 return;
             }
 
@@ -577,7 +577,16 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.WCF = wc;
 
         if (wc.header.Visible) {//
-            wc.header.template = $('<div class="x-form-container" style="padding:5px;"><center><div class="w-panel-head w-top-corner"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tbody><tr><td><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tbody><tr><td class="w-head-text"></td></tr></tbody></table></td><td style="width: 100%;">&nbsp;</td><td><span class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon" style="">&nbsp;</span></td></tr></tbody></table></div></center></div>').css(wc.ContainerStyle);
+            //  wc.header.template = $('<div class="x-form-container" style="padding:5px;"><center><div class="w-panel-head w-top-corner"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tbody><tr><td><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tbody><tr><td class="w-head-text"></td></tr></tbody></table></td><td style="width: 100%;">&nbsp;</td><td><span class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon" style="">&nbsp;</span></td></tr></tbody></table></div></center></div>').css(wc.ContainerStyle);
+            wc.header.template = $(`<div class="x-form-container container-fluid p-2">
+  <div class="w-panel-head w-top-corner card shadow-sm rounded">
+    <div class="card-header d-flex align-items-center">
+      <span class="w-head-text fw-bold me-2"></span>
+
+    </div>
+  </div>
+</div>`).css(wc.ContainerStyle);
+
             $('.w-head-text', wc.header.template).html(wc.header.HeadText);
             $(t.el).prepend(wc.header.template);
             var frm = $('.x-form-container', t.el).next();
@@ -941,7 +950,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             if (res.status == 'OK') {
                 params = res.Response.split('||');
                 if (params[1] == 'Error') {
-                    $.showMessage(params[2]);
+                    $(this).showMessage(params[2]);
                 }
                 else {
 
@@ -955,8 +964,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     t.setParams({ reset: cf.ResetOnSuccess }); //reset form if specified in button config
 
-                    if (cf.ShowActionMsg) $.showMessage(params[2]);
-
+                    if (cf.ShowActionMsg) {
+                        $(this).showMessage(params[2]);
+                    }
                     if (!!cf.HideOnSuccess) {
                         $('.CloseForm', t.el).trigger('click');
                         //t.hide();
@@ -1030,7 +1040,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
     },
     show: function () {//form widget
-        debugger;
+      
         var t = this, st = t.State;
         var onLoad = function () {
             t.removeListener("onLoad", onLoad);

@@ -13,23 +13,5 @@ namespace WebProject.Pages.Common.Administration.Modules
 
     public partial class Administration
     {
-
-        /// <summary>
-        /// conAdministration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Container conAdministration;
-
-        /// <summary>
-        /// frmUserManagement control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmUserManagement;
     }
 }

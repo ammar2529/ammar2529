@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyProfile_FrUc.ascx.cs" Inherits="WebProject.Pages.Common.Administration.MyProfile_FrUc" %>
 
 <div class="profile-form">
-    <form id="frmMyProfile" class="w-form">
+    <div id="frmMyProfile" class="w-form">
         <!-- Hidden UserId -->
         <div style="display: none;">
             <span groupid="MyProfile" argumentid="UserId"></span>
@@ -73,7 +73,7 @@
                 <button type="button" class="DataAction  btn btn-primary" conf="{ActorId:'DataHelper',ActionId:'DataAction',HideOnSuccess:false,Command:'FX_UPD_Users_MyProfile'}">Update</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 

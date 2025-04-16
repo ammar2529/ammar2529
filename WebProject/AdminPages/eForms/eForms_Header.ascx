@@ -185,7 +185,19 @@
         var menuData = MenuData.Rows;
         var userName = AsyncWidgets.user.name;
         var userId = AsyncWidgets.user.id; // Assuming user.id holds the userid
+        var userRoles = AsyncWidgets.user.conf;
+        var conUserRoles = decJSON(userRoles);
+        var roles = conUserRoles.Roles;
 
+        var rolesArray = roles.split(',').filter(Boolean); // Split & remove empty values
+
+        if (rolesArray.includes("Car_Customer_Details")) {
+            console.log("Role Found: Car_Customer_Details");
+        } else {
+            console.log("Role Not Found");
+        }
+
+        
         // Render dynamic menu for first navbar
         function renderMenu() {
             var menuText = '';

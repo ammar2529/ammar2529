@@ -5,24 +5,201 @@
 
 /* Sidebar Container */
 .sidebar {
-    width: 250px;
+    width: 340px;
     height: 100vh;
     position: fixed;
     top: 60px;
-    left: -400px; /* Hidden by default */
-    background-color: #f8f9fa; /* Light background, replace with inbg.gif if needed */
-    transition: left 0.3s ease-in-out;
+    left: 0; /* Always visible on full screen */
+    background-color: #f8f9fa;
+    transition: width 0.3s ease-in-out;
     overflow-y: auto;
-    z-index: 5000;
+    z-index: 1100;
 }
 
-    /* Sidebar when active */
-    .sidebar.active {
+/* Toggle Button (Inside Sidebar) */
+.toggle-btn {
+    display: none; /* Hidden on full screen */
+    background-color: #0F99CA;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+/* Menu Styling */
+.site-page-menu {
+    padding: 15px;
+}
+
+.menu-section {
+    margin-bottom: 20px;
+}
+
+.menu-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #0F99CA;
+    text-transform: uppercase;
+    padding: 10px 0;
+    display: block;
+}
+
+    .menu-title.red {
+        color: red;
+    }
+
+.menu-list {
+    list-style-type: disc;
+    padding-left: 30px;
+    margin: 0;
+    display: block !important; /* Always visible on full screen */
+}
+
+    .menu-list li {
+        margin: 5px 0;
+    }
+
+.menu-link {
+    color: #0F99CA;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .menu-link:hover {
+        color: #005f73;
+    }
+
+    .menu-link.bold {
+        font-weight: bold;
+    }
+
+    .menu-link.red {
+        color: red;
+    }
+
+/* Border Styling for Sections */
+.border-user-admin {
+    border-left: 3px solid rgb(139, 177, 222);
+    padding-left: 10px;
+}
+
+.border-system-admin {
+    border-left: 3px solid #ff004e;
+    padding-left: 10px;
+}
+
+.border-process-admin {
+    border-left: 3px solid rgb(126, 212, 211);
+    padding-left: 10px;
+}
+
+.border-idashboard {
+    border-left: 3px solid rgb(126, 212, 211);
+    padding-left: 10px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 270px; /* Space for full sidebar */
+    padding: 20px;
+}
+
+/* Small Devices (≤768px) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px; /* Narrow for icons */
         left: 0;
     }
 
+        .sidebar.active {
+            width: 250px; /* Expand when active */
+        }
+
+    .site-page-menu {
+        padding: 5px;
+    }
+
+    .menu-title,
+    .menu-link {
+        display: none; /* Hide text by default */
+    }
+
+    .sidebar.active .menu-title,
+    .sidebar.active .menu-link {
+        display: block; /* Show text when active */
+    }
+
+    .menu-list {
+        padding-left: 0;
+        list-style: none;
+        display: none !important; /* Hide submenus by default */
+    }
+
+    .sidebar.active .menu-list {
+        display: block !important; /* Show submenus when active */
+    }
+
+    .menu-section {
+        margin-bottom: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+        /* Font Awesome Icon Styling */
+        .menu-section::before {
+            content: '\f002'; /* Default icon (search) as fallback */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            display: block;
+            font-size: 24px;
+            color: #0F99CA;
+            margin: 10px auto;
+        }
+
+    /* Specific Icons for Each Section */
+    .border-user-admin::before {
+        content: '\f007'; /* User icon */
+    }
+
+    .border-system-admin::before {
+        content: '\f085'; /* Gear icon */
+    }
+
+    .border-process-admin::before {
+        content: '\f0e7'; /* Bolt icon */
+    }
+
+    .border-idashboard::before {
+        content: '\f201'; /* Chart-bar icon */
+    }
+
+    /* Toggle Button Section */
+    .toggle-section::before {
+        content: none; /* No icon for toggle section */
+    }
+
+    .toggle-btn {
+        display: block; /* Show toggle button */
+    }
+
+    .main-content {
+        margin-left: 80px; /* Adjust for narrow sidebar */
+    }
+}
+    
+    /* Sidebar when active */
+    /*.sidebar.active {
+        left: 0;
+    }*/
+
 /* Toggle Button */
-.toggle-btn {
+/*.toggle-btn {
     position: fixed;
     top: 10px;
     left: 10px;
@@ -33,10 +210,10 @@
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 4px;
-}
+}*/
 
 /* Menu Styling */
-.site-page-menu {
+/*.site-page-menu {
     padding: 15px;
 }
 
@@ -83,10 +260,10 @@
 
     .menu-link.red {
         color: red;
-    }
+    }*/
 
 /* Border Styling for Sections */
-.border-user-admin {
+/*.border-user-admin {
     border-left: 3px solid rgb(139, 177, 222);
     padding-left: 10px;
 }
@@ -104,10 +281,10 @@
 .border-idashboard {
     border-left: 3px solid rgb(126, 212, 211);
     padding-left: 10px;
-}
+}*/
 
 /* Main Content (optional, to prevent overlap) */
-.main-content {
-    margin-left: 50px; /* Space for toggle button */
-    padding: 20px;
-}
+/*.main-content {
+    margin-left: 50px;*/ /* Space for toggle button */
+    /*padding: 20px;
+}*/

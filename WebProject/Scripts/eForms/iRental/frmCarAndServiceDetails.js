@@ -55,6 +55,7 @@ AsyncWidgets.WidgetScripts.frmCarAndServiceDetails = function (obj)
     //});
     t.on('afterDataAction', function (params)
     {
+        debugger
         // This will pause execution for debugging if the developer tools are open
         if (params.res.status === 'OK')
         {

@@ -61,6 +61,10 @@ namespace WebProject.AdminPages.eForms
             {
                 UserRoles = Session["Roles"].ToString();
                 UserRoles = UserRoles.Trim() == "" ? "('Anonymous')" : UserRoles;
+                UserRoles = string.IsNullOrEmpty(UserRoles) ? "('Anonymous')" : UserRoles;
+
+                // Remove extra commas
+                UserRoles = string.Join(",", UserRoles.Split(',').Where(role => !string.IsNullOrWhiteSpace(role)));
             }
             ProcessControls(this, UserRoles);
             base.CreateChildControls();

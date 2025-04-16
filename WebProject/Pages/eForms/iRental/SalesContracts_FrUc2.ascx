@@ -706,13 +706,8 @@
                                                 maxlength="10" />
                                             <label for="BillAmount">Bill Amount</label>
                                         </div>
-                                        <button
-                                            type="button"
-                                            class="btn btn-secondary CommonDisableClass btnGetCarPrice"
-                                            title="Set Current Car Price"
-                                            style="width: 30px;">
-                                            ↓
-                                        </button>
+
+                                        <i class="fa-regular fa-circle-down CommonDisableClass btnGetCarPrice" title="Set Current Car Price"></i>
                                     </div>
                                     <!-- Bill Date Field -->
                                     <div class="form-floating mb-3" style="width: 100%;">

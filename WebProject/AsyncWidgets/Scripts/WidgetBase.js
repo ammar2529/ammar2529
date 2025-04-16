@@ -178,7 +178,7 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
             .then(
                 response => {
                     var res = response.json();
-                    console.log(res);
+                  //  console.log(res);
                     return res;
                 }
             )
@@ -525,135 +525,145 @@ function lt(a, b) {
 
 var _IsIE = false,
     __IE8 = false;
-  
+
 (function ($) {
-    $.showMessage = function (message, options, secondCall) {
-        // Immediately return if it's the first call; defer for 500ms
-        
-        if (!secondCall) {
-            $.showMessage.defer(500, this, [message, options, true]);
-            return;
-        }
-
-        // Default settings
-        const settings = $.extend({
-            id: 'sliding_message_box',
-            position: 'top',
-            size: '20',
-            backgroundColor: '#FFFFAA',
-            delay: 3500,
-            speed: 500,
-            fontSize: '11px'
-        }, options);
-
-        let elem = $('#' + settings.id);
-
-        // Generate message div if it doesn't exist
-        if (elem.length === 0) {
-            elem = $('<div><div class="conmsg"></div></div>').attr('id', settings.id);
-
-            // Hover behavior for the message box
-            elem.hover(
-                function () {
-                    $(this).css("background-color", "#FFFFCF");
-                    $.showMessage.hideDT.delay(999999999);
-                },
-                function () {
-                    $(this).css("background-color", "#FFFFAA");
-                    $.showMessage.hideDT.delay(1000);
-                }
-            );
-
-            // Set message box position and styling
-            let leftOffset = 0, width = "100%";
-            if (!!$('.left-border').length) {
-                leftOffset = $('.left-border').offset().left + 15;
-                width = '942px';
-            }
-
-            elem.css({
-                'z-index': '999',
-                'cursor': 'pointer',
-                'background-color': settings.backgroundColor,
-                'text-align': 'center',
-                'position': 'absolute',
-                'left': leftOffset,
-                'top': '0',
-                'width': width,
-                'line-height': settings.size + 'px',
-                'font-family': 'verdana, sans-serif, trebuchet ms, arial',
-                'font-size': settings.fontSize,
-                'font-weight': 'bold',
-                'color': '#333333',
-                'border-bottom': '1px solid #73ABCB',
-                'padding': '5px 0'
-            });
-
-            $('body').append(elem);
-        }
-
-        // Update the message content
-        message = message || 'Data updated successfully!';
-        const conmsg = $('.conmsg', elem).html(message);
-
-        const win = $(window);
-        let elemHidden = false;
-
-        // Function to set element position
-        const setElem = function (op = "slow") {
-            elem.stop().animate({ "marginTop": win.scrollTop() + "px" }, op);
-        };
-
-        // Show the message
-        setElem('fast');
-        win.bind('scroll.showmsg', setElem);
-
-        // Function to hide the message
-        function hideMSG() {
-            $("#" + settings.id).stop().animate({ "marginTop": "-35px" }, "slow");
-            win.unbind('scroll.showmsg');
-            elemHidden = true;
-
-            // Show Bootstrap Toast after the message is hidden
-            showBootstrapToast(message);
-        }
-
-        elem.click(hideMSG);
-
-        // Delayed task for hiding the message
-        if (!$.showMessage.hideDT) {
-            $.showMessage.hideDT = new Ext.util.DelayedTask(hideMSG);
-        }
-        $.showMessage.hideDT.delay(settings.delay);
-    };
-
-    // Function to display Bootstrap Toast
-    function showBootstrapToast(message) {
-        const toastHTML = `
-            <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body">
-                        ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>
-        `;
-
-        // Append the toast element to the body
-        const toastElement = $(toastHTML);
-        $('body').append(toastElement);
-
-        // Initialize and show the toast
-        const toast = new bootstrap.Toast(toastElement[0]);
+    $.fn.showMessage = function (message, options, secondCall) {
+        let toastEl = $('#successToast');
+        toastEl.find('.toast-body').text(message);
+        let toast = new bootstrap.Toast(toastEl[0]);
         toast.show();
-
-        // Remove the toast element after hiding
-        toastElement.on('hidden.bs.toast', function () {
-            $(this).remove();
-        });
-    }
+    };
 })(jQuery);
+
+//(function ($) {
+//    debugger
+//    $.showMessage = function (message, options, secondCall) {
+//        // Immediately return if it's the first call; defer for 500ms
+        
+//        if (!secondCall) {
+//            $.showMessage.defer(500, this, [message, options, true]);
+//            return;
+//        }
+
+//        // Default settings
+//        const settings = $.extend({
+//            id: 'sliding_message_box',
+//            position: 'top',
+//            size: '20',
+//            backgroundColor: '#FFFFAA',
+//            delay: 3500,
+//            speed: 500,
+//            fontSize: '11px'
+//        }, options);
+
+//        let elem = $('#' + settings.id);
+
+//        // Generate message div if it doesn't exist
+//        if (elem.length === 0) {
+//            elem = $('<div><div class="conmsg"></div></div>').attr('id', settings.id);
+
+//            // Hover behavior for the message box
+//            elem.hover(
+//                function () {
+//                    $(this).css("background-color", "#FFFFCF");
+//                    $.showMessage.hideDT.delay(999999999);
+//                },
+//                function () {
+//                    $(this).css("background-color", "#FFFFAA");
+//                    $.showMessage.hideDT.delay(1000);
+//                }
+//            );
+
+//            // Set message box position and styling
+//            let leftOffset = 0, width = "100%";
+//            if (!!$('.left-border').length) {
+//                leftOffset = $('.left-border').offset().left + 15;
+//                width = '942px';
+//            }
+
+//            elem.css({
+//                'z-index': '999',
+//                'cursor': 'pointer',
+//                'background-color': settings.backgroundColor,
+//                'text-align': 'center',
+//                'position': 'absolute',
+//                'left': leftOffset,
+//                'top': '0',
+//                'width': width,
+//                'line-height': settings.size + 'px',
+//                'font-family': 'verdana, sans-serif, trebuchet ms, arial',
+//                'font-size': settings.fontSize,
+//                'font-weight': 'bold',
+//                'color': '#333333',
+//                'border-bottom': '1px solid #73ABCB',
+//                'padding': '5px 0'
+//            });
+
+//            $('body').append(elem);
+//        }
+
+//        // Update the message content
+//        message = message || 'Data updated successfully!';
+//        const conmsg = $('.conmsg', elem).html(message);
+
+//        const win = $(window);
+//        let elemHidden = false;
+
+//        // Function to set element position
+//        const setElem = function (op = "slow") {
+//            elem.stop().animate({ "marginTop": win.scrollTop() + "px" }, op);
+//        };
+
+//        // Show the message
+//        setElem('fast');
+//        win.bind('scroll.showmsg', setElem);
+
+//        // Function to hide the message
+//        function hideMSG() {
+//            $("#" + settings.id).stop().animate({ "marginTop": "-35px" }, "slow");
+//            win.unbind('scroll.showmsg');
+//            elemHidden = true;
+
+//            // Show Bootstrap Toast after the message is hidden
+//            showBootstrapToast(message);
+//        }
+
+//        elem.click(hideMSG);
+
+//        // Delayed task for hiding the message
+//        if (!$.showMessage.hideDT) {
+//            $.showMessage.hideDT = new Ext.util.DelayedTask(hideMSG);
+//        }
+//        $.showMessage.hideDT.delay(settings.delay);
+//    };
+
+//    // Function to display Bootstrap Toast
+//    function showBootstrapToast(message) {
+//        const toastHTML = `
+//            <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+//                <div class="d-flex">
+//                    <div class="toast-body">
+//                        ${message}
+//                    </div>
+//                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+//                </div>
+//            </div>
+//        `;
+
+//        // Append the toast element to the body
+//        const toastElement = $(toastHTML);
+//        $('body').append(toastElement);
+
+//        // Initialize and show the toast
+//        const toast = new bootstrap.Toast(toastElement[0]);
+//        toast.show();
+
+//        // Remove the toast element after hiding
+//        toastElement.on('hidden.bs.toast', function () {
+//            $(this).remove();
+//        });
+//    }
+//})(jQuery);
 
 String.prototype.splitCamel = function () { return this.replace(/([a-z])([A-Z])/g, "$1 $2"); };
 

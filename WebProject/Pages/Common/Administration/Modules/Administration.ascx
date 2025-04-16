@@ -7,17 +7,33 @@
 <%@ Register Src="~/AsyncWidgets/Forms/UserManagment/frmSearchUsers.ascx" TagPrefix="uc1" TagName="frmSearchUsers" %>
 
 
-<uc5:Container ID="conAdministration" Hidden="true" Caption="Administration" runat="server">
+
+
+<%--<uc5:Container ID="conAdministrationTemp" Hidden="true" Caption="Administration" runat="server">
     <Childern>
         <table cellspacing="0" cellpadding="0" border="0" width="100%">
             <tr>
                 <td valign="top" style="width: 220px">
-                    <uc1:Administration_Menu ID="Administration_Menu" runat="server" />
+                    
                 </td>
-                <td style="background-image: url(App_Themes/eForms_Theme/Images/i/vdiv.gif); background-repeat: repeat-y; width: 9px;" valign="top">
-                    <img alt="" src="App_Themes/eForms_Theme/Images/t5b.gif" />
-                </td>
+
                 <td valign="top" style="padding: 15px">
+                  
+                </td>
+            </tr>
+        </table>
+    </Childern>
+</uc5:Container>--%>
+
+<%--<uc5:Container ID="conAdministration" Hidden="true" Caption="Administration" runat="server">
+    <Childern>
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <div class="menuColumn" id="menuColumn">
+
+                <uc1:Administration_Menu runat="server" id="Administration_Menu" />
+            </div>
+             <div class="bodyColumn" id="bodyColumn">
+                
                     <uc5:Container ID="conAdministration_Controls" Hidden="false" Caption="Administration Controls"
                         runat="server">
                         <Childern>
@@ -41,13 +57,15 @@
                                             fn = function () {
                                                 t.on('show', function () {
                                                     if (!t.__valuesLoaded) {
-                                                        $(t.el).mask('Please wait while loading ...');
+                                                        // $(t.el).mask('Please wait while loading ...');
+                                                        showOverlay();
                                                         t.loadValues();
 
                                                         //                                                                            AsyncWidgets.get('grdProxyUsers').show();
                                                         //                                                                            AsyncWidgets.get('grdProxyUsers').Requery();
 
-                                                        $(t.el).unmask('Please wait while loading ...');
+                                                        //  $(t.el).unmask('Please wait while loading ...');
+                                                        hideOverlay();
                                                         t.__valuesLoaded = true;
                                                     }
                                                 });
@@ -801,7 +819,7 @@
                             Name: { width: '120px' },
                             Roles: { width: '420px' },
                             DisabledStatus: { caption: 'Disabled', width: '80px' },
-                    
+
                         },
                         forms: {
                             NewFormId: 'frmUserManagement',
@@ -813,9 +831,8 @@
             </GridConfig>
       <Scripts>
           <script>
-              var fn = function ()
-              {
-                
+              var fn = function () {
+
               }
           </script>
       </Scripts>
@@ -827,11 +844,10 @@
                             </center>
                         </Childern>
                     </uc5:Container>
-                </td>
-            </tr>
-        </table>
+    </div>             
     </Childern>
 </uc5:Container>
+
 <script src="../../../../AsyncWidgets/Scripts/frmUserManagement.js"></script>
 <uc8:Form ID="frmUserManagement" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
     AsyncForm="~/AsyncWidgets/Forms/UserManagment//frmAddUser.ascx">
@@ -856,4 +872,4 @@
         </script>
     </Scripts>  
 
-</uc8:Form>
+</uc8:Form>--%>

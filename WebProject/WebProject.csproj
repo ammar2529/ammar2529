@@ -511,11 +511,9 @@
     <Content Include="App_Themes\eForms_Theme\Images\I\t2.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\I\t4.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\I\t5.gif" />
-    <Content Include="App_Themes\eForms_Theme\Images\I\t5b.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\I\t6.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\I\t8.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\I\tn-b.gif" />
-    <Content Include="App_Themes\eForms_Theme\Images\I\vdiv.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\left.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\loading.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\Logo_Car_Rental.jpg" />
@@ -587,6 +585,7 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\all.min.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\bootstrap.bundle.min.js" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\bootstrap.min.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\ControllsAndSelect.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
