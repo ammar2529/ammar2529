@@ -29,7 +29,7 @@
 .form-floating .form-control,
 .form-floating .form-select {
     border: none;
-    border-bottom: 3px solid #d9d9d9;
+    border-bottom: 1px solid rgba(148,148,148);
     border-radius: 0;
     outline: none;
     box-shadow: none;
@@ -38,12 +38,13 @@
     padding-top: 1rem;
     width: 100%;
     font-family: "Open Sans", Arial, Helvetica, sans-serif; /* Corrected font-family */
-    padding:2px;
+    padding: 0;
+
 }
 
     .form-floating .form-control:focus,
     .form-floating .form-select:focus {
-        border-bottom: 3px solid rgb(255, 192, 41);
+        border-bottom: 2px solid #d86018;
         outline: none;
         box-shadow: none;
     }
@@ -59,12 +60,12 @@
     }*/
 
 .form-floating label {
-    color: #d9d9d9;
+    color: rgba(148,148,148);
     opacity: 1;
     transform: translateY(0.8rem);
     transition: all 0.2s ease;
     pointer-events: none;
-    padding-left: 1px;
+    padding-left: 0;
 }
 
 
@@ -91,11 +92,12 @@
 .form-floating > .form-select:not(:placeholder-shown) {
     padding-top: 2rem;
     padding-bottom: .300rem;
+    padding-left: 0;
 }
 
 .form-floating .form-control:focus ~ label,
 .form-floating .form-select:focus ~ label {
-    color: rgb(255, 192, 41);
+    color: #d86018;
 }
     /*.form-floating .form-control:focus ~ label,
 .form-floating .form-control:not(:placeholder-shown) ~ label {
@@ -119,7 +121,7 @@
 }*/
 
 .form-floating .form-control-plaintext {
-    border-bottom: 2px dotted gray;
+    border-bottom: 1px dotted gray;
     border-radius: 0;
     padding-bottom: 5px;
     width: 100%;
