@@ -173,7 +173,7 @@
     </nav>
 
     <!-- Second Navbar -->
-    <nav class="secondary-navbar disabled" id="secondaryNavbar">
+    <nav class="secondary-navbar disabled" id="secondaryNavbar" style="display:none">
         <a class="nav-icon settings-icon" title="Settings"><i class="fas fa-cog" showwidget="conAdministration" onclick="toggleSidebar()"></i></a>
         <a class="nav-icon crystal-report-icon" title="Crystal Reports"><i class="fas fa-file-alt" showwidget="frmiDashboard" displayroles="Show_iDashboard"></i></a>
     </nav>

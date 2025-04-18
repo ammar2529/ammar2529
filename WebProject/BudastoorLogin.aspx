@@ -13,7 +13,8 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f8f9fa;
+            background-color: #ebeff3;
+            
         }
         .card {
             width: 100%;
@@ -62,7 +63,17 @@
     padding-left: 1px;
         }*/
 
-       .form-floating label {
+
+/*.form-floating .form-control.invalid {
+    border-bottom: 2px #f44336 !important;
+}
+
+.form-floating label.invalid {
+    color: #f44336 !important;
+}*/
+       
+
+.form-floating label {
    color: #d9d9d9;
    opacity: 1;
    transform: translateY(0.8rem);
@@ -242,8 +253,9 @@
                 toast.show();
             }
 
-            $('.form-floating .form-control').on('blur', function () {
 
+            $('.form-floating .form-control').on('blur', function () {
+                //debugger
                 var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
                 var value = $(this).val().trim(); // Remove extra spaces
 
