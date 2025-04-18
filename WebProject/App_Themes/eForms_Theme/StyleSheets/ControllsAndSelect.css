@@ -37,9 +37,13 @@
     padding-bottom: 0.1rem;
     padding-top: 1rem;
     width: 100%;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif; /* Corrected font-family */
-    padding: 0;
-
+    /*font-family: "Open Sans", Arial, Helvetica, sans-serif;*/ /* Corrected font-family */
+    font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
+    --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
 }
 
     .form-floating .form-control:focus,
@@ -66,6 +70,8 @@
     transition: all 0.2s ease;
     pointer-events: none;
     padding-left: 0;
+    font-size: 13px;
+    font-weight:400;
 }
 
 
@@ -99,26 +105,7 @@
 .form-floating .form-select:focus ~ label {
     color: #d86018;
 }
-    /*.form-floating .form-control:focus ~ label,
-.form-floating .form-control:not(:placeholder-shown) ~ label {
-    color: rgb(255, 192, 41);
-}*/
-    /*.form-floating .form-select {
-    padding-top: 1rem;
-    padding-bottom: 0.1rem;
-}*/
 
-/*    .form-floating .form-select option[value=""] {
-        color: #6c757d;
-    }
-
-    .form-floating .form-select:not(:placeholder-shown) {
-        color: #000;
-    }
-
-.d-flex.align-items-center .btn {
-    margin-top: 0;
-}*/
 
 .form-floating .form-control-plaintext {
     border-bottom: 1px dotted gray;
@@ -133,11 +120,11 @@
     }
 
 .form-floating .form-control.invalid {
-    border-bottom: 3px solid red !important;
+    border-bottom: 2px #f44336 !important;
 }
 
 .form-floating label.invalid {
-    color: red !important;
+    color: #f44336 !important;
 }
 
 .container {
@@ -147,9 +134,9 @@
     box-sizing: border-box;
 }
 
-form {
+/*form {
     border: none;
-}
+}*/
 
 @media (max-width: 575.98px) {
     .form-floating {

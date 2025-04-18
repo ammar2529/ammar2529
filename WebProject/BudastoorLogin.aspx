@@ -22,7 +22,7 @@
         /* Default input styles */
         .form-floating .form-control {
     border: none;
-    border-bottom: 3px solid #d9d9d9;
+    border-bottom: 1px solid rgba(148,148,148);
     border-radius: 0;
     outline: none;
     box-shadow: none;
@@ -30,12 +30,16 @@
     padding-bottom: 0.1rem;
     padding-top: 1rem;
     width: 100%;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif; /* Corrected font-family */
-    padding:2px;
+    font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
+    --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
         }
         /* Focus styles */
         .form-floating .form-control:focus {
-        border-bottom: 3px solid rgb(255, 192, 41);
+        border-bottom: 2px solid #d86018;
         outline: none;
         box-shadow: none;
         }
@@ -49,18 +53,26 @@
             /*opacity: 0;*/ /* Extra assurance for cross-browser compatibility */
         /*}*/
         /* Label styles */
-        .form-floating label {
+/*        .form-floating label {
     color: #d9d9d9;
     opacity: 1;
     transform: translateY(0.8rem);
     transition: all 0.2s ease;
     pointer-events: none;
     padding-left: 1px;
-        }
+        }*/
 
+       .form-floating label {
+   color: #d9d9d9;
+   opacity: 1;
+   transform: translateY(0.8rem);
+   transition: all 0.2s ease;
+   pointer-events: none;
+   padding-left: 1px;
+       }
         .form-floating .form-control:focus ~ label,
 .form-floating .form-select:focus ~ label {
-    color: rgb(255, 192, 41);
+    color:  #d86018;
 }
         /* Label color when focused or filled */
         /*.form-floating .form-control:focus ~ label,

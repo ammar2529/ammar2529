@@ -20,6 +20,10 @@
     <link href="App_Themes/eForms_Theme/fontawsome/all.css" rel="stylesheet" />
     <link href="App_Themes/eForms_Theme/StyleSheets/ControllsAndSelect.css" rel="stylesheet" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <link href="App_Themes/eForms_Theme/StyleSheets/sidebar.css" rel="stylesheet" />
     <script src="AsyncWidgets/Scripts/jQueryUI/jquery-ui.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/Custom-Ext.js" type="text/javascript"></script>
@@ -38,15 +42,15 @@
 
 
     <style>
-            .menuColumn {
-        display: none; /* Hidden by default */
-        width: 250px; /* Adjust as needed */
-        transition: all 0.3s ease; /* Smooth transition for visibility */
-    }
+            /*.menuColumn {
+        display: none;*/ /* Hidden by default */
+        /*width: 250px;*/ /* Adjust as needed */
+        /*transition: all 0.3s ease;*/ /* Smooth transition for visibility */
+    /*}
 
     .menuColumn.active {
-        display: block; /* Visible when active */
-    }
+        display: block;*/ /* Visible when active */
+    /*}
 
     .columContainer {
         display: flex;
@@ -64,11 +68,59 @@
         background: none;
         border: none;
         padding: 10px;
-    }
+    }*/
+
+
+
+
+/*.x-form-container {
+
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+
+}
+
+.w-panel-head {
+    font-size: 24px;
+    color: #333;
+    text-align: left;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: gray;*/ /* Keeps the orange line */
+    /*margin: 10px 0;
+    position: relative;
+}
+
+hr:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;*/ /* Adjust width to control ink effect */
+    /*height: 1100px;
+    background-color: #d86018;*/ /* Ink color */
+/*}
+
+.ink-bar:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: #d86018;
+}*/
+
+
     </style>
 </head>
 
-<body id="mainPageBody">
+<body id="mainPageBody" style="background-color:#ebeff3">
 
 <%--    <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" style=" position: fixed;">
       <div class="offcanvas-header">
@@ -97,31 +149,15 @@
                         <asp:ContentPlaceHolder ID="BuDastoorHome" runat="server">
                             <!-- Example form for testing -->
                             <div class="container text-center">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Test Form</h5>
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="exampleInput" placeholder="Example">
-                                            <label for="exampleInput">Example</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <select class="form-select" id="exampleSelect">
-                                                <option value="" selected>Select Option</option>
-                                                <option value="1">Option 1</option>
-                                                <option value="2">Option 2</option>
-                                            </select>
-                                            <label for="exampleSelect">Select Option</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </asp:ContentPlaceHolder>
                     </div>
                     <WP:eForms_Footer ID="eForms_Footer" runat="server" />
                     <asp:HiddenField ID="_CurrentLang" runat="server" />
                     <asp:HiddenField ID="_PostCountry" runat="server" />
                 </div>
-                <div class="menuColumn" id="menuColumn">
+                
+                <div class="menuColumn" id="menuColumn" style="display:none">
                     !-- Sidebar -->
                     <div class="sidebar" id="sidebar">
                         <div class="site-page-menu">

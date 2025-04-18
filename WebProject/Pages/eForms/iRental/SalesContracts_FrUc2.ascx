@@ -14,8 +14,8 @@
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <script src="../../../JQuery/Common.js"></script>
 
-
-<div class=" Sales">
+<div>
+<div class="Sales">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
         <li class="nav-item">
@@ -1648,7 +1648,7 @@
 
 </div>
 
-
+    </div>
 
 
 

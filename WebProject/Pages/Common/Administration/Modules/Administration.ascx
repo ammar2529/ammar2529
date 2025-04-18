@@ -846,9 +846,9 @@
                     </uc5:Container>
     </div>             
     </Childern>
-</uc5:Container>
+</uc5:Container>--%>
 
-<script src="../../../../AsyncWidgets/Scripts/frmUserManagement.js"></script>
+<%--<script src="../../../../AsyncWidgets/Scripts/frmUserManagement.js"></script>
 <uc8:Form ID="frmUserManagement" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
     AsyncForm="~/AsyncWidgets/Forms/UserManagment//frmAddUser.ascx">
     

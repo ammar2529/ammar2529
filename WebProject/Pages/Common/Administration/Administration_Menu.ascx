@@ -3,7 +3,7 @@
 <!-- Font Awesome CDN -->
 
 <!-- Sidebar -->
-<div class="sidebar" id="sidebar">
+<%--<div class="sidebar" id="sidebar">
     <div class="site-page-menu">
         <!-- Toggle Button Section -->
         <div class="menu-section toggle-section">
@@ -77,7 +77,7 @@
 <!-- Main Content (Placeholder) -->
 <div class="main-content">
     <!-- Your page content goes here -->
-</div>
+</div>--%>
 
 <script>
 
