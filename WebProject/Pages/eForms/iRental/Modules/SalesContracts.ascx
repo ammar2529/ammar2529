@@ -25,32 +25,32 @@
                     }
                 </script>
             </WidgetConfig>
-        
-         
+
+
         </AW:Form>
 
 
         <div class="mt-2">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-12 ">
-                    <div class="form-header">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="form-header">
 
-                        <span class=" ink-bar">Sales Contracts
-                        </span>
+                                <span class="h5 fw-bold ink-bar">Sales Contracts
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12">
                             <AW:DataGrid ID="grdSalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSalesContracts_ShUc"
-            EmptyHeight="201px" AllowNew="true" SelectableRow="true"
-            PageSize="10" DataSource="SEL_iRental_SalesContracts" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
-            GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts\',KeysCol:\'RecId\'}}}">
-            <ColumnTemplates>
-                <pre columnid="ContractDetails" class="w-grid-head">
+                                EmptyHeight="201px" AllowNew="true" SelectableRow="true"
+                                PageSize="10" DataSource="SEL_iRental_SalesContracts" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
+                                GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts\',KeysCol:\'RecId\'}}}">
+                                <ColumnTemplates>
+                                    <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{RecCode}</div>
                                    
@@ -88,21 +88,21 @@
                                     <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
-               
-                <pre columnid="CustomerDetails" HideOnAllSmallDevices="HideOnAllSmallDevices">
+
+                                    <pre columnid="CustomerDetails" hideonallsmalldevices="HideOnAllSmallDevices">
                                 <center>
                                      <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>
                                      <div style="font-size:11px;">ID: {NationalIDNo}&nbsp;-&nbsp;{Nationality}</div>
                                       <div style="font-size:11px;">{MobileTelephone1}&nbsp;&nbsp;{MobileTelephone2}</div>
                                 </center>
                                 </pre>
-                <pre columnid="ContractDateTimeDetails" HideOnAllSmallDevices="HideOnAllSmallDevices">
+                                    <pre columnid="ContractDateTimeDetails" hideonallsmalldevices="HideOnAllSmallDevices">
                                      <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
                                      <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>
-                <pre columnid="CreationDetails" HideOnAllSmallDevices="HideOnAllSmallDevices"> 
+                                    <pre columnid="CreationDetails" hideonallsmalldevices="HideOnAllSmallDevices"> 
                                      <div class="ftitle" style="color:#808000; display:none"></div>
 <%--                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>--%>
                                      <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
@@ -132,47 +132,47 @@
                                     
                                 </pre>
 
-                <pre columnid="RecId">
+                                    <pre columnid="RecId">
                                 {RecId}
                                 </pre>
-            </ColumnTemplates>
-            <GridConfig>
-                <script>
-                    var cf = {
-                        cols: {
-                            EditForm: { width: '0px' },
-                            Sequence: { width: '0px' },
-                            ContractDetails: { caption: 'Contract & Car Details', width: '270px' },
-                            CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px' },
-                            CreationDetails: { caption: 'Creation Details', width: '165px' },
-                            RecId: { width: '0px' }
-                        },
-                        forms: {
-                            NewFormId: 'frmSalesContracts',
-                            EditFormId: 'frmSalesContracts',
-                            Keys: 'RecId'
-                        }
-                        ,
-                        DataActionParams: {
-                            DBAction: 'SearchCarArriveNotArrive'
-                        }
-                    };
-                </script>
-            </GridConfig>
-            <Scripts>
-                <script>
-                    var fn = Sales.SalesContracts.grdSalesContracts;
-                </script>
-            </Scripts>
-        </AW:DataGrid>
+                                </ColumnTemplates>
+                                <GridConfig>
+                                    <script>
+                                        var cf = {
+                                            cols: {
+                                                EditForm: { width: '0px' },
+                                                Sequence: { width: '0px' },
+                                                ContractDetails: { caption: 'Contract & Car Details', width: '270px' },
+                                                CustomerDetails: { caption: 'Customer Details', width: '270px' },
+                                                ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px' },
+                                                CreationDetails: { caption: 'Creation Details', width: '165px' },
+                                                RecId: { width: '0px' }
+                                            },
+                                            forms: {
+                                                NewFormId: 'frmSalesContracts',
+                                                EditFormId: 'frmSalesContracts',
+                                                Keys: 'RecId'
+                                            }
+                                            ,
+                                            DataActionParams: {
+                                                DBAction: 'SearchCarArriveNotArrive'
+                                            }
+                                        };
+                                    </script>
+                                </GridConfig>
+                                <Scripts>
+                                    <script>
+                                        var fn = Sales.SalesContracts.grdSalesContracts;
+                                    </script>
+                                </Scripts>
+                            </AW:DataGrid>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
- 
+
 
 
     </Childern>
@@ -195,7 +195,7 @@
                 }
             </script>
         </WidgetConfig>
-     <%--   <Scripts>
+        <%--   <Scripts>
                     <script>
                         var fn = function () {
                             var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
@@ -215,9 +215,9 @@
         PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
 
-        
- <GridConfig>
- <script>
+
+        <GridConfig>
+            <script>
                 var cf = {
                     cols: {
                         Sequence: { width: '0px' },
@@ -236,7 +236,7 @@
                         NationalIDNo: { caption: 'National ID No.' },
                         MobileTelephone1: { caption: 'Mobile Telephone' },
                         CustomerStatus: { caption: 'Status' }
-                       
+
 
                     },
                     forms: {
@@ -247,10 +247,10 @@
             </script>
 
 
- </GridConfig>
+        </GridConfig>
 
 
- </AW:DataGrid>
+    </AW:DataGrid>
 
     <AW:Form ID="frmSalesCustomerDetails" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
         <WidgetConfig>
@@ -271,7 +271,7 @@
                 var fn = function () {
                     //
                     t.on("show", function () {
-                     
+
                         $(".btnPopupForm", t).show();
                         $(".btnMainForm", t).hide();
 
@@ -322,10 +322,10 @@
         PageSize="10" DataSource="SEL_iRental_CarsForSale" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Car" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
 
-        
 
- <GridConfig>
- <script>
+
+        <GridConfig>
+            <script>
                 var cf = {
                     cols: {
                         Sequence: { width: '0px' },
@@ -352,17 +352,16 @@
 
                     }
                 };
- </script>
- </GridConfig>
- <Scripts>
- <script>
+            </script>
+        </GridConfig>
+        <Scripts>
+            <script>
                 var fn = function () {
                     //var conCar = AsyncWidgets.get("conRentalContracts_Cars");
                     //var f = conCar._frm;
-                    t.on('beforeSearchGetForm', function (p)
-                    {
+                    t.on('beforeSearchGetForm', function (p) {
                         /*Ext.apply(p, { conSalesContracts: $('[argumentid="CarType"]').val() });*/
-                        
+
                         p.CarType = val('CarType', AsyncWidgets.get('frmSalesContracts').el);
                         p.DBAction = 'popupCars';
                         console.log(p.CarType);
@@ -390,13 +389,11 @@
                         }
                         return des + ' Only';
                     }
-                 
 
-                    t.on('rowsRendered', function ()
-                    {
-                        $('table[itemno]', t.el).click(function ()
-                        {
-                            
+
+                    t.on('rowsRendered', function () {
+                        $('table[itemno]', t.el).click(function () {
+
                             //var priceValue = $('[colid="Price"]  .ColValue', this).text();
                             //var priceInFloat = parseFloat(priceValue);
                             //$('[argumentid="Price"]', f).val(`${priceInFloat.toFixed(3)}`);
@@ -415,7 +412,7 @@
 
                                 $('[argumentid="CarNumber"]', f).text('');
                             }
-                            
+
                             //var floatPrice = parseFloat(priceValue);
                             //var PaymentAmountC = parseFloat($('.PaymentAmountC').text());   
                             //var AmountDueC = parseFloat($('.AmountDueC').text());   
@@ -438,13 +435,13 @@
                         });
 
                     });
-                    
-                    
-                  
+
+
+
                 }
             </script>
- </Scripts>
- </AW:DataGrid>
+        </Scripts>
+    </AW:DataGrid>
 </div>
 
 

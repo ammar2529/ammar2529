@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmployeeInfo.ascx.cs" Inherits="WebProject.AsyncWidgets.Forms.EPG.EmployeeInfo" %>
 
-<style>
+<%--<style>
     .SimpleTab
     {
        height: 21px; 
@@ -629,4 +629,4 @@
                 </td>
             </tr>
         </table>
-    </div>
+    </div>--%>

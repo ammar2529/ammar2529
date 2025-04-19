@@ -1,8 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CustomerDetails_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CustomerDetails_ShUc" %>
 
-<div class="text-center">
+<div class="">
     <div class="card">
         <div class="card-body">
+                        <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" h5 fw-bold ink-bar">Search</span>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating">

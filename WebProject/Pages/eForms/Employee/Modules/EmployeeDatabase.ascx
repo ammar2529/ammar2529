@@ -13,7 +13,7 @@
                     cf = {
                         header: {
                             Style: {},
-                            Visible: true,
+                            Visible: false,
                             Collapsed: false,
                             HeadText: 'Search'
                         }
@@ -21,9 +21,24 @@
                 </script>
             </WidgetConfig>
         </uc8:Form>
-        <uc6:DataGrid ID="grdEmployeeDatabase" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmEmployeeDatabase_ShUc"
+
+        <div class="mt-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" h5 fw-bold ink-bar">Employee Database</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                            <uc6:DataGrid ID="grdEmployeeDatabase" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmEmployeeDatabase_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_Employee_DB"
-            ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Employee Database"
+            ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" 
             GridButtons="{\'delete\':{conf:{Command:\'UPD_Employee_DB\',KeysCol:\'RecId\'}}}">
             <GridConfig>
                 <script>
@@ -48,6 +63,14 @@
                 </script>
             </GridConfig>
         </uc6:DataGrid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
         <uc8:Form ID="frmEmployeeDatabase_KPIUc" runat="server" Hidden="true" LoadOnInit="false"
             ShowOnLoad="true" AsyncForm="~/Pages/Common/iDashboard/KPI_iDashboard.ascx">
             <WidgetConfig>
@@ -56,8 +79,8 @@
 
                         header: {
                             Style: {},
-                            Visible: true,
-                            Collapsed: true,
+                            Visible: false,
+                            Collapsed: false,
                             HeadText: 'KPI - Key Performance Indicator (s)'
                         }
                     }

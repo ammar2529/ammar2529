@@ -22,6 +22,12 @@
                     <div class="form-header">
 
                         <span class=" ink-bar">Sales Contracts</span>
+                        <i class="fa-regular fa-rectangle-xmark CloseForm"
+                            tabid="CloseBtn" title="Close Form"
+                            style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                            onmouseover="this.style.color='red';"
+                            onmouseout="this.style.color='black';"></i>
+
                     </div>
                 </div>
             </div>
@@ -46,9 +52,9 @@
         </li>
 
         <!-- Close Icon -->
-        <li class="ms-auto" style="padding-right: 10px;">
+<%--        <li class="ms-auto" style="padding-right: 10px;">
             <i class="fa-regular fa-rectangle-xmark CloseForm" tabid="CloseBtn" title="Close Form" style="font-size: 20px; color: black; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.color='red';" onmouseout="this.style.color='black';"></i>
-        </li>
+        </li>--%>
     </ul>
 
 

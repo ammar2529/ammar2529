@@ -3,10 +3,18 @@
 
 
 
-<div class="text-center">
+<div class="">
     <div class="card">
         <div id="collapsePanel" class="collapse show">
             <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="form-header">
+
+                            <span class="h4 fw-bold ink-bar">Search</span>
+                        </div>
+                    </div>
+            </div>
                 <div class="row">
                     <div class="col-sm-6 col-lg-2">
                         <div class="form-floating">

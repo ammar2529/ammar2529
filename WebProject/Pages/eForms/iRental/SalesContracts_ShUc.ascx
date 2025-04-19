@@ -8,7 +8,7 @@
                 <div class="col-sm-12 ">
                     <div class="form-header">
 
-                        <span class=" ink-bar">Search</span>
+                        <span class="h4 fw-bold ink-bar">Search</span>
                     </div>
                 </div>
             </div>

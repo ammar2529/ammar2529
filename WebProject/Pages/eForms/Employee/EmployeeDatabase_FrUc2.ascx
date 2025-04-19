@@ -2,7 +2,21 @@
 
 <div class="">
 
-    <!-- Nav tabs -->
+    <div class="">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" h5 fw-bold ink-bar">Employee Database</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                        <!-- Nav tabs -->
 <ul class="nav nav-tabs SimpleTab mt-3" id="myTab" role="tablist">
   <li class="nav-item" role="presentation" tabid="BasicInformation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Basic Information</button>
@@ -555,6 +569,13 @@
         
   </div>
 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 </div>
 

@@ -12,7 +12,7 @@
                 <div class="col-sm-12 ">
                     <div class="form-header">
 
-                        <span class=" ink-bar">Home</span>
+                        <span class=" h4 fw-bold ink-bar">Home</span>
                     </div>
                 </div>
             </div>

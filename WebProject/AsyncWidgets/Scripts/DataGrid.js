@@ -48,7 +48,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     setHeader: function (header) {
         var t = this;
-        $('>.GridContainer>table>tbody>tr:first .w-head-text', t.el).text(header);
+       /* $('>.GridContainer>table>tbody>tr:first .w-head-text', t.el).text(header);*/
     },
     setPage: function (pageNo) {
         var t = this;
@@ -1535,7 +1535,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         Ext.applyIf(t.State, { ContainerMargin: '5px' });
         
         if (t.State.GridTemplate == 'jQueryUI') {
-            t.Top = $('<div class="w-panel-head w-top-corner"> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td class="w-head-text"> </td> </tr> </table> </td> <td style="width:100%">&nbsp;</td> <td> <span style="" class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon">&nbsp;</span> </td> </tr> </table> </div>');
+            t.Top = $('<div class="w-panel-head w-top-corner"> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td class=""> </td> </tr> </table> </td> <td style="width:100%">&nbsp;</td> <td> <span style="" class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon">&nbsp;</span> </td> </tr> </table> </div>');
             t.Repeater = $('<div class="GridContainer"> <table cellspacing="0" cellpadding="0" border="0" style="width:100%;text-align:left"> <tbody> <tr class="TopTR"> <td class="Top"> </td> </tr> <tr class="HeaderTR"> <td class="Header w-grid-border"> </td> </tr> <tr class="ItemTR"> <td class="Item w-grid-border"> </td> </tr><tr class="NoRecordsTR" style="display:none;"><td class="NoRecords w-grid-norecords-msg" ></td></tr> <tr class="BottomTR"> <td class="Bottom"> </td> </tr> </tbody> </table> </div>');
             t.Header = $('<table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header"> <tbody> <tr class="w-grid-head-back"> <td class=" ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border"> <div> <span href="#" class="w-grid-head ColName sort"></span> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="width:32px;padding:0;overflow:hidden;margin:0" class="w-grid-cell-border w-grid-head-back"> <div style="width:19px;overflow:hidden;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px;overflow:hidden" class="w-grid-head-back w-grid-cell-border"> <div style="overflow:hidden" class="PWCLabel ColName"></div> </td><td templateid="RowEditForm" style="width: 40px;overflow:hidden;"  class="RowEditForm w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td><td templateid="RowDetail" style="width: 40px;overflow:hidden;"  class=" RowDetail w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td></tr> </tbody> </table>');
             t.Item = $('<table class="table " cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed"> <tbody> <tr class="ItemTableRow" style="white-space:nowrap" EvenRowCSS="w-grid-row-odd" OddRowCSS="w-grid-row-odd" HoverRowCSS=""> <td class="ColTemplate w-grid-cell-border" style="white-space:nowrap;overflow:hidden"> <div class="ColValue w-grid-label" style="white-space:nowrap"> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="margin:0;width:32px;overflow:hidden" class="w-grid-cell-border"> <div style="width:19px;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px" class="w-grid-cell-border"> <div style="overflow:hidden" class="w-grid-label ColValue"></div> </td><td templateid="RowEditForm"   class="RowEditForm w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td><td templateid="RowDetail"   class=" RowDetail w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td></tr> </tbody> </table>');
@@ -1720,7 +1720,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             topBtnPnl.hide();
         }
         //////////////////// Collapse Header ////////////////////////////////
-        $('.w-head-text', t.Top).text(t.State.GridHeadText || '');
+        //$('.w-head-text', t.Top).text(t.State.GridHeadText || '');
         if (!gc.header.Visible)
             $('.w-head-text', t.Top).closest('.w-panel-head').hide();
         /////////////////// Setting Templates ////////////////////////////////
