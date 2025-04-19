@@ -41,7 +41,7 @@
     font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
     font-size: 13px;
     font-weight: 400;
-    letter-spacing: normal;
+    letter-spacing: 1px;
     --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
     --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
 }
@@ -135,12 +135,13 @@
 }
 
 
-.form-floating .form-control-plaintext {
-    border-bottom: 1px dotted gray;
-    border-radius: 0;
-    padding-bottom: 5px;
-    width: 100%;
-}
+    .form-floating .form-control-plaintext,
+    .form-floating .form-control-plaintext:disabled {
+        border-bottom: 1px dotted gray;
+        border-radius: 0;
+        padding-bottom: 5px;
+        width: 100%;
+    }
 
     .form-floating .form-control-plaintext:focus {
         border-bottom: 1px dotted #808080;

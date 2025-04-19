@@ -1234,7 +1234,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         inv.on('onFailure', function (res) {
 
             //  $(t.el).unmask();
-            showOverlay()
+            hideOverlay();
         });
         // $(t.el).mask('Please wait while loading ...');
         showOverlay();
