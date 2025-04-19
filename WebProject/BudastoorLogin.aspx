@@ -37,7 +37,7 @@
     font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
     font-size: 13px;
     font-weight: 400;
-    letter-spacing: normal;
+    letter-spacing:1px;
     --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
     --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
 }
@@ -59,6 +59,7 @@
     padding-bottom:0px;
     font-size: 13px;
     font-weight: 400;
+    letter-spacing:1px;
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 }
@@ -78,7 +79,7 @@
     .form-floating > .form-control:focus ~ label,
     .form-floating > .form-control:not(:placeholder-shown) ~ label {
         opacity: .65;
-        transform: scale(.85) translateY(-0.75rem) translateX(0rem);
+        transform: scale(.85) translateY(-0.75rem) translateX(-0.1rem);
     }
 
 
