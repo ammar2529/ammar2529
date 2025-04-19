@@ -302,6 +302,12 @@
                 $(this).removeClass('invalid');
                 $(this).siblings('label').removeClass('invalid');
             });
+
+            $("#UserPassword").keypress(function (event) {
+                if (event.which === 13) {
+                    $(".btnLogin").click();
+                }
+            });
         });
     </script>
 </body>

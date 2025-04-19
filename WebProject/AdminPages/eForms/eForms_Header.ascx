@@ -92,8 +92,19 @@
     .dropdown-menu {
         position: absolute;
         cursor: pointer;
+        right: 0 !important;
+        left: auto !important;
+        transform: translateX(10px);
+        transition: all 0.2s ease-in-out;
     }
-
+    .logout i {
+    color: #dc3545; /* Red shade */
+    font-size: 16px;
+}
+    .dropdown-item i {
+    color: #007bff; /* Blue shade */
+    font-size: 16px;
+}
     .dropdown-item {
         cursor: pointer;
     }
@@ -165,7 +176,21 @@
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                        <li><a class="dropdown-item logout">Logout</a></li>
+                        <li>
+                            <a class="dropdown-item settings">
+                                <i class="fas fa-cog me-2"></i>Settings
+        </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item report">
+                                <i class="fas fa-file-alt me-2"></i>Crystal Report
+        </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+        </a>
+                        </li>
                     </ul>
                 </div>
             </div>
