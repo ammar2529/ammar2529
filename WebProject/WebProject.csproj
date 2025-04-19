@@ -1665,6 +1665,8 @@
     <Content Include="InvoiceDataSet\Invoice.xsc">
       <DependentUpon>Invoice.xsd</DependentUpon>
     </Content>
+    <Content Include="fonts\OpenSans-SemiBold.woff2" />
+    <Content Include="fonts\OpenSans-Regular.woff2" />
     <None Include="InvoiceDataSet\Invoice.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
