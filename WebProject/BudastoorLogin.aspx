@@ -92,7 +92,7 @@
 .form-floating > .form-select:not(:placeholder-shown) {
     padding-top: 2rem;
     padding-bottom: .300rem;
-    padding-left: 0;
+    padding-left: 1px;
 }
 
 .form-floating .form-control:focus ~ label,
@@ -285,7 +285,7 @@
 
 
             $('.form-floating .form-control').on('blur', function () {
-                debugger
+                
                 var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
                 var value = $(this).val().trim(); // Remove extra spaces
 

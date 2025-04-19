@@ -350,7 +350,7 @@ hr:before {
 
             //  $('.form-control-plaintext').prop('disabled', true); // Disable input field
 
-
+            $('.ink-bar').removeClass('fw-bold h4 h5');
 
         });
 

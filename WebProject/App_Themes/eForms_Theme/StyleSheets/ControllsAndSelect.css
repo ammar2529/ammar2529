@@ -37,8 +37,9 @@
     padding-bottom: 0.1rem;
     padding-top: 1rem;
     width: 100%;
+    font: inherit;
     /*font-family: "Open Sans", Arial, Helvetica, sans-serif;*/ /* Corrected font-family */
-    font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
+    font-family: OpenSans-Regular, Arial, Helvetica, sans-serif;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -64,7 +65,8 @@
     }*/
 
 .form-floating label {
-    color: rgba(148,148,148);
+   /* color: rgba(148,148,148);*/
+   color:#666;
     opacity: 1;
     pointer-events: none;
     padding-left: 0;
@@ -99,7 +101,7 @@
 
     .form-floating > .form-control:focus ~ label,
     .form-floating > .form-control:not(:placeholder-shown) ~ label {
-        opacity: .65;
+        opacity: 1;
         transform: scale(.85) translateY(-0.75rem) translateX(-0.1rem);
     }
 
@@ -130,10 +132,15 @@
     padding-left: 1px;
 }
 
-.form-floating .form-control:focus ~ label,
-.form-floating .form-select:focus ~ label {
-    color: #d86018;
-}
+        .form-floating > .form-select:not(:placeholder-shown) {
+            padding-top: 2rem;
+            padding-bottom: .300rem;
+            padding-left: 3px;
+        }
+            .form-floating .form-control:focus ~ label, .form-floating .form-select:focus ~ label {
+        /*color: #d86018;*/
+        color: #666;
+    }
 
 
     .form-floating .form-control-plaintext,
@@ -166,9 +173,9 @@
 
 
 .form-header {
-    border-bottom: 1px solid rgba(148, 148, 148);
+    border-bottom: 1px solid #dfdfdf;
     font-family: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 400;
     position: relative;
     padding-top: 8px;
@@ -178,18 +185,30 @@
     .form-header span:after {
         content: "";
         position: absolute;
-        bottom: 0;
+        bottom: -8px;
         left: 0;
-        width: 80px;
+        width: 100%;
         height: 3px;
         background-color: #d86018;
+        display: inline;
         z-index: 1;
     }
 
+
+.ink-bar {
+    display: inline-block;
+    position: relative;
+}
+
+    .form-header-col{
+        margin-bottom:5px !important;
+    }
+.mb-3 {
+    margin-bottom: 6px !important;
+}
 /*form {
     border: none;
 }*/
-
 @media (max-width: 575.98px) {
     .form-floating {
         margin-bottom: 1rem !important;
