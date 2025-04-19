@@ -20,8 +20,10 @@
             width: 100%;
             max-width: 400px; /* Adjust this value as needed */
         }
-        /* Default input styles */
-        .form-floating .form-control {
+
+
+        .form-floating .form-control,
+.form-floating .form-select {
     border: none;
     border-bottom: 1px solid rgba(148,148,148);
     border-radius: 0;
@@ -31,65 +33,123 @@
     padding-bottom: 0.1rem;
     padding-top: 1rem;
     width: 100%;
+    /*font-family: "Open Sans", Arial, Helvetica, sans-serif;*/ /* Corrected font-family */
     font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: normal;
     --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
     --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
-        }
-        /* Focus styles */
-        .form-floating .form-control:focus {
+}
+
+    .form-floating .form-control:focus,
+    .form-floating .form-select:focus {
         border-bottom: 2px solid #d86018;
         outline: none;
         box-shadow: none;
-        }
-        /* Filled styles */
-        /*.form-floating .form-control:not(:placeholder-shown) {
-            border-bottom: 3px solid #ff6200;*/ /* Orange when filled */
-        /*}*/
-        /* Placeholder styles - hidden by default */
-        /*.form-floating .form-control::placeholder {
-            color: transparent;*/ /* Placeholder hidden by default */
-            /*opacity: 0;*/ /* Extra assurance for cross-browser compatibility */
-        /*}*/
-        /* Label styles */
-/*        .form-floating label {
-    color: #d9d9d9;
+    }
+/*
+    .form-floating .form-control:not(:placeholder-shown),
+    .form-floating .form-select:not(:placeholder-shown) {
+        border-bottom: 3px solid #ff6200;
+    }
+
+    .form-floating .form-control::placeholder {
+        color: transparent;
+        opacity: 0;
+    }*/
+
+.form-floating label {
+    color: rgba(148,148,148);
     opacity: 1;
-    transform: translateY(0.8rem);
-    transition: all 0.2s ease;
     pointer-events: none;
-    padding-left: 1px;
-        }*/
+    padding-left: 0;
+    padding-top:30px;
+    padding-bottom:0px;
+    font-size: 13px;
+    font-weight: 400;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+}
+
+.form-floating {
+    position: relative;
+}
+
+    .form-floating > .form-control,
+    .form-floating > .form-select {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+    }
+
+/*    .form-floating > label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 1rem;
+        pointer-events: none;
+        
+    }*/
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        opacity: .65;
+        transform: scale(.85) translateY(-0.75rem) translateX(0rem);
+    }
 
 
-/*.form-floating .form-control.invalid {
+/*.form-floating .form-control:focus ~ label,
+.form-floating .form-control:not(:placeholder-shown) ~ label {
+    transform: translateY(0.01rem) scale(0.7);*/ /* When active, move up */
+/*}
+
+.form-floating .form-control {
+    padding-bottom: 1.8rem;*/ /* Adjust to move text closer */
+    /*text-align: left;*/ /* Ensure text starts from left */
+/*}*/
+
+/*.form-floating > .form-control-plaintext:focus, .form-floating > .form-control-plaintext:not(:placeholder-shown), .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 2rem;
+    padding-bottom: .300rem;
+}*/
+
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown),
+.form-floating > .form-select:focus,
+.form-floating > .form-select:not(:placeholder-shown) {
+    padding-top: 2rem;
+    padding-bottom: .300rem;
+    padding-left: 0;
+}
+
+.form-floating .form-control:focus ~ label,
+.form-floating .form-select:focus ~ label {
+    color: #d86018;
+}
+
+
+.form-floating .form-control-plaintext {
+    border-bottom: 1px dotted gray;
+    border-radius: 0;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+    .form-floating .form-control-plaintext:focus {
+        border-bottom: 1px dotted #808080;
+        outline: none;
+    }
+
+.form-floating .form-control.invalid {
     border-bottom: 2px #f44336 !important;
 }
 
 .form-floating label.invalid {
     color: #f44336 !important;
-}*/
-       
-
-.form-floating label {
-   color: #d9d9d9;
-   opacity: 1;
-   transform: translateY(0.8rem);
-   transition: all 0.2s ease;
-   pointer-events: none;
-   padding-left: 1px;
-       }
-        .form-floating .form-control:focus ~ label,
-.form-floating .form-select:focus ~ label {
-    color:  #d86018;
 }
-        /* Label color when focused or filled */
-        /*.form-floating .form-control:focus ~ label,
-        .form-floating .form-control:not(:placeholder-shown) ~ label {
-            color: #ff6200;*/ /* Orange when focused or filled */
-        /*}*/
         /* Responsive margin adjustments */
         @media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
             .form-floating {

@@ -14,8 +14,21 @@
 <script src="../../../Scripts/eForms/iRental/frmSalesContracts.js"></script>
 <script src="../../../JQuery/Common.js"></script>
 
-<div>
-<div class="Sales">
+<div class="">
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" ink-bar">Sales Contracts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm-12">
+                    <div class="Sales">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
         <li class="nav-item">
@@ -962,7 +975,7 @@
 </div>
 
 
-            <AW:DataGrid ID="grdSalesContractsPaymentDetails" LoadOnInit="true" ShowOnLoad="false" runat="server"
+            <AW:DataGrid ID="DataGrid1" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="20" DataSource="SEL_iRental_SalesContracts_Payments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Payment Details" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Payments\',KeysCol:\'RecId\'}}}">
@@ -1051,7 +1064,7 @@
 
             </AW:DataGrid>
 
-            <AW:Form ID="frmSalesContactsPaymentDetails" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
+            <AW:Form ID="Form1" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/SalesContracts_PD_FrUc.ascx">
 
                 <WidgetConfig>
                     <script>
@@ -1133,7 +1146,7 @@
 
 
 
-            <AW:DataGrid ID="grdSalesAdditionalAmount" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
+            <AW:DataGrid ID="DataGrid2" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
                 EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="10" DataSource="SEL_iRental_SalesContracts_AdditionalAmount" ContainerMargin="2px" GridTemplate="jQueryUI"
                 GridHeadText="Additional Amount" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_AdditionalAmount\',KeysCol:\'RecId\'}}}">
@@ -1183,8 +1196,8 @@
 
                                 // Assuming ServerCall is a function to make an API call
                                 ServerCall(params, function (res) {
-                                    
-                                  //  var res = decJSON(res)
+
+                                    //  var res = decJSON(res)
 
 
                                     if (res.status === 'OK') {
@@ -1203,7 +1216,7 @@
 
                                             }
 
-                                            
+
                                             var a = $('.container .SalesOtherChargesPannel')
                                             $('[argumentid="RecCodePanel"]', a).text(RecCode);
                                             $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
@@ -1372,7 +1385,7 @@
                 </RowDetail>
             </AW:DataGrid>
 
-            <AW:Form ID="frmSalesAdditionalAmount" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+            <AW:Form ID="Form2" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
                 AsyncForm="~/Pages/eForms/iRental/SalesContracts_OC_FrUc.ascx">
                 <WidgetConfig>
                     <script>
@@ -1403,7 +1416,7 @@
 
 
                             t.on('onLoadedValues', function (p) {
-                                
+
 
                                 if (p.res.status == "OK") {
 
@@ -1493,7 +1506,7 @@
 </div>
 
 
-                       <AW:DataGrid ID="grdSalesContractComments" LoadOnInit="true" ShowOnLoad="false" runat="server"
+                       <AW:DataGrid ID="DataGrid3" LoadOnInit="true" ShowOnLoad="false" runat="server"
                 Hidden="true" Columns="1" EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                 PageSize="10" DataSource="SEL_iRental_SalesContracts_Comments" ContainerMargin="2px"
                 GridTemplate="jQueryUI" GridHeadText="Comments" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_Comments\',KeysCol:\'RecId\'}}}">
@@ -1540,7 +1553,7 @@
 
                                 // Assuming ServerCall is a function to make an API call
                                 ServerCall(params, function (res) {
-                                   
+
                                     //  var res = decJSON(res)
 
 
@@ -1560,7 +1573,7 @@
 
                                             }
 
-                                            
+
                                             var a = $('.container .SalesContractCommentsPanel')
                                             $('[argumentid="RecCodePanel"]', a).text(RecCode);
                                             $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
@@ -1584,7 +1597,7 @@
                     </script>
                 </Scripts>
             </AW:DataGrid>
-            <AW:Form ID="frmSalesComments" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
+            <AW:Form ID="Form3" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server"
                 AsyncForm="~/Pages/eForms/iRental/SalesContracts_CS_FrUc.ascx">
                 <WidgetConfig>
                     <script>
@@ -1605,7 +1618,7 @@
 
                             t.on('show', function (args) {
                                 var frm = AsyncWidgets.get('frmSalesContracts');
-                                
+
                                 var b = $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
 
                                 var a = $('.container .SalesContractCommentsPanel')
@@ -1647,8 +1660,13 @@
 
 
 </div>
-
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+
 
 
 

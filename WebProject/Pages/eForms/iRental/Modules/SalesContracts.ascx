@@ -8,6 +8,7 @@
 <script src="/Scripts/eForms/iRental/SalesContracts.js" type="text/javascript"></script>
 
 
+
 <AW:Container ID="conSalesContracts" Hidden="true" Caption="Sales Contracts" runat="server">
     <Childern>
         <AW:Form ID="frmSalesContracts_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SalesContracts" AsyncForm="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx">
@@ -17,9 +18,9 @@
                     var cf = {
                         header: {
                             Style: {},
-                            Visible: true,
+                            Visible: false,
                             Collapsed: false,
-                            HeadText: '<p class="h5 mt-2">Search</p>'
+                            HeadText: 'Search'
                         }
                     }
                 </script>
@@ -29,10 +30,25 @@
         </AW:Form>
 
 
-        <AW:DataGrid ID="grdSalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSalesContracts_ShUc"
+        <div class="mt-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" ink-bar">Sales Contracts
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                            <AW:DataGrid ID="grdSalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSalesContracts_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true"
             PageSize="10" DataSource="SEL_iRental_SalesContracts" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
-            GridHeadText="Sales Contracts" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts\',KeysCol:\'RecId\'}}}">
+            GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts\',KeysCol:\'RecId\'}}}">
             <ColumnTemplates>
                 <pre columnid="ContractDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
@@ -150,7 +166,13 @@
                 </script>
             </Scripts>
         </AW:DataGrid>
-        <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
 
 
     </Childern>
@@ -289,7 +311,7 @@
                         Style: {},
                         Visible: true,
                         Collapsed: false,
-                        HeadText: 'Search'
+                        /*HeadText: 'Search'*/
                     }
                 }
             </script>

@@ -117,7 +117,7 @@ hr:before {
 }*/
 
 
-        .w-panel-head {
+        /*.w-panel-head {
             padding: 10px 15px;
             background-color: #fff;
             position: relative;
@@ -127,29 +127,38 @@ hr:before {
             font-size: 1.25rem;
             position: relative;
             display: inline-block;
-        }
+            font-family:OpenSans-SemiBold, Arial, Helvetica, sans-serif;
+            font-size:13px;
+            font-weight:400;
+                padding: 5px 0;
+        }*/
 
         /* Ink-bar style */
-        .ink-bar:after {
+        /*.ink-bar:after {
             content: "";
             position: absolute;
-            bottom: 0; /* Align with the top of gray line */
-            left: 0;
+            bottom: 0;*/ /* Align with the top of gray line */
+            /*left: 0;
             width: 80px;
             height: 3px;
             background-color: #d86018;
-            z-index: 1; /* Ensure ink-bar is above gray line */
-        }
+            z-index: 1;*/ /* Ensure ink-bar is above gray line */
+        /*}*/
 
         /* Full-width gray line */
-        .w-panel-head hr {
+        /*.w-panel-head hr {
             margin: 0;
             border: 0;
             height: 1px;
-            background-color: rgba(148,148,148); /* Gray color */
-            position: relative;
-            z-index: 0; /* Keep gray line below ink-bar */
-        }
+            background-color: rgba(148,148,148);*/ /* Gray color */
+            /*position: relative;
+            z-index: 0;*/ /* Keep gray line below ink-bar */
+        /*}*/
+
+
+
+
+
 
     </style>
 </head>
@@ -174,121 +183,120 @@ hr:before {
 
 
 
-    <div class="page-wrapper">
-        <form id="frmMain" runat="server">
-            <div class="columContainer">
-                <div id="MainContainer">
-                    <WP:eForms_Header ID="eForms_Header" runat="server" />
-                    <div class="content-wrapper">
-                        <asp:ContentPlaceHolder ID="BuDastoorHome" runat="server">
-                            <!-- Example form for testing -->
-                            <div class="container text-center">
-
-                        </asp:ContentPlaceHolder>
-                    </div>
-                    <WP:eForms_Footer ID="eForms_Footer" runat="server" />
-                    <asp:HiddenField ID="_CurrentLang" runat="server" />
-                    <asp:HiddenField ID="_PostCountry" runat="server" />
+<div class="page-wrapper">
+    <form id="frmMain" runat="server">
+        <div class="columContainer">
+            <div id="MainContainer">
+                <WP:eForms_Header ID="eForms_Header" runat="server" />
+                <div class="content-wrapper">
+                    <asp:ContentPlaceHolder ID="BuDastoorHome" runat="server">
+                        <!-- Example form for testing -->
+                        <div class="container text-center">
+                            <!-- Content goes here -->
+                        </div>
+                    </asp:ContentPlaceHolder>
                 </div>
-                
-                <div class="menuColumn" id="menuColumn" style="display:none">
-                    !-- Sidebar -->
-                    <div class="sidebar" id="sidebar">
-                        <div class="site-page-menu">
-                            <!-- Toggle Button Section -->
-                            <div class="menu-section toggle-section">
-                                <button type="button" class="toggle-btn" onclick="toggleSidebar()">☰</button>
-                            </div>
+                <WP:eForms_Footer ID="eForms_Footer" runat="server" />
+                <asp:HiddenField ID="_CurrentLang" runat="server" />
+                <asp:HiddenField ID="_PostCountry" runat="server" />
+            </div>
+            
+            <div class="menuColumn" id="menuColumn" style="display:none">
+                <!-- Sidebar -->
+                <div class="sidebar" id="sidebar">
+                    <div class="site-page-menu">
+                        <!-- Toggle Button Section -->
+                        <div class="menu-section toggle-section">
+                            <button type="button" class="toggle-btn" onclick="toggleSidebar()">☰</button>
+                        </div>
 
-                            <!-- User Administration -->
-                            <div class="menu-section border-user-admin" onclick="toggleSubmenu(this)">
-                                <span class="menu-title">User Administration</span>
-                                <ul class="menu-list">
-                                    <li>
-                                        <a class="menu-link bold" href="javascript:void(0);" showwidget="{widgetId:'frmMyProfile',parentId:'conAdministration_Controls'}">My Profile</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdProxyUsers',parentId:'conAdministration_Controls'}">Proxy Access</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- User Administration -->
+                        <div class="menu-section border-user-admin" onclick="toggleSubmenu(this)">
+                            <span class="menu-title">User Administration</span>
+                            <ul class="menu-list">
+                                <li>
+                                    <a class="menu-link bold" href="javascript:void(0);" showwidget="{widgetId:'frmMyProfile',parentId:'conAdministration_Controls'}">My Profile</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdProxyUsers',parentId:'conAdministration_Controls'}">Proxy Access</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <!-- System Administration -->
-                            <div class="menu-section border-system-admin" onclick="toggleSubmenu(this)">
-                                <span class="menu-title">System Administration</span>
-                                <ul class="menu-list">
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}">Organization Setup</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdUserManagement',parentId:'conAdministration_Controls'}">User Management</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}">Menu Configuration</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Role Management</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdListofValues',parentId:'conAdministration_Controls'}">List of Values</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdKPI',parentId:'conAdministration_Controls'}">KPI Setup</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- System Administration -->
+                        <div class="menu-section border-system-admin" onclick="toggleSubmenu(this)">
+                            <span class="menu-title">System Administration</span>
+                            <ul class="menu-list">
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}">Organization Setup</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdUserManagement',parentId:'conAdministration_Controls'}">User Management</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}">Menu Configuration</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Role Management</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdListofValues',parentId:'conAdministration_Controls'}">List of Values</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdKPI',parentId:'conAdministration_Controls'}">KPI Setup</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <!-- Process Administration -->
-                            <div class="menu-section border-process-admin" onclick="toggleSubmenu(this)">
-                                <span class="menu-title red">Process Administration</span>
-                                <ul class="menu-list">
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}">Process / Module Details</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'LeafletRoleCategories',parentId:'conAdministration_Controls'}">Record Management</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Import / Export (XML)</a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Setup Wizard</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- Process Administration -->
+                        <div class="menu-section border-process-admin" onclick="toggleSubmenu(this)">
+                            <span class="menu-title red">Process Administration</span>
+                            <ul class="menu-list">
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}">Process / Module Details</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'LeafletRoleCategories',parentId:'conAdministration_Controls'}">Record Management</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Import / Export (XML)</a>
+                                </li>
+                                <li>
+                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Setup Wizard</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <!-- iDashboard -->
-                            <div class="menu-section border-idashboard" onclick="toggleSubmenu(this)">
-                                <a class="menu-link bold red" href="javascript:void(0);" showwidget="Logout1">iDashboard</a>
-                            </div>
+                        <!-- iDashboard -->
+                        <div class="menu-section border-idashboard" onclick="toggleSubmenu(this)">
+                            <a class="menu-link bold red" href="javascript:void(0);" showwidget="Logout1">iDashboard</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+    </form>
+</div>
+
+<!-- Overlay with Spinner and Text -->
+<div class="overlay" id="loadingOverlay" style="display:none">
+    <div class="spinner-container">
+        <div class="sleek-spinner"></div>
+        <div class="overlay-text">Please wait, loading your content...</div>
     </div>
+</div>
 
-
-    <!-- Overlay with Spinner and Text -->
-    <div class="overlay" id="loadingOverlay" style="display:none">
-        <div class="spinner-container">
-            <div class="sleek-spinner"></div>
-            <div class="overlay-text">Please wait, loading your content...</div>
+<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+    <div id="successToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            Operation completed successfully!
         </div>
     </div>
-
-    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
-        <div id="successToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Success</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-                Operation completed successfully!
-       
-            </div>
-        </div>
-    </div>
+</div>
 
     <script type="text/javascript">
         $().ready(function () {

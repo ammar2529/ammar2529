@@ -5,6 +5,15 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" ink-bar">Search</span>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="row">
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control form-control-sm CommonEmpty" aria-label=".form-control-sm example" id="RecCode" argumentid="RecCode" groupid="schSalesContractDetails" placeholder="Enter Rec Code">

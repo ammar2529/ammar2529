@@ -23,7 +23,7 @@
 
 /* Increased padding to account for both navbars */
 .content-wrapper {
-    padding-top: 100px; /* First navbar (~56px) + second navbar (~36px) + padding */
+    padding-top: 40px; /* First navbar (~56px) + second navbar (~36px) + padding */
 }
 
 .form-floating .form-control,
@@ -66,13 +66,41 @@
 .form-floating label {
     color: rgba(148,148,148);
     opacity: 1;
-    transform: translateY(0.8rem);
-    transition: all 0.2s ease;
     pointer-events: none;
     padding-left: 0;
+    padding-top:30px;
+    padding-bottom:0px;
     font-size: 13px;
-    font-weight:400;
+    font-weight: 400;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 }
+
+.form-floating {
+    position: relative;
+}
+
+    .form-floating > .form-control,
+    .form-floating > .form-select {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+    }
+
+/*    .form-floating > label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 1rem;
+        pointer-events: none;
+        
+    }*/
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        opacity: .65;
+        transform: scale(.85) translateY(-0.75rem) translateX(0rem);
+    }
 
 
 /*.form-floating .form-control:focus ~ label,
@@ -115,7 +143,7 @@
 }
 
     .form-floating .form-control-plaintext:focus {
-        border-bottom: 2px dotted #808080;
+        border-bottom: 1px dotted #808080;
         outline: none;
     }
 
@@ -133,6 +161,28 @@
     padding-right: 15px;
     box-sizing: border-box;
 }
+
+
+.form-header {
+    border-bottom: 1px solid rgba(148, 148, 148);
+    font-family: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+    .form-header span:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 3px;
+        background-color: #d86018;
+        z-index: 1;
+    }
 
 /*form {
     border: none;
@@ -152,7 +202,7 @@
     }
 
     .content-wrapper {
-        padding-top: 90px; /* Adjusted for smaller navbar heights */
+        padding-top: 40px; /* Adjusted for smaller navbar heights */
     }
 }
 

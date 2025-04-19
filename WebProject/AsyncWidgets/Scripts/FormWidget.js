@@ -577,16 +577,16 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         t.WCF = wc;
 
         if (wc.header.Visible) {//
-            debugger
+            
             //  wc.header.template = $('<div class="x-form-container" style="padding:5px;"><center><div class="w-panel-head w-top-corner"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tbody><tr><td><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tbody><tr><td class="w-head-text"></td></tr></tbody></table></td><td style="width: 100%;">&nbsp;</td><td><span class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon" style="">&nbsp;</span></td></tr></tbody></table></div></center></div>').css(wc.ContainerStyle);
-            wc.header.template = $(`    <div class="x-form-container container-fluid p-2 mb-2">
-        <div class="w-panel-head w-top-corner shadow-sm rounded">
-            <div class="d-flex align-items-center">
-                <span class="w-head-text fw-bold me-2 ink-bar">Test</span>
-            </div>
-            <hr> <!-- Full-width gray line -->
-        </div>
-    </div>`).css(wc.ContainerStyle);
+            //wc.header.template = $(`<div class="x-form-container container-fluid p-2 style="">
+            //                                <div class="w-panel-head w-top-corner shadow-sm rounded">
+            //                                    <div class="d-flex align-items-center">
+            //                                        <span class="w-head-text  me-2 ink-bar">Test</span>
+            //                                    </div>
+            //                                    <hr> <!-- Full-width gray line -->
+            //                                </div>
+            //                            </div>`).css(wc.ContainerStyle);
 
 
             $('.w-head-text', wc.header.template).html(wc.header.HeadText);
