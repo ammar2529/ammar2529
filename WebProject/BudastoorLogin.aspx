@@ -156,7 +156,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-floating mb-3">
-                            <input id="UserName" type="text" class="form-control required" placeholder="Enter User ID" argumentid="UserName" groupid="UserLogin">
+                            <input id="UserName" type="text" class="form-control required" placeholder="Enter User ID" argumentid="UserName" groupid="UserLogin"  autocomplete="off">
                             <label for="UserName">User ID*</label>
                         </div>
                     </div>
