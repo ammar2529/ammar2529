@@ -456,7 +456,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //tbl.children('tr:not(:first)').hide();
         //tbl.children('tr[tabid="' + li.attr('tabid') + '"]').show();
         $('.tabid', t.el).val(li.attr('tabid'));
-        
+        debugger
         if (li.children().attr('tabid') == 'SalesContractDetails')
         {
             debugger

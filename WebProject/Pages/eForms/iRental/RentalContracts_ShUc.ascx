@@ -1,9 +1,24 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RentalContracts_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.RentalContracts_ShUc" %>
 
 
-<div class="text-center">
+<div class="">
     <div class="card">
         <div class="card-body">
+
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" h5 fw-bold ink-bar">Search</span>
+                        <i class="fa-regular fa-rectangle-xmark CloseForm"
+                            tabid="CloseBtn" title="Close Form"
+                            style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                            onmouseover="this.style.color='red';"
+                            onmouseout="this.style.color='black';"></i>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
@@ -73,13 +88,13 @@
                             <option value="">-----------------------------</option>
                             <option value="RRCContractOpen">Contract Open - Car Out</option>
                             <option value="">-----------------------------</option>
-                            <option value="RRCContractOpenCarIn" style="color:red">Contract Open - Car In</option>
-                            <option value="RRCWithLegalContractOpenCarOut" style="color:red">With Legal - Contract Open - Car Out</option>
-                            <option value="RRCWithLegalContractOpenCarIn" style="color:red">With Legal - Contract Open - Car In</option>
-                            <option value="RRCWithLegalContractClosedPendingPayment" style="color:red">With Legal - Contract Closed - Pending Payment</option>
-                            <option value="RRCContractClosedPendingPayment" style="color:red">Contract Closed - Pending Payment</option>
+                            <option value="RRCContractOpenCarIn" style="color: red">Contract Open - Car In</option>
+                            <option value="RRCWithLegalContractOpenCarOut" style="color: red">With Legal - Contract Open - Car Out</option>
+                            <option value="RRCWithLegalContractOpenCarIn" style="color: red">With Legal - Contract Open - Car In</option>
+                            <option value="RRCWithLegalContractClosedPendingPayment" style="color: red">With Legal - Contract Closed - Pending Payment</option>
+                            <option value="RRCContractClosedPendingPayment" style="color: red">Contract Closed - Pending Payment</option>
                             <option value="">-----------------------------</option>
-                            <option value="RRCContractClosed" style="color:Green">Contract Closed - Payment Cleared</option>
+                            <option value="RRCContractClosed" style="color: Green">Contract Closed - Payment Cleared</option>
                             <option value="">-----------------------------</option>
                             <option value="RRCContractCancelled">Contract Cancelled</option>
                             <option value="">-----------------------------</option>
@@ -87,7 +102,7 @@
                         <label for="StateId">Status</label>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3" style="white-space:nowrap;">
+                <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3" style="white-space: nowrap;">
                     <button href="javascript:void(0);" class="btn btn-primary btn-sm me-2 search ViewButton" groupid="schContractDetails">Search</button>
                     <button href="javascript:void(0);" class="btn btn-secondary btn-sm reset ClearButton" groupid="schContractDetails">Clear</button>
                 </div>

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CarRateDetails_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CarRateDetails_ShUc" %>
 
-<div class="text-center">
+<div class="">
     <div class="card">
         <div class="card-body">
 

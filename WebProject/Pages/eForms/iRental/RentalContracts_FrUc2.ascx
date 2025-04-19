@@ -11,8 +11,29 @@
     }
 </style>--%>
 <div class=" Rental">
-    <!-- Nav tabs -->
-<ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
+
+        <div class="card">
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
+
+                        <span class=" h5 fw-bold ink-bar">Rental Contracts</span>
+						                    <i class="fa-regular fa-rectangle-xmark CloseForm"
+                        tabid="CloseBtn" title="Close Form"
+                        style="font-size: 20px; color: black; cursor: pointer; 
+                               transition: color 0.3s ease; position: absolute; 
+                               right: 10px;"
+                        onmouseover="this.style.color='red';" 
+                        onmouseout="this.style.color='black';">
+                    </i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" data-bs-toggle="tab" tabid="RentalContractDetails" href="#RentalContractDetails">Contract Details</a>
     </li>
@@ -27,7 +48,7 @@
     </li>
 
     <!-- Close Icon -->
-    <li class="ms-auto" style="padding-right: 10px;">
+<%--    <li class="ms-auto" style="padding-right: 10px;">
         <i 
             class="fa-regular fa-rectangle-xmark CloseForm" 
             tabid="CloseBtn" 
@@ -36,7 +57,7 @@
             onmouseover="this.style.color='red';" 
             onmouseout="this.style.color='black';">
         </i>
-    </li>
+    </li>--%>
 </ul>
 
 
@@ -1005,4 +1026,10 @@
             </div>
 
     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav tabs -->
+
 </div>

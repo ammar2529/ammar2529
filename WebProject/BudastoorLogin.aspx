@@ -48,16 +48,7 @@
         outline: none;
         box-shadow: none;
     }
-/*
-    .form-floating .form-control:not(:placeholder-shown),
-    .form-floating .form-select:not(:placeholder-shown) {
-        border-bottom: 3px solid #ff6200;
-    }
 
-    .form-floating .form-control::placeholder {
-        color: transparent;
-        opacity: 0;
-    }*/
 
 .form-floating label {
     color: rgba(148,148,148);
@@ -82,15 +73,7 @@
         line-height: 1.25;
     }
 
-/*    .form-floating > label {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        padding: 1rem;
-        pointer-events: none;
-        
-    }*/
+
 
     .form-floating > .form-control:focus ~ label,
     .form-floating > .form-control:not(:placeholder-shown) ~ label {
@@ -99,20 +82,6 @@
     }
 
 
-/*.form-floating .form-control:focus ~ label,
-.form-floating .form-control:not(:placeholder-shown) ~ label {
-    transform: translateY(0.01rem) scale(0.7);*/ /* When active, move up */
-/*}
-
-.form-floating .form-control {
-    padding-bottom: 1.8rem;*/ /* Adjust to move text closer */
-    /*text-align: left;*/ /* Ensure text starts from left */
-/*}*/
-
-/*.form-floating > .form-control-plaintext:focus, .form-floating > .form-control-plaintext:not(:placeholder-shown), .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
-    padding-top: 2rem;
-    padding-bottom: .300rem;
-}*/
 
 .form-floating > .form-control-plaintext:focus,
 .form-floating > .form-control-plaintext:not(:placeholder-shown),
@@ -144,7 +113,7 @@
     }
 
 .form-floating .form-control.invalid {
-    border-bottom: 2px #f44336 !important;
+    border-bottom: 2px solid #f44336 !important;
 }
 
 .form-floating label.invalid {
@@ -223,7 +192,7 @@
        
 
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script>
-    <script src="../../AsyncWidgets/Scripts/AsyncWidgets.js"></script>
+<%--    <script src="../../AsyncWidgets/Scripts/AsyncWidgets.js"></script>--%>
     <script src="../../AsyncWidgets/Scripts/Custom-Ext.js"></script>
     <script src="../../AsyncWidgets/Scripts/WidgetBase.js"></script>
     <script src="../../JQuery/Common.js"></script>
@@ -315,7 +284,7 @@
 
 
             $('.form-floating .form-control').on('blur', function () {
-                //debugger
+                debugger
                 var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
                 var value = $(this).val().trim(); // Remove extra spaces
 
