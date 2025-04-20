@@ -21,7 +21,7 @@
                 <div class="col-sm-12">
                         <div class="row mb-3">
         <div class="col-12">
-            <ul class="nav nav-tabs simple-tab" role="tablist">
+            <ul class="nav nav-tabs nav-pills-Home  simple-tab" role="tablist">
                 <li class="nav-item" tabid="BasicInformation">
                     <a class="nav-link active" data-bs-toggle="tab" href="#BasicInformation">Basic Information</a>
                 </li>

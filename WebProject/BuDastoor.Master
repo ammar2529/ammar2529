@@ -226,7 +226,20 @@ hr:before {
 .nav-pills .nav-link.active::after {
     content: '';
     position: absolute;
-    bottom: -5px; /* Align with the bottom of the <ul> */
+    bottom: -6.5px; /* Align with the bottom of the <ul> */
+    left: 0; /* Align with the left edge of the active tab */
+    width: 100%; /* Match the width of the active tab */
+    height: 3px; /* Thickness of the orange line */
+    background-color:  #d86018; /* Orange color */
+    transform: scaleX(1); /* For smooth transition */
+    transform-origin: left; /* Transition starts from the left */
+    transition: transform 0.3s ease, left 4s ease, width 0.3s ease; /* Smooth transition */
+}
+
+.nav-pills-Home .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px; /* Align with the bottom of the <ul> */
     left: 0; /* Align with the left edge of the active tab */
     width: 100%; /* Match the width of the active tab */
     height: 3px; /* Thickness of the orange line */
@@ -237,7 +250,7 @@ hr:before {
 }
 
 .nav .nav-link {
-    color: #666;
+    color: #9f9f9f;
     padding: 4px 8px; /* Consistent padding for tabs */
     font-family:OpenSans-Regular, Arial, Helvetica, sans-serif;
     font-size:14px;
