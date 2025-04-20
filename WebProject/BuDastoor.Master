@@ -211,7 +211,10 @@ hr:before {
 
 
 
-
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: inherit;
+}
 
 
     </style>
@@ -379,11 +382,18 @@ hr:before {
             //  $('.form-control-plaintext').prop('disabled', true); // Disable input field
 
             $('.ink-bar').removeClass('fw-bold h4 h5');
-            $('.nav-tabs').css({
+            $('.nav').removeClass('nav-tabs')
+            $('.nav').addClass('nav-pills')
+            $('.nav').css({
                 'background-color': '#12344d',
-                'border-bottom': '2px solid #fff',
-                
+                'padding': '5px'
+             
             });
+            //$('.nav-tabs').css({
+            //    'background-color': '#12344d',
+            //    'border-bottom': '2px solid #fff',
+                
+            //});
 
         });
 
