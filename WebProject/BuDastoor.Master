@@ -211,13 +211,49 @@ hr:before {
 
 
 
-     .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills {
+    position: relative; /* Make <ul> the positioning context */
+    background-color: #12344d; /* Match jQuery-applied background */
+    padding: 5px; /* Match jQuery-applied padding */
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: inherit;
+    position: relative; /* Ensure active tab can position pseudo-elements */
 }
-        .nav .nav-link{
-            color:#666;
-        }
+
+.nav-pills .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Align with the bottom of the <ul> */
+    left: 0; /* Align with the left edge of the active tab */
+    width: 100%; /* Match the width of the active tab */
+    height: 3px; /* Thickness of the orange line */
+    background-color:  #d86018; /* Orange color */
+    transform: scaleX(1); /* For smooth transition */
+    transform-origin: left; /* Transition starts from the left */
+    transition: transform 0.3s ease, left 4s ease, width 0.3s ease; /* Smooth transition */
+}
+
+.nav .nav-link {
+    color: #666;
+    padding: 4px 8px; /* Consistent padding for tabs */
+    font-family:OpenSans-Regular, Arial, Helvetica, sans-serif;
+    font-size:14px;
+    font-weight:500;
+}
+
+/* Remove ::after for non-active tabs to prevent color flash */
+.nav-pills .nav-link:not(.active)::after {
+    content: none; /* No pseudo-element for non-active tabs */
+}
+
+/* Remove focus outline or unwanted styles that might cause a flash */
+.nav-pills .nav-link:focus, .nav-pills .nav-link:active {
+    outline: none; /* Remove default focus outline */
+    box-shadow: none; /* Remove any focus shadow */
+}
 
     </style>
 </head>
@@ -388,7 +424,8 @@ hr:before {
             $('.nav').addClass('nav-pills')
             $('.nav').css({
                 'background-color': '#12344d',
-                'padding': '5px'
+                'padding': '5px',
+                'height' : '42px'
              
             });
             //$('.nav-tabs').css({
