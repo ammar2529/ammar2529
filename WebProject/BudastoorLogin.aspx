@@ -23,24 +23,24 @@
 
 
         .form-floating .form-control,
-.form-floating .form-select {
-    border: none;
-    border-bottom: 1px solid rgba(148,148,148);
-    border-radius: 0;
-    outline: none;
-    box-shadow: none;
-    height: auto;
-    padding-bottom: 0.1rem;
-    padding-top: 1rem;
-    width: 100%;
-    /*font-family: "Open Sans", Arial, Helvetica, sans-serif;*/ /* Corrected font-family */
-    font-family: OpenSans-Regular, Arial, Helvetica, sans-serif ;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing:1px;
-    --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
-    --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
-}
+        .form-floating .form-select {
+            border: none;
+            border-bottom: 1px solid rgba(148,148,148);
+            border-radius: 0;
+            outline: none;
+            box-shadow: none;
+            height: auto;
+            padding-bottom: 0.1rem;
+            padding-top: 1rem;
+            width: 100%;
+            font: inherit;
+            font-family: OpenSans-Regular, Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
+            --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
+        }
 
     .form-floating .form-control:focus,
     .form-floating .form-select:focus {
@@ -59,7 +59,7 @@
     padding-bottom:0px;
     font-size: 13px;
     font-weight: 400;
-    letter-spacing:1px;
+    letter-spacing:0.2px;
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 }

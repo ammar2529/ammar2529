@@ -13,6 +13,7 @@
     padding: 1.5rem;
     box-sizing: border-box;
     max-width: 100vw;
+    padding-top: 35px;
 }
 
 #MainContainer {
@@ -42,7 +43,7 @@
     font-family: OpenSans-Regular, Arial, Helvetica, sans-serif;
     font-size: 13px;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 0.2px;
     --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
     --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
 }
@@ -74,7 +75,7 @@
     padding-bottom:0px;
     font-size: 13px;
     font-weight: 400;
-    letter-spacing:1px;
+    letter-spacing:0.2px;
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 }
@@ -102,7 +103,7 @@
     .form-floating > .form-control:focus ~ label,
     .form-floating > .form-control:not(:placeholder-shown) ~ label {
         opacity: 1;
-        transform: scale(.85) translateY(-0.75rem) translateX(-0.1rem);
+        transform: scale(.85) translateY(-0.75rem) translateX(0rem);
     }
 
 
@@ -135,11 +136,11 @@
         .form-floating > .form-select:not(:placeholder-shown) {
             padding-top: 2rem;
             padding-bottom: .300rem;
-            padding-left: 3px;
+            padding-left: 2.8px;
         }
             .form-floating .form-control:focus ~ label, .form-floating .form-select:focus ~ label {
-        /*color: #d86018;*/
-        color: #666;
+        color: #d86018;
+     /*   color: #666;*/
     }
 
 
@@ -175,14 +176,14 @@
 .form-header {
     border-bottom: 1px solid #dfdfdf;
     font-family: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
     position: relative;
     padding-top: 8px;
     padding-bottom: 8px;
 }
 
-    .form-header span:after {
+  /*  .form-header span:after {
         content: "";
         position: absolute;
         bottom: -8px;
@@ -192,19 +193,29 @@
         background-color: #d86018;
         display: inline;
         z-index: 1;
+    }*/
+    .form-header span:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 3px;
+        background-color: #d86018;
     }
-
-
-.ink-bar {
+        /*.ink-bar {
     display: inline-block;
     position: relative;
+}*/
+        .form-header-col {
+    margin-bottom: 5px !important;
 }
-
-    .form-header-col{
-        margin-bottom:5px !important;
-    }
 .mb-3 {
     margin-bottom: 6px !important;
+}
+
+.card{
+    border:transparent;
 }
 /*form {
     border: none;
@@ -220,6 +231,7 @@
 
     .page-wrapper {
         padding: 0.75rem;
+        padding-top:35px;
     }
 
     .content-wrapper {
