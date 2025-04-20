@@ -211,11 +211,13 @@ hr:before {
 
 
 
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+     .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: inherit;
 }
-
+        .nav .nav-link{
+            color:#666;
+        }
 
     </style>
 </head>
