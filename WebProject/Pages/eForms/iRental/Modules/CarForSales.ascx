@@ -4,10 +4,9 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Form.ascx" TagName="Form" TagPrefix="uc8" %>
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="uc5" %>
 <style>
-.ElemDisabled
-{
-	background:#F1F1F1 !important;
-	}
+    .ElemDisabled {
+        background: #F1F1F1 !important;
+    }
 </style>
 
 <uc5:Container ID="conCarForSales" Hidden="true" Caption="Cars For Sale" runat="server">
@@ -19,7 +18,7 @@
                     cf = {
                         header: {
                             Style: {},
-                            Visible: true,
+                            Visible: false,
                             Collapsed: false,
                             HeadText: 'Search'
                         }
@@ -27,65 +26,92 @@
                 </script>
             </WidgetConfig>
         </uc8:Form>
-        <uc5:DataGrid ID="grdCarForSales" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarsForSales_ShUc"
-            EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_iRental_CarsForSale"
-            ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Cars For Sale"
-            GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarsForSales\',KeysCol:\'ChassisNo\'}}}">
-            <GridConfig>
-                <script>
-                    cf = {
-                        cols: {
-                            Sequence: { width: '0px' },
-                            RecId: { width: '0px' },
-                            RecCode: { width: '0px' },
-                            CarNumber: { caption: 'Car No.', width: '80px', bootstrapClass: "", smallDeviceWitdh: "80px" },
-                            ChassisNo: { caption: 'ChassisNo.', width: '135px', bootstrapClass: "", smallDeviceWitdh: "160px" },
-                            CarFor: { width: '70px' },
-                            BrandId: { caption: 'Brand', width: '80px' },
-                            ModelId: { caption: 'Model', width: '100px' },
-                            TypeId: { caption: 'Type', width: '50px', hideOnMeduimDevice: "200px" },
-                            YearId: { caption: 'Year', width: '55px' },
-                            ColorId: { caption: 'Color', width: '60px', hideOnMeduimDevice: "200px" },
 
-                            Price: { caption: 'Price', width: '80px', hideOnMeduimDevice: "200px" },
-                            CarLocationId: { caption: 'Location', width: '75px', hideOnMeduimDevice: "200px" },
-                            CarStatusId: { caption: 'Status', width: '63px', hideOnMeduimDevice: "200px" },
-                            RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" }
-                        },
-                        forms: {
-                            NewFormId: 'frmCarForSales',
-                            EditFormId: 'frmCarForSales',
-                            Keys: 'ChassisNo'
-                        }
-                        ,
-                        DataActionParams: {
-                            DBAction: 'SearchChassisNo'
-                        }
-                    };
-                </script>
-            </GridConfig>
-            <Scripts>
-                <script>
+        <div class="mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="form-header">
 
-                    var fn = function () {
-                        t.on('rowsRendered', function () {
-                            $('[colid="Price"]:not(".w-grid-head-cell")').each(function () {
+                                <span class=" h5 fw-bold ink-bar">Cars For Sale</span>
+                                <i class="fa-regular fa-rectangle-xmark "
+                                    tabid="CloseBtn" title="Close Grid"
+                                    style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                                    onmouseover="this.style.color='red';"
+                                    onmouseout="this.style.color='black';" returntype="true" showwidget="frmInbox"></i>
+                            </div>
+                        </div>
+                    </div>
 
-                                var ptr = $(this).closest('tr');
-                                $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <uc5:DataGrid ID="grdCarForSales" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarsForSales_ShUc"
+                                EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_iRental_CarsForSale"
+                                ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Cars For Sale"
+                                GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarsForSales\',KeysCol:\'ChassisNo\'}}}">
+                                <GridConfig>
+                                    <script>
+                                        cf = {
+                                            cols: {
+                                                Sequence: { width: '0px' },
+                                                RecId: { width: '0px' },
+                                                RecCode: { width: '0px' },
+                                                CarNumber: { caption: 'Car No.', width: '80px', bootstrapClass: "", smallDeviceWitdh: "80px" },
+                                                ChassisNo: { caption: 'ChassisNo.', width: '135px', bootstrapClass: "", smallDeviceWitdh: "160px" },
+                                                CarFor: { width: '70px' },
+                                                BrandId: { caption: 'Brand', width: '80px' },
+                                                ModelId: { caption: 'Model', width: '100px' },
+                                                TypeId: { caption: 'Type', width: '50px', hideOnMeduimDevice: "200px" },
+                                                YearId: { caption: 'Year', width: '55px' },
+                                                ColorId: { caption: 'Color', width: '60px', hideOnMeduimDevice: "200px" },
 
-                            });
+                                                Price: { caption: 'Price', width: '80px', hideOnMeduimDevice: "200px" },
+                                                CarLocationId: { caption: 'Location', width: '75px', hideOnMeduimDevice: "200px" },
+                                                CarStatusId: { caption: 'Status', width: '63px', hideOnMeduimDevice: "200px" },
+                                                RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" }
+                                            },
+                                            forms: {
+                                                NewFormId: 'frmCarForSales',
+                                                EditFormId: 'frmCarForSales',
+                                                Keys: 'ChassisNo'
+                                            }
+                                            ,
+                                            DataActionParams: {
+                                                DBAction: 'SearchChassisNo'
+                                            }
+                                        };
+                                    </script>
+                                </GridConfig>
+                                <Scripts>
+                                    <script>
 
-                        });
+                                        var fn = function () {
+                                            t.on('rowsRendered', function () {
+                                                $('[colid="Price"]:not(".w-grid-head-cell")').each(function () {
+
+                                                    var ptr = $(this).closest('tr');
+                                                    $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
+
+                                                });
+
+                                            });
 
 
-                    }
+                                        }
 
-                </script>
-            </Scripts>
-        </uc5:DataGrid>
+                                    </script>
+                                </Scripts>
+                            </uc5:DataGrid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <br />
+
+
+
     </Childern>
 
 </uc5:Container>

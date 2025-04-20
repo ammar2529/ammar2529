@@ -1,8 +1,25 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CarForSales_FrUc2.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.CarForSales_FrUc2" %>
 
 <div class=" ">
-    <form>
-    <div class="row my-3 justify-content-md-center">
+                    <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col-sm-12 ">
+                                <div class="form-header">
+
+                                    <span class=" h5 fw-bold ink-bar">Cars For Sale</span>
+                                    <i class="fa-regular fa-rectangle-xmark CloseForm"
+                                        tabid="CloseBtn" title="Close Form"
+                                        style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                                        onmouseover="this.style.color='red';"
+                                        onmouseout="this.style.color='black';"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                    <div class="row my-3 justify-content-md-center">
         <div class="col-12 col-sm-6 col-lg-1 ">
             <label for="floatingKM">
                 <small><b>Car Type*:</b></small>
@@ -192,8 +209,12 @@
         <button type="button" class="btn btn-secondary w-100 CloseForm">Cancel</button>
     </div>
 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
 
-</form>
 
 
 </div>

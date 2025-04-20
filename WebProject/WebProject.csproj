@@ -1377,6 +1377,7 @@
     <Content Include="AsyncWidgets\Widgets\TabPanel.ascx" />
     <Content Include="BudastoorHome.aspx" />
     <Content Include="BudastoorLogin.aspx" />
+    <Content Include="BudastoorLogin2.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2603,6 +2604,13 @@
     </Compile>
     <Compile Include="BudastoorLogin.aspx.designer.cs">
       <DependentUpon>BudastoorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudastoorLogin2.aspx.cs">
+      <DependentUpon>BudastoorLogin2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudastoorLogin2.aspx.designer.cs">
+      <DependentUpon>BudastoorLogin2.aspx</DependentUpon>
     </Compile>
     <Compile Include="CarServiceDetailsDataSet\CarServiceDetails.Designer.cs">
       <AutoGen>True</AutoGen>

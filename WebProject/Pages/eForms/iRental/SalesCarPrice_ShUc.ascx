@@ -2,6 +2,17 @@
 
 <div class="card">
     <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-sm-12 ">
+                <div class="form-header">
+
+                    <span class=" h5 fw-bold ink-bar">Search</span>
+
+                </div>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col-sm-6 col-lg-2">
                 <div class="form-floating">
@@ -46,4 +57,4 @@
         </div>
     </div>
 </div>
- 
+

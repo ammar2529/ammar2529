@@ -12,7 +12,7 @@
                     cf = {
                         header: {
                             Style: {},
-                            Visible: true,
+                            Visible: false,
                             Collapsed: false,
                             HeadText: 'Search'
                         }
@@ -20,6 +20,27 @@
                     </script>
                 </WidgetConfig>
                 </uc8:Form>
+
+                                    <div class="mt-2">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-sm-12 ">
+                                      <div class="form-header">
+
+                                          <span class=" h5 fw-bold ink-bar">Sales Car Price</span>
+                                          <i class="fa-regular fa-rectangle-xmark "
+                                              tabid="CloseBtn" title="Close Grid"
+                                              style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                                              onmouseover="this.style.color='red';"
+                                              onmouseout="this.style.color='black';" returntype="true" showwidget="frmInbox"></i>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                  <div class="col-sm-12">
+                                      
                 <uc6:DataGrid ID="grdSalesCarRatePriceDetails" LoadOnInit="false" ShowOnLoad="true"  runat="server" Hidden="true" Columns="1" Forms="frmSaleCarPriceDetails_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true" 
             PageSize="10" DataSource="SEL_iRental_SalesCarPrice" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
@@ -27,7 +48,7 @@
           
             <GridConfig>
             <script>
-               var cf = {
+                var cf = {
                     cols: {
                         Sequence: { width: '0px' },
                         RecId: { width: '0px' },
@@ -36,7 +57,7 @@
                         YearId: { caption: 'Year', width: '55px' },
                         Price: { caption: 'Car Price', width: '95px' },
                         Comments: { caption: 'Comments', width: '95px' },
-                      
+
                     },
                     forms: {
                         NewFormId: 'frmSaleCarPriceDetails',
@@ -48,13 +69,10 @@
             </GridConfig>
                     <Scripts>
                         <script>
-                            var fn = function ()
-                            {
-                                t.on('rowsRendered', function () 
-                                {
-                                    $('[colid="Price"]:not(".w-grid-head-cell")').each(function ()
-                                    {
-                                        
+                            var fn = function () {
+                                t.on('rowsRendered', function () {
+                                    $('[colid="Price"]:not(".w-grid-head-cell")').each(function () {
+
                                         var ptr = $(this).closest('tr');
                                         $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
 
@@ -62,14 +80,20 @@
 
                                 });
 
-                              
+
 
                             }
                         </script>
                     </Scripts>
             </uc6:DataGrid>
-                 
-            <br />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+				  
+
+    
            </Childern>
             </uc5:Container>
 

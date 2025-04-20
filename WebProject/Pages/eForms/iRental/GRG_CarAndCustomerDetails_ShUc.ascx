@@ -3,6 +3,19 @@
 <div class="text-center">
     <div class="card">
         <div class="card-body">
+                                    <div class="row mb-2">
+                            <div class="col-sm-12 ">
+                                <div class="form-header">
+
+                                    <span class=" h5 fw-bold ink-bar">Search</span>
+                                    <i class="fa-regular fa-rectangle-xmark CloseForm"
+                                        tabid="CloseBtn" title="Close Form"
+                                        style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                                        onmouseover="this.style.color='red';"
+                                        onmouseout="this.style.color='black';"></i>
+                                </div>
+                            </div>
+                        </div>
             <div class="row">
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
