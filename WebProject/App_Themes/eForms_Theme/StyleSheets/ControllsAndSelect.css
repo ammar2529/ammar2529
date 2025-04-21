@@ -62,7 +62,7 @@ html, body {
     font: inherit;
     /*font-family: "Open Sans", Arial, Helvetica, sans-serif;*/ /* Corrected font-family */
     font-family: var(--FONT_REGULAR);
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: normal;
     font-size:13px;
 }
@@ -93,7 +93,7 @@ html, body {
     padding-top:34px;
     padding-bottom:0px;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing:normal;
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
@@ -121,8 +121,10 @@ html, body {
 
     .form-floating > .form-control:focus ~ label,
     .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        color:#666;
         opacity: 1;
         transform: scale(.85) translateY(-0.75rem) translateX(0rem);
+
     }
 
 
