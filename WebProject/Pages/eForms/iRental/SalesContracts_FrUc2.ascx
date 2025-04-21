@@ -251,10 +251,11 @@
                                             <div class="row mb-2 justify-content-center">
                                                 <!-- Brand -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
-                                                    <div class="form-floating">
+                                                    <div class="form-floating CommonSP">
                                                             <input type="text"  class="form-control-plaintext  fw-bold CommonSP" id="SLBrand" groupid="SalesContractsForm" argumentid="Brand" readonly>
                                                             <label for="SLBrand" class="CommonSP">Brand</label>
-                                   
+                                                        </div>
+                                                    <div class="form-floating CommonDD">
                                                         <select style="display:none" class="form-control dropdownlist required CommonDD CommonDisableClass" id="SLBrandId" groupid="SalesContractsForm" argumentid="SalesBrandId" placeholder="Brand" loadon="FirstVisible" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                                                             <option value="" selected="selected">Select Brand</option>
                                                             <%--SalesModelId--%>
@@ -277,11 +278,12 @@
                                             <div class="row mb-2 justify-content-center">
                                                 <!-- Model -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
-                                                    <div class="form-floating">
+                                                   
                                                         <div class="form-floating CommonSP">
                                                             <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Model" groupid="SalesContractsForm" argumentid="Model" readonly>
                                                             <label for="Model">Model</label>
                                                         </div>
+                                                    <div class="form-floating CommonDD">
                                                         <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="ModelId" groupid="SalesContractsForm" argumentid="SalesModelId" placeholder="Model" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'SalesBrandId'}]}">
                                                             <option value="" selected="selected">Select Model</option>
                                                         </select>
@@ -310,11 +312,12 @@
                                             <div class="row mb-2 justify-content-center">
                                                 <!-- Year -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
-                                                    <div class="form-floating">
+                                                    
                                                         <div class="form-floating CommonSP">
                                                             <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Year" groupid="SalesContractsForm" argumentid="CarYear" readonly>
                                                             <label for="Year">Year</label>
                                                         </div>
+                                                        <div class="form-floating CommonDD">
                                                         <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="YearId" groupid="SalesContractsForm" argumentid="SalesYearId" placeholder="Year" loadon="FirstVisible" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
                                                             <option value="" selected="selected">Select Year</option>
                                                         </select>
@@ -334,17 +337,18 @@
                                             <div class="row mb-2 justify-content-center">
                                                 <!-- Color -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
-                                                    <div class="form-floating">
+                                                    
                                                         <div class="form-floating CommonSP">
                                                             <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Color" groupid="SalesContractsForm" argumentid="Color" readonly>
                                                             <label for="Color">Color</label>
                                                         </div>
+                                                    <div class="form-floating CommonDD">
                                                         <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="ColorId" groupid="SalesContractsForm" argumentid="SalesColorId" placeholder="Color" loadon="FirstVisible" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}">
                                                             <option value="" selected="selected">Select Color</option>
                                                         </select>
                                                         <label for="ColorId" class="CommonDD">Color</label>
                                                     </div>
-                                                </div>
+                                                
 
                                                 <!-- Mobile Telephone -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
@@ -372,11 +376,12 @@
                                             <div class="row mb-2 justify-content-center">
                                                                                                 <!-- Interior Color -->
                                                 <div class="col-12 col-sm-12 col-lg-4">
-                                                    <div class="form-floating">
+                                                    <div class="form-floating CommonSP">
                                                         
                                                             <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="InteriorColor" groupid="SalesContractsForm" argumentid="InteriorColor" readonly/>
                                                             <label for="InteriorColor">Interior Color</label>
-                                                       
+                                                       </div>
+                                                    <div class="form-floating CommonDD">
                                                         <select style="display:none" class="form-control dropdownlist a CommonDD CommonDisableClass" id="InteriorColorId" groupid="SalesContractsForm" argumentid="SalesInteriorColorId" placeholder="Interior Color"
                                                             loadon="FirstVisible" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'45'}]}">
                                                             <option value="" selected="selected">Select Interior Color</option>
@@ -390,7 +395,7 @@
                                             <div class="row mb-2 justify-content-center">
                                                 <!-- Type -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
-                                                    <div class="form-floating">
+                                                    <div class="form-floating CommonDD">
                                                         <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="TypeId" groupid="SalesContractsForm" argumentid="SalesTypeId" placeholder="Type" loadon="FirstVisible" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}">
                                                             <option value="" selected="selected">Select Type</option>
                                                         </select>

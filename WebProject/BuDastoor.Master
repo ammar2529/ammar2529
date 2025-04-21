@@ -450,10 +450,8 @@ hr:before {
                 'height': '42px' // 🔹 Removed incorrect semicolon here
             });
 
-            // $('.nav-tabs').css({
-            //     'background-color': '#12344d',
-            //     'border-bottom': '2px solid #fff',
-            // });
+
+
         });
 
 
