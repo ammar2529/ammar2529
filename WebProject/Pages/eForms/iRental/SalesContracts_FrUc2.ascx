@@ -252,7 +252,7 @@
                                                 <!-- Brand -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
                                                     <div class="form-floating CommonSP">
-                                                            <input type="text"  class="form-control-plaintext  fw-bold CommonSP" id="SLBrand" groupid="SalesContractsForm" argumentid="Brand" readonly>
+                                                            <input type="text"  class="form-control-plaintext  fw-bold CommonSP" placeholder="Brand" id="SLBrand" groupid="SalesContractsForm" argumentid="Brand" readonly>
                                                             <label for="SLBrand" class="CommonSP">Brand</label>
                                                         </div>
                                                     <div class="form-floating CommonDD">
@@ -280,7 +280,7 @@
                                                 <div class="col-12 col-sm-6 col-lg-4">
                                                    
                                                         <div class="form-floating CommonSP">
-                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Model" groupid="SalesContractsForm" argumentid="Model" readonly>
+                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Model" placeholder="Model"  groupid="SalesContractsForm" argumentid="Model" readonly>
                                                             <label for="Model">Model</label>
                                                         </div>
                                                     <div class="form-floating CommonDD">
@@ -314,7 +314,7 @@
                                                 <div class="col-12 col-sm-6 col-lg-4">
                                                     
                                                         <div class="form-floating CommonSP">
-                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Year" groupid="SalesContractsForm" argumentid="CarYear" readonly>
+                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Year" groupid="SalesContractsForm" placeholder="Year" argumentid="CarYear" readonly>
                                                             <label for="Year">Year</label>
                                                         </div>
                                                         <div class="form-floating CommonDD">
@@ -334,14 +334,16 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-2 justify-content-center">
+                                            <div class="row mb-2 ">
                                                 <!-- Color -->
-                                                <div class="col-12 col-sm-6 col-lg-4">
+                                                <div class="col-12 col-sm-6 col-lg-4 CommonSP">
                                                     
                                                         <div class="form-floating CommonSP">
                                                             <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="Color" groupid="SalesContractsForm" argumentid="Color" readonly>
                                                             <label for="Color">Color</label>
                                                         </div>
+                                                    </div>
+                                                <div class="col-12 col-sm-6 col-lg-4 CommonDD">
                                                     <div class="form-floating CommonDD">
                                                         <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="ColorId" groupid="SalesContractsForm" argumentid="SalesColorId" placeholder="Color" loadon="FirstVisible" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}">
                                                             <option value="" selected="selected">Select Color</option>
@@ -349,7 +351,7 @@
                                                         <label for="ColorId" class="CommonDD">Color</label>
                                                     </div>
                                                 
-
+                                                      </div>
                                                 <!-- Mobile Telephone -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
                                                     <div class="form-floating">
@@ -370,9 +372,9 @@
             </div>
         </div>--%>
                                                 </div>
-                                            </div>
+                                          </div>
 
-
+                                                </div>
                                             <div class="row mb-2 justify-content-center">
                                                                                                 <!-- Interior Color -->
                                                 <div class="col-12 col-sm-12 col-lg-4">

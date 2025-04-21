@@ -29,7 +29,7 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="FinanceCompany" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}" name="D5">
-                            <option value="" selected="selected">Select Finance Company</option>
+                            <option value="" selected="selected"> Finance Company</option>
                         </select>
                         <label for="FinanceCompany">FinanceCompany</label>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="Salesman" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
-                            <option value="" selected="selected">Select Salesman</option>
+                            <option value="" selected="selected">Salesman</option>
                         </select>
                         <label for="Salesman">Salesman</label>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="StateId" groupid="schSalesContractDetails" argumentid="StateId" name="D4">
-                            <option value="" selected="selected">Select Status</option>
+                            <option value="" selected="selected">Status</option>
                             <option value="">-----------------------------</option>
                             <option value="RRCCreatedState">Created - Reservation</option>
                             <option value="">-----------------------------</option>
@@ -79,7 +79,7 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="BrandId" groupid="schSalesContractDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D12">
-                            <option value="" selected="selected">Select Brand</option>
+                            <option value="" selected="selected">Brand</option>
                         </select>
                         <label for="BrandId">Brand</label>
                     </div>
@@ -87,7 +87,7 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ModelId" groupid="schSalesContractDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D10">
-                            <option value="" selected="selected">Select Model</option>
+                            <option value="" selected="selected">Model</option>
                         </select>
                         <label for="ModelId">Model</label>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
                         <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ColorId" groupid="schSalesContractDetails" argumentid="ColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}" name="D8">
-                            <option value="" selected="selected">Select Color</option>
+                            <option value="" selected="selected">Color</option>
                         </select>
                         <label for="ColorId">Color</label>
                     </div>
