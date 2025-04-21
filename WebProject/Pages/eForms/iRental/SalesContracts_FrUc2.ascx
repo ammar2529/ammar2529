@@ -252,17 +252,18 @@
                                                 <!-- Brand -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
                                                     <div class="form-floating">
-                                                        <div class="form-floating CommonSP">
-                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="SLBrand" groupid="SalesContractsForm" argumentid="Brand" readonly>
-                                                            <label for="SLBrand">Brand</label>
-                                                        </div>
-                                                        <select class="form-control dropdownlist required CommonDD CommonDisableClass" id="SLBrandId" groupid="SalesContractsForm" argumentid="SalesBrandId" placeholder="Brand" loadon="FirstVisible" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+                                                            <input type="text"  class="form-control-plaintext  fw-bold CommonSP" id="SLBrand" groupid="SalesContractsForm" argumentid="Brand" readonly>
+                                                            <label for="SLBrand" class="CommonSP">Brand</label>
+                                   
+                                                        <select style="display:none" class="form-control dropdownlist required CommonDD CommonDisableClass" id="SLBrandId" groupid="SalesContractsForm" argumentid="SalesBrandId" placeholder="Brand" loadon="FirstVisible" childcombo="SalesModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                                                             <option value="" selected="selected">Select Brand</option>
                                                             <%--SalesModelId--%>
                                                         </select>
-                                                        <label for="SLBrandId" class="CommonDD">Brand</label>
+                                                        <label for="SLBrandId" style="display:none" class="CommonDD">Brand</label>
                                                     </div>
                                                 </div>
+
+
 
                                                 <!-- Nationality -->
                                                 <div class="col-12 col-sm-6 col-lg-4">
@@ -369,18 +370,18 @@
 
 
                                             <div class="row mb-2 justify-content-center">
-                                                <!-- Interior Color -->
+                                                                                                <!-- Interior Color -->
                                                 <div class="col-12 col-sm-12 col-lg-4">
                                                     <div class="form-floating">
-                                                        <div class="form-floating CommonSP">
-                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="InteriorColor" groupid="SalesContractsForm" argumentid="InteriorColor" readonly>
+                                                        
+                                                            <input type="text" class="form-control-plaintext  fw-bold CommonSP" id="InteriorColor" groupid="SalesContractsForm" argumentid="InteriorColor" readonly/>
                                                             <label for="InteriorColor">Interior Color</label>
-                                                        </div>
-                                                        <select class="form-control dropdownlist a CommonDD CommonDisableClass" id="InteriorColorId" groupid="SalesContractsForm" argumentid="SalesInteriorColorId" placeholder="Interior Color"
+                                                       
+                                                        <select style="display:none" class="form-control dropdownlist a CommonDD CommonDisableClass" id="InteriorColorId" groupid="SalesContractsForm" argumentid="SalesInteriorColorId" placeholder="Interior Color"
                                                             loadon="FirstVisible" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'45'}]}">
                                                             <option value="" selected="selected">Select Interior Color</option>
                                                         </select>
-                                                        <label for="InteriorColorId" class="CommonDD">Interior Color</label>
+                                                        <label style="display:none" for="InteriorColorId" class="CommonDD">Interior Color</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-none col-lg-4"></div>

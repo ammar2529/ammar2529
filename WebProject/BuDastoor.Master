@@ -44,7 +44,7 @@
 
     <style>
 
-@font-face {
+/*@font-face {
     font-family: 'OpenSans-Regular';
     src: url('../fonts/OpenSans-Regular.woff2') format('woff2');
     font-weight: 400;
@@ -56,12 +56,12 @@
     src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
-}
+}*/
 
-body {
+/*body {
     font-family: 'OpenSans-Regular', sans-serif;
     font-weight: 400;
-}
+}*/
 
 
        /* Tab Bar Styling */
@@ -415,11 +415,11 @@ hr:before {
 </div>
 
     <script type="text/javascript">
-        $().ready(function () {
+
+        $(document).ready(function () {
             $('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);
 
             $('.form-floating .form-control').on('blur', function () {
-                //debugger
                 var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
                 var value = $(this).val().trim(); // Remove extra spaces
 
@@ -438,23 +438,22 @@ hr:before {
                 $(this).siblings('label').removeClass('invalid');
             });
 
-            //  $('.form-control-plaintext').prop('disabled', true); // Disable input field
+            // $('.form-control-plaintext').prop('disabled', true); // Disable input field
 
             $('.ink-bar').removeClass('fw-bold h4 h5');
-            $('.nav').removeClass('nav-tabs')
-            $('.nav').addClass('nav-pills')
+            $('.nav').removeClass('nav-tabs').addClass('nav-pills');
+
+            // ✅ Fixed: Removed incorrect semicolon inside the `.css()` function
             $('.nav').css({
                 'background-color': '#12344d',
                 'padding': '5px',
-                'height' : '42px'
-             
+                'height': '42px' // 🔹 Removed incorrect semicolon here
             });
-            //$('.nav-tabs').css({
-            //    'background-color': '#12344d',
-            //    'border-bottom': '2px solid #fff',
-                
-            //});
 
+            // $('.nav-tabs').css({
+            //     'background-color': '#12344d',
+            //     'border-bottom': '2px solid #fff',
+            // });
         });
 
 

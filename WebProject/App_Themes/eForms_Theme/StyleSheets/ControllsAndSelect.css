@@ -1,4 +1,25 @@
-﻿html, body {
+﻿
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../../../fonts/OpenSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url('../../../fonts/OpenSans-Semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+:root {
+    --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
+    --FONT_BOLD: OpenSans-Semibold, Arial, Helvetica, sans-serif;
+}
+
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -30,7 +51,7 @@
 .form-floating .form-control,
 .form-floating .form-select {
     border: none;
-    border-bottom: 2px solid rgba(148,148,148);
+    border-bottom: 1px solid rgba(148,148,148);
     border-radius: 0;
     outline: none;
     box-shadow: none;
@@ -40,12 +61,10 @@
     width: 100%;
     font: inherit;
     /*font-family: "Open Sans", Arial, Helvetica, sans-serif;*/ /* Corrected font-family */
-    font-family: OpenSans-Regular, Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-family: var(--FONT_REGULAR);
     font-weight: 400;
-    letter-spacing: 0.2px;
-    --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
-    --FONT_BOLD: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    font-size:13px;
 }
 
 
@@ -71,11 +90,11 @@
     opacity: 1;
     pointer-events: none;
     padding-left: 0;
-    padding-top:37px;
+    padding-top:34px;
     padding-bottom:0px;
     font-size: 13px;
     font-weight: 400;
-    letter-spacing:0.2px;
+    letter-spacing:normal;
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 }
@@ -178,7 +197,7 @@
 
 .form-header {
     border-bottom: 1px solid #dfdfdf;
-    font-family: OpenSans-SemiBold, Arial, Helvetica, sans-serif;
+    font-family: VAR(--FONT_BOLD);
     font-size: 13px;
     font-weight: 400;
     position: relative;
