@@ -91,7 +91,7 @@
         }
 
         /* Your existing styles */
-        .nav-pills {
+        /*.nav-pills {
             position: relative;
             background-color: #12344d;
             padding: 5px;
@@ -150,7 +150,7 @@
         .nav-pills .nav-link:focus, .nav-pills .nav-link:active {
             outline: none;
             box-shadow: none;
-        }
+        }*/
 
         select:focus {
             outline: none;
@@ -285,13 +285,13 @@
             });
 
             $('.ink-bar').removeClass('fw-bold h4 h5');
-            $('.nav').removeClass('nav-tabs').addClass('nav-pills');
+            //$('.nav').removeClass('nav-tabs').addClass('nav-pills');
 
-            $('.nav').css({
-                'background-color': '#12344d',
-                'padding': '5px',
-                'height': '42px'
-            });
+            //$('.nav').css({
+            //    'background-color': '#12344d',
+            //    'padding': '5px',
+            //    'height': '42px'
+            //});
 
             $('.form-floating .form-control-plaintext')
                 .removeClass('form-control-plaintext')

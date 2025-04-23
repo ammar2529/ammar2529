@@ -16,6 +16,7 @@
         flex-direction: column;
         overflow-y: auto;
         transition: transform 0.3s ease;
+        color:#12344d;
     }
 
     /* Navbar Brand */
@@ -24,6 +25,7 @@
         align-items: center;
         padding: 1rem;
         border-bottom: 1px solid #e9ecef;
+        color:#fff;s
     }
 
     .navbar-brand .fa-opencart {
@@ -93,7 +95,7 @@
     /* Secondary Navbar */
     .secondary-navbar {
         flex-direction: column;
-        padding: 1rem;
+        /*padding: 1rem;*/
         background-color: #e9ecef;
         border-top: 1px solid #dee2e6;
         display: none;
@@ -166,7 +168,13 @@
         border-radius: 4px;
         display: none;
     }
+    .navbar-toggler:hover {
+        background-color:#d86018;
+    }
 
+    .sidebar .navbar-nav .nav-item > .nav-link{
+        color:#fff;
+    }
     /* Responsive Design */
     @media (min-width: 992px) {
         .sidebar {
@@ -222,10 +230,10 @@
 </style>
 
 <!-- Vertical Sidebar -->
-<div class="sidebar" id="menuContainer">
+<div class="sidebar" id="menuContainer" style="display: block;transform: 0;background-color: #12344d;">
     <!-- Navbar Brand -->
     <a class="navbar-brand">
-        <i class="fa-solid fa-opencart"></i>
+      <%--  <i class="fa-solid fa-opencart"></i>--%>
         <h6 class="home" returntype="true" showwidget="frmInbox">BuDastoor</h6>
     </a>
 
@@ -247,7 +255,7 @@
     <!-- User Dropdown -->
     <div class="user-dropdown">
         <div class="dropdown">
-            <a class="dropdown-toggle" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="dropdown-toggle" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff;">
                 <span class="UserName me-2"></span>
                 <i class="fa-solid fa-user"></i>
             </a>
@@ -349,6 +357,7 @@
 
         // Logout handler
         $('.logout').click(function () {
+            debugger
             var inv = new AsyncWidgets.RAInvoker();
             inv.invokeRA({
                 params: ["ActorId", "Authentication", "ActionId", "LogoutUser", "ServiceInfo", "<root><dummy></dummy></root>"]
@@ -356,7 +365,7 @@
             AsyncWidgets.user.logout();
             inv.on('onSuccess', function (res) {
                 $('.card').hide();
-                window.location.href = "/Login.aspx";
+                window.location.href = "/BudastoorLogin.aspx";
             });
         });
 
