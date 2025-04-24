@@ -256,7 +256,7 @@
           </tr>
 </table>--%>
 
-<style>
+<%--<style>
     /* General Material Design Style */
 body {
     font-family: 'Roboto', sans-serif;
@@ -476,4 +476,4 @@ textarea:focus {
             </table>
         </td>
     </tr>
-</table>
+</table>--%>

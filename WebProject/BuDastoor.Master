@@ -21,10 +21,10 @@
     <link href="App_Themes/eForms_Theme/StyleSheets/ControllsAndSelect.css" rel="stylesheet" />
     <link href="App_Themes/eForms_Theme/StyleSheets/Dropdowns.css" rel="stylesheet" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<%--    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">--%>
 
     <link href="App_Themes/eForms_Theme/StyleSheets/sidebar.css" rel="stylesheet" />
     <script src="AsyncWidgets/Scripts/jQueryUI/jquery-ui.js" type="text/javascript"></script>
@@ -45,19 +45,30 @@
 
     <style>
 
-/*@font-face {
+@font-face {
     font-family: 'OpenSans-Regular';
-    src: url('../fonts/OpenSans-Regular.woff2') format('woff2');
+    src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+         url('../fonts/OpenSans-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'OpenSans-SemiBold';
-    src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2');
+    src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2'),
+         url('../fonts/OpenSans-SemiBold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
-}*/
+}
+
+/* Apply to entire website */
+body {
+    font-family: OpenSans-Regular ;
+    font-weight: 400;
+    font-size: 13px; /* Set a base font size */
+   /* line-height: 1.5;*/
+    color: #333; /* Optional: improve readability */
+}
 
 /*body {
     font-family: 'OpenSans-Regular', sans-serif;
@@ -566,7 +577,10 @@ hr:before {
                     'border-bottom': '1px dotted gray',  // Gray dotted border
                     'pointer-events': 'none',      // 🔹 Disable clicking
                     // Adjust text spacing
-                    'width': '100%'                // Full width
+                    'width': '100%'  ,            // Full width
+                    'font-size': '13px',
+                    'font-weight': '400',
+                    'font- family': 'OpenSans-Regular'
                 });
 
             /*$(".form-select").prop("selectedIndex", -1);*/

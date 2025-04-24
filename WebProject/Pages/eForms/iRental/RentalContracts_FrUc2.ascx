@@ -34,31 +34,21 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="nav nav-tabs SimpleTab align-items-center" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" data-bs-toggle="tab" tabid="RentalContractDetails" href="#RentalContractDetails">Contract Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="tab" tabid="RentalPaymentDetails" href="#RentalPaymentDetails">Payment Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="tab" tabid="RentalOtherCharges" href="#RentalOtherCharges">Other Charges</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="tab" tabid="RentalContractComments" href="#RentalContractComments">Comments</a>
-    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" tabid="RentalContractDetails" href="#RentalContractDetails">Contract Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" tabid="RentalPaymentDetails" href="#RentalPaymentDetails">Payment Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" tabid="RentalOtherCharges" href="#RentalOtherCharges">Other Charges</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" tabid="RentalContractComments" href="#RentalContractComments">Comments</a>
+                        </li>
 
-    <!-- Close Icon -->
-<%--    <li class="ms-auto" style="padding-right: 10px;">
-        <i 
-            class="fa-regular fa-rectangle-xmark CloseForm" 
-            tabid="CloseBtn" 
-            title="Close Form" 
-            style="font-size: 20px; color: black; cursor: pointer; transition: all 0.3s ease;" 
-            onmouseover="this.style.color='red';" 
-            onmouseout="this.style.color='black';">
-        </i>
-    </li>--%>
-</ul>
+
+                    </ul>
 
 
 

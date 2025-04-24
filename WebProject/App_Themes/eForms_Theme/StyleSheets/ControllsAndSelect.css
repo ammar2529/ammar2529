@@ -15,6 +15,14 @@
     font-style: normal;
 }
 
+body {
+    font-family: OpenSans-Regular;
+    font-weight: 400;
+    font-size: 13px; /* Set a base font size */
+    /* line-height: 1.5;*/
+    color: #333; /* Optional: improve readability */
+}
+
 :root {
     --FONT_REGULAR: OpenSans-Regular, Arial, Helvetica, sans-serif;
     --FONT_BOLD: OpenSans-Semibold, Arial, Helvetica, sans-serif;

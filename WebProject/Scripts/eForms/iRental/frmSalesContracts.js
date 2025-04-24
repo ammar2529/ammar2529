@@ -1677,30 +1677,34 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN = functi
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
     var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
     if ($(".cash").is(":checked")) {
-       /* $('[argumentid="FinanceCompany"]', t.el).prop('disabled', true);*/
-        $('[argumentid="FinanceCompany"],.financeCompany,.lpoNumber,.lpoDate', t.el).hide();
-        $('[argumentid="FinanceCompany"]', t.el).val('');
-        $(".financeCompany").removeClass("required"); 
-        $('.ftitle.lb nobr').hide();
-        $('td.financeCompanyTD span').hide();
-        $('.LPONumberTitle nobr', t.el).hide();
-        $('[argumentid="LPONumber"]', t.el).hide();
-        $('[argumentid="LPODate"]', t.el).hide();
-        $('.LPONumberDateField>img', t.el).hide();
-        $('[argumentid="LPOAmount"]', t.el).hide();
-        /*$(".trOnHideFinaceSelect",t.el).hide();*/
-   
+        $('.financeCompany')
+            .attr('readonly', true) // Set read-only
+            .css({
+                'border-bottom': '1px dotted gray', // Gray dotted border
+                'pointer-events': 'none', // Disable clicking
+                'width': '100%', // Full width
+                'font-size': '13px',
+                'font-weight': '400',
+                'font-family': 'OpenSans-Regular' // Corrected typo
+            });
+
+        $('[argumentid="FinanceCompany"]')
+            .removeClass("required")
+            .removeAttr("requirederr"); // Remove validation attributes
+        $('.financeCompany').val('');
+
+
     } else {
-      /*  $('[argumentid="FinanceCompany"]', t.el).prop('disabled', false);*/
-        $('[argumentid="FinanceCompany"],.financeCompany,.lpoNumber,.lpoDate', t.el).show();
-        $(".financeCompany").addClass("required");
-        $('.ftitle.lb nobr').show();
-        $('.LPONumberTitle nobr', t.el).show();
-        $('[argumentid="LPONumber"]', t.el).show();
-        $('[argumentid="LPODate"]', t.el).show();
-        $('.LPONumberDateField>img', t.el).show();
-        $('[argumentid="LPOAmount"]', t.el).show();
-    //    $(".trOnHideFinaceSelect", t.el).show();
+        $('.financeCompany')
+            .prop("disabled", false) // Enable field
+            .attr('readonly', false) // Remove read-only
+            .css({
+                'pointer-events': 'auto', // Enable clicking
+                'border-bottom': '' // Reset border (adjust as needed)
+            });
+        $('[argumentid="FinanceCompany"]')
+            .addClass("required")
+            .attr("requirederr", '');
     }
 };
 AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = function ()
