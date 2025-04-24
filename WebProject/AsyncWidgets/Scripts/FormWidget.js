@@ -446,7 +446,63 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         }
         return $(arg, ctx);
     },
+    //LoadCombo: function (t, cbo, ParentKey, cf) {
+    //    var ch = cbo.filter('ul'), sInfo = ch.attr('storeinfo');
+    //    if (!sInfo) {
+    //        console.log('Store info not found for: ' + ch.attr('argumentid'));
+    //        return;
+    //    }
+    //    sInfo = decJSON(sInfo);
+    //    sInfo["ParentKey"] = ParentKey;
+    //    cf = cf || {};
 
+    //    if (!!sInfo.Params) {
+    //        Ext.apply(sInfo, t.GetArgs(sInfo.Params, t.el));
+    //        delete sInfo.Params;
+    //    }
+
+    //    if (!!cf.params) {
+    //        Ext.apply(sInfo, cf.params);
+    //    }
+
+    //    var inv = new AsyncWidgets.RAInvoker();
+    //    inv.on('onSuccess', function (res) {
+    //        try {
+    //            res.Response = decJSON(res.Response);
+    //        } catch (ex) { }
+
+    //        if (res.status == 'OK' && res.Response.Rows.length > 0) {
+    //            var rowTemplate = String.format('<tpl for="."><li><a class="dropdown-item" href="#" data-value="{{0}}">{{1}}</a></li></tpl>', sInfo.ValCol, sInfo.TextCol);
+    //            var rowTpl = new Ext.XTemplate(rowTemplate, { compiled: true, disableFormats: true });
+    //            rowTpl.compile();
+    //            var tt = rowTpl.applyTemplate(res.Response.Rows);
+
+    //            ch.html(tt);
+
+    //            ch.find('.dropdown-item').on('click', function (e) {
+    //                e.preventDefault();
+    //                var selectedValue = $(this).data('value');
+    //                var selectedText = $(this).text();
+    //                ch.closest('.dropdown').find('.dropdown-toggle').text(selectedText).attr('data-selected-value', selectedValue);
+    //                ch.attr('selectedValue', selectedValue);
+    //            });
+    //        }
+    //        ch.attr("loaded", "true");
+    //        t.fireEvent('onComboFilled', { combo: ch, Response: res });
+    //        hideOverlay();
+    //    });
+
+    //    inv.on('onFailure', function (res) {
+    //        hideOverlay();
+    //        ch.removeAttr("ccloading", "");
+    //    });
+
+    //    ch.empty().append('<li><a class="dropdown-item" href="#">Loading...</a></li>');
+    //    showOverlay();
+
+    //    var ServiceInfo = getForm(null, null, sInfo);
+    //    inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "ChildComboRows", "ServiceInfo", ServiceInfo] });
+    //}
     LoadCombo: function (t, cbo, ParentKey, cf) {
         //  ;
 
@@ -488,6 +544,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 }
                 // rowTemplate = '<tpl for="."><option  value="{' + sInfo.ValCol + '}">{[this.getField(values,\'' + sInfo.TextCol + '\') ]}</option></tpl>';
                 rowTemplate = String.format('<tpl for="."><option {2} value="{{0}}">{{1}}</option></tpl>', sInfo.ValCol, sInfo.TextCol, itemAttrs);
+                //rowTemplate = String.format('<tpl for="."><li><a class="dropdown-item" href="#" data-value="{{0}}">{{1}}</a></li></tpl>', sInfo.ValCol, sInfo.TextCol, itemAttrs);
                 var rowTpl = new Ext.XTemplate(rowTemplate,
                     {
                         compiled: true,
@@ -499,6 +556,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 if (!isList(ch))
                     //$('option:first', ch).after($(tt));
                     $('option:first', ch).after(tt);
+                    // Assuming 'ch' is the <ul> where items should be added
+                //    $('li:first', ch).after(`<li class="dropdown-item">${tt}</li>`);
                 else
                     ch.html(tt);
                 //  ch.html($(tt));
@@ -540,7 +599,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "ChildComboRows", "ServiceInfo", ServiceInfo] });
 
-    },
+    }
+    ,
 
     onCBOChanged: function (t, cbo) {
         var chid = cbo.getAttribute('childcombo'), ch, chids;
@@ -1057,6 +1117,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $('select[loadon="FirstVisible"]', t.el).each(function () {
                     t.LoadCombo(t, $(this), "");
                 });
+                //$('ul[loadon="FirstVisible"]', t.el).each(function () {
+                //    t.LoadCombo(t, $(this), "");
+                //});
             }
             $('select[loadon="EveryVisible"]', t.el).each(function () {
                 t.LoadCombo(t, $(this), "");

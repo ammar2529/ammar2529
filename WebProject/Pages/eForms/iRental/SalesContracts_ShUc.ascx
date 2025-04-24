@@ -71,15 +71,27 @@
                     </div>--%>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
-                        <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="Salesman" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
+<%--                    <div class="form-floating mb-3">
+                        <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="Salesman" loadon="FirstVisible" 
+                            groupid="schSalesContractDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
                             <option value="" selected="selected">Salesman</option>
                         </select>
                         <label for="Salesman">Salesman</label>
+                    </div>--%>
+
+
+                    <div class="custom-floating">
+                        <select class="form-select" id="customSelectSalesman" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="Salesman" 
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
+                            <option value="" selected></option>
+
+                        </select>
+                        <label for="customSelectSalesman">Salesman</label>
                     </div>
+
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+<%--                    <div class="form-floating mb-3">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="StateId" groupid="schSalesContractDetails" argumentid="StateId" name="D4">
                             <option value="" selected hidden>Status</option>
                             <option value="">-----------------------------</option>
@@ -95,7 +107,26 @@
                             <option value="">-----------------------------</option>
                         </select>
                         <label for="StateId">State</label>
+                    </div>--%>
+
+                    <div class="custom-floating">
+                        <select class="form-select" id="customSelectStateId" aria-label="Custom floating label select" groupid="schSalesContractDetails" argumentid="StateId" name="D4">
+                            <option value="" selected ></option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCCreatedState">Created - Reservation</option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCContractClosed" style="color: Green">Contract Closed - Payment Cleared</option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCContractCancelled">Contract Cancelled</option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCPendingPaymentCarOut">Pending Payment - Car Out</option>
+                            <option value="">-----------------------------</option>
+                            <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
+                            <option value="">-----------------------------</option>
+                        </select>
+                        <label for="customSelectStateId">State</label>
                     </div>
+
                 </div>
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
@@ -113,27 +144,55 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+<%--                    <div class="form-floating mb-3">
                         <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="BrandId" groupid="schSalesContractDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D12">
                             <option value="" selected="selected">Brand</option>
                         </select>
                         <label for="BrandId">Brand</label>
+                    </div>--%>
+
+                    <div class="custom-floating">
+                        <select class="form-select" id="customSelectBrand" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="BrandId" childcombo="ModelId" 
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D12">
+                            <option value="" selected ></option>
+
+                        </select>
+                        <label for="customSelectBrand">Brand</label>
                     </div>
                 </div>
+                
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+<%--                    <div class="form-floating mb-3">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ModelId" groupid="schSalesContractDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D10">
                             <option value="" selected="selected">Model</option>
                         </select>
                         <label for="ModelId">Model</label>
+                    </div>--%>
+
+                    <div class="custom-floating">
+                        <select class="form-select" id="customSelectModel" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="ModelId"
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D10">
+                            <option value="" selected ></option>
+
+                        </select>
+                        <label for="customSelectModel">Model</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
-                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ColorId" groupid="schSalesContractDetails" argumentid="ColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}" name="D8">
+<%--                    <div class="form-floating mb-3">
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ColorId"
+                                groupid="schSalesContractDetails" argumentid="ColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}" name="D8">
                             <option value="" selected="selected">Color</option>
                         </select>
                         <label for="ColorId">Color</label>
+                    </div>--%>
+                    <div class="custom-floating">
+                        <select class="form-select" id="customSelectColor" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="ColorId"
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}" name="D8">
+                            <option value="" selected></option>
+
+                        </select>
+                        <label for="customSelectColor">Color</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">

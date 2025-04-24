@@ -1,0 +1,86 @@
+﻿select:focus {
+    outline: none;
+}
+
+.custom-floating {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-top: 20px;
+}
+
+    .custom-floating select.form-select {
+        border: none;
+        border-bottom: 1px solid rgba(148, 148, 148);
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        font-size: 13px;
+        font-weight: 500;
+        padding-top: 10px;
+        padding-left: 0;
+        /**/ padding-bottom: 0.5rem;
+        /*    height: calc(3.5rem + 2px);
+
+*/ transition: all 0.2s ease-in-out;
+    }
+
+    .custom-floating select.form-select {
+        background-position-y: calc(50% + 6px);
+    }
+
+    .custom-floating label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(30%);
+        color: #6c757d;
+        pointer-events: none;
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        /*      padding: 0 0.25rem;
+*/ font-size: 13px;
+        font-weight: 500;
+        /*      height:calc(3.5rem + 2px);
+*/ WIDTH: calc(100% - 40px);
+    }
+
+    .custom-floating.floating label {
+        top: 0;
+        transform: translateY(90%) scale(0.85) translateX(-9px);
+        color: #6c757d;
+        font-size: 13px;
+        font-weight: 400;
+        width: auto;
+    }
+
+    .custom-floating.floating2 label {
+        top: 0;
+        transform: translateY(90%) scale(0.85) translateX(-9px);
+        color: #6c757d;
+        font-size: 13px;
+        font-weight: 400;
+        width: auto;
+    }
+
+    .custom-floating select:focus {
+        border-bottom: 2px solid #d86018;
+        box-shadow: none;
+    }
+
+
+        .custom-floating select:focus + label {
+            top: 30%;
+            transform: translateY(50%);
+            font-size: 13px;
+            font-weight: 400;
+            color: #d86018;
+        }
+
+    .custom-floating.floating select:focus + label {
+        top: 0;
+        transform: translateY(90%) scale(0.85) translateX(-8px);
+        color: #d86018;
+        font-size: 13px;
+        font-weight: 400;
+        padding-left: 0;
+    }

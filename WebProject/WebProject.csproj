@@ -586,6 +586,7 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\bootstrap.bundle.min.js" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\bootstrap.min.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ControllsAndSelect.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\Dropdowns.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
