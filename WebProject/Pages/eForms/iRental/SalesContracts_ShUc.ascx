@@ -38,8 +38,8 @@
                                 <label for="customSelect">FinanceCompany</label>
                             </div>--%>
                     <div class="custom-floating">
-                        <select class="form-select" id="customSelectTest" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="Salesman"
-                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
+                        <select class="form-select" id="customSelectTest" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="FinanceCompany" 
+                                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}" name="D5">
                             <option value="" selected></option>
 
                         </select>
