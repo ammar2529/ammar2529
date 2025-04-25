@@ -29,16 +29,24 @@
                 <div class="col-sm-6 col-lg-2">
 
  
-                            <div class="custom-floating">
+<%--                            <div class="custom-floating">
                                 <select class="form-select" id="customSelect" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="FinanceCompany" 
                                     storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}" name="D5">
                                     <option value="" selected class="x"></option>
 
                                 </select>
                                 <label for="customSelect">FinanceCompany</label>
-                            </div>
+                            </div>--%>
+                    <div class="custom-floating">
+                        <select class="form-select" id="customSelectTest" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="Salesman"
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
+                            <option value="" selected></option>
 
-<%--                    <div class="custom-floating">
+                        </select>
+                        <label for="customSelectTest">FinanceCompany</label>
+                    </div>
+
+                    <%--                    <div class="custom-floating">
                         <div class="custom-dropdown" id="customDropdown" aria-label="Custom dropdown with floating label">
                             <div class="selected">Select an option</div>
                             <ul class="dropdown-list">

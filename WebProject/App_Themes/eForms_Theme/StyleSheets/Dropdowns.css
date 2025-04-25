@@ -1,14 +1,18 @@
-﻿select:focus {
+﻿
+
+select:focus {
     outline: none;
 }
 
 .custom-floating {
     position: relative;
     margin-bottom: 1rem;
-    padding-top: 20px;
+    padding-top: 4px;
 }
 
     .custom-floating select.form-select {
+       
+        top: 33px;
         border: none;
         border-bottom: 1px solid rgba(148, 148, 148);
         border-radius: 0;
@@ -16,41 +20,48 @@
         outline: none;
         font-size: 13px;
         font-weight: 500;
-        padding-top: 10px;
+        padding-top: 35px;
         padding-left: 0;
-        /**/ padding-bottom: 0.5rem;
-        /*    height: calc(3.5rem + 2px);
-
-*/ transition: all 0.2s ease-in-out;
+        padding-bottom: 0px;
+        transition: all 0.2s ease-in-out;
+        ;
     }
 
     .custom-floating select.form-select {
-        background-position-y: calc(50% + 6px);
+        background-position-y: calc(90%);
+        height: calc(3.5rem - 2px);
+        line-height: 1.25;
     }
 
     .custom-floating label {
         position: absolute;
-        top: 50%;
+        top: 90%;
         left: 0;
-        transform: translateY(30%);
+        transform: translateY(-18px);
         color: #6c757d;
         pointer-events: none;
         transition: all 0.2s ease-in-out;
         background: #fff;
-        /*      padding: 0 0.25rem;
-*/ font-size: 13px;
+        
+        font-size: 13px;
         font-weight: 500;
-        /*      height:calc(3.5rem + 2px);
-*/ WIDTH: calc(100% - 40px);
+        /*        WIDTH: calc(100% - 40px);
+*/
+        width: auto;
     }
 
+
+
     .custom-floating.floating label {
-        top: 0;
-        transform: translateY(90%) scale(0.85) translateX(-9px);
+        top: 10px;
+        transform: translateY(10px) scale(.85);
+        transform-origin: left center;
         color: #6c757d;
         font-size: 13px;
         font-weight: 400;
         width: auto;
+        left: 0px;
+        opacity: 0.7;
     }
 
     .custom-floating.floating2 label {
@@ -78,9 +89,28 @@
 
     .custom-floating.floating select:focus + label {
         top: 0;
-        transform: translateY(90%) scale(0.85) translateX(-8px);
+        transform: translateY(90%) scale(0.85) ;
         color: #d86018;
         font-size: 13px;
         font-weight: 400;
         padding-left: 0;
+    }
+
+
+    .custom-floating select option
+    {
+        padding: 16px 22px 16px 22px;
+    }
+
+    .custom-floating select option:hover
+    {
+        background: orange;
+    }
+    /***********************************************************************************/
+    .custom-dropdown select:focus + label {
+        top: 30%;
+        transform: translateY(50%);
+        font-size: 13px;
+        font-weight: 400;
+        color: #d86018;
     }

@@ -586,32 +586,9 @@ hr:before {
             /*$(".form-select").prop("selectedIndex", -1);*/
             //$('.form-floating .form-select ~ label').remove();
 
-            $('.dropdown-select').on('click', function (e) {
-                e.stopPropagation();
-                var $dropdown = $(this).closest('.dropdown');
-                $dropdown.toggleClass('active');
-                $dropdown.find('.dropdown-list').toggleClass('show');
-            });
-
-            // Dropdown item par click event
-            $('.dropdown-item').on('click', function () {
-                var selectedText = $(this).text();
-                var $dropdown = $(this).closest('.dropdown');
-                $dropdown.find('.selected').text(selectedText);
-                $dropdown.removeClass('active').addClass('has-value');
-                $dropdown.find('.dropdown-list').removeClass('show');
-            });
-
-            // Document par click event to close dropdown if clicked outside
-            $(document).on('click', function (e) {
-                if (!$(e.target).closest('.dropdown').length) {
-                    $('.dropdown').removeClass('active');
-                    $('.dropdown-list').removeClass('show');
-                }
-            });
+           
 
         });
-
         document.querySelectorAll('.custom-floating select').forEach(select => {
             // Function to update label state based on value
             function updateLabelState() {
@@ -634,6 +611,9 @@ hr:before {
             // Update on blur
             select.addEventListener('blur', updateLabelState);
         });
+
+      
+
 
 
         //document.querySelectorAll('.custom-floating').forEach(wrapper => {

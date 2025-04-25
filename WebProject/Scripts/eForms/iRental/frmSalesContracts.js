@@ -565,7 +565,18 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         }
         
         /*$('[argumentid="DocType"]', t.el).prop('disabled', false);*/
-
+        $('.form-floating .form-control')
+            .removeClass('ElemDisabled')
+            .prop('disabled', false) // ✅ Enable input (not disabled)
+            .prop('readonly', true)  // ✅ Make it read-only
+            .css({
+                'border-bottom': '1px dotted gray', // Gray dotted border
+                'pointer-events': 'none', // 🔹 Disable clicking
+                'width': '100%', // Full width
+                'font-size': '13px',
+                'font-weight': '400',
+                'font-family': 'OpenSans-Regular' // ✅ Fixed typo
+            });
     });
 
     // On Form Show file-list
