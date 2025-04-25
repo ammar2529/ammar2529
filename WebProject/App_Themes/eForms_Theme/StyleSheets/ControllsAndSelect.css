@@ -148,7 +148,7 @@ html, body {
     .form-floating > .form-control:not(:placeholder-shown) ~ label {
         color: #666;
         opacity: 0.7;
-        transform: scale(.85) translateY(-0.75rem) translateX(0rem);
+        transform: scale(.85) translateY(-0.5rem) ;
     }
 
 

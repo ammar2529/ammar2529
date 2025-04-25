@@ -20,7 +20,7 @@ select:focus {
         outline: none;
         font-size: 13px;
         font-weight: 500;
-        padding-top: 35px;
+        padding-top: 32px;
         padding-left: 0;
         padding-bottom: 0px;
         transition: all 0.2s ease-in-out;
