@@ -16,7 +16,7 @@
 }
 
 body {
-    font-family: OpenSans-Regular;
+    font-family: Roboto-Regular, Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 13px; /* Set a base font size */
     /* line-height: 1.5;*/
