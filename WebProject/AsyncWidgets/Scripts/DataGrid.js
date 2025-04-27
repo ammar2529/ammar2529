@@ -389,20 +389,13 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     }
                     var frms = t.GridConf.forms;
-                    //if (!!frms.EditFormId) {
-                    //    var childRow = $('<td style="width:19px;"><div style="width:25px;overflow:hidden">&nbsp;</div></td>');
-                    //    t.Header.repCon.append(childRow.clone().addClass('EditForm w-grid-head-back w-grid-cell-border ColName colIndex-' + i).attr('colid', 'EditForm'));
-                    //    t.Item.repCon.append(childRow.clone().addClass('EditForm ColValue  w-grid-cell-border colIndex-' + i++).css('cursor', 'pointer'));
-                    //}
-                    //if (!!t.ChildGrids) {
-                    //    var childRow = $('<td style="width:19px;"><div style="width:19px;overflow:hidden">&nbsp;</div></td>');
-                    //    t.Header.repCon.append(childRow.clone().addClass('ChildGrid DataGridHead ColName colIndex-' + i).attr('colid', 'ChildGrid'));
-                    //    t.Item.repCon.append(childRow.clone().addClass('ChildGrid ColValue colIndex-' + i++).css('cursor', 'pointer'));
-                    //}
-                    if (!!frms.EditFormId) {
-                        var childRow = $('<td style="width:12px;"></td>');
-                        var editIcon = $('<i class="fa-regular fa-pen-to-square"></i>'); // Font Awesome edit icon
 
+                    // creating EditForm column
+                    if (!!frms.EditFormId) {
+                        var childRow = $('<td></td>');
+                        var editIcon = $('<i class="fa-regular fa-pen-to-square"></i>');// Font Awesome edit icon
+                        
+                        
                         t.Header.repCon.append(
                             childRow.clone().addClass('EditForm w-grid-head-back w-grid-cell-border ColName colIndex-' + i)
                                 .attr('colid', 'EditForm')
@@ -410,14 +403,13 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                         t.Item.repCon.append(
                             childRow.clone().addClass('EditForm ColValue w-grid-cell-border colIndex-' + i++)
-                                .css('cursor', 'pointer')
                                 .append(editIcon) // Append the edit icon here
                         );
                     }
 
                     if (!!t.ChildGrids) {
                         var childRow = $('<td style="width:12px;">/td>');
-
+                       // var childRow = $('<td></td>');
                         t.Header.repCon.append(
                             childRow.clone().addClass('ChildGrid DataGridHead ColName colIndex-' + i)
                                 .attr('colid', 'ChildGrid')
@@ -1260,19 +1252,26 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 if (!t._arrHeads) { //if header columns is not saved, then construct the array - only first time
                     heads = $('.colIndex-' + i, headerColumn); //$('table > tbody > tr.HeaderTr > td .colIndex-' + i, t.Repeater);
+                    if (heads.length < 1) {
+                        heads = $(`[colindex="${i}"]`, headerColumn);
+                        heads.addClass('.colIndex-' + i);
+                    }
                     arrHead[i] = heads;
                 }
                 else {
+ 
                     heads = arrHead[i];
                 }
 
-                heads.css({ 'padding-left': '0px', 'padding-right': '0px' });
+               // heads.css({ 'padding-left': '0px', 'padding-right': '0px' });
 
                 if (!!t._arrHeads) { t._arrHeads = arrHead }
                 var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
                 if (!!b.width) {// if column width is defined in GridConfiguration then
                     w = b.width.replace(/px/g, '');
-                    if (w == '0') heads.hide();
+                    if (w == '0') {
+                        heads.hide();
+                    }
                     else {
                         if (!$.boxModel) {
                             w = (parseInt(w) || 0) + (parseInt(heads.css('borderLeftWidth')) || 0) + (parseInt(heads.css('borderRightWidth')) || 0);
@@ -1536,8 +1535,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         
         if (t.State.GridTemplate == 'jQueryUI') {
             t.Top = $('<div class="w-panel-head w-top-corner"> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td class=""> </td> </tr> </table> </td> <td style="width:100%">&nbsp;</td> <td> <span style="" class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon">&nbsp;</span> </td> </tr> </table> </div>');
-            t.Repeater = $('<div class="GridContainer"> <table cellspacing="0" cellpadding="0" border="0" style="width:100%;text-align:left"> <tbody> <tr class="TopTR"> <td class="Top"> </td> </tr> <tr class="HeaderTR"> <td class="Header w-grid-border"> </td> </tr> <tr class="ItemTR"> <td class="Item w-grid-border"> </td> </tr><tr class="NoRecordsTR" style="display:none;"><td class="NoRecords w-grid-norecords-msg" ></td></tr> <tr class="BottomTR"> <td class="Bottom"> </td> </tr> </tbody> </table> </div>');
-            t.Header = $('<table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header"> <tbody> <tr class="w-grid-head-back"> <td class=" ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border"> <div> <span href="#" class="w-grid-head ColName sort"></span> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="width:32px;padding:0;overflow:hidden;margin:0" class="w-grid-cell-border w-grid-head-back"> <div style="width:19px;overflow:hidden;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px;overflow:hidden" class="w-grid-head-back w-grid-cell-border"> <div style="overflow:hidden" class="PWCLabel ColName"></div> </td><td templateid="RowEditForm" style="width: 40px;overflow:hidden;"  class="RowEditForm w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td><td templateid="RowDetail" style="width: 40px;overflow:hidden;"  class=" RowDetail w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td></tr> </tbody> </table>');
+            t.Repeater = $('<div class="GridContainer"> <table cellspacing="0" cellpadding="0" border="0" style="width:100%;text-align:left"> <tbody> <tr class="TopTR"> <td class="Top"> </td> </tr> <tr class="HeaderTR" style="background-color:#e5f2fd"> <td class="Header w-grid-border"> </td> </tr> <tr class="ItemTR"> <td class="Item w-grid-border" style="padding:5px 5px 5px 8px;"> </td> </tr><tr class="NoRecordsTR" style="display:none;"><td class="NoRecords w-grid-norecords-msg" ></td></tr> <tr class="BottomTR"> <td class="Bottom"> </td> </tr> </tbody> </table> </div>');
+            t.Header = $('<table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header"> <tbody> <tr class="w-grid-head-back"> <td class=" ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border"> <div class="ColHead"> <span href="#" class="w-grid-head ColName sort"></span> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="width:32px;padding:0;overflow:hidden;margin:0" class="w-grid-cell-border w-grid-head-back"> <div style="width:19px;overflow:hidden;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px;overflow:hidden" class="w-grid-head-back w-grid-cell-border"> <div style="overflow:hidden" class="PWCLabel ColName"></div> </td><td templateid="RowEditForm" style="width: 40px;overflow:hidden;"  class="RowEditForm w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td><td templateid="RowDetail" style="width: 40px;overflow:hidden;"  class=" RowDetail w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td></tr> </tbody> </table>');
             t.Item = $('<table class="table " cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed"> <tbody> <tr class="ItemTableRow" style="white-space:nowrap" EvenRowCSS="w-grid-row-odd" OddRowCSS="w-grid-row-odd" HoverRowCSS=""> <td class="ColTemplate w-grid-cell-border" style="white-space:nowrap;overflow:hidden"> <div class="ColValue w-grid-label" style="white-space:nowrap"> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="margin:0;width:32px;overflow:hidden" class="w-grid-cell-border"> <div style="width:19px;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px" class="w-grid-cell-border"> <div style="overflow:hidden" class="w-grid-label ColValue"></div> </td><td templateid="RowEditForm"   class="RowEditForm w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td><td templateid="RowDetail"   class=" RowDetail w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td></tr> </tbody> </table>');
             t.Pager = $('<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:White;padding:2px;table-layout:auto" class="w-grid-border-bottom" > <tbody> <tr> <td align="left" style="width:50%;height:26px"> <table border="0" cellpadding="0" cellspacing="0"> <tbody> <tr class="w-grid-buttons-bottom-container"> </tr> </tbody> </table> </td> <td align="center" class="NoRecsHide"> <table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;white-space:nowrap"> <tbody> <tr> <td class="w-all-corner w-grid-button First"> <span class="w-ui-icon-yellow w-grid-icon-first"></span></td> <td class="w-all-corner w-grid-button Back"> <span class="w-ui-icon-yellow w-grid-icon-pre"></span></td> <td style="padding-left:5px;padding-right:5px;width:4px;cursor:default" class="w-all-corner w-elem-disabled"> <div class="w-icon-separator"></div></td> <td dir="ltr" class="w-grid-pg-text PWCLabel" style="white-space:nowrap;vertical-align:middle;padding:0px">&nbsp;Page&nbsp;&nbsp;<input type="text" maxlength="7" size="2" class="PWCTextBox PageNoToGo PageNo">&nbsp;&nbsp;of&nbsp; <span class="TotalPages">&nbsp;2&nbsp;</span></td> <td style="padding-left:5px;padding-right:5px;width:4px;cursor:default" class="w-all-corner w-elem-disabled"> <div class="w-icon-separator"></div></td> <td class="w-all-corner w-grid-button Next"> <span class="w-ui-icon-yellow w-grid-icon-next"></span></td> <td class="w-all-corner w-grid-button Last"> <span class="w-ui-icon-yellow w-grid-icon-last"></span></td><td dir="ltr" style="padding-left:5px"> <select class="PWCDropDownList PageSize PageSize-Dropdown" style="display:none"> <option selected="" value="10" role="option">10</option> <option value="20" role="option">20</option><option value="30" role="option">30</option></select> </td></tr></tbody> </table> </td> <td align="right" style="width:50%" class="NoRecsHide"> <table border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody> <tr> <td align="right"> <span><span class="PWCLabel PageSize-NumberList" style="padding-right:0px;display:none">Items per page : <span class="PageSize">10</span>, <span class="PageSize">20</span>, <span class="PageSize">30</span></span><span class="PWCLabel PageSize-NumberList" style="display:none;padding-left:10px;padding-right:10px">|</span> <span class="PWCLabel" Class="w-grid-item-startend" style="padding-right:5px">View <span class="ItemStart"></span> - <span class="ItemEnd">&nbsp;</span>&nbsp;of <span class="Count"></span></span> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table>');
             t.Bottom = $('<span class="Pager"></span>');

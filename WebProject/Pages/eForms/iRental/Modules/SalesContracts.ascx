@@ -45,6 +45,7 @@
 
                     <div class="row">
                         <div class="col-sm-12">
+
                             <AW:DataGrid ID="grdSalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmSalesContracts_ShUc"
                                 EmptyHeight="201px" AllowNew="true" SelectableRow="true"
                                 PageSize="10" DataSource="SEL_iRental_SalesContracts" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"

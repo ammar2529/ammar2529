@@ -269,6 +269,12 @@ html, body {
 .card {
     border: transparent;
 }
+
+input:disabled {
+    border-bottom: 2px dotted red; /* Dotted border for disabled state */
+    background-color: #fff; /* Optional */
+    cursor: not-allowed;
+}
 /*form {
     border: none;
 }*/

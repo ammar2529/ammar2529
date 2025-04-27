@@ -1,0 +1,123 @@
+﻿.nav-tabs.nav-pills-Home {
+    display: flex;
+    flex-wrap: nowrap; /* Horizontal layout by default */
+    width: 100%;
+    overflow-x: auto; /* Allow horizontal scrolling on large screens */
+    white-space: nowrap; /* Prevent text wrapping */
+    background-color: #12344d; /* Dark blue background for nav-tabs */
+    border-bottom: none; /* Remove default bottom border */
+}
+
+    /* Style for each nav item */
+    .nav-tabs.nav-pills-Home .nav-item {
+        flex: 0 0 auto; /* Size based on content */
+        margin-right: 5px; /* Space between tabs horizontally */
+    }
+
+    /* Style for nav links (tab buttons) */
+    .nav-tabs.nav-pills-Home .nav-link {
+        padding: 8px 15px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 4px 4px 0 0; /* Rounded top corners */
+        min-width: 120px; /* Prevent tabs from being too narrow */
+        background-color: #12344d; /* Dark blue background for all tabs */
+        color: #b1b8c3; /* White text for contrast */
+        border: none; /* Remove default borders */
+        transition: all 0.2s ease; /* Smooth hover effect */
+    }
+
+        /* Active tab styling */
+        .nav-tabs.nav-pills-Home .nav-link.active {
+            background-color: #12344d; /* Same dark blue for active tab */
+            color: white; /* White text */
+            position: relative; /* For positioning the orange line */
+        }
+
+            /* Orange line below active tab */
+            .nav-tabs.nav-pills-Home .nav-link.active::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%; /* Full width of the tab */
+                height: 3px; /* Thickness of the orange line */
+                background-color: #d86018; /* Orange color */
+            }
+
+        /* Hover effect */
+        .nav-tabs.nav-pills-Home .nav-link:hover {
+            background-color: #1a4a6b; /* Slightly lighter blue for hover */
+            color: white;
+        }
+
+/* Vertical stacking on small and medium screens */
+@media (max-width: 768px) {
+    .nav-tabs.nav-pills-Home {
+        flex-direction: column; /* Stack tabs vertically */
+        flex-wrap: wrap; /* Allow wrapping */
+        overflow-x: hidden; /* Remove horizontal scrolling */
+        white-space: normal; /* Allow text wrapping if needed */
+        background-color: #12344d; /* Keep dark blue background */
+    }
+
+        .nav-tabs.nav-pills-Home .nav-item {
+            margin-right: 0; /* Remove horizontal margin */
+            margin-bottom: 10px; /* Add vertical spacing between tabs */
+            width: 100%; /* Full width for each tab */
+            display: block; /* Ensure block-level display */
+        }
+
+        .nav-tabs.nav-pills-Home .nav-link {
+            width: 100%; /* Full width of the container */
+            min-width: unset; /* Remove min-width for vertical layout */
+            padding: 10px; /* Adjust padding for touch targets */
+            font-size: 14px; /* Consistent font size */
+            border-radius: 4px; /* Fully rounded corners for vertical tabs */
+            background-color: #12344d; /* Dark blue background */
+            color: white; /* White text */
+            text-align: left; /* Align text to left for readability */
+        }
+
+            /* Active tab in vertical layout */
+            .nav-tabs.nav-pills-Home .nav-link.active {
+                background-color: #12344d; /* Same dark blue */
+                color: white;
+                position: relative; /* For orange line */
+            }
+
+                /* Orange line below active tab in vertical layout */
+                .nav-tabs.nav-pills-Home .nav-link.active::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    top: 47px;
+                    width: 100%; /* Full width of the tab */
+                    height: 3px; /* Thickness of the orange line */
+                    background-color: #d86018; /* Orange color */
+                }
+
+            /* Hover effect in vertical layout */
+            .nav-tabs.nav-pills-Home .nav-link:hover {
+                background-color: inherit; /* Slightly lighter blue for hover */
+                color: white;
+            }
+}
+
+/* Clear any potential overlap issues */
+.nav-tabs.nav-pills-Home .nav-item,
+.nav-tabs.nav-pills-Home .nav-link {
+    position: relative; /* Ensure proper stacking */
+    z-index: 1; /* Prevent overlap with other elements */
+}
+
+/* Optional: Hide scrollbar for horizontal layout on larger screens */
+.nav-tabs.nav-pills-Home::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-tabs.nav-pills-Home {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

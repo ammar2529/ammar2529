@@ -588,6 +588,7 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ControllsAndSelect.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\Dropdowns.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\NavTabs.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\ResponsiveTable.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\sidebar.css" />
@@ -595,6 +596,7 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_ara.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_eng.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\testCSS.css" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\Widget.css" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_ara.gif" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_eng.gif" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_Small_ara.gif" />
