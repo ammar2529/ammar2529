@@ -2,8 +2,8 @@
 
 
 AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
-        var t = obj;
-      
+    var t = obj;
+
     AsyncWidgets.WidgetScripts.frmSalesContracts.t = t;
     //t.on('onLoad', function ()
     //{
@@ -22,21 +22,24 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
 
     //});
-    
-
-   
-        //$('.btnCancel', t.el).on('click', function () {
-        //    // Get references to the elements
-        //    var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
-        //    var b = AsyncWidgets.get('grdSalesContracts').el;
-
-        //    $('.CommonEmpty', a).val('');
-
-      
-        //});
-    
 
 
+
+    //$('.btnCancel', t.el).on('click', function () {
+    //    // Get references to the elements
+    //    var a = AsyncWidgets.get('frmSalesContracts_ShUc').el;
+    //    var b = AsyncWidgets.get('grdSalesContracts').el;
+
+    //    $('.CommonEmpty', a).val('');
+
+
+    //});
+
+
+
+    //document.getElementById("colorPickerSales").addEventListener("input", function () {
+    //    document.getElementById("targetTable").style.backgroundColor = this.value;
+    //});
 
     $('.Edit_Insrance', t.el).on('click', function () {
 
@@ -246,6 +249,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
       
     });
 
+    $('.amountNo, .amountYes', t.el).click(function () {
+        
+        AsyncWidgets.WidgetScripts.frmSalesContracts.toggleBillsButtons();
+
+    });
+
     //$('.Arrive', t.el).on('click', function ()
     //{
     //    $('.CommonDD',t.el).each(function ()
@@ -427,6 +436,34 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         }, 1000);
     });
 
+
+    $('.BillsBtn2', t.el).click(function () { //
+
+        var btn = $(this);
+        var dt = new Date();
+        $('[argumentid="BillDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+
+        if (btn.hasClass('BillsBtn2')) {
+            t.submit(btn);
+            /*$.showMessage("working.");*/
+
+        }
+
+        setTimeout(function () {
+
+            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx2?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+            console.log(strlink);
+            var width = 920;
+            var height = 600;
+            var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+            var top = parseInt((screen.availHeight / 2) - (height / 2));
+            window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+            console.log('Click on BillsBtn2 Button');
+
+            return false;
+
+        }, 1000);
+    });
     //Statement
     $('.Statement', t.el).click(function ()
     { //
@@ -1795,6 +1832,21 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
     }
 
 
+};
+
+AsyncWidgets.WidgetScripts.frmSalesContracts.toggleBillsButtons = function () {
+    var t = AsyncWidgets.WidgetScripts.frmSalesContracts.t;
+    if ($('.amountNo', t.el).is(":checked")) {
+        console.log('No button clicked')
+        $('.BillsBtn2', t.el).hide();
+        $('.BillsBtn', t.el).show();
+    }
+
+    else if ($('.amountYes',t.el).is(":checked")) {
+        console.log('yes button clicked')
+        $('.BillsBtn2', t.el).show();
+        $('.BillsBtn', t.el).hide();
+    }
 };
 
 AsyncWidgets.WidgetScripts.frmSalesContracts.UpdateTotalAmount = function () {

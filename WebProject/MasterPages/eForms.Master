@@ -98,7 +98,7 @@
     }
 
  
-        body {
+/*        body {
             margin: 0;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -109,15 +109,15 @@
             padding: 10px;
             border: 1px solid #ccc;
             cursor: pointer;
-        }
+        }*/
     
 
 </style>
 </head>
-<%--<body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #dae2e3; overflow:scroll;overflow-x:visible">--%>
-  <body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #D3D9D4; overflow:scroll;overflow-x:visible">
+<body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #dae2e3; overflow:scroll;overflow-x:visible">
+<%--  <body id="mainPageBody" runat="server" style="margin: 0px 0px 0px 0px; background-color: #D3D9D4; overflow:scroll;overflow-x:visible">--%>
          <h1>Select a Background Color</h1>
-    <input type="color" id="colorPicker" value="#ff0000" />
+<%--    <input type="color" id="colorPicker" value="#ff0000" />--%>
 
 
     <form id="frmMain" runat="server">
@@ -184,14 +184,14 @@
         </table>
     </center>
     </form>
-	<script>
+	<script type="text/javascript">
 	$().ready(function(){
 
 		$('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);;
     });
-        document.getElementById("colorPicker").addEventListener("input", function () {
-            document.body.style.backgroundColor = this.value;
-        });
+        //document.getElementById("colorPicker").addEventListener("input", function () {
+        //    document.body.style.backgroundColor = this.value;
+        //});
 
     </script>
 </body>

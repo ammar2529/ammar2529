@@ -60,7 +60,7 @@
     border-color:transparent ;    
 }
 </style>
-    <div style="padding:10px;" >
+ <%--   <div style="padding:10px;" >
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -95,15 +95,20 @@
                 </td>
             </tr>
             <tr tabid="BasicInfomation">
+
                 <td style="background: #EEEEFF;padding:10px;border: 1px solid #8298B0;">
+
+
                     <table class="FormTable" style=" width: 100%" cellspacing="1" >
                     <tr class="EMPInfoNotFound" style="display:none;">
                             <td colspan="4" class="PWCLabel" style="color:red;">
                              Employee information not found!</td>
                         </tr>
                         <tr >
+
                             <td style="width:25%">
                                <span class="FormLabel">Employee Id</span> </td>
+
                             <td style="width:25%">
                                 <span groupid="EmployeeInfo" argumentid="EmpId" style="padding-top:2px;display:block;height:14px;width:150px;color:White;background-color:graytext;font-weight:bold;text-align: center;" class="PWCTextBox" >
                                 &nbsp;</span> 
@@ -245,6 +250,10 @@
                               <input type="text" groupid="EmployeeInfo" argumentid="ResidencyExpiryDate" style="width: 150px ;display:none"
                            class="PWCTextBox" alt="" />
                         </td>
+                        </tr>
+
+                        <tr>
+
                         </tr>
                                                                                                 
                                      </table>
@@ -629,4 +638,4 @@
                 </td>
             </tr>
         </table>
-    </div>
+    </div>--%>

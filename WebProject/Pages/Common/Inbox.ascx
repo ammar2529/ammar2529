@@ -27,8 +27,12 @@
                 </td>
             </tr>
             <tr tabid="BasicInfomation">
-                <td style="background: #EEEEFF;padding:10px;border: 1px solid #8298B0;">
+                <td id="targetTd"  style="background: #EEEEFF;padding:10px;border: 1px solid #8298B0;">
+<%--                    <input type="color" id="colorPicker3" value="#ff0000" />--%>
                     <table class="FormTable" style=" width: 100%" cellspacing="1" >
+                        <tr>
+
+                        </tr>
                     <tr class="EMPInfoNotFound" style="display:none;">
                             <td colspan="4" class="ftitle" style="color:red;">
                              Employee information not found ...</td>
@@ -440,4 +444,13 @@
             </tr>
 
         </table>
+
+
     </div>
+
+<script>
+    //document.getElementById("colorPicker3").addEventListener("input", function () {
+    //    document.getElementById("targetTd").style.backgroundColor = this.value;
+    //});
+</script>
+

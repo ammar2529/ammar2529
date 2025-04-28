@@ -7,9 +7,9 @@
 
             </td>
             <!-- Color Picker Added Here -->
-            <td>
+<%--            <td>
                 <input type="color" id="colorPicker2" value="#ff0000" />
-            </td>
+            </td>--%>
 
             <td>
                 <img height="20" width="1" alt="" src="App_Themes/eForms_Theme/Images/spacer.gif" />
@@ -60,7 +60,7 @@
 
 <script>
     // Color Picker event listener
-    document.getElementById("colorPicker2").addEventListener("input", function () {
-        document.getElementById("targetRow").style.backgroundColor = this.value;
-    });
+    //document.getElementById("colorPicker2").addEventListener("input", function () {
+    //    document.getElementById("targetRow").style.backgroundColor = this.value;
+    //});
 </script>
