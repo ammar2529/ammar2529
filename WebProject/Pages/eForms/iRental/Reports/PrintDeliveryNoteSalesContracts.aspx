@@ -19,12 +19,15 @@
                                HasToggleGroupTreeButton="false" HasToggleParameterPanelButton="false"
                         Width="901px" ToolPanelView="None" />
                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ReportConnection %>" 
-                           SelectCommand="RNTSalesContract_DeliveryNote_SalesContract_SP" SelectCommandType="StoredProcedure" ProviderName="<%$ ConnectionStrings:ReportConnection.ProviderName %>"  >
+                           SelectCommand="RNTSalesContract_DeliveryNote_SalesContract_SP" SelectCommandType="StoredProcedure"    ProviderName="<%$ ConnectionStrings:ReportConnection.ProviderName %>">
                              <SelectParameters>
                                  <asp:QueryStringParameter DefaultValue="" Name="FormCode" QueryStringField="FormCode"
                           Type="String"/>
                              </SelectParameters>
                          </asp:SqlDataSource>
+
+
+
 
 
                          <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
