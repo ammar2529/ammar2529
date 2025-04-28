@@ -1512,6 +1512,17 @@
     <Content Include="Scripts\eForms\iRental\Upload.css" />
     <Content Include="Scripts\eForms\iRental\TestForm.js" />
     <Content Include="Scripts\frmRentalContractst.js" />
+    <Content Include="SalesContractDS\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="SalesContractDS\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="SalesContractDS\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -3943,6 +3954,11 @@
     <Compile Include="ReportsEngine\XMLDataAdapter.cs" />
     <Compile Include="ReportsEngine\XmlHttpPanelWebService.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalesContractDS\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="SalesContractsCrysReport.cs">
       <AutoGen>True</AutoGen>

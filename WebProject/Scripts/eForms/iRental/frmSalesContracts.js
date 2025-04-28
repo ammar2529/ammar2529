@@ -451,7 +451,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
         setTimeout(function () {
 
-            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts.aspx2?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+            var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintBillsSalesContracts2.aspx?BillFormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
             console.log(strlink);
             var width = 920;
             var height = 600;

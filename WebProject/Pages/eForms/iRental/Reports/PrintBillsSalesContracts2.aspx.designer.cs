@@ -24,6 +24,15 @@ namespace WebProject.Pages.eForms.iRental.Reports
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// SalesBillReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CrystalDecisions.Web.CrystalReportViewer SalesBillReport;
+
+        /// <summary>
         /// SqlDataSource13 control.
         /// </summary>
         /// <remarks>
@@ -31,5 +40,14 @@ namespace WebProject.Pages.eForms.iRental.Reports
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource13;
+
+        /// <summary>
+        /// CrystalReportSource13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource13;
     }
 }
