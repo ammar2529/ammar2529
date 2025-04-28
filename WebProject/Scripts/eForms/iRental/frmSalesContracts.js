@@ -972,10 +972,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 if ($('[argumentid="StateId"]', t.el).text() == 'RRCPendingPaymentCarOut')
                 {
                     setTimeout(function () {
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarOut,.PaymentClearedCarNR,.BillsBtn', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarOut,.PaymentClearedCarNR', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarOut,.PaymentClearedCarNR,.BillsBtn', t.el).addClass('ElemDisabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarOut,.PaymentClearedCarNR', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -997,10 +997,10 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                     setTimeout(function ()
                     {
 
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarIn,.PaymentClearedCarNR,.BillsBtn', t.el).attr('disabled', 'disabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.PendingPaymentCarIn,.PaymentClearedCarNR', t.el).attr('disabled', 'disabled');
 
                         $('.CommonDisableClass,.DisableOnClose', t.el).attr('disabled', 'disabled');
-                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarIn,.PaymentClearedCarNR,.BillsBtn', t.el).addClass('ElemDisabled');
+                        $('.common-disable-button,.QuotationBtn,.ContractPrintBtn,.Statement,.CommonDisableClass,.PendingPaymentCarIn,.PaymentClearedCarNR', t.el).addClass('ElemDisabled');
                         $('[argumentid="ContractStartDate"]', t.el).next('img').hide();
                         $('[argumentid="ReservationDate"]', t.el).next('img').hide();
                         $('[argumentid="ContractDate"]', t.el).next('img').hide();
@@ -1120,7 +1120,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             $('[argumentid="AmountDue"]', t.el).text(AmountDueRes.toFixed(3));
 
-           
+            AsyncWidgets.WidgetScripts.frmSalesContracts.toggleBillsButtons();
     });
     // End of On Loaded Values
 }
