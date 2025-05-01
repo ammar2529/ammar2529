@@ -1436,6 +1436,8 @@
     <Content Include="NLogTestFile.aspx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
+    <Content Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx" />
+    <Content Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\GarageCarServiceDetails_FrUc.ascx" />
@@ -2871,6 +2873,20 @@
     </Compile>
     <Compile Include="Pages\Common\Terms.ascx.designer.cs">
       <DependentUpon>Terms.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx.cs">
+      <DependentUpon>BeneficiaryManagement_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx.designer.cs">
+      <DependentUpon>BeneficiaryManagement_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx.cs">
+      <DependentUpon>BeneficiaryManagment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx.designer.cs">
+      <DependentUpon>BeneficiaryManagment.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\Employee\EmployeeDatabase_FrUc.ascx.cs">
       <DependentUpon>EmployeeDatabase_FrUc.ascx</DependentUpon>

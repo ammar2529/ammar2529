@@ -2679,7 +2679,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             {
 
                 //var $fld = ctx.find('[argumentid="' + param + '"]'),
-                console.log(`${param} - ${cf.params[param]}`);
+                //console.log(`${param} - ${cf.params[param]}`);
                 fld = null;
 
 
