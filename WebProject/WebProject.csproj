@@ -145,7 +145,7 @@
     </Reference>
     <Reference Include="EO.Base, Version=23.2.34.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Essential Objects\EO.Total 2023\Samples\CS\Web\EOWebDemo_CS\bin\EO.Base.dll</HintPath>
+      <HintPath>bin\EO.Base.dll</HintPath>
     </Reference>
     <Reference Include="EO.Web, Version=23.2.34.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
