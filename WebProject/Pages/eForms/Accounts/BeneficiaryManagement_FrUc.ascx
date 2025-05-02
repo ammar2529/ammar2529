@@ -25,25 +25,25 @@
         </td>
         <td>
 
-            <input type="radio" checked="checked" default="default" value="Local" name="BeneficiaryType" groupid="Beneficiary" argumentid="BeneficiaryType"><label>Company</label>
-            <input type="radio" value="International" name="BeneficiaryType" groupid="Beneficiary" argumentid="BeneficiaryType"><label>Individual</label>
+            <input type="radio" class="Company" checked="checked" default="default" value="C" name="BeneficiaryType" groupid="Beneficiary" argumentid="BeneficiaryType"><label>Company</label>
+            <input type="radio" class="Individual" value="I" name="BeneficiaryType" groupid="Beneficiary" argumentid="BeneficiaryType"><label>Individual</label>
         </td>
     </tr>
 
     <tr>
         <td class="ftitle">
-            <nobr>Company Name*:</nobr>
+            <nobr class="CompanyTD">Company Name:</nobr>
         </td>
         <td>
             <input type="text" style="text-align: center; font-size: 16px; font-weight: bold; width: 300px;" maxlength="199" class="text required"
-                groupid="Beneficiary" argumentid="CompanyName" />
+                groupid="Beneficiary" argumentid="CompanyName"/>
 
         </td>
     </tr>
 
         <tr>
         <td class="ftitle">
-            <nobr>Person Name:</nobr>
+            <nobr class="PersonTD">Person Name:</nobr>
         </td>
         <td>
             <input type="text" style="text-align: center; font-size: 16px; font-weight: bold; width: 300px;" maxlength="199" class="text "
@@ -58,7 +58,7 @@
             <nobr>National ID No:</nobr>
         </td>
         <td>
-            <asp:TextBox ID="txtNationalIDNo" runat="server" groupid="Beneficiary" MaxLength="50"
+            <asp:TextBox ID="txtNationalIDNo" runat="server" groupid="Beneficiary" MaxLength="13"
                 Width="300px" class="text alphanumericspacedot" argumentid="NationalIDNo" />
 
             <%--<asp:TextBox ID="txtNationalIDExpiryDate" runat="server" groupid="Beneficiary" MaxLength="50"
@@ -78,13 +78,13 @@
                 Width="150px" class="text number" argumentid="MobileTelephone2"></asp:TextBox>--%>
         </td>
     </tr>
-    <tr>
+<%--    <tr>
         <td>
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td class="smalltext">Enter the phone number without country code, E.g. <b>24045607</b>
         </td>
-    </tr>
+    </tr>--%>
 
 
     <tr>
@@ -116,8 +116,7 @@
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td>
-            <input type="button" value="  Save  " style="display: none" class="DataAction ButtonStyle btnMainForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true,Requery:false}" />
-            <input type="button" value="  Save  " class="DataAction ButtonStyle btnPopupForm" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_Customers',HideOnSuccess:true,Requery:true}" />
+            <input type="button" value="  Save  " class="DataAction ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_BeneficiaryManagement',HideOnSuccess:true,Requery:true}" />
 
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
         </td>
