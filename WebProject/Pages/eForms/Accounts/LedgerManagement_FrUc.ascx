@@ -14,6 +14,7 @@
         <td width="100%">
 
             <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="RecId"></span></div>
+            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="CustomerRecCode"></span></div>
             <div><span groupid="LedgerManagement_FrUc" argumentid="LedgerManagementRecCode" style="font-style: italic; font-weight: bold">New customer code will be generated on saving</span></div>
 
         </td>
@@ -25,8 +26,8 @@
             <nobr class="CompanyTD">Customer Name:</nobr>
         </td>
         <td>
-            <input type="text" style="text-align: center; width: 300px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text"
-                groupid="LedgerManagement_FrUc" lovpopupid="LedgerManagementPopup" argumentid="CustomerRecCode" requirederr=' *Required' />
+            <input type="text" style="text-align: center; width: 300px; font-weight: bold;" maxlength="30" class="LOVPopup required text"
+                groupid="LedgerManagement_FrUc" lovpopupid="LedgerManagementPopup" argumentid="CustomerName" requirederr=' *Required' />
 
         </td>
     </tr>
@@ -37,8 +38,8 @@
         </td>
         <td>
 
-            <input type="radio" class="Debit" checked="checked" default="default" value="D" name="BeneficiaryType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Debit</label>
-            <input type="radio" class="Credit" value="C" name="BeneficiaryType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Credit</label>
+            <input type="radio" class="Debit" checked="checked" default="default" value="D" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Debit</label>
+            <input type="radio" class="Credit" value="C" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Credit</label>
         </td>
     </tr>
 
@@ -47,7 +48,7 @@
             <nobr class="PersonTD">Amount:</nobr>
         </td>
         <td>
-            <input type="text" style="text-align: center; font-size: 16px; font-weight: bold; width: 300px;" maxlength="199" class="text "
+            <input type="text" style="text-align: center; ; width: 300px;" maxlength="199" class="text "
                 groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" />
 
         </td>
@@ -81,7 +82,7 @@
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td>
-            <input type="button" value="  Save  " class="DataAction ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_BeneficiaryManagement',HideOnSuccess:true,Requery:true}" />
+            <input type="button" value="  Save  " class="DataAction ButtonStyle " conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:true}" />
 
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
         </td>

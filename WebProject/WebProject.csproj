@@ -1487,7 +1487,6 @@
     <Content Include="Pages\eForms\iRental\SalesContracts_PD_FrUc.ascx" />
     <Content Include="Pages\eForms\iRental\SalesContracts_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx" />
-    <Content Include="Pages\eForms\iRental\TestForm.ascx" />
     <Content Include="ReportsEngine\FusionMaps\FCMap_World8.swf_FromAsif" />
     <Content Include="ReportsEngine\FusionMaps\FusionMaps.js_FromAsif" />
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\crsmarttag.jsp" />
@@ -1735,7 +1734,6 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="test2.aspx" />
-    <Content Include="TestForm.aspx" />
     <Content Include="test\DevBranchScript.js" />
     <Content Include="test\index.html" />
     <Content Include="test\one.js" />
@@ -2887,6 +2885,7 @@
     </Compile>
     <Compile Include="Pages\eForms\Accounts\LedgerManagement_FrUc.ascx.cs">
       <DependentUpon>LedgerManagement_FrUc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\eForms\Accounts\LedgerManagement_FrUc.ascx.designer.cs">
       <DependentUpon>LedgerManagement_FrUc.ascx</DependentUpon>
@@ -2900,6 +2899,7 @@
     </Compile>
     <Compile Include="Pages\eForms\Accounts\Modules\LedgerManagement.ascx.cs">
       <DependentUpon>LedgerManagement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\eForms\Accounts\Modules\LedgerManagement.ascx.designer.cs">
       <DependentUpon>LedgerManagement.ascx</DependentUpon>
@@ -3624,13 +3624,6 @@
     <Compile Include="Pages\eForms\iRental\SparePartInventory_ShUc.ascx.designer.cs">
       <DependentUpon>SparePartInventory_ShUc.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\eForms\iRental\TestForm.ascx.cs">
-      <DependentUpon>TestForm.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\eForms\iRental\TestForm.ascx.designer.cs">
-      <DependentUpon>TestForm.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\eForms\ITSSD\ITSSDProjects_FrUc.ascx.cs">
       <DependentUpon>ITSSDProjects_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4038,13 +4031,6 @@
     </Compile>
     <Compile Include="test2.aspx.designer.cs">
       <DependentUpon>test2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestForm.aspx.cs">
-      <DependentUpon>TestForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestForm.aspx.designer.cs">
-      <DependentUpon>TestForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="testpage.aspx.cs">
       <DependentUpon>testpage.aspx</DependentUpon>

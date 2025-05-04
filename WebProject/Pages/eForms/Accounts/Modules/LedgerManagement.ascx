@@ -30,75 +30,35 @@
 
         <AW:DataGrid ID="grdLedgerManagement" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmconLedgerManagement_ShUc"
             EmptyHeight="201px" AllowNew="true" SelectableRow="true"
-            PageSize="10" DataSource="SEL_iRental_SalesContracts" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
-            GridHeadText="Ledger Management" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts\',KeysCol:\'RecId\'}}}">
+            PageSize="10" DataSource="SEL_Account_LedgerManagement" ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI"
+            GridHeadText="Ledger Management" GridButtons="{\'delete\':{conf:{Command:\'UPD_Account_LedgerManagement\',KeysCol:\'RecId\'}}}">
             <ColumnTemplates>
-                <pre columnid="ContractDetails" class="w-grid-head">
+                <pre columnid="LeadgerDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
-                                    <div class="ftitle" style="color:#602010">{RecCode}</div>
-
-                            
-                                    
-                                     <div style="font-size:11px;">
-                                    <tpl if="CarNumber">
-                                        <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>
-                                        <tpl if="Brand">&nbsp;-&nbsp;{Brand}</tpl>
-                                        <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
-                                        <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
-                                    </tpl>
-                                    <tpl if="!CarNumber">
-                                        <tpl if="Brand">{Brand}</tpl>
-                                        <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
-                                        <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
-                                    </tpl>
-                                </div>
-                                <div><nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr></div>
+                                    <div class="ftitle" style="color:#602010">{LedgerManagementRecCode}</div>
+                                    <div class="ftitle" >Transaction Type:&nbsp;<nobr class="ftitle" style="color:#602010">{TransactionType}</nobr></div>
 
 
-
-
-                                 <div class="ftitle StateName" style="color:#602010">{StateName}</div>
                                 </div>
                                 </pre>
 
                 <pre columnid="CustomerDetails">
                                 <center>
                                      <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>
-                                     <div style="font-size:11px;">ID: {NationalIDNo}&nbsp;-&nbsp;{Nationality}</div>
-                                      <div style="font-size:11px;">{MobileTelephone1}&nbsp;&nbsp;{MobileTelephone2}</div>
+
                                 </center>
                                 </pre>
-                <pre columnid="ContractDateTimeDetails">
-                                     <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
-                                     <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
-                                     <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
+                <pre columnid="LeadgerDateTimeDetails">
+                                     <div class="ftitle">Amount:&nbsp;<nobr class="ftitle" style="color:#602010">{LedgerManagementAmount:fix(3)}</nobr></div>
                                    
                                 </pre>
                 <pre columnid="CreationDetails"> 
-                                     <div class="ftitle" style="color:#808000; display:none"></div>
-<%--                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>--%>
-                                     <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
-                                        <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
-<%--                                    <div class="ftitle" style="color:#808000; display:none">{ReceiptId}</div>--%>
+
                     
-                                     <div class="ftitle" style="color:#101080">{Salesman}</div>
                                       
+                              <div class="ftitle" style="style="color:#101080"">{CreatedBy}</div>
 
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
-                                   <div class="ftitle" style="color:#808000">{FinanceCompany}</div>
-
-                                 <%--   <tpl>
-                                        <div class="ftitle" style="color:#808000; ">
-                                            <tpl if="LPONumber">&nbsp;-&nbsp;</tpl>
-                                           - 
-                                            <tpl if="LPOAmount">{LPOAmount:fix(3)}</tpl>
-                                            </div> 
-                                    </tpl>--%>
-
-                    <tpl if="LPONumber">
-                        <div class="ftitle" style="color:#602010"">LPO No.: {LPONumber}</div>
-                    </tpl>
-                                    
 
                     
                                     
@@ -114,9 +74,9 @@
                         cols: {
                             EditForm: { width: '0px' },
                             Sequence: { width: '0px' },
-                            ContractDetails: { caption: 'Contract & Car Details', width: '270px' },
+                            LeadgerDetails: { caption: ' Details', width: '270px' },
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px' },
+                            LeadgerDateTimeDetails: { caption: 'Amount', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
                             RecId: { width: '0px' }
                         },
@@ -134,7 +94,67 @@
             </GridConfig>
             <Scripts>
                 <script>
-                    var fn = Sales.SalesContracts.grdSalesContracts;
+                    var fn = function (t)
+                    {
+
+                        var ColClick = function () {
+                            $('.EditForm.ColValue', $(this).closest('tr')).trigger('click');
+                            return false;
+                        };
+                        t.on('rowsRendered', function () {
+
+                            $('.StateName', t.el).each(function () {
+                                //if ($(this).text().indexOf('Created - Reservation') > -1) {
+                                //$('.chkRowSelect', $(this).closest('tr')).removeAttr('disabled');
+                                //}
+                                //else if ($(this).text() != '{StateName}') {
+                                $('.chkRowSelect', $(this).closest('tr')).attr('disabled', 'disabled');
+                                //}
+
+                                var ptr = $(this).closest('tr');
+
+                                if ($(this).text().indexOf('Contract Closed - Payment Cleared') > -1) {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                if ($(this).text().indexOf('Payment Cleared - Car NR') > -1) {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                else if ($(this).text().indexOf('Contract Cancelled') > -1) {
+                                    ptr.css('background', '#F1F1F1').attr('disabled', 'disabled');
+                                }
+                                else if ($(this).text().indexOf('Contract Open - Car In') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('With Legal - Contract Open - Car Out') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('With Legal - Contract Open - Car In') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('With Legal - Contract Closed - Pending Payment') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('Contract Closed - Pending Payment') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('Pending Payment - Car Out') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+                                else if ($(this).text().indexOf('Pending Payment - Car In') > -1) {
+                                    $(this).css('color', 'Red');
+                                }
+
+
+
+                            });
+                            var cols = $('table[itemno] td:not(.RowSelect,.EditForm)', t.el).css('cursor', 'pointer').click(ColClick);
+                            $('.ColValue', cols).css('cursor', 'pointer').click(ColClick);
+
+                            //var $('[argumentid="CarReservationMode"]',t.el)
+
+
+                        });
+                    }
                 </script>
             </Scripts>
         </AW:DataGrid>
@@ -252,7 +272,7 @@
 
 
 
-<AW:Form ID="frmLedgerManagement" Hidden="true" DataSource="SEL_iRental_SalesContracts" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/Accounts/LedgerManagement_FrUc.ascx">
+<AW:Form ID="frmLedgerManagement" Hidden="true" DataSource="SEL_Account_LedgerManagement" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/Accounts/LedgerManagement_FrUc.ascx">
     <WidgetConfig>
         <script>
             cf = {
@@ -261,7 +281,7 @@
                     Style: {},
                     Visible: true,
                     Collapsed: false,
-                    HeadText: 'Sales Contracts'
+                    HeadText: 'Ledger Management'
                 }
             }
         </script>
