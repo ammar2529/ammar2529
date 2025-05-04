@@ -247,5 +247,14 @@ namespace WebProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.Pages.eForms.Accounts.Modules.BeneficiaryManagment BeneficiaryManagment;
+
+        /// <summary>
+        /// LedgerManagement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.Pages.eForms.Accounts.Modules.LedgerManagement LedgerManagement;
     }
 }

@@ -22,6 +22,8 @@
 <%@ Register Src="~/Pages/eForms/iRental/Modules/SparePartInventoryInvoice.ascx" TagPrefix="AW" TagName="SparePartInventoryInvoice" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/CarAndCustomerDetails.ascx" TagPrefix="AW" TagName="CarAndCustomerDetails" %>
 <%@ Register Src="~/Pages/eForms/Accounts/Modules/BeneficiaryManagment.ascx" TagPrefix="AW" TagName="BeneficiaryManagment" %>
+<%@ Register Src="~/Pages/eForms/Accounts/Modules/LedgerManagement.ascx" TagPrefix="AW" TagName="LedgerManagement" %>
+
 
 
 
@@ -111,6 +113,8 @@
             <AW:SparePartInventoryInvoice runat="server" id="SparePartInventoryInvoice" />
             <AW:CarAndCustomerDetails runat="server" id="CarAndCustomerDetails" />
             <AW:BeneficiaryManagment runat="server" id="BeneficiaryManagment" />
+            <AW:LedgerManagement runat="server" id="LedgerManagement" />
+
 
         </div>
     </div>

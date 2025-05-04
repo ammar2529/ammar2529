@@ -216,7 +216,9 @@
                                     <nobr>Customer Code*:</nobr></td>
                                 <td style="width: 30%">
                                     <input type="text" style="text-align: center; width: 150px; font-weight: bold; color: red" maxlength="10" class="LOVPopup required text  CommonDisableClass  "
-                                        groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required' /></td>
+                                        groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required' />
+
+                                </td>
                             </tr>
 
                             <%--///////////////////// End: Select Car and Customer popup ///////////////////////////////////////--%>
