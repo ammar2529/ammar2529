@@ -317,7 +317,17 @@ var calculateNetPayment = function () {
         console.log('Net Payment: ' + netPayment);
 
         return netPayment;
+}
+
+function formatAmount(inputSelector) {
+    let value = parseFloat($(inputSelector).val())|| 0;
+    if (!isNaN(value)) {
+        $(inputSelector).val(value.toFixed(3)); // Three decimal places
     }
+}
+
+
+
 
     // Call the function
     

@@ -9,7 +9,7 @@
 
 <AW:Container ID="conLedgerManagement" Hidden="true" Caption="Ledger Management" runat="server">
     <Childern>
-        <AW:Form ID="frmconLedgerManagement_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_SalesContracts" AsyncForm="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx">
+        <AW:Form ID="frmconLedgerManagement_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_Account_LedgerManagement_SP" AsyncForm="~/Pages/eForms/Accounts/SearchForms/LedgerManagement_ShUc.ascx">
             <WidgetConfig>
                 <script>
 
@@ -286,6 +286,32 @@
             }
         </script>
     </WidgetConfig>
+    <Scripts>
+        <script>
+            var fn = function () {
+                $(".amountInput").on("blur", function () {
+                    formatAmount(this);
+                });
+
+
+                t.on('show', function (args) {
+                    
+                    let zero = 0;
+                    $(".amountInput").val('0.000')
+
+                });
+
+                t.on('onLoadedValues', function (args) {
+                    debugger
+                    let amount = args.res.Response.Rows?.[0]?.LedgerManagementAmount || 0;
+                    $(".amountInput").val(amount.toFixed(3));
+
+                   // console.log("Extracted Amount:", amount);
+
+                });
+            }
+        </script>
+    </Scripts>
 </AW:Form>
 
 

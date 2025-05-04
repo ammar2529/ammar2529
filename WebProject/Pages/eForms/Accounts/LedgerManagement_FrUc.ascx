@@ -48,7 +48,7 @@
             <nobr class="PersonTD">Amount:</nobr>
         </td>
         <td>
-            <input type="text" style="text-align: center; ; width: 300px;" maxlength="199" class="text "
+            <input type="text"  style="text-align: center;  width: 300px;" maxlength="199" class="text number amountInput"
                 groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" />
 
         </td>
