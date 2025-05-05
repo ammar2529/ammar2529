@@ -61,8 +61,8 @@
             <table border="0" cellpadding="0" cellspacing="0">
 
                 <tr>
-                    <td style="width: 50%">
-                        <textarea class="textarea" rows="6" wrap="1" cols="37" argumentid="LedgerManagementReason" style="width:54%" groupid="LedgerManagement_FrUc"></textarea>
+                    <td >
+                        <textarea class="textarea" rows="6" wrap="1" cols="37" argumentid="LedgerManagementReason" style="width:300px" groupid="LedgerManagement_FrUc"></textarea>
                     </td>
 
                 </tr>
