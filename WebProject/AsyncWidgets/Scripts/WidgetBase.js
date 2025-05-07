@@ -4612,6 +4612,7 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
         }
 
         if (t.hasClass('number') && $.trim(tval) != "") {
+            
             /*tval = tval.replace(/,/g, '');*/
             if (tval.indexOf('.') != tval.lastIndexOf('.')) {
                 this.showErr(t, ' Invalid Number');

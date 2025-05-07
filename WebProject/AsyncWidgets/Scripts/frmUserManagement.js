@@ -17,6 +17,7 @@ AsyncWidgets.WidgetScripts.frmUserManagement = function (obj)
         $('#rolesContent').empty();
         for (var i = 0; i < rows.length; i++)
         {
+            debugger
             var row = rows[ i ];
           
             var rolesString = row.Roles;

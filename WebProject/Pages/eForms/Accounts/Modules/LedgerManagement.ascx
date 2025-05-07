@@ -23,8 +23,8 @@
                     }
                 </script>
             </WidgetConfig>
-        
-         
+
+
         </AW:Form>
 
 
@@ -94,8 +94,7 @@
             </GridConfig>
             <Scripts>
                 <script>
-                    var fn = function (t)
-                    {
+                    var fn = function (t) {
 
                         var ColClick = function () {
                             $('.EditForm.ColValue', $(this).closest('tr')).trigger('click');
@@ -181,7 +180,7 @@
                 }
             </script>
         </WidgetConfig>
-     <%--   <Scripts>
+        <%--   <Scripts>
                     <script>
                         var fn = function () {
                             var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
@@ -201,9 +200,9 @@
         PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
         GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
 
-        
- <GridConfig>
- <script>
+
+        <GridConfig>
+            <script>
                 var cf = {
                     cols: {
                         Sequence: { width: '0px' },
@@ -222,7 +221,7 @@
                         NationalIDNo: { caption: 'National ID No.' },
                         MobileTelephone1: { caption: 'Mobile Telephone' },
                         CustomerStatus: { caption: 'Status' }
-                       
+
 
                     },
                     forms: {
@@ -230,13 +229,13 @@
                         Keys: 'RecId'
                     }
                 };
- </script>
+            </script>
 
 
- </GridConfig>
+        </GridConfig>
 
 
- </AW:DataGrid>
+    </AW:DataGrid>
 
     <AW:Form ID="frmLedgerManagementCustomerDetails" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
         <WidgetConfig>
@@ -257,7 +256,7 @@
                 var fn = function () {
                     //
                     t.on("show", function () {
-                     
+
                         $(".btnPopupForm", t).show();
                         $(".btnMainForm", t).hide();
 
@@ -288,14 +287,15 @@
     </WidgetConfig>
     <Scripts>
         <script>
-            var fn = function () {
+            var fn = function ()
+            {
                 $(".amountInput").on("blur", function () {
                     formatAmount(this);
                 });
 
 
                 t.on('show', function (args) {
-                    
+
                     let zero = 0;
                     $(".amountInput").val('0.000')
 
@@ -306,7 +306,7 @@
                     let amount = args.res.Response.Rows?.[0]?.LedgerManagementAmount || 0;
                     $(".amountInput").val(amount.toFixed(3));
 
-                   // console.log("Extracted Amount:", amount);
+                    // console.log("Extracted Amount:", amount);
 
                 });
             }
