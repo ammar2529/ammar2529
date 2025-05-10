@@ -64,9 +64,12 @@ namespace WebProject.AsyncWidgets.WebServices
 
                 stopwatch.Start();
                 //Trace.TraceInformation("Executing action in ActorFacade for ActorId: {0}, ActionId: {1}", ActorId, ActionId);
+                log.Info("Executing action in ActorFacade for ActorId: {0}, ActionId: {1}", ActorId, ActionId);
 
 
                 object obj = ActorFacade.ExecuteAction(ActorId, ActionId, ServiceInfo);
+                log.Info("Executed action in ActorFacade for ActorId: {0}, ActionId: {1}", ActorId, ActionId);
+
                 stopwatch.Stop();
 
                 TimeSpan elapsedTime = stopwatch.Elapsed;
@@ -75,9 +78,10 @@ namespace WebProject.AsyncWidgets.WebServices
                     var startLog = $@"called  ActorFacade.ExecuteAction action in ActorFacade for ActorId: {ActorId}, ActionId: {ActionId}
 Service Info, took more than 5 seconds:
 {ServiceInfo}
-";
+";               
+                    log.Warn($@"executed  ActorFacade.ExecuteAction action in ActorFacade for ActorId: {ActorId}, ActionId: {ActionId}");
+
                 }
-              //  log.Info($@"executed  ActorFacade.ExecuteAction action in ActorFacade for ActorId: {ActorId}, ActionId: {ActionId}");
 
 
                 if (obj.GetType().Name != "String")
@@ -95,12 +99,25 @@ Service Info, took more than 5 seconds:
             catch (Exception ex)
             {
                 //Trace.TraceError("Exception in DoAction: {0}\nStack Trace: {1}", ex.Message, ex.StackTrace);
+                log.Error($@"error executing ActorFacade.ExecuteAction action in ActorFacade for ActorId: {ActorId}, ActionId: {ActionId}, 
+
+Service Info:
+    {ServiceInfo}
+
+Exception in DoAction: 
+    {ex.Message}
+
+Stack Trace: 
+    {ex.StackTrace}
+
+");
 
                 return string.Format(Response, "Exception",
                                 string.Format(",detail:{{message:'{0}',stackTrace:'{1}'}}",
                                 // ex.Message.Replace(@"\", @"\\").Replace("'", "\'"), ex.StackTrace.Replace(@"\", @"\\").Replace("'", "\'"))
                                 ex.Message.Replace("'", @"\'").Replace("\r\n", @"\n"), ex.StackTrace.Replace("'", @"\'").Replace("\r\n", @"\n")
                              ));
+
             }
         }
         string WidgetsPath = "~/AsyncWidgets/Widgets/";
