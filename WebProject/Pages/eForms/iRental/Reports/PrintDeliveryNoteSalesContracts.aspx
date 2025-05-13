@@ -27,7 +27,13 @@
                          </asp:SqlDataSource>
 
 
-
+<%--                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                             SelectCommand="RNTSalesContract_DeliveryNote_SalesContract_SP" SelectCommandType="StoredProcedure" >
+                             <SelectParameters>
+                                 <asp:QueryStringParameter DefaultValue="" Name="FormCode" QueryStringField="FormCode"
+                                     Type="String" />
+                             </SelectParameters>
+                         </asp:SqlDataSource>--%>
 
 
                          <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
