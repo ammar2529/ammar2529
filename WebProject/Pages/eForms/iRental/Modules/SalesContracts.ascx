@@ -90,20 +90,20 @@
                                 </div>
                                 </pre>
 
-                                    <pre columnid="CustomerDetails" hideonallsmalldevices="HideOnAllSmallDevices">
-                                <center>
+                                    <pre columnid="CustomerDetails" >
+                                
                                      <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>
                                      <div style="font-size:11px;">ID: {NationalIDNo}&nbsp;-&nbsp;{Nationality}</div>
                                       <div style="font-size:11px;">{MobileTelephone1}&nbsp;&nbsp;{MobileTelephone2}</div>
-                                </center>
+                                
                                 </pre>
-                                    <pre columnid="ContractDateTimeDetails" hideonallsmalldevices="HideOnAllSmallDevices">
+                                    <pre columnid="ContractDateTimeDetails" >
                                      <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
                                      <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>
-                                    <pre columnid="CreationDetails" hideonallsmalldevices="HideOnAllSmallDevices"> 
+                                    <pre columnid="CreationDetails" "> 
                                      <div class="ftitle" style="color:#808000; display:none"></div>
 <%--                                     <div class="ftitle" style="color:#808000; display:none">{LPONumber}</div>--%>
                                      <div class="ftitle" style="color:#808000; display:none">{CarOwnerNationalIdNumber}</div>
@@ -143,18 +143,25 @@
                                             cols: {
                                                 EditForm: { width: '0px' },
                                                 Sequence: { width: '0px' },
-                                                ContractDetails: { caption: 'Contract & Car Details', width: '270px' },
-                                                CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                                                ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px' },
-                                                CreationDetails: { caption: 'Creation Details', width: '165px' },
+                                                ContractDetails: { caption: 'Contract & Car Details', width: '270px'},
+                                                CustomerDetails: { caption: 'Customer Details', width: '270px',  ColTDClass: "efg" },
+                                                ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px', ColTDClass: "efg" },
+                                                CreationDetails: { caption: 'Creation Details', width: '165px', ColTDClass: "efg" },
                                                 RecId: { width: '0px' }
                                             },
                                             forms: {
                                                 NewFormId: 'frmSalesContracts',
                                                 EditFormId: 'frmSalesContracts',
                                                 Keys: 'RecId'
-                                            }
-                                            ,
+                                            },
+                                            styles: {
+                                                xyz: { fontWeight: "bold" },
+                                                abc: { className: "fw-bold"}
+                                            },
+
+                                            classes: {
+                                                efg: {className: "" }
+                                            },
                                             DataActionParams: {
                                                 DBAction: 'SearchCarArriveNotArrive'
                                             }

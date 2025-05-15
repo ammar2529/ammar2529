@@ -66,10 +66,11 @@
                                                 YearId: { caption: 'Year', width: '55px' },
                                                 ColorId: { caption: 'Color', width: '60px', hideOnMeduimDevice: "200px" },
 
-                                                Price: { caption: 'Price', width: '80px', hideOnMeduimDevice: "200px" },
                                                 CarLocationId: { caption: 'Location', width: '75px', hideOnMeduimDevice: "200px" },
                                                 CarStatusId: { caption: 'Status', width: '63px', hideOnMeduimDevice: "200px" },
-                                                RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" }
+                                                RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" },
+                                                Price: { width: '80px', hideOnMeduimDevice: "200px", format:'fix(3)' },
+
                                             },
                                             forms: {
                                                 NewFormId: 'frmCarForSales',
@@ -87,15 +88,15 @@
                                     <script>
 
                                         var fn = function () {
-                                            t.on('rowsRendered', function () {
-                                                $('[colid="Price"]:not(".w-grid-head-cell")').each(function () {
+                                            //t.on('rowsRendered', function () {
+                                            //    $('[colid="Price"]:not(".w-grid-head-cell")').each(function () {
 
-                                                    var ptr = $(this).closest('tr');
-                                                    $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
+                                            //        var ptr = $(this).closest('tr');
+                                            //        $('[colid="Price"] div', ptr).text(parseFloat($('[colid="Price"] div', ptr).text()).fix(3));
 
-                                                });
+                                            //    });
 
-                                            });
+                                            //});
 
 
                                         }
@@ -134,31 +135,7 @@
     <Scripts>
         <script>
             var fn = function () {
-                //t.on('show', function (args) {
-                //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                //    $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).removeAttr('disabled');
-                //});
-
-                //t.on('onLoadedValues', function (args) {
-                //    $('[argumentid="action"]', t.el).val("update");
-                //    if ($('[argumentid="ContractNo"]', t.el).text() != '') {
-                //        $('[argumentid="CarLocationId"],[argumentid="CarStatusId"],[argumentid="CurrentMileage"]', t.el).attr('disabled', 'disabled');
-                //    }
-
-                //    //var res = args.res;
-
-                //    //if (res.status == 'OK')
-                //    //{
-
-
-                //    //}
-                //});
-
-                //t.on('onComboFilled', function () {
-                //    $('.ElemDisabled', t.el).removeClass('ElemDisabled');
-                //    $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
-                //});
-
+           
 
             }
 

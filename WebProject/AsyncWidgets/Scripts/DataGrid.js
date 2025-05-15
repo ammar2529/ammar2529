@@ -463,16 +463,16 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                             }
                         }
                         var _t = t.ColumnTemplates.templates;
-                        if (!!t.ColumnTemplates.templates) {
+                        //
+                        if (!!t.ColumnTemplates.templates) { //it's a templated grid
                             var cl, colid, colCap, colCF;
                             t.colFMT = true;
                             for (iLoop = 0; iLoop < _t.length; iLoop++) {
-
+                                
                                 cl = colid = _t[iLoop].getAttribute('columnid');
                                 var ShowOnMDDevice = _t[iLoop].getAttribute('ShowOnMDDevice');
                                 var HideOnAllSmallDevices = _t[iLoop].getAttribute('HideOnAllSmallDevices');
-                                var ShowOnMdDevices = 'd-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block';
-                                var ShowOnlyLargeDevices = 'd-none d-sm-none d-xs-none d-md-none d-lg-block d-xl-block';
+
                                 
                                 colCF = t.GridConf.cols[cl] || {};
                                 colCap = colCF.caption == undefined ? cl.splitCamel() : colCF.caption;
@@ -480,7 +480,16 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                                 t2 = $('<TD  class="w-grid-cell-border"><DIV  class="ColValue w-grid-label"></DIV></TD>');
                                 if (!!colCF.ColTDStyle) {
                                     if (!!t.GridConf.styles[colCF.ColTDStyle])
-                                        t2.css(t.GridConf.styles[colCF.ColTDStyle]);
+                                    
+                                        tt.css(t.GridConf.styles[colCF.ColTDStyle]);
+                                }
+                                if (!!colCF.ColTDClass) {
+                                    debugger
+                                    if (!!t.GridConf.classes[colCF.ColTDClass]){
+
+                                        tt.addClass('d-none d-lg-table-cell d-xl-table-cell');
+                                        t2.addClass('d-none d-lg-table-cell d-xl-table-cell');
+                                    }
                                 }
 
                                 tt.addClass('colIndex-' + i).attr('colindex', i).attr('colid', cl);
@@ -521,8 +530,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                             colCap = colCF.caption == undefined ? col.splitCamel() : colCF.caption;
                             
-                            var colBootstrapClass = "d-none d-md-table-cell noneForOtherScreen";// colCF.smallDeviceWitdh == undefined ? "d-none d-md-table-cell" : "d-sm-table-cell";// colCF.bootstrapClass;
-                            var colMdBotstrapClass = "d-none d-md-none d-lg-table-cell noneForMdScree";
+                            var colShowOnMD = "d-none d-md-table-cell";// colCF.smallDeviceWitdh == undefined ? "d-none d-md-table-cell" : "d-sm-table-cell";// colCF.bootstrapClass;
+                            var colShowOnLG = "d-md-none d-lg-table-cell";
 
                             var viewportSize = getViewportSize(); // Get the current viewport size
 
@@ -534,30 +543,32 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                          
                             var colHeadHtmlTemplate = colTempHead.clone().addClass('colIndex-' + i).attr('colindex', i);
-                            colHeadHtmlTemplate.attr("class", ` ${colBootstrapClass}`);
+                          //  colHeadHtmlTemplate.attr("class", ` ${colShowOnMD}`);
 
-                            var colHead = $(".ColName", colHeadHtmlTemplate)
-                                .html(colCap)
+                            //colHeadTD is head <td>
+                            let colHeadTD = $(".ColName", colHeadHtmlTemplate) //colName is span tag  inside head row tad : not td has .ColHead
+                                .html(colCap) 
                                 .closest('td');
+
                             var existingClasses = "";
-                            if (!!colHead.attr('class') ) {
-                                existingClasses = colHead.attr('class');
+                            if (!!colHeadTD.attr('class') ) {
+                                existingClasses = colHeadTD.attr('class');
                             }
 
-                            colHead.attr('colid', col);
+                            colHeadTD.attr('colid', col);
 
                        
 
-                            colHead.attr('class', `${existingClasses} ${colBootstrapClass}`);
-                            colHead.attr('caption', colCap)
-
+                           // colHeadTD.attr('class', `${existingClasses} ${colShowOnMD}`); // show all column md or greater
+                            colHeadTD.attr('caption', colCap);
+                            let MD_LGClasses = `${existingClasses} ${colShowOnMD}`;
                             if (colCF.hideOnMeduimDevice !== undefined) {
-                                colHead.attr('class', `${existingClasses} ${colMdBotstrapClass}`);
-                                colHead.attr('caption', colCap)
+                                //existingClasses = colHeadTD.attr('class');
+                               // colHeadTD.attr('class', `${existingClasses} ${colShowOnLG}`); // show all column lg or greater
+                                MD_LGClasses += colShowOnLG;
                             }
-
-                            t.Header.repCon.append(colHead);
-
+                            colHeadTD.attr('class', `${MD_LGClasses}`);
+                            t.Header.repCon.append(colHeadTD);
 
 
                             var colItemTemplate = colTempItem.clone().addClass('colIndex-' + i++).attr('colid', col);
@@ -573,18 +584,23 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                                 existingClasses = colItem.attr('class');
                             }
 
-                         
 
-                            colItem.attr('class', `${existingClasses} ${colBootstrapClass}`);
+                             
+                            colItem.attr('class', `${existingClasses} ${colShowOnMD}`);
                             colItem.attr('caption', colCap);
+                            MD_LGClasses = `${existingClasses} ${colShowOnMD}`;
                             if (colCF.hideOnMeduimDevice !== undefined) {
-                                colItem.attr('class', `${existingClasses} ${colMdBotstrapClass}`);
-                                colItem.attr('caption', colCap)
+                                MD_LGClasses += colShowOnLG;
+                                //colItem.attr('class', `${existingClasses} ${colShowOnLG}`);
+                               // colItem.attr('caption', colCap)
                             }
+                            colItem.attr('class', MD_LGClasses);
                             t.fireEvent('onItemColGenerated', { colId: col, itemCol: colItem });
                             t.Item.repCon.append(colItem);
+
+
                         }
-                    }
+                    } // end of else part of condition: if(!!t.ColumnTemplates.templates)
                     ////////////adding columns for small device//////////////
                     // Adding columns for small devices
                     var colTempHead = $(t.Header.colTemp);
@@ -600,7 +616,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                             var colHeadHtmlTemplate = colTempHead.clone();//.addClass('colIndex-' + i).attr('colindex', i);
                             colHeadHtmlTemplate.attr("class", "d-sm-table-cell d-md-none ");
                             let fieldName = colConfig.caption === undefined ? key : colConfig.caption;
-                            var colHead = $(".ColName", colHeadHtmlTemplate)
+                            let colHead = $(".ColName", colHeadHtmlTemplate)
                                 .html(fieldName)
                                 .closest('td');
                             //var existingClasses = "";
@@ -629,8 +645,10 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                         }
                     }
 
-                    t.Header.repCon.append(`<td class= "d-sm-table-cell d-md-table-cell d-lg-none collapseBtn" > </td>`);
-                    t.Item.repCon.append(`<td class="d-sm-table-cell d-md-table-cell d-lg-none collapseBtn"><i class="fas fa-chevron-down"></i></td>`);
+                    if (!t.ColumnTemplates.templates) {// if not a templated grid..
+                        t.Header.repCon.append(`<td class= "d-sm-table-cell d-md-table-cell d-lg-none collapseBtn" > </td>`);
+                        t.Item.repCon.append(`<td class="d-sm-table-cell d-md-table-cell d-lg-none collapseBtn"><i class="fas fa-chevron-down"></i></td>`);
+                    }
 
                     t.noOfCols = i;
                     $('.Header', t.Repeater).append(t.Header);
@@ -870,7 +888,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     } else if (viewportSize === 'md') {
                         $nextTr.remove();
                         $icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
-                        values = generateRowContent($tr, '.hasDuplicate, .RowSelect, .Sequence, .isDuplicate, .noneForOtherScreen');
+                        values = generateRowContent($tr, '.hasDuplicate, .RowSelect, .Sequence, .isDuplicate');
                         newRow = `
                                     <tr class="generatedRow d-md-table-row d-none d-lg-none">
                                         <td colspan="5">
@@ -1219,8 +1237,19 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
 
         inv.on('onSuccess', function (res) {
-            onSearchResult(res);
+          //  var searchCB = onSearchResult;
+           // t.onGridResults(res, searchCB);
+            setTimeout(function () {
+                try {
+                    onSearchResult(res);
+                }
+                catch (error) {
+                    console.error("An error occurred:", error.message);
+                    console.error("Stack trace:", error.stack);
 
+
+                }
+            }, 200);
         });
 
         inv.on('onFailure', function (res) {
@@ -1235,9 +1264,25 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 ServiceInfo]
         });
     },
-    setColWidth: function (t) {
-        var arrHead = [], arrCols = [], heads, col, headerColumn, cSel; //store queried head columns to bost performance
-        if (!!t._arrHeads) {
+    onGridResults: function (res, searchCB) {
+        
+        setTimeout(function () {
+            try {
+               searchCB(res);
+            }
+            catch(error) {
+                console.error("An error occurred:", error.message);
+
+            }
+        }, 200);
+    },
+    setColWidth: function (t, firstCall) {
+        if (!firstCall) {
+            /*setTimeout(,)*/
+        }
+        let arrHead = [], arrCols = [], heads, col, headerColumn, cSel,colId=""; //store queried head columns to bost performance
+
+        if (!!t._arrHeads) { //if head columns has been already created then restored saved head columns to arrHead
             arrHead = t._arrHeads;
         }
 
@@ -1245,7 +1290,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             //if (!(!$.boxModel && t.Top.hasClass('w-panel-head')))
             //    t.ColWidthSettled = true;
 
-            var w, col, tp = 0;
+            let w, col, tp = 0;
             // hSel = $('> table  > tbody > tr.HeaderTR > td.Header td', t.Repeater
             headerColumn = $('.Header', t.Repeater); // column which contains the header table
             for (var i = 0; i < t.noOfCols; i++) {
@@ -1262,41 +1307,90 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
  
                     heads = arrHead[i];
                 }
-
+                colId = heads.attr('colid');
                // heads.css({ 'padding-left': '0px', 'padding-right': '0px' });
+                //console.log(`Column ${i}:`, heads.length, heads);
+                if (!!t._arrHeads)
+                {
+                    t._arrHeads = arrHead
+                }
+                let grdColConf = t.GridConf.cols[colId] || {},
+                    LMmargin = ~ ~grdColConf.LeftMargin || ~ ~t.State.ColLeftMargin;
 
-                if (!!t._arrHeads) { t._arrHeads = arrHead }
-                var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
-                if (!!b.width) {// if column width is defined in GridConfiguration then
-                    w = b.width.replace(/px/g, '');
-                    if (w == '0') {
-                        heads.hide();
+                if (!!grdColConf.width) {// if column width is defined in GridConfiguration then
+                    try {
+                        w = grdColConf.width.replace(/px/g, '');
+                    }
+                    catch {
+                        console.log(`etWdith(): grdColConf.width:${grdColConf.width}`) 
+                        }
+                }
+                if (w == '0') {
+                    heads.hide();
+                }
+                else {
+                    if (colId == "RowSelect") {
+                        w = 32;
+                        heads.css("max-width", "32px")
                     }
                     else {
-                        if (!$.boxModel) {
-                            w = (parseInt(w) || 0) + (parseInt(heads.css('borderLeftWidth')) || 0) + (parseInt(heads.css('borderRightWidth')) || 0);
-                        }
-
-                        $('.ColName', heads).closest('div').css({ 'white-space': 'nowrap', 'overflow': 'hidden', 'margin-left': LMmargin + 'px' }).width(w - LMmargin + "px");
-                        heads.width(w);
+                        w = (parseInt(w) || 0) + (parseInt(heads.css('borderLeftWidth')) || 0) + (parseInt(heads.css('borderRightWidth')) || 0);
                     }
+                    let divTag = $('.ColName', heads) //span tag
+                        .closest('div');
+                   // console.log("divTag:" + divTag.length +" - " + colId);
+                     divTag
+                        .css({ 'white-space': 'nowrap', 'overflow': 'hidden', 'margin-left': LMmargin + 'px' })
+                        .width(w - LMmargin + "px");
+                   // console.log({ 'white-space': 'nowrap', 'overflow': 'hidden', 'margin-left': LMmargin + 'px' });
+                   // console.log("divTag:" + divTag.length + " - " + colId + "margin:" + divTag.css("marginLeft"));
+                    heads.width(w); //set width of td head
+
                 }
+            } // end of for loop for head columns
+
+            if (!t._arrHeads) { // save head columns so no regenerate on paging
+                t._arrHeads = arrHead;
             }
-            if (!t._arrHeads) t._arrHeads = arrHead;
 
             for (var i = 0; i < t.noOfCols; i++) {
-                // heads = $('.Header .colIndex-' + i, t.Repeater);
-                heads = arrHead[i];
-                if (!$.boxModel) {
-                    w = (parseInt(heads.width()) || 0) + (parseInt(heads.css('borderLeftWidth')) || 0) + (parseInt(heads.css('borderRightWidth')) || 0);
-                }
-                else
-                    w = heads.width();
+                
+                heads = $('.colIndex-' + i, headerColumn);
+                colId = heads.attr('colid');
+                let grdConf = t.GridConf.cols[colId] || {};
 
+                grdConf = grdConf || {};
+                let LMmargin = grdConf.LeftMargin || t.State.ColLeftMargin;
+                LMmargin = ~~LMmargin;
+                heads = arrHead[i];
+           
+                try {
+                    w = grdConf.width.replace(/px/g, '');
+                }
+                catch {
+                    console.log(`etWdith(): grdConf.width:${grdConf.width}`)
+                }
+
+                if (grdConf.width == "0") {
+                    heads.hide();
+                    continue;
+                }
+                else if (colId == "RowSelect") {
+                   
+                    w = 32;
+                    heads.css("max-width", "32px")
+                }
+                else if (heads.hasClass("Sequence")) {
+
+                }
+                else {
+                    w = (parseInt(heads.width()) || 0) + (parseInt(heads.css('borderLeftWidth')) || 0) + (parseInt(heads.css('borderRightWidth')) || 0);
+
+                }
                 // if (__IE8 && $.boxModel)
                 heads.width(w);
-                var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
-                $('.ColName', heads).closest('div')
+               
+                $('.ColName', heads).closest('div') // select span and then div
                     .css({ 'white-space': 'nowrap', 'overflow': 'hidden', 'margin-left': LMmargin + 'px' }).width((w - (LMmargin + 10)))
                     .mouseenter(
                         function () {
@@ -1316,7 +1410,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                             }
                         });
-
+               // console.log(`Column ${i} final width:${w} - colhead margin: ${$('.ColName', heads).closest('div').css('margin-left')}, Left-margin ${LMmargin}`);
             }
 
         }
@@ -1327,7 +1421,11 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             heads = arrHead[i];
             // arrCols[i] = col = $('.Item .colIndex-' + i, t.Repeater);
             arrCols[i] = col = $('.colIndex-' + i, cSel); //$('table > tbody > tr.ItemTr > td .colIndex-' + i, t.Repeater);
-            if (heads.css('display') == 'none') col.hide();
+            if (heads.css('display') == 'none') {
+                col.hide();
+            }
+           // console.log(`Item-C0l-Padding -  ${col.css('padding')}`)
+
         }
         //   $('[itemno]', t.el).hide();
         for (var i = 0; i < t.noOfCols; i++) {
@@ -1338,23 +1436,19 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             //    if (heads.hasClass('RowSelect')) continue;
             // col = $('.Item .colIndex-' + i, t.Repeater).css('padding', '0px');
             col = arrCols[i];
-            col.css('padding', '0px')
+          //  col.css('padding', '0px');
             var b = t.GridConf.cols[heads.attr('colid')] || {}, LMmargin = ~ ~b.LeftMargin || ~ ~t.State.ColLeftMargin;
 
             if (heads.css('display') == 'none')
                 col.hide();
             else {
-                w = b.width || heads.width();
+               // w = b.width || heads.width();
                 //  w = heads.width();
-                //heads.width(w);
-                if (!$.boxModel)
-                    w = heads.width() + (parseInt(heads.css('borderLeftWidth')) || 0) +
-                        (parseInt(heads.css('borderRightWidth')) || 0) +
-                        (parseInt(heads.css('paddingLeft')) || 0) +
-                        (parseInt(heads.css('paddingRight')) || 0);
-                else
-                    w = heads.width() + (parseInt(heads.css('paddingLeft')) || 0) +
-                        (parseInt(heads.css('paddingRight')) || 0);
+                w = heads.width() + (parseInt(heads.css('borderLeftWidth')) || 0) +
+                    (parseInt(heads.css('borderRightWidth')) || 0) +
+                    (parseInt(heads.css('paddingLeft')) || 0) +
+                    (parseInt(heads.css('paddingRight')) || 0);
+
                 if (!!b.NoToolTip) $('.ColValue', col).addClass('NoTooltip');
                 $('.ColValue', col)
                     .css({ 'overflow': 'hidden', 'margin-left': LMmargin + 'px' })
@@ -1384,6 +1478,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     });
 
                 col.width(w);
+
                 //alert(heads.attr('colid') + ": " + w + ' - ' + col.width());
             }
 
@@ -1512,7 +1607,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     AsyncWidgets.WidgetScripts[t.State.WidgetId](t);
                 }
-            }, 2000);
+            },2000)
 
         }
 
@@ -1537,7 +1632,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             t.Top = $('<div class="w-panel-head w-top-corner"> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td> <table border="0" cellpadding="0" cellspacing="0" style="width:100%"> <tr> <td class=""> </td> </tr> </table> </td> <td style="width:100%">&nbsp;</td> <td> <span style="" class="w-ui-icon w-ui-panel-icon-opened w-ui-panel-icon">&nbsp;</span> </td> </tr> </table> </div>');
             t.Repeater = $('<div class="GridContainer"> <table cellspacing="0" cellpadding="0" border="0" style="width:100%;text-align:left"> <tbody> <tr class="TopTR"> <td class="Top"> </td> </tr> <tr class="HeaderTR" style="background-color:#e5f2fd"> <td class="Header w-grid-border"> </td> </tr> <tr class="ItemTR"> <td class="Item w-grid-border" style="padding:5px 5px 5px 8px;"> </td> </tr><tr class="NoRecordsTR" style="display:none;"><td class="NoRecords w-grid-norecords-msg" ></td></tr> <tr class="BottomTR"> <td class="Bottom"> </td> </tr> </tbody> </table> </div>');
             t.Header = $('<table cellspacing="0" cellpadding="0" width="100%" border="0" class="w-grid-header"> <tbody> <tr class="w-grid-head-back"> <td class=" ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border"> <div class="ColHead"> <span href="#" class="w-grid-head ColName sort"></span> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="width:32px;padding:0;overflow:hidden;margin:0" class="w-grid-cell-border w-grid-head-back"> <div style="width:19px;overflow:hidden;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px;overflow:hidden" class="w-grid-head-back w-grid-cell-border"> <div style="overflow:hidden" class="PWCLabel ColName"></div> </td><td templateid="RowEditForm" style="width: 40px;overflow:hidden;"  class="RowEditForm w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td><td templateid="RowDetail" style="width: 40px;overflow:hidden;"  class=" RowDetail w-grid-head-back w-grid-cell-border"><div style="overflow: hidden;" class="PWCLabel ColName">&nbsp;</div></td></tr> </tbody> </table>');
-            t.Item = $('<table class="table " cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed"> <tbody> <tr class="ItemTableRow" style="white-space:nowrap" EvenRowCSS="w-grid-row-odd" OddRowCSS="w-grid-row-odd" HoverRowCSS=""> <td class="ColTemplate w-grid-cell-border" style="white-space:nowrap;overflow:hidden"> <div class="ColValue w-grid-label" style="white-space:nowrap"> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" style="margin:0;width:32px;overflow:hidden" class="w-grid-cell-border"> <div style="width:19px;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px" class="w-grid-cell-border"> <div style="overflow:hidden" class="w-grid-label ColValue"></div> </td><td templateid="RowEditForm"   class="RowEditForm w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td><td templateid="RowDetail"   class=" RowDetail w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td></tr> </tbody> </table>');
+            t.Item = $('<table  cellspacing="0" cellpadding="0" border="0" style="width:100%;table-layout:fixed"> <tbody> <tr class="ItemTableRow" style="white-space:nowrap" EvenRowCSS="w-grid-row-odd" OddRowCSS="w-grid-row-odd" HoverRowCSS=""> <td class="ColTemplate w-grid-cell-border" style="white-space:nowrap;overflow:hidden"> <div class="ColValue w-grid-label" style="white-space:nowrap"> </div> </td> </tr> <tr class="TemplatesById"> <td templateid="SelectableRow" colid="RowSelect" style="margin:0;width:32px;overflow:hidden" class="w-grid-cell-border"> <div style="width:19px;overflow:hidden;margin-left:5px"> <input type="checkbox" class="chkRowSelect"></div> </td> <td templateid="Sequence" style="width:40px" class="w-grid-cell-border"> <div style="overflow:hidden" class="w-grid-label ColValue"></div> </td><td templateid="RowEditForm"   class="RowEditForm w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td><td templateid="RowDetail"   class=" RowDetail w-grid-cell-border"><div style="overflow: hidden;" class="w-grid-label ColValue">&nbsp;</div></td></tr> </tbody> </table>');
             t.Pager = $('<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:White;padding:2px;table-layout:auto" class="w-grid-border-bottom" > <tbody> <tr> <td align="left" style="width:50%;height:26px"> <table border="0" cellpadding="0" cellspacing="0"> <tbody> <tr class="w-grid-buttons-bottom-container"> </tr> </tbody> </table> </td> <td align="center" class="NoRecsHide"> <table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;white-space:nowrap"> <tbody> <tr> <td class="w-all-corner w-grid-button First"> <span class="w-ui-icon-yellow w-grid-icon-first"></span></td> <td class="w-all-corner w-grid-button Back"> <span class="w-ui-icon-yellow w-grid-icon-pre"></span></td> <td style="padding-left:5px;padding-right:5px;width:4px;cursor:default" class="w-all-corner w-elem-disabled"> <div class="w-icon-separator"></div></td> <td dir="ltr" class="w-grid-pg-text PWCLabel" style="white-space:nowrap;vertical-align:middle;padding:0px">&nbsp;Page&nbsp;&nbsp;<input type="text" maxlength="7" size="2" class="PWCTextBox PageNoToGo PageNo">&nbsp;&nbsp;of&nbsp; <span class="TotalPages">&nbsp;2&nbsp;</span></td> <td style="padding-left:5px;padding-right:5px;width:4px;cursor:default" class="w-all-corner w-elem-disabled"> <div class="w-icon-separator"></div></td> <td class="w-all-corner w-grid-button Next"> <span class="w-ui-icon-yellow w-grid-icon-next"></span></td> <td class="w-all-corner w-grid-button Last"> <span class="w-ui-icon-yellow w-grid-icon-last"></span></td><td dir="ltr" style="padding-left:5px"> <select class="PWCDropDownList PageSize PageSize-Dropdown" style="display:none"> <option selected="" value="10" role="option">10</option> <option value="20" role="option">20</option><option value="30" role="option">30</option></select> </td></tr></tbody> </table> </td> <td align="right" style="width:50%" class="NoRecsHide"> <table border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody> <tr> <td align="right"> <span><span class="PWCLabel PageSize-NumberList" style="padding-right:0px;display:none">Items per page : <span class="PageSize">10</span>, <span class="PageSize">20</span>, <span class="PageSize">30</span></span><span class="PWCLabel PageSize-NumberList" style="display:none;padding-left:10px;padding-right:10px">|</span> <span class="PWCLabel" Class="w-grid-item-startend" style="padding-right:5px">View <span class="ItemStart"></span> - <span class="ItemEnd">&nbsp;</span>&nbsp;of <span class="Count"></span></span> </td> </tr> </tbody> </table> </td> </tr> </tbody> </table>');
             t.Bottom = $('<span class="Pager"></span>');
             t.NoRecords = $('<div style="padding:10px;background-color:transparent" class="PWCNoDataMessage">No records available.</div>')

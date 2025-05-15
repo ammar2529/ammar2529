@@ -1,4 +1,9 @@
-﻿.GridContainer .EditForm {
+﻿* {
+    box-sizing:border-box;
+    padding:0px;
+    margin:0px;
+}
+.GridContainer .EditForm {
     vertical-align: middle;
     text-align: center;
     width: 12px;
@@ -19,4 +24,12 @@
     overflow: hidden;
     margin-left: 10px;
 }
+.GridContainer .fa-pen-to-square:hover {
+    color: #d86018;
+}
 
+.GridContainer .ItemTR table tr td {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dfdfdf;
+}

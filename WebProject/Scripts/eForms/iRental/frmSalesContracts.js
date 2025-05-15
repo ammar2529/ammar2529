@@ -570,7 +570,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             .prop('disabled', false) // ✅ Enable input (not disabled)
             .prop('readonly', true)  // ✅ Make it read-only
             .css({
-                'border-bottom': '1px dotted gray', // Gray dotted border
+                'border-bottom': '2px dotted gray', // Gray dotted border
                 'pointer-events': 'none', // 🔹 Disable clicking
                 'width': '100%', // Full width
                 'font-size': '13px',
@@ -623,7 +623,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
             //    }
             //});
 
-        $('.AlwaysDisable', t.el).attr('disabled', 'disabled');
+            //$('.AlwaysDisable', t.el).attr('disabled', 'disabled');
+            $('.AlwaysDisable')
+                .removeClass('ElemDisabled')
+                .prop('disabled', false) // ✅ Enable input (not disabled)
+                .prop('readonly', true)  // ✅ Make it read-only
+                .css({
+                    'border-bottom': '2px dotted gray', // Gray dotted border
+                    'pointer-events': 'none', // 🔹 Disable clicking
+                    'width': '100%', // Full width
+                    'font-size': '13px',
+                    'font-weight': '400',
+                    'font-family': 'OpenSans-Regular' // ✅ Fixed typo
+                });
         $('.ElemDisabled', t.el).removeClass('ElemDisabled');
         $('[argumentid="ContractKMIn"]', t.el).removeClass('required');
 
@@ -700,14 +712,37 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         $('.btnReserve', t.el).show();
        
 
-        $('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
-        $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
+            //$('.CommonDisable,.DisableOnClose,.btn_10', t.el).removeAttr('disabled');
+
+            $('.CommonDisable,.DisableOnClose,.btn_10', t.el)
+                .removeClass('ElemDisabled')
+                .prop('disabled', false) // ✅ Enable input (not disabled)
+                .prop('readonly', false)  // ✅ Make it read-only
+                .css({
+                    'border-bottom': '', // Gray dotted border
+                    'pointer-events': 'auto', // 🔹 Disable clicking
+
+                });
+
+       // $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
         $('span[argumentid="ChassisNo"],span[argumentid="CustomerName"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', t.el).css('color', '#628296'); //Change Color to Normal on form show
            
             $('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
+            $('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el)
+                .removeClass('ElemDisabled')
+                .prop('disabled', true) // ✅ Enable input (not disabled)
+                .prop('readonly', true)  // ✅ Make it read-only
+                .css({
+                   // 'border-bottom': '2px dotted gray', // Gray dotted border
+                    'pointer-events': 'none', // 🔹 Disable clicking
+                    'width': '100%', // Full width
+                    'font-size': '13px',
+                    'font-weight': '400',
+                    'font-family': 'OpenSans-Regular' // ✅ Fixed typo
+                });
 
 
-            $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
+           // $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
             //if ($('[argumentid="StateId"]', t.el).text() == 'RRCStartState')
             //{
             //    
@@ -1691,7 +1726,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdown = function () {
         $('.financeCompany')
             .attr('readonly', true) // Set read-only
             .css({
-                'border-bottom': '1px dotted gray', // Gray dotted border
+                'border-bottom': '2px dotted gray', // Gray dotted border
                 'pointer-events': 'none', // Disable clicking
                 'width': '100%', // Full width
                 'font-size': '13px',

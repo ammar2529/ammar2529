@@ -251,7 +251,7 @@ body {
             $('.form-floating .form-control-plaintext')
                 .removeClass('form-control-plaintext')
                 .addClass('form-control')
-                .attr('readonly', false) // ✅ Read-only attribute set
+                .attr('readonly', true) // ✅ Read-only attribute set
                 .css({
                     'border-bottom': '2px dotted rgba(148,148,148)',  // Gray dotted border
                     'pointer-events': 'none',      // 🔹 Disable clicking
