@@ -92,47 +92,105 @@ namespace WebProject.AsyncWidgets.BAL
           //  DataSet ds = DBHelper.GetDataTableProc(PD["Command"].ParameterValue + "_SP", PD);
             return "'" + DBHelper.InvokeSP(PD["Command"].ParameterValue + "_SP", PD).ToString() + "'";
         }
+        //public string Search(string ServiceInfo)
+        //{
+
+        //    ServiceInfo = ServiceInfo.Replace("&nbsp;", "");
+        //    ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
+        //    string SPName = PD.ContainsKey("Command") ? PD["Command"].ParameterValue + "_SP" : PD["DALInfo"].ParameterValue + "_SP";
+        //    DataSet ds = DBHelper.GetDataTableProc(SPName, PD);
+
+        //    if (ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        //if (PD.ContainsKey("SortBy"))
+        //        //{
+
+        //        //    ds.Tables[0].DefaultView.Sort = PD["SortBy"].ToString();
+        //        //}
+
+
+
+        //        int PageNo = PD.ContainsKey("PageNo") ? Convert.ToInt32(PD["PageNo"].ParameterValue) : 1,
+        //            PageSize = PD.ContainsKey("PageSize") ? Convert.ToInt32(PD["PageSize"].ParameterValue) : 20;
+        //        PageNo = PageNo < 0 ? 1 : PageNo;
+        //        int
+        //            LastRec = PageNo * PageSize,
+        //            FirstRec = LastRec - PageSize + 1;
+        //        decimal Pages = ((decimal)ds.Tables[0].Rows.Count) / PageSize;
+        //        if (PageSize > -1)
+        //        {
+        //            return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
+        //                                    JsonConvert.SerializeObject(DataRows(ds.Tables[0], FirstRec, LastRec), new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
+        //                                    ds.Tables[0].Rows.Count,
+        //                                    Math.Ceiling(Pages));
+        //        }
+        //        else
+        //        {
+        //            return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
+        //                    JsonConvert.SerializeObject(ds.Tables[0], new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
+        //                    ds.Tables[0].Rows.Count,
+        //                    Math.Ceiling(Pages));
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}", "[]", 0, 0);
+        //    }
+        //}
+
         public string Search(string ServiceInfo)
         {
-
-            ServiceInfo = ServiceInfo.Replace("&nbsp;","");
+            ServiceInfo = ServiceInfo.Replace(" ", "");
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
             string SPName = PD.ContainsKey("Command") ? PD["Command"].ParameterValue + "_SP" : PD["DALInfo"].ParameterValue + "_SP";
-            DataSet ds = DBHelper.GetDataTableProc(SPName , PD);
-            if (ds.Tables[0].Rows.Count > 0)
+
+            try
             {
-                //if (PD.ContainsKey("SortBy"))
-                //{
-
-                //    ds.Tables[0].DefaultView.Sort = PD["SortBy"].ToString();
-                //}
-
-                int PageNo = PD.ContainsKey("PageNo") ? Convert.ToInt32(PD["PageNo"].ParameterValue) : 1,
-                    PageSize = PD.ContainsKey("PageSize") ? Convert.ToInt32(PD["PageSize"].ParameterValue) : 20;
-                PageNo = PageNo < 0 ? 1 : PageNo;
-                int
-                    LastRec = PageNo * PageSize,
-                    FirstRec = LastRec - PageSize + 1;
-                decimal Pages = ((decimal)ds.Tables[0].Rows.Count) / PageSize;
-                if (PageSize > -1)
+                DataSet ds = DBHelper.GetDataTableProc(SPName, PD);
+                if (ds?.Tables?.Count > 0 && ds.Tables[0]?.Rows?.Count > 0)
                 {
-                    return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
+                    int PageNo = PD.ContainsKey("PageNo") ? Convert.ToInt32(PD["PageNo"].ParameterValue) : 1,
+                        PageSize = PD.ContainsKey("PageSize") ? Convert.ToInt32(PD["PageSize"].ParameterValue) : 20;
+                    PageNo = PageNo < 0 ? 1 : PageNo;
+                    int LastRec = PageNo * PageSize,
+                        FirstRec = LastRec - PageSize + 1;
+
+                    // Check for TotalRecords column
+                    int count = ds.Tables[0].Rows.Count; // Default to row count
+                    if (ds.Tables[0].Columns.Contains("TotalRecords") && ds.Tables[0].Rows[0]["TotalRecords"] != DBNull.Value)
+                    {
+                        count = Convert.ToInt32(ds.Tables[0].Rows[0]["TotalRecords"]);
+                    }
+
+                    /*decimal Pages = ((decimal)count) / PageSize;*/ // Use count for pages calculation
+                    decimal Pages = Math.Ceiling((decimal)count / PageSize);
+
+
+
+                    if (PageSize > -1 && !ds.Tables[0].Columns.Contains("TotalRecords"))
+                    {
+                        return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
                                             JsonConvert.SerializeObject(DataRows(ds.Tables[0], FirstRec, LastRec), new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
-                                            ds.Tables[0].Rows.Count,
+                                            count,
                                             Math.Ceiling(Pages));
+                    }
+                    else
+                    {
+                        return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
+                                            JsonConvert.SerializeObject(ds.Tables[0], new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
+                                            count,
+                                            Math.Ceiling(Pages));
+                    }
                 }
                 else
                 {
-                    return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}",
-                            JsonConvert.SerializeObject(ds.Tables[0], new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter()),
-                            ds.Tables[0].Rows.Count,
-                            Math.Ceiling(Pages));
+                    return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}", "[]", 0, 0);
                 }
-
             }
-            else
+            catch (Exception ex)
             {
-                return string.Format("{{Rows:{0},Count:{1},Pages:{2}}}", "[]", 0, 0);
+                return $"{{Error:\"An error occurred: {ex.Message}\"}}";
             }
         }
         public DataTable DataRows(DataTable table, int StartIndex, int EndIndex)
