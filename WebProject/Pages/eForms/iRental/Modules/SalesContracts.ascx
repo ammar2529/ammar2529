@@ -341,6 +341,7 @@
                         CurrentMileage: { caption: 'Mileage', width: '70px' },
                         CarLocationId: { width: '0px' },
                         CarStatusId: { caption: 'Car Status', width: '90px' },
+                        SalesCarType: { caption: 'Car Type', width: '90px' },
                         Status: { width: '100px' },
                         ContractNo: { caption: 'Contract No.' },
                         FullInsuranceCompanyId: { width: '0px' },
