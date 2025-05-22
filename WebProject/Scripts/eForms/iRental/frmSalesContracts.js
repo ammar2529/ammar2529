@@ -410,11 +410,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
     { //
         
         var btn = $(this);
-        var dt = new Date();
-        $('[argumentid="BillDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
-
+ 
+        if (!$('[argumentid="BillDate"]', t.el).val() || $.trim($('[argumentid="BillDate"]', t.el).val()) === '') {
+            var dt = new Date();
+            $('[argumentid="BillDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
+        }
         if (btn.hasClass('BillsBtn'))
         {
+            debugger
             t.submit(btn);
             /*$.showMessage("working.");*/
                
