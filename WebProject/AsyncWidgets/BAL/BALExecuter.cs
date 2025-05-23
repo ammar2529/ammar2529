@@ -109,18 +109,88 @@ namespace WebProject.AsyncWidgets.BAL
           //  DataSet ds = DBHelper.GetDataTableProc(PD["Command"].ParameterValue + "_SP", PD);
             return "'" + DBHelper.InvokeSP(PD["Command"].ParameterValue + "_SP", PD).ToString() + "'";
         }
+        //public object Search(string ServiceInfo)
+        //{
+
+        //    ServiceInfo = ServiceInfo.Replace("&nbsp;", "");
+        //    ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
+        //    string SPName = PD.ContainsKey("Command") ? PD["Command"].ParameterValue + "_SP" : PD["DALInfo"].ParameterValue + "_SP";
+        //    DataSet ds = DBHelper.GetDataTableProc(SPName, PD);
+        //    if (ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        //if (PD.ContainsKey("SortBy"))
+        //        //{
+
+        //        //    ds.Tables[0].DefaultView.Sort = PD["SortBy"].ToString();
+        //        //}
+
+        //        int PageNo = PD.ContainsKey("PageNo") ? Convert.ToInt32(PD["PageNo"].ParameterValue) : 1,
+        //            PageSize = PD.ContainsKey("PageSize") ? Convert.ToInt32(PD["PageSize"].ParameterValue) : 20;
+        //        PageNo = PageNo < 0 ? 1 : PageNo;
+        //        int
+        //            LastRec = PageNo * PageSize,
+        //            FirstRec = LastRec - PageSize + 1;
+        //        decimal Pages = ((decimal)ds.Tables[0].Rows.Count) / PageSize;
+
+
+        //        if (PageSize > -1)
+        //        {
+        //            var res = new
+        //            {
+        //                Rows = DataRows(ds.Tables[0], FirstRec, LastRec),
+        //                Count = ds.Tables[0].Rows.Count,
+        //                Pages = Math.Ceiling(Pages)
+
+        //            };
+        //            return res;
+        //        }
+        //        else
+        //        {
+
+        //            var res = new
+        //            {
+        //                Rows = ds.Tables[0].ToDictionaryList(),
+        //                Count = ds.Tables[0].Rows.Count,
+        //                Pages = Math.Ceiling(Pages)
+
+        //            };
+        //            return res;
+
+
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        var res = new
+        //        {
+        //            Rows = new object() { },
+        //            Count = 0,
+        //            Pages = 0
+
+        //        };
+        //        return res;
+
+        //    }
+        //}
+
         public object Search(string ServiceInfo)
         {
-
-            ServiceInfo = ServiceInfo.Replace("&nbsp;","");
+            ServiceInfo = ServiceInfo.Replace(" ", "");
             ParamDictionary<string, AsyncWidgets.DAL.QueryParameter> PD = LoadForm(ServiceInfo).GetFirstFormParams();
             string SPName = PD.ContainsKey("Command") ? PD["Command"].ParameterValue + "_SP" : PD["DALInfo"].ParameterValue + "_SP";
-            DataSet ds = DBHelper.GetDataTableProc(SPName , PD);
+            DataSet ds = DBHelper.GetDataTableProc(SPName, PD);
+
+            int count;
             if (ds.Tables[0].Rows.Count > 0)
             {
+                // Check if TotalRecords column exists
+                count = ds.Tables[0].Columns.Contains("TotalRecords")
+                    ? Convert.ToInt32(ds.Tables[0].Rows[0]["TotalRecords"])
+                    : ds.Tables[0].Rows.Count;
+
                 //if (PD.ContainsKey("SortBy"))
                 //{
-
                 //    ds.Tables[0].DefaultView.Sort = PD["SortBy"].ToString();
                 //}
 
@@ -130,49 +200,42 @@ namespace WebProject.AsyncWidgets.BAL
                 int
                     LastRec = PageNo * PageSize,
                     FirstRec = LastRec - PageSize + 1;
-                decimal Pages = ((decimal)ds.Tables[0].Rows.Count) / PageSize;
+                //decimal Pages = ((decimal)count) / PageSize;
+                decimal Pages = Math.Ceiling((decimal)count / PageSize);
 
-            
-                if (PageSize > -1)
+                if (PageSize > -1 && !ds.Tables[0].Columns.Contains("TotalRecords"))
                 {
-                     var res = new
+                    var res = new
                     {
                         Rows = DataRows(ds.Tables[0], FirstRec, LastRec),
-                        Count = ds.Tables[0].Rows.Count,
+                        Count = count,
                         Pages = Math.Ceiling(Pages)
-
                     };
                     return res;
                 }
                 else
                 {
-
                     var res = new
                     {
                         Rows = ds.Tables[0].ToDictionaryList(),
-                        Count = ds.Tables[0].Rows.Count,
+                        Count = count,
                         Pages = Math.Ceiling(Pages)
-
                     };
                     return res;
-
-                  
                 }
-
             }
             else
             {
                 var res = new
                 {
-                    Rows = new object() { },
+                    Rows = new object(),
                     Count = 0,
                     Pages = 0
-
                 };
                 return res;
-              
             }
         }
+
         public List<Dictionary<string, object>> DataRows(DataTable table, int StartIndex, int EndIndex)
         {
             DataTable dtNew = table.Clone();
@@ -433,8 +496,13 @@ namespace WebProject.AsyncWidgets.BAL
         {
             Type type = this.GetType();
 
-            //  return ((string) type.GetMethod(ActionId).Invoke(this,new object[] {ServiceInfo} ));
+            //return ((string)type.GetMethod(ActionId).Invoke(this, new object[] { ServiceInfo }));
+
             return type.GetMethod(ActionId, new Type[] { typeof(string) }).Invoke(this, new object[] { ServiceInfo });
+
+
+            //var method = type.GetMethod(ActionId, BindingFlags.Public | BindingFlags.Instance, null, new Type[] { typeof(string) }, null);
+            //return method;
         }
 
         #endregion

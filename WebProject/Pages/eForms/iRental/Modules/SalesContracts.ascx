@@ -161,10 +161,10 @@
 
                                             classes: {
                                                 efg: {className: "" }
-                                            },
-                                            DataActionParams: {
-                                                DBAction: 'SearchCarArriveNotArrive'
                                             }
+                                            //DataActionParams: {
+                                            //    DBAction: 'SearchCarArriveNotArrive'
+                                            //}
                                         };
                                     </script>
                                 </GridConfig>

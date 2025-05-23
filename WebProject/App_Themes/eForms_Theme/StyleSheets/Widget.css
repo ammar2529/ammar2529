@@ -33,3 +33,13 @@
     padding-bottom: 8px;
     border-bottom: 1px solid #dfdfdf;
 }
+
+.w-grid-button span{
+    margin:0 5px;
+    cursor:pointer;
+}
+
+.w-icon-disabled span {
+    color: gray;
+    cursor: not-allowed;
+}

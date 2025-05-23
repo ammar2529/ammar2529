@@ -80,9 +80,23 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             return;
         }
 
-        //'#628296'
 
-        popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', border: '1px solid rgb(130, 152, 176)', 'background': 'rgb(238, 238, 255)', width: (cf.width || '900px') }).show();
+
+
+        //'#628296'
+        //'background': 'rgb(238, 238, 255)'
+
+        popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', border: '1px solid rgb(130, 152, 176)', 'background': '#ebeff3', width: (cf.width || '900px') }).show();
+
+        //popup.css({
+        //    position: 'absolute',
+        //    top: top,
+        //    left: left,
+        //    'z-index': '10000',
+        //    border: '1px solid rgb(130, 152, 176)',
+        //    background: '#ebeff3',
+        //    width: (cf.width || '900px')
+        //}).show();
         if (!autoShowControls) { //row select grid with a search panel and datagrid
 
             searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
