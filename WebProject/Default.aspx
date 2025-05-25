@@ -169,19 +169,20 @@
             });
         }
 
-        if ($('[showwidget="conSalesContracts"]').length > 0) {
-            /*$('[showwidget="conInvoice"]').trigger('click');*/
+        //if ($('[showwidget="conSalesContracts"]').length > 0)
+        //{
+        //    /*$('[showwidget="conInvoice"]').trigger('click');*/
 
-            $('[showwidget="conSalesContracts"]').on('click', function () {
+        //    $('[showwidget="conSalesContracts"]').on('click', function () {
                 
-                var c = $('[showwidget="conSalesContracts"]'); 
-                var a =   AsyncWidgets.get('frmSalesContracts_ShUc')
+        //        var c = $('[showwidget="conSalesContracts"]'); 
+        //        var a =   AsyncWidgets.get('frmSalesContracts_ShUc')
              
-                $('.reset', a.el).click();
-                $('.search', a.el).click();
+        //        $('.reset', a.el).click();
+        //        $('.search', a.el).click();
 
-            });
-        }
+        //    });
+        //}
 
         else {
             //var outterFun = arguments.callee;
