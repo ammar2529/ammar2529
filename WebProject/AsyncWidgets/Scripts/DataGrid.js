@@ -563,7 +563,13 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                            // colHeadTD.attr('class', `${existingClasses} ${colShowOnMD}`); // show all column md or greater
                             colHeadTD.attr('caption', colCap);
+
+                            //to not apply the class for columns with width 0px, as  class "d-md-table-cell" (is in this variable) has !important and doesn't hide if this class is applied
+                            if (colCF.width == "0px") {
+                                colShowOnMD = "";
+                            }
                             let MD_LGClasses = `${existingClasses} ${colShowOnMD}`;
+
                             if (colCF.hideOnMeduimDevice !== undefined) {
                                 //existingClasses = colHeadTD.attr('class');
                                // colHeadTD.attr('class', `${existingClasses} ${colShowOnLG}`); // show all column lg or greater
@@ -590,6 +596,10 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                              
                             colItem.attr('class', `${existingClasses} ${colShowOnMD}`);
                             colItem.attr('caption', colCap);
+
+                            if (colCF.width == "0px") {
+                                colShowOnMD = "";
+                            }
                             MD_LGClasses = `${existingClasses} ${colShowOnMD}`;
                             if (colCF.hideOnMeduimDevice !== undefined) {
                                 MD_LGClasses += colShowOnLG;
@@ -1742,6 +1752,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
         gc.DataActionParams = gc.DataActionParams || {};
         t.GridConf = gc;
         t.GridConf.cols['Sequence'] = !!t.GridConf.cols['Sequence'] ? t.GridConf.cols['Sequence'] : { LeftMargin: 1 };
+        t.GridConf.cols = Object.freeze(t.GridConf.cols);
 
         $('.Top', t.Repeater).append(t.Top); //add top pager to the html
         $('.NoRecords', t.Repeater).append(t.NoRecords);

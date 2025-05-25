@@ -28,7 +28,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         //        t.validator = new AsyncWidgets.Validater(t.el);
     },
     showPopup: function (cf) {
-
+       
         //cf=>{ popupId: '-div-tag-id-of the popup', searchFormId: 'optional for row select popup', resultGridId: 'optional for row select popup', top:'top of the popup div',left:'' } //row select popup configuration
         //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
 
@@ -146,7 +146,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
                 });
                 resGrd.on("rowsRendered", function () {
-
+                   
                     if (resGrd.rows.length == 1) {
                         //  $('table[itemno]', resGrd.el).click(); // Auto-click the single row
                         // if (!window.__debug) {
