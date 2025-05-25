@@ -449,21 +449,23 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
 
             //If Main State ID = RRCContractClosed or RRCContractCancelled
-            if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
-                $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
-                $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
-                $('[itemno] td:nth-child(4)', t.Repeater).css('cursor', '').unbind();
-                $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
-            }
+            //if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
+            //    $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
+            //    $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
+            //    $('[itemno] td:nth-child(4)', t.Repeater).css('cursor', '').unbind();
+            //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
+            //}
+
+
             //else if (AsyncWidgets.user.conf.Roles.indexOf('iRen_Contracts_Lawyer') > -1) {
             //    $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
             //    $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
             //    $('[itemno] td:nth-child(4)', t.Repeater).css('cursor', '').unbind();
             //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
             //}
-            else {
-                $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
-            }
+            //else {
+            //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
+            //}
             //End If Main State ID = RRCContractClosed or RRCContractCancelled
 
             //let result = calculateNetPayment();
@@ -567,14 +569,14 @@ function(t) {
         });
 
         //If Main State ID = RRCContractClosed or RRCContractCancelled
-        if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
-            $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
-            $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
-            $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
-        }
-        else {
-            $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
-        }
+        //if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
+        //    $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
+        //    $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
+        //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
+        //}
+        //else {
+        //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
+        //}
         //End If Main State ID = RRCContractClosed or RRCContractCancelled
     });
 

@@ -439,8 +439,8 @@
                                 <td class="ftitle"></td>
                                 <td style="text-align: left">
                                     <input type="button" style="width: 70px; cursor: pointer;" value="  Edit  " class="ButtonStyle Edit_Insrance common-disable-button" />
-                                    <input type="button" style="width: 70px; display: none; cursor: pointer;" value="  Save  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle common-disable-button   Update_Insurance "
-                                        conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{Action:'UpdateInsurance'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />
+<%--                                    <input type="button" style="width: 70px; display: none; cursor: pointer;" value="  Save  " ignorevalidate="ReservationDate DocType" class="MyDataAction ButtonStyle common-disable-button   Update_Insurance "
+                                        conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{Action:'UpdateInsurance'},HideOnSuccess:false, Requery:true,GroupId:'SalesContractsForm'}" />--%>
                                     <input type="button" style="width: 70px; display: none; cursor: pointer;" value="  Close  " class="ButtonStyle Clear_Insrance common-disable-button" />
 
                                 </td>
@@ -1373,14 +1373,14 @@
                                 });
 
                                 //If Main State ID = RRCContractClosed or RRCContractCancelled
-                                if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
-                                    $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
-                                    $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
-                                    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
-                                }
-                                else {
-                                    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
-                                }
+                                //if (strMainStateId == 'RRCContractClosed' || strMainStateId == 'RRCContractCancelled') {
+                                //    $('[itemno] td:nth-child(1) input', t.Repeater).attr('disabled', 'disabled');
+                                //    $('[itemno] td:nth-child(3)', t.Repeater).css('cursor', '').unbind();
+                                //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).hide();
+                                //}
+                                //else {
+                                //    $('[buttonid="new"],[buttonid="delete"],.w-grid-buttons-top-container', t.Repeater).show();
+                                //}
                                 //End If Main State ID = RRCContractClosed or RRCContractCancelled
 
 
