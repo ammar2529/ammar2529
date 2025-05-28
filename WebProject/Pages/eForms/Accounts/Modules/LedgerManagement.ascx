@@ -5,11 +5,11 @@
 <%@ Register Src="~/AsyncWidgets/Widgets/Container.ascx" TagName="Container" TagPrefix="AW" %>
 <%@ Register Src="~/Pages/eForms/iRental/SalesContracts_ShUc.ascx" TagPrefix="AW" TagName="SalesContracts_ShUc" %>
 
-
+<script src="../../../../Scripts/eForms/Accounts/frmLedgerManagement.js"></script>
 
 <AW:Container ID="conLedgerManagement" Hidden="true" Caption="Ledger Management" runat="server">
     <Childern>
-        <AW:Form ID="frmconLedgerManagement_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_Account_LedgerManagement_SP" AsyncForm="~/Pages/eForms/Accounts/SearchForms/LedgerManagement_ShUc.ascx">
+        <AW:Form ID="frmconLedgerManagement_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_Account_LedgerManagement" AsyncForm="~/Pages/eForms/Accounts/SearchForms/LedgerManagement_ShUc.ascx">
             <WidgetConfig>
                 <script>
 
@@ -166,7 +166,7 @@
 
 
 <div class='LOVPopup' lovpopupid='LedgerManagementPopup' style="display: none">
-    <AW:Form ID="frmLedgerManagementCustomerDetails_Cust_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_iRental_Contracts_Customers" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
+    <AW:Form ID="frmLedgerManagementCustomerDetails_Beneficary_ShUc" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_Account_BeneficiaryManagement" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
 
         <WidgetConfig>
             <script>
@@ -195,10 +195,10 @@
                     </script>
                 </Scripts>--%>
     </AW:Form>
-    <AW:DataGrid ID="grdLedgerManagement_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLedgerManagementCustomerDetails_Cust_ShUc"
+    <AW:DataGrid ID="grdLedgerManagement_Beneficary" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmLedgerManagementCustomerDetails_Beneficary_ShUc"
         EmptyHeight="201px" AllowNew="false" SelectableRow="false"
-        PageSize="10" DataSource="SEL_iRental_Contracts_Customers" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
-        GridHeadText="Select Customer" GridButtons="{\'new\':{visible:true},\'delete\':{visible:false}}">
+        PageSize="10" DataSource="SEL_Account_BeneficiaryManagement" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
+        GridHeadText="Select Beneficiary" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
 
 
         <GridConfig>
@@ -206,6 +206,7 @@
                 var cf = {
                     cols: {
                         Sequence: { width: '0px' },
+                        BenificiaryId: { width: '0px' },
                         NationalIDExpiryDate: { width: '0px' },
                         Nationality: { width: '0px' },
                         Gender: { width: '0px' },
@@ -227,6 +228,9 @@
                     forms: {
                         NewFormId: 'frmLedgerManagementCustomerDetails',
                         Keys: 'RecId'
+                    },
+                    DataActionParams: {
+                        DBAction: 'SearchBeneficiary'
                     }
                 };
             </script>
@@ -289,22 +293,14 @@
         <script>
             var fn = function ()
             {
-                $(".amountInput").on("blur", function () {
-                    formatAmount(this);
-                });
 
 
-                t.on('show', function (args) {
 
-                    let zero = 0;
-                    $(".amountInput").val('0.000')
 
-                });
 
                 t.on('onLoadedValues', function (args) {
-                    debugger
-                    let amount = args.res.Response.Rows?.[0]?.LedgerManagementAmount || 0;
-                    $(".amountInput").val(amount.toFixed(3));
+                    
+
 
                     // console.log("Extracted Amount:", amount);
 

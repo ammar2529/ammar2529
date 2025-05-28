@@ -24,22 +24,22 @@ namespace WebProject.Pages.eForms.Accounts.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Container conLedgerManagement;
 
         /// <summary>
-        /// frmLedgerManagementCustomerDetails_Cust_ShUc control.
+        /// frmLedgerManagementCustomerDetails_Beneficary_ShUc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmLedgerManagementCustomerDetails_Cust_ShUc;
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmLedgerManagementCustomerDetails_Beneficary_ShUc;
 
         /// <summary>
-        /// grdLedgerManagement_Cust control.
+        /// grdLedgerManagement_Beneficary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdLedgerManagement_Cust;
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdLedgerManagement_Beneficary;
 
         /// <summary>
         /// frmLedgerManagementCustomerDetails control.

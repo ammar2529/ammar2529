@@ -1500,6 +1500,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\eForms\Accounts\frmBeneficiaryManagement.js" />
+    <Content Include="Scripts\eForms\Accounts\frmLedgerManagement.js" />
     <Content Include="Scripts\eForms\iRental\frmCustomerRentalContracts.js" />
     <Content Include="Scripts\eForms\iRental\frmCarServiceDetails.js" />
     <Content Include="Scripts\eForms\iRental\frmInvoicePaymentDetails.js" />
