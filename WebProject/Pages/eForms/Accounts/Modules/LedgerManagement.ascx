@@ -36,7 +36,8 @@
                 <pre columnid="LeadgerDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{LedgerManagementRecCode}</div>
-                                    <div class="ftitle" >Transaction Type:&nbsp;<nobr class="ftitle" style="color:#602010">{TransactionType}</nobr></div>
+<%--                                    <div class="ftitle" >Transaction Type:&nbsp;<nobr class="ftitle" style="color:#602010">{TransactionType}</nobr></div>--%>
+                                   <div class="ftitle" >Beneficiary Type:&nbsp;<nobr class="ftitle" style="color:#602010">{BeneficiaryType}</nobr></div>
 
 
                                 </div>
@@ -44,12 +45,13 @@
 
                 <pre columnid="CustomerDetails">
                                 <center>
-                                     <div class="ftitle" style="font-size:16px;color:#101080">{CustomerName}</div>
+                                     <div class="ftitle" style="font-size:16px;color:#101080">{CompanyName}</div>
+                                     <div class="ftitle" style="font-size:16px;color:#101080">{PersonName}</div>
 
                                 </center>
                                 </pre>
                 <pre columnid="LeadgerDateTimeDetails">
-                                     <div class="ftitle">Amount:&nbsp;<nobr class="ftitle" style="color:#602010">{LedgerManagementAmount:fix(3)}</nobr></div>
+                                     <div class="ftitle">Amount:&nbsp;<nobr class="ftitle" style="color:#602010">{GrandTotal:fix(3)}</nobr></div>
                                    
                                 </pre>
                 <pre columnid="CreationDetails"> 
@@ -75,8 +77,8 @@
                             EditForm: { width: '0px' },
                             Sequence: { width: '0px' },
                             LeadgerDetails: { caption: ' Details', width: '270px' },
-                            CustomerDetails: { caption: 'Customer Details', width: '270px' },
-                            LeadgerDateTimeDetails: { caption: 'Amount', width: '165px' },
+                            CustomerDetails: { caption: 'Beneficery Details', width: '270px' },
+                            LeadgerDateTimeDetails: { caption: 'Total Amount', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
                             RecId: { width: '0px' }
                         },
@@ -291,15 +293,14 @@
     </WidgetConfig>
     <Scripts>
         <script>
-            var fn = function ()
-            {
+            var fn = function () {
 
 
 
 
 
                 t.on('onLoadedValues', function (args) {
-                    
+
 
 
                     // console.log("Extracted Amount:", amount);

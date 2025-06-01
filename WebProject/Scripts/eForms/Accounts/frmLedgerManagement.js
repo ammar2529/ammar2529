@@ -3,6 +3,16 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmLedgerManagement.t = t;
 
+    $('.secondSaveBtn', t.el).on('click', function () {
+        setTimeout(function () {
+            $('[argumentid="LedgerManagementReason"]', t.el).val('');
+            $('[argumentid="LedgerManagementAmount"]', t.el).val('');
+        }, 2000)
+
+
+
+    });
+
     $(".amountInput", t.el).on("blur", function () {
         debugger
         let amount = $(this).val();
@@ -84,19 +94,26 @@
 
                     if (response.status === 'OK' && response.Response.Rows.length > 0) {
                         response.Response.Rows.forEach(innerRow => {
-                            
+                            debugger
                             const LedgerAmountCredit = innerRow.LedgerAmountCredit;
                             const LedgerAmountDebit = innerRow.LedgerAmountDebit;
                             const GrandTotal = innerRow.GrandTotal;
                             const TotalLedgerAmount = innerRow.TotalLedgerAmount;
+                            const LedgerManagementRecCode = innerRow.LedgerManagementRecCode
+                            const TransactionDate = innerRow.TransactionDate
+                            const Reason = innerRow.Reason
                             const CreatedBy = innerRow.CreatedBy;
                             const DateCreated = innerRow.DateCreated;
                             $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)|| 0);
                             // Generate table row
                             tblRowsHTML += `
                             <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerManagementRecCode}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TransactionDate}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountDebit.toFixed(3)}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountCredit.toFixed(3)}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${Reason}</td>
+
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${CreatedBy}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${DateCreated}</td>
                             </tr>
