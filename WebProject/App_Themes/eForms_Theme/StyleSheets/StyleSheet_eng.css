@@ -1036,3 +1036,39 @@ width:20px;
 .diasbleScrollbars {
 	overflow: hidden;
 }
+
+.edit-icon {
+	color: black;
+	cursor: pointer;
+	margin-right: 5px;
+}
+
+	.edit-icon:hover {
+		color: green;
+	}
+
+.delete-icon {
+	color: black;
+	cursor: pointer;
+	margin-left: 5px;
+	font-size: 12px;
+}
+
+	.delete-icon:hover {
+		color: red;
+	}
+
+.action-icons {
+	display: flex;
+	align-items: center;
+}
+
+.pipe {
+	margin: 0 5px;
+	color: #e5e5e5;
+	font-weight: bold;
+}
+.disabled-td {
+	pointer-events: none; /* Prevent clicks */
+	opacity: 0.5; /* Make it look disabled */
+}

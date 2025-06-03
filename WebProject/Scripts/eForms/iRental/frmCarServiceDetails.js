@@ -57,7 +57,7 @@
 
         }
         else if ($('.WarrentyYes').is(':checked')) {
-            debugger
+            
             $('[argumentid="NextServiceKm"]', t.el).val('');
 
             if (CurrentServiceKm == 0) {

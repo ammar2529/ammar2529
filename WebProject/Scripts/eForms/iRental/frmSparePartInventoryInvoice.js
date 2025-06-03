@@ -215,7 +215,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventoryInvoice = function (obj)
         
         if (btn.hasClass('ClosedInvoice'))
         {
-            debugger
+            
             const isWarrantyChecked = $('.WarrentyInvoice', t.el).is(':checked'); // Warranty checkbox
             const isCashChecked = $('.CashInvoice', t.el).is(':checked'); // Cash checkbox
 

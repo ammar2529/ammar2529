@@ -370,6 +370,7 @@
     <Content Include="AdminPages\eForms\eForms_Search.ascx" />
     <Content Include="App_Themes\Blue\images\default_image.png" />
     <Content Include="App_Themes\Blue\images\spacer.gif" />
+    <Content Include="App_Themes\eForms_Theme\fontawsome\all.css" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-login.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\1_btn-view.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\AddToFavorites.png" />
@@ -622,6 +623,7 @@
     <Content Include="App_Themes\eForms_Theme\Images\Under_Warranty_show.png" />
     <Content Include="App_Themes\eForms_Theme\Images\vdiv2.gif" />
     <Content Include="App_Themes\eForms_Theme\Images\workflow.jpg" />
+    <Content Include="App_Themes\eForms_Theme\StyleSheets\all.min.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\iDashboard.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_ara.css" />
@@ -1522,6 +1524,14 @@
     <Content Include="SalesContractDS\PrintSalesContractBillOnlyAmount.xsc">
       <DependentUpon>PrintSalesContractBillOnlyAmount.xsd</DependentUpon>
     </Content>
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-brands-400.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-brands-400.woff2" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-regular-400.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-regular-400.woff2" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-solid-900.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-solid-900.woff2" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-v4compatibility.ttf" />
+    <Content Include="App_Themes\eForms_Theme\webfonts\fa-v4compatibility.woff2" />
     <None Include="SalesContractDS\PrintSalesContractBillOnlyAmount.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
