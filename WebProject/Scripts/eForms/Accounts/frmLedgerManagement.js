@@ -32,7 +32,11 @@
         $('.UPD_Row_Save_Btn', t.el).hide()
         $('.INS_Row_Save_Btn', t.el).show()
         $("input[value='D']").prop("checked", true);
-        $(".amountInput, [argumentid='LedgerManagementReason']",t.el).val("");
+        $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+        // Set dropdown to the first option
+        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+
+
 
     });
 
@@ -44,6 +48,10 @@
         t.submit(btn);
         $("input[value='D']").prop("checked", true);
         $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+        // Set dropdown to the first option
+        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+
+
 
     });
 
@@ -63,6 +71,8 @@
 
             $('.UPD_Row_Save_Btn', t.el).hide()
             $('.INS_Row_Save_Btn', t.el).show()
+
+            $('.HideOnNewForm', t.el).show();
 
         }
 
@@ -95,6 +105,8 @@
 
             $('.UPD_Row_Save_Btn', t.el).hide()
             $('.INS_Row_Save_Btn', t.el).show()
+
+            $('.HideOnNewForm', t.el).hide();
         }
     });
 
@@ -137,10 +149,16 @@
                             const TotalLedgerAmount = innerRow.TotalLedgerAmount;
                             const LedgerManagementRecCode = innerRow.LedgerManagementRecCode
                             const TransactionDate = innerRow.TransactionDate
+                            const AccountsPaymentType = innerRow.AccountsPaymentType
+                            const AccountsPaymentTypeId = innerRow.AccountsPaymentTypeId
+                            const DebitCreditTotal = innerRow.DebitCreditTotal
                             const Reason = innerRow.Reason
                             //const CreatedBy = innerRow.CreatedBy;
                             //const DateCreated = innerRow.DateCreated;
-                            $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3) || 0);
+                            $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
+                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3));
+
+                            debugger
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
                             // Generate table row
                             tblRowsHTML += `
@@ -149,6 +167,7 @@
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TransactionDate}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountDebit.toFixed(3)}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountCredit.toFixed(3)}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;" AccountsPaymentTypeId="${AccountsPaymentTypeId}" >${AccountsPaymentType}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${Reason} </td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"  AmountRecId="${AmountRecId}">
                                     <div class="action-icons">
@@ -241,11 +260,12 @@
         $('td[AmountRecId]').addClass('disabled-td');
 
 
-
+        debugger
         // Fetch values
         var debitAmount = curTR.find('td:nth-child(3)').text().trim(); // Debit Amount
         var creditAmount = curTR.find('td:nth-child(4)').text().trim(); // Credit Amount
-        var reason = curTR.find('td:nth-child(5)').text().trim(); // Reason
+        var reason = curTR.find('td:nth-child(6)').text().trim(); // Reason
+        /*var PaymentType = curTR.find('td:nth-child(6)').text().trim(); // */
 
         // Determine Transaction Type
         var transactionType = debitAmount !== "0.000" ? "D" : "C";
@@ -258,12 +278,23 @@
         $('input[argumentid="LedgerManagementReason"]').val(reason);
         $('input[name="TransactionType"][value="' + transactionType + '"]').prop('checked', true);
 
+        
+        // Set dropdown value
+ 
+        var paymentTypeId = curTR.find('td[AccountsPaymentTypeId]').attr('AccountsPaymentTypeId');
+
+        // Ensure value exists before setting
+        if (paymentTypeId) {
+            $('select[argumentid="AccountsPaymentType"]').val(paymentTypeId).trigger('change');
+
+
+        }
         $('.UPD_Row_Save_Btn', t.el).show()
         $('.INS_Row_Save_Btn', t.el).hide()
     }
 
     function DeleteRow(t, AmountRecId) {
-        debugger
+        
         var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'DeleteRow' };
         SInfo = getForm(null, null, params);
         var inv = new AsyncWidgets.RAInvoker();
@@ -280,5 +311,6 @@
             $(t.el).unmask();
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
+        AsyncWidgets.get('frmLedgerManagement').Requery();
     }
 }

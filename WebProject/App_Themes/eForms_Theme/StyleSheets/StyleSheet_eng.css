@@ -841,6 +841,7 @@ DIV.viewBasket A:hover {
     BORDER-LEFT: silver 1px solid; 
     BORDER-TOP: silver 1px solid;
     BORDER-BOTTOM: silver 1px solid; 
+	cursor:pointer
 }
 
 /* menu styles */

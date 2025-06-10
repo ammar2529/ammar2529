@@ -60,7 +60,7 @@
             <nobr>Title:</nobr>
         </td>
         <td width="100%">
-            <input type="text" groupid="LedgerManagement_FrUc" maxlength="10" style="width: 150px;"
+            <input type="text" groupid="LedgerManagement_FrUc" maxlength="10" style="width: 300px;"
                 class="text    " argumentid="LedgerTitle" />
         </td>
     </tr>
@@ -166,14 +166,16 @@
                             <tr>
 
 
-                                <td class="ftitle" style="width: 50px">
+                                <td class="ftitle" >
                                     <label for="column3">Transaction Type</label></td>
-                                <td class="ftitle" style="width: 50px">
+                                <td class="ftitle" style="width: 20px">
                                     <label for="column4">Amount*</label></td>
-                                <td class="ftitle" style="width: 50px">
+                                <td class="ftitle" style="width: 20px">
+                                    <label for="column4">Payment Type*</label></td>
+                                <td class="ftitle" style="width: 20px">
                                     <label for="column5">Reason</label></td>
 
-                                <td class="ftitle" style="width: 50px">
+                                <td class="ftitle" style="width: 20px">
                                     <label for="column9">Actions</label></td>
                                 <!-- Actions column -->
 
@@ -182,7 +184,7 @@
 
 
 
-                                <td>
+                                <td style=" width: 20%;">
                                     <input type="radio" class="Debit" checked="checked" default="default" value="D" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Debit</label>
                                     <input type="radio" class="Credit" value="C" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Credit</label>
 
@@ -190,16 +192,17 @@
                                 </td>
 
 
-                                <td>
+                                <td style=" width: 20%;">
                                     <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
-                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr=' *Required' />
-
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " id="a" style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType" 
-                                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}">
+                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr='*' />
+                                    </td>
+                                <td style=" width: 20%;">
+                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist  required "  style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType" 
+                                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
                                         <option value="" selected="selected">Select Payment Type</option>
                                     </select>
                                 </td>
-                                <td>
+                                <td style=" width: 20%;">
 
                                     <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text "
                                         groupid="LedgerManagement_FrUc" argumentid="LedgerManagementReason" />
@@ -209,9 +212,9 @@
 
 
                                 <%--<td> display none </td>--%>
-                                <td>
-                                    <button type="button" recid="recId" class=" UPD_Row_Save_Btn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true}">Save</button>
-                                    <button type="button" recid="recId" class=" INS_Row_Save_Btn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true}">Save</button>
+                                <td style=" width: 20%;">
+                                    <input type="button" value="  Save  " recid="recId" class=" UPD_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true}">
+                                    <input type="button" value="  Save  " recid="recId" class=" INS_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true}">
                                 </td>
                           
                                 <!-- Delete button -->
@@ -229,14 +232,14 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="HideOnNewForm">
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
         </td>
     </tr>
 
 
-    <tr>
+    <tr class="HideOnNewForm">
         <td colspan="4">
 
 
@@ -250,6 +253,7 @@
                             <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 110px;">Transaction Date</th>
                             <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 90px;">Debit</th>
                             <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 90px;">Credit</th>
+                             <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 95px;">Payment Type</th>
                             <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black;">Reason</th>
                             <th class="ColTemplate w-grid-head-cell w-grid-head-back w-grid-cell-border colIndex-4" style="padding-left: 5px; padding-right: 0px; color: black; width: 5px;"></th>
 
@@ -278,6 +282,15 @@
         </td>
     </tr>
 
+
+    <tr>
+        <td class="ftitle">Total Amount:</td>
+        <td><span groupid="LedgerManagement_FrUc" argumentid="GrandTotal" class="ftitle"></span></td>
+    </tr>
+    <tr>
+        <td class="ftitle">D/C Summary:</td>
+        <td><span groupid="LedgerManagement_FrUc" argumentid="DebitCreditTotal" class="ftitle"></span></td>
+    </tr>
     <tr>
         <td colspan="2">
             <img height="15" src="App_Themes/eForms_Theme/Images/spacer.gif" width="1" />
@@ -289,8 +302,8 @@
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td>
-            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:true}" />
-            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true}" />
+            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:true}" />
+            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true}" />
 
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
         </td>
