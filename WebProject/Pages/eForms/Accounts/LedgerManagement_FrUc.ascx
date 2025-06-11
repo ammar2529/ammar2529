@@ -287,8 +287,16 @@
         <td class="ftitle">Total Amount:</td>
         <td><span groupid="LedgerManagement_FrUc" argumentid="GrandTotal" class="ftitle"></span></td>
     </tr>
+        <tr>
+        <td class="ftitle">Total Debit:</td>
+        <td><span groupid="LedgerManagement_FrUc" argumentid="TotalDebit" class="ftitle"></span></td>
+    </tr>
+        <tr>
+        <td class="ftitle">Total Credit:</td>
+        <td><span groupid="LedgerManagement_FrUc" argumentid="TotalCredit" class="ftitle"></span></td>
+    </tr>
     <tr>
-        <td class="ftitle">D/C Summary:</td>
+        <td class="ftitle">Total Balance:</td>
         <td><span groupid="LedgerManagement_FrUc" argumentid="DebitCreditTotal" class="ftitle"></span></td>
     </tr>
     <tr>

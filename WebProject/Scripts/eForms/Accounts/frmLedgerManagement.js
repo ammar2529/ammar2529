@@ -14,7 +14,7 @@
     });
 
     $(".amountInput", t.el).on("blur", function () {
-        debugger
+        
         let amount = $(this).val();
         if (amount !== "" && amount !== null && amount !== undefined) {
             formatAmount(this);
@@ -41,7 +41,7 @@
     });
 
     $('.INS_Row_Save_Btn', t.el).on('click', function () {
-        debugger
+        
 
         let btn = $(this);
 
@@ -113,7 +113,13 @@
 
     function FetchLedegerAmounts(res, t) {
         if (res.status === 'OK' && res.Response.Rows.length > 0) {
-            debugger
+
+            $('[argumentid="GrandTotal"]', t.el).text('0.000') ;
+            $('[argumentid="TotalDebit"]', t.el).text('0.000') ;
+            $('[argumentid="TotalCredit"]', t.el).text('0.000') ;
+
+            $('[argumentid="DebitCreditTotal"]', t.el).text('0.000');
+
             const rows = res.Response.Rows;
             let tblRowsHTML = "";
             const tblUFL = $('table.LedegerAmountsTable', t.el);
@@ -151,14 +157,20 @@
                             const TransactionDate = innerRow.TransactionDate
                             const AccountsPaymentType = innerRow.AccountsPaymentType
                             const AccountsPaymentTypeId = innerRow.AccountsPaymentTypeId
+                            const TotalDebit = innerRow.TotalDebit
+                            const TotalCredit = innerRow.TotalCredit
+
                             const DebitCreditTotal = innerRow.DebitCreditTotal
                             const Reason = innerRow.Reason
                             //const CreatedBy = innerRow.CreatedBy;
                             //const DateCreated = innerRow.DateCreated;
                             $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
-                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3));
+                            $('[argumentid="TotalDebit"]', t.el).text(TotalDebit.toFixed(3)) || 0;
+                            $('[argumentid="TotalCredit"]', t.el).text(TotalCredit.toFixed(3)) || 0;
 
-                            debugger
+                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3)) || 0;
+
+                            
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
                             // Generate table row
                             tblRowsHTML += `
@@ -304,6 +316,7 @@
                 var response = res.Response || '';
                 var msg = response.split('||');
                 $.showMessage(` ${msg[2]}`);
+
             } else {
                 $.showMessage(`not Delete `);
 
@@ -311,6 +324,6 @@
             $(t.el).unmask();
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
-        AsyncWidgets.get('frmLedgerManagement').Requery();
+        let a = AsyncWidgets.get('frmLedgerManagement',t.el).Requery();
     }
 }
