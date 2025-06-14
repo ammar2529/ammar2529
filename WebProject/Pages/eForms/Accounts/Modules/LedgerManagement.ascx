@@ -55,6 +55,8 @@
                                   <div class="ftitle" >Beneficiary Type:&nbsp;<nobr class="ftitle" style="color:#602010">{BeneficiaryType}</nobr></div>
                                     <div  style="font-size:11px;">
                                             <tpl if="CompanyName">Company Name:&nbsp;&nbsp;<nobr  style="color:#602010">{CompanyName}</nobr></tpl>
+                                        </div>
+                                    <div  style="font-size:11px;">
                                              <tpl if="PersonName">Person Name:&nbsp;&nbsp;<nobr  style="color:#602010">{PersonName}</nobr></tpl>
                                     </div>
 
