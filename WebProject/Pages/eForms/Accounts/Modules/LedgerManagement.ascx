@@ -36,29 +36,45 @@
                 <pre columnid="LeadgerDetails" class="w-grid-head">
                                 <div style="padding-top:5px;padding-bottom:5px">
                                     <div class="ftitle" style="color:#602010">{LedgerManagementRecCode}</div>
-<%--                                    <div class="ftitle" >Transaction Type:&nbsp;<nobr class="ftitle" style="color:#602010">{TransactionType}</nobr></div>--%>
-                                   <div class="ftitle" >Beneficiary Type:&nbsp;<nobr class="ftitle" style="color:#602010">{BeneficiaryType}</nobr></div>
 
+                                    <div style="font-size:11px;">
+                                      <div>Title:&nbsp;<nobr>{LedgerTitle}</nobr></div>
+                                    
+                                    <div>Transaction Type:&nbsp;<nobr>{TransactionType}</nobr></div>
+                                     <div>Ledger Date:&nbsp;<nobr>{TransactionDate}</nobr></div>
+
+</div>
 
                                 </div>
                                 </pre>
 
                 <pre columnid="CustomerDetails">
                                 <center>
-                                     <div class="ftitle" style="font-size:16px;color:#101080">{CompanyName}</div>
-                                     <div class="ftitle" style="font-size:16px;color:#101080">{PersonName}</div>
+<%--                                     <div class="ftitle" style="font-size:16px;color:#101080">{CompanyName}</div>
+                                     <div class="ftitle" style="font-size:16px;color:#101080">{PersonName}</div>--%>
+                                  <div class="ftitle" >Beneficiary Type:&nbsp;<nobr class="ftitle" style="color:#602010">{BeneficiaryType}</nobr></div>
+                                    <div  style="font-size:11px;">
+                                            <tpl if="CompanyName">Company Name:&nbsp;&nbsp;<nobr  style="color:#602010">{CompanyName}</nobr></tpl>
+                                             <tpl if="PersonName">Person Name:&nbsp;&nbsp;<nobr  style="color:#602010">{PersonName}</nobr></tpl>
+                                    </div>
+
+
 
                                 </center>
                                 </pre>
                 <pre columnid="LeadgerDateTimeDetails">
-                                     <div class="ftitle">Amount:&nbsp;<nobr class="ftitle" style="color:#602010">{GrandTotal:fix(3)}</nobr></div>
+                                     <div class="ftitle">Total Credit:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalCredit:fix(3)}</nobr></div>
+                                     <div class="ftitle">Total Debit:&nbsp;&nbsp;<nobr class="ftitle" style="color:#602010">{TotalDebit:fix(3)}</nobr></div>
+                                     <div class="ftitle">Diffrence:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr class="ftitle" style="color:#602010">{DebitCreditTotal:fix(3)}</nobr></div>
+
+
                                    
                                 </pre>
                 <pre columnid="CreationDetails"> 
 
                     
                                       
-                              <div class="ftitle" style="style="color:#101080"">{CreatedBy}</div>
+                              <div class="ftitle" style="color:#101080">{CreatedBy}</div>
 
                                      <div style="font-size:11px;">{DateCreated}&nbsp;{DateCreatedTime}</div>
 

@@ -283,10 +283,10 @@
     </tr>
 
 
-    <tr>
+<%--    <tr>
         <td class="ftitle">Total Amount:</td>
         <td><span groupid="LedgerManagement_FrUc" argumentid="GrandTotal" class="ftitle"></span></td>
-    </tr>
+    </tr>--%>
         <tr>
         <td class="ftitle">Total Debit:</td>
         <td><span groupid="LedgerManagement_FrUc" argumentid="TotalDebit" class="ftitle"></span></td>
