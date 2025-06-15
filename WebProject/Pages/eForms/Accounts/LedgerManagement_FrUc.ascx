@@ -282,7 +282,7 @@
 
         </td>
     </tr>
-         <tr class="testTR" style="display:none">
+        <%-- <tr class="testTR" style="display:none">
         <td colspan="8">
             <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
 
@@ -363,7 +363,7 @@
         </tr>
             </table>
         </td>
-    </tr>
+    </tr>--%>
 
 <%--    <tr>
         <td class="ftitle">Total Amount:</td>

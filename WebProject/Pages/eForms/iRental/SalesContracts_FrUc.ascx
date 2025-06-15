@@ -1297,7 +1297,7 @@
 
 
                                 };
-
+                                debugger
                                 // Assuming ServerCall is a function to make an API call
                                 ServerCall(params, function (res) {
 
@@ -1313,19 +1313,24 @@
                                                 var RecCode = row.RecCode;
                                                 var CarNumber = row.CarNumber;
                                                 var CustomerName = row.CustomerName;
-                                                var AmountDue = row.AmountDue;
-                                                var PaymentAmount = row.PaymentAmount;
+                                                var AmountDue = row.AmountDue ?? 0;
+                                                var PaymentAmount = row.PaymentAmount ?? 0;
+                                                var AdditionalAmount = row.AdditionalAmount ?? 0;
+                                                var Discount = row.Discount ?? 0;
+                                                var Price = row.Price ?? 0;
 
 
 
+                                                var totalAmount = (parseFloat(Price) + parseFloat(AdditionalAmount)) - parseFloat(Discount);
+                                                var grandamount = parseFloat(totalAmount) - parseFloat(PaymentAmount);
                                             }
 
-
+                                            
                                             var a = $('div.SalesAdditionalAmountPanelDiv')
                                             $('[argumentid="RecCodePanel"]', a).text(RecCode);
                                             $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
                                             $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
-                                            $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+                                            $('[argumentid="AmountDuePanel"]', a).text(grandamount.toFixed(3));
                                             $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
 
 

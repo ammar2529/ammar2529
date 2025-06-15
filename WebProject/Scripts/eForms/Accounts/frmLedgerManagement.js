@@ -223,27 +223,39 @@
                             //curTR.remove();
 
                         }); // end of click of Edit button event
-
                         $('.delete-icon', tblUFL).click(function () {
-                            debugger
                             var btn = $(this);
                             var RecId = btn.attr("AmountRecId");
 
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "Do you really want to delete this record?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#d33',
+                                cancelButtonColor: '#3085d6',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    DeleteRow(t, RecId);
 
-                            DeleteRow(t, RecId);
+                                    var curTR = btn.closest('tr');
 
-                            // Remove the row from the table
-                            var curTR = btn.closest('tr');//.remove();
+                                    if ($('tr', curTR.parent()).length == 1) {
+                                        $('.ItemTR', tblUFL).hide();
+                                        $('.NoRecordsTR', tblUFL).show();
+                                    }
 
-                            if ($('tr', curTR.parent()).length == 1) {
-                                // curTR.remove();
-                                $('.ItemTR', tblUFL).hide();
-                                $('.NoRecordsTR', tblUFL).show();
-                                //return;
-                            }
-                            curTR.remove();
+                                    curTR.remove();
 
-                        }); // end of click of Edit button event
+                                    //Swal.fire(
+                                    //    'Deleted!',
+                                    //    'The record has been deleted.',
+                                    //    'success'
+                                    //)
+                                }
+                            });
+                        });
                     } else {
                         setTimeout(() => {
 
@@ -302,7 +314,7 @@
 
         //}
 
-        debugger
+        
         var amountRecId = $('td[AmountRecId]').attr('AmountRecId'); // Clicked row's ID
 
         // Hide any previously visible testTR rows
