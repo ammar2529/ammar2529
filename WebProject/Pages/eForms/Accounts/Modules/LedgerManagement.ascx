@@ -40,18 +40,15 @@
                                     <div style="font-size:11px;">
                                       <div>Title:&nbsp;<nobr>{LedgerTitle}</nobr></div>
                                     
-                                    <div>Transaction Type:&nbsp;<nobr>{TransactionType}</nobr></div>
                                      <div>Ledger Date:&nbsp;<nobr>{TransactionDate}</nobr></div>
 
-</div>
+                                        </div>
 
                                 </div>
                                 </pre>
 
                 <pre columnid="CustomerDetails">
                                 <center>
-<%--                                     <div class="ftitle" style="font-size:16px;color:#101080">{CompanyName}</div>
-                                     <div class="ftitle" style="font-size:16px;color:#101080">{PersonName}</div>--%>
                                   <div class="ftitle" >Beneficiary Type:&nbsp;<nobr class="ftitle" style="color:#602010">{BeneficiaryType}</nobr></div>
                                     <div  style="font-size:11px;">
                                             <tpl if="CompanyName">Company Name:&nbsp;&nbsp;<nobr  style="color:#602010">{CompanyName}</nobr></tpl>
@@ -59,8 +56,6 @@
                                     <div  style="font-size:11px;">
                                              <tpl if="PersonName">Person Name:&nbsp;&nbsp;<nobr  style="color:#602010">{PersonName}</nobr></tpl>
                                     </div>
-
-
 
                                 </center>
                                 </pre>

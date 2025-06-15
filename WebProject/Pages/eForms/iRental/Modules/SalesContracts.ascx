@@ -51,19 +51,26 @@
                             
                                     
                                     <div style="font-size:11px;">
-    <tpl if="CarNumber">
-        <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr>
-        <tpl if="Brand">&nbsp;-&nbsp;{Brand}</tpl>
-        <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
-        <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
-    </tpl>
-    <tpl if="!CarNumber">
-        <tpl if="Brand">{Brand}</tpl>
-        <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
-        <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
-    </tpl>
-</div>
-<div><nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr></div>
+                                        <tpl if="CarNumber">
+                                            <tpl if="Brand">{Brand}</tpl>
+                                            <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
+                                            <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
+                                        </tpl>
+                                        <tpl if="!CarNumber">
+                                            <tpl if="Brand">{Brand}</tpl>
+                                            <tpl if="Model">&nbsp;-&nbsp;{Model}</tpl>
+                                            <tpl if="Color">&nbsp;-&nbsp;{Color}</tpl>
+                                        </tpl>
+                                    </div>
+                                    <div>
+                                        <tpl if="CarNumber">
+                                       <nobr class="ftitle" style="color:#008080">{CarNumber}</nobr> - <nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr>
+                                            </tpl>
+
+                                      <tpl if="!CarNumber">
+                                      <nobr class="ftitle" style="color:mediumorchid">{ChassisNo}</nobr>
+                                            </tpl>
+                                    </div>
 
 
                                     <%-- </tpl>--%>
@@ -102,7 +109,9 @@
                                 </pre>
                 <pre columnid="ContractDateTimeDetails">
                                      <div class="ftitle">{ContractStartDate}&nbsp;{ContractStartTime}</div>
-                                     <div class="ftitle">Price:&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
+                                     <div class="ftitle">Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr class="ftitle" style="color:#602010">{TotalAmount:fix(3)}</nobr></div>
+                                      <div class="ftitle">Paid:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr class="ftitle" style="color:#602010">{PaymentAmount:fix(3)}</nobr></div>
+
                                      <div class="ftitle">Balance:&nbsp;<nobr class="ftitle" style="color:#602010">{AmountDue:fix(3)}</nobr></div>
                                    
                                 </pre>

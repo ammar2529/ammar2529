@@ -213,7 +213,7 @@
 
                                 <%--<td> display none </td>--%>
                                 <td style=" width: 20%;">
-                                    <input type="button" value="  Save  " recid="recId" class=" UPD_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true}">
+<%--                                    <input type="button" value="  Save  " recid="recId" class=" UPD_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true}">--%>
                                     <input type="button" value="  Save  " recid="recId" class=" INS_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true}">
                                 </td>
                           
@@ -263,6 +263,7 @@
                         </tr>
                     </thead>
                     <tbody>
+  
                     </tbody>
                     <tfoot>
                         <tr class="NoRecordsTR">
@@ -281,7 +282,88 @@
 
         </td>
     </tr>
+         <tr class="testTR" style="display:none">
+        <td colspan="8">
+            <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table">
 
+                <tr class="LineOfItemRow HideOnNewForm">
+                    <td colspan="4">
+                        <table cellspacing="0.5" cellpadding="0" width="100%" border="0" class="w-form-table" id="dynamicRowsTest">
+                            <tr>
+                                <td style="width: 100%;background-color: #d6e4e7; border:1px solid #adc4ce" colspan="8">Test</td>
+
+                            </tr>
+                            <tr>
+                                <td class="ftitle">
+                                    <label for="column3">Transaction ID</label></td>
+
+                                <td class="ftitle">
+                                    <label for="column3">Transaction Type</label></td>
+                                <td class="ftitle" style="width: 20px">
+                                    <label for="column4">Amount*</label></td>
+                                <td class="ftitle" style="width: 20px">
+                                    <label for="column4">Payment Type*</label></td>
+                                <td class="ftitle" style="width: 20px">
+                                    <label for="column5">Reason</label></td>
+
+                                <td class="ftitle" style="width: 20px">
+                                    <label for="column9">Actions</label></td>
+                                <!-- Actions column -->
+
+                            </tr>
+                            <tr class="trNoDynamic">
+
+                                <td style="width: 20%;">
+                                    <span type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
+                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount"  />
+                                </td>
+
+                                <td style="width: 20%;">
+                                    <input type="radio" class="Debit" checked="checked" default="default" value="D" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Debit</label>
+                                    <input type="radio" class="Credit" value="C" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Credit</label>
+
+
+                                </td>
+
+
+                                <td style=" width: 20%;">
+                                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
+                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr='*' />
+                                    </td>
+                                <td style=" width: 20%;">
+                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist  required "  style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType" 
+                                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
+                                        <option value="" selected="selected">Select Payment Type</option>
+                                    </select>
+                                </td>
+                                <td style=" width: 20%;">
+
+                                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text "
+                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementReason" />
+                                </td>
+
+
+
+
+                              
+                                <td style=" width: 20%;">
+                                    <input type="button" value="  Save  " recid="recId" class=" UPD_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true}">
+                                </td>
+                          
+                               
+                                
+                            </tr>
+            </table>
+
+
+        </td>
+
+
+
+        </tr>
+            </table>
+        </td>
+    </tr>
 
 <%--    <tr>
         <td class="ftitle">Total Amount:</td>

@@ -181,7 +181,7 @@
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountCredit.toFixed(3)}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;" AccountsPaymentTypeId="${AccountsPaymentTypeId}" >${AccountsPaymentType}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${Reason} </td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;"  AmountRecId="${AmountRecId}">
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;" templateid="RowEditForm" AmountRecId="${AmountRecId}">
                                     <div class="action-icons">
                                         <i class="fa-solid fa-pen-to-square edit-icon"  title="Edit" AmountRecId="${AmountRecId}"></i>
                                         <span class="pipe">|</span>
@@ -212,15 +212,15 @@
                             //DeleteUploadFile(t, recId, fileName);
                             EditRow(this);
                             // Remove the row from the table
-                            var curTR = btn.closest('tr');//.remove();
+                            //var curTR = btn.closest('tr');//.remove();
 
-                            if ($('tr', curTR.parent()).length == 1) {
-                                // curTR.remove();
-                                $('.ItemTR', tblUFL).hide();
-                                $('.NoRecordsTR', tblUFL).show();
-                                //return;
-                            }
-                            curTR.remove();
+                            //if ($('tr', curTR.parent()).length == 1) {
+                            //    // curTR.remove();
+                            //    $('.ItemTR', tblUFL).hide();
+                            //    $('.NoRecordsTR', tblUFL).show();
+                            //    //return;
+                            //}
+                            //curTR.remove();
 
                         }); // end of click of Edit button event
 
@@ -265,42 +265,57 @@
     }
 
     function EditRow(button) {
-        let t = this
-        var curTR = $(button).closest('tr'); // Get current row
+        //let t = this
+        //var curTR = $(button).closest('tr'); // Get current row
         
-        //curTR.find('td[LedgerAmountId]').addClass('disabled-td'); // Add CSS class
-        $('td[AmountRecId]').addClass('disabled-td');
+        ////curTR.find('td[LedgerAmountId]').addClass('disabled-td'); // Add CSS class
+        //$('td[AmountRecId]').addClass('disabled-td');
 
+
+        //debugger
+        //// Fetch values
+        //var debitAmount = curTR.find('td:nth-child(3)').text().trim(); // Debit Amount
+        //var creditAmount = curTR.find('td:nth-child(4)').text().trim(); // Credit Amount
+        //var reason = curTR.find('td:nth-child(6)').text().trim(); // Reason
+        ///*var PaymentType = curTR.find('td:nth-child(6)').text().trim(); // */
+
+        //// Determine Transaction Type
+        //var transactionType = debitAmount !== "0.000" ? "D" : "C";
+
+        //// Determine which amount to set
+        //var finalAmount = debitAmount !== "0.000" ? debitAmount : creditAmount;
+
+        //// Set values in form
+        //$('input[argumentid="LedgerManagementAmount"]').val(finalAmount);
+        //$('input[argumentid="LedgerManagementReason"]').val(reason);
+        //$('input[name="TransactionType"][value="' + transactionType + '"]').prop('checked', true);
+
+        
+        //// Set dropdown value
+ 
+        //var paymentTypeId = curTR.find('td[AccountsPaymentTypeId]').attr('AccountsPaymentTypeId');
+
+        //// Ensure value exists before setting
+        //if (paymentTypeId) {
+        //    $('select[argumentid="AccountsPaymentType"]').val(paymentTypeId).trigger('change');
+
+
+        //}
 
         debugger
-        // Fetch values
-        var debitAmount = curTR.find('td:nth-child(3)').text().trim(); // Debit Amount
-        var creditAmount = curTR.find('td:nth-child(4)').text().trim(); // Credit Amount
-        var reason = curTR.find('td:nth-child(6)').text().trim(); // Reason
-        /*var PaymentType = curTR.find('td:nth-child(6)').text().trim(); // */
+        var amountRecId = $('td[AmountRecId]').attr('AmountRecId'); // Clicked row's ID
 
-        // Determine Transaction Type
-        var transactionType = debitAmount !== "0.000" ? "D" : "C";
-
-        // Determine which amount to set
-        var finalAmount = debitAmount !== "0.000" ? debitAmount : creditAmount;
-
-        // Set values in form
-        $('input[argumentid="LedgerManagementAmount"]').val(finalAmount);
-        $('input[argumentid="LedgerManagementReason"]').val(reason);
-        $('input[name="TransactionType"][value="' + transactionType + '"]').prop('checked', true);
-
-        
-        // Set dropdown value
- 
-        var paymentTypeId = curTR.find('td[AccountsPaymentTypeId]').attr('AccountsPaymentTypeId');
-
-        // Ensure value exists before setting
-        if (paymentTypeId) {
-            $('select[argumentid="AccountsPaymentType"]').val(paymentTypeId).trigger('change');
+        // Hide any previously visible testTR rows
+        $('.testTR').hide();
 
 
-        }
+        // Find the row where the button is clicked
+        var $currentRow = $(button).closest('tr');
+
+        // Insert testTR row right after the clicked row
+        var $testRow = $('.testTR:first').clone(); // Clone the testTR template
+        $testRow.insertAfter($currentRow).show();
+
         $('.UPD_Row_Save_Btn', t.el).show()
         $('.INS_Row_Save_Btn', t.el).hide()
     }

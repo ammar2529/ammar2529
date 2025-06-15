@@ -124,7 +124,7 @@ var th = ['','thousand','million', 'billion','trillion'];
       </td>
       <td width="80%">
       <div style="float:left;width:300px"> 
-        <input type="text" style="text-align:center; width:150px; font-weight:bold; background-color:#F1F1F1"  maxlength="50" class="text AlwaysDisable"
+        <input type="text" style="text-align:center; width:170px; font-weight:bold; background-color:#F1F1F1"  maxlength="50" class="text AlwaysDisable"
               groupid="Sales_Payments" argumentid="LocationReceiptId" />
               &nbsp;&nbsp;&nbsp;&nbsp;
               <nobr style="font-style:italic; font-weight:bold; float:right">Manual ID:</nobr></div>

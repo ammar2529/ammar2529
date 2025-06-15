@@ -611,8 +611,8 @@
                             <tr>
                                 <td class="ftitle">48 Hrs Car Replacement:</td>
                                 <td class="ftitle">
-                                    <input type="radio" class="CommonDisableClass   " checked="checked" default="default" value="No" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>No </label>
-                                    <input type="radio" class=" CommonDisableClass  " value="Yes" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>Yes</label>
+                                    <input type="radio" class="CommonDisableClass   "  value="No" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>No </label>
+                                    <input type="radio" class=" CommonDisableClass  " checked="checked" default="default" value="Yes" name="CarReplacement" groupid="SalesContractsForm" argumentid="CarReplacement" /><label>Yes</label>
                                     <%-- CommonDisableClass ElemDisabled default="default" --%>
                                 </td>
 
