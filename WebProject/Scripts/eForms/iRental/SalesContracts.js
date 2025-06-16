@@ -180,7 +180,7 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
                 $('[argumentid="PaymentDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
                
-                debugger
+                
                     var a = $('div.SalesPaymentPanelDiv')
                     if ($('table.SalesPaymentPanel', a).length > 0) {
                         $('table.SalesPaymentPanel', a).show();
@@ -369,8 +369,16 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
                             var RecCode = row.RecCode;
                             var CarNumber = row.CarNumber;
                             var CustomerName = row.CustomerName;
-                            var AmountDue = row.AmountDue;
-                            var PaymentAmount = row.PaymentAmount;
+                            var AmountDue = row.AmountDue ?? 0;
+                            var PaymentAmount = row.PaymentAmount ?? 0;
+                            var AdditionalAmount = row.AdditionalAmount ?? 0;
+                            var Discount = row.Discount ?? 0;
+                            var Price = row.Price ?? 0;
+
+                            
+
+                            var totalAmount = (parseFloat(Price) + parseFloat(AdditionalAmount)) - parseFloat(Discount);
+                            var grandamount = parseFloat(totalAmount) - parseFloat(PaymentAmount);
 
 
 
@@ -384,7 +392,7 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
                             $('[argumentid="RecCodePanel"]', a).text(RecCode);
                             $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
                             $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
-                            $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
+                        $('[argumentid="AmountDuePanel"]', a).text(grandamount.toFixed(3));
                             $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
 
 

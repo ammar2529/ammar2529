@@ -1297,7 +1297,7 @@
 
 
                                 };
-                                debugger
+                                
                                 // Assuming ServerCall is a function to make an API call
                                 ServerCall(params, function (res) {
 
@@ -1333,7 +1333,12 @@
                                             $('[argumentid="AmountDuePanel"]', a).text(grandamount.toFixed(3));
                                             $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
 
+                                            //setTimeout(function () {
+                                            //    debugger
+                                            //    $('.SaveBtn', 'ShowActionMsg: false', frm.el).click();
 
+                                            //}, 1000)
+                                           
 
 
                                         }
