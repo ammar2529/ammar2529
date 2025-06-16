@@ -636,7 +636,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                  $('[argumentid="GearYearsWarranty"]').val($('[argumentid="GearYearsWarranty"] option').eq(6).val());
             $('[argumentid="CarWarranty"]', t.el).val('100000');
                     $('[argumentid="CarYearsWarranty"]').val($('[argumentid="CarYearsWarranty"] option').eq(3).val());
-            $('[argumentid="FreeServiceKM"]', t.el).val('100000');
+            $('[argumentid="FreeServiceKM"]', t.el).val('30000');
 
             console.log($('.file-list', t.el).length);
             $('.file-list', t.el).html('');
