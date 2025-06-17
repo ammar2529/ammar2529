@@ -628,6 +628,8 @@
     <Content Include="App_Themes\eForms_Theme\StyleSheets\picture-slides.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_ara.css" />
     <Content Include="App_Themes\eForms_Theme\StyleSheets\StyleSheet_eng.css" />
+    <Content Include="App_Themes\eForms_Theme\SweetAlert\sweetalert2%4011.js" />
+    <Content Include="App_Themes\eForms_Theme\SweetAlert\sweetalert2.min.css" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_ara.gif" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_eng.gif" />
     <Content Include="App_Themes\eForms_Theme\TemplateImages\Approve_Small_ara.gif" />

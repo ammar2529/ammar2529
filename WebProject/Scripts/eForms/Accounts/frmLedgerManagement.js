@@ -147,52 +147,74 @@
                     if (response.status === 'OK' && response.Response.Rows.length > 0)
                     {
                         response.Response.Rows.forEach(innerRow => {
+                            let totalDebit = 0;
+                            let totalCredit = 0;
 
                             const AmountRecId = innerRow.AmountRecId;
-                            const LedgerAmountCredit = innerRow.LedgerAmountCredit;
-                            const LedgerAmountDebit = innerRow.LedgerAmountDebit;
+                            const LedgerAmountCredit = parseFloat(innerRow.LedgerAmountCredit) || 0;
+                            const LedgerAmountDebit = parseFloat(innerRow.LedgerAmountDebit) || 0;
+
                             const GrandTotal = innerRow.GrandTotal;
                             const TotalLedgerAmount = innerRow.TotalLedgerAmount;
                             const LedgerManagementRecCode = innerRow.LedgerManagementRecCode
                             const TransactionDate = innerRow.TransactionDate
                             const AccountsPaymentType = innerRow.AccountsPaymentType
                             const AccountsPaymentTypeId = innerRow.AccountsPaymentTypeId
-                            const TotalDebit = innerRow.TotalDebit
-                            const TotalCredit = innerRow.TotalCredit
+                            const TotalDebit = parseFloat(innerRow.TotalDebit) || 0;
+                            const TotalCredit = parseFloat(innerRow.TotalCredit) || 0;
 
                             const DebitCreditTotal = innerRow.DebitCreditTotal
+                            const RecStatus = innerRow.RecStatus ?? '';
                             const Reason = innerRow.Reason
                             //const CreatedBy = innerRow.CreatedBy;
                             //const DateCreated = innerRow.DateCreated;
-                            $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
-                            $('[argumentid="TotalDebit"]', t.el).text(TotalDebit.toFixed(3)) || 0;
-                            $('[argumentid="TotalCredit"]', t.el).text(TotalCredit.toFixed(3)) || 0;
+                            const isDeleted = RecStatus?.trim().toLowerCase() === 'deleted';
 
-                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3)) || 0;
+                            if (!isDeleted) {
+                                totalDebit += LedgerAmountDebit;
+                                totalCredit += LedgerAmountCredit;
+                            }
+
+                            const DebitCreditTotall = Math.abs(totalCredit - totalDebit);
+
+
+
+                            $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
+                            $('[argumentid="TotalDebit"]', t.el).text(totalDebit.toFixed(3)) || 0;
+                            $('[argumentid="TotalCredit"]', t.el).text(totalCredit.toFixed(3)) || 0;
+
+                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotall.toFixed(3)) || 0;
 
                             
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
                             // Generate table row
+                            let rowStyle = '';
+                            let disabledAttr = '';
+
+                            rowStyle = isDeleted
+                                ? 'text-decoration: line-through; background: white; color: black;'
+                                : 'background: white; color: black;';
+
+                            disabledAttr = isDeleted ? 'pointer-events: none; opacity: 0.5;' : '';
+
                             tblRowsHTML += `
                             <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerManagementRecCode}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${TransactionDate}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountDebit.toFixed(3)}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${LedgerAmountCredit.toFixed(3)}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;" AccountsPaymentTypeId="${AccountsPaymentTypeId}" >${AccountsPaymentType}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${Reason} </td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;" templateid="RowEditForm" AmountRecId="${AmountRecId}">
-                                    <div class="action-icons">
-                                        <i class="fa-solid fa-pen-to-square edit-icon"  title="Edit" AmountRecId="${AmountRecId}"></i>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${LedgerManagementRecCode}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${TransactionDate}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${LedgerAmountDebit.toFixed(3)}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${LedgerAmountCredit.toFixed(3)}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" AccountsPaymentTypeId="${AccountsPaymentTypeId}">${AccountsPaymentType}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${RecStatus}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${Reason}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
+                                    <div class="action-icons" style="${disabledAttr}">
+                                        <i class="fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}"></i>
                                         <span class="pipe">|</span>
                                         <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
                                     </div>
                                 </td>
-
-
-
                             </tr>
-                        `;
+                            `;
 
                             //                            <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${CreatedBy}</td>
                             //<td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${DateCreated}</td>
