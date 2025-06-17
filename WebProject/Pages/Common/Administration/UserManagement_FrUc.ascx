@@ -110,7 +110,7 @@
         
         <td>
             <input type="text" style="display: none" groupid="UserManagmentForm" argumentid="action" value="new" class="noautoreset" />
-            <input type="button" id="onUpdate" value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarsForSales',HideOnSuccess:true}" />
+            <input type="button"  value="  Save  " class="DataAction ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_CarsForSales',HideOnSuccess:true}" />
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
 
         </td>

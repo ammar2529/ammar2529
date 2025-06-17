@@ -58,5 +58,32 @@ namespace WebProject.Pages.eForms.Accounts.Modules
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebProject.AsyncWidgets.Widgets.Form frmLedgerManagement;
+
+        /// <summary>
+        /// frmTrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmTrans;
+
+        /// <summary>
+        /// grdTrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdTrans;
+
+        /// <summary>
+        /// Form2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebProject.AsyncWidgets.Widgets.Form Form2;
     }
 }

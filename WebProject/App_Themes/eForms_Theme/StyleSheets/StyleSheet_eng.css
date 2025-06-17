@@ -1073,3 +1073,32 @@ width:20px;
 	pointer-events: none; /* Prevent clicks */
 	opacity: 0.5; /* Make it look disabled */
 }
+
+
+.new-wrap {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+}
+
+	.new-wrap:hover .new-text {
+		text-decoration: underline;
+		color: #ff5c01;
+		cursor: pointer;
+	}
+
+	.new-wrap:hover .Plus-Icon {
+		cursor: pointer;
+	}
+
+.new-text {
+	color: #105678;
+	transition: all 0.2s ease;
+}
+
+.Plus-Icon {
+	font-size: 22px; /* or try 24px, 28px, etc. */
+	font-weight: 900; /* strongest available weight */
+	color: green;
+	transition: all 0.2s ease;
+}

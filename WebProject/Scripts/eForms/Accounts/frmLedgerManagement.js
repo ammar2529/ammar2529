@@ -3,6 +3,28 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmLedgerManagement.t = t;
 
+    $('.new-wrap', t.el).click(function () {
+        debugger
+        const $target = $('.ShowOnNewClickButton', t.el);
+        $target.toggle(); // shows if hidden, hides if visible
+
+        $("input[value='D']").prop("checked", true);
+        $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+        // Set dropdown to the first option
+        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+    });
+
+    $('.CloseNewForm', t.el).click(function () {
+        const $target = $('.ShowOnNewClickButton', t.el);
+        $target.toggle(); // shows if hidden, hides if visible
+
+        $("input[value='D']").prop("checked", true);
+        $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+        // Set dropdown to the first option
+        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+    });
+
+
     $('.secondSaveBtn', t.el).on('click', function () {
         setTimeout(function () {
             $('[argumentid="LedgerManagementReason"]', t.el).val('');
@@ -22,36 +44,26 @@
     });
 
 
-    $('.UPD_Row_Save_Btn', t.el).on('click', function () {
-        
 
-        let btn = $(this);
-
-        t.submit(btn);
-
-        $('.UPD_Row_Save_Btn', t.el).hide()
-        $('.INS_Row_Save_Btn', t.el).show()
-        $("input[value='D']").prop("checked", true);
-        $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
-        // Set dropdown to the first option
-        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
-
-
-
-    });
 
     $('.INS_Row_Save_Btn', t.el).on('click', function () {
         
 
         let btn = $(this);
 
+        debugger
         t.submit(btn);
-        $("input[value='D']").prop("checked", true);
-        $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
-        // Set dropdown to the first option
-        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+        //if (submit == false) {
+        //    return false;
+        //}
+        //$("input[value='D']").prop("checked", true);
+        //$(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+        //// Set dropdown to the first option
+        //$('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
 
-
+        
+        //const $target = $('.ShowOnNewClickButton', t.el);
+        //$target.toggle(); // shows if hidden, hides if visible
 
     });
 
@@ -69,8 +81,8 @@
             $('.secondSaveBtn', t.el).show();
             $('.trTransaction', t.el).show();
 
-            $('.UPD_Row_Save_Btn', t.el).hide()
-            $('.INS_Row_Save_Btn', t.el).show()
+            //$('.UPD_Row_Save_Btn', t.el).hide()
+            //$('.INS_Row_Save_Btn', t.el).show()
 
             $('.HideOnNewForm', t.el).show();
 
@@ -208,7 +220,7 @@
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${Reason}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
                                     <div class="action-icons" style="${disabledAttr}">
-                                        <i class="fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}"></i>
+                                        <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}" lovpopupid='TransPopup'></i>
                                         <span class="pipe">|</span>
                                         <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
                                     </div>
@@ -298,46 +310,21 @@
         }
     }
 
+ 
+
     function EditRow(button) {
-        //let t = this
-        //var curTR = $(button).closest('tr'); // Get current row
+        let t = this
+        var curTR = $(button).closest('tr'); // Get current row
         
         ////curTR.find('td[LedgerAmountId]').addClass('disabled-td'); // Add CSS class
         //$('td[AmountRecId]').addClass('disabled-td');
 
 
         //debugger
-        //// Fetch values
-        //var debitAmount = curTR.find('td:nth-child(3)').text().trim(); // Debit Amount
-        //var creditAmount = curTR.find('td:nth-child(4)').text().trim(); // Credit Amount
-        //var reason = curTR.find('td:nth-child(6)').text().trim(); // Reason
-        ///*var PaymentType = curTR.find('td:nth-child(6)').text().trim(); // */
-
-        //// Determine Transaction Type
-        //var transactionType = debitAmount !== "0.000" ? "D" : "C";
-
-        //// Determine which amount to set
-        //var finalAmount = debitAmount !== "0.000" ? debitAmount : creditAmount;
-
-        //// Set values in form
-        //$('input[argumentid="LedgerManagementAmount"]').val(finalAmount);
-        //$('input[argumentid="LedgerManagementReason"]').val(reason);
-        //$('input[name="TransactionType"][value="' + transactionType + '"]').prop('checked', true);
-
-        
-        //// Set dropdown value
  
-        //var paymentTypeId = curTR.find('td[AccountsPaymentTypeId]').attr('AccountsPaymentTypeId');
-
-        //// Ensure value exists before setting
-        //if (paymentTypeId) {
-        //    $('select[argumentid="AccountsPaymentType"]').val(paymentTypeId).trigger('change');
-
-
-        //}
 
         
-        var amountRecId = $('td[AmountRecId]').attr('AmountRecId'); // Clicked row's ID
+        var amountRecId = $('td[AmountRecId]', t.el).attr('AmountRecId'); // Clicked row's ID
 
         // Hide any previously visible testTR rows
         $('.testTR').hide();
@@ -347,11 +334,78 @@
         var $currentRow = $(button).closest('tr');
 
         // Insert testTR row right after the clicked row
-        var $testRow = $('.testTR:first').clone(); // Clone the testTR template
+        
+        var $testRow = $('.testTR:first', t.el).clone(); // Clone the testTR template
         $testRow.insertAfter($currentRow).show();
 
-        $('.UPD_Row_Save_Btn', t.el).show()
-        $('.INS_Row_Save_Btn', t.el).hide()
+        //$('.UPD_Row_Save_Btn', t.el).show()
+        //$('.INS_Row_Save_Btn', t.el).hide()
+
+        
+               // Fetch values
+        var debitAmount = curTR.find('td:nth-child(3)').text().trim(); // Debit Amount
+        var creditAmount = curTR.find('td:nth-child(4)').text().trim(); // Credit Amount
+        var reason = curTR.find('td:nth-child(7)').text().trim(); // Reason
+        /*var PaymentType = curTR.find('td:nth-child(6)').text().trim(); // */
+
+        // Determine Transaction Type
+        var transactionType = debitAmount !== "0.000" ? "D" : "C";
+
+        // Determine which amount to set
+        var finalAmount = debitAmount !== "0.000" ? debitAmount : creditAmount;
+
+        // Set values in form
+        $('input[argumentid="LedgerManagementAmount2"]', t.el).val(finalAmount);
+        $('textarea[argumentid="LedgerManagementReason2"]', t.el).val(reason);
+        debugger
+
+        // Set dropdown value
+
+        var paymentTypeId = curTR.find('td[AccountsPaymentTypeId]', t.el).attr('AccountsPaymentTypeId');
+
+        // Ensure value exists before setting
+        if (paymentTypeId) {
+            $('select[argumentid="AccountsPaymentType2"]', t.el).val(paymentTypeId).trigger('change');
+
+
+        }
+
+        setTimeout(function () {
+            debugger
+            const $targetRow = $('tr.testTR');
+            $targetRow.find('input[name="TransactionType2"][value="' + transactionType + '"]').attr('checked', 'checked')
+        }, 1000);
+
+        $('#CloseTableEditForm', '.testTR').click(function () {
+            
+            const $target = $('.testTR', t.el);
+            $target.toggle(); // shows if hidden, hides if visible
+            debugger
+            $('.testTR input[name="TransactionType2"][value="D"]').prop("checked", true);
+            $(".amountInput, [argumentid='LedgerManagementReason2']", t.el).val("");
+            // Set dropdown to the first option
+            $('select[argumentid="AccountsPaymentType2"]').prop('selectedIndex', 0);
+            $('.testTR').hide();
+        });
+
+        $('.UPD_Row_Save_Btn', t.el).on('click', function () {
+            let btn = $(this);
+            debugger
+            // Submit the form using the widget's submit method
+            t.submit(btn);
+
+            // Toggle button visibility
+            //$('.UPD_Row_Save_Btn', t.el).hide();
+            //$('.INS_Row_Save_Btn', t.el).show();
+
+            // Reset form fields
+            $("input[value='D']", t.el).prop("checked", true);
+            $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+            $('select[argumentid="AccountsPaymentType"]', t.el).prop('selectedIndex', 0);
+
+            // Hide the edit form (testTR)
+            $('.testTR', t.el).hide();
+        });
     }
 
     function DeleteRow(t, AmountRecId) {

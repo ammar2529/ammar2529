@@ -326,5 +326,110 @@
 </AW:Form>
 
 
+<div class='LOVPopupOnClick' lovpopupid='TransPopup' style="display: none">
+    <AW:Form ID="frmTrans" runat="server" Hidden="true" LoadOnInit="false" ShowOnLoad="true" DataSource="SEL_Account_BeneficiaryManagement" AsyncForm="~/Pages/eForms/iRental/RentalContracts_Cust_ShUc.ascx">
 
+        <WidgetConfig>
+            <script>
+                var cf = {
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Search'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <%--   <Scripts>
+                    <script>
+                        var fn = function () {
+                            var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
+
+                            $('.ClosePopup', t.el).click(function () {
+                                var f = conGrd._frm;
+                                f._LOVCon.hide();
+                                conGrd._Masked.unmask();
+                                conGrd._frm = conGrd._Masked = null;
+                            });
+                        }
+                    </script>
+                </Scripts>--%>
+    </AW:Form>
+    <AW:DataGrid ID="grdTrans" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmTrans"
+        EmptyHeight="201px" AllowNew="false" SelectableRow="false"
+        PageSize="10" DataSource="SEL_Account_BeneficiaryManagement" ContainerMargin="5px" AutoSearch="none" GridTemplate="jQueryUI"
+        GridHeadText="Select Beneficiary" GridButtons="{\'new\':{visible:false},\'delete\':{visible:false}}">
+
+
+        <GridConfig>
+            <script>
+                var cf = {
+                    cols: {
+                        Sequence: { width: '0px' },
+                        BenificiaryId: { width: '0px' },
+                        NationalIDExpiryDate: { width: '0px' },
+                        Nationality: { width: '0px' },
+                        Gender: { width: '0px' },
+                        DrivingLicenseNo: { width: '0px' },
+                        DrivingLicenseExpiry: { width: '0px' },
+                        PassportNo: { width: '0px' },
+                        PassportExpiry: { width: '0px' },
+                        CustomerType: { width: '0px' },
+                        WorkTelephone: { width: '0px' },
+                        ResidenceTelephone: { width: '0px' },
+                        MobileTelephone2: { width: '0px' },
+                        RecCode: { caption: 'Code', width: '90px' },
+                        NationalIDNo: { caption: 'National ID No.' },
+                        MobileTelephone1: { caption: 'Mobile Telephone' },
+                        CustomerStatus: { caption: 'Status' }
+
+
+                    },
+                    forms: {
+                        NewFormId: 'frmLedgerManagementCustomerDetails',
+                        Keys: 'RecId'
+                    },
+                    DataActionParams: {
+                        DBAction: 'SearchBeneficiary'
+                    }
+                };
+            </script>
+
+
+        </GridConfig>
+
+
+    </AW:DataGrid>
+
+    <AW:Form ID="Form2" Hidden="true" DataSource="SEL_iRental_Contracts_Customers" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/eForms/iRental/CustomerDetails_FrUc.ascx">
+        <WidgetConfig>
+            <script>
+                cf = {
+
+                    header: {
+                        Style: {},
+                        Visible: true,
+                        Collapsed: false,
+                        HeadText: 'Add Customers'
+                    }
+                }
+            </script>
+        </WidgetConfig>
+        <Scripts>
+            <script>
+                var fn = function () {
+                    //
+                    t.on("show", function () {
+
+                        $(".btnPopupForm", t).show();
+                        $(".btnMainForm", t).hide();
+
+                    });
+                }
+            </script>
+        </Scripts>
+    </AW:Form>
+
+</div>
 

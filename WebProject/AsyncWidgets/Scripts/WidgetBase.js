@@ -2111,6 +2111,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             //    popup = $(`div.LOVPopup[lovpopupid="${popId}"]`),
             //    autoShowControls = $(this).attr('auto-show-popup-controls'),popupControls=[]; // comma separated controls which has to be shown automatically
         });//end of focus event
+
+
+
         t.AutoComplete();
     },
     AutoComplete: function (ctx) {
