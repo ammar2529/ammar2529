@@ -16,72 +16,71 @@
 
 
 
-                <tr class="LineOfItemTestRow  testTR" style="display:none">
-                    <td colspan="8">
-                        <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRowss">
+    <tr class="LineOfItemTestRow  testTR" style="display: none">
+        <td colspan="8">
+            <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRowss">
 
-                            <tr>
-                                <td class="ftitle" style="width: 20%">Transaction Type:</td>
-                                <td class="ftitle" style="width: 30%">
-                                    <input type="radio" class="Debit" checked="checked" default="default" value="D" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2"><label>Debit</label>
-                                    <input type="radio" class="Credit" value="C" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2"><label>Credit</label>
-                                </td>
+                <tr>
+                    <td class="ftitle" style="width: 20%">Transaction Type:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="radio" class="Debit" checked="checked" default="default" value="D" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2"><label>Debit</label>
+                        <input type="radio" class="Credit" value="C" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2"><label>Credit</label>
+                    </td>
 
-                                <td class="ftitle" style="width: 20%">Amount*:</td>
-                                <td class="ftitle" style="width: 30%">
-                                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
-                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' /></td>
-                            </tr>
+                    <td class="ftitle" style="width: 20%">Amount*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
+                            groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' /></td>
+                </tr>
 
-                            <tr>
-                                <td class="ftitle" style="width: 20%">Payment Type*:</td>
-                                <td class="ftitle" style="width: 30%">
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist  required " style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType2"
-                                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
-                                        <option value="" selected="selected">Select Payment Type</option>
-                                    </select>
-                                </td>
+                <tr>
+                    <td class="ftitle" style="width: 20%">Payment Type*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist  required " style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType2"
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
+                            <option value="" selected="selected">Select Payment Type</option>
+                        </select>
+                    </td>
 
-                                <td class="ftitle" style="width: 20%">Amount*:</td>
-                                <td class="ftitle" style="width: 30%">test
+                    <td class="ftitle" style="width: 20%">Amount*:</td>
+                    <td class="ftitle" style="width: 30%">test
 
-                                </td>
-                            </tr>
+                    </td>
+                </tr>
 
-                            <tr>
-                                <td class="ftitle" style="width: 20%">Reason:</td>
-                                <td class="ftitle" style="width: 30%" colspan="3">
-
-
-                                    <textarea class="textarea" style="width: 85.5%; height: 50px; box-sizing: border-box; resize: none; vertical-align: middle;"
-                                        argumentid="LedgerManagementReason2" groupid="LedgerManagement_FrUc"></textarea>
-                                </td>
+                <tr>
+                    <td class="ftitle" style="width: 20%">Reason:</td>
+                    <td class="ftitle" style="width: 30%" colspan="3">
 
 
-                            </tr>
-
-                            <tr>
-
-
-                                <td style="width: 20%;">
-                                </td>
-
-                                <td style="width: 30%;" colspan="8">
-                                    <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType"  class=" UPD_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
-                                    <input type="button" value="  Cancel  " id="CloseTableEditForm" class="CloseTableEditForm ButtonStyle" />
-                                </td>
-                          
-
-                            </tr>
-                        </table>
-
-
+                        <textarea class="textarea" style="width: 85.5%; height: 50px; box-sizing: border-box; resize: none; vertical-align: middle;"
+                            argumentid="LedgerManagementReason2" groupid="LedgerManagement_FrUc"></textarea>
                     </td>
 
 
+                </tr>
+
+                <tr>
+
+
+                    <td style="width: 20%;"></td>
+
+                    <td style="width: 30%;" colspan="8">
+                        <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType" class=" UPD_Row_Save_Btn ButtonStyle" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
+                        <input type="button" value="  Cancel  " id="CloseTableEditForm" class="CloseTableEditForm ButtonStyle" />
+                    </td>
+
 
                 </tr>
- 
+            </table>
+
+
+        </td>
+
+
+
+    </tr>
+
 
     <tr class="trTransaction">
         <td class="ftitle" style="width: 20%">
@@ -95,7 +94,7 @@
         </td>
     </tr>
 
- 
+
     <tr>
         <td class="ftitle" style="width: 20%">
             <nobr>Ledger Date:</nobr>
@@ -216,71 +215,70 @@
 
 
 
-                <tr class="LineOfItemRow HideOnNewForm ShowOnNewClickButton">
-                    <td colspan="4">
-                        <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRows">
+    <tr class="LineOfItemRow HideOnNewForm ShowOnNewClickButton">
+        <td colspan="4">
+            <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRows">
 
-                            <tr>
-                                <td class="ftitle" style="width: 20%">Transaction Type:</td>
-                                <td class="ftitle" style="width: 30%">
-                                    <input type="radio" class="Debit TransactionType" checked="checked" default="default" value="D" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Debit</label>
-                                    <input type="radio" class="Credit TransactionType" value="C" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Credit</label>
-                                </td>
+                <tr>
+                    <td class="ftitle" style="width: 20%">Transaction Type:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="radio" class="Debit TransactionType" checked="checked" default="default" value="D" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Debit</label>
+                        <input type="radio" class="Credit TransactionType" value="C" name="TransactionType" groupid="LedgerManagement_FrUc" argumentid="TransactionType"><label>Credit</label>
+                    </td>
 
-                                <td class="ftitle" style="width: 20%">Amount*:</td>
-                                <td class="ftitle" style="width: 30%">
-                                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
-                                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr='*' /></td>
-                            </tr>
+                    <td class="ftitle" style="width: 20%">Amount*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
+                            groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr='*' /></td>
+                </tr>
 
-                            <tr>
-                                <td class="ftitle" style="width: 20%">Payment Type*:</td>
-                                <td class="ftitle" style="width: 30%">
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist  required " style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType"
-                                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
-                                        <option value="" selected="selected">Select Payment Type</option>
-                                    </select>
-                                </td>
+                <tr>
+                    <td class="ftitle" style="width: 20%">Payment Type*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist  required " style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType"
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
+                            <option value="" selected="selected">Select Payment Type</option>
+                        </select>
+                    </td>
 
-                                <td class="ftitle" style="width: 20%">Amount*:</td>
-                                <td class="ftitle" style="width: 30%">test
+                    <td class="ftitle" style="width: 20%">Amount*:</td>
+                    <td class="ftitle" style="width: 30%">test
 
-                                </td>
-                            </tr>
+                    </td>
+                </tr>
 
-                            <tr>
-                                <td class="ftitle" style="width: 20%">Reason:</td>
-                                <td class="ftitle" style="width: 30%" colspan="3">
-
-
-                                    <textarea class="textarea" style="width: 85.5%; height: 50px; box-sizing: border-box; resize: none; vertical-align: middle;"
-                                        argumentid="LedgerManagementReason" groupid="LedgerManagement_FrUc"></textarea>
-                                </td>
+                <tr>
+                    <td class="ftitle" style="width: 20%">Reason:</td>
+                    <td class="ftitle" style="width: 30%" colspan="3">
 
 
-                            </tr>
-
-                            <tr>
-
-
-                                <td style="width: 20%;">
-                                </td>
-
-                                <td style="width: 30%;" colspan="3">
-                                    <input type="button" value="  Save  "  class=" INS_Row_Save_Btn ButtonStyle" ignorevalidate="LedgerManagementAmount2 AccountsPaymentType2" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
-                                    <input type="button" value="  Cancel  " class="CloseNewForm ButtonStyle" />
-                                </td>
-                                <!-- Delete button -->
-
-                            </tr>
-                        </table>
-
-
+                        <textarea class="textarea" style="width: 85.5%; height: 50px; box-sizing: border-box; resize: none; vertical-align: middle;"
+                            argumentid="LedgerManagementReason" groupid="LedgerManagement_FrUc"></textarea>
                     </td>
 
 
+                </tr>
+
+                <tr>
+
+
+                    <td style="width: 20%;"></td>
+
+                    <td style="width: 30%;" colspan="3">
+                        <input type="button" value="  Save  " class=" INS_Row_Save_Btn ButtonStyle" ignorevalidate="LedgerManagementAmount2 AccountsPaymentType2" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
+                        <input type="button" value="  Cancel  " class="CloseNewForm ButtonStyle" />
+                    </td>
+                    <!-- Delete button -->
 
                 </tr>
+            </table>
+
+
+        </td>
+
+
+
+    </tr>
 
 
     <tr class="HideOnNewForm">
@@ -334,7 +332,7 @@
     </tr>
 
 
-  
+
 
 
     <tr class="HideOnNewForm">

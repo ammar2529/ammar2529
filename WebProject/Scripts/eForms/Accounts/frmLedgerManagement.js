@@ -324,10 +324,10 @@
  
 
         
-        var amountRecId = $('td[AmountRecId]', t.el).attr('AmountRecId'); // Clicked row's ID
+        var AmountRecId = $('td[AmountRecId]', t.el).attr('AmountRecId'); // Clicked row's ID
 
         // Hide any previously visible testTR rows
-        $('.testTR').hide();
+        $('.testTR', '.LedegerAmountsTable').remove();
 
 
         // Find the row where the button is clicked
@@ -371,9 +371,13 @@
         }
 
         setTimeout(function () {
+            const $targetRow = $('tr.testTR', '.LedegerAmountsTable');
             debugger
-            const $targetRow = $('tr.testTR');
-            $targetRow.find('input[name="TransactionType2"][value="' + transactionType + '"]').attr('checked', 'checked')
+            // Saare radio buttons ko unchecked karein
+            $targetRow.find('input[name="TransactionType2"]').prop('checked', false);
+
+            // Jo value match kare usko checked karein
+            $targetRow.find('input[name="TransactionType2"][value="' + transactionType + '"]').prop('checked', true);
         }, 1000);
 
         $('#CloseTableEditForm', '.testTR').click(function () {
@@ -388,15 +392,18 @@
             $('.testTR').hide();
         });
 
-        $('.UPD_Row_Save_Btn', t.el).on('click', function () {
+
+
+        $('.UPD_Row_Save_Btn', '.LedegerAmountsTable').on('click', function () {
             let btn = $(this);
             debugger
-            // Submit the form using the widget's submit method
-            t.submit(btn);
+            //var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'UpdateRow' };
 
-            // Toggle button visibility
-            //$('.UPD_Row_Save_Btn', t.el).hide();
-            //$('.INS_Row_Save_Btn', t.el).show();
+            // API Call
+            ServerCallCtx($('.LineOfItemTestRow', t.el)[0], { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'UpdateRow' }, function (res) {
+                debugger
+
+            }, 'Search');
 
             // Reset form fields
             $("input[value='D']", t.el).prop("checked", true);
@@ -406,7 +413,9 @@
             // Hide the edit form (testTR)
             $('.testTR', t.el).hide();
         });
+ 
     }
+
 
     function DeleteRow(t, AmountRecId) {
         
