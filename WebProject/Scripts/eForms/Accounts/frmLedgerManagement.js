@@ -220,7 +220,7 @@
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${Reason}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
                                     <div class="action-icons" style="${disabledAttr}">
-                                        <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}" lovpopupid='TransPopup'></i>
+                                        <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}" ></i>
                                         <span class="pipe">|</span>
                                         <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
                                     </div>
@@ -237,10 +237,10 @@
                         $('tbody', tblUFL).html(tblRowsHTML);
 
                         $('.edit-icon', tblUFL).click(function () {
-                            debugger
+                            
                             var btn = $(this);
 
-
+                            debugger
 
                             //var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
                             //DeleteUploadFile(t, recId, fileName);
@@ -324,7 +324,9 @@
  
 
         
-        var AmountRecId = $('td[AmountRecId]', t.el).attr('AmountRecId'); // Clicked row's ID
+        var amountRecId = curTR.find('td[AmountRecId]').attr('AmountRecId');
+
+
 
         // Hide any previously visible testTR rows
         $('.testTR', '.LedegerAmountsTable').remove();
@@ -357,7 +359,7 @@
         // Set values in form
         $('input[argumentid="LedgerManagementAmount2"]', t.el).val(finalAmount);
         $('textarea[argumentid="LedgerManagementReason2"]', t.el).val(reason);
-        debugger
+        
 
         // Set dropdown value
 
@@ -370,15 +372,15 @@
 
         }
 
-        setTimeout(function () {
+       
             const $targetRow = $('tr.testTR', '.LedegerAmountsTable');
-            debugger
+            
             // Saare radio buttons ko unchecked karein
             $targetRow.find('input[name="TransactionType2"]').prop('checked', false);
 
             // Jo value match kare usko checked karein
             $targetRow.find('input[name="TransactionType2"][value="' + transactionType + '"]').prop('checked', true);
-        }, 1000);
+        
 
         $('#CloseTableEditForm', '.testTR').click(function () {
             
@@ -400,10 +402,32 @@
             //var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'UpdateRow' };
 
             // API Call
-            ServerCallCtx($('.LineOfItemTestRow', t.el)[0], { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'UpdateRow' }, function (res) {
-                debugger
+            ServerCallCtx($('.LineOfItemTestRow', '.LedegerAmountsTable')[0], { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: amountRecId, DBAction: 'UpdateRow' }, function (res) {
+
+
+
+ 
 
             }, 'Search');
+
+
+            const params = {
+                Command: 'SEL_Account_LedgerManagement_Amounts',
+                LedgerAmountId: amountRecId
+            };
+
+            // API Call
+            //ServerCall(params, function (res) {
+            //    debugger
+            //    var res = res.res;
+            //    if (res.status == 'OK') {
+
+            //        FetchLedegerAmounts(res, t)
+            //    }
+
+            //}, 'GetData');
+
+
 
             // Reset form fields
             $("input[value='D']", t.el).prop("checked", true);
@@ -412,6 +436,8 @@
 
             // Hide the edit form (testTR)
             $('.testTR', t.el).hide();
+
+            let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
         });
  
     }
