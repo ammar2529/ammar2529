@@ -17,7 +17,7 @@
 
 
     <tr class="LineOfItemTestRow  testTR" style="display: none">
-        <td colspan="8">
+        <td colspan="8" style="background:#fdf5cf">
             <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRowss">
 
                 <tr>
@@ -199,8 +199,8 @@
         </td>
     </tr>
 
-    <tr class="HideOnNewForm">
-        <td style="width: 100%" colspan="4">
+    <tr class="HideOnNewForm ">
+        <td style="width: 100%; background-color:#e1e9ec;" colspan="4">
 
 
             <span class="new-wrap">
@@ -215,8 +215,8 @@
 
 
 
-    <tr class="LineOfItemRow HideOnNewForm ShowOnNewClickButton">
-        <td colspan="4">
+    <tr class="LineOfItemRow  ShowOnNewClickButton" style="display:none">
+        <td colspan="4" style="background:#fdf5cf">
             <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRows">
 
                 <tr>

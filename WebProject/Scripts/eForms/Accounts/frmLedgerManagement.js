@@ -50,20 +50,23 @@
         
 
         let btn = $(this);
+        let $targetRow = $(this).closest('tr.LineOfItemRow');
+
 
         debugger
-        t.submit(btn);
-        //if (submit == false) {
-        //    return false;
-        //}
-        //$("input[value='D']").prop("checked", true);
-        //$(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
-        //// Set dropdown to the first option
-        //$('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+        
+        var submit =  t.submit(btn);
+        if (submit == false) {
+            return false;
+        }
+        $("input[value='D']").prop("checked", true);
+        $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
+        // Set dropdown to the first option
+        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
 
         
-        //const $target = $('.ShowOnNewClickButton', t.el);
-        //$target.toggle(); // shows if hidden, hides if visible
+        const $target = $('.ShowOnNewClickButton', t.el);
+        $target.toggle(); // shows if hidden, hides if visible
 
     });
 
@@ -404,17 +407,24 @@
             // API Call
             ServerCallCtx($('.LineOfItemTestRow', '.LedegerAmountsTable')[0], { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: amountRecId, DBAction: 'UpdateRow' }, function (res) {
 
+                var res = decJSON(res)
+                debugger
+                var parts = res.Response.split('||');
+                var code = parts[0];
+                var messageStatus = parts[1];
+                var message = parts[2];
 
 
- 
+                $.showMessage(message);
+
 
             }, 'Search');
 
 
-            const params = {
-                Command: 'SEL_Account_LedgerManagement_Amounts',
-                LedgerAmountId: amountRecId
-            };
+            //const params = {
+            //    Command: 'SEL_Account_LedgerManagement_Amounts',
+            //    LedgerAmountId: amountRecId
+            //};
 
             // API Call
             //ServerCall(params, function (res) {
@@ -462,6 +472,7 @@
             $(t.el).unmask();
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
-        let a = AsyncWidgets.get('frmLedgerManagement',t.el).Requery();
+        let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
+        
     }
 }
