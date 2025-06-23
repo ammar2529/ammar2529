@@ -61,9 +61,10 @@
                                 <%--</center>--%>
                                 </pre>
                 <pre columnid="LeadgerDateTimeDetails">
-                                     <div class="ftitle">Total Credit:&nbsp;<nobr class="ftitle">{TotalCredit:fix(3)}</nobr></div>
-                                     <div class="ftitle">Total Debit:&nbsp;&nbsp;<nobr class="ftitle" >{TotalDebit:fix(3)}</nobr></div>
-                                     <div class="ftitle">Diffrence:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr class="ftitle">{DebitCreditTotal:fix(3)}</nobr></div>
+                                      <div class="ftitle" style="color:red">Total Debit:&nbsp;&nbsp;<nobr class="ftitle" >{TotalDebitAmount:fix(3)}</nobr></div>
+
+                                     <div class="ftitle" style="color:green">Total Credit:&nbsp;<nobr class="ftitle">{TotalCreditAmount:fix(3)}</nobr></div>
+                                     <div class="ftitle">Diffrence:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr class="ftitle">{DebitCreditDifference:fix(3)}</nobr></div>
 
 
                                    

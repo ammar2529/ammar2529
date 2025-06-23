@@ -33,7 +33,7 @@
                     cols: {
                         Sequence: { width: '0px' },
                         RecId: { width: '0px' },
-                        RecCode: {  width: '0px' },
+                        RecCode: { caption: 'BEN-Code' },
                         NationalIDNo: { caption: 'National ID No.' },
                         MobileTelephone1: { caption: 'Mobile Telephone' },
                         CustomerStatus: { caption: 'Status' }

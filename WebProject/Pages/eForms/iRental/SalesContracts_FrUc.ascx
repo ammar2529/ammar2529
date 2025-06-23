@@ -1680,7 +1680,7 @@
 
                             t.on('show', function (args) {
                                 var frm = AsyncWidgets.get('frmSalesContracts');
-                                debugger
+                                
                                 var b = $('[argumentid="ParentRecId"]', t.el).text(frm.GetArgVal('RecId'));
 
                                 var a = $('div.SalesCommentsPanelDiv')

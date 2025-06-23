@@ -2,6 +2,10 @@
 <table class="w-form-table" cellspacing="2" style="width: 100%">
     <tr>
         <td style="text-align: left;" class="ftitle">
+            <span>BEN-Code</span>
+        </td>
+
+        <td style="text-align: left;" class="ftitle">
             <span>Beneficiary Type</span>
         </td>
         <td style="text-align: left;" class="ftitle">
@@ -13,9 +17,14 @@
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Mobile Telephone</span></td>
 
-        <td style="text-align: left;"></td>
+        
     </tr>
     <tr>
+
+                <td style="text-align: left;" class="ftitle">
+            <input type="text" class="text"
+                argumentid="RecCode" groupid="schBeneficiaryManagement"></td>
+        
         <td style="text-align: left;">
 
             <select class="dropdownlist" style="width: 160px;"
@@ -40,6 +49,23 @@
         <td style="text-align: left;">
             <input type="text" class="text"
                 argumentid="MobileTelephone1" groupid="schBeneficiaryManagement"></td>
+
+
+    </tr>
+
+
+    <tr>
+                <td style="text-align: left;" class="ftitle">
+            <span></span>
+        </td>
+        <td style="text-align: left;" class="ftitle">
+            <span style="white-space: nowrap"></span></td>
+        <td style="text-align: left;" class="ftitle">
+            <span style="white-space: nowrap"></span></td>
+        <td style="text-align: left;" class="ftitle">
+            <span style="white-space: nowrap"></span></td>
+        <td style="text-align: left;" class="ftitle">
+            <span style="white-space: nowrap"></span></td>
 
         <td style="text-align: left; padding-bottom: 0px">
             <a href="javascript:void(0);" class="search ViewButton">

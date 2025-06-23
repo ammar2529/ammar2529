@@ -4,7 +4,8 @@
     AsyncWidgets.WidgetScripts.frmLedgerManagement.t = t;
 
     $('.new-wrap', t.el).click(function () {
-        debugger
+        
+        $('.removeOnEditMode', '.trTableItemRow').hide();
         const $target = $('.ShowOnNewClickButton', t.el);
         $target.toggle(); // shows if hidden, hides if visible
 
@@ -12,6 +13,16 @@
         $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
         // Set dropdown to the first option
         $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+
+        const $icon = $('.Plus-Icon', t.el);
+
+        if ($icon.hasClass('fa-plus')) {
+            $icon.removeClass('fa-plus').addClass('fa-minus');
+        } else {
+            $icon.removeClass('fa-minus').addClass('fa-plus');
+        }
+
+
     });
 
     $('.CloseNewForm', t.el).click(function () {
@@ -44,7 +55,9 @@
     });
 
 
-
+    $('.CloseTableNewForm', t.el).click(function () {
+        $('.LineOfItemRow ', t.el).hide();
+    })
 
     $('.INS_Row_Save_Btn', t.el).on('click', function () {
         
@@ -53,7 +66,7 @@
         let $targetRow = $(this).closest('tr.LineOfItemRow');
 
 
-        debugger
+        
         
         var submit =  t.submit(btn);
         if (submit == false) {
@@ -75,7 +88,14 @@
         var res = args.res;
         if (res.status == 'OK') {
             
-            FetchLedegerAmounts(res, t)
+            var recId = res.Response.Rows[0].RecId;
+            console.log("RecId:", recId);
+
+
+            if (res.Response.Rows.length == 1) {
+                setTimeout(function () { FetchLedegerAmounts(res, t) }, 1000)
+            }
+         
 
             let amount = args.res.Response.Rows?.[0]?.LedgerManagementAmount || 0;
             //$(".amountInput").val(amount.toFixed(3));
@@ -88,6 +108,11 @@
             //$('.INS_Row_Save_Btn', t.el).show()
 
             $('.HideOnNewForm', t.el).show();
+            $('.tofix', t.el).each(function () {
+                var val = parseFloat($(this).text()) || 0;
+                $(this).text(val.toFixed(3));
+            });;
+
 
         }
 
@@ -118,8 +143,8 @@
             var dt = new Date();
             $('[argumentid="TransactionDate"]', t.el).val(dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear());
 
-            $('.UPD_Row_Save_Btn', t.el).hide()
-            $('.INS_Row_Save_Btn', t.el).show()
+            //$('.UPD_Row_Save_Btn', t.el).hide()
+            //$('.INS_Row_Save_Btn', t.el).show()
 
             $('.HideOnNewForm', t.el).hide();
         }
@@ -129,11 +154,11 @@
     function FetchLedegerAmounts(res, t) {
         if (res.status === 'OK' && res.Response.Rows.length > 0) {
 
-            $('[argumentid="GrandTotal"]', t.el).text('0.000') ;
-            $('[argumentid="TotalDebit"]', t.el).text('0.000') ;
-            $('[argumentid="TotalCredit"]', t.el).text('0.000') ;
+            //$('[argumentid="GrandTotal"]', t.el).text('0.000') ;
+            //$('[argumentid="TotalDebit"]', t.el).text('0.000') ;
+            //$('[argumentid="TotalCredit"]', t.el).text('0.000') ;
 
-            $('[argumentid="DebitCreditTotal"]', t.el).text('0.000');
+            //$('[argumentid="DebitCreditTotal"]', t.el).text('0.000');
 
             const rows = res.Response.Rows;
             let tblRowsHTML = "";
@@ -162,8 +187,8 @@
                     if (response.status === 'OK' && response.Response.Rows.length > 0)
                     {
                         response.Response.Rows.forEach(innerRow => {
-                            let totalDebit = 0;
-                            let totalCredit = 0;
+                            //let totalDebit = 0;
+                            //let totalCredit = 0;
 
                             const AmountRecId = innerRow.AmountRecId;
                             const LedgerAmountCredit = parseFloat(innerRow.LedgerAmountCredit) || 0;
@@ -185,20 +210,20 @@
                             //const DateCreated = innerRow.DateCreated;
                             const isDeleted = RecStatus?.trim().toLowerCase() === 'deleted';
 
-                            if (!isDeleted) {
-                                totalDebit += LedgerAmountDebit;
-                                totalCredit += LedgerAmountCredit;
-                            }
+                            //if (!isDeleted) {
+                            //    totalDebit += LedgerAmountDebit;
+                            //    totalCredit += LedgerAmountCredit;
+                            //}
 
-                            const DebitCreditTotall = Math.abs(totalCredit - totalDebit);
+                            //const DebitCreditTotall = Math.abs(totalCredit - totalDebit);
 
 
 
                             $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
-                            $('[argumentid="TotalDebit"]', t.el).text(totalDebit.toFixed(3)) || 0;
-                            $('[argumentid="TotalCredit"]', t.el).text(totalCredit.toFixed(3)) || 0;
+                            $('[argumentid="TotalDebit"]', t.el).text(TotalDebit.toFixed(3)) || 0;
+                            $('[argumentid="TotalCredit"]', t.el).text(TotalCredit.toFixed(3)) || 0;
 
-                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotall.toFixed(3)) || 0;
+                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3)) || 0;
 
                             
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
@@ -216,16 +241,19 @@
                             <tr class="ItemTableRow" style="white-space: nowrap" evenrowcss="w-grid-row-odd" oddrowcss="w-grid-row-odd" hoverrowcss="">
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${LedgerManagementRecCode}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${TransactionDate}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${LedgerAmountDebit.toFixed(3)}</td>
-                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${LedgerAmountCredit.toFixed(3)}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px;  ${rowStyle};color:red;">${LedgerAmountDebit.toFixed(3)}</td>
+                                <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px;color:green; ${rowStyle};color:green;">${LedgerAmountCredit.toFixed(3)}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" AccountsPaymentTypeId="${AccountsPaymentTypeId}">${AccountsPaymentType}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${RecStatus}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${Reason}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
                                     <div class="action-icons" style="${disabledAttr}">
-                                        <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}" ></i>
+                                        <i class="fa-solid fa-square-plus"></i>
+                                        <span class="pipe">|</span>
+                                        <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}"></i>
                                         <span class="pipe">|</span>
                                         <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
+
                                     </div>
                                 </td>
                             </tr>
@@ -240,10 +268,11 @@
                         $('tbody', tblUFL).html(tblRowsHTML);
 
                         $('.edit-icon', tblUFL).click(function () {
-                            
+
+                            $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
                             var btn = $(this);
 
-                            debugger
+                            
 
                             //var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
                             //DeleteUploadFile(t, recId, fileName);
@@ -265,14 +294,21 @@
                             var RecId = btn.attr("AmountRecId");
 
                             Swal.fire({
-                                title: 'Are you sure?',
                                 text: "Do you really want to delete this record?",
-                                icon: 'warning',
                                 showCancelButton: true,
-                                confirmButtonColor: '#d33',
-                                cancelButtonColor: '#3085d6',
-                                confirmButtonText: 'Yes, delete it!'
-                            }).then((result) => {
+                                confirmButtonColor: '#28a745',
+                                cancelButtonColor: '#dc3545',
+                                confirmButtonText: 'Yes',
+                                cancelButtonText: 'No',
+                                customClass: {
+                                    popup: 'swal2-custom-popup',
+                                    confirmButton: 'swal2-same-size-btn',
+                                    cancelButton: 'swal2-same-size-btn',
+                                    htmlContainer: 'swal2-text-bigger'
+                                }
+                            })
+
+                              .then((result) => {
                                 if (result.isConfirmed) {
                                     DeleteRow(t, RecId);
 
@@ -314,11 +350,13 @@
     }
 
  
-
+    let previousYellowRow = null; // Track the previously yellow row
     function EditRow(button) {
         let t = this
+       
+
         var curTR = $(button).closest('tr'); // Get current row
-        
+        $('.ShowOnNewClickButton', t.el).hide();
         ////curTR.find('td[LedgerAmountId]').addClass('disabled-td'); // Add CSS class
         //$('td[AmountRecId]').addClass('disabled-td');
 
@@ -329,25 +367,32 @@
         
         var amountRecId = curTR.find('td[AmountRecId]').attr('AmountRecId');
 
-
-
+        $('.removeOnEditMode', '.trTableItemRow').remove();
+        
         // Hide any previously visible testTR rows
-        $('.testTR', '.LedegerAmountsTable').remove();
+        
 
-
+        if (previousYellowRow && previousYellowRow[0] !== curTR[0]) {
+            $('td', previousYellowRow).css('background', '#ffffff');
+        }
         // Find the row where the button is clicked
         var $currentRow = $(button).closest('tr');
 
         // Insert testTR row right after the clicked row
         
-        var $testRow = $('.testTR:first', t.el).clone(); // Clone the testTR template
-        $testRow.insertAfter($currentRow).show();
-
-        //$('.UPD_Row_Save_Btn', t.el).show()
-        //$('.INS_Row_Save_Btn', t.el).hide()
-
+        //var $testRow = $('.testTR:first', t.el).clone(); // Clone the testTR template
+        //$testRow.insertAfter($currentRow).show();
+ 
+        $('.removeOnEditMode', t.el).addClass('testTR LineOfItemTestRow');
+        $('td', $currentRow).css('background', '#fdf5cf');
+        previousYellowRow = $currentRow;
+        //$currentRow.css('background', '#fdf5cf');
+        var $testRow = $('.testTR:first', t.el).clone().css('background', '#fdf5cf').insertAfter($currentRow).show();
         
+        $('.removeOnEditMode', t.el).removeClass('testTR LineOfItemTestRow');
                // Fetch values
+        var TransactionID = curTR.find('td:nth-child(1)').text().trim();
+        var TransactionDate = curTR.find('td:nth-child(2)').text().trim();
         var debitAmount = curTR.find('td:nth-child(3)').text().trim(); // Debit Amount
         var creditAmount = curTR.find('td:nth-child(4)').text().trim(); // Credit Amount
         var reason = curTR.find('td:nth-child(7)').text().trim(); // Reason
@@ -360,8 +405,11 @@
         var finalAmount = debitAmount !== "0.000" ? debitAmount : creditAmount;
 
         // Set values in form
-        $('input[argumentid="LedgerManagementAmount2"]', t.el).val(finalAmount);
-        $('textarea[argumentid="LedgerManagementReason2"]', t.el).val(reason);
+        debugger
+        $('[argumentid="TransactionID2"]', $testRow).text(TransactionID);
+        $('input[argumentid="AccountTransactionDate2"]').val(TransactionDate);
+        $('input[argumentid="LedgerManagementAmount2"]', $testRow).val(finalAmount);
+        $('textarea[argumentid="LedgerManagementReason2"]', $testRow).val(reason);
         
 
         // Set dropdown value
@@ -370,13 +418,13 @@
 
         // Ensure value exists before setting
         if (paymentTypeId) {
-            $('select[argumentid="AccountsPaymentType2"]', t.el).val(paymentTypeId).trigger('change');
+            $('select[argumentid="AccountsPaymentType2"]', $testRow).val(paymentTypeId).trigger('change');
 
 
         }
 
        
-            const $targetRow = $('tr.testTR', '.LedegerAmountsTable');
+        const $targetRow = $testRow;
             
             // Saare radio buttons ko unchecked karein
             $targetRow.find('input[name="TransactionType2"]').prop('checked', false);
@@ -385,11 +433,13 @@
             $targetRow.find('input[name="TransactionType2"][value="' + transactionType + '"]').prop('checked', true);
         
 
-        $('#CloseTableEditForm', '.testTR').click(function () {
-            
+        $('.CloseTableEditForm', $testRow).click(function () {
+            $('.removeOnEditMode', t.el).addClass('testTR LineOfItemTestRow');
             const $target = $('.testTR', t.el);
             $target.toggle(); // shows if hidden, hides if visible
-            debugger
+            $('td', $currentRow).css('background', '#ffffff');
+            // Clear previousYellowRow
+            previousYellowRow = null;
             $('.testTR input[name="TransactionType2"][value="D"]').prop("checked", true);
             $(".amountInput, [argumentid='LedgerManagementReason2']", t.el).val("");
             // Set dropdown to the first option
@@ -399,16 +449,16 @@
 
 
 
-        $('.UPD_Row_Save_Btn', '.LedegerAmountsTable').on('click', function () {
+        $('.UPD_Row_Save_Btn', $testRow).on('click', function () {
             let btn = $(this);
-            debugger
+            $('.removeOnEditMode', t.el).addClass('testTR LineOfItemTestRow');
             //var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'UpdateRow' };
-
+            debugger
             // API Call
             ServerCallCtx($('.LineOfItemTestRow', '.LedegerAmountsTable')[0], { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: amountRecId, DBAction: 'UpdateRow' }, function (res) {
 
                 var res = decJSON(res)
-                debugger
+                
                 var parts = res.Response.split('||');
                 var code = parts[0];
                 var messageStatus = parts[1];
@@ -447,7 +497,15 @@
             // Hide the edit form (testTR)
             $('.testTR', t.el).hide();
 
-            let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
+            // Reset the clicked row's background to white
+            $('td', $currentRow).css('background', '#ffffff');
+            // Clear previousYellowRow
+            previousYellowRow = null;
+
+            setTimeout(function () {
+                let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
+
+            }, 500)
         });
  
     }
@@ -455,7 +513,8 @@
 
     function DeleteRow(t, AmountRecId) {
         
-        var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'DeleteRow' };
+        var recId = $('[argumentid="RecId"]',t.el).text()
+        var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, RecId: recId, DBAction: 'DeleteRow' };
         SInfo = getForm(null, null, params);
         var inv = new AsyncWidgets.RAInvoker();
         inv.on('onSuccess', function (res) {
@@ -472,7 +531,9 @@
             $(t.el).unmask();
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
-        let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
-        
+        setTimeout(function () {
+            let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
+
+        }, 500)
     }
 }

@@ -1102,3 +1102,30 @@ width:20px;
 	color: green;
 	transition: all 0.2s ease;
 }
+
+.swal2-custom-popup {
+	font-size: 18px; /* For overall alert */
+}
+
+.swal2-same-size-btn {
+	min-width: 100px;
+	font-size: 16px;
+}
+
+.swal2-text-bigger {
+	font-size: 20px; /* This will increase only the message text */
+	font-weight:bold;
+	line-height: 1.6;
+}
+
+
+.LedegerAmountsTable .ItemTableRow:hover td {
+	background-color: #fdf5cf !important;
+}
+
+.cross-icon:hover{
+	color:red;
+}
+.cross-icon{
+	color: maroon;
+}
