@@ -295,8 +295,7 @@
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}">${Reason}</td>
                                 <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; ${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
                                     <div class="action-icons" style="${disabledAttr}">
-                                        <i class="fa-solid fa-square-plus"></i>
-                                        <span class="pipe">|</span>
+
                                         <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}"></i>
                                         <span class="pipe">|</span>
                                         <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
@@ -305,6 +304,9 @@
                                 </td>
                             </tr>
                             `;
+
+                                        //                            <i class="fa-solid fa-square-plus expand-icon"></i>
+                                        //<span class="pipe">|</span>
 
                             //                            <td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${CreatedBy}</td>
                             //<td class="ColTemplate w-grid-cell-border colIndex-4" style="padding: 5px; background: white; color: black;">${DateCreated}</td>
@@ -376,6 +378,15 @@
                                 }
                             });
                         });
+                        $('.expand-icon', tblUFL).click(function () {
+
+                            debugger
+                            $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
+                            var btn = $(this);
+
+                            ExpandRow(btn);
+                        })
+                        
                     } else {
                         setTimeout(() => {
 
@@ -452,7 +463,7 @@
         var finalAmount = debitAmount !== "0.000" ? debitAmount : creditAmount;
 
         // Set values in form
-        debugger
+        
         $('[argumentid="TransactionID2"]', $testRow).text(TransactionID);
         $('span[argumentid="AccountTransactionDate2"]', $testRow).text(TransactionDate);
         $('input[argumentid="LedgerManagementAmount2"]', $testRow).val(finalAmount);
@@ -582,6 +593,11 @@
             }, 500)
         });
 
+
+
+
+
+
         // Add event listeners to required fields to remove asterisk when filled
         $('.required', $testRow).on('input change', function () {
             let $element = $(this);
@@ -619,5 +635,62 @@
             let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
 
         }, 500)
+    }
+
+    function ExpandRow(btn)
+    {
+        
+        const $icon =btn; // The clicked icon
+        const $parentRow = $icon.closest('tr'); // The parent row
+        const amountRecId = $icon.closest('td').attr('AmountRecId'); // Get AmountRecId for uniqueness
+        const childRowId = `child-row-${amountRecId}`; // Unique ID for child row
+        const $childRow = $parentRow.next(`#${childRowId}`); // Check for existing child row
+
+        // If the clicked row's child is already open, toggle it off
+        if ($childRow.length && $childRow.is(':visible')) {
+            $childRow.hide();
+            $icon.removeClass('fa-square-minus').addClass('fa-square-plus');
+            return;
+        }
+
+        // Close any other open child rows and reset their icons
+        $('.child-row').remove();
+        $('.expand-icon').removeClass('fa-square-minus').addClass('fa-square-plus');
+
+        // If no child row exists for this parent, create and insert it
+        if (!$childRow.length)
+        {
+            const childRowHTML = `
+                <tr id="${childRowId}" class="child-row">
+                    <td colspan="8" style="padding: 10px; background: #f9f9f9;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #e0e0e0;">
+                                    <th style="padding: 5px;">Child Column 1</th>
+                                    <th style="padding: 5px;">Child Column 2</th>
+                                    <th style="padding: 5px;">Child Column 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 5px;">Data 1</td>
+                                    <td style="padding: 5px;">Data 2</td>
+                                    <td style="padding: 5px;">Data 3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            `;
+            $parentRow.after(childRowHTML);
+        } else {
+            // If child row exists but was hidden, show it
+            $childRow.show();
+        }
+
+        // Set the icon to minus for the clicked row
+        $icon.removeClass('fa-square-plus').addClass('fa-square-minus');
+        
+        
     }
 }
