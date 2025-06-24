@@ -41,8 +41,11 @@
 
                 <td class="ftitle" style="width: 20%">Transaction Date:</td>
                 <td class="ftitle" style="width: 30%">
-                    <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
-                        style="width: 150px;" class="text  date   " argumentid="AccountTransactionDate2" />
+<%--                    <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
+                        style="width: 150px;" class="text  date   " argumentid="AccountTransactionDate2" />--%>
+
+                    <div><span groupid="LedgerManagement_FrUc" argumentid="AccountTransactionDate2" class="ftitle"></span></div>
+
                 </td>
 
             </tr>
@@ -233,7 +236,7 @@
                                     <td class="ftitle" style="width: 20%">Transaction Date:</td>
                 <td class="ftitle" style="width: 30%">
                     <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
-                        style="width: 150px;" class="text  date   " argumentid="AccountTransactionDate2" />
+                        style="width: 150px;" class="text  date  required " argumentid="AccountTransactionDate2" />
                 </td>
 
                 </tr>

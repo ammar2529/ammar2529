@@ -5,14 +5,19 @@
 
     $('.new-wrap', t.el).click(function () {
         
-        $('.removeOnEditMode', '.trTableItemRow').hide();
+        $('.removeOnEditMode', '.trTableItemRow', t.el).hide();
         const $target = $('.ShowOnNewClickButton', t.el);
         $target.toggle(); // shows if hidden, hides if visible
 
-        $("input[value='D']").prop("checked", true);
+        $("input[value='D']", t.el).prop("checked", true);
+        const today = new Date();
+        const formattedDate = today.getDate().toString().padStart(2, '0') + '/' +
+            (today.getMonth() + 1).toString().padStart(2, '0') + '/' +
+            today.getFullYear();
+        $('input[argumentid="AccountTransactionDate2"]', t.el).val(formattedDate);
         $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
         // Set dropdown to the first option
-        $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+        $('select[argumentid="AccountsPaymentType"]', t.el).prop('selectedIndex', 0);
 
         const $icon = $('.Plus-Icon', t.el);
 
@@ -57,15 +62,41 @@
 
     $('.CloseTableNewForm', t.el).click(function () {
         $('.LineOfItemRow ', t.el).hide();
+        $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
+
+
     })
 
-    $('.INS_Row_Save_Btn', t.el).on('click', function () {
+    $('.INS_Row_Save_Btn', t.el).on('click', function ()
+    {
         
 
         let btn = $(this);
         let $targetRow = $(this).closest('tr.LineOfItemRow');
 
+        // Reset any previous validation indicators
+        $('.required', $targetRow).each(function () {
+            $(this).siblings('.required-error').remove(); // Remove previous error indicators
+        });
 
+        // Check all required fields
+        let isValid = true;
+        $('.required', $targetRow).each(function () {
+            let $element = $(this);
+            let value = $element.val().trim();
+
+            // Check if the field is empty
+            if (value === '' || value === null) {
+                isValid = false;
+                // Add red asterisk next to the empty required field
+                $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+            }
+        });
+
+        // If any required field is empty, stop further execution
+        if (!isValid) {
+            return false;
+        }
         
         
         var submit =  t.submit(btn);
@@ -80,8 +111,24 @@
         
         const $target = $('.ShowOnNewClickButton', t.el);
         $target.toggle(); // shows if hidden, hides if visible
+        $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
+
+
 
     });
+
+
+    // Add event listeners to required fields to remove asterisk when filled
+    $('.required', t.el).on('input change', function () {
+        let $element = $(this);
+        let value = $element.val().trim();
+
+        // Remove the asterisk if the field is no longer empty
+        if (value !== '' && value !== null) {
+            $element.siblings('.required-error').remove();
+        }
+    });
+
 
     t.on('onLoadedValues', function (args)
     {
@@ -407,7 +454,7 @@
         // Set values in form
         debugger
         $('[argumentid="TransactionID2"]', $testRow).text(TransactionID);
-        $('input[argumentid="AccountTransactionDate2"]').val(TransactionDate);
+        $('span[argumentid="AccountTransactionDate2"]', $testRow).text(TransactionDate);
         $('input[argumentid="LedgerManagementAmount2"]', $testRow).val(finalAmount);
         $('textarea[argumentid="LedgerManagementReason2"]', $testRow).val(reason);
         
@@ -449,11 +496,38 @@
 
 
 
-        $('.UPD_Row_Save_Btn', $testRow).on('click', function () {
+        $('.UPD_Row_Save_Btn', $testRow).on('click', function ()
+        {
             let btn = $(this);
+
+
+            $('.required', $testRow).each(function () {
+                $(this).siblings('.required-error').remove(); // Remove previous error indicators
+            });
+
+            // Check all required fields
+            let isValid = true;
+            $('.required', $testRow).each(function () {
+                let $element = $(this);
+                let value = $element.val().trim();
+
+                // Check if the field is empty
+                if (value === '' || value === null) {
+                    isValid = false;
+                    // Add red asterisk next to the empty required field
+                    $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                }
+            });
+
+            // If any required field is empty, stop further execution
+            if (!isValid) {
+                return false;
+            }
+
             $('.removeOnEditMode', t.el).addClass('testTR LineOfItemTestRow');
             //var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, DBAction: 'UpdateRow' };
-            debugger
+
+
             // API Call
             ServerCallCtx($('.LineOfItemTestRow', '.LedegerAmountsTable')[0], { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: amountRecId, DBAction: 'UpdateRow' }, function (res) {
 
@@ -490,9 +564,9 @@
 
 
             // Reset form fields
-            $("input[value='D']", t.el).prop("checked", true);
-            $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
-            $('select[argumentid="AccountsPaymentType"]', t.el).prop('selectedIndex', 0);
+            $("input[value='D']", $testRow).prop("checked", true);
+            $(".amountInput, [argumentid='LedgerManagementReason']", $testRow).val("");
+            $('select[argumentid="AccountsPaymentType"]', $testRow).prop('selectedIndex', 0);
 
             // Hide the edit form (testTR)
             $('.testTR', t.el).hide();
@@ -507,7 +581,17 @@
 
             }, 500)
         });
- 
+
+        // Add event listeners to required fields to remove asterisk when filled
+        $('.required', $testRow).on('input change', function () {
+            let $element = $(this);
+            let value = $element.val().trim();
+
+            // Remove the asterisk if the field is no longer empty
+            if (value !== '' && value !== null) {
+                $element.siblings('.required-error').remove();
+            }
+        });
     }
 
 
