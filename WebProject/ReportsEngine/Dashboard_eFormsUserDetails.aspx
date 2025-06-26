@@ -69,7 +69,7 @@
                                    if( e[i].id.indexOf('_trial') != -1) 
                                    {
                                         lastDiv=e[i];
-                                        //debugger;
+                                        //
                                         lastDiv.style.cssText="";
                                         lastDiv.innerText="";
                                         timeInterval=window.setInterval('HideLicenceDiv()',1000)

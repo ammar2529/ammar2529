@@ -47,7 +47,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
 
 
             //    if (res.status === 'OK') {
-            //        debugger
+            //        
             //        var rows = res.Response.Rows || [];
 
             //        if (rows.length > 0) {
@@ -125,7 +125,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
                     // Set values for text fields
                     //fields.forEach(function (field)
                     //{
-                    //    debugger
+                    //    
                     //    var value = row[field];
                     //    /*setField($('[argumentid="' + field + '"]', value, t.el));*/
 
@@ -311,7 +311,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
 //AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t)
 //{
 
-//    debugger
+//    
 //    $('.thumbnail', t.el).show();
 //    //var file = fileInput.file[ 0 ];
 //    $('.thumbnail', t.el).css('border', '1px solid green');
@@ -328,7 +328,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory = function (obj) {
 
 //};///end
 AsyncWidgets.WidgetScripts.frmSparePartInventory.showImageThumbnail = function (fileInput, t) {
-    debugger;
+    
     $('.thumbnail', t.el).show();
     $('.thumbnail', t.el).css('border', '1px solid green');
 
@@ -406,7 +406,7 @@ AsyncWidgets.WidgetScripts.frmSparePartInventory.BindUploadImageHandlers = funct
 
 
                 }
-                debugger
+                
                 AsyncWidgets.WidgetScripts.frmSparePartInventory.GenerateUploadImageFiles(objRes, t);
                 $.showMessage(msg);
 

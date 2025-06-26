@@ -248,7 +248,7 @@
                                                                  <script>
                                                                      fn = function () {
                                                                          t.on('show', function () {
-                                                                             //debugger;
+                                                                             //;
                                                                              if (!!t.parent) {
                                                                                  t.SetArgVal('ParentTypeId', t.parent.rowDetail.getValues("TypeId")['TypeId']);
                                                                              }

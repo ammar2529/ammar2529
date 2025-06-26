@@ -272,7 +272,7 @@ AsyncWidgets.WidgetScripts.frmLeasePaymentDetails = function (obj)
       //var  myString = replace.replace(/([a-z])([A-Z])/g, '$1 $2');
       //  var replace2 = myString.replace('Select Payment Mode', '');
       //  //var indexCheck = replace2.indexOf('Cheque')
-      //  debugger;
+      //  
       //  var myString2 = replace2.replace(/^(\w+).*$/, '$1');
        //var a= cbo.text()
 

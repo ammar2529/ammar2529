@@ -457,7 +457,7 @@ AsyncWidgets.WidgetScripts.frmLeaseContracts = function (obj) {
             $('[argumentid="AmountTillDate"]', t.el).text(parseFloat($('[argumentid="LeaseAdvancePaid"]', t.el).val()) + (parseFloat(intLeaseMonthlyPayment) * parseFloat(intLeaseDueInstallments)));
             $('[argumentid="AmountDue"]', t.el).text(parseFloat($('[argumentid="AmountTillDate"]', t.el).text()) - parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()));
         }
-       // debugger;
+       // 
         if (parseFloat($('[argumentid="TotalPaidByCustomer"]', t.el).text()) < parseFloat($('[argumentid="LeaseAdvancePaid"]', t.el).val())) {
             $('[argumentid="InstallmentsDue"]', t.el).text((parseFloat($('[argumentid="AmountDue"]', t.el).text()) - parseFloat($('[argumentid="LeaseAdvancePaid"]', t.el).val())) / parseFloat($('[argumentid="LeaseMonthlyPayment"]', t.el).val()));
         }

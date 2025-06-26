@@ -57,7 +57,7 @@
             return FormattedRow;
         }
         function selectItem(event, selectedData, formattedData) {
-            //debugger;
+            //
             // if (!selectedData) return;
             if (this.parentNode.tagName == 'TD') {
                 var col = this.parentNode;
@@ -149,13 +149,13 @@
                     $('#ExportMenu').hide('fast');
                 }
             }).attr('opened', '0').css({ 'background-image': 'url("../../App_Themes/Blue/Images/DashBoard/MenuButtonArrow.gif")', 'background-repeat': 'no-repeat', 'background-position': 'right center' });
-            //debugger;
+            //
             $('[export]').click(function () {
-                //  debugger;
+                //  
                 ShowNewExportDataPopup($(this).attr('export'));
             });
             var tbl = $('table[sumcols]');
-            //   debugger;
+            //   
             if (!!tbl.attr('sumcols')) {
                 var sumRow = $("tr:eq(1)", tbl).clone().addClass('sumrow');
                 $('td', sumRow).css({ 'font-weight': 'bold', 'background-color': '#D2CEC6', 'color': '#0000ff', 'border': '1px dotted black', 'border-top': '1px solid black', 'border-bottom': '1px solid black' });

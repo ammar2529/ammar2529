@@ -717,7 +717,7 @@ AsyncWidgets.WidgetScripts.frmRentalContracts = function (obj) {
             $('.Button_Edit', t.el).hide();
             $('[argumentid="ContractStartDate"]', t.el).val(cD + '/' + cM + '/' + cY);
             //$('[argumentid="ContractStartDate"]', t.el).change(GetDays)[0].onDateSelect = GetDays;
-            //sdebugger;
+            //s
             GetDays($('[argumentid="ContractStartDate"]', t.el));
         }
 

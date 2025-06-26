@@ -277,7 +277,7 @@
                     <td style="width: 20%;"></td>
 
                     <td style="width: 30%;" colspan="3">
-                        <input type="button" value="  Save  " class=" INS_Row_Save_Btn ButtonStyle" ignorevalidate="LedgerManagementAmount2 AccountsPaymentType2" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
+                        <input type="button" value="  Save  " class=" INS_Row_Save_Btn ButtonStyle" ignorevalidate="LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
                         <input type="button" value="  Cancel  " class="CloseNewForm ButtonStyle" />
                     </td>
                     <!-- Delete button -->
@@ -367,8 +367,8 @@
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td colspan="4">
-            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
-            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
+            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
+            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
 
             <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
         </td>

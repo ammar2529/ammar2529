@@ -55,7 +55,7 @@ namespace WebProject.ReportsEngine
 
 		        function ShowNewExportDataPopup(type)
                 {{
-                    //debugger;
+                    //
                   var PDFOptions;
                 if(type=='pdf')
                 {{

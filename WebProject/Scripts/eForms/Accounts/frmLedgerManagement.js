@@ -38,6 +38,9 @@
         $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
         // Set dropdown to the first option
         $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
+        const $icon = $('.Plus-Icon', t.el);
+        $icon.removeClass('fa-minus').addClass('fa-plus');
+
     });
 
 
@@ -156,9 +159,11 @@
 
             $('.HideOnNewForm', t.el).show();
             $('.tofix', t.el).each(function () {
-                var val = parseFloat($(this).text()) || 0;
-                $(this).text(val.toFixed(3));
-            });;
+                
+                //var val = parseFloat($(this).text()) || 0;
+                /*$(this).text(val.toFixed(3));*/
+                formatAmount(this);
+            });
 
 
         }
@@ -380,7 +385,7 @@
                         });
                         $('.expand-icon', tblUFL).click(function () {
 
-                            debugger
+                            
                             $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
                             var btn = $(this);
 
@@ -419,7 +424,7 @@
         //$('td[AmountRecId]').addClass('disabled-td');
 
 
-        //debugger
+        //
  
 
         
@@ -563,7 +568,7 @@
 
             // API Call
             //ServerCall(params, function (res) {
-            //    debugger
+            //    
             //    var res = res.res;
             //    if (res.status == 'OK') {
 

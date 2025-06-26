@@ -252,7 +252,7 @@ function compareDates(date1, date2) {
 
     // Convert difference to hours
     const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
-    debugger
+    
     if (diffHours < 24) {
         console.log(`The difference is ${diffHours} hours.`);
     } else {
@@ -319,12 +319,31 @@ var calculateNetPayment = function () {
         return netPayment;
 }
 
-function formatAmount(inputSelector) {
-    let value = parseFloat($(inputSelector).val())|| 0;
-    if (!isNaN(value)) {
-        $(inputSelector).val(value.toFixed(3)); // Three decimal places
+function formatAmount(input) {
+    let rawVal;
+    let formatted;
+
+    if (typeof input === 'number') {
+        formatted = input.toFixed(3);
+        // Agar number pass hua, to console.log ya kisi aur control mein set karo yahan se
+        console.log(formatted); // ya jis element mein set karna ho manually set karo
+    } else {
+        const $el = $(input);
+        rawVal = $el.is('input') ? $el.val() : $el.text();
+
+        if (!isNaN(rawVal) && rawVal.toString().trim() !== "") {
+            let value = parseFloat(rawVal);
+            formatted = value.toFixed(3);
+
+            if ($el.is('input')) {
+                $el.val(formatted);
+            } else {
+                $el.text(formatted);
+            }
+        }
     }
 }
+
 
 
 

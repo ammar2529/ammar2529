@@ -195,7 +195,7 @@
                                                     t.$el.mask('Please wait while loading ...');
                                                     //$('body').mask('Please wait while loading ...');
                                                     ServiceInfo = getForm(t.el, null, null);
-                                                    //debugger;
+                                                    //
                                                     inv.invokeRA({
                                                         params: ["ActorId", cf.ActorId, "ActionId", cf.ActionId, "ServiceInfo", ServiceInfo]
                                                     });
@@ -261,7 +261,7 @@
                                                             hideProxyList();
                                                         });
                                                 }
-                                                // debugger;
+                                                // 
                                                 var IE6 = false;
                                                 if ($.browser.msie && parseInt($.browser.version.charAt(0)) < 7) {
                                                     IE6 = true;
@@ -274,7 +274,7 @@
 
                                                 height = $(this).height();
                                                 var isBody = p[0].tagName == 'BODY', prxTblWidth;
-                                                //debugger;
+                                                //
                                                 $('.ProxyList').css({ 'left': '5000', 'z-index': '9999' }).show();
                                                 $('.ProxyList td.ProxyListSC').addClass('ProxyListHoverSC');
                                                 prxTblWidth = parseInt($('.ProxyList table').width());
@@ -328,7 +328,7 @@
                                             };
                                             var fn = function () {
                                                 $('.logout', t.el).click(function () {
-                                                    // debugger;
+                                                    // 
                                                     var inv = new AsyncWidgets.RAInvoker();
                                                     inv.invokeRA({
                                                         params: ["ActorId", "Authentication", "ActionId", "LogoutUser", "ServiceInfo", "<root><dummy></dummy></root>"]
@@ -369,7 +369,7 @@
                                                         t.hide();
                                                         inv.on('onSuccess', function (res) {
                                                             t.Menu = true;
-                                                            //debugger;
+                                                            //
                                                             var res = decJSON(res), mnuHTML;
 
                                                             if (res.status == 'OK') {

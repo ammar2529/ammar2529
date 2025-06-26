@@ -649,7 +649,7 @@
                                                     $('.Top .PWCNoDataMessage', t.el).remove();
                                                 }, //onFetchRecords
                                                 'onNoRecords': function (args) {
-                                                    //  debugger;
+                                                    //  
                                                     args.flags.queryShowDefTemp = false;
                                                     $('.Top .Counters,.Header,.Item,.Bottom', t.el).hide();
                                                     if ($('.Top .PWCNoDataMessage', t.el).length == 0)
@@ -663,7 +663,7 @@
                                                 $('.Actions .AssignRole', t.el)[0].disabled = true;
                                                 $('.Actions [argumentid="UserName"]', t.el).blur(function () {
                                                     fnd = function () {
-                                                        //  debugger;
+                                                        //  
                                                         if ($.trim(this.value) == "" || $('.Actions [argumentid="UsersId"]', t.el).val() == "") {
                                                             $('.Actions .AssignRole', t.el)[0].disabled = true;
                                                         }
@@ -717,7 +717,7 @@
                                                                 }
 
                                                             }, cf.ACParams)).result(function (event, data, formatted) {
-                                                                //debugger;
+                                                                //
                                                                 if (!data) return;
                                                                 if (!!cf.ArgToSet) {
                                                                     for (var i = 0; i < cf.ArgToSet.length; i++) {
@@ -856,7 +856,7 @@
                                         <Scripts>
                                             <script>
                                                 var fn = function () {
-                                                    //debugger;
+                                                    //
 
                                                     //  (function (t) { alert($('.AccMenu', t.el).parent().height()); }).defer('500',this,[t]);
                                                     // alert($('.AccMenu').parent().parent().parent().height());
@@ -935,7 +935,7 @@
                                                                     html += childern;
                                                                     childern = "";
                                                                 }
-                                                                // debugger;
+                                                                // 
                                                                 html += "&lt;/ul>&lt;/div>"
                                                                 if (!t.accordionRes) $('.AccMenu').hide();
                                                                 $('.AccMenu').html(html + scrollTop + scrollDown);
@@ -1110,7 +1110,7 @@
                                                     $('.Top .PWCNoDataMessage', t.el).remove();
                                                 }, //onFetchRecords
                                                 'onNoRecords': function (args) {
-                                                    //  debugger;
+                                                    //  
                                                     args.flags.queryShowDefTemp = false;
                                                     $('.Top .Counters,.Header,.Item,.Bottom, .Actions', t.el).hide();
                                                     if ($('.Top .PWCNoDataMessage', t.el).length == 0)
@@ -1127,8 +1127,8 @@
                                                     vl.html('&lt;img class="moveup" src="Widgets/resources/images/UpArrow.gif" style="padding-left:3px;padding-right:5px;cursor:pointer" key="{ConfigurationId}" sequence="{Sequence}" />&lt;img class="movedown" src="Widgets/resources/images/DownArrow.gif" style="padding-left:3px;reight:5px;cursor:pointer" key="{ConfigurationId}" sequence="{Sequence}" />');
 
                                                     $('.moveup,.movedown', t.el).live('click', function () {
-                                                        //debugger;
-                                                        // debugger;
+                                                        //
+                                                        // 
                                                         $('.RowHighlighted', t.el).css('background-color', '').removeClass('RowHighlighted');
 
                                                         var action, key1, key2, e$ = $(this), et$ = e$.closest('table[itemno]'), nt = et$.next('table[itemno]'), pr = et$.prev('table[itemno]');
@@ -1138,7 +1138,7 @@
                                                         seq1 = e$.attr('sequence');
 
                                                         if (e$.hasClass('moveup')) {
-                                                            //   debugger;
+                                                            //   
                                                             if (!pr.length) return;
                                                             //  pr.hide('slow', function () { pr.show('slow'); });
                                                             key2 = $('img.moveup', pr).attr('key');
@@ -1154,7 +1154,7 @@
                                                             }
                                                         }
                                                         else {
-                                                            //  debugger;
+                                                            //  
                                                             if (!nt.length) return;
                                                             key2 = $('img.moveup', nt).attr('key');
 
@@ -1187,7 +1187,7 @@
 
                                                             }
                                                         });
-                                                        //debugger;
+                                                        //
                                                         //var PGS = AsyncWidgets.get('frmProcessGS');
                                                         //$('[argumentid="DataProfileId"]', PGS.el).val(); ProfileId: $('[argumentid="DataProfileId"]', PGS.el).val(),
 
@@ -1458,7 +1458,7 @@
                                                                         formatItem: formatItem,
                                                                         cellSeparator: '||',
                                                                         onItemSelect: function (data) {
-                                                                            // debugger;
+                                                                            // 
                                                                             //t.fireEvent('AutocompleteResult', { elem: $(this), data: data });
                                                                             $('.Actions [argumentid="UsersId"]').val(data[1]);
                                                                         },
@@ -1610,7 +1610,7 @@
 
                                                     });
                                                     cbo.change(function () {
-                                                        // debugger;
+                                                        // 
                                                         var opt = $('option:selected', cbo);
                                                         $('.IsCondOther,.ActorStepId').hide();
                                                         var cond = $.trim(opt.attr('isconditional')) + ',';
@@ -1924,7 +1924,7 @@
                                 <script>
                                     var fn = function () {
                                         t.on('beforeSearchGetForm', function (p) {
-                                            //   debugger;
+                                            //   
                                             Ext.apply(p, { ParentFormId: $('.StudentFormId').val() });
                                         });
                                     }
@@ -1986,7 +1986,7 @@
                                     <script>
                                         var fn = function () {
                                             t.on('beforeSearchGetForm', function (p) {
-                                                //   debugger;
+                                                //   
                                                 Ext.apply(p, { ParentFormId: $('.StudentFormId').val() });
                                             });
                                         }

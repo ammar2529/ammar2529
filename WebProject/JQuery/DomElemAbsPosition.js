@@ -58,7 +58,7 @@ function DocumentMouseMove(e)
         }
         else return '';
     }).get().join(',');      //pelems.replace(new RegExp(pelems,'g') ,'')
-    //debugger;
+    //
     var pelemsRep = pelems.replace(new RegExp(',', 'g'), '');
    
     if (pelemsRep == '') {
@@ -98,7 +98,7 @@ function debugSetup() {
     }
     $(document).bind('keydown', 'Ctrl+d', debugSetupSK);
     !!window.__DEBUG__ ? $('#Logger').css('display', '') : $('#Logger').css('display', 'none')
-    //debugger;
+    //
     //$(document).unbind('keydown', 'Ctrl+Shift+d', debugSetupSK);
 }
 
@@ -191,7 +191,7 @@ function HideLicenceDiv()
                    if( e[i].id.indexOf('_trial') != -1) 
                    {
                         lastDiv=e[i];
-                        //debugger;
+                        //
                         lastDiv.style.cssText="";
                         lastDiv.innerText="";
                         timeInterval=window.setInterval('HideLicenceDiv()',1000)
@@ -273,7 +273,7 @@ function ShowSearchPanel(SearchIco,event)
            // var newLeft = elemPos.x //btnPosition.left;
            // var IsSearchPanelHidden = false;
             // $(JQSearchPanelId).css({position: 'absolute','z-index': 9009});
-            //debugger;
+            //
             showMnu(SearchPnl, SearchIco, { mnuTopOff: -((SearchPnl.height() || 0) + ($(SearchIco).height() || 0)) });
             $(SearchIco).parent
             
@@ -361,7 +361,7 @@ function getElementAbsolutePos(element,offsetParentId) {
 		    var offsetParent = element.offsetParent;
 		    var parentNode = element.parentNode;
 		    var borderWidth = null;
-		   // debugger;
+		   // 
 		    var test = "";
 		    while (offsetParent != null && offsetParent.id != offsetParentId) {//&& offsetParent.id != 'MainPanel') { //&& parentNode.id != 'MainPanel') {
 			    res.x += offsetParent.offsetLeft;
@@ -429,7 +429,7 @@ function WidgetCollection() {
         return this.WidgetsById[strWidgetId];
     }
      this.updateWidget = function(strWidgetId) {
-        //debugger;
+        //
         this.WidgetsById[strWidgetId].updateWidget();
     }
     /*
@@ -804,7 +804,7 @@ function SearchPanel(searchPanelId) {
     this.tryUpdateWidgets =
         function() {
             var thisSP = this;
-            //debugger;
+            //
 
             if (this.valueSetQueue.count() <= 0) {
              //   $('#TextArea1').val($('#TextArea1').val() + "\nStart Update Casecades:" + this.searchPanelId);
@@ -819,9 +819,9 @@ function SearchPanel(searchPanelId) {
         
     this.updateWidgets =
         function() {
-    //debugger;
+    //
             //objSearchPanel =objSearchPanels.getSearchPanel(searchPanelId)
-            //debugger;
+            //
             for (var widgetToUpdate in this.widgetsToUpdate) {
                 this.widgetsToUpdate[widgetToUpdate].updateWidget();
             }
@@ -929,7 +929,7 @@ function SearchPanelCollection() {
         this.searchPanels[strSearchPanelId].addWidget(strWidgetId, strWidgetType, objWidgetControl, strSearchPanelId);
     }
     this.updateWidgets = function() {
-        // debugger;
+        // 
         for (var searchPanel in this.searchPanels) {
             this.searchPanels[searchPanel].updateWidgets();
         }
@@ -938,7 +938,7 @@ function SearchPanelCollection() {
         return this.searchPanels[searchPanel].getFieldValues();
     }
     this.updateSearchPanleWidgets = function(strSearchPanel) {
-        // debugger;
+        // 
         this.searchPanels[strSearchPanel].updateWidgets();
     }
 }
@@ -993,10 +993,10 @@ function DrillDownWidget(Params, SearchPanelsToUpdate) {
     var arrParams = Params.split('|||');
     //alert(arrParams);
     WidgetId = arrParams[0]; //First Element Is The chart which will DrillDown(Parent chart)
-    //debugger;
+    //
     var ParentWidget = objWidgets.getWidgetById(WidgetId); //
 
-  //  debugger;
+  //  
     if (ParentWidget.DrillDownWidgetId!= "" ) {
         var ChildWidget = objWidgets.getWidgetById(ParentWidget.DrillDownWidgetId)
 
@@ -1041,7 +1041,7 @@ function UpdateSearchPanels(Params) {
     var WidgetId = '';
     var arrParams = Params.split('|||');
     WidgetId = arrParams[0]; //First Element Is The chart which will DrillDown(Parent chart)
-    //debugger;
+    //
     var ParentWidget = objWidgets.getWidgetById(WidgetId); //
     
     if (ParentWidget.SearchPanelsToUpdate != "") {
@@ -1065,7 +1065,7 @@ function rtrim(stringToTrim) {
     return stringToTrim.replace(/\s+$/, "");
 }
 function logmsg(msg, msgid) {
-    // debugger;
+    // 
     if (!!window.__DEBUG__) {
         //alert('hi');
         $('#Logger').css("display", "");
