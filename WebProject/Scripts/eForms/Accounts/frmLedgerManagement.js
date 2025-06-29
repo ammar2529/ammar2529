@@ -4,10 +4,18 @@
     AsyncWidgets.WidgetScripts.frmLedgerManagement.t = t;
 
     $('.new-wrap', t.el).click(function () {
-        
         $('.removeOnEditMode', '.trTableItemRow', t.el).hide();
+        debugger
         const $target = $('.ShowOnNewClickButton', t.el);
         $target.toggle(); // shows if hidden, hides if visible
+
+        // Add or remove requiredElem class based on visibility
+        const isVisible = $target.is(':visible');
+        $('select[argumentid="AccountsPaymentType"], input[argumentid="LedgerManagementAmount"]', t.el)
+            .toggleClass('requiredElem', isVisible);
+        // Toggle the required-error span next to both the amount input and payment type select
+        $('.commonRemoveRequiredStaric', t.el).next('span.required-error').remove();
+        $('.commonRemoveRequiredStaric', t.el).next().next('span.required-error').remove();
 
         $("input[value='D']", t.el).prop("checked", true);
         const today = new Date();
@@ -20,14 +28,14 @@
         $('select[argumentid="AccountsPaymentType"]', t.el).prop('selectedIndex', 0);
 
         const $icon = $('.Plus-Icon', t.el);
-
         if ($icon.hasClass('fa-plus')) {
             $icon.removeClass('fa-plus').addClass('fa-minus');
         } else {
             $icon.removeClass('fa-minus').addClass('fa-plus');
         }
 
-
+        $('.show-on-service-select', t.el).hide().find('input').val('');
+        $('.show-on-cheque-select', t.el).hide().find('input').val('');
     });
 
     $('select[argumentid="AccountsPaymentType"]',t.el).on('change', function () {
@@ -36,9 +44,23 @@
         if ($(this).val() === "30718") {
             $('.show-on-service-select', t.el).show();
             $('[argumentid="DueDate"]', t.el).val('');
+            
         } else {
             // Agar doosri value select ho toh service row remove karo
-            $('.show-on-service-select', t.el).hide().val('');
+            $('.show-on-service-select', t.el)
+                .hide()
+                .find('input, select, textarea')
+                .val('');        }
+
+        if ($(this).val() === "30717") {
+            $('.show-on-cheque-select', t.el).show();
+            $('[argumentid="ChequeDateAMT"]', t.el).val('');
+            $('.CommonRequiredClass', t.el).addClass('requiredElem')
+        } else {
+            // Agar doosri value select ho toh service row remove karo
+            $('.show-on-cheque-select', t.el).hide().find('input, select, textarea').val('');
+            $('.CommonRequiredClass', t.el).removeClass('requiredElem')
+
         }
     });
 
@@ -79,33 +101,40 @@
     $('.CloseTableNewForm', t.el).click(function () {
         $('.LineOfItemRow ', t.el).hide();
         $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
-        $('.show-on-service-select', t.el).hide().val('');
+        $('.show-on-service-select', t.el).hide().find('input').val('');
 
     })
 
     $('.INS_Row_Save_Btn', t.el).on('click', function ()
     {
         
-
+        
         let btn = $(this);
         let $targetRow = $(this).closest('tr.LineOfItemRow');
 
         // Reset any previous validation indicators
-        $('.required', $targetRow).each(function () {
+        $('.requiredElem', $targetRow).each(function () {
             $(this).siblings('.required-error').remove(); // Remove previous error indicators
         });
 
         // Check all required fields
         let isValid = true;
-        $('.required', $targetRow).each(function () {
+        $('.requiredElem', $targetRow).each(function () {
             let $element = $(this);
             let value = $element.val().trim();
 
             // Check if the field is empty
             if (value === '' || value === null) {
                 isValid = false;
-                // Add red asterisk next to the empty required field
-                $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+
+                if ($element.hasClass('date')) {
+                    // Target the datepicker trigger and insert after it
+                    $element.closest('td').find('.ui-datepicker-trigger')
+                        .after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                } else {
+                    // Default placement for other fields
+                    $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                }
             }
         });
 
@@ -135,13 +164,26 @@
 
 
     // Add event listeners to required fields to remove asterisk when filled
-    $('.required', t.el).on('input change', function () {
+    $('.requiredElem', t.el).on('input change blur', function () {
+        debugger
         let $element = $(this);
         let value = $element.val().trim();
 
         // Remove the asterisk if the field is no longer empty
-        if (value !== '' && value !== null) {
+        if (value !== '' && value !== null )  {
             $element.siblings('.required-error').remove();
+        } else if (value === '' || value === null)
+        {
+            isValid = false;
+
+            if ($element.hasClass('date')) {
+                // Target the datepicker trigger and insert after it
+                $element.closest('td').find('.ui-datepicker-trigger')
+                    .after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+            } else {
+                // Default placement for other fields
+                $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+            }
         }
     });
 
@@ -268,6 +310,10 @@
                             const TotalDebit = parseFloat(innerRow.TotalDebit) || 0;
                             const TotalCredit = parseFloat(innerRow.TotalCredit) || 0;
                             const DueDateSetInCtrl = innerRow.DueDateSetInCtrl;
+                            const BankNameAMT = innerRow.BankNameAMT;
+                            const ChequeFromAMT = innerRow.ChequeFromAMT;
+                            const ChequeNoAMT = innerRow.ChequeNoAMT;
+                            const ChequeDateAMT = innerRow.ChequeDateAMT
 
                             const DebitCreditTotal = innerRow.DebitCreditTotal
                             const RecStatus = innerRow.RecStatus ?? '';
@@ -294,6 +340,11 @@
                             
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
                             $('[argumentid="DueDateSetInCtrl"]', t.el).text(DueDateSetInCtrl);
+
+                            //$('[argumentid="BankNameAMT"]', t.el).text(BankNameAMT);
+                            $('[argumentid="ChequeFromAMT"]', t.el).text(ChequeFromAMT);
+                            $('[argumentid="ChequeNoAMT"]', t.el).text(ChequeNoAMT);
+                            $('[argumentid="ChequeDateAMT"]', t.el).text(ChequeDateAMT);
 
                             // Generate table row
                             let rowStyle = '';
@@ -535,22 +586,30 @@
             let btn = $(this);
 
 
-            $('.required', $testRow).each(function () {
+            $('.requiredElem', $testRow).each(function () {
                 $(this).siblings('.required-error').remove(); // Remove previous error indicators
             });
 
             // Check all required fields
             let isValid = true;
-            $('.required', $testRow).each(function () {
+            $('.requiredElem', $testRow).each(function () {
                 let $element = $(this);
                 let value = $element.val().trim();
 
                 // Check if the field is empty
                 if (value === '' || value === null) {
                     isValid = false;
-                    // Add red asterisk next to the empty required field
-                    $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+
+                    if ($element.hasClass('date')) {
+                        // Target the datepicker trigger and insert after it
+                        $element.closest('td').find('.ui-datepicker-trigger')
+                            .after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                    } else {
+                        // Default placement for other fields
+                        $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                    }
                 }
+               
             });
 
             // If any required field is empty, stop further execution
@@ -622,7 +681,7 @@
 
 
         // Add event listeners to required fields to remove asterisk when filled
-        $('.required', $testRow).on('input change', function () {
+        $('.requiredElem', $testRow).on('input change blur', function () {
             let $element = $(this);
             let value = $element.val().trim();
 
@@ -634,7 +693,7 @@
 
 
 
-            debugger
+            
             //if ($('.PaymentTypeDD').val() === '30718') {
             //    console.log('Value 30718 (Service) is selected');
             //} else {
@@ -650,9 +709,24 @@
                 $('[argumentid="DueDate2"]', $testRow).val(DueDate);
                 $('.show-on-service-select', $testRow).show();
 
-            } else
+            } else if (selectedValue === '30717') {
+                var BankNameAMT = $('[argumentid="BankNameAMT"]', t.el).first().text();;
+                var ChequeFromAMT = $('[argumentid="ChequeFromAMT"]', t.el).first().text();;
+                var ChequeNoAMT = $('[argumentid="ChequeNoAMT"]', t.el).first().text();;
+                var ChequeDateAMT = $('[argumentid="ChequeDateAMT"]', t.el).first().text();;
+
+                $('[argumentid="BankNameAMT2"]', $testRow).val(BankNameAMT);
+                $('[argumentid="ChequeFromAMT2"]', $testRow).val(ChequeFromAMT);
+                $('[argumentid="ChequeNoAMT2"]', $testRow).val(ChequeNoAMT);
+                $('[argumentid="ChequeDateAMT2"]', $testRow).val(ChequeDateAMT);
+
+                $('.show-on-cheque-select', $testRow).show();
+            }
+
+            else
             {
-                $('.show-on-service-select', $testRow).hide().find('td').val('');
+                $('.show-on-service-select', $testRow).hide().find('input, select, textarea').val('');
+                $('.show-on-cheque-select', $testRow).hide().find('input, select, textarea').val('');
 
             }
       
@@ -663,10 +737,25 @@
             
             if ($(this).val() === "30718") {
                 $('.show-on-service-select', $testRow).show();
-                $('[argumentid="DueDate"]', t.el).val('');
+                $('[argumentid="DueDate"]', $testRow).val('');
+
             } else {
                 // Agar doosri value select ho toh service row remove karo
-                $('.show-on-service-select', $testRow).hide().val('');
+                $('.show-on-service-select', $testRow)
+                    .hide()
+                    .find('input, textarea')
+                    .val('');
+            }
+
+            if ($(this).val() === "30717") {
+                $('.show-on-cheque-select', $testRow).show();
+                $('[argumentid="ChequeDateAMT"]', t.el).val('');
+                $('.CommonRequiredClass', $testRow).addClass('requiredElem')
+            } else {
+                // Agar doosri value select ho toh service row remove karo
+                $('.show-on-cheque-select', $testRow).hide().find('input,  textarea').val('');
+                $('.CommonRequiredClass', $testRow).removeClass('requiredElem')
+
             }
         });
     }

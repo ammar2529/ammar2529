@@ -11,6 +11,11 @@
             <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="BenificiaryId"></span></div>
             <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="AmountRecId"></span></div>
             <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="DueDateSetInCtrl"></span></div>
+
+<%--                        <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="BankNameAMT2" ></span></div>--%>
+            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="ChequeFromAMT"></span></div>
+            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="ChequeNoAMT"></span></div>
+            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="ChequeDateAMT"></span></div>
         </td>
     </tr>
 
@@ -54,29 +59,62 @@
 
                 <td class="ftitle" style="width: 20%">Payment Type*:</td>
                 <td class="ftitle" style="width: 30%">
-                    <select loadon="FirstVisible"  class="dropdownlist required PaymentTypeDD" style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType2"
-                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
+                    <select loadon="FirstVisible"  class="dropdownlist requiredElem PaymentTypeDD" style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType2"
+                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" >
                         <option value="" selected="selected">Select Payment Type</option>
                     </select>
                 </td>
                 <td class="ftitle" style="width: 20%">Amount*:</td>
                 <td class="ftitle" style="width: 30%">
-                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required"
+                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput requiredElem"
                         groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' />
                 </td>
 
             </tr>
-                            <tr class="show-on-service-select" style="display:none">
-                    <td class="ftitle" style="width: 20%">Due Date:</td>
+            <tr class="show-on-service-select" style="display: none">
+                <td class="ftitle" style="width: 20%">Due Date:</td>
+                <td class="ftitle" style="width: 30%">
+                    <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
+                        style="width: 150px;" class="text  date   " argumentid="DueDate2" />
+                </td>
+
+
+                <td class="ftitle" style="width: 20%"></td>
+                <td class="ftitle" style="width: 30%"></td>
+            </tr>
+
+
+                           <tr class="show-on-cheque-select" style="display: none">
+                    <td class="ftitle" style="width: 20%">Bank*:</td>
                     <td class="ftitle" style="width: 30%">
-                        <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
-                            style="width: 150px;" class="text  date  required " argumentid="DueDate2" />
+                        <select loadon="FirstVisible" class="dropdownlist BankNameBankNameAMT2 CommonRequiredClass2 commonRemoveRequiredStaric2" style="width: 145px;"
+                            groupid="LedgerManagement_FrUc" argumentid="BankNameAMT2" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" >
+                            <option value="" selected="selected">Select Bank</option>
+
+                        </select>
                     </td>
 
 
-                    <td class="ftitle" style="width: 20%"></td>
-                    <td class="ftitle" style="width: 30%"></td>
+                    <td class="ftitle" style="width: 20%">Cheque No.*</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text number CommonRequiredClass2 commonRemoveRequiredStaric2 ChequeNoAMT2"
+                            groupid="LedgerManagement_FrUc" argumentid="ChequeNoAMT2"  /></td>
                 </tr>
+
+                <tr class="show-on-cheque-select" style="display: none">
+                    <td class="ftitle" style="width: 20%">Cheque From:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" style="text-align: center; width: 165px; margin-right: 4px" maxlength="100" class="text  ChequeFromAMT2"
+                            groupid="LedgerManagement_FrUc" alphconf="{allow:'.'}" argumentid="ChequeFromAMT2" />
+                    </td>
+
+
+                    <td class="ftitle" style="width: 20%">Cheque Date*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input argumentid="ChequeDateAMT2" class="text CommonRequiredClass2 date ChequeDateAMT2 commonRemoveRequiredStaric2 " groupid="LedgerManagement_FrUc" maxlength="10"  style="width: 75px;" type="text" />
+                    </td>
+                </tr>
+
             <tr>
                 <td class="ftitle" style="width: 20%">Description:</td>
                 <td class="ftitle" style="width: 30%" colspan="3">
@@ -260,8 +298,8 @@
 
                     <td class="ftitle" style="width: 20%">Payment Type*:</td>
                     <td class="ftitle" style="width: 30%">
-                        <select loadon="FirstVisible" valtype="value" class="dropdownlist  required " style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType"
-                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
+                        <select loadon="FirstVisible" valtype="value" class="dropdownlist  commonRemoveRequiredStaric " style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType"
+                            storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" >
                             <option value="" selected="selected">Select Payment Type</option>
                         </select>
                     </td>
@@ -269,20 +307,51 @@
                     
                     <td class="ftitle" style="width: 20%">Amount*:</td>
                     <td class="ftitle" style="width: 30%">
-                        <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
-                            groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr='*' /></td>
+                        <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number commonRemoveRequiredStaric amountInput  "
+                            groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount"  /></td>
                 </tr>
 
                 <tr class="show-on-service-select" style="display:none">
                     <td class="ftitle" style="width: 20%">Due Date:</td>
                     <td class="ftitle" style="width: 30%">
                         <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
-                            style="width: 150px;" class="text  date  required " argumentid="DueDate" />
+                            style="width: 150px;" class="text  date   " argumentid="DueDate" />
                     </td>
 
 
                     <td class="ftitle" style="width: 20%"></td>
                     <td class="ftitle" style="width: 30%"></td>
+                </tr>
+
+                <tr class="show-on-cheque-select" style="display: none">
+                    <td class="ftitle" style="width: 20%">Bank*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <select loadon="FirstVisible" class="dropdownlist BankNameBankNameAMT CommonRequiredClass commonRemoveRequiredStaric" style="width: 145px;"
+                            groupid="LedgerManagement_FrUc" argumentid="BankNameAMT" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" >
+                            <option value="" selected="selected">Select Bank</option>
+
+                        </select>
+                    </td>
+
+
+                    <td class="ftitle" style="width: 20%">Cheque No.*</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" style="text-align: center; width: 150px;" maxlength="50" class="text number CommonRequiredClass commonRemoveRequiredStaric ChequeNoAMT"
+                            groupid="LedgerManagement_FrUc" argumentid="ChequeNoAMT"  /></td>
+                </tr>
+
+                <tr class="show-on-cheque-select" style="display: none">
+                    <td class="ftitle" style="width: 20%">Cheque From:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" style="text-align: center; width: 165px; margin-right: 4px" maxlength="100" class="text  ChequeFromAMT"
+                            groupid="LedgerManagement_FrUc" alphconf="{allow:'.'}" argumentid="ChequeFromAMT" />
+                    </td>
+
+
+                    <td class="ftitle" style="width: 20%">Cheque Date*:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input argumentid="ChequeDateAMT" class="text CommonRequiredClass date ChequeDateAMT commonRemoveRequiredStaric " groupid="LedgerManagement_FrUc" maxlength="10"  style="width: 75px;" type="text" />
+                    </td>
                 </tr>
 
                 <tr>
