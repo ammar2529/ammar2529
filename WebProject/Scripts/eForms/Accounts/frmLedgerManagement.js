@@ -30,6 +30,18 @@
 
     });
 
+    $('select[argumentid="AccountsPaymentType"]',t.el).on('change', function () {
+        // Check karte hain agar value 30718 (Service) hai
+        
+        if ($(this).val() === "30718") {
+            $('.show-on-service-select', t.el).show();
+            $('[argumentid="DueDate"]', t.el).val('');
+        } else {
+            // Agar doosri value select ho toh service row remove karo
+            $('.show-on-service-select', t.el).hide().val('');
+        }
+    });
+
     $('.CloseNewForm', t.el).click(function () {
         const $target = $('.ShowOnNewClickButton', t.el);
         $target.toggle(); // shows if hidden, hides if visible
@@ -40,6 +52,7 @@
         $('select[argumentid="AccountsPaymentType"]').prop('selectedIndex', 0);
         const $icon = $('.Plus-Icon', t.el);
         $icon.removeClass('fa-minus').addClass('fa-plus');
+        $('.show-on-service-select', t.el).hide().val('');
 
     });
 
@@ -66,7 +79,7 @@
     $('.CloseTableNewForm', t.el).click(function () {
         $('.LineOfItemRow ', t.el).hide();
         $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
-
+        $('.show-on-service-select', t.el).hide().val('');
 
     })
 
@@ -135,11 +148,11 @@
 
     t.on('onLoadedValues', function (args)
     {
+        
         var res = args.res;
         if (res.status == 'OK') {
             
             var recId = res.Response.Rows[0].RecId;
-            console.log("RecId:", recId);
 
 
             if (res.Response.Rows.length == 1) {
@@ -254,6 +267,7 @@
                             const AccountsPaymentTypeId = innerRow.AccountsPaymentTypeId
                             const TotalDebit = parseFloat(innerRow.TotalDebit) || 0;
                             const TotalCredit = parseFloat(innerRow.TotalCredit) || 0;
+                            const DueDateSetInCtrl = innerRow.DueDateSetInCtrl;
 
                             const DebitCreditTotal = innerRow.DebitCreditTotal
                             const RecStatus = innerRow.RecStatus ?? '';
@@ -279,6 +293,8 @@
 
                             
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
+                            $('[argumentid="DueDateSetInCtrl"]', t.el).text(DueDateSetInCtrl);
+
                             // Generate table row
                             let rowStyle = '';
                             let disabledAttr = '';
@@ -324,6 +340,7 @@
                         $('.edit-icon', tblUFL).click(function () {
 
                             $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
+                            $('.show-on-service-select', t.el).hide().val('');
                             var btn = $(this);
 
                             
@@ -508,6 +525,7 @@
             // Set dropdown to the first option
             $('select[argumentid="AccountsPaymentType2"]').prop('selectedIndex', 0);
             $('.testTR').hide();
+            $('.show-on-service-select', t.el).hide().val('');
         });
 
 
@@ -611,6 +629,44 @@
             // Remove the asterisk if the field is no longer empty
             if (value !== '' && value !== null) {
                 $element.siblings('.required-error').remove();
+            }
+        });
+
+
+
+            debugger
+            //if ($('.PaymentTypeDD').val() === '30718') {
+            //    console.log('Value 30718 (Service) is selected');
+            //} else {
+            //    console.log('Value 30718 is not selected');
+            //}
+            
+            const $select = $('.PaymentTypeDD', $testRow);
+            const selectedValue = $select.val(); // Ye selected option ki value deta hai
+            const selectedText = $select.find('option[value="' + selectedValue + '"]').text(); // Ye selected option ka text deta hai
+            if (selectedValue === '30718')
+            {
+                var DueDate = $('[argumentid="DueDateSetInCtrl"]', t.el).text();
+                $('[argumentid="DueDate2"]', $testRow).val(DueDate);
+                $('.show-on-service-select', $testRow).show();
+
+            } else
+            {
+                $('.show-on-service-select', $testRow).hide().find('td').val('');
+
+            }
+      
+
+
+        $('select[argumentid="AccountsPaymentType2"]', $testRow).on('change', function () {
+            // Check karte hain agar value 30718 (Service) hai
+            
+            if ($(this).val() === "30718") {
+                $('.show-on-service-select', $testRow).show();
+                $('[argumentid="DueDate"]', t.el).val('');
+            } else {
+                // Agar doosri value select ho toh service row remove karo
+                $('.show-on-service-select', $testRow).hide().val('');
             }
         });
     }

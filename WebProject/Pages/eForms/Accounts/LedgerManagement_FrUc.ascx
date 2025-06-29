@@ -7,9 +7,10 @@
     <tr id="trNote">
         <td colspan="4" style="padding-top: 10px; padding-bottom: 10px">Use the form below to update the details, fields marked with an asterisk (*) are mandatory
 
-            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="RecId"></span></div>
+            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="RecId" ></span></div>
             <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="BenificiaryId"></span></div>
             <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="AmountRecId"></span></div>
+            <div style="display: none"><span groupid="LedgerManagement_FrUc" argumentid="DueDateSetInCtrl"></span></div>
         </td>
     </tr>
 
@@ -50,19 +51,32 @@
 
             </tr>
             <tr>
-                                <td class="ftitle" style="width: 20%">Amount*:</td>
-                <td class="ftitle" style="width: 30%">
-                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required"
-                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' />
-                </td>
+
                 <td class="ftitle" style="width: 20%">Payment Type*:</td>
                 <td class="ftitle" style="width: 30%">
-                    <select loadon="FirstVisible" valtype="value" class="dropdownlist required" style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType2"
+                    <select loadon="FirstVisible"  class="dropdownlist required PaymentTypeDD" style="width: 145px;" groupid="LedgerManagement_FrUc" argumentid="AccountsPaymentType2"
                         storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'46'}]}" requirederr='*'>
                         <option value="" selected="selected">Select Payment Type</option>
                     </select>
                 </td>
+                <td class="ftitle" style="width: 20%">Amount*:</td>
+                <td class="ftitle" style="width: 30%">
+                    <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required"
+                        groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' />
+                </td>
+
             </tr>
+                            <tr class="show-on-service-select" style="display:none">
+                    <td class="ftitle" style="width: 20%">Due Date:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
+                            style="width: 150px;" class="text  date  required " argumentid="DueDate2" />
+                    </td>
+
+
+                    <td class="ftitle" style="width: 20%"></td>
+                    <td class="ftitle" style="width: 30%"></td>
+                </tr>
             <tr>
                 <td class="ftitle" style="width: 20%">Description:</td>
                 <td class="ftitle" style="width: 30%" colspan="3">
@@ -257,6 +271,18 @@
                     <td class="ftitle" style="width: 30%">
                         <input type="text" style="text-align: left; width: 150px;" maxlength="199" class="text number amountInput required "
                             groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" requirederr='*' /></td>
+                </tr>
+
+                <tr class="show-on-service-select" style="display:none">
+                    <td class="ftitle" style="width: 20%">Due Date:</td>
+                    <td class="ftitle" style="width: 30%">
+                        <input type="text" groupid="LedgerManagement_FrUc" maxlength="10"
+                            style="width: 150px;" class="text  date  required " argumentid="DueDate" />
+                    </td>
+
+
+                    <td class="ftitle" style="width: 20%"></td>
+                    <td class="ftitle" style="width: 30%"></td>
                 </tr>
 
                 <tr>

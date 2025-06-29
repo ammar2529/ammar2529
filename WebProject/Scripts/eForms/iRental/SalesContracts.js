@@ -153,7 +153,8 @@ Sales.SalesContracts.frmSalesContactsPaymentDetails =
             return des + ' Only';
         }
         
-        t.on('show', function (args) {
+        t.on('show', function (args)
+        {
             
             $('.ChequeNo', t.el).hide();
             $('.BankName', t.el).hide(); 
