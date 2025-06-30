@@ -41,7 +41,7 @@
     $('select[argumentid="AccountsPaymentType"]',t.el).on('change', function () {
         // Check karte hain agar value 30718 (Service) hai
         
-        if ($(this).val() === "30718") {
+        if ($(this).val() === "30734") {
             $('.show-on-service-select', t.el).show();
             $('[argumentid="DueDate"]', t.el).val('');
             
@@ -52,7 +52,7 @@
                 .find('input, select, textarea')
                 .val('');        }
 
-        if ($(this).val() === "30717") {
+        if ($(this).val() === "30732") {
             $('.show-on-cheque-select', t.el).show();
             $('[argumentid="ChequeDateAMT"]', t.el).val('');
             $('.CommonRequiredClass', t.el).addClass('requiredElem')
@@ -735,7 +735,7 @@
         $('select[argumentid="AccountsPaymentType2"]', $testRow).on('change', function () {
             // Check karte hain agar value 30718 (Service) hai
             
-            if ($(this).val() === "30718") {
+            if ($(this).val() === "30734") {
                 $('.show-on-service-select', $testRow).show();
                 $('[argumentid="DueDate"]', $testRow).val('');
 
@@ -747,7 +747,7 @@
                     .val('');
             }
 
-            if ($(this).val() === "30717") {
+            if ($(this).val() === "30732") {
                 $('.show-on-cheque-select', $testRow).show();
                 $('[argumentid="ChequeDateAMT"]', t.el).val('');
                 $('.CommonRequiredClass', $testRow).addClass('requiredElem')
