@@ -5,7 +5,7 @@
 
     $('.new-wrap', t.el).click(function () {
         $('.removeOnEditMode', '.trTableItemRow', t.el).hide();
-        debugger
+        
         const $target = $('.ShowOnNewClickButton', t.el);
         $target.toggle(); // shows if hidden, hides if visible
 
@@ -165,7 +165,7 @@
 
     // Add event listeners to required fields to remove asterisk when filled
     $('.requiredElem', t.el).on('input change blur', function () {
-        debugger
+        
         let $element = $(this);
         let value = $element.val().trim();
 
@@ -341,7 +341,7 @@
                             $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
                             $('[argumentid="DueDateSetInCtrl"]', t.el).text(DueDateSetInCtrl);
 
-                            //$('[argumentid="BankNameAMT"]', t.el).text(BankNameAMT);
+                            $('input[argumentid="BankNameAMT2"]', t.el).val(BankNameAMT);
                             $('[argumentid="ChequeFromAMT"]', t.el).text(ChequeFromAMT);
                             $('[argumentid="ChequeNoAMT"]', t.el).text(ChequeNoAMT);
                             $('[argumentid="ChequeDateAMT"]', t.el).text(ChequeDateAMT);
@@ -703,19 +703,19 @@
             const $select = $('.PaymentTypeDD', $testRow);
             const selectedValue = $select.val(); // Ye selected option ki value deta hai
             const selectedText = $select.find('option[value="' + selectedValue + '"]').text(); // Ye selected option ka text deta hai
-            if (selectedValue === '30718')
+            if (selectedValue === '30734')
             {
                 var DueDate = $('[argumentid="DueDateSetInCtrl"]', t.el).text();
                 $('[argumentid="DueDate2"]', $testRow).val(DueDate);
                 $('.show-on-service-select', $testRow).show();
 
-            } else if (selectedValue === '30717') {
-                var BankNameAMT = $('[argumentid="BankNameAMT"]', t.el).first().text();;
+            } else if (selectedValue === '30732') {
+                var BankNameAMT = $('[argumentid="BankNameAMT2"]', t.el).first().val();
                 var ChequeFromAMT = $('[argumentid="ChequeFromAMT"]', t.el).first().text();;
                 var ChequeNoAMT = $('[argumentid="ChequeNoAMT"]', t.el).first().text();;
                 var ChequeDateAMT = $('[argumentid="ChequeDateAMT"]', t.el).first().text();;
 
-                $('[argumentid="BankNameAMT2"]', $testRow).val(BankNameAMT);
+                $('select[argumentid="BankNameAMT2"]', $testRow).val(BankNameAMT);
                 $('[argumentid="ChequeFromAMT2"]', $testRow).val(ChequeFromAMT);
                 $('[argumentid="ChequeNoAMT2"]', $testRow).val(ChequeNoAMT);
                 $('[argumentid="ChequeDateAMT2"]', $testRow).val(ChequeDateAMT);
