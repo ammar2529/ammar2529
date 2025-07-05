@@ -1534,6 +1534,17 @@
     <Content Include="App_Themes\eForms_Theme\webfonts\fa-solid-900.woff2" />
     <Content Include="App_Themes\eForms_Theme\webfonts\fa-v4compatibility.ttf" />
     <Content Include="App_Themes\eForms_Theme\webfonts\fa-v4compatibility.woff2" />
+    <Content Include="LedgerManagmentDataSet\LedgerManagmentDataSet.xsc">
+      <DependentUpon>LedgerManagmentDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="LedgerManagmentDataSet\LedgerManagmentDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LedgerManagmentDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="LedgerManagmentDataSet\LedgerManagmentDataSet.xss">
+      <DependentUpon>LedgerManagmentDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="SalesContractDS\PrintSalesContractBillOnlyAmount.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2669,6 +2680,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LeaseContractDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LedgerManagmentDataSet\LedgerManagmentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LedgerManagmentDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.ascx.cs">
       <DependentUpon>LoginPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2889,6 +2905,12 @@
     </Compile>
     <Compile Include="Pages\Common\Terms.ascx.designer.cs">
       <DependentUpon>Terms.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintLedgerManagmentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx.cs">
       <DependentUpon>BeneficiaryManagement_FrUc.ascx</DependentUpon>
@@ -4230,6 +4252,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintBillSalesContractsReport2.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PrintLedgerManagmentReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenLeaseContracts.cs</LastGenOutput>

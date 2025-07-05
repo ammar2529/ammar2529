@@ -462,10 +462,10 @@
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td colspan="4">
-            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
-            <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
-
-            <input type="button" value="  Cancel  " class="CloseForm ButtonStyle" />
+            <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
+            <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
+            <input type="button" value="  Print  " style="width: 60px; display:none" class="ButtonStyle PrintBtn  " />
+            <input type="button" value="  Cancel  " style="width: 60px;" class="CloseForm ButtonStyle" />
         </td>
     </tr>
 </table>

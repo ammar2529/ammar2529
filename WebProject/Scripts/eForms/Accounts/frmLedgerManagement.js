@@ -3,6 +3,25 @@
     var t = obj;
     AsyncWidgets.WidgetScripts.frmLedgerManagement.t = t;
 
+    $('.PrintBtn', t.el).on('click', function () {
+        Swal.fire({
+            text: "Work in Progress: Print report functionality is under development.",
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'swal2-custom-popup',
+                confirmButton: 'swal2-same-size-btn',
+                htmlContainer: 'swal2-text-bigger'
+            },
+            didOpen: () => {
+                // Apply inline font style to the text container
+                document.querySelector('.swal2-text-bigger').style.fontFamily = "'Roboto', sans-serif";
+                document.querySelector('.swal2-text-bigger').style.fontSize = '18px';
+            }
+        });
+    });
+
     $('.new-wrap', t.el).click(function () {
         $('.removeOnEditMode', '.trTableItemRow', t.el).hide();
         
@@ -192,7 +211,8 @@
     {
         
         var res = args.res;
-        if (res.status == 'OK') {
+        if (res.status == 'OK')
+        {
             
             var recId = res.Response.Rows[0].RecId;
 
@@ -219,6 +239,9 @@
                 /*$(this).text(val.toFixed(3));*/
                 formatAmount(this);
             });
+
+
+            $('.PrintBtn', t.el).show();
 
 
         }
@@ -431,15 +454,16 @@
                             })
 
                               .then((result) => {
-                                if (result.isConfirmed) {
+                                  if (result.isConfirmed)
+                                  {
                                     DeleteRow(t, RecId);
 
                                     var curTR = btn.closest('tr');
 
-                                    if ($('tr', curTR.parent()).length == 1) {
-                                        $('.ItemTR', tblUFL).hide();
-                                        $('.NoRecordsTR', tblUFL).show();
-                                    }
+                                      if ($('tr', curTR.parent()).length == 1) {
+                                          $('.ItemTR', tblUFL).hide();
+                                          $('.NoRecordsTR', tblUFL).show();
+                                      }
 
                                     curTR.remove();
 
