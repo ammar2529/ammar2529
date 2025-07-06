@@ -4,22 +4,34 @@
     AsyncWidgets.WidgetScripts.frmLedgerManagement.t = t;
 
     $('.PrintBtn', t.el).on('click', function () {
-        Swal.fire({
-            text: "Work in Progress: Print report functionality is under development.",
-            icon: 'info',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK',
-            customClass: {
-                popup: 'swal2-custom-popup',
-                confirmButton: 'swal2-same-size-btn',
-                htmlContainer: 'swal2-text-bigger'
-            },
-            didOpen: () => {
-                // Apply inline font style to the text container
-                document.querySelector('.swal2-text-bigger').style.fontFamily = "'Roboto', sans-serif";
-                document.querySelector('.swal2-text-bigger').style.fontSize = '18px';
-            }
-        });
+
+        var strlink = ROOT_PATH + "/Pages/eForms/Accounts/AccountReports/PrintLedgerManagmentReport.aspx?FormCode=" + $('[argumentid="RecId"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+        console.log(strlink);
+        var width = 920;
+        var height = 600;
+        var left = parseInt((screen.availWidth / 2) - (width / 2)) - 15;
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        window.open(strlink, '_blank', "'titlebar=no,resizable=1,scrollbars=yes,height=" + height + ",width=" + width + ",left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "'");
+        console.log('Click on Print Button');
+
+        return false;
+
+        //Swal.fire({
+        //    text: "Work in Progress: Print report functionality is under development.",
+        //    icon: 'info',
+        //    confirmButtonColor: '#3085d6',
+        //    confirmButtonText: 'OK',
+        //    customClass: {
+        //        popup: 'swal2-custom-popup',
+        //        confirmButton: 'swal2-same-size-btn',
+        //        htmlContainer: 'swal2-text-bigger'
+        //    },
+        //    didOpen: () => {
+        //        // Apply inline font style to the text container
+        //        document.querySelector('.swal2-text-bigger').style.fontFamily = "'Roboto', sans-serif";
+        //        document.querySelector('.swal2-text-bigger').style.fontSize = '18px';
+        //    }
+        //});
     });
 
     $('.new-wrap', t.el).click(function () {

@@ -1440,6 +1440,7 @@
     <Content Include="NLogTestFile.aspx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
+    <Content Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.aspx" />
     <Content Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx" />
     <Content Include="Pages\eForms\Accounts\LedgerManagement_FrUc.ascx" />
     <Content Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx" />
@@ -2905,6 +2906,13 @@
     </Compile>
     <Compile Include="Pages\Common\Terms.ascx.designer.cs">
       <DependentUpon>Terms.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.aspx.cs">
+      <DependentUpon>PrintLedgerManagmentReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.aspx.designer.cs">
+      <DependentUpon>PrintLedgerManagmentReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.cs">
       <AutoGen>True</AutoGen>

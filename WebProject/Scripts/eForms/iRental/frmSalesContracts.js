@@ -373,7 +373,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         //On Click of Print Contract Button
         
      $('.ContractPrintBtn', t.el).click(function () { //
-         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/SalesContractsTreatyReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
+         var strlink = ROOT_PATH + "Pages/eForms/iRental/Reports/PrintLedgerManagmentReport.aspx?FormCode=" + $('[argumentid="RecCode"]', t.el).text(); // +'&amp;FormId=' + pm.SelectedKey;
                 console.log(strlink);
                 var width = 920;
                 var height = 600;
