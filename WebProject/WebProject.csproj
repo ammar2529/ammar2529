@@ -4260,10 +4260,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintBillSalesContractsReport2.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.rpt">
+    <Content Include="Pages\eForms\Accounts\AccountReports\PrintLedgerManagmentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintLedgerManagmentReport.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Pages\eForms\iRental\Reports\PrintOpenLeaseContracts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrintOpenLeaseContracts.cs</LastGenOutput>
