@@ -4,10 +4,10 @@
         <td style="text-align: left;" class="ftitle">
             <span style="white-space: nowrap">Ledger Code</span></td>
         <td style="text-align: left;" class="ftitle">
-            <span>Transaction Type</span>
+            <span>Beneficiary Type</span>
         </td>
         <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Customer Name</span></td>
+            <span style="white-space: nowrap">Company Name</span></td>
 
 
 
@@ -21,11 +21,11 @@
         <td style="text-align: left;">
 
             <select class="dropdownlist" style="width: 160px;"
-                groupid="schLedgerManagement" argumentid="TransactionType" name="D4">
-                <option value="" selected="selected">Select Transaction Type</option>
+                groupid="schLedgerManagement" argumentid="BeneficiaryType" name="D4">
+                <option value="" selected="selected">Select Beneficiary Type</option>
 
-                <option value="D">Debit</option>
-                <option value="C">Credit</option>
+                <option value="C">Company</option>
+                <option value="I">Individual</option>
 
             </select>
 
@@ -33,7 +33,7 @@
 
         <td style="text-align: left;">
             <input type="text" class="text"
-                argumentid="CustomerName" groupid="schLedgerManagement"></td>
+                argumentid="CompanyName" groupid="schLedgerManagement"></td>
 
 
 
