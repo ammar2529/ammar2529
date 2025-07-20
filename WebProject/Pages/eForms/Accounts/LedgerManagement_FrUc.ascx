@@ -162,8 +162,15 @@
             <nobr>Title:</nobr>
         </td>
         <td style="width: 30%" colspan="3">
-            <input type="text" groupid="LedgerManagement_FrUc" maxlength="200" style="width: 300px;"
-                class="text    " argumentid="LedgerTitle" />
+<%--            <input type="text" groupid="LedgerManagement_FrUc" maxlength="200" style="width: 300px;"
+                class="text    " argumentid="LedgerTitle" />--%>
+
+<%--            <input type="text" style="text-align:left;width:200px; font-weight:bold;color:black" maxlength="200" class="text required validateunique" primarykey="RecId" 
+                storeid="Account_LedgerManagement" uniquenotfound="{en:' Name is valid...',color:'green'}" uniquefound="{en:' Duplicate Name...',color:'red'}" groupid="LedgerManagement_FrUc" argumentid="LedgerTitle" isvalid="true">--%>
+
+            <input type="text" style="text-align: left; width: 200px;" maxlength="200" class="text required validateunique" primarykey="RecId"
+                storeid="Account_LedgerManagement" uniquenotfound="{en:' Name is valid...',color:'green'}"
+                uniquefound="{en:' Duplicate Name...',color:'red'}" groupid="LedgerManagement_FrUc" argumentid="LedgerTitle" />
         </td>
     </tr>
     <tr>
@@ -268,7 +275,7 @@
 
 
 
-    <tr class="LineOfItemRow  ShowOnNewClickButton" style="display:none">
+    <tr class="LineOfItemLedgerRow  ShowOnNewClickButton" style="display:none">
         <td colspan="4" style="background:#fdf5cf">
             <table cellspacing="2" cellpadding="0" style="width: 100%" border="0" class="w-form-table" id="dynamicRows">
                             <tr>
@@ -372,7 +379,9 @@
                     <td style="width: 20%;"></td>
 
                     <td style="width: 30%;" colspan="3">
-                        <input type="button" value="  Save  " class=" INS_Row_Save_Btn ButtonStyle" ignorevalidate="LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
+                        <input type="button" value="  Save  " class=" INS_Row_Save_Btn ButtonStyle" ignorevalidate="LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" 
+<%--                            conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'INS_Account_LedgerManagement_Amounts',Params:{DBAction:'InsertRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}"--%>
+                            >
                         <input type="button" value="  Cancel  " class="CloseNewForm ButtonStyle" />
                     </td>
                     <!-- Delete button -->
@@ -462,8 +471,8 @@
             <img src="App_Themes/eForms_Theme/Images/spacer.gif">
         </td>
         <td colspan="4">
-            <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
-            <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}" />
+            <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:false,GroupId:'LedgerManagement_FrUc'}" />
+            <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:false,GroupId:'LedgerManagement_FrUc'}" />
             <input type="button" value="  Print  " style="width: 60px; display:none" class="ButtonStyle PrintBtn  " />
             <input type="button" value="  Cancel  " style="width: 60px;" class="CloseForm ButtonStyle" />
         </td>

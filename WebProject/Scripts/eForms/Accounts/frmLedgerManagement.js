@@ -130,7 +130,7 @@
 
 
     $('.CloseTableNewForm', t.el).click(function () {
-        $('.LineOfItemRow ', t.el).hide();
+        $('.LineOfItemLedgerRow ', t.el).hide();
         $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
         $('.show-on-service-select', t.el).hide().find('input').val('');
 
@@ -141,16 +141,18 @@
         
         
         let btn = $(this);
-        let $targetRow = $(this).closest('tr.LineOfItemRow');
-
+        let $targetRow = $(this).closest('tr.LineOfItemLedgerRow');
+        
         // Reset any previous validation indicators
+        var RecId = $('[argumentid="RecId"]', t.el).text();
         $('.requiredElem', $targetRow).each(function () {
-            $(this).siblings('.required-error').remove(); // Remove previous error indicators
+            $(this).siblings('.required-error').remove();
         });
 
         // Check all required fields
         let isValid = true;
         $('.requiredElem', $targetRow).each(function () {
+            
             let $element = $(this);
             let value = $element.val().trim();
 
@@ -161,10 +163,10 @@
                 if ($element.hasClass('date')) {
                     // Target the datepicker trigger and insert after it
                     $element.closest('td').find('.ui-datepicker-trigger')
-                        .after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                        .after('<span errmsg class="required-error" style="color: red; margin-left: 5px;">*</span>');
                 } else {
                     // Default placement for other fields
-                    $element.after('<span class="required-error" style="color: red; margin-left: 5px;">*</span>');
+                    $element.after('<span errmsg class="required-error" style="color: red; margin-left: 5px;">*</span>');
                 }
             }
         });
@@ -173,12 +175,26 @@
         if (!isValid) {
             return false;
         }
-        
-        
-        var submit =  t.submit(btn);
-        if (submit == false) {
-            return false;
-        }
+
+
+        ServerCallCtx($targetRow[0], { Command: 'INS_Account_LedgerManagement_Amounts', DBAction: 'InsertRow', RecId: RecId}, function (res) {
+            
+            var res = decJSON(res)
+
+            var parts = res.Response.split('||');
+            var code = parts[0];
+            var messageStatus = parts[1];
+            var message = parts[2];
+
+
+            $.showMessage(message);
+
+
+        }, 'DataAction');
+        //var submit = t.submit(btn);
+
+
+
         $("input[value='D']").prop("checked", true);
         $(".amountInput, [argumentid='LedgerManagementReason']", t.el).val("");
         // Set dropdown to the first option
@@ -189,13 +205,18 @@
         $target.toggle(); // shows if hidden, hides if visible
         $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
 
+        //setTimeout(function () {
+        //    $('span[errmsg]', t.el).hide();
+
+        //}, 1000)
+        let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
 
 
     });
 
-
+    let $targetRow = $('tr.LineOfItemLedgerRow,.ShowOnNewClickButton',t.el);
     // Add event listeners to required fields to remove asterisk when filled
-    $('.requiredElem', t.el).on('input change blur', function () {
+    $('.requiredElem', $targetRow).on('input change blur', function () {
         
         let $element = $(this);
         let value = $element.val().trim();
