@@ -1405,6 +1405,12 @@
     <Content Include="NLogTestFile.aspx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.ascx" />
     <Content Include="Pages\Common\Administration\UserManagement_FrUc.aspx" />
+    <Content Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx" />
+    <Content Include="Pages\eForms\Accounts\LedgerManagement_FrUc.ascx" />
+    <Content Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx" />
+    <Content Include="Pages\eForms\Accounts\Modules\LedgerManagement.ascx" />
+    <Content Include="Pages\eForms\Accounts\SearchForms\BeneficiaryManagement_ShUc.ascx" />
+    <Content Include="Pages\eForms\Accounts\SearchForms\LedgerManagement_ShUc.ascx" />
     <Content Include="Pages\eForms\Employee\EmployeeDatabase_FrUc2.ascx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_Car_ShUc.ascx" />
     <Content Include="Pages\eForms\iRental\CarAndCustomerDetails_FrUc.ascx" />
@@ -1525,6 +1531,8 @@
     <Content Include="aspnet_client\system_web\4_0_30319\crystalreportviewers13\preview.jsp" />
     <Content Include="responsiveTab.html" />
     <Content Include="SaveLineOfItems.aspx" />
+    <Content Include="Scripts\Accounts\frmBeneficiaryManagement.js" />
+    <Content Include="Scripts\Accounts\frmLedgerManagement.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="AsyncWidgets\Scripts\spinner.js" />
@@ -2915,6 +2923,42 @@
     <Compile Include="Pages\Common\Terms.ascx.designer.cs">
       <DependentUpon>Terms.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx.cs">
+      <DependentUpon>BeneficiaryManagement_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\BeneficiaryManagement_FrUc.ascx.designer.cs">
+      <DependentUpon>BeneficiaryManagement_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\LedgerManagement_FrUc.ascx.cs">
+      <DependentUpon>LedgerManagement_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\LedgerManagement_FrUc.ascx.designer.cs">
+      <DependentUpon>LedgerManagement_FrUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx.cs">
+      <DependentUpon>BeneficiaryManagment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\Modules\BeneficiaryManagment.ascx.designer.cs">
+      <DependentUpon>BeneficiaryManagment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\Modules\LedgerManagement.ascx.cs">
+      <DependentUpon>LedgerManagement.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\Modules\LedgerManagement.ascx.designer.cs">
+      <DependentUpon>LedgerManagement.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\SearchForms\BeneficiaryManagement_ShUc.ascx.cs">
+      <DependentUpon>BeneficiaryManagement_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\SearchForms\BeneficiaryManagement_ShUc.ascx.designer.cs">
+      <DependentUpon>BeneficiaryManagement_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\SearchForms\LedgerManagement_ShUc.ascx.cs">
+      <DependentUpon>LedgerManagement_ShUc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\eForms\Accounts\SearchForms\LedgerManagement_ShUc.ascx.designer.cs">
+      <DependentUpon>LedgerManagement_ShUc.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\eForms\Employee\EmployeeDatabase_FrUc.ascx.cs">
       <DependentUpon>EmployeeDatabase_FrUc.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4198,6 +4242,7 @@
     <Folder Include="AdminPages\Common\" />
     <Folder Include="App_Data\" />
     <Folder Include="AsyncWidgets\Widgets\resources\images\Widgets\Grid\" />
+    <Folder Include="Pages\eForms\Accounts\AccountReports\" />
     <Folder Include="Scripts\Widgets\" />
     <Folder Include="UploadSparePartImage\" />
     <Folder Include="Uploads\" />

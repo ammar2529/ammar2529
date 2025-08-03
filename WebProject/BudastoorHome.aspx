@@ -22,6 +22,9 @@
 <%@ Register Src="~/Pages/eForms/iRental/Modules/CarAndCustomerDetails.ascx" TagPrefix="AW" TagName="CarAndCustomerDetails" %>
 <%@ Register Src="~/Pages/eForms/iRental/Modules/LeaseContracts.ascx" TagPrefix="AW" TagName="LeaseContracts" %>
 
+<%@ Register Src="~/Pages/eForms/Accounts/Modules/BeneficiaryManagment.ascx" TagPrefix="AW" TagName="BeneficiaryManagment" %>
+<%@ Register Src="~/Pages/eForms/Accounts/Modules/LedgerManagement.ascx" TagPrefix="AW" TagName="LedgerManagement" %>
+
 
 
 
@@ -82,6 +85,9 @@
             <AW:LeaseContracts runat="server" ID="LeaseContracts" />
 
             <AW:SalesContracts runat="server" ID="SalesContracts" />
+
+            <AW:BeneficiaryManagment runat="server" ID="BeneficiaryManagment" />
+            <AW:LedgerManagement runat="server" ID="LedgerManagement" />
 
 
 

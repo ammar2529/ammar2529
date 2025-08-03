@@ -226,6 +226,10 @@ html, body {
         color: #f44336 !important;
     }
 
+    .form-floating > .form-control:disabled ~ label::after, .form-floating > :disabled ~ label::after {
+         background-color: #ffffff; 
+    }
+
 .container {
     max-width: 100%;
     padding-left: 15px;
@@ -270,11 +274,116 @@ html, body {
     border: transparent;
 }
 
-input:disabled {
-    border-bottom: 2px dotted red; /* Dotted border for disabled state */
-    background-color: #fff; /* Optional */
-    cursor: not-allowed;
+.form-control:disabled,
+.form-select:disabled {
+    background-color: #fff !important; /* Default white background */
+    opacity: 1; /* Match enabled state opacity */
+    border: none !important; /* Remove all borders */
+    border-bottom: 2px dotted #6c757d !important; /* Dotted gray bottom border */
 }
+
+
+
+
+.edit-icon {
+    color: black;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+    .edit-icon:hover {
+        color: green;
+    }
+
+.delete-icon {
+    color: black;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+    .delete-icon:hover {
+        color: red;
+    }
+
+.action-icons {
+    display: flex;
+    align-items: center;
+}
+
+.pipe {
+    margin: 0 5px;
+    color: #e5e5e5;
+    font-weight: bold;
+}
+
+.disabled-td {
+    pointer-events: none; /* Prevent clicks */
+    opacity: 0.5; /* Make it look disabled */
+}
+
+
+.new-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .new-wrap:hover .new-text {
+        text-decoration: underline;
+        color: #ff5c01;
+        cursor: pointer;
+    }
+
+    .new-wrap:hover .Plus-Icon {
+        cursor: pointer;
+    }
+
+.new-text {
+    color: #105678;
+    transition: all 0.2s ease;
+}
+
+.Plus-Icon {
+    font-size: 22px; /* or try 24px, 28px, etc. */
+    font-weight: 900; /* strongest available weight */
+    color: green;
+    transition: all 0.2s ease;
+}
+
+.swal2-custom-popup {
+    font-size: 18px; /* For overall alert */
+}
+
+.swal2-same-size-btn {
+    min-width: 100px;
+    font-size: 16px;
+}
+
+.swal2-text-bigger {
+    font-size: 20px; /* This will increase only the message text */
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+
+.LedegerAmountsTable .ItemTableRow:hover td {
+    background-color: #fdf5cf !important;
+}
+
+.cross-icon:hover {
+    color: red;
+}
+
+.cross-icon {
+    color: maroon;
+}
+
+/*input:disabled {
+    border-bottom: 2px dotted red;*/ /* Dotted border for disabled state */
+    /*background-color: #fff;*/ /* Optional */
+    /*cursor: not-allowed;
+}*/
 /*form {
     border: none;
 }*/

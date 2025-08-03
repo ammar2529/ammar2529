@@ -371,6 +371,30 @@ function getViewportSize() {
 }
 
 
+function formatAmount(input) {
+    let rawVal;
+    let formatted;
+
+    if (typeof input === 'number') {
+        formatted = input.toFixed(3);
+        // Agar number pass hua, to console.log ya kisi aur control mein set karo yahan se
+        console.log(formatted); // ya jis element mein set karna ho manually set karo
+    } else {
+        const $el = $(input);
+        rawVal = $el.is('input') ? $el.val() : $el.text();
+
+        if (!isNaN(rawVal) && rawVal.toString().trim() !== "") {
+            let value = parseFloat(rawVal);
+            formatted = value.toFixed(3);
+
+            if ($el.is('input')) {
+                $el.val(formatted);
+            } else {
+                $el.text(formatted);
+            }
+        }
+    }
+}
 
 // Example usage
 //var username = getCookie('username');
