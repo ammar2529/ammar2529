@@ -132,7 +132,7 @@
     setTimeout(function () {
 
         $('.requiredElem', t.el).on('input change blur', function () {
-            debugger
+            
             let $element = $(this);
             let value = $element.val().trim();
 
@@ -203,9 +203,9 @@
 
 
         ServerCallCtx($targetRow[0], { Command: 'INS_Account_LedgerManagement_Amounts', DBAction: 'InsertRow', RecId: RecId }, function (res) {
-            debugger;
-           /* var res = decJSON(res)*/
-
+            
+           // var res = decJSON(res)
+           var t = this
             var parts = res.Response.split('||');
             var code = parts[0];
             var messageStatus = parts[1];
@@ -213,6 +213,20 @@
 
 
             $('body').showMessage(message);
+
+            var recId = $('[argumentid="RecId"]', t.el).text();
+            debugger
+            const params = {
+                Command: 'SEL_Account_LedgerManagement_Amounts',
+                LedgerAmountId: recId
+            };
+
+            // API Call
+            ServerCall(params, function (res) {
+
+                FetchLedegerAmounts(res, t) 
+
+            }, 'GetData');
 
             hideOverlay();
 
@@ -235,6 +249,8 @@
         //    $('span[errmsg]', t.el).hide();
 
         //}, 1000)
+        
+   
         let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
 
 
@@ -318,221 +334,151 @@
 
 
     function FetchLedegerAmounts(res, t) {
-        debugger
         if (res.status === 'OK' && res.Response.Rows.length > 0) {
-
-            //$('[argumentid="GrandTotal"]', t.el).text('0.000') ;
-            //$('[argumentid="TotalDebit"]', t.el).text('0.000') ;
-            //$('[argumentid="TotalCredit"]', t.el).text('0.000') ;
-
-            //$('[argumentid="DebitCreditTotal"]', t.el).text('0.000');
-
             const rows = res.Response.Rows;
             let tblRowsHTML = "";
             const tblUFL = $('table.LedegerAmountsTable', t.el);
             $('.ItemTableRow', tblUFL).remove();
-            // Show relevant rows and hide 'No Records' row
             $('.ItemTableRow', tblUFL).show();
             $('.NoRecordsTR', tblUFL).hide();
 
+            // Process only the first row
+            const firstRow = rows[0];
+            const recId = firstRow.LedgerAmountId !== undefined && firstRow.LedgerAmountId !== null
+                ? firstRow.LedgerAmountId
+                : firstRow.RecId;
 
+            // Check if recId is valid
+            if (recId === undefined || recId === null) {
+                setTimeout(() => {
+                    $('table.LedegerAmountsTable .ItemTableRow').hide();
+                    $('table.LedegerAmountsTable .NoRecordsTR').show();
+                }, 1000);
+                return;
+            }
 
-            // Iterate over main rows
-            rows.forEach(row => {
-                const recId = row.RecId;
-                const TransactionID = row.LedgerManagementRecCode
+            const TransactionID = firstRow.LedgerManagementRecCode;
 
-                const params = {
-                    Command: 'SEL_Account_LedgerManagement_Amounts',
-                    LedgerAmountId: recId
-                };
+            // Single API call using recId from the first row
+            const params = {
+                Command: 'SEL_Account_LedgerManagement_Amounts',
+                LedgerAmountId: recId
+            };
 
-                // API Call
-                ServerCall(params, function (res) {
-                    debugger
-                    //const response = decJSON(res);
-                    const response = res;
-                    if (response.status === 'OK' && response.Response.Rows.length > 0) {
-                        response.Response.Rows.forEach(innerRow => {
-                            //let totalDebit = 0;
-                            //let totalCredit = 0;
+            // API Call
+            ServerCall(params, function (res) {
+                const response = res;
+                if (response.status === 'OK' && response.Response.Rows.length > 0) {
+                    response.Response.Rows.forEach(innerRow => {
+                        const AmountRecId = innerRow.AmountRecId;
+                        const LedgerAmountCredit = parseFloat(innerRow.LedgerAmountCredit) || 0;
+                        const LedgerAmountDebit = parseFloat(innerRow.LedgerAmountDebit) || 0;
+                        const GrandTotal = innerRow.GrandTotal;
+                        const TotalLedgerAmount = innerRow.TotalLedgerAmount;
+                        const LedgerManagementRecCode = innerRow.LedgerManagementRecCode;
+                        const TransactionDate = innerRow.TransactionDate;
+                        const AccountsPaymentType = innerRow.AccountsPaymentType;
+                        const AccountsPaymentTypeId = innerRow.AccountsPaymentTypeId;
+                        const TotalDebit = parseFloat(innerRow.TotalDebit) || 0;
+                        const TotalCredit = parseFloat(innerRow.TotalCredit) || 0;
+                        const DueDateSetInCtrl = innerRow.DueDateSetInCtrl;
+                        const BankNameAMT = innerRow.BankNameAMT;
+                        const ChequeFromAMT = innerRow.ChequeFromAMT;
+                        const ChequeNoAMT = innerRow.ChequeNoAMT;
+                        const ChequeDateAMT = innerRow.ChequeDateAMT;
+                        const DebitCreditTotal = innerRow.DebitCreditTotal;
+                        const RecStatus = innerRow.RecStatus ?? '';
+                        const Reason = innerRow.Reason;
+                        const isDeleted = RecStatus?.trim().toLowerCase() === 'deleted';
 
-                            const AmountRecId = innerRow.AmountRecId;
-                            const LedgerAmountCredit = parseFloat(innerRow.LedgerAmountCredit) || 0;
-                            const LedgerAmountDebit = parseFloat(innerRow.LedgerAmountDebit) || 0;
+                        $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
+                        $('[argumentid="TotalDebit"]', t.el).text(TotalDebit.toFixed(3)) || 0;
+                        $('[argumentid="TotalCredit"]', t.el).text(TotalCredit.toFixed(3)) || 0;
+                        $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3)) || 0;
+                        $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
+                        $('[argumentid="DueDateSetInCtrl"]', t.el).text(DueDateSetInCtrl);
+                        $('input[argumentid="BankNameAMT2"]', t.el).val(BankNameAMT);
+                        $('[argumentid="ChequeFromAMT"]', t.el).text(ChequeFromAMT);
+                        $('[argumentid="ChequeNoAMT"]', t.el).text(ChequeNoAMT);
+                        $('[argumentid="ChequeDateAMT"]', t.el).text(ChequeDateAMT);
 
-                            const GrandTotal = innerRow.GrandTotal;
-                            const TotalLedgerAmount = innerRow.TotalLedgerAmount;
-                            const LedgerManagementRecCode = innerRow.LedgerManagementRecCode
-                            const TransactionDate = innerRow.TransactionDate
-                            const AccountsPaymentType = innerRow.AccountsPaymentType
-                            const AccountsPaymentTypeId = innerRow.AccountsPaymentTypeId
-                            const TotalDebit = parseFloat(innerRow.TotalDebit) || 0;
-                            const TotalCredit = parseFloat(innerRow.TotalCredit) || 0;
-                            const DueDateSetInCtrl = innerRow.DueDateSetInCtrl;
-                            const BankNameAMT = innerRow.BankNameAMT;
-                            const ChequeFromAMT = innerRow.ChequeFromAMT;
-                            const ChequeNoAMT = innerRow.ChequeNoAMT;
-                            const ChequeDateAMT = innerRow.ChequeDateAMT
+                        let rowStyle = isDeleted
+                            ? 'text-decoration: line-through; background: white; color: black;'
+                            : 'background: white; color: black;';
+                        let disabledAttr = isDeleted ? 'pointer-events: none; opacity: 0.5;' : '';
 
-                            const DebitCreditTotal = innerRow.DebitCreditTotal
-                            const RecStatus = innerRow.RecStatus ?? '';
-                            const Reason = innerRow.Reason
-                            //const CreatedBy = innerRow.CreatedBy;
-                            //const DateCreated = innerRow.DateCreated;
-                            const isDeleted = RecStatus?.trim().toLowerCase() === 'deleted';
+                        tblRowsHTML += `
+                        <tr class="ItemTableRow" >
+                            <td style="${rowStyle}">${LedgerManagementRecCode}</td>
+                            <td style="${rowStyle}">${TransactionDate}</td>
+                            <td style="${rowStyle};color:red;">${LedgerAmountDebit.toFixed(3)}</td>
+                            <td style="color:green; ${rowStyle}">${LedgerAmountCredit.toFixed(3)}</td>
+                            <td style="${rowStyle}" AccountsPaymentTypeId="${AccountsPaymentTypeId}">${AccountsPaymentType}</td>
+                            <td style="${rowStyle}">${RecStatus}</td>
+                            <td style="${rowStyle}">${Reason}</td>
+                            <td style="${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
+                                <div class="action-icons" style="${disabledAttr}">
+                                    <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}"></i>
+                                    <span class="pipe">|</span>
+                                    <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                    });
 
-                            //if (!isDeleted) {
-                            //    totalDebit += LedgerAmountDebit;
-                            //    totalCredit += LedgerAmountCredit;
-                            //}
+                    $('tbody', tblUFL).html(tblRowsHTML);
 
-                            //const DebitCreditTotall = Math.abs(totalCredit - totalDebit);
+                    $('.edit-icon', tblUFL).click(function () {
+                        $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
+                        $('.show-on-service-select', t.el).hide().val('');
+                        var btn = $(this);
+                        EditRow(this);
+                    });
 
-
-
-                            $('[argumentid="GrandTotal"]', t.el).text(GrandTotal.toFixed(3)) || 0;
-                            $('[argumentid="TotalDebit"]', t.el).text(TotalDebit.toFixed(3)) || 0;
-                            $('[argumentid="TotalCredit"]', t.el).text(TotalCredit.toFixed(3)) || 0;
-
-                            $('[argumentid="DebitCreditTotal"]', t.el).text(DebitCreditTotal.toFixed(3)) || 0;
-
-
-                            $('[argumentid="AmountRecId"]', t.el).text(AmountRecId);
-                            $('[argumentid="DueDateSetInCtrl"]', t.el).text(DueDateSetInCtrl);
-
-                            $('input[argumentid="BankNameAMT2"]', t.el).val(BankNameAMT);
-                            $('[argumentid="ChequeFromAMT"]', t.el).text(ChequeFromAMT);
-                            $('[argumentid="ChequeNoAMT"]', t.el).text(ChequeNoAMT);
-                            $('[argumentid="ChequeDateAMT"]', t.el).text(ChequeDateAMT);
-
-                            // Generate table row
-                            let rowStyle = '';
-                            let disabledAttr = '';
-
-                            rowStyle = isDeleted
-                                ? 'text-decoration: line-through; background: white; color: black;'
-                                : 'background: white; color: black;';
-
-                            disabledAttr = isDeleted ? 'pointer-events: none; opacity: 0.5;' : '';
-
-                            tblRowsHTML += `
-                            <tr class="ItemTableRow" >
-                                <td  style=" ${rowStyle}">${LedgerManagementRecCode}</td>
-                                <td  style=" ${rowStyle}">${TransactionDate}</td>
-                                <td  style="  ${rowStyle};color:red;">${LedgerAmountDebit.toFixed(3)}</td>
-                                <td  style="color:green; ${rowStyle};color:green;">${LedgerAmountCredit.toFixed(3)}</td>
-                                <td  style=" ${rowStyle}" AccountsPaymentTypeId="${AccountsPaymentTypeId}">${AccountsPaymentType}</td>
-                                <td  style=" ${rowStyle}">${RecStatus}</td>
-                                <td  style=" ${rowStyle}">${Reason}</td>
-                                <td  style=" ${rowStyle}" templateid="RowEditForm" AmountRecId="${AmountRecId}">
-                                    <div class="action-icons" style="${disabledAttr}">
-
-                                        <i class="LOVPopupOnClick fa-solid fa-pen-to-square edit-icon" title="Edit" AmountRecId="${AmountRecId}"></i>
-                                        <span class="pipe">|</span>
-                                        <i class="fa-solid fa-trash delete-icon" title="Delete" AmountRecId="${AmountRecId}"></i>
-
-                                    </div>
-                                </td>
-                            </tr>
-                            `;
-
-                            //                            <i class="fa-solid fa-square-plus expand-icon"></i>
-                            //<span class="pipe">|</span>
-
-                            //                            <td class="ColTemplate w-grid-cell-border colIndex-4" style=" background: white; color: black;">${CreatedBy}</td>
-                            //<td class="ColTemplate w-grid-cell-border colIndex-4" style=" background: white; color: black;">${DateCreated}</td>
-                        });
-
-                        // Inject rows into table
-
-                        $('tbody', tblUFL).html(tblRowsHTML);
-
-                        $('.edit-icon', tblUFL).click(function () {
-
-                            $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
-                            $('.show-on-service-select', t.el).hide().val('');
-                            var btn = $(this);
-
-
-
-                            //var DeleteUploadFile = AsyncWidgets.WidgetScripts.frmSalesContracts.DeleteUploadFile;
-                            //DeleteUploadFile(t, recId, fileName);
-                            EditRow(this);
-                            // Remove the row from the table
-                            //var curTR = btn.closest('tr');//.remove();
-
-                            //if ($('tr', curTR.parent()).length == 1) {
-                            //    // curTR.remove();
-                            //    $('.ItemTR', tblUFL).hide();
-                            //    $('.NoRecordsTR', tblUFL).show();
-                            //    //return;
-                            //}
-                            //curTR.remove();
-
-                        }); // end of click of Edit button event
-                        $('.delete-icon', tblUFL).click(function () {
-                            var btn = $(this);
-                            var RecId = btn.attr("AmountRecId");
-
-                            Swal.fire({
-                                text: "Do you really want to delete this record?",
-                                showCancelButton: true,
-                                confirmButtonColor: '#28a745',
-                                cancelButtonColor: '#dc3545',
-                                confirmButtonText: 'Yes',
-                                cancelButtonText: 'No',
-                                customClass: {
-                                    popup: 'swal2-custom-popup',
-                                    confirmButton: 'swal2-same-size-btn',
-                                    cancelButton: 'swal2-same-size-btn',
-                                    htmlContainer: 'swal2-text-bigger'
+                    $('.delete-icon', tblUFL).click(function () {
+                        var btn = $(this);
+                        var RecId = btn.attr("AmountRecId");
+                        Swal.fire({
+                            text: "Do you really want to delete this record?",
+                            showCancelButton: true,
+                            confirmButtonColor: '#28a745',
+                            cancelButtonColor: '#dc3545',
+                            confirmButtonText: 'Yes',
+                            cancelButtonText: 'No',
+                            customClass: {
+                                popup: 'swal2-custom-popup',
+                                confirmButton: 'swal2-same-size-btn',
+                                cancelButton: 'swal2-same-size-btn',
+                                htmlContainer: 'swal2-text-bigger'
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                DeleteRow(t, RecId);
+                                var curTR = btn.closest('tr');
+                                if ($('tr', curTR.parent()).length == 1) {
+                                    $('.ItemTR', tblUFL).hide();
+                                    $('.NoRecordsTR', tblUFL).show();
                                 }
-                            })
-
-                                .then((result) => {
-                                    if (result.isConfirmed) {
-                                        DeleteRow(t, RecId);
-
-                                        var curTR = btn.closest('tr');
-
-                                        if ($('tr', curTR.parent()).length == 1) {
-                                            $('.ItemTR', tblUFL).hide();
-                                            $('.NoRecordsTR', tblUFL).show();
-                                        }
-
-                                        curTR.remove();
-
-                                        //Swal.fire(
-                                        //    'Deleted!',
-                                        //    'The record has been deleted.',
-                                        //    'success'
-                                        //)
-                                    }
-                                });
+                                curTR.remove();
+                            }
                         });
-                        $('.expand-icon', tblUFL).click(function () {
+                    });
 
-
-                            $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
-                            var btn = $(this);
-
-                            ExpandRow(btn);
-                        })
-
-                    } else {
-                        setTimeout(() => {
-
-                            $('table.LedegerAmountsTable .ItemTableRow').hide();
-                            $('table.LedegerAmountsTable .NoRecordsTR').show();
-                        }, 1000);
-                    }
-                }, 'GetData');
-            });
-
+                    $('.expand-icon', tblUFL).click(function () {
+                        $('.Plus-Icon', t.el).removeClass('fa-minus').addClass('fa-plus');
+                        var btn = $(this);
+                        ExpandRow(btn);
+                    });
+                } else {
+                    setTimeout(() => {
+                        $('table.LedegerAmountsTable .ItemTableRow').hide();
+                        $('table.LedegerAmountsTable .NoRecordsTR').show();
+                    }, 1000);
+                }
+            }, 'GetData');
         } else {
             setTimeout(() => {
-
                 $('table.LedegerAmountsTable .ItemTableRow').hide();
                 $('table.LedegerAmountsTable .NoRecordsTR').show();
             }, 1000);
@@ -543,7 +489,7 @@
     let previousYellowRow = null; // Track the previously yellow row
     function EditRow(button) {
         let t = this
-        debugger
+        
 
         var curTR = $(button).closest('tr'); // Get current row
         $('.ShowOnNewClickButton', t.el).hide();
@@ -833,7 +779,7 @@
 
 
     function DeleteRow(t, AmountRecId) {
-
+        debugger
         var recId = $('[argumentid="RecId"]', t.el).text()
         var params = { Command: 'UPD_Account_LedgerManagement_Amounts', AmountRecId: AmountRecId, RecId: recId, DBAction: 'DeleteRow' };
         SInfo = getForm(null, null, params);
@@ -843,19 +789,39 @@
             if (res.status == 'OK') {
                 var response = res.Response || '';
                 var msg = response.split('||');
-                $.showMessage(` ${msg[2]}`);
+
+                $('body').showMessage(msg);
+
+                var recId = $('[argumentid="RecId"]', t.el).text();
+                debugger
+                const params = {
+                    Command: 'SEL_Account_LedgerManagement_Amounts',
+                    LedgerAmountId: recId
+                };
+
+                // API Call
+                ServerCall(params, function (response) {
+                    hideOverlay();
+
+                    FetchLedegerAmounts(response, t)
+
+                }, 'GetData');
+
+                hideOverlay();
+
 
             } else {
-                $.showMessage(`not Delete `);
+                //$.showMessage(`not Delete `);
 
             }
-            $(t.el).unmask();
+            hideOverlay();
+
         });
         inv.invokeRA({ params: ["ActorId", "DataHelper", "ActionId", "DataAction", "ServiceInfo", SInfo] });
-        setTimeout(function () {
-            let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
+        //setTimeout(function () {
+        //    let a = AsyncWidgets.get('frmLedgerManagement', t.el).Requery();
 
-        }, 500)
+        //}, 500)
     }
 
     function ExpandRow(btn) {
@@ -912,4 +878,6 @@
 
 
     }
+
+
 }

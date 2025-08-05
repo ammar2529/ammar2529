@@ -37,6 +37,10 @@
     <script src="AsyncWidgets/Scripts/DataGrid.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/FormWidget.js"></script>
     <script src="AsyncWidgets/Scripts/spinner.js"></script>
+        <script src="AsyncWidgets/Scripts/spinner.js"></script>
+         <script type="text/javascript" src="../App_Themes/eForms_Theme/SweetAlert/sweetalert2@11.js"></script>
+
+
 
     <script src="Scripts/eForms/iRental/Searchcollapsible.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">

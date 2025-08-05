@@ -2443,17 +2443,19 @@ AsyncWidgets.Validater = function (ctx, groupid, cf) { //cf to contain extra arg
             var inv = new AsyncWidgets.RAInvoker();
             inv.on('onSuccess', function (res) {
 
-                var res = decJSON(res), con;
+                var
+                    res = res,
+                    con;
                 con = t.hasClass('mustexist') ? true : false;
 
-                if (res.Response == con) {
+                if (res.Response === 'true' ? true : false === con) {
                     t.attr('isvalid', 'true');
                 }
                 else {
                     t.attr('isvalid', 'false');
                 }
 
-                if (res.Response == false) {
+                if (res.Response === 'true' ? true : false === false) {
                     me.showErr(t, msgnfnd[_Lang], msgnfnd.color);
                 }
                 else {
