@@ -46,46 +46,10 @@
                         <label for="customSelectTest">FinanceCompany</label>
                     </div>
 
-                    <%--                    <div class="custom-floating">
-                        <div class="custom-dropdown" id="customDropdown" aria-label="Custom dropdown with floating label">
-                            <div class="selected">Select an option</div>
-                            <ul class="dropdown-list">
-                                <li data-value="">Select an option</li>
-                                <li data-value="1">Option 1</li>
-                                <li data-value="2">Option 2</li>
-                                <li data-value="3">Option 3</li>
-                            </ul>
-                        </div>
-                        <label for="customDropdown">Select an option</label>
-                    </div>--%>
-                      
-                 
-<%--                    <div class="select-wrapper mb-3">
-                        <div class="form-outline">
-                            <input class="form-control select-input" type="text" role="combobox" aria-disabled="false" aria-haspopup="listbox" aria-expanded="false" id="FinanceCompany-input" readonly placeholder=" ">
-                            <label class="form-label select-label" for="FinanceCompany-input">Finance Company</label>
-                            <span class="select-arrow"></span>
-                        </div>
-                        <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="FinanceCompany" name="D5" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}">
-                            <option value="" selected="selected"></option>
-
-                        </select>
-                    </div>--%>
-                    <%--                    <div class="form-floating mb-3">
-                        <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="FinanceCompany" loadon="FirstVisible" groupid="schSalesContractDetails" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}" name="D5">
-                            <option value="" selected="selected"></option>
-                        </select>
-                        <label for="FinanceCompany">FinanceCompany</label>
-                    </div>--%>
+  
                 </div>
                 <div class="col-sm-6 col-lg-2">
-<%--                    <div class="form-floating mb-3">
-                        <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="Salesman" loadon="FirstVisible" 
-                            groupid="schSalesContractDetails" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}" name="D6">
-                            <option value="" selected="selected">Salesman</option>
-                        </select>
-                        <label for="Salesman">Salesman</label>
-                    </div>--%>
+
 
 
                     <div class="custom-floating">

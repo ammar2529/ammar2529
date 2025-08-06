@@ -56,14 +56,14 @@
 
                 <div class="col-lg-4 col-xl-4 d-none d-lg-block">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="test" groupid="LedgerManagement_FrUc" argumentid="test" disabled="disabled">
+                        <input type="text" class="form-control" id="test" groupid="LedgerManagement_FrUc" argumentid="LedgerDatefor" disabled="disabled">
                         <label for="test"></label>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-xl-4 d-none d-lg-block">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="test2" groupid="LedgerManagement_FrUc" argumentid="test2" disabled="disabled">
+                        <input type="text" class="form-control" id="test2" groupid="LedgerManagement_FrUc" argumentid="LedgerDatefor2" disabled="disabled">
                         <label for="test2"></label>
                     </div>
                 </div>
@@ -81,14 +81,14 @@
 
                 <div class="col-lg-4 col-xl-4 d-none d-lg-block">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="test3" groupid="LedgerManagement_FrUc" argumentid="test4" disabled="disabled">
+                        <input type="text" class="form-control" id="test3" groupid="LedgerManagement_FrUc" argumentid="LedgerTitlefor" disabled="disabled">
                         <label for="test3"></label>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-xl-4 d-none d-lg-block">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="test4" groupid="LedgerManagement_FrUc" argumentid="" disabled="disabled">
+                        <input type="text" class="form-control" id="test4" groupid="LedgerManagement_FrUc" argumentid="LedgerTitlefor2" disabled="disabled">
                         <label for="test4"></label>
                     </div>
                 </div>
@@ -105,14 +105,14 @@
 
                 <div class="col-lg-4 col-xl-4 d-none d-lg-block">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="test5" groupid="LedgerManagement_FrUc" argumentid="test5" disabled="disabled">
+                        <input type="text" class="form-control" id="test5" groupid="LedgerManagement_FrUc" argumentid="BeneficiaryCodefor" disabled="disabled">
                         <label for="test5"></label>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-xl-4 d-none d-lg-block">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="test6" groupid="LedgerManagement_FrUc" argumentid="test6" disabled="disabled">
+                        <input type="text" class="form-control" id="test6" groupid="LedgerManagement_FrUc" argumentid="BeneficiaryCodefor2" disabled="disabled">
                         <label for="test6"></label>
                     </div>
                 </div>
@@ -291,29 +291,44 @@
             </div>
             <div class="card-body" style="background:white">
                 <div class="row">
-                    <div class="ftitle col-12 col-lg-6">
+                    <div class=" col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" class="ftitle form-control" style="width: 100%;" groupid="LedgerManagement_FrUc" argumentid="TransactionID2" disabled />
-                            <label>Transaction ID</label>
+                            <input type="text" class="ftitle form-control" id="TransactionID2" groupid="LedgerManagement_FrUc" argumentid="TransactionID2" disabled  placeholder="Transaction ID"/>
+                            <label for="TransactionID2">Transaction ID</label>
                         </div>
-                    </div>
+                  </div>
+
+                
+                        <div class=" col-12 col-lg-6 col-sm-none col-xs-none col-xl-6">
+                            <div class="form-floating">
+                                <input type="text" class=" form-control" disabled />
+                                <label></label>
+                            </div>
+                        </div>
+               
                 </div>
                 <div class="row">
-                    <div class="ftitle col-12 col-lg-6">
-                        <label>Transaction Type:</label>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="Debit form-check-input" checked="checked" default="default" value="D" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2">
-                            <label class="form-check-label" style="color: red">Debit</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="Credit form-check-input" value="C" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2">
-                            <label class="form-check-label" style="color: green">Credit</label>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6  align-self-end">
+                        <label for="floatingLimited2" class="me-3">
+                            <small>Transaction Type</small>
+                        </label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input  Debit TransactionType" type="radio" checked="checked" default="default" id="TransactionType2Debit" value="D" name="TransactionType2"
+                                    groupid="LedgerManagement_FrUc" argumentid="TransactionType2">
+                                <label class="form-check-label" for="Debit" style="color: red">Debit</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input Credit TransactionType" type="radio" value="C" id="TransactionType2Credit" name="TransactionType2" groupid="LedgerManagement_FrUc" argumentid="TransactionType2">
+                                <label class="form-check-label" for="Credit" style="color: green">Credit</label>
+                            </div>
                         </div>
                     </div>
+ 
                     <div class="ftitle col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" class="ftitle form-control" style="width: 100%;" groupid="LedgerManagement_FrUc" argumentid="AccountTransactionDate2" disabled />
-                            <label>Transaction Date</label>
+                            <input type="text" class="ftitle form-control" id="AccountTransactionDate2" groupid="LedgerManagement_FrUc" argumentid="AccountTransactionDate2" disabled placeholder="Transaction Date"/>
+                            <label for="AccountTransactionDate2">Transaction Date</label>
                         </div>
                     </div>
                 </div>
@@ -328,7 +343,7 @@
                     </div>
                     <div class="ftitle col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" style="text-align: left; width: 100%;" maxlength="199" class="text number amountInput requiredElem form-control" groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' />
+                            <input type="text" style="text-align: left; " maxlength="199" class="text number amountInput requiredElem form-control" groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount2" requirederr='*' />
                             <label>Amount*</label>
                         </div>
                     </div>
@@ -336,15 +351,15 @@
                 <div class="row show-on-service-select" style="display: none">
                     <div class="ftitle col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" groupid="LedgerManagement_FrUc" maxlength="10" style="width: 100%;" class="text date form-control" argumentid="DueDate2" />
+                            <input type="text" groupid="LedgerManagement_FrUc" maxlength="10" class="text date form-control" argumentid="DueDate2" />
                             <label>Due Date</label>
                         </div>
                     </div>
                 </div>
                 <div class="row show-on-cheque-select" style="display: none">
-                    <div class="ftitle col-12 col-lg-6">
+                    <div class=" col-12 col-lg-6">
                         <div class="form-floating">
-                            <select loadon="FirstVisible" class="dropdownlist BankNameBankNameAMT2 CommonRequiredClass2 commonRemoveRequiredStaric2 form-select" style="width: 100%;" groupid="LedgerManagement_FrUc" argumentid="BankNameAMT2" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" name="D1">
+                            <select loadon="FirstVisible" class="dropdownlist BankNameBankNameAMT2 CommonRequiredClass2 commonRemoveRequiredStaric2 form-select"  groupid="LedgerManagement_FrUc" argumentid="BankNameAMT2" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" name="D1">
                                 <option value="" selected="selected">Select Bank</option>
                             </select>
                             <label>Bank*</label>
@@ -352,7 +367,7 @@
                     </div>
                     <div class="ftitle col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" style="text-align: center; width: 100%;" maxlength="50" class="text number CommonRequiredClass2 commonRemoveRequiredStaric2 ChequeNoAMT2 form-control" groupid="LedgerManagement_FrUc" argumentid="ChequeNoAMT2" />
+                            <input type="text" style="text-align: center;" maxlength="50" class="text number CommonRequiredClass2 commonRemoveRequiredStaric2 ChequeNoAMT2 form-control" groupid="LedgerManagement_FrUc" argumentid="ChequeNoAMT2" />
                             <label>Cheque No.*</label>
                         </div>
                     </div>
@@ -360,31 +375,51 @@
                 <div class="row show-on-cheque-select" style="display: none">
                     <div class="ftitle col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" style="text-align: center; width: 100%; margin-right: 4px" maxlength="100" class="text ChequeFromAMT2 form-control" groupid="LedgerManagement_FrUc" alphconf="{allow:'.'}" argumentid="ChequeFromAMT2" />
+                            <input type="text" style="text-align: center;  margin-right: 4px" maxlength="100" class="text ChequeFromAMT2 form-control" groupid="LedgerManagement_FrUc" alphconf="{allow:'.'}" argumentid="ChequeFromAMT2" />
                             <label>Cheque From</label>
                         </div>
                     </div>
                     <div class="ftitle col-12 col-lg-6">
                         <div class="form-floating">
-                            <input type="text" argumentid="ChequeDateAMT2" class="text CommonRequiredClass2 date ChequeDateAMT2 commonRemoveRequiredStaric2 form-control" groupid="LedgerManagement_FrUc" maxlength="10" style="width: 100%;" />
+                            <input type="text" argumentid="ChequeDateAMT2" class="text CommonRequiredClass2 date ChequeDateAMT2 commonRemoveRequiredStaric2 form-control" groupid="LedgerManagement_FrUc" maxlength="10"  />
                             <label>Cheque Date*</label>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="ftitle col-12 col-lg-6">
-                        <label>Description:</label>
-                        <textarea class="textarea form-control" style="width: 100%; height: 50px; box-sizing: border-box; resize: none; vertical-align: middle;" argumentid="LedgerManagementReason2" groupid="LedgerManagement_FrUc"></textarea>
+
+                <div class="row mb-2">
+                    <!-- Description -->
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <textarea class="form-control textarea" id="LedgerManagementReason2" placeholder="Description"
+                                style="height: 100px; resize: none;" argumentid="LedgerManagementReason2" groupid="LedgerManagement_FrUc"></textarea>
+                            <label for="LedgerManagementReason2">Description</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
+            <div class="card-footer" style="background: 1px #e7dddd">
                 <div class="row">
+                    <div class="col-6">
+                        <button type="submit"  ignorevalidate="LedgerManagementAmount AccountsPaymentType" class="UPD_Row_Save_Btn ButtonStyle btn btn-primary w-100" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
+                            <i class="fa fa-save me-1"></i>Save
+       
+                        </button>
+                    </div>
+
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary CloseTableEditForm ButtonStyle w-100" id="CloseTableEditForm">
+                            <i class="fa fa-times me-1"></i>Cancel
+       
+                        </button>
+                    </div>
+                </div>
+<%--                <div class="row">
                     <div class="col-12">
                         <input type="button" value="  Save  " ignorevalidate="LedgerManagementAmount AccountsPaymentType" class="UPD_Row_Save_Btn ButtonStyle btn btn-primary" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement_Amounts',Params:{DBAction:'UpdateRow'},HideOnSuccess:false,Requery:true,GroupId:'LedgerManagement_FrUc'}">
                         <input type="button" value="  Cancel  " id="CloseTableEditForm" class="CloseTableEditForm ButtonStyle btn btn-secondary" />
                     </div>
-                </div>
+                </div>--%>
             </div>
         </div>
     </div>
@@ -671,19 +706,31 @@
 
 
 
-            <tr>
-                <td>
-                    <img src="App_Themes/eForms_Theme/Images/spacer.gif">
-                </td>
-                <td colspan="4">
-                    <button type="button"  ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="btn btn-primary DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:false,GroupId:'LedgerManagement_FrUc'}">Save</button>
-                    <input type="button" value="  Save  " style="width: 60px;" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:false,GroupId:'LedgerManagement_FrUc'}" />
-                    <input type="button" value="  Print  " style="width: 60px; display: none" class="ButtonStyle PrintBtn  " />
-                    <input type="button" value="  Cancel  " style="width: 60px;" class="CloseForm ButtonStyle" />
-                </td>
-            </tr>
-        
 
+        <div class="d-flex justify-content-center mt-4 mb-2">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Save Button -->
+                    <button type="button" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="btn btn-primary DataAction ButtonStyle firstSaveBtn" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:false,GroupId:'LedgerManagement_FrUc'}">Save</button>
+
+                </div>
+                <div class="col-md-3">
+                    <!-- Save Button -->
+                    <button type="button" ignorevalidate="LedgerManagementAmount AccountsPaymentType LedgerManagementAmount2 AccountsPaymentType2 AccountTransactionDate2" class="DataAction ButtonStyle secondSaveBtn btn btn-primary" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_Account_LedgerManagement',HideOnSuccess:true,Requery:false,GroupId:'LedgerManagement_FrUc'}">Save</button>
+
+                </div>
+                <div class="col-md-3 PrintBtn" style="display: none">
+                    <!-- Print Button -->
+                    <button type="button" class=" PrintBtn  btn btn-primary">Print</button>
+
+                </div>
+                <div class="col-md-3">
+                    <!-- Cancel Button -->
+                    <button type="button" class="CloseForm ButtonStyle btn btn-secondary">Cancel</button>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

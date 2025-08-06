@@ -16,55 +16,50 @@
             </div>
         </div>
 
-                <%--        -------------------------------------------------------------------Start Search Form---------------------------------------------------------------------------%>
-        <table class="w-form-table" cellspacing="2" style="width: 100%">
-    <tr>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Ledger Code</span></td>
-        <td style="text-align: left;" class="ftitle">
-            <span>Beneficiary Type</span>
-        </td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Company Name</span></td>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating ">
+                    <input type="text" class="form-control " aria-label=".form-control-sm example" id="LedgerCode" argumentid="LedgerManagementRecCode" groupid="schLedgerManagement" placeholder="Ledger Code">
+                    <label for="LedgerCode">Ledger Code</label>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-6 col-lg-2">
+
+                <div class="custom-floating">
+                    <select class="form-select" id="BeneficiaryType" aria-label="Custom floating label select" groupid="schLedgerManagement" argumentid="BeneficiaryType" name="D4">
+                        <option value="" selected></option>
+                        <option value="C">Company</option>
+                        <option value="I">Individual</option>
+                    </select>
+                    <label for="BeneficiaryType">Beneficiary Type</label>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating ">
+                    <input type="text" class="form-control " aria-label=".form-control-sm example" id="CompanyName" argumentid="CompanyName" groupid="schLedgerManagement" placeholder="Company Name">
+                    <label for="CompanyName">Company Name</label>
+                </div>
+            </div>
 
 
 
 
-        <td style="text-align: left;"></td>
-    </tr>
-    <tr>
-        <td style="text-align: left;">
-            <input type="text" class="text"
-                argumentid="LedgerManagementRecCode" groupid="schLedgerManagement"></td>
-        <td style="text-align: left;">
-
-            <select class="dropdownlist" style="width: 160px;"
-                groupid="schLedgerManagement" argumentid="BeneficiaryType" name="D4">
-                <option value="" selected="selected">Select Beneficiary Type</option>
-
-                <option value="C">Company</option>
-                <option value="I">Individual</option>
-
-            </select>
-
-        </td>
-
-        <td style="text-align: left;">
-            <input type="text" class="text"
-                argumentid="CompanyName" groupid="schLedgerManagement"></td>
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2 d-flex justify-content-center align-items-center">
+                <button type="button" class="btn btn-primary search ViewButton me-2">Search</button>
+                <button type="button" class="btn btn-secondary reset ClearButton">Clear</button>
+            </div>
 
 
 
-        <td style="text-align: left; padding-bottom: 0px">
-            <a href="javascript:void(0);" class="search ViewButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-            <a href="javascript:void(0);" class="reset ClearButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a></td>
-    </tr>
-</table>
-                <%--        -------------------------------------------------------------------End Search Form---------------------------------------------------------------------------%>
+
 
 
         </div>
     </div>
+</div>
 

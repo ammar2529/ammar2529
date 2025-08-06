@@ -489,7 +489,7 @@
     let previousYellowRow = null; // Track the previously yellow row
     function EditRow(button) {
         let t = this
-        
+        debugger
 
         var curTR = $(button).closest('tr'); // Get current row
         $('.ShowOnNewClickButton', t.el).hide();
@@ -557,8 +557,10 @@
 
         // Set values in form
 
-        $('[argumentid="TransactionID2"]', $testRow).text(TransactionID);
-        $('span[argumentid="AccountTransactionDate2"]', $testRow).text(TransactionDate);
+        let dateObj = new Date(TransactionDate);
+        let formattedDate = dateObj.toISOString().split('T')[0]; // Converts to YYYY-MM-DD
+        $('input[argumentid="AccountTransactionDate2"]', $testRow).val(formattedDate);
+        $('input[argumentid="TransactionID2"]', $testRow).val(TransactionID);
         $('input[argumentid="LedgerManagementAmount2"]', $testRow).val(finalAmount);
         $('textarea[argumentid="LedgerManagementReason2"]', $testRow).val(reason);
 
@@ -651,8 +653,24 @@
                 var message = parts[2];
 
 
-                $.showMessage(message);
+                $('body').showMessage('Transaction Details Update Successfully!.');
 
+                var recId = $('[argumentid="RecId"]', t.el).text();
+                debugger
+                const params = {
+                    Command: 'SEL_Account_LedgerManagement_Amounts',
+                    LedgerAmountId: recId
+                };
+
+                // API Call
+                ServerCall(params, function (response) {
+                    hideOverlay();
+
+                    FetchLedegerAmounts(response, t)
+
+                }, 'GetData');
+
+                hideOverlay();
 
             }, 'Search');
 
@@ -825,7 +843,7 @@
     }
 
     function ExpandRow(btn) {
-
+        
         const $icon = btn; // The clicked icon
         const $parentRow = $icon.closest('tr'); // The parent row
         const amountRecId = $icon.closest('td').attr('AmountRecId'); // Get AmountRecId for uniqueness
