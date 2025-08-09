@@ -1,8 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BuDastoor.master.cs" Inherits="WebProject.BuDastoor" %>
 
-<%@ Register Src="~/AdminPages/eForms/eForms_Header.ascx" TagName="eForms_Header" TagPrefix="WP" %>
-<%@ Register Src="~/AdminPages/eForms/eForms_Footer.ascx" TagName="eForms_Footer" TagPrefix="WP" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +18,7 @@
     <link href="App_Themes/eForms_Theme/StyleSheets/ControllsAndSelect.css" rel="stylesheet" />
     <link href="App_Themes/eForms_Theme/StyleSheets/Dropdowns.css" rel="stylesheet" />
     <link href="App_Themes/eForms_Theme/StyleSheets/Widget.css" rel="stylesheet" />
-<%--    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">--%>
     <link href="App_Themes/eForms_Theme/StyleSheets/NavTabs.css" rel="stylesheet" />
-
     <link href="App_Themes/eForms_Theme/StyleSheets/sidebar.css" rel="stylesheet" />
     <script src="AsyncWidgets/Scripts/jQueryUI/jquery-ui.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/Custom-Ext.js" type="text/javascript"></script>
@@ -37,195 +29,398 @@
     <script src="AsyncWidgets/Scripts/DataGrid.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/FormWidget.js"></script>
     <script src="AsyncWidgets/Scripts/spinner.js"></script>
-        <script src="AsyncWidgets/Scripts/spinner.js"></script>
-         <script type="text/javascript" src="../App_Themes/eForms_Theme/SweetAlert/sweetalert2@11.js"></script>
-
-
-
+    <script type="text/javascript" src="../App_Themes/eForms_Theme/SweetAlert/sweetalert2@11.js"></script>
     <script src="Scripts/eForms/iRental/Searchcollapsible.js"></script>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
-
-    <asp:Literal ID="ltrScrpt" runat="server"></asp:Literal>
-
 
     <style>
+        @font-face {
+            font-family: 'OpenSans-Regular';
+            src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+                 url('../fonts/OpenSans-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
 
-@font-face {
-    font-family: 'OpenSans-Regular';
-    src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
-         url('../fonts/OpenSans-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
+        @font-face {
+            font-family: 'OpenSans-SemiBold';
+            src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2'),
+                 url('../fonts/OpenSans-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+        }
 
-@font-face {
-    font-family: 'OpenSans-SemiBold';
-    src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2'),
-         url('../fonts/OpenSans-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-}
+        body {
+            font-family: Roboto-Regular, Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            font-size: 13px;
+            color: #333;
+            background-color: #ebeff3;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Apply to entire website */
-body {
-    /*font-family: OpenSans-Regular ;*/
-    font-family:Roboto-Regular, Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    font-size: 13px; /* Set a base font size */
-   /* line-height: 1.5;*/
-    color: #333; /* Optional: improve readability */
-}
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
+        .content-wrapper {
+            flex: 1;
+            padding: 20px;
+        }
 
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 100%;
+            background-color: #12344d;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1030;
+            overflow-y: auto;
+            transition: width 0.3s ease-in-out;
+        }
 
+        .sidebar:hover {
+            width: 250px !important;
+        }
+
+        .sidebar.collapsed {
+            width: 80px !important;
+        }
+
+        .sidebar .navbar-brand {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .sidebar .navbar-brand .logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .sidebar .navbar-brand h6 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .sidebar:not(:hover) .navbar-brand h6,
+        .sidebar.collapsed .navbar-brand h6 {
+            display: none;
+        }
+
+        .sidebar .navbar-brand .fa-opencart {
+            font-size: 16px;
+            margin-right: 10px;
+            color: #ffffff;
+        }
+
+        .sidebar:not(:hover) .navbar-brand .fa-opencart,
+        .sidebar.collapsed .navbar-brand .fa-opencart {
+            margin-right: 0;
+        }
+
+        .sidebar .nav-item {
+            width: 100%;
+        }
+
+        .sidebar .nav-link {
+            color: #ffffff;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #1a4a6b;
+            color: #ff6200;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .sidebar:not(:hover) .nav-link .menu-text,
+        .sidebar.collapsed .nav-link .menu-text {
+            display: none;
+        }
+
+        .sidebar:not(:hover) .nav-link i,
+        .sidebar.collapsed .nav-link i {
+            margin-right: 0;
+        }
+
+        .sidebar .dropdown-menu {
+            position: static;
+            width: 100%;
+            border: none;
+            box-shadow: none;
+            background-color: #1a4a6b;
+            padding-left: 30px;
+            display: none;
+        }
+
+        .sidebar .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .sidebar:not(:hover) .dropdown-menu,
+        .sidebar.collapsed .dropdown-menu {
+            display: none !important;
+        }
+
+        .sidebar .dropdown-item {
+            padding: 8px 15px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar .dropdown-item i {
+            margin-right: 10px;
+            color: #ffffff;
+        }
+
+        .sidebar .dropdown-item:hover {
+            background-color: #2a5b8c;
+            color: #ff6200;
+        }
+
+        .sidebar .user-section {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+            margin-top: auto;
+        }
+
+        .sidebar .user-section .dropdown-toggle {
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar .user-section .dropdown-toggle:hover {
+            color: #ff6200;
+        }
+
+        .sidebar .user-section .dropdown-menu {
+            position: static;
+            width: 100%;
+            background-color: #1a4a6b;
+            display: none;
+        }
+
+        .sidebar .user-section:hover .dropdown-menu {
+            display: block;
+        }
+
+        .sidebar:not(:hover) .user-section .UserName,
+        .sidebar.collapsed .user-section .UserName {
+            display: none;
+        }
+
+        .sidebar .logout i {
+            color: #dc3545;
+        }
+
+        .sidebar-toggle-btn {
+            background-color: #12344d;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .sidebar:not(:hover) .sidebar-toggle-btn,
+        .sidebar.collapsed .sidebar-toggle-btn {
+            margin-right: 0;
+        }
+
+        .main-content {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .sidebar:hover ~ .main-content {
+            margin-left: 250px !important;
+        }
+
+        .main-content.collapsed {
+            margin-left: 60px !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                transform: translateX(-250px);
+                width: 250px;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar.collapsed {
+                width: 60px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .main-content.collapsed {
+                margin-left: 0;
+            }
+
+            .sidebar .nav-item.dropdown:hover .dropdown-menu,
+            .sidebar .user-section:hover .dropdown-menu {
+                display: none;
+            }
+
+            .sidebar .nav-item.dropdown .dropdown-menu,
+            .sidebar .user-section .dropdown-menu {
+                display: none !important;
+            }
+
+            .sidebar .nav-item.dropdown.show .dropdown-menu,
+            .sidebar .user-section.show .dropdown-menu {
+                display: block !important;
+            }
+
+            .sidebar:hover {
+                width: 250px; /* Maintain mobile behavior */
+            }
+
+            .sidebar:hover ~ .main-content {
+                margin-left: 0; /* No margin change on mobile */
+            }
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer .CopyRight {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
     </style>
 </head>
 
-<body id="mainPageBody" style="background-color:#ebeff3">
+<body id="mainPageBody">
+    <div class="page-wrapper">
+        <form id="frmMain" runat="server">
+            <asp:Literal ID="ltrScrpt" runat="server"></asp:Literal>
+            <asp:Literal ID="MenuData" runat="server"></asp:Literal>
+            <asp:HiddenField ID="_CurrentLang" runat="server" />
+            <asp:HiddenField ID="_PostCountry" runat="server" />
 
-<%--    <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" style=" position: fixed;">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-            <ul class="menu-list">
-                <li>
-                    <a class="menu-link bold" href="javascript:void(0);" showwidget="{widgetId:'frmMyProfile',parentId:'conAdministration_Controls'}">My Profile</a>
-                </li>
-                <li>
-                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdProxyUsers',parentId:'conAdministration_Controls'}">Proxy Access</a>
-                </li>
-            </ul>      </div>
-    </div>--%>
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="navbar-brand">
+                    <button class="sidebar-toggle-btn" ><i class="fa-solid fa-sliders"></i></button>
+                    <div class="logo-container">
+<%--                        <i class="fa fa-opencart"></i>--%>
+                        <h6 class="home" returntype="true" showwidget="frmInbox">BuDastoor</h6>
+                    </div>
+                </div>
+                <ul class="navbar-nav" id="dynamicMenu">
+                    <!-- Dynamic menu items will be injected here -->
+                </ul>
+                <div class="user-section">
+                    <a class="dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left:13px;">
+                        <span class="UserName me-2"></span>
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item settings">
+                                <i class="fas fa-cog me-2"></i><span class="menu-text">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item report">
+                                <i class="fas fa-file-alt me-2"></i><span class="menu-text">Crystal Report</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt me-2"></i><span class="menu-text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-
-
-<div class="page-wrapper">
-    <form id="frmMain" runat="server">
-        <div class="columContainer">
-            <div id="MainContainer">
-                <WP:eForms_Header ID="eForms_Header" runat="server" />
+            <!-- Main Content -->
+            <div class="main-content" id="mainContent">
                 <div class="content-wrapper">
                     <asp:ContentPlaceHolder ID="BuDastoorHome" runat="server">
-                        <!-- Example form for testing -->
                         <div class="container text-center">
                             <!-- Content goes here -->
                         </div>
                     </asp:ContentPlaceHolder>
                 </div>
-<%--                <WP:eForms_Footer ID="eForms_Footer" runat="server" />--%>
-                <asp:HiddenField ID="_CurrentLang" runat="server" />
-                <asp:HiddenField ID="_PostCountry" runat="server" />
-            </div>
-            
-            <div class="menuColumn" id="menuColumn" style="display:none">
-                <!-- Sidebar -->
-                <div class="sidebar" id="sidebar">
-                    <div class="site-page-menu">
-                        <!-- Toggle Button Section -->
-                        <div class="menu-section toggle-section">
-                            <button type="button" class="toggle-btn" onclick="toggleSidebar()">☰</button>
-                        </div>
-
-                        <!-- User Administration -->
-                        <div class="menu-section border-user-admin" onclick="toggleSubmenu(this)">
-                            <span class="menu-title">User Administration</span>
-                            <ul class="menu-list">
-                                <li>
-                                    <a class="menu-link bold" href="javascript:void(0);" showwidget="{widgetId:'frmMyProfile',parentId:'conAdministration_Controls'}">My Profile</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdProxyUsers',parentId:'conAdministration_Controls'}">Proxy Access</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- System Administration -->
-                        <div class="menu-section border-system-admin" onclick="toggleSubmenu(this)">
-                            <span class="menu-title">System Administration</span>
-                            <ul class="menu-list">
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}">Organization Setup</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdUserManagement',parentId:'conAdministration_Controls'}">User Management</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdSimpleMenu',parentId:'conAdministration_Controls'}">Menu Configuration</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Role Management</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdListofValues',parentId:'conAdministration_Controls'}">List of Values</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdKPI',parentId:'conAdministration_Controls'}">KPI Setup</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Process Administration -->
-                        <div class="menu-section border-process-admin" onclick="toggleSubmenu(this)">
-                            <span class="menu-title red">Process Administration</span>
-                            <ul class="menu-list">
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdOrganizations',parentId:'conAdministration_Controls'}">Process / Module Details</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'LeafletRoleCategories',parentId:'conAdministration_Controls'}">Record Management</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Import / Export (XML)</a>
-                                </li>
-                                <li>
-                                    <a class="menu-link" href="javascript:void(0);" showwidget="{widgetId:'grdRoleCategories',parentId:'conAdministration_Controls'}">Setup Wizard</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- iDashboard -->
-                        <div class="menu-section border-idashboard" onclick="toggleSubmenu(this)">
-                            <a class="menu-link bold red" href="javascript:void(0);" showwidget="Logout1">iDashboard</a>
-                        </div>
-                    </div>
+                <!-- Footer -->
+                <div class="footer">
+                    <p class="CopyRight"></p>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-
-<!-- Overlay with Spinner and Text -->
-<div class="overlay" id="loadingOverlay" style="display:none">
-    <div class="spinner-container">
-        <div class="sleek-spinner"></div>
-        <div class="overlay-text">Please wait, loading your content...</div>
+        </form>
     </div>
-</div>
 
-<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
-    <div id="successToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Success</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body">
-            Operation completed successfully!
+    <!-- Overlay with Spinner and Text -->
+    <div class="overlay" id="loadingOverlay" style="display:none">
+        <div class="spinner-container">
+            <div class="sleek-spinner"></div>
+            <div class="overlay-text">Please wait, loading your content...</div>
         </div>
     </div>
-</div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+        <div id="successToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                Operation completed successfully!
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript">
-
         $(document).ready(function () {
             $('.CopyRight').text(`Copyright © ${(new Date()).getFullYear()} All rights reserved.`);
 
-            $('.form-floating .form-control').on('blur', function () {
-                var isRequired = $(this).attr('required') || $(this).hasClass('required'); // Check if 'required' attribute or class exists
-                var value = $(this).val().trim(); // Remove extra spaces
+            // Ensure sidebar is collapsed by default on desktop
+            if (window.innerWidth > 991.98) {
+                
+                $('#sidebar').addClass('collapsed');
+                $('#mainContent').addClass('collapsed');
+            }
 
-                if (isRequired && !value) { // Apply validation only if 'required' exists
+            $('.form-floating .form-control').on('blur', function () {
+                var isRequired = $(this).attr('required') || $(this).hasClass('required');
+                var value = $(this).val().trim();
+                if (isRequired && !value) {
                     $(this).addClass('invalid');
                     $(this).siblings('label').addClass('invalid');
                 } else {
@@ -234,74 +429,178 @@ body {
                 }
             });
 
-            // Remove error styling when user focuses on the input
             $('.form-floating .form-control').on('focus', function () {
                 $(this).removeClass('invalid');
                 $(this).siblings('label').removeClass('invalid');
             });
 
-            // $('.form-control-plaintext').prop('disabled', true); // Disable input field
-
-            $('.ink-bar').removeClass('fw-bold h4 h5');
-            //$('.nav').removeClass('nav-tabs').addClass('nav-pills');
-
-            //// ✅ Fixed: Removed incorrect semicolon inside the `.css()` function
-            //$('.nav').css({
-            //    'background-color': '#12344d',
-            //    'padding': '5px',
-               
-            //});
-
             $('.form-floating .form-control-plaintext')
                 .removeClass('form-control-plaintext')
                 .addClass('form-control')
-                .attr('readonly', true) // ✅ Read-only attribute set
+                .attr('readonly', true)
                 .css({
-                    'border-bottom': '2px dotted rgba(148,148,148)',  // Gray dotted border
-                    'pointer-events': 'none',      // 🔹 Disable clicking
-                    // Adjust text spacing
-                    'width': '100%'  ,            // Full width
+                    'border-bottom': '2px dotted rgba(148,148,148)',
+                    'pointer-events': 'none',
+                    'width': '100%',
                     'font-size': '13px',
                     'font-weight': '400',
-                    'font- family': 'OpenSans-Regular'
+                    'font-family': 'OpenSans-Regular'
                 });
 
-            /*$(".form-select").prop("selectedIndex", -1);*/
-            //$('.form-floating .form-select ~ label').remove();
-
-           
-
-        });
-        document.querySelectorAll('.custom-floating select').forEach(select => {
-            // Function to update label state based on value
-            function updateLabelState() {
-                if (select.value && select.value !== '') {
-                    select.parentElement.classList.add('floating');
-                } else {
-                    select.parentElement.classList.remove('floating');
+            document.querySelectorAll('.custom-floating select').forEach(select => {
+                function updateLabelState() {
+                    if (select.value && select.value !== '') {
+                        select.parentElement.classList.add('floating');
+                    } else {
+                        select.parentElement.classList.remove('floating');
+                    }
                 }
+                updateLabelState();
+                select.addEventListener('change', updateLabelState);
+                select.addEventListener('focus', updateLabelState);
+                select.addEventListener('blur', updateLabelState);
+            });
+
+            // Dynamic Menu Rendering
+            try {
+                var menuData = MenuData ? MenuData.Rows : null;
+                var userName = AsyncWidgets.user ? AsyncWidgets.user.name : '';
+                var userId = AsyncWidgets.user ? AsyncWidgets.user.id : '';
+                var userRoles = AsyncWidgets.user && AsyncWidgets.user.conf ? AsyncWidgets.user.conf : '';
+                var conUserRoles = userRoles ? decJSON(userRoles) : { Roles: '' };
+                var roles = conUserRoles.Roles || '';
+                var rolesArray = roles.split(',').filter(Boolean);
+
+                if (rolesArray.includes("Car_Customer_Details")) {
+                    console.log("Role Found: Car_Customer_Details");
+                } else {
+                    console.log("Role Not Found: Car_Customer_Details");
+                }
+
+                function renderMenu() {
+                    if (!menuData) {
+                        console.error("MenuData is undefined or null. Please ensure MenuData is populated in the code-behind.");
+                        document.getElementById('dynamicMenu').innerHTML = '<li class="nav-item"><a class="nav-link">Menu Data Not Available</a></li>';
+                        return;
+                    }
+
+                    var menuText = '';
+                    for (var idx in menuData) {
+                        var parentMenu = menuData[idx];
+                        if (parentMenu.ParentMenuId != 0) {
+                            continue;
+                        }
+                        if (parentMenu.MenuId == 0) {
+                            menuText += '<li class="nav-item">';
+                            menuText += '<a class="nav-link home" returntype="true" showwidget="frmInbox" style="padding-left:25px;">';
+                            menuText += '<i class="fa-solid fa-house"></i><span class="menu-text"> ' + parentMenu.MenuName + '</span>';
+                            menuText += '</a>';
+                            menuText += '</li>';
+                        } else if (hasChild(parentMenu.MenuId)) {
+                            menuText += '<li class="nav-item dropdown">';
+                            menuText += '<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"; style="padding-left:25px;">';
+                            // Check if MenuName is "HR" and apply HR-specific icon
+                            if (parentMenu.MenuName.toLowerCase() === 'hr') {
+                                menuText += '<i class="fa-solid fa-users"></i><span class="menu-text"> ' + parentMenu.MenuName + '</span>';
+                            } else {
+                                menuText += '<i class="fa-solid fa-folder"></i><span class="menu-text"> ' + parentMenu.MenuName + '</span>';
+                            }
+                            // 👇 Render parent name below icon with inline styling
+                            //menuText += '<div><span style="font-size: 0.85rem; margin-top: 4px; text-align: center; display: block;">' + parentMenu.MenuName + '</span></div>';
+
+
+
+                            menuText += '</a>';
+                            menuText += '<ul class="dropdown-menu">';
+                            for (var jdx in menuData) {
+                                var childMenu = menuData[jdx];
+                                if (parentMenu.MenuId == childMenu.ParentMenuId) {
+                                    menuText += '<li><a class="dropdown-item" returntype="true" showwidget="' + childMenu.ShowWidget + '">';
+                                    menuText += '<i class="fa-solid fa-file"></i><span class="menu-text"> ' + childMenu.MenuName + '</span>';
+                                    menuText += '</a></li>';
+                                }
+                            }
+                            menuText += '</ul>';
+                            menuText += '</li>';
+                        } else {
+                            menuText += '<li class="nav-item">';
+                            menuText += '<a class="nav-link" returntype="true" showwidget="' + parentMenu.ShowWidget + '">';
+                            menuText += '<i class="fa-solid fa-file"></i><span class="menu-text"> ' + parentMenu.MenuName + '</span>';
+                            menuText += '</a>';
+                            menuText += '</li>';
+                        }
+                    }
+                    document.getElementById('dynamicMenu').innerHTML = menuText;
+                }
+
+                function hasChild(menuId) {
+                    for (var i in menuData) {
+                        if (menuData[i].ParentMenuId == menuId) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+
+                renderMenu();
+                AsyncWidgets.WidgetManager.bind($('#sidebar [showwidget]'));
+
+                // Re-apply Bootstrap dropdown toggle for mobile
+                $('#sidebar .dropdown-toggle').on('click', function () {
+                    if (window.innerWidth <= 991.98) {
+                        $(this).parent().toggleClass('show');
+                        $(this).next('.dropdown-menu').toggleClass('show');
+                    }
+                });
+            } catch (e) {
+                console.error("Error in menu rendering: ", e);
+                document.getElementById('dynamicMenu').innerHTML = '<li class="nav-item"><a class="nav-link">Error Loading Menu</a></li>';
             }
 
-            // Initial state
-            updateLabelState();
+            $('.logout').click(function () {
+                var inv = new AsyncWidgets.RAInvoker();
+                inv.invokeRA({
+                    params: ["ActorId", "Authentication", "ActionId", "LogoutUser", "ServiceInfo", "<root><dummy></dummy></root>"]
+                });
+                AsyncWidgets.user.logout();
+                inv.on('onSuccess', function (res) {
+                    $('.card').hide();
+                    window.location = "/Login.aspx";
+                    window.location.pathname = BASE_PATH + "BuDastoorHome";
+                });
+            });
 
-            // Update on change
-            select.addEventListener('change', updateLabelState);
-
-            // Update on focus (no change unless value is non-empty)
-            select.addEventListener('focus', updateLabelState);
-
-            // Update on blur
-            select.addEventListener('blur', updateLabelState);
+            if (userName) {
+                $('.UserName').text(userName);
+                $('.UserName').css('text-decoration', 'none');
+            }
         });
 
-      
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var mainContent = document.getElementById('mainContent');
+            var toggleBtn = document.querySelector('.sidebar-toggle-btn');
 
+            if (window.innerWidth <= 991.98) {
+                // Mobile: Toggle visibility
+                sidebar.classList.toggle('active');
+                mainContent.classList.toggle('full');
+            } else {
+                // Desktop: Toggle width
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('collapsed');
+            }
 
+            toggleBtn.classList.toggle('active');
+        }
+        $('#sidebar').on('mouseenter', function () {
+            toggleSidebar(true); // or whatever logic you want
+        });
 
-    
+        $('#sidebar').on('mouseleave', function () {
+            toggleSidebar(false); // or reverse logic
+        });
     </script>
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

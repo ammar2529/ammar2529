@@ -4,22 +4,22 @@
 }*/
 
 /* Sidebar Container */
-.sidebar {
+/*.sidebar {
     width: 340px;
     height: 100vh;
     position: fixed;
     top: 60px;
-    left: 0; /* Always visible on full screen */
-    background-color: #f8f9fa;
+    left: 0;*/ /* Always visible on full screen */
+    /*background-color: #f8f9fa;
     transition: width 0.3s ease-in-out;
     overflow-y: auto;
     z-index: 1100;
-}
+}*/
 
 /* Toggle Button (Inside Sidebar) */
-.toggle-btn {
-    display: none; /* Hidden on full screen */
-    background-color: #0F99CA;
+/*.toggle-btn {
+    display: none;*/ /* Hidden on full screen */
+    /*background-color: #0F99CA;
     color: white;
     border: none;
     padding: 10px;
@@ -30,10 +30,10 @@
     font-size: 20px;
     text-align: center;
     margin: 10px auto;
-}
+}*/
 
 /* Menu Styling */
-.site-page-menu {
+/*.site-page-menu {
     padding: 15px;
 }
 
@@ -58,8 +58,8 @@
     list-style-type: disc;
     padding-left: 30px;
     margin: 0;
-    display: block !important; /* Always visible on full screen */
-}
+    display: block !important;*/ /* Always visible on full screen */
+/*}
 
     .menu-list li {
         margin: 5px 0;
@@ -81,10 +81,10 @@
 
     .menu-link.red {
         color: red;
-    }
+    }*/
 
 /* Border Styling for Sections */
-.border-user-admin {
+/*.border-user-admin {
     border-left: 3px solid rgb(139, 177, 222);
     padding-left: 10px;
 }
@@ -102,24 +102,24 @@
 .border-idashboard {
     border-left: 3px solid rgb(126, 212, 211);
     padding-left: 10px;
-}
+}*/
 
 /* Main Content */
-.main-content {
-    margin-left: 270px; /* Space for full sidebar */
-    padding: 20px;
-}
+/*.main-content {
+    margin-left: 270px;*/ /* Space for full sidebar */
+    /*padding: 20px;
+}*/
 
 /* Small Devices (≤768px) */
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
     .sidebar {
-        width: 60px; /* Narrow for icons */
-        left: 0;
+        width: 60px;*/ /* Narrow for icons */
+        /*left: 0;
     }
 
         .sidebar.active {
-            width: 250px; /* Expand when active */
-        }
+            width: 250px;*/ /* Expand when active */
+        /*}
 
     .site-page-menu {
         padding: 5px;
@@ -127,71 +127,71 @@
 
     .menu-title,
     .menu-link {
-        display: none; /* Hide text by default */
-    }
+        display: none;*/ /* Hide text by default */
+    /*}
 
     .sidebar.active .menu-title,
     .sidebar.active .menu-link {
-        display: block; /* Show text when active */
-    }
+        display: block;*/ /* Show text when active */
+    /*}
 
     .menu-list {
         padding-left: 0;
         list-style: none;
-        display: none !important; /* Hide submenus by default */
-    }
+        display: none !important;*/ /* Hide submenus by default */
+    /*}
 
     .sidebar.active .menu-list {
-        display: block !important; /* Show submenus when active */
-    }
+        display: block !important;*/ /* Show submenus when active */
+    /*}
 
     .menu-section {
         margin-bottom: 10px;
         text-align: center;
         cursor: pointer;
-    }
+    }*/
 
         /* Font Awesome Icon Styling */
-        .menu-section::before {
-            content: '\f002'; /* Default icon (search) as fallback */
-            font-family: 'Font Awesome 6 Free';
+        /*.menu-section::before {
+            content: '\f002';*/ /* Default icon (search) as fallback */
+            /*font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             display: block;
             font-size: 24px;
             color: #0F99CA;
             margin: 10px auto;
-        }
+        }*/
 
     /* Specific Icons for Each Section */
-    .border-user-admin::before {
-        content: '\f007'; /* User icon */
-    }
+    /*.border-user-admin::before {
+        content: '\f007';*/ /* User icon */
+    /*}
 
     .border-system-admin::before {
-        content: '\f085'; /* Gear icon */
-    }
+        content: '\f085';*/ /* Gear icon */
+    /*}
 
     .border-process-admin::before {
-        content: '\f0e7'; /* Bolt icon */
-    }
+        content: '\f0e7';*/ /* Bolt icon */
+    /*}
 
     .border-idashboard::before {
-        content: '\f201'; /* Chart-bar icon */
-    }
+        content: '\f201';*/ /* Chart-bar icon */
+    /*}*/
 
     /* Toggle Button Section */
-    .toggle-section::before {
-        content: none; /* No icon for toggle section */
-    }
+    /*.toggle-section::before {
+        content: none;*/ /* No icon for toggle section */
+    /*}
 
     .toggle-btn {
-        display: block; /* Show toggle button */
-    }
+        display: block;*/ /* Show toggle button */
+    /*}
 
     .main-content {
-        margin-left: 80px; /* Adjust for narrow sidebar */
-    }
-}
+        margin-left: 80px;*/ /* Adjust for narrow sidebar */
+    /*}
+}*/
     
     /* Sidebar when active */
     /*.sidebar.active {

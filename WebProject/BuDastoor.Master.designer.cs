@@ -15,15 +15,6 @@ namespace WebProject
     {
 
         /// <summary>
-        /// ltrScrpt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrScrpt;
-
-        /// <summary>
         /// frmMain control.
         /// </summary>
         /// <remarks>
@@ -33,22 +24,22 @@ namespace WebProject
         protected global::System.Web.UI.HtmlControls.HtmlForm frmMain;
 
         /// <summary>
-        /// eForms_Header control.
+        /// ltrScrpt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AdminPages.eForms.eForms_Header eForms_Header;
+        protected global::System.Web.UI.WebControls.Literal ltrScrpt;
 
         /// <summary>
-        /// BuDastoorHome control.
+        /// MenuData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder BuDastoorHome;
+        protected global::System.Web.UI.WebControls.Literal MenuData;
 
         /// <summary>
         /// _CurrentLang control.
@@ -67,5 +58,14 @@ namespace WebProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField _PostCountry;
+
+        /// <summary>
+        /// BuDastoorHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder BuDastoorHome;
     }
 }
