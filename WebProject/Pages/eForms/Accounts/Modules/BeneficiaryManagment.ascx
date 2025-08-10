@@ -31,7 +31,7 @@
                                   <div class="col-sm-12 ">
                                       <div class="form-header">
 
-                                          <span class="h5 fw-bold ink-bar">Sales Contracts
+                                          <span class="h5 fw-bold ink-bar">Beneficiary Management
                                           </span>
                                       </div>
                                   </div>

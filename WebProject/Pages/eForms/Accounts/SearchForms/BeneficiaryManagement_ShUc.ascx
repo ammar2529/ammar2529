@@ -27,7 +27,7 @@
             <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
                 <div class="custom-floating">
                     <select class="form-select" id="BeneficiaryType" aria-label="Custom floating label select" groupid="schBeneficiaryManagement" argumentid="BeneficiaryType" name="D4">
-                        <option value="" selected>Select Beneficiary Type</option>
+                        <option value="" selected></option>
                         <option value="C">Company</option>
                         <option value="I">Individual</option>
                     </select>
