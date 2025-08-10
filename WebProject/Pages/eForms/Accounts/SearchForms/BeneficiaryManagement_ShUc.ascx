@@ -6,8 +6,7 @@
         <div class="row mb-2">
             <div class="col-sm-12">
                 <div class="form-header">
-
-                    <span class="  ink-bar">Beneficiary Management</span>
+                    <span class="ink-bar">Beneficiary Management</span>
                     <i class="fa-regular fa-rectangle-xmark CloseForm"
                         tabid="CloseBtn" title="Close Form"
                         style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
@@ -16,83 +15,64 @@
                 </div>
             </div>
         </div>
-        <%--        -------------------------------------------------------------------Start Search Form---------------------------------------------------------------------------%>
-        <table class="w-form-table" cellspacing="2" style="width: 100%">
-            <tr>
-                <td style="text-align: left;" class="ftitle">
-                    <span>BEN-Code</span>
-                </td>
 
-                <td style="text-align: left;" class="ftitle">
-                    <span>Beneficiary Type</span>
-                </td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap">Company Name</span></td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap">Person Name</span></td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap">National ID No.</span></td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap">Mobile Telephone</span></td>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control" aria-label=".form-control-sm example" id="RecCode" argumentid="RecCode" groupid="schBeneficiaryManagement" placeholder="BEN-Code">
+                    <label for="RecCode">BEN-Code</label>
+                </div>
+            </div>
 
-
-            </tr>
-            <tr>
-
-                <td style="text-align: left;" class="ftitle">
-                    <input type="text" class="text"
-                        argumentid="RecCode" groupid="schBeneficiaryManagement"></td>
-
-                <td style="text-align: left;">
-
-                    <select class="dropdownlist" style="width: 160px;"
-                        groupid="schBeneficiaryManagement" argumentid="BeneficiaryType" name="D4">
-                        <option value="" selected="selected">Select Beneficiary Type</option>
-
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="custom-floating">
+                    <select class="form-select" id="BeneficiaryType" aria-label="Custom floating label select" groupid="schBeneficiaryManagement" argumentid="BeneficiaryType" name="D4">
+                        <option value="" selected>Select Beneficiary Type</option>
                         <option value="C">Company</option>
                         <option value="I">Individual</option>
-
                     </select>
+                    <label for="BeneficiaryType">Beneficiary Type</label>
+                </div>
+            </div>
 
-                </td>
-                <td style="text-align: left;">
-                    <input type="text" class="text"
-                        argumentid="CompanyName" groupid="schBeneficiaryManagement"></td>
-                <td style="text-align: left;">
-                    <input type="text" class="text"
-                        argumentid="PersonName" groupid="schBeneficiaryManagement"></td>
-                <td style="text-align: left;">
-                    <input type="text" class="text"
-                        argumentid="NationalIDNo" groupid="schBeneficiaryManagement"></td>
-                <td style="text-align: left;">
-                    <input type="text" class="text"
-                        argumentid="MobileTelephone1" groupid="schBeneficiaryManagement"></td>
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control" aria-label=".form-control-sm example" id="CompanyName" argumentid="CompanyName" groupid="schBeneficiaryManagement" placeholder="Company Name">
+                    <label for="CompanyName">Company Name</label>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control" aria-label=".form-control-sm example" id="PersonName" argumentid="PersonName" groupid="schBeneficiaryManagement" placeholder="Person Name">
+                    <label for="PersonName">Person Name</label>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control" aria-label=".form-control-sm example" id="NationalIDNo" argumentid="NationalIDNo" groupid="schBeneficiaryManagement" placeholder="National ID No.">
+                    <label for="NationalIDNo">National ID No.</label>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control" aria-label=".form-control-sm example" id="MobileTelephone1" argumentid="MobileTelephone1" groupid="schBeneficiaryManagement" placeholder="Mobile Telephone">
+                    <label for="MobileTelephone1">Mobile Telephone</label>
+                </div>
+            </div>
 
 
-            </tr>
 
+        </div>
 
-            <tr>
-                <td style="text-align: left;" class="ftitle">
-                    <span></span>
-                </td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap"></span></td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap"></span></td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap"></span></td>
-                <td style="text-align: left;" class="ftitle">
-                    <span style="white-space: nowrap"></span></td>
-
-                <td style="text-align: left; padding-bottom: 0px">
-                    <a href="javascript:void(0);" class="search ViewButton">
-                        <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-                    <a href="javascript:void(0);" class="reset ClearButton">
-                        <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a></td>
-            </tr>
-        </table>
-        <%--        -------------------------------------------------------------------End Search Form---------------------------------------------------------------------------%>
+        <div class="row justify-content-end mt-2">
+            <div class="col-12 col-sm-12 col-xs-12 col-lg-2 col-xl-2 d-flex justify-content-center align-items-center">
+                <button type="button" class="btn btn-primary search ViewButton me-2">Search</button>
+                <button type="button" class="btn btn-secondary reset ClearButton">Clear</button>
+            </div>
+        </div>
     </div>
 </div>
 

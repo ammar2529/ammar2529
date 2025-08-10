@@ -54,7 +54,12 @@ html, body {
 
 /* Increased padding to account for both navbars */
 .content-wrapper {
-    padding-top: 40px; /* First navbar (~56px) + second navbar (~36px) + padding */
+    /*padding-top: 40px;*/ /* First navbar (~56px) + second navbar (~36px) + padding */
+    /*    padding:50px;
+*/
+    position: relative;
+    width: 96%;
+    left: 77px;
 }
 
 .form-floating .form-control {

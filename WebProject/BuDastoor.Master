@@ -28,6 +28,7 @@
     <script src="AsyncWidgets/Scripts/WidgetBase.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/DataGrid.js" type="text/javascript"></script>
     <script src="AsyncWidgets/Scripts/FormWidget.js"></script>
+    <script src="AsyncWidgets/Scripts/ellipsisManuIcon.js"></script>
     <script src="AsyncWidgets/Scripts/spinner.js"></script>
     <script type="text/javascript" src="../App_Themes/eForms_Theme/SweetAlert/sweetalert2@11.js"></script>
     <script src="Scripts/eForms/iRental/Searchcollapsible.js"></script>
@@ -59,7 +60,7 @@
             padding: 0;
         }
 
-        .page-wrapper {
+/*        .page-wrapper {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -68,7 +69,7 @@
         .content-wrapper {
             flex: 1;
             padding: 20px;
-        }
+        }*/
 
         /* Sidebar Styles */
         .sidebar {
@@ -86,6 +87,7 @@
 
         .sidebar:hover {
             width: 250px !important;
+            z-index: 1040; /* Ensure sidebar overlaps content */
         }
 
         .sidebar.collapsed {
@@ -248,19 +250,16 @@
         .sidebar.collapsed .sidebar-toggle-btn {
             margin-right: 0;
         }
+        .sidebar ul>li{
+            cursor:pointer;
+        }
 
         .main-content {
-            margin-left: 60px;
-            transition: margin-left 0.3s ease-in-out;
+            /* Removed margin-left to prevent content shifting */
+            transition: none; /* Remove transition to prevent movement */
         }
 
-        .sidebar:hover ~ .main-content {
-            margin-left: 250px !important;
-        }
-
-        .main-content.collapsed {
-            margin-left: 60px !important;
-        }
+        /* Removed sidebar:hover ~ .main-content and .main-content.collapsed styles to prevent content shifting */
 
         @media (max-width: 991.98px) {
             .sidebar {
@@ -277,10 +276,6 @@
             }
 
             .main-content {
-                margin-left: 0;
-            }
-
-            .main-content.collapsed {
                 margin-left: 0;
             }
 
@@ -302,17 +297,18 @@
             .sidebar:hover {
                 width: 250px; /* Maintain mobile behavior */
             }
-
-            .sidebar:hover ~ .main-content {
-                margin-left: 0; /* No margin change on mobile */
-            }
         }
 
         .footer {
-            background-color: #f8f9fa;
-            padding: 15px;
-            text-align: center;
-            border-top: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    padding:15px;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    /* width: 100px; */
+    position: relative;
+    left: 77px;
+    width: 96%;
+    top: 5px;
         }
 
         .footer .CopyRight {
@@ -334,9 +330,8 @@
             <!-- Sidebar -->
             <div class="sidebar" id="sidebar">
                 <div class="navbar-brand">
-                    <button class="sidebar-toggle-btn" ><i class="fa-solid fa-sliders"></i></button>
+                    <button class="sidebar-toggle-btn" style="padding-left:13px"><i class="fa-solid fa-bars menuBars"></i></button>
                     <div class="logo-container">
-<%--                        <i class="fa fa-opencart"></i>--%>
                         <h6 class="home" returntype="true" showwidget="frmInbox">BuDastoor</h6>
                     </div>
                 </div>
@@ -412,7 +407,6 @@
 
             // Ensure sidebar is collapsed by default on desktop
             if (window.innerWidth > 991.98) {
-                
                 $('#sidebar').addClass('collapsed');
                 $('#mainContent').addClass('collapsed');
             }
@@ -499,17 +493,11 @@
                         } else if (hasChild(parentMenu.MenuId)) {
                             menuText += '<li class="nav-item dropdown">';
                             menuText += '<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"; style="padding-left:25px;">';
-                            // Check if MenuName is "HR" and apply HR-specific icon
                             if (parentMenu.MenuName.toLowerCase() === 'hr') {
                                 menuText += '<i class="fa-solid fa-users"></i><span class="menu-text"> ' + parentMenu.MenuName + '</span>';
                             } else {
                                 menuText += '<i class="fa-solid fa-folder"></i><span class="menu-text"> ' + parentMenu.MenuName + '</span>';
                             }
-                            // 👇 Render parent name below icon with inline styling
-                            //menuText += '<div><span style="font-size: 0.85rem; margin-top: 4px; text-align: center; display: block;">' + parentMenu.MenuName + '</span></div>';
-
-
-
                             menuText += '</a>';
                             menuText += '<ul class="dropdown-menu">';
                             for (var jdx in menuData) {
@@ -545,7 +533,6 @@
                 renderMenu();
                 AsyncWidgets.WidgetManager.bind($('#sidebar [showwidget]'));
 
-                // Re-apply Bootstrap dropdown toggle for mobile
                 $('#sidebar .dropdown-toggle').on('click', function () {
                     if (window.innerWidth <= 991.98) {
                         $(this).parent().toggleClass('show');
@@ -582,23 +569,27 @@
             var toggleBtn = document.querySelector('.sidebar-toggle-btn');
 
             if (window.innerWidth <= 991.98) {
-                // Mobile: Toggle visibility
                 sidebar.classList.toggle('active');
                 mainContent.classList.toggle('full');
+                $('.menuBars').removeClass('fa-minus').addClass('fa-bars');
             } else {
-                // Desktop: Toggle width
                 sidebar.classList.toggle('collapsed');
-                mainContent.classList.toggle('collapsed');
+                $('.menuBars').removeClass('fa-bars').addClass('fa-minus');
             }
 
             toggleBtn.classList.toggle('active');
         }
+
         $('#sidebar').on('mouseenter', function () {
-            toggleSidebar(true); // or whatever logic you want
+            if (window.innerWidth > 991.98) {
+                $(this).removeClass('collapsed');
+            }
         });
 
         $('#sidebar').on('mouseleave', function () {
-            toggleSidebar(false); // or reverse logic
+            if (window.innerWidth > 991.98) {
+                $(this).addClass('collapsed');
+            }
         });
     </script>
     <script src="App_Themes/eForms_Theme/StyleSheets/bootstrap.bundle.min.js"></script>

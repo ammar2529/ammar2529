@@ -69,7 +69,7 @@
                                                 CarLocationId: { caption: 'Location', width: '75px', hideOnMeduimDevice: "200px" },
                                                 CarStatusId: { caption: 'Status', width: '63px', hideOnMeduimDevice: "200px" },
                                                 RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" },
-                                                Price: { width: '80px', hideOnMeduimDevice: "200px", format:'fix(3)' },
+                                                Price: { width: '50px', hideOnMeduimDevice: "200px", format:'fix(3)' },
 
                                             },
                                             forms: {

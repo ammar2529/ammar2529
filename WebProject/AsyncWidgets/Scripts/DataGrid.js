@@ -119,7 +119,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
     },
     DeleteRows: function (t, cf, btn) {
         //ActionCF --> specified as part of button's configuration
-
+        debugger
         // var bcf = t.GridConf.buttons.DeleteRows || cf.ActionCF || false;
 
         var drs = t.GridConf.buttons, bcf = {}; //cf.ActionCF || t.GridConf.buttons.DeleteRows || false;
@@ -152,7 +152,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     t.fireEvent('afterRowDelete', { res: res });
                     // t.$el.unmask();
                     hideOverlay();
-                    var res = decJSON(res);
+                    //var res = decJSON(res);
                     if (res.status == 'OK') {
                         params = res.Response.split('||');
                         //                        if (~ ~params[0] > 0) {
@@ -163,9 +163,9 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                         }
                         else
                             t.search({ reset: false });
-                        $.showMessage(params[2]);
+                        $(this).showMessage(params[2]);
                         //                        }
-                        //  $.showMessage('Please select rows to delete', { position: 'top' });
+                        //  $(this).showMessage('Please select rows to delete', { position: 'top' });
                     }
 
                 });
@@ -176,7 +176,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 inv.invokeRA({ params: ["ActorId", cf.ActorId, "ActionId", cf.ActionId, "ServiceInfo", ServiceInfo] });
             }
             else {
-                $.showMessage('Please select rows to delete');
+                $(this).showMessage('Please select rows to delete');
             }
         }
         else
@@ -660,6 +660,24 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     if (!t.ColumnTemplates.templates) {// if not a templated grid..
                         t.Header.repCon.append(`<td class= "d-sm-table-cell d-md-table-cell d-lg-none collapseBtn" > </td>`);
                         t.Item.repCon.append(`<td class="d-sm-table-cell d-md-table-cell d-lg-none collapseBtn"><i class="fas fa-chevron-down"></i></td>`);
+
+                        // Append new actionBtn column for header
+                        t.Header.repCon.append(`
+                                <td class="d-sm-table-cell d-md-table-cell d-lg-none actionBtn"></td>
+                            `);
+
+                                            // Append new actionBtn column for item with ellipsis icon and dropdown menu
+                                            t.Item.repCon.append(`
+                                <td class="d-sm-table-cell d-md-table-cell d-lg-table-cell  actionBtn">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                    <div class="action-menu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 100;">
+                                        <button class="edit-btn" >Edit</button>
+                                        <button class="delete-btn ActionButton unselectable" buttonid="delete" conf="{&quot;Action&quot;:&quot;DeleteRows&quot;,&quot;Command&quot;:&quot;UPD_iRental_CarsForSales&quot;,&quot;KeysCol&quot;:&quot;ChassisNo&quot;}">Delete</button>
+                                    </div>
+                                </td>
+                            `);
+
+
                     }
 
                     t.noOfCols = i;
@@ -1108,6 +1126,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                 t.EditForms = [];
                 $('.RowEditForm.ColValue', t.Repeater).unbind().click(function () {
                     //;
+                    
                     var itemTbl = $(this).closest('table'), itemno = itemTbl.attr('itemno'), parent;
                     if (t.SingleEditForm) {
                         //.not($('div[conf] *', t.el))
@@ -1555,14 +1574,14 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
             if (res.status == 'OK') {
                 params = res.Response.split('||');
                 if (params[1] == 'Error') {
-                    $.showMessage(params[2]);
+                    $(this).showMessage(params[2]);
                 }
                 else {
                     //   $('[argumentid][isvalid]', t.el).trigger('blur');
                     //   t.fireEvent('actionSuccess', { btn: btn, cf: cf, res: res, params: params }); //deprecated
                     //   t.fireEvent('afterDataAction', { btn: btn, cf: cf, res: res, params: params });
                     //                    t.setParams({ reset: cf.ResetOnSuccess }); //reset form if specified in button config
-                    $.showMessage(params[2]);
+                    $(this).showMessage(params[2]);
                     //                    if (!!cf.HideOnSuccess) {
                     //                        $('.CloseForm', t.el).trigger('click');
                     //                    }
