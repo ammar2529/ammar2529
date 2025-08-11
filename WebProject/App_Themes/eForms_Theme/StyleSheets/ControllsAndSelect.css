@@ -407,7 +407,10 @@ html, body {
     }
 
     .content-wrapper {
-        padding-top: 40px; /* Adjusted for smaller navbar heights */
+       /* padding-top: 40px;*/ /* Adjusted for smaller navbar heights */
+        padding-top: 20px;
+        position: static;
+        width: 100%;
     }
 }
 

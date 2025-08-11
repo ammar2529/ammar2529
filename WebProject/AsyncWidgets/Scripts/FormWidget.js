@@ -27,78 +27,240 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
         //        t.bindEvents();
         //        t.validator = new AsyncWidgets.Validater(t.el);
     },
+    //showPopup: function (cf) {
+
+    //    //cf=>{ popupId: '-div-tag-id-of the popup', searchFormId: 'optional for row select popup', resultGridId: 'optional for row select popup', top:'top of the popup div',left:'' } //row select popup configuration
+    //    //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
+
+    //    var t = this;
+    //    var popId, searchForm, searchFormId, resGrd, resGrdId,
+    //        popup, top, left,
+    //        autoShowControls, popupControls = []; // comma separated controls which has to be shown automatically
+    //    //console.log(cf.ctrl);
+    //    if (!!cf.ctrl) {
+
+    //        var txt = $(cf.ctrl), trow = txt.closest('div');
+
+
+    //        let lf = trow.offset().left, rw = trow.width();
+    //        //t._LOVCon = $('<div style="padding:0px;display:none;position:absolute;border:1px solid #8298B0;background:#EEEEFF;"></div>')
+    //        //    .css({ 'top': 100, 'width': rw - 2, left: lf });
+    //        cf.top = trow.offset().top;
+    //        cf.left = lf;
+    //        cf.width = rw - 2;
+    //    }
+
+    //    left = cf.left || '8%';
+    //    if (!!cf.ctrl) {// if control is given then
+    //        var ctrl = cf.ctrl;
+    //        popId = $(ctrl).attr('lovpopupid');
+    //        popup = $(`div.LOVPopup[lovpopupid="${popId}"]`);
+    //        autoShowControls = $(ctrl).attr('auto-show-popup-controls');
+    //        searchFormId = $(ctrl).attr('lovsearchformid');
+    //        resGrdId = $(ctrl).attr('lovresultgridid');
+    //        top = cf.top || $(ctrl).offset().top;
+
+
+    //    }
+    //    else { // if control is not give
+    //        //{ popupId: '-div-tag-id-of the popup', searchFormId: 'searchFormId', resultGridId: 'resultGridId', top:'top of the popup div',left:'' } //row select popup configuration
+    //        //{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
+
+    //        popId = cf.popupId;
+    //        popup = $(`div.LOVPopup[lovpopupid="${popId}"]`);
+    //        autoShowControls = cf.autoShowControls;
+    //        searchFormId = cf.searchFormId;
+    //        resGrdId = cf.resultGridId;
+    //        top = cf.top || '20%';
+    //    }
+
+
+    //    if (popup.length < 1) {
+    //        $(this).showMessage('A LOV popup with id:"' + popId + '" not found!');
+    //        return;
+    //    }
+
+
+
+
+    //    //'#628296'
+    //    //'background': 'rgb(238, 238, 255)'
+
+    //    popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', border: '1px solid rgb(130, 152, 176)', 'background': '#ebeff3', width: (cf.width || '900px') }).show();
+
+    //    //popup.css({
+    //    //    position: 'absolute',
+    //    //    top: top,
+    //    //    left: left,
+    //    //    'z-index': '10000',
+    //    //    border: '1px solid rgb(130, 152, 176)',
+    //    //    background: '#ebeff3',
+    //    //    width: (cf.width || '900px')
+    //    //}).show();
+    //    if (!autoShowControls) { //row select grid with a search panel and datagrid
+
+    //        searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
+    //        searchForm = AsyncWidgets.get(searchFormId);
+    //        if (!searchForm) {
+    //            $(this).showMessage('LOV popup must contain at least a form - "' + popId + '"');
+    //            return;
+    //        }
+    //        resGrdId = !!resGrdId ? resGrdId : $('[wtype="DataGrid"]', popup).attr('widgetid');
+    //        resGrd = AsyncWidgets.get(resGrdId);
+    //        if (resGrd.length < 1) {
+    //            $(this).showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
+    //            return;
+    //        }
+
+
+    //        //if ($('.reset[resetonpopupshow]', searchForm.el).length) {
+    //        //    // Trigger the reset action
+    //        //    $('.reset[resetonpopupshow]', searchForm.el).click();
+    //        //    $('.search', searchForm.el).click();
+
+
+    //        //}
+    //        if (!popup[0].init) {
+    //            resGrd.on('rowClicked', function HandleRowClick(args) {
+    //                if ($("tr", args.row).attr('disabled') == "disabled") {
+    //                    return;
+    //                }
+    //                args.canceled = false;
+    //                t.setParams({ params: args.rowData, isRow: true });
+    //                popup.hide();
+    //                args.popupId = popId;
+    //                t.fireEvent('LOVPopupClosed', args);
+    //                //$(t.el).unmask();
+    //                hideOverlay();
+    //                //resGrd.removeListener('rowClicked', HandleRowClick);
+    //            });
+
+    //            //  popup.css({ position: 'absolute', top: top, left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
+
+
+    //            $(searchForm.el).on('keydown', function (event) {
+    //                if (event.key === "Enter") {
+    //                    $('.Default', searchForm.el).click();
+    //                    event.preventDefault();
+    //                }
+
+    //            });
+    //            resGrd.on("rowsRendered", function () {
+
+    //                if (resGrd.rows.length == 1) {
+    //                    //  $('table[itemno]', resGrd.el).click(); // Auto-click the single row
+    //                    // if (!window.__debug) {
+    //                    t.setParams({
+    //                        params: resGrd.rows[0],
+    //                        isRow: true
+    //                    });
+
+    //                    //  $('.CloseLOVPopup', popup).click();
+    //                    // t.fireEvent('LOVPopupClosed');
+    //                    // }
+    //                    $('.CloseLOVPopup', popup).click();
+    //                    t.fireEvent('LOVPopupClosed', { grd: resGrd, rowData: resGrd.rows[0], popupId: popId, row: $('table[itemno]', resGrd.el)[0] });
+    //                }
+    //            });
+
+    //            $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
+    //                // $('body').css('overflow', 'clip');
+    //                popup.hide();
+    //                // $(t.el).unmask();
+    //                hideOverlay();
+    //                // $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
+
+    //                t.fireEvent('LOVPopupClosed', { popupId: popId });
+    //            });
+    //            popup[0].init = true;
+    //        }
+    //        //$(t.el).mask("");
+    //         showOverlay();
+    //       // $('.loadmask-msg', t.el).hide();
+    //        searchForm.show();
+    //        resGrd.show();
+    //        $('.OnPopupShowFocus', searchForm.el).focus();
+    //        $('.reset[resetonpopupshow]', searchForm.el).click();
+    //        searchForm.search();
+
+
+
+
+    //    }
+    //    else {
+    //        let ctrls = autoShowControls.split(',');
+
+    //        for (var i = 0; i < ctrls.length; i++) {
+    //            let ctrl = AsyncWidgets.get(ctrls[i]);
+    //            if (!ctrl) {
+    //                console.log(`control(${ctrls[i]}) in LOV popup not found, popupid: ${popId}`);
+    //            }
+    //            else {
+    //                ctrl.show();
+    //                popupControls.push(ctrl);
+    //            }
+    //        }
+    //        // $('body').css('overflow', 'clip');
+    //       // $(t.el).mask("");
+    //        //$('.loadmask-msg', t.el).hide();
+    //        hideOverlay();
+    //        t.fireEvent('LOVPopupShown', popup);
+    //        popup[0].init = true;
+    //    }
+    //    if (!popup[0].init) {
+
+    //    }
+
+    //},//end of show popup function of form widget
     showPopup: function (cf) {
-       
-        //cf=>{ popupId: '-div-tag-id-of the popup', searchFormId: 'optional for row select popup', resultGridId: 'optional for row select popup', top:'top of the popup div',left:'' } //row select popup configuration
-        //cf=>{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
-
         var t = this;
-        var popId, searchForm, searchFormId, resGrd, resGrdId,
-            popup, top, left,
-            autoShowControls, popupControls = []; // comma separated controls which has to be shown automatically
-        //console.log(cf.ctrl);
+        var popId, searchForm, searchFormId, resGrd, resGrdId, popup, top, left, autoShowControls, popupControls = [];
+
         if (!!cf.ctrl) {
-
             var txt = $(cf.ctrl), trow = txt.closest('div');
-
-
             let lf = trow.offset().left, rw = trow.width();
-            //t._LOVCon = $('<div style="padding:0px;display:none;position:absolute;border:1px solid #8298B0;background:#EEEEFF;"></div>')
-            //    .css({ 'top': 100, 'width': rw - 2, left: lf });
             cf.top = trow.offset().top;
             cf.left = lf;
             cf.width = rw - 2;
         }
 
-        left = cf.left || '8%';
-        if (!!cf.ctrl) {// if control is given then
+        left = cf.left || '50%'; // Default to 50% for horizontal centering
+        top = cf.top || '50%'; // Default to 50% for vertical centering
+
+        if (!!cf.ctrl) {
             var ctrl = cf.ctrl;
             popId = $(ctrl).attr('lovpopupid');
             popup = $(`div.LOVPopup[lovpopupid="${popId}"]`);
             autoShowControls = $(ctrl).attr('auto-show-popup-controls');
             searchFormId = $(ctrl).attr('lovsearchformid');
             resGrdId = $(ctrl).attr('lovresultgridid');
-            top = cf.top || $(ctrl).offset().top;
-
-
-        }
-        else { // if control is not give
-            //{ popupId: '-div-tag-id-of the popup', searchFormId: 'searchFormId', resultGridId: 'resultGridId', top:'top of the popup div',left:'' } //row select popup configuration
-            //{ popupId: '-div-tag-id-of the popup', autoShowControls: 'searchFormId', top:'top of the popup div',left:''  } //non-row select popup configuration
-
+        } else {
             popId = cf.popupId;
             popup = $(`div.LOVPopup[lovpopupid="${popId}"]`);
             autoShowControls = cf.autoShowControls;
             searchFormId = cf.searchFormId;
             resGrdId = cf.resultGridId;
-            top = cf.top || '20%';
         }
-
 
         if (popup.length < 1) {
             $(this).showMessage('A LOV popup with id:"' + popId + '" not found!');
             return;
         }
 
+        // Apply CSS to center the popup
+        popup.css({
+            position: 'fixed', // Use fixed to stay relative to viewport
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)', // Center by offsetting half the size
+            'z-index': '10000',
+            border: '1px solid rgb(130, 152, 176)',
+            background: '#ebeff3',
+            width: (cf.width || '900px')
+        }).show();
 
-
-
-        //'#628296'
-        //'background': 'rgb(238, 238, 255)'
-
-        popup.css({ position: 'absolute', top: top, left: left, 'z-index': '10000', border: '1px solid rgb(130, 152, 176)', 'background': '#ebeff3', width: (cf.width || '900px') }).show();
-
-        //popup.css({
-        //    position: 'absolute',
-        //    top: top,
-        //    left: left,
-        //    'z-index': '10000',
-        //    border: '1px solid rgb(130, 152, 176)',
-        //    background: '#ebeff3',
-        //    width: (cf.width || '900px')
-        //}).show();
-        if (!autoShowControls) { //row select grid with a search panel and datagrid
-
+        // Rest of your existing code for handling search form, grid, and events
+        if (!autoShowControls) {
             searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
             searchForm = AsyncWidgets.get(searchFormId);
             if (!searchForm) {
@@ -112,14 +274,6 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 return;
             }
 
-
-            //if ($('.reset[resetonpopupshow]', searchForm.el).length) {
-            //    // Trigger the reset action
-            //    $('.reset[resetonpopupshow]', searchForm.el).click();
-            //    $('.search', searchForm.el).click();
-
-
-            //}
             if (!popup[0].init) {
                 resGrd.on('rowClicked', function HandleRowClick(args) {
                     if ($("tr", args.row).attr('disabled') == "disabled") {
@@ -130,88 +284,57 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     popup.hide();
                     args.popupId = popId;
                     t.fireEvent('LOVPopupClosed', args);
-                    //$(t.el).unmask();
-                    hideOverlay(); 
-                    //resGrd.removeListener('rowClicked', HandleRowClick);
+                    hideOverlay();
                 });
-
-                //  popup.css({ position: 'absolute', top: top, left: '0px', 'z-index': '1000', 'background': '#628296' }).show();
-
 
                 $(searchForm.el).on('keydown', function (event) {
                     if (event.key === "Enter") {
                         $('.Default', searchForm.el).click();
                         event.preventDefault();
                     }
-
                 });
+
                 resGrd.on("rowsRendered", function () {
-                   
                     if (resGrd.rows.length == 1) {
-                        //  $('table[itemno]', resGrd.el).click(); // Auto-click the single row
-                        // if (!window.__debug) {
                         t.setParams({
                             params: resGrd.rows[0],
                             isRow: true
                         });
-
-                        //  $('.CloseLOVPopup', popup).click();
-                        // t.fireEvent('LOVPopupClosed');
-                        // }
                         $('.CloseLOVPopup', popup).click();
                         t.fireEvent('LOVPopupClosed', { grd: resGrd, rowData: resGrd.rows[0], popupId: popId, row: $('table[itemno]', resGrd.el)[0] });
                     }
                 });
 
                 $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
-                    // $('body').css('overflow', 'clip');
                     popup.hide();
-                    // $(t.el).unmask();
                     hideOverlay();
-                    // $('.CloseLOVPopup', popup).unbind('click.LOVPopup');
-
                     t.fireEvent('LOVPopupClosed', { popupId: popId });
                 });
                 popup[0].init = true;
             }
-            //$(t.el).mask("");
-             showOverlay();
-           // $('.loadmask-msg', t.el).hide();
+
+            showOverlay();
             searchForm.show();
             resGrd.show();
             $('.OnPopupShowFocus', searchForm.el).focus();
             $('.reset[resetonpopupshow]', searchForm.el).click();
             searchForm.search();
-
-
-
-
-        }
-        else {
+        } else {
             let ctrls = autoShowControls.split(',');
-
             for (var i = 0; i < ctrls.length; i++) {
                 let ctrl = AsyncWidgets.get(ctrls[i]);
                 if (!ctrl) {
                     console.log(`control(${ctrls[i]}) in LOV popup not found, popupid: ${popId}`);
-                }
-                else {
+                } else {
                     ctrl.show();
                     popupControls.push(ctrl);
                 }
             }
-            // $('body').css('overflow', 'clip');
-           // $(t.el).mask("");
-            //$('.loadmask-msg', t.el).hide();
             hideOverlay();
             t.fireEvent('LOVPopupShown', popup);
             popup[0].init = true;
         }
-        if (!popup[0].init) {
-
-        }
-
-    },//end of show popup function of form widget
+    },
 
     bindEvents: function () { //form widget
         var t = this, nestChilds = $('div[conf] *', t.el);

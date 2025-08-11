@@ -1774,13 +1774,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.toggleDropdownCarReservationMode = 
     else
     {
         $('.CommonDD', t.el).show().addClass('required');
+        debugger
         $('tr.DropDownTR td div.DropDownDIV').show();
         $('.CommonSP', t.el).hide();
         $('[argumentid="ChassisNo"]', t.el).prop('disabled', true).addClass('ElemDisabled');
        /* $('[argumentid="ChassisNo"]', t.el).val('');*/
-        $('[argumentid="ChassisNo"]', t.el).css('display', 'none');
+        //$('[argumentid="ChassisNo"]', t.el).css('display', 'none');
         $('.a', t.el).show().removeClass('required');
-        $('.hideOnCarNotArrived,.ChassisNo', t.el).hide();
+        $('.hideOnCarNotArrived', t.el).hide();
 
 
     }

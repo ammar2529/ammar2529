@@ -373,9 +373,9 @@
                     </asp:ContentPlaceHolder>
                 </div>
                 <!-- Footer -->
-                <div class="footer">
+<%--                <div class="footer">
                     <p class="CopyRight"></p>
-                </div>
+                </div>--%>
             </div>
         </form>
     </div>
