@@ -282,8 +282,8 @@
                        <div class="col-sm-12 ">
                            <div class="form-header">
 
-                               <span class="h5 fw-bold ink-bar">Select Sales Cars
-                               </span>
+<%--                               <span class="h5 fw-bold ink-bar">Select Sales Cars
+                               </span>--%>
                            </div>
                        </div>
                    </div>

@@ -1,73 +1,123 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SalesContracts_Cars_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.SalesContracts_Cars_ShUc" %>
+﻿<div class="container my-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="col-12">
+          <div class="form-header mb-3">
+            <span class="h5 fw-bold ink-bar">Search</span>
+          </div>
+        </div>
 
-<table class="w-form-table" cellspacing="0" style="width: 100%">
-    <tr>
-        <td style="text-align: left;" class="ftitle">
-<%--            <span style="white-space: nowrap">Chassis No.</span>--%>
-            <span style="white-space: nowrap">Car No.</span>
-        </td>
-        <td style="text-align: left;" class="ftitle">
-       <span style="white-space: nowrap">Chassis No.</span>
+        <div class="row g-3">
+          <div class="col-sm-6 col-lg-2">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm CommonEmpty" id="CarNumber" argumentid="CarNumber" groupid="schCarForSalesDetails" placeholder="Enter Car Number">
+              <label for="CarNumber">Car Number</label>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-2">
+            <div class="form-floating">
+              <input type="text" class="form-control form-control-sm CommonEmpty" id="ChassisNo" argumentid="ChassisNo" groupid="schCarForSalesDetails" placeholder="Enter Chassis No">
+              <label for="ChassisNo">Chassis No.</label>
+            </div>
+          </div>
 
-            <%--<span style="white-space: nowrap">Car No.</span>--%>
-        </td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Brand</span></td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Model</span></td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Year</span></td>
-        <td style="text-align: left;" class="ftitle">
-            <span style="white-space: nowrap">Type</span></td>
-        <td style="text-align: left;" class="ftitle"></td>
-    </tr>
-    <tr>
-        <td style="text-align: left;">
-                        <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schSalesCarDetails" />
-<%--            <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schSalesCarDetails" />--%>
+            <div class="col-sm-6 col-lg-2">
 
-        </td>
-        <td style="text-align: left;">
+                <div class="custom-floating">
+                    <select  class="form-select" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schCarForSalesDetails" argumentid="BrandId" childcombo="ModelId" 
+                        storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D12" loaded="true" id="CFSBrandId">
+                        <option value="" selected=""></option>
 
-<%--            <input type="text" style="width: 115px;" class="text" argumentid="CarNumber" groupid="schSalesCarDetails" />--%>
-                        <input type="text" style="width: 115px;" class="text" argumentid="ChassisNo" groupid="schSalesCarDetails" />
 
-        </td>
-        <td style="text-align: left;">
+                    </select>
+                    <label for="CFSBrandId">Brand</label>
+                </div>
+            </div>
 
-            <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                groupid="schSalesCarDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
-                <option value="" selected="selected">Select Brand</option>
-            </select>
-        </td>
-        <td style="text-align: left;">
-            <select class="dropdownlist" style="width: 120px;"
-                groupid="schSalesCarDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}">
-                <option value="" selected="selected">Select Model</option>
-            </select></td>
-        <td style="text-align: left;">
-            <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                groupid="schSalesCarDetails" argumentid="CarYear" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}">
-                <option value="" selected="selected">Select Year</option>
-            </select>
-        </td>
-        <td style="text-align: left;">
-            <select loadon="FirstVisible" class="dropdownlist" style="width: 120px;"
-                groupid="schSalesCarDetails" argumentid="TypeId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}">
-                <option value="" selected="selected">Select Type</option>
-            </select>
+            
+            <div class="col-sm-6 col-lg-2">
 
-        </td>
-        <td style="text-align: left; padding-bottom: 0px">
+                <div class="custom-floating">
+                    <select  class="form-select" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schCarForSalesDetails" argumentid="ModelId" 
+                       storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D3" loaded="true" id="ModelId">
+                        <option value="" selected=""></option>
 
-            <a href="javascript:void(0);" class="search ViewButton">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-            <a href="javascript:void(0);" class="reset ClearButton" resetonpopupshow="resetonpopupshow">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
 
-            <a href="javascript:void(0);" class="ClosePopup CloseLOVPopup">
-                <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/Close.gif" border="0" /></a>
+                    </select>
+                    <label for="ModelId">Model</label>
+                </div>
+            </div>
 
-        </td>
-    </tr>
-</table>
+                        <div class="col-sm-6 col-lg-2">
+
+                <div class="custom-floating">
+                    <select  class="form-select" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schCarForSalesDetails" argumentid="CarYear" 
+                      storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'4'}]}" name="D5" loaded="true" id="CarYear">
+                        <option value="" selected=""></option>
+
+
+                    </select>
+                    <label for="CarYear">Year</label>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-2">
+
+                <div class="custom-floating">
+                    <select class="form-select" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schCarForSalesDetails" argumentid="TypeId" 
+                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'5'}]}" name="D6" loaded="true" id="TypeId">
+                        <option value="" selected=""></option>
+
+
+                    </select>
+                    <label for="TypeId">Type</label>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row g-3 mt-2">
+
+                        <div class="col-sm-6 col-lg-2">
+                                        <input type="hidden" value="SearchChassisNo" groupid="schCarForSalesDetails" argumentid="SearchChassisN">
+
+                <div class="custom-floating">
+                    <select class="form-select" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schCarForSalesDetails" argumentid="CarLocationId" 
+                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}" id="CarLocationId">
+                        <option value="" selected=""></option>
+
+
+                    </select>
+                    <label for="CarLocationId">Location</label>
+                </div>
+            </div>
+
+
+                                    <div class="col-sm-6 col-lg-2">
+                                        <input type="hidden" value="SearchChassisNo" groupid="schCarForSalesDetails" argumentid="SearchChassisN">
+
+                <div class="custom-floating">
+                    <select class="form-select" aria-label="Custom floating label select" loadon="FirstVisible" groupid="schCarForSalesDetails" argumentid="CarStatusId" 
+                     storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4" id="CarStatusId">
+                        <option value="" selected=""></option>
+
+
+                    </select>
+                    <label for="CarStatusId">Status</label>
+                </div>
+            </div>
+
+
+          <!-- Empty cells for spacing -->
+          <div class="col-sm-6 col-lg-2"></div>
+          <div class="col-sm-6 col-lg-2"></div>
+          <div class="col-sm-6 col-lg-2"></div>
+          <div class="col-sm-6 col-lg-2 d-flex align-items-end">
+            <button class="btn btn-primary btn-sm me-2 search ViewButton">Search</button>
+            <button class="btn btn-secondary btn-sm reset ClearButton">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

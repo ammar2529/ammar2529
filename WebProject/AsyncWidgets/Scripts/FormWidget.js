@@ -224,8 +224,8 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             cf.width = rw - 2;
         }
 
-        left = cf.left || '50%'; // Default to 50% for horizontal centering
-        top = cf.top || '50%'; // Default to 50% for vertical centering
+        left = cf.left || '50%';
+        top = cf.top || '50%';
 
         if (!!cf.ctrl) {
             var ctrl = cf.ctrl;
@@ -249,28 +249,32 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
         // Apply CSS to center the popup
         popup.css({
-            position: 'fixed', // Use fixed to stay relative to viewport
+            position: 'fixed',
             top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)', // Center by offsetting half the size
+            transform: 'translate(-50%, -50%)',
             'z-index': '10000',
             border: '1px solid rgb(130, 152, 176)',
             background: '#ebeff3',
             width: (cf.width || '900px')
         }).show();
 
-        // Rest of your existing code for handling search form, grid, and events
+        // Show overlay when popup is shown
+        showOverlay();
+
         if (!autoShowControls) {
             searchFormId = !!searchFormId ? searchFormId : $('[wtype="Form"]', popup).attr('widgetid');
             searchForm = AsyncWidgets.get(searchFormId);
             if (!searchForm) {
                 $(this).showMessage('LOV popup must contain at least a form - "' + popId + '"');
+                hideOverlay();
                 return;
             }
             resGrdId = !!resGrdId ? resGrdId : $('[wtype="DataGrid"]', popup).attr('widgetid');
             resGrd = AsyncWidgets.get(resGrdId);
             if (resGrd.length < 1) {
                 $(this).showMessage('LOV popup must contain at least a data grid - "' + popId + '"');
+                hideOverlay();
                 return;
             }
 
@@ -282,9 +286,9 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     args.canceled = false;
                     t.setParams({ params: args.rowData, isRow: true });
                     popup.hide();
+                    hideOverlay();
                     args.popupId = popId;
                     t.fireEvent('LOVPopupClosed', args);
-                    hideOverlay();
                 });
 
                 $(searchForm.el).on('keydown', function (event) {
@@ -295,12 +299,15 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 });
 
                 resGrd.on("rowsRendered", function () {
+                    // Hide actionBtn column (fa-solid fa-ellipsis) when grid is in popup
+                    $('.actionBtn .fa-solid.fa-ellipsis', resGrd.el).hide();
                     if (resGrd.rows.length == 1) {
                         t.setParams({
                             params: resGrd.rows[0],
                             isRow: true
                         });
                         $('.CloseLOVPopup', popup).click();
+                        hideOverlay();
                         t.fireEvent('LOVPopupClosed', { grd: resGrd, rowData: resGrd.rows[0], popupId: popId, row: $('table[itemno]', resGrd.el)[0] });
                     }
                 });
@@ -308,14 +315,17 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                 $('.CloseLOVPopup', popup).bind('click.LOVPopup', function () {
                     popup.hide();
                     hideOverlay();
+                    // Show actionBtn column again if needed (optional, depending on your use case)
+                    $('.actionBtn .fa-solid.fa-ellipsis', resGrd.el).show();
                     t.fireEvent('LOVPopupClosed', { popupId: popId });
                 });
                 popup[0].init = true;
             }
 
-            showOverlay();
             searchForm.show();
             resGrd.show();
+            // Hide actionBtn column when grid is shown in popup
+            $('.actionBtn .fa-solid.fa-ellipsis', resGrd.el).hide();
             $('.OnPopupShowFocus', searchForm.el).focus();
             $('.reset[resetonpopupshow]', searchForm.el).click();
             searchForm.search();
@@ -330,7 +340,6 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
                     popupControls.push(ctrl);
                 }
             }
-            hideOverlay();
             t.fireEvent('LOVPopupShown', popup);
             popup[0].init = true;
         }
