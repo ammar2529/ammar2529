@@ -180,23 +180,7 @@
                 }
             </script>
         </WidgetConfig>
-      <%--  <Scripts>
-                    <script>
-                        var fn = function ()
-                        {
-                            var conGrd = AsyncWidgets.get("conRentalContracts_Cust");
 
-                            //$('.ClosePopup', t.el).click(function () {
-                            //    var f = conGrd._frm;
-                            //    f._LOVCon.hide();
-                            //    conGrd._Masked.unmask();
-                            //    conGrd._frm = conGrd._Masked = null;
-                            //});
-
-                       
-                        }
-                    </script>
-                </Scripts>--%>
     </AW:Form>
     <AW:DataGrid ID="grdCarAndServiceDetailsContracts_Cust" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarAndServiceDetails_Cust_ShUc"
         EmptyHeight="201px" AllowNew="false" SelectableRow="false"
@@ -236,24 +220,7 @@
 
 
  </GridConfig>
-         <Scripts>
- <script>
-     //var fn = function ()
-     //{
 
-
-
-
-     //    //t.on('onLoadedValues', function (args)
-     //    //{
-
-
-     //    //    debugger
-
-     //    //});
-     //}
- </script>
- </Scripts>
 
  </AW:DataGrid>
 

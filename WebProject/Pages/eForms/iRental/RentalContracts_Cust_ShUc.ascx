@@ -1,30 +1,44 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RentalContracts_Cust_ShUc.ascx.cs" Inherits="WebProject.Pages.eForms.iRental.RentalContracts_Cust_ShUc" %>
 
- <table class="w-form-table" cellspacing="2" style="width:100%">
-            <tr>
-                <td style=" text-align: left;padding-right:20px">
 
-                        <input type="text" style="width:255px" class="text" 
-                        argumentid="Search" groupid="schRentalContracts_Cust" /></td>
-                <td style="text-align: left;padding-bottom:0px" width="100%"> 
+<div class="mb-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="form-header">
 
-                <div style="float:left">
+                        <span class="h4 fw-bold ink-bar">Search</span>
+                    </div>
+                </div>
+            </div>
 
-                <a href="javascript:void(0);"  class="search ViewButton">
-                                     <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-<a href="javascript:void(0);"  class="reset ClearButton">
-                                     <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/spacer.gif" border="0" /></a>
-                                     </div>
+            <div class="row">
 
-                                     <div style="float:right">
-                                              <a href="javascript:void(0);"  class="ClosePopup CloseLOVPopup">
-                                     <img alt="" height="22px" width="47px" src="App_Themes/eForms_Theme/Images/Close.gif" border="0" /></a>
-                                   </div>
-                                     </td>
+                <div class="col-sm-6 col-lg-8 ">
+                    <div class="form-floating ">
+                        <input type="text" class="form-control " aria-label=".form-control-sm example" id="Search" argumentid="Search" groupid="schRentalContracts_Cust" placeholder="Search">
+                        <label for="Search">Search</label>
+                    </div>
+                </div>
 
-           
-                              
-                
+                <div class="col-auto d-flex align-items-center">
+                    <button class="search ViewButton btn btn-success me-2">
+                        Search
+                    </button>
+                    <button class="reset ClearButton btn btn-primary me-2">
+                        Clear
+                    </button>
+                    <button class="ClosePopup CloseLOVPopup btn btn-danger">
+                        Close
+                    </button>
+                </div>
+            </div>
 
-            </tr>
-            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

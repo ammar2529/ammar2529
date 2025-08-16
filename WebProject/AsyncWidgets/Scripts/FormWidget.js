@@ -213,6 +213,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
 
     //},//end of show popup function of form widget
     showPopup: function (cf) {
+        
         var t = this;
         var popId, searchForm, searchFormId, resGrd, resGrdId, popup, top, left, autoShowControls, popupControls = [];
 

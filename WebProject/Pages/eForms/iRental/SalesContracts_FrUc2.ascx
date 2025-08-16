@@ -215,7 +215,7 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control text required LOVPopup  text  CommonDisableClass text-danger " id="CustomerCode" groupid="SalesContractsForm" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr=' *Required' placeholder="Customer Code*">
+                                    <input type="text" class="form-control text required LOVPopup  text  CommonDisableClass text-danger " id="CustomerCode" groupid="SalesContractsForm" lovpopupid="customerSalesPopup" argumentid="CustomerRecCode" requirederr=' *Required' placeholder="Customer Code*">
                                     <label for="CustomerCode">Customer Code*</label>
                                 </div>
                                 <div class="position-absolute top-0 end-0 me-2 w-ui-icon w-ui-panel-icon-closed contDetailsIcon" style="height: 20px; cursor: pointer;">&nbsp;</div>
@@ -773,7 +773,7 @@
                                         class="form-control text-center text-danger AmountDueC"
                                         id="AmountDue"
                                         groupid="SalesContractsForm"
-                                        argumentid="TotalAmount"
+                                        argumentid="AmountDue"
                                         placeholder="Amount Due"
                                         readonly disabled
                                         />
@@ -850,7 +850,7 @@
                                         <!-- Buttons Section on the Right -->
                                         <div class="col-md-12 col-sm-12 col-lg-10 col-xl-10 col-xxl-10">
                                             <h5 class="card-title text-center mb-4">Actions</h5>
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-center mb-2">
                                                 <!-- First Row Buttons -->
                                                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl btnReserve">
                                                     <button
@@ -861,7 +861,7 @@
                                                         Reserve
                                                     </button>
                                                 </div>
-                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl ">
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
@@ -871,7 +871,7 @@
                                                     </button>
 
                                                 </div>
-                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl ">
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
@@ -883,8 +883,8 @@
                                                 </div>
                                             </div>
                                             <!-- Second Row Buttons -->
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl mb-2">
+                                            <div class="row justify-content-center mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl ">
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
@@ -893,7 +893,7 @@
                                                         Pending Payment - Car Out
                                                     </button>
                                                 </div>
-                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl ">
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
@@ -903,7 +903,7 @@
                                                     </button>
                                                 </div>
 
-                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl-4 mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 col-xxl-4 ">
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
@@ -915,61 +915,64 @@
                                             </div>
                                             <!-- Third Row Buttons -->
                                             <div class="row justify-content-center  mb-2">
+                                              
                                                 <!-- Edit Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 w-100 mb-2  SalesButton_Edit">
-                                                    <button type="button" roles="iRen_Contracts_Admin" class="btn btn-primary ButtonStyle SalesButton_Edit">
-                                                        Edit
-                                                    </button>
-                                                </div>
+
 
                                                 <!-- Reserve Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
-                                                    <button type="button" ignorevalidate="ReservationDate DocType" class="btn btn-primary ButtonStyle btnSave common-button DataAction w-100 mb-2 "
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3 btnSave">
+                                                    <button type="button" ignorevalidate="ReservationDate DocType" class="btn btn-primary ButtonStyle btnSave common-button DataAction w-100"
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'RRCCreatedState'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}">
                                                         Reserve
                                                     </button>
                                                 </div>
 
                                                 <!-- Save Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
-                                                    <button type="button" ignorevalidate="ReservationDate DocType" class="btn btn-primary ButtonStyle SaveBtn common-button DataAction w-100 mb-2"
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3 SaveBtn">
+                                                    <button type="button" ignorevalidate="ReservationDate DocType" class="btn btn-primary ButtonStyle SaveBtn common-button DataAction w-100 "
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts',Params:{DBAction:'NoStateId'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}">
                                                         Save
                                                     </button>
                                                 </div>
 
                                                 <!-- Quotation Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
-                                                    <button type="button" class="btn btn-primary ButtonStyle QuotationBtn common-button w-100 mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
+                                                    <button type="button" class="btn btn-primary ButtonStyle QuotationBtn common-button w-100 ">
                                                         Quotation
                                                     </button>
                                                 </div>
 
                                                 <!-- Contract Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
-                                                    <button type="button" class="btn btn-primary ButtonStyle ContractPrintBtn common-button w-100 mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
+                                                    <button type="button" class="btn btn-primary ButtonStyle ContractPrintBtn common-button w-100 ">
                                                         Contract
                                                     </button>
                                                 </div>
                                             </div>
                                             <%--  ///////////////////////////////////////////////////////////--%>
                                             <div class="row justify-content-center">
+
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3  SalesButton_Edit">
+                                                    <button type="button" roles="iRen_Contracts_Admin" class="btn btn-primary w-100  SalesButton_Edit">
+                                                        Edit
+                                                    </button>
+                                                </div>
                                                 <!-- Statement Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
-                                                    <button type="button" class="btn btn-primary ButtonStyle Statement common-button w-100 mb-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
+                                                    <button type="button" class="btn btn-primary ButtonStyle Statement common-button w-100 ">
                                                         Statement
                                                     </button>
                                                 </div>
 
                                                 <!-- Delivery Note Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
-                                                    <button type="button" class="btn btn-primary ButtonStyle DeliveryNote common-button w-100 mb-2 ">
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
+                                                    <button type="button" class="btn btn-primary ButtonStyle DeliveryNote common-button w-100  ">
                                                         Delivery Note
                                                     </button>
                                                 </div>
 
                                                 <!-- Close Button -->
-                                                <div class="col-md-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2">
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
                                                     <button type="button" class="btn btn-primary ButtonStyle CloseForm btnCancel common-button w-100 ">
                                                         Close
                                                     </button>

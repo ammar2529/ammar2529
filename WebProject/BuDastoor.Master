@@ -58,249 +58,31 @@
             padding: 0;
         }
 
-        /* Sidebar Styles */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 60px;
-            height: 100%;
-            background-color: #12344d;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1030;
-            overflow-y: auto;
-            transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
 
-        .sidebar:hover,
-        .sidebar.active {
-            width: 250px;
-            z-index: 1050; /* Higher z-index to overlay content */
-        }
+        .action-menu button {
+  padding: 6px 10px;
+  border: none;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
 
-        .sidebar.collapsed {
-            width: 60px;
-            transform: none; /* Ensure no transform on large screens */
-        }
 
-        .sidebar .navbar-brand {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #e9ecef;
-            height: 50px; /* Fixed height for consistent alignment */
-        }
+/* Hover styles */
+.edit-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
 
-        .sidebar .navbar-brand .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center; /* Center content in collapsed state */
-            width: 100%; /* Full width of parent */
-            height: 100%;
-        }
+.delete-btn:hover {
+  background-color: #dc3545;
+  color: white;
+}
 
-        .sidebar .navbar-brand h6 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #ffffff;
-        }
 
-        .sidebar:not(:hover):not(.active) .navbar-brand h6,
-        .sidebar.collapsed .navbar-brand h6 {
-            display: none;
-        }
 
-        .sidebar .navbar-brand .fa-opencart {
-            font-size: 16px;
-            color: #ffffff;
-            margin: 0; /* Remove margins for consistent positioning */
-            width: 30px; /* Fixed width for icon */
-            text-align: center; /* Center icon */
-        }
-
-        .sidebar:not(:hover):not(.active) .navbar-brand .fa-opencart,
-        .sidebar.collapsed .navbar-brand .fa-opencart {
-            margin: 0;
-        }
-
-        .sidebar .nav-item {
-            width: 100%;
-        }
-
-        .sidebar .nav-link {
-            color: #ffffff;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            height: 40px; /* Fixed height for consistent alignment */
-            justify-content: flex-start; /* Align left in expanded state */
-        }
-
-        .sidebar:not(:hover):not(.active) .nav-link,
-        .sidebar.collapsed .nav-link {
-            justify-content: center; /* Center in collapsed state */
-        }
-
-        .sidebar .nav-link:hover {
-            background-color: #1a4a6b;
-            color: #ff6200;
-        }
-
-        .sidebar .nav-link i {
-            font-size: 16px;
-            color: #ffffff;
-            margin: 0; /* Remove margins for consistent positioning */
-            width: 30px; /* Fixed width for icon */
-            text-align: center; /* Center icon */
-        }
-
-        .sidebar:hover .nav-link i,
-        .sidebar.active .nav-link i {
-            width: 30px; /* Consistent width in expanded state */
-        }
-
-        .sidebar:not(:hover):not(.active) .nav-link .menu-text,
-        .sidebar.collapsed .nav-link .menu-text {
-            display: none;
-        }
-
-        .sidebar.active .nav-link .menu-text {
-            display: inline; /* Ensure text is visible in active state */
-        }
-
-        .sidebar:not(:hover):not(.active) .nav-link i,
-        .sidebar.collapsed .nav-link i {
-            margin: 0;
-        }
-
-        .sidebar .dropdown-menu {
-            position: static;
-            width: 100%;
-            border: none;
-            box-shadow: none;
-            background-color: #1a4a6b;
-            padding: 0 0 0 30px; /* Consistent padding */
-            margin: 0; /* No extra margin */
-            display: none;
-        }
-
-        .sidebar .nav-item.dropdown:hover .dropdown-menu,
-        .sidebar .nav-item.dropdown.active .dropdown-menu {
-            display: block;
-        }
-
-        .sidebar:not(:hover):not(.active) .dropdown-menu,
-        .sidebar.collapsed .dropdown-menu {
-            display: none !important;
-        }
-
-        .sidebar .dropdown-item {
-            padding: 8px 15px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            height: 36px; /* Consistent height for dropdown items */
-        }
-
-        .sidebar .dropdown-item i {
-            font-size: 16px;
-            color: #ffffff;
-            margin: 0;
-            width: 30px; /* Fixed width for icons in expanded state */
-            text-align: center;
-        }
-
-        /* Hover styles for dropdown items on large screens */
-        @media (min-width: 991.99px) {
-            .sidebar:hover .dropdown-menu li:hover,
-            .sidebar.active .dropdown-menu li:hover {
-                background-color: #28a745; /* Green background on hover */
-            }
-            .sidebar:hover .dropdown-item:hover .menu-text,
-            .sidebar.active .dropdown-item:hover .menu-text {
-                color: #ff6200; /* Orange text on hover */
-            }
-        }
-
-        .sidebar .user-section {
-            padding: 15px;
-            border-top: 1px solid #e9ecef;
-            margin-top: auto;
-        }
-
-        .sidebar .user-section .dropdown-toggle {
-            color: #ffffff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            height: 40px; /* Consistent height */
-            justify-content: flex-start; /* Align left in expanded state */
-        }
-
-        .sidebar:not(:hover):not(.active) .user-section .dropdown-toggle,
-        .sidebar.collapsed .user-section .dropdown-toggle {
-            justify-content: center; /* Center in collapsed state */
-        }
-
-        .sidebar .user-section .dropdown-toggle:hover {
-            color: #ff6200;
-        }
-
-        .sidebar .user-section .dropdown-menu {
-            position: static;
-            width: 100%;
-            background-color: #1a4a6b;
-            padding: 0 0 0 30px; /* Consistent padding */
-            margin: 0; /* No extra margin */
-            display: none;
-        }
-
-        .sidebar .user-section:hover .dropdown-menu,
-        .sidebar .user-section.active .dropdown-menu {
-            display: block;
-        }
-
-        .sidebar:not(:hover):not(.active) .user-section .UserName,
-        .sidebar.collapsed .user-section .UserName {
-            display: none;
-        }
-
-        .sidebar.active .user-section .UserName {
-            display: inline; /* Ensure username is visible in active state */
-        }
-
-        .sidebar .user-section .dropdown-toggle i {
-            font-size: 16px;
-            color: #ffffff;
-            margin: 0;
-            width: 30px; /* Fixed width for icon */
-            text-align: center;
-        }
-
-        .sidebar .logout i {
-            color: #dc3545;
-        }
-
-        .sidebar-toggle-btn {
-            background-color: #12344d;
-            color: #ffffff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 16px;
-            position: fixed;
-            top: 12px;
-            left: 10px;
-            z-index: 1060; /* Higher than sidebar */
-            display: none; /* Hidden by default */
-        }
-
-        /* Show toggle button on small screens */
-        @media (max-width: 991.98px) {
-            .sidebar-toggle-btn {
-                display: block;
-            }
-        }
 
         .sidebar ul > li {
             cursor: pointer;
@@ -337,56 +119,16 @@
         }
 
         /* Small Screens */
-        @media (max-width: 991.98px) {
-            .sidebar {
-                transform: translateX(-250px);
-                width: 250px;
-                transition: transform 0.3s ease-in-out;
-                z-index: 1050;
-            }
+        @media (max-width: 991.98px) 
+        {
 
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .sidebar.collapsed {
-                width: 250px; /* Same width when active on mobile */
-                transform: translateX(-250px); /* Hidden by default */
-            }
 
             .main-content {
                 width: 100%; /* Full width */
                 margin-left: 0; /* No offset */
             }
 
-            .sidebar .nav-item.dropdown:hover .dropdown-menu,
-            .sidebar .user-section:hover .dropdown-menu {
-                display: none !important; /* Disable hover on mobile */
-            }
 
-            .sidebar .nav-item.dropdown .dropdown-menu,
-            .sidebar .user-section .dropdown-menu {
-                display: none !important;
-            }
-
-            .sidebar .nav-item.dropdown.active .dropdown-menu,
-            .sidebar .user-section.active .dropdown-menu {
-                display: block !important;
-            }
-
-            .sidebar .nav-link i,
-            .sidebar .user-section .dropdown-toggle i {
-                width: 30px; /* Consistent width for mobile expanded state */
-            }
-
-            .sidebar.active .nav-link .menu-text,
-            .sidebar.active .user-section .UserName {
-                display: inline !important; /* Force text visibility on mobile when active */
-            }
-
-            .sidebar .navbar-brand .fa-opencart {
-                width: 30px; /* Consistent width for mobile */
-            }
         }
     </style>
 </head>

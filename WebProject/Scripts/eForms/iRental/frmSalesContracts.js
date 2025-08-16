@@ -175,7 +175,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
         var discount = parseFloat($('[argumentid="Discount"]',t.el).val()) || 0;
 
         // Retrieve Payment Amount (as a number) and round it
-        var paymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).text()) || 0;
+        var paymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).val()) || 0;
         var roundedAmount = Math.round(paymentAmount * 1000) / 1000; // Ensures rounding to three decimal places
         var formattedAmount = roundedAmount.toFixed(3); // Formats the amount to three decimal places
         var parsePaymentAmount = parseFloat(formattedAmount);
@@ -189,7 +189,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
         // Update Total Amount and Amount Due fields
         $('[argumentid="TotalAmount"]', t.el).val(totalAmount.toFixed(3));
-        $('[argumentid="AmountDue"]', t.el).text(totalAmountDue.toFixed(3));
+        $('[argumentid="AmountDue"]', t.el).val(totalAmountDue.toFixed(3));
 
         // Reset totalAmountDue to an empty string if fully paid
         if (totalAmountDue === 0) {
@@ -727,19 +727,19 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
        // $('input[disabled="disabled"]:not([type="radio"]),textarea[disabled="disabled"],select[disabled="disabled"]', t.el).addClass('ElemDisabled');
         $('span[argumentid="ChassisNo"],span[argumentid="CustomerName"],span[argumentid="InsuranceExpiry"],span[argumentid="FullInsuranceExpiry"],span[argumentid="PassportExpiry"],span[argumentid="NationalIDExpiryDate"],span[argumentid="DrivingLicenseExpiry"]', t.el).css('color', '#628296'); //Change Color to Normal on form show
            
-            $('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
-            $('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el)
-                .removeClass('ElemDisabled')
-                .prop('disabled', true) // ✅ Enable input (not disabled)
-                .prop('readonly', true)  // ✅ Make it read-only
-                .css({
-                   // 'border-bottom': '2px dotted gray', // Gray dotted border
-                    'pointer-events': 'none', // 🔹 Disable clicking
-                    'width': '100%', // Full width
-                    'font-size': '13px',
-                    'font-weight': '400',
-                    'font-family': 'OpenSans-Regular' // ✅ Fixed typo
-                });
+            //$('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el).attr('disabled', 'disabled');
+            //$('.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.CloseContract,.CancelContract,.PendingPaymentCarOut,.PendingPaymentCarIn  ', t.el)
+            //    .removeClass('ElemDisabled')
+            //    .prop('disabled', true) // ✅ Enable input (not disabled)
+            //    .prop('readonly', true)  // ✅ Make it read-only
+            //    .css({
+            //       // 'border-bottom': '2px dotted gray', // Gray dotted border
+            //        'pointer-events': 'none', // 🔹 Disable clicking
+            //        'width': '100%', // Full width
+            //        'font-size': '13px',
+            //        'font-weight': '400',
+            //        'font-family': 'OpenSans-Regular' // ✅ Fixed typo
+            //    });
 
 
            // $('.CloseContract,.CancelContract,.btnSave,.QuotationBtn,.ContractPrintBtn,.BillsBtn,.PendingPaymentCarOut,.PendingPaymentCarIn', t.el).addClass('ElemDisabled');
@@ -1026,12 +1026,12 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
                 //var PaymentAmount = $('[argumentid="PaymentAmount"]', t.el).text();
                 //var PaymentAmountInFloat = parseFloat(PaymentAmount);
                 //$('[argumentid="PaymentAmount"]', t.el).text(PaymentAmountInFloat.toFixed(3));
-                var AmountDue = $('[argumentid="AmountDue"]', t.el).text();
+                var AmountDue = $('[argumentid="AmountDue"]', t.el).val();
                 $('[argumentid="AmountInWordsGrandSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
                 $('[ argumentid = "AmountDueInWordsSalesContract"]', t.el).val(getAmountInWordsSalesContract(AmountDue));
 
                 var AmountDueInFloat = parseFloat(AmountDue) || 0;
-                $('[argumentid="AmountDue"]', t.el).text(AmountDueInFloat.toFixed(3));
+                $('[argumentid="AmountDue"]', t.el).val(AmountDueInFloat.toFixed(3));
                 var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
 
                 var decAmountReceived = parseFloat(val('PaymentAmount', SalesContractTab)) || 0;
@@ -1076,7 +1076,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts = function (obj) {
 
             var AmountDueRes = CarPriceRes - decAmountReceived;
 
-            $('[argumentid="AmountDue"]', t.el).text(AmountDueRes.toFixed(3));
+            $('[argumentid="AmountDue"]', t.el).val(AmountDueRes.toFixed(3));
 
            
     });
@@ -1611,7 +1611,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
     }
     else
     {
-        $('[argumentid="TotalAmount"]',t.el).text(decTotalAmount.toFixed(3));
+        $('[argumentid="TotalAmount"]',t.el).val(decTotalAmount.toFixed(3));
     }
 
     var SalesContractTab = $('[tabid="SalesContractDetails"]', t.el);
@@ -1628,14 +1628,14 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimal = function ()
        // $('[argumentid="PaymentAmount"]',t.el).text();
     }
 
-    var decAmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text());
+    var decAmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).val());
     if (isNaN(decAmountDue))
     {
-        $('[argumentid="AmountDue"]', t.el).text('0.000');
+        $('[argumentid="AmountDue"]', t.el).val('0.000');
     }
     else
     {
-        $('[argumentid="AmountDue"]', t.el).text(decAmountDue.toFixed(3));
+        $('[argumentid="AmountDue"]', t.el).val(decAmountDue.toFixed(3));
     }
 
     var engineWarrenty = parseFloat($('[argumentid="EngineWarranty"]', t.el).val());
@@ -1705,16 +1705,16 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.ConvertToDecimalIfNotIsNAN = functi
         // $('[argumentid="PaymentAmount"]',t.el).text();
     }
 
-    var dePaymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).text());
+    var dePaymentAmount = parseFloat($('[argumentid="PaymentAmount"]', t.el).val());
     if (!isNaN(dePaymentAmount)) {
         var convDecPaymentAmount = dePaymentAmount.toFixed(3);
-        $('[argumentid="PaymentAmount"]', t.el).text(convDecPaymentAmount);
+        $('[argumentid="PaymentAmount"]', t.el).val(convDecPaymentAmount);
     }
 
-    var deAmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).text());
+    var deAmountDue = parseFloat($('[argumentid="AmountDue"]', t.el).val());
     if (!isNaN(deAmountDue)) {
         var convDeAmountDue = deAmountDue.toFixed(3);
-        $('[argumentid="AmountDue"]', t.el).text(convDeAmountDue);
+        $('[argumentid="AmountDue"]', t.el).val(convDeAmountDue);
     }
 
 };
