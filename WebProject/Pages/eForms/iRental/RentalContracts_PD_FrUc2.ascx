@@ -61,8 +61,8 @@
         <div class="row mb-3">
             <label for="PaymentMode" class="col-md-2 col-form-label">Payment Mode *</label>
             <div class="col-md-4">
-                <select id="PaymentMode" class="form-select" groupid="Rental_Payments" argumentid="PaymentMode"
-                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}" required>
+                <select id="rental_D_PaymentMode" class="form-select" groupid="Rental_Payments" argumentid="PaymentMode"
+                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}" required name="">
                     <option value="" selected>Select Payment Mode</option>
                 </select>
             </div>
@@ -72,8 +72,8 @@
         <div class="row mb-3">
             <label for="BankName" class="col-md-2 col-form-label">Bank *</label>
             <div class="col-md-4">
-                <select id="BankName" class="form-select" groupid="Rental_Payments" argumentid="BankName"
-                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" required>
+                <select id="RentBankName" class="form-select" groupid="Rental_Payments" argumentid="BankName"
+                    storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}" required name="">
                     <option value="" selected>Select Bank</option>
                 </select>
             </div>

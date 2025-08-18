@@ -62,7 +62,17 @@
                        InMileage: { width: '100px' },
                        OutLocationId: { caption: 'Out Location', width: '105px' },
                        InLocationId: { caption: 'In Location', width: '105px' },
-                       DriverId: { caption: 'Driver' }
+                       DriverId: { caption: 'Driver' },
+                       GridButtons:
+                       {
+                           'delete': {
+                               conf: {
+                                   Action: 'DeleteRows',
+                                   Command: 'UPD_iRental_Cars_Transfers',
+                                   KeysCol: 'RecId'
+                               }
+                           }
+                       }
                    },
                    forms: {
                        NewFormId: 'frmCarTransfers',

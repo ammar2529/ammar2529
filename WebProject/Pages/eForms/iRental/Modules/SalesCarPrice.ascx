@@ -57,6 +57,16 @@
                         YearId: { caption: 'Year', width: '55px' },
                         Price: { caption: 'Car Price', width: '95px' },
                         Comments: { caption: 'Comments', width: '95px' },
+                        GridButtons:
+                        {
+                            'delete': {
+                                conf: {
+                                    Action: 'DeleteRows',
+                                    Command: 'UPD_iRental_SalesPriceCar',
+                                    KeysCol: 'RecId'
+                                }
+                            }
+                        }
 
                     },
                     forms: {

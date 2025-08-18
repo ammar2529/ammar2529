@@ -68,7 +68,17 @@
                             CarYear: { caption: 'Year', width: '55px' },
                             CurrentMileage: { caption: 'Mileage', width: '75px' },
                             CarLocationId: { caption: 'Car Location', width: '105px' },
-                            CarStatusId: { caption: 'Status' }
+                            CarStatusId: { caption: 'Status' }, 
+                            GridButtons:
+                            {
+                                'delete': {
+                                    conf: {
+                                        Action: 'DeleteRows',
+                                        Command: 'UPD_iRental_Cars',
+                                        KeysCol: 'RecId'
+                                    }
+                                }
+                            }
                         },
                         forms: {
                             //NewFormId: 'frmCarDetails',

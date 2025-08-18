@@ -132,8 +132,8 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control text required CommonDisable text-danger fw-bold" id="CarNumber" maxlength="10" groupid="RentalContractsForm" argumentid="CarNumber" placeholder="Car Number">
-                        <label for="CarNumber">Car Number*</label>
+                        <input type="text" class="form-control text required CommonDisable text-danger fw-bold" id="RentalCarNumber" maxlength="10" groupid="RentalContractsForm" argumentid="CarNumber" placeholder="Car Number">
+                        <label for="RentalCarNumber">Car Number*</label>
                     </div>
                 </div>
 
@@ -305,7 +305,7 @@
                 <!-- Previous Mileage (KM) -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control-plaintext" id="CarPreviousKM" groupid="RentalContractsForm" argumentid="CarPreviousKM" placeholder="Previous Mileage" readonly>
+                        <input type="text" class="form-control-plaintext" id="RentalCarPreviousKM" groupid="RentalContractsForm" argumentid="CarPreviousKM" placeholder="Previous Mileage" readonly>
                         <label for="CarPreviousKM">Previous Mileage (KM)</label>
                     </div>
                 </div>

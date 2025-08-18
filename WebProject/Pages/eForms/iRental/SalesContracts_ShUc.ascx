@@ -94,8 +94,8 @@
                 </div>
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CarNumber" argumentid="CarNumber" groupid="schSalesContractDetails" placeholder="Enter Car Number">
-                        <label for="CarNumber">CarNumber</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="SalesShUc_CarNumber" argumentid="CarNumber" groupid="schSalesContractDetails" placeholder="Enter Car Number">
+                        <label for="SalesShUc_CarNumber">CarNumber</label>
                     </div>
                 </div>
             </div>

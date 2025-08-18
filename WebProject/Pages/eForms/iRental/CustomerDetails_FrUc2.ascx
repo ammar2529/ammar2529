@@ -226,8 +226,8 @@
         <div class="row justify-content-md-center mt-2">
             <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
-                    <textarea class="form-control form-control-sm" id="Address" rows="6" placeholder="Customer Address" groupid="CustomersForm" argumentid="Address"></textarea>
-                    <label for="Address">Customer Address</label>
+                    <textarea class="form-control form-control-sm" id="CustAddress" rows="6" placeholder="Customer Address" groupid="CustomersForm" argumentid="Address"></textarea>
+                    <label for="CustAddress">Customer Address</label>
                 </div>
             </div>
             </div>

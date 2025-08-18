@@ -48,10 +48,10 @@
       <div class="col-12 col-md-none col-sm-none col-lg-2"></div>
       <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
         <div class="form-floating">
-          <input type="text" class="form-control text LOVPopup required CommonDisableClass" id="CarNumber" 
+          <input type="text" class="form-control text LOVPopup required CommonDisableClass" id="GCSCarNumber" 
                  placeholder="Car No.*" style="text-align: center; font-weight: bold; color: red;" 
                  maxlength="10" groupid="GarageCarServiceDetails" lovpopupid="carPopupGarage" argumentid="CarNumber">
-          <label for="CarNumber">Car No.*</label>
+          <label for="GCSCarNumber">Car No.*</label>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-4">

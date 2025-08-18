@@ -19,17 +19,22 @@
     }
 
     .sidebar.collapsed {
-        width: 60px;
+        width: 80px;
         transform: none; /* Ensure no transform on large screens */
     }
 
-    .sidebar .navbar-brand {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border-bottom: 1px solid #e9ecef;
-        height: 50px; /* Fixed height for consistent alignment */
-    }
+        .sidebar.collapsed div.dynamicMenuSection {
+            padding: 15px;
+        }
+
+  
+        .sidebar .navbar-brand {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            height: 50px; /* Fixed height for consistent alignment */
+        }
 
         .sidebar .navbar-brand .logo-container {
             display: flex;
@@ -37,6 +42,8 @@
             justify-content: center; /* Center content in collapsed state */
             width: 100%; /* Full width of parent */
             height: 100%;
+            position: absolute;
+            left: -50px;
         }
 
         .sidebar .navbar-brand h6 {
@@ -50,7 +57,7 @@
         display: none;
     }
 
-    .sidebar .navbar-brand .fa-opencart {
+    .sidebar .navbar-brand .fa-bars{
         font-size: 16px;
         color: #ffffff;
         margin: 0; /* Remove margins for consistent positioning */
@@ -59,8 +66,9 @@
     }
 
     .sidebar:not(:hover):not(.active) .navbar-brand .fa-opencart,
-    .sidebar.collapsed .navbar-brand .fa-opencart {
+    .sidebar.collapsed .navbar-brand .fa-bars{
         margin: 0;
+        padding-left: 88px;
     }
 
     .sidebar .nav-item {
@@ -78,7 +86,7 @@
 
     .sidebar:not(:hover):not(.active) .nav-link,
     .sidebar.collapsed .nav-link {
-        justify-content: center; /* Center in collapsed state */
+        /*justify-content: center;*/ /* Center in collapsed state */
     }
 
     .sidebar .nav-link:hover {
@@ -119,9 +127,10 @@
         border: none;
         box-shadow: none;
         background-color: #1a4a6b;
-        padding: 0 0 0 30px; /* Consistent padding */
+        /*padding: 0 0 0 30px;*/ /* Consistent padding */
         margin: 0; /* No extra margin */
         display: none;
+        padding:5px;
     }
 
     .sidebar .nav-item.dropdown:hover .dropdown-menu,
@@ -160,6 +169,11 @@
     .sidebar:hover .dropdown-item:hover .menu-text,
     .sidebar.active .dropdown-item:hover .menu-text {
         color: #ff6200; /* Orange text on hover */
+    }
+
+    .sidebar ul li a:hover {
+        background: #12344d;
+        color: #ff6200;
     }
 }
 
@@ -285,7 +299,13 @@
             display: inline !important; /* Force text visibility on mobile when active */
         }
 
-        .sidebar .navbar-brand .fa-opencart {
+        .sidebar .navbar-brand .fa-bars{
             width: 30px; /* Consistent width for mobile */
         }
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    text-decoration: none;
+    background-color: #365870;
+    color: white;
 }

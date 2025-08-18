@@ -660,6 +660,17 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     if (!t.ColumnTemplates.templates) {// if not a templated grid..
                         t.Header.repCon.append(`<td class= "d-sm-table-cell d-md-table-cell d-lg-none collapseBtn" > </td>`);
                         t.Item.repCon.append(`<td class="d-sm-table-cell d-md-table-cell d-lg-none " style="position:relative;"> <i class="fas fa-chevron-down collapseBtn" style=" position: absolute; right: 5px; bottom: 15px; right: 285px;"> </i></td>`);
+                        debugger
+
+                        let editConf = {
+
+                        }
+
+                        let deleteConf = {
+                            Action: 'DeleteRows',
+                            Command: t.GridConf?.cols?.GridButtons?.delete?.conf?.Command ?? '',
+                            KeysCol: t.GridConf?.cols?.GridButtons?.delete?.conf?.KeysCol ?? ''
+                        };
 
                         // Append new actionBtn column for header
                         t.Header.repCon.append(`
@@ -673,8 +684,8 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                                     <div class="action-menu" 
                                     style="position: absolute; background: white; border: 1px solid rgb(204, 204, 204); z-index: 100; display: none;
                                     flex-direction: column; padding: 8px; right: 0px; min-width: 100px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px; gap: 6px;">
-                                        <button class="edit-btn" >Edit</button>
-                                        <button class="delete-btn ActionButton unselectable" buttonid="delete" conf="{&quot;Action&quot;:&quot;DeleteRows&quot;,&quot;Command&quot;:&quot;UPD_iRental_CarsForSales&quot;,&quot;KeysCol&quot;:&quot;ChassisNo&quot;}">Delete</button>
+                                        <button class="edit-btn EditForm " >Edit</button>
+                                    <button class="delete-btn ActionButton unselectable" buttonid="delete" conf='${JSON.stringify(deleteConf)}'>Delete</button> 
                                     </div>
                                 </td>
                             `);

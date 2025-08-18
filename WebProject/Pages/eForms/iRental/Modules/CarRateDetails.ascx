@@ -60,7 +60,17 @@
                                         CarYear: { caption: 'Year', width: '55px' },
                                         Rate: { caption: 'Daily Rate', width: '95px' },
                                         AllowedKM: { caption: 'Daily KM Limit', width: '125px' },
-                                        ExtraKMRate: { caption: 'Rate/KM', width: '85px' }
+                                        ExtraKMRate: { caption: 'Rate/KM', width: '85px' },
+                                        GridButtons:
+                                        {
+                                            'delete': {
+                                                conf: {
+                                                    Action: 'DeleteRows',
+                                                    Command: 'UPD_iRental_Cars_Rates',
+                                                    KeysCol: 'RecId'
+                                                }
+                                            }
+                                        }
                                     },
                                     forms: {
                                         NewFormId: 'frmCarRateDetails',

@@ -2,8 +2,23 @@
 <script src="../../../Scripts/eForms/iRental/frmCarAndServiceDetails.js"></script>
 <div class="">
 
-    <!-- Contract No. and Status -->
-    <div class="row mt-2 justify-content-md-center StatusTR">
+    <div class="card">
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <div class="form-header">
+
+                    <span class="  ink-bar">Car And Customer Details</span>
+                    <i class="fa-regular fa-rectangle-xmark CloseForm"
+                        tabid="CloseBtn" title="Close Form"
+                        style="font-size: 20px; color: black; cursor: pointer; transition: color 0.3s ease; position: absolute; right: 10px;"
+                        onmouseover="this.style.color='red';"
+                        onmouseout="this.style.color='black';"></i>
+                </div>
+            </div>
+
+                <!-- Contract No. and Status -->
+    <div class="row mt-2  StatusTR">
         <div class="col-12 col-sm-6 col-lg-2">
             <label for="floatingKM">
                 <small><b>Contract No.</b></small>
@@ -15,12 +30,12 @@
 
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3 ">
+        <div class="col-12 col-sm-6 col-lg-6 ">
         </div>
 
     </div>
 
-     <div class="row mt-2 justify-content-md-center">
+     <div class="row mt-2 ">
          <div class="col-12 col-sm-6 col-lg-1 ">
              <label for="floatingKM">
                  <small><b>Car For*</b></small>
@@ -44,8 +59,8 @@
 
     
  <!-- Car No. and Customer Code -->
-        <div class="row mt-2 justify-content-md-center">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2 ">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" maxlength="10" class="form-control form-control-sm text LOVPopup required CommonDisableCarNumber" id="CarNumberSales" placeholder="Car No." groupid="CarAndCustomersDetails" lovpopupid="carPopupCutomerAndCarDetailsForSales" argumentid="CarNumber" />
                     <label for="CarNumberSales">Car No.</label>
@@ -60,7 +75,7 @@
                 <input type="hidden" name="RecId" groupid="CarAndCustomersDetails" argumentid="CsRecId" />
                 <input type="hidden" name="CarAndCustomersDetailsRecId" groupid="CarAndCustomersDetails" argumentid="CarAndCustomersDetailsRecId" />
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" maxlength="10" class="form-control form-control-sm LOVPopup required text CommonDisableCarNumber" id="CustomerRecCode" placeholder="Customer Code" groupid="CarAndCustomersDetails" lovpopupid="customerPopup" argumentid="CustomerRecCode" requirederr='*Required'>
                     <label for="CustomerRecCode">Customer Code*</label>
@@ -69,14 +84,14 @@
         </div>
 
    <!-- Chassis No. and Name -->
-        <div class="row mt-2 justify-content-md-center">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2 ">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable ChassisNo" groupid="CarAndCustomersDetails" argumentid="ChassisNo" disabled readonly>
                     <label for="ChassisNo">Chassis No.</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" style="font-size: 16px;" groupid="CarAndCustomersDetails" argumentid="CustomerName" disabled readonly>
                     <label for="CustomerName">Name</label>
@@ -85,14 +100,14 @@
         </div>
 
         <!-- Brand and Nationality -->
-        <div class="row mt-2 justify-content-md-center">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2 ">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable CommonSp" groupid="CarAndCustomersDetails" argumentid="Brand" disabled readonly>
                     <label for="Brand">Brand</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="Nationality" disabled readonly>
                     <label for="Nationality">Nationality</label>
@@ -104,14 +119,14 @@
 
   
         <!-- Model and National ID No. -->
-        <div class="row mt-2 justify-content-md-center">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2 ">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable CommonSp" groupid="CarAndCustomersDetails" argumentid="Model" disabled readonly>
                     <label for="Model">Model</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable NationalIDNo"  groupid="CarAndCustomersDetails" argumentid="NationalIDNo" disabled readonly>
                     <label for="NationalIDNo">National ID No.</label>
@@ -121,14 +136,14 @@
         </div>
 
      <!-- Year and Gender -->
-        <div class="row mt-2 justify-content-md-center">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2 ">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable CommonSp" groupid="CarAndCustomersDetails" argumentid="CarYear" disabled readonly>
                     <label for="CarYear">Year</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="Gender" disabled readonly>
                     <label for="Gender">Gender</label>
@@ -137,14 +152,14 @@
         </div>
 
      <!-- Color and Mobile Telephone -->
-        <div class="row mt-2 justify-content-md-center">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2 ">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable CommonSp" groupid="CarAndCustomersDetails" argumentid="Color" disabled readonly>
                     <label for="Color">Color</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="MobileTelephone1" disabled readonly>
                     <label for="MobileTelephone1">Mobile Telephone</label>
@@ -153,26 +168,26 @@
         </div>
 
     <!-- Type -->
-    <div class="row mt-2 justify-content-md-center">
-        <div class="col-12 col-sm-6 col-lg-3">
+    <div class="row mt-2 ">
+        <div class="col-12 col-sm-6 col-lg-6">
             <div class="form-floating">
                 <input type="text" class="form-control form-control-sm CommonDisable CommonSp" groupid="CarAndCustomersDetails" argumentid="Type" disabled readonly>
                 <label for="Type">Type</label>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3">
+        <div class="col-12 col-sm-6 col-lg-6">
         </div>
     </div>
 
      <!-- Full Insurance Details -->
-    <div class="row mt-2 justify-content-md-center hideTr">
-        <div class="col-12 col-sm-6 col-lg-3">
+    <div class="row mt-2  hideTr">
+        <div class="col-12 col-sm-6 col-lg-6">
             <div class="form-floating">
                 <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="FullInsuranceCompanyId" disabled readonly>
                 <label for="FullInsuranceCompanyId">Full Insurance</label>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3">
+        <div class="col-12 col-sm-6 col-lg-6">
             <div class="form-floating">
                 <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="FullInsurancePolicyNo" disabled readonly>
                 <label for="FullInsurancePolicyNo">Policy No.</label>
@@ -184,15 +199,15 @@
 
 
     <!-- Expiry Date -->
-    <div class="row mt-2 justify-content-md-center hideTr">
-        <div class="col-12 col-sm-6 col-lg-3">
+    <div class="row mt-2  hideTr">
+        <div class="col-12 col-sm-6 col-lg-6">
             <div class="form-floating">
                 <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="FullInsuranceExpiry" disabled readonly>
                 <label for="FullInsuranceExpiry">Expiry Date (dd/mm/yyyy)</label>
             </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-lg-3">
+        <div class="col-12 col-sm-6 col-lg-6">
             <div class="form-floating">
                 <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="ContractDate" disabled readonly>
                 <label for="ContractDate">Contract Date</label>
@@ -203,14 +218,14 @@
 
 
         <!-- Engine Warranty - KM and Years -->
-        <div class="row mt-2 justify-content-md-center hideOnSales">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2  hideOnSales">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="EngineWarranty" disabled readonly>
                     <label for="EngineWarranty">Engine Warranty - KM</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="EnginYearsWarranty" disabled readonly>
                     <label for="EnginYearsWarranty">Years</label>
@@ -219,14 +234,14 @@
         </div>
 
         <!-- Gear Warranty - KM and Years -->
-        <div class="row mt-2 justify-content-md-center hideOnSales">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2  hideOnSales">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="GearWarranty" disabled readonly>
                     <label for="GearWarranty">Gear Warranty - KM</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="GearYearsWarranty" disabled readonly>
                     <label for="GearYearsWarranty">Years</label>
@@ -235,14 +250,14 @@
         </div>
 
         <!-- Car Warranty - KM and Years -->
-        <div class="row mt-2 justify-content-md-center hideOnSales">
-            <div class="col-12 col-sm-6 col-lg-3">
+        <div class="row mt-2  hideOnSales">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="CarWarranty" disabled readonly>
                     <label for="CarWarranty">Car Warranty - KM</label>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-sm CommonDisable" groupid="CarAndCustomersDetails" argumentid="CarYearsWarranty" disabled readonly>
                     <label for="CarYearsWarranty">Years</label>
@@ -251,7 +266,7 @@
         </div>
 
      <!-- Table -->
-        <div class="row mt-2 justify-content-md-center">
+        <div class="row mt-2 ">
             <div class="col-12">
                 <div class="table-responsive">
                     <table class="table table-bordered CustomerModifyListt">
@@ -296,6 +311,13 @@
                 </div>
             </div>
         </div>
+
+        </div>
+        </div>
+        </div>
+    
+
+
 
 </div>
 

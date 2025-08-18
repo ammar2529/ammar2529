@@ -49,7 +49,7 @@
                             <uc5:DataGrid ID="grdCarForSales" LoadOnInit="false" ShowOnLoad="true" runat="server" Hidden="true" Columns="1" Forms="frmCarsForSales_ShUc"
                                 EmptyHeight="201px" AllowNew="true" SelectableRow="true" PageSize="10" DataSource="SEL_iRental_CarsForSale"
                                 ContainerMargin="5px" AutoSearch="OnLoad" GridTemplate="jQueryUI" GridHeadText="Cars For Sale"
-                                GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_CarsForSales\',KeysCol:\'ChassisNo\'}}}">
+                                GridButtons="{\'delete\':{visible:false}}">
                                 <GridConfig>
                                     <script>
                                         cf = {
@@ -69,7 +69,17 @@
                                                 CarLocationId: { caption: 'Location', width: '75px', hideOnMeduimDevice: "200px" },
                                                 CarStatusId: { caption: 'Status', width: '63px', hideOnMeduimDevice: "200px" },
                                                 RegistrationDate: { caption: 'Registratio Date', width: '63px', hideOnMeduimDevice: "200px" },
-                                                Price: { width: '50px', hideOnMeduimDevice: "200px", format:'fix(3)' },
+                                                Price: { width: '50px', hideOnMeduimDevice: "200px", format: 'fix(3)' },
+                                                GridButtons:
+                                                {
+                                                    'delete': {
+                                                        conf: {
+                                                            Action: 'DeleteRows',
+                                                            Command: 'UPD_iRental_CarsForSales',
+                                                            KeysCol: 'ChassisNo'
+                                                        }
+                                                    }
+                                                }
 
                                             },
                                             forms: {

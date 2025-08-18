@@ -54,7 +54,17 @@
                                                           RecCode: { caption: 'Code', width: '90px' },
                                                           NationalIDNo: { caption: 'National ID No.' },
                                                           MobileTelephone1: { caption: 'Mobile Telephone' },
-                                                          CustomerStatus: { caption: 'Status' }
+                                                          CustomerStatus: { caption: 'Status' },
+                                                          GridButtons:
+                                                          {
+                                                              'delete': {
+                                                                  conf: {
+                                                                      Action: 'DeleteRows',
+                                                                      Command: 'UPD_iRental_Customers',
+                                                                      KeysCol: 'RecId'
+                                                                  }
+                                                              }
+                                                          }
                                                       },
                                                       forms: {
                                                           NewFormId: 'frmCustomerDetails',

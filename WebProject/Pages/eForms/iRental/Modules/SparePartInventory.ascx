@@ -54,7 +54,17 @@
                             SparePartImage: { caption: 'Image', width: '80px' },
                             StoreLocation: { caption: 'Store', width: '65px' },
                             PurchasingFrom: { caption: 'From', width: '60px' },
-                            SearchOrderNo: { width: '0px' }
+                            SearchOrderNo: { width: '0px' },
+                            GridButtons:
+                            {
+                                'delete': {
+                                    conf: {
+                                        Action: 'DeleteRows',
+                                        Command: 'UPD_iRental_SparePartInventory',
+                                        KeysCol: 'RecId'
+                                    }
+                                }
+                            }
                       
                         },
                         forms: {

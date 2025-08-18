@@ -30,7 +30,7 @@
     <div class="row mb-3">
         <label for="Amount" class="col-md-2 col-form-label">Amount *</label>
         <div class="col-md-4">
-            <input type="text" id="Amount" class="form-control text-center" maxlength="10" groupid="Rental_OtherCharges" argumentid="Charges" alphconf="{allow:'.'}">
+            <input type="text" id="RentalAmount" class="form-control text-center" maxlength="10" groupid="Rental_OtherCharges" argumentid="Charges" alphconf="{allow:'.'}">
         </div>
     </div>
 

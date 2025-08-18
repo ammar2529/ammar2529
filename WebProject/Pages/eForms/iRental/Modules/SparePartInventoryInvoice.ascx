@@ -122,7 +122,17 @@
                             CustomerDetails: { caption: 'Customer Details', width: '270px' },
                             ContractDateTimeDetails: { caption: 'Payment Details', width: '165px' },
                             CreationDetails: { caption: 'Creation Details', width: '165px' },
-                            RecId: { width: '0px' }
+                            RecId: { width: '0px' },
+                            GridButtons:
+                            {
+                                'delete': {
+                                    conf: {
+                                        Action: 'DeleteRows',
+                                        Command: 'UPD_iRental_CarServiceDetails',
+                                        KeysCol: 'RecId'
+                                    }
+                                }
+                            }
                         },
                         forms: {
                             NewFormId: 'frmSparePartInventoryInvoice',

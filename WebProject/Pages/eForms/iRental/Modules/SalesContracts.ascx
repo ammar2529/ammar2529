@@ -147,7 +147,17 @@
                                                 CustomerDetails: { caption: 'Customer Details', width: '270px', ColTDClass: "efg" },
                                                 ContractDateTimeDetails: { caption: 'Contract Date & Time', width: '165px', ColTDClass: "efg" },
                                                 CreationDetails: { caption: 'Creation Details', width: '165px', ColTDClass: "efg" },
-                                                RecId: { width: '0px' }
+                                                RecId: { width: '0px' },
+                                                GridButtons:
+                                                {
+                                                    'delete': {
+                                                        conf: {
+                                                            Action: 'DeleteRows',
+                                                            Command: 'UPD_iRental_SalesContracts',
+                                                            KeysCol: 'RecId'
+                                                        }
+                                                    }
+                                                }
                                             },
                                             forms: {
                                                 NewFormId: 'frmSalesContracts',

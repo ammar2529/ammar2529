@@ -108,7 +108,17 @@
                                                 CustomerDetails: { caption: 'Beneficery Details', width: '270px' },
                                                 LeadgerDateTimeDetails: { caption: 'Total Amount', width: '165px' },
                                                 CreationDetails: { caption: 'Creation Details', width: '165px' },
-                                                RecId: { width: '0px' }
+                                                RecId: { width: '0px' },
+                                                GridButtons:
+                                                {
+                                                    'delete': {
+                                                        conf: {
+                                                            Action: 'DeleteRows',
+                                                            Command: 'UPD_Account_LedgerManagement',
+                                                            KeysCol: 'RecId'
+                                                        }
+                                                    }
+                                                }
                                             },
                                             forms: {
                                                 NewFormId: 'frmLedgerManagement',

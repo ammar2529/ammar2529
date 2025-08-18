@@ -105,22 +105,22 @@ var th = ['','thousand','million', 'billion','trillion'];
             <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <select class="form-select PaymentMode required" id="paymentMode" 
+                        <select class="form-select PaymentMode required" id="SalespaymentMode" 
                             groupid="Sales_Payments" argumentid="PaymentMode"  loadon="FirstVisible" 
                             storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'10'}]}">
                             <option value="" selected>Select Payment Mode</option>
                         </select>
-                        <label for="paymentMode">Payment Mode *</label>
+                        <label for="SalespaymentMode">Payment Mode *</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <select class="form-select BankName required" id="bankName"
+                        <select class="form-select BankName required" id="SalesbankName"
                             groupid="Sales_Payments" argumentid="BankName" loadon="FirstVisible" 
                             storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}">
                             <option value="" selected>Select Bank</option>
                         </select>
-                        <label for="bankName" class="BankName">Bank *</label>
+                        <label for="SalesbankName" class="BankName">Bank *</label>
                     </div>
                 </div>
             </div>
@@ -129,9 +129,9 @@ var th = ['','thousand','million', 'billion','trillion'];
             <div class="row mb-3 BankName ">
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control text number ChequeNo" id="chequeNo" placeholder="Cheque No."
+                        <input type="text" class="form-control text number ChequeNo" id="SaleschequeNo" placeholder="Cheque No."
                             maxlength="50" groupid="Sales_Payments" argumentid="ChequeNo" requirederr="*" />
-                        <label for="chequeNo">Cheque No.</label>
+                        <label for="SaleschequeNo">Cheque No.</label>
                     </div>
                 </div>
                 <div class="col-md-4">

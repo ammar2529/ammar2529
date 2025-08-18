@@ -261,13 +261,13 @@ height:100%;
    background-position:center center;
 
 }
-.EditForm 
+/*.EditForm 
 {
     background-image: url("../Images/RowEditForm.png") ;
     background-repeat: no-repeat;
    background-position:center center;
 
-}
+}*/
 .RowEditForm  div
 {
 	cursor:pointer;

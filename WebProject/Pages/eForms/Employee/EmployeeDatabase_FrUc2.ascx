@@ -49,10 +49,10 @@
                 <div class="col-12 col-md-none col-sm-none col-lg-4 "></div>
                 <div class="col-12 col-md-6 col-lg-2 mb-3 mb-md-0">
                     <div class="form-floating">
-                        <input type="text" class="form-control text required number" id="EmpId"
+                        <input type="text" class="form-control text required number" id="Emp_DEmpId"
                             placeholder="Employee ID*" style="text-align: center; font-weight: bold; color: red;"
                             maxlength="10" groupid="EmployeeDatabase" argumentid="EmpId">
-                        <label for="EmpId">Employee ID*</label>
+                        <label for="Emp_DEmpId">Employee ID*</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-2">
@@ -439,8 +439,8 @@
             <div class="row mb-3 justify-content-md-center">
                 <div class="col-md-6 col-lg-4 ">
                     <div class="form-floating">
-                        <input type="text" class="form-control text number" id="BasicSalary" style="text-align: center; font-weight: bold;" maxlength="10" groupid="EmployeeDatabase" argumentid="BasicSalary" placeholder="Basic Salary">
-                        <label for="BasicSalary">Basic Salary</label>
+                        <input type="text" class="form-control text number" id="EmpBasicSalary" style="text-align: center; font-weight: bold;" maxlength="10" groupid="EmployeeDatabase" argumentid="BasicSalary" placeholder="Basic Salary">
+                        <label for="EmpBasicSalary">Basic Salary</label>
                     </div>
                 </div>
 <%--                <div class="col-md-6 col-lg-4">
@@ -493,7 +493,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="form-floating">
-                        <select class="form-select dropdownlist" id="BankBranch" loadon="FirstVisible"  groupid="EmployeeDatabase" argumentid="BankBranch" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'22'},{SPParamName:'SubParentTypeId',Name:'BankName'}]}">
+                        <select class="form-select dropdownlist" id="EmpBankBranch" loadon="FirstVisible"  groupid="EmployeeDatabase" argumentid="BankBranch" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'22'},{SPParamName:'SubParentTypeId',Name:'BankName'}]}">
                             <option value="" selected="selected">Select Bank Branch</option>
                         </select>
                         <label for="BankBranch">Bank Branch</label>
@@ -511,8 +511,8 @@
                 </div>
                 <div class="col-12 col-12 col-md-6 col-lg-4 col-lg-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control text" id="AccountNumber" style="text-align: center;" maxlength="50" groupid="EmployeeDatabase" argumentid="AccountNumber" placeholder="Bank Account Number">
-                        <label for="AccountNumber">Bank Account Number</label>
+                        <input type="text" class="form-control text" id="EmpAccountNumber" style="text-align: center;" maxlength="50" groupid="EmployeeDatabase" argumentid="AccountNumber" placeholder="Bank Account Number">
+                        <label for="EmpAccountNumber">Bank Account Number</label>
                     </div>
                 </div>
             </div>

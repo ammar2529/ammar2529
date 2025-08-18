@@ -83,10 +83,10 @@
         <div class="row mt-2 justify-content-md-center">
             <div class="col-12 col-sm-6 col-lg-6">
                 <div class="form-floating">
-                    <select loadon="FirstVisible"  class="form-select form-control-sm" id="Brand" groupid="SparePartInventoryForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
+                    <select loadon="FirstVisible"  class="form-select form-control-sm" id="SprBrand" groupid="SparePartInventoryForm" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}">
                         <option value="" selected>Select Brand</option>
                     </select>
-                    <label for="Brand">Brand*</label>
+                    <label for="SprBrand">Brand*</label>
                 </div>
             </div>
         </div>

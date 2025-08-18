@@ -3,13 +3,13 @@
     padding:0px;
     margin:0px;
 }
-.GridContainer .EditForm {
+/*.GridContainer .EditForm {
     vertical-align: middle;
     text-align: center;
     width: 12px;
     cursor: pointer;
     padding: 0px;
-}
+}*/
 
 .GridContainer .w-grid-border {
     padding: 5px 5px 5px 8px;

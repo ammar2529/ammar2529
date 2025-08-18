@@ -181,9 +181,9 @@
         <div class="row mb-2">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <div class="form-floating">
-                    <textarea class="form-control textarea" id="Address" placeholder="Address"
+                    <textarea class="form-control textarea" id="BenAddress" placeholder="Address"
                         style="height: 100px; resize: none;" argumentid="Address" groupid="Beneficiary"></textarea>
-                    <label for="Address">Address</label>
+                    <label for="BenAddress">Address</label>
                 </div>
             </div>
 

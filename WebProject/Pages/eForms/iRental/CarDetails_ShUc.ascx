@@ -66,10 +66,10 @@
                 </div>
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
-                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarLocationId" groupid="schCarDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="Car_ShcCarLocationId" groupid="schCarDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
                             <option value="" selected="selected">Select Location</option>
                         </select>
-                        <label for="CarLocationId">Location</label>
+                        <label for="Car_ShcCarLocationId">Location</label>
                     </div>
                 </div>
             </div>
@@ -77,10 +77,10 @@
             <div class="row mt-2">
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
-                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarStatusId" groupid="schCarDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'9'}]}">
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CD_ShUc_CarStatusId" groupid="schCarDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'9'}]}">
                             <option value="" selected="selected">Select Status</option>
                         </select>
-                        <label for="CarStatusId">Status</label>
+                        <label for="CD_ShUc_CarStatusId">Status</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">

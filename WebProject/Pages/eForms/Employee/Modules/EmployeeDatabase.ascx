@@ -52,7 +52,17 @@
                             ResidencyExpiryDate: { caption: 'Residency Expiry', width: '135px', hideOnMeduimDevice: "200px" },
                             GrossSalary: { width: '105px', hideOnMeduimDevice: "200px" },
                             Gender: { width: '0px' },
-                            EmpStatus: { caption: 'Status', width: '125px', hideOnMeduimDevice: "200px" }
+                            EmpStatus: { caption: 'Status', width: '125px', hideOnMeduimDevice: "200px" },
+                            GridButtons:
+                            {
+                                'delete': {
+                                    conf: {
+                                        Action: 'DeleteRows',
+                                        Command: 'UPD_Employee_DB',
+                                        KeysCol: 'RecId'
+                                    }
+                                }
+                            }
                         },
                         forms: {
                             NewFormId: 'frmEmployeeDatabase',

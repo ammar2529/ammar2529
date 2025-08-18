@@ -20,8 +20,8 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CarNumber" argumentid="CarNumber" groupid="schCarForSalesDetails" placeholder="Enter Car Number">
-                        <label for="CarNumber">Car Number</label>
+                        <input type="text" class="form-control form-control-sm CommonEmpty" id="CFS_ShUcCarNumber" argumentid="CarNumber" groupid="schCarForSalesDetails" placeholder="Enter Car Number">
+                        <label for="CFS_ShUcCarNumber">Car Number</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
@@ -68,18 +68,18 @@
                 <div class="col-sm-6 col-lg-2">
                     <input type="hidden" value="SearchChassisNo" groupid="schCarForSalesDetails" argumentid="SearchChassisN">
                     <div class="form-floating mb-3">
-                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarLocationId" groupid="schCarForSalesDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CFSCarLocationId" groupid="schCarForSalesDetails" argumentid="CarLocationId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'11'}]}">
                             <option value="" selected>Select Location</option>
                         </select>
-                        <label for="CarLocationId">Location</label>
+                        <label for="CFSCarLocationId">Location</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
                     <div class="form-floating mb-3">
-                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CarStatusId" groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
+                        <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" id="CSF_ShUcCarStatusId" groupid="schCarForSalesDetails" argumentid="CarStatusId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'42'}]}" name="D4">
                             <option value="" selected>Select Status</option>
                         </select>
-                        <label for="CarStatusId">Status</label>
+                        <label for="CSF_ShUcCarStatusId">Status</label>
                     </div>
                 </div>
                 <!-- Empty cells for spacing -->
@@ -89,7 +89,7 @@
                 <div class="col-sm-6 col-lg-2 d-flex align-items-center mt-3">
                     <button class="btn btn-primary btn-sm me-2 search ViewButton">Search</button>
                     <button class="btn btn-secondary btn-sm reset ClearButton">Clear</button>
-                    <button class="btn btn-primary btn-sm  ClosePopup CloseLOVPopup">Close</button>
+<%--                    <button class="btn btn-primary btn-sm  ClosePopup CloseLOVPopup">Close</button>--%>
 
                 </div>
             </div>

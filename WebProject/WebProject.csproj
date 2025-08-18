@@ -1383,6 +1383,7 @@
     <Content Include="BudastoorHome.aspx" />
     <Content Include="BudastoorLogin.aspx" />
     <Content Include="BudastoorLogin2.aspx" />
+    <Content Include="CheckSession.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2629,6 +2630,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CarServiceDetails.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CheckSession.aspx.cs">
+      <DependentUpon>CheckSession.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckSession.aspx.designer.cs">
+      <DependentUpon>CheckSession.aspx</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="CUtilityWeb.cs" />

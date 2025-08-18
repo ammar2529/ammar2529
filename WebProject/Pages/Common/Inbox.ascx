@@ -45,9 +45,9 @@
                            <div class="row mb-3 justify-content-center">
                                <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-0">
                                    <div class="form-floating">
-                                       <input type="text" class="form-control-plaintext text-center fw-bold" id="EmpId"
+                                       <input type="text" class="form-control-plaintext text-center fw-bold" id="InboxEmpId"
                                            groupid="EmployeeInfo" argumentid="EmpId" readonly placeholder="Employee Id">
-                                       <label for="EmpId">Employee Id</label>
+                                       <label for="InboxEmpId">Employee Id</label>
                                        <div style="display: none">
                                            <input type="text" value="BasicInformation" class="tabid" groupid="EmployeeInfo" argumentid="TabId">
                                        </div>
@@ -256,9 +256,9 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control-plaintext text-center fw-bold" id="BankName"
+                                        <input type="text" class="form-control-plaintext text-center fw-bold" id="InboxBankName"
                                             groupid="EmployeeInfo" argumentid="BankName" readonly placeholder="Bank Name">
-                                        <label for="BankName">Bank Name</label>
+                                        <label for="InboxBankName">Bank Name</label>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control-plaintext text-center fw-bold" id="BankBranch"
+                                        <input type="text" class="form-control-plaintext text-center fw-bold" id="InboxBankBranch"
                                             groupid="EmployeeInfo" argumentid="BankBranch" readonly placeholder="Bank Branch">
                                         <label for="BankBranch">Bank Branch</label>
                                     </div>
@@ -290,9 +290,9 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control-plaintext text-center fw-bold" id="AccountNumber"
+                                        <input type="text" class="form-control-plaintext text-center fw-bold" id="InboxAccountNumber"
                                             groupid="EmployeeInfo" argumentid="AccountNumber" readonly placeholder="Bank Account Number">
-                                        <label for="AccountNumber">Bank Account Number</label>
+                                        <label for="InboxAccountNumber">Bank Account Number</label>
                                     </div>
                                 </div>
                             </div>

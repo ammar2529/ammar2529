@@ -161,8 +161,8 @@
 
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="Address" groupid="LedgerManagement_FrUc" argumentid="CompanyName" placeholder="Address" disabled="disabled">
-                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" id="LedAddress" groupid="LedgerManagement_FrUc" argumentid="CompanyName" placeholder="Address" disabled="disabled">
+                        <label for="LedAddress">Address</label>
                     </div>
                 </div>
             </div>
@@ -492,9 +492,9 @@
                         <!-- Amount -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control text number commonRemoveRequiredStaric amountInput" id="Amount"
+                                <input type="text" class="form-control text number commonRemoveRequiredStaric amountInput" id="LedAmount"
                                     placeholder="Amount" maxlength="199" groupid="LedgerManagement_FrUc" argumentid="LedgerManagementAmount" />
-                                <label for="Amount">Amount</label>
+                                <label for="LedAmount">Amount</label>
                             </div>
                         </div>
                     </div>
@@ -524,11 +524,11 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <div class="form-floating">
                                 <select loadon="FirstVisible" class="form-select dropdownlist BankNameBankNameAMT CommonRequiredClass commonRemoveRequiredStaric"
-                                    id="BankName" groupid="LedgerManagement_FrUc" argumentid="BankNameAMT"
+                                    id="LedBankName" groupid="LedgerManagement_FrUc" argumentid="BankNameAMT"
                                     storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'38'}]}">
                                     <option value="" selected>Select Bank</option>
                                 </select>
-                                <label for="BankName">Bank</label>
+                                <label for="LedBankName">Bank</label>
                             </div>
                         </div>
 

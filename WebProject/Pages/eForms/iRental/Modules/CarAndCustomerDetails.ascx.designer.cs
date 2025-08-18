@@ -60,22 +60,22 @@ namespace WebProject.Pages.eForms.iRental.Modules
         protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndServiceDetails;
 
         /// <summary>
-        /// frmCarAndServiceDetails_Cars control.
+        /// frmCarAndServiceDetails_SalesCars control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndServiceDetails_Cars;
+        protected global::WebProject.AsyncWidgets.Widgets.Form frmCarAndServiceDetails_SalesCars;
 
         /// <summary>
-        /// grdCarAndServiceDetails_Cars control.
+        /// grdCarAndServiceDetails_SalesCars control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdCarAndServiceDetails_Cars;
+        protected global::WebProject.AsyncWidgets.Widgets.DataGrid grdCarAndServiceDetails_SalesCars;
 
         /// <summary>
         /// frmCarAndCustomerDetailsAddSaleCar control.

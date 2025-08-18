@@ -18,8 +18,8 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-2">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-sm CommonEmpty" id="EmpId" argumentid="EmpId" groupid="schEmployeeDatabase" placeholder="Enter Emp ID">
-                            <label for="EmpId">Emp ID</label>
+                            <input type="text" class="form-control form-control-sm CommonEmpty" id="EmpDEmpId" argumentid="EmpId" groupid="schEmployeeDatabase" placeholder="Enter Emp ID">
+                            <label for="EmpDEmpId">Emp ID</label>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-2">

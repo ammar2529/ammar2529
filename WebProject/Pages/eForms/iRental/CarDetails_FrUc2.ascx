@@ -55,11 +55,11 @@
                     <div class="row mt-2 justify-content-md-center">
                         <div class="col-12 col-sm-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control form-control-sm text required validateunique" id="CarNumber"
+                                <input type="text" class="form-control form-control-sm text required validateunique" id="CDCarNumber"
                                     placeholder="Car Number*" maxlength="10" primarykey="RecId" storeid="iRental_Cars"
                                     uniquenotfound="{en:'Car Number is valid...',color:'green'}" uniquefound="{en:'Duplicate Car Number...',color:'red'}"
                                     groupid="CarsForm" argumentid="CarNumber">
-                                <label for="CarNumber">Car Number*</label>
+                                <label for="CDCarNumber">Car Number*</label>
                             </div>
                         </div>
                     </div>
@@ -280,12 +280,12 @@
                         <!-- Car Location -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <select class="form-select form-select-sm required" id="CarLocationId" groupid="CarsForm"
+                                <select class="form-select form-select-sm required" id="CarDCarLocationId" groupid="CarsForm"
                                     argumentid="CarLocationId" loadon="FirstVisible"
                                     storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill', TextCol:'Name', ValCol:'ChildId', Params:[{Name:'ParentTypeId', Value:'11'}]}">
                                     <option value="" selected>Select Location</option>
                                 </select>
-                                <label for="CarLocationId">Car Location*</label>
+                                <label for="CarDCarLocationId">Car Location*</label>
                             </div>
                         </div>
                     </div>

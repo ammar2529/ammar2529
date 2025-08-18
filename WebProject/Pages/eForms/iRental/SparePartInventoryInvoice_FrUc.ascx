@@ -132,9 +132,9 @@
     <div class="row mb-3 hideCarandService justify-content-center">
         <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
             <div class="form-floating">
-                <input type="text" class="form-control-plaintext text-center fw-bold" id="CarNumber"
+                <input type="text" class="form-control-plaintext text-center fw-bold" id="SpCarNumber"
                     groupid="SparePartInventoryInvoice" argumentid="CarNumber" readonly placeholder="Car No.">
-                <label for="CarNumber">Car No.</label>
+                <label for="SpCarNumber">Car No.</label>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -149,9 +149,9 @@
     <div class="row mb-3 hideCarandService justify-content-center">
         <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
             <div class="form-floating">
-                <input type="text" class="form-control-plaintext text-center fw-bold" id="Brand"
+                <input type="text" class="form-control-plaintext text-center fw-bold" id="SpBrand"
                     groupid="SparePartInventoryInvoice" argumentid="Brand" readonly placeholder="Brand">
-                <label for="Brand">Brand</label>
+                <label for="SpBrand">Brand</label>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
