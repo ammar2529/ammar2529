@@ -865,7 +865,7 @@
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
-                                                        class="btn btn-success w-100 DataAction CloseContract ButtonStyle "
+                                                        class="btn btn-success w-100 DataAction CloseContract ButtonStyle common-button common-button-disabledOnContractClosed-PaymentCleared RRCCreatedStateDisabled RRCPaymentClearedCarNRDisabled"
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractClosed'}, HideOnSuccess:false,GroupId:'SalesContractsForm', Requery:true}">
                                                         Close Contract - Payment Cleared
                                                     </button>
@@ -875,7 +875,7 @@
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
-                                                        class="btn btn-danger w-100 DataAction CancelContract ButtonStyle"
+                                                        class="btn btn-danger w-100 DataAction CancelContract ButtonStyle common-button common-button-disabledOnContractClosed-PaymentCleared RRCPaymentClearedCarNRDisabled"
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCContractCancelled'}, HideOnSuccess:false,GroupId:'SalesContractsForm', Requery:true}">
                                                         Cancel Contract
                                                     </button>
@@ -888,7 +888,7 @@
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
-                                                        class="btn btn-warning w-100 DataAction ButtonStyle PendingPaymentCarOut"
+                                                        class="btn btn-warning w-100 DataAction ButtonStyle PendingPaymentCarOut common-button common-button-disabledOnContractClosed-PaymentCleared RRCCreatedStateDisabled RRCPendingPaymentCarOutDisabled RRCPaymentClearedCarNRDisabled"
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPendingPaymentCarOut'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}">
                                                         Pending Payment - Car Out
                                                     </button>
@@ -897,7 +897,7 @@
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
-                                                        class="btn btn-primary   w-100 DataAction ButtonStyle PendingPaymentCarIn"
+                                                        class="btn btn-primary   w-100 DataAction ButtonStyle PendingPaymentCarIn common-button common-button-disabledOnContractClosed-PaymentCleared RRCPaymentClearedCarNRDisabled"
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPendingPaymentCarIn'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}">
                                                         Pending Payment - Car In
                                                     </button>
@@ -907,7 +907,7 @@
                                                     <button
                                                         type="button"
                                                         ignorevalidate="DocType"
-                                                        class="btn btn-primary  w-100 DataAction ButtonStyle PaymentClearedCarNR"
+                                                        class="btn btn-primary  w-100 DataAction ButtonStyle PaymentClearedCarNR common-button common-button-disabledOnContractClosed-PaymentCleared RRCPaymentClearedCarNRDisabled"
                                                         conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts', Params:{NewStateId:'RRCPaymentClearedCarNR'},HideOnSuccess:false,Requery:true,GroupId:'SalesContractsForm'}">
                                                         Payment Cleared - Car NR
                                                     </button>
@@ -937,14 +937,14 @@
 
                                                 <!-- Quotation Button -->
                                                 <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
-                                                    <button type="button" class="btn btn-primary ButtonStyle QuotationBtn common-button w-100 ">
+                                                    <button type="button" class="btn btn-primary ButtonStyle QuotationBtn common-button w-100 RRCPendingPaymentCarOutDisabled">
                                                         Quotation
                                                     </button>
                                                 </div>
 
                                                 <!-- Contract Button -->
                                                 <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
-                                                    <button type="button" class="btn btn-primary ButtonStyle ContractPrintBtn common-button w-100 ">
+                                                    <button type="button" class="btn btn-primary ButtonStyle ContractPrintBtn common-button w-100 RRCPendingPaymentCarOutDisabled">
                                                         Contract
                                                     </button>
                                                 </div>
@@ -952,14 +952,14 @@
                                             <%--  ///////////////////////////////////////////////////////////--%>
                                             <div class="row justify-content-center">
 
-                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3  SalesButton_Edit">
-                                                    <button type="button" roles="iRen_Contracts_Admin" class="btn btn-primary w-100  SalesButton_Edit">
+                                                <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3 ">
+                                                    <button type="button" roles="iRen_Contracts_Admin" class="btn btn-primary w-100  SalesButton_Edit common-button ">
                                                         Edit
                                                     </button>
                                                 </div>
                                                 <!-- Statement Button -->
                                                 <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
-                                                    <button type="button" class="btn btn-primary ButtonStyle Statement common-button w-100 ">
+                                                    <button type="button" class="btn btn-primary ButtonStyle Statement common-button w-100 RRCPendingPaymentCarOutDisabled">
                                                         Statement
                                                     </button>
                                                 </div>
@@ -973,7 +973,7 @@
 
                                                 <!-- Close Button -->
                                                 <div class="col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xxl-3">
-                                                    <button type="button" class="btn btn-primary ButtonStyle CloseForm btnCancel common-button w-100 ">
+                                                    <button type="button" class="btn btn-primary ButtonStyle CloseForm btnCancel w-100 ">
                                                         Close
                                                     </button>
                                                 </div>

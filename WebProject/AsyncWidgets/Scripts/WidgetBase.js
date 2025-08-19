@@ -121,6 +121,7 @@ AsyncWidgets.RAInvoker = Ext.extend(Ext.util.Observable, {
 
         t.fireEvent('afterSuccess', res);
         // $(t.el).unmask();
+        hideOverlay();
     }
     , failure: function (res) {
         res = res.d || res;
@@ -217,9 +218,11 @@ AsyncWidgets.user = function () {
             var CurTime = (new Date()).getTime(), limitElap = ((((CurTime - AsyncWidgets.user.lastLogChecked) / 1000) / 60) > 15), cb = cf.callBack;
             if (isFirst || limitElap) {
                 var inv = new AsyncWidgets.RAInvoker();
+                
                 inv.on('onSuccess', function (res) {
-                   
-                    var Res = decJSON(res), ret;
+                    
+                    //var Res = decJSON(res), ret;
+                    var Res = res;
                     if (Res.status == "OK") {
                         if (Res.Response) {
                             AsyncWidgets.user.logged = true;
