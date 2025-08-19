@@ -952,10 +952,10 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
                     $icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
 
                     // Scroll to the new row and set focus
-                    $('html, body').animate({
-                        scrollTop: $tr.offset().top
-                    }, 200);
-                    $tr.next('.generatedRow').focus();
+                    //$('html, body').animate({
+                    //    scrollTop: $tr.offset().top
+                    //}, 200);
+                //    $tr.next('.generatedRow').focus();
                 });
 
                 /////
