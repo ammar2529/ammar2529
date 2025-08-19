@@ -659,7 +659,7 @@ AsyncWidgets.Widgets.DataGrid = Ext.extend(AsyncWidgets.widgetContainer, {
 
                     if (!t.ColumnTemplates.templates) {// if not a templated grid..
                         t.Header.repCon.append(`<td class= "d-sm-table-cell d-md-table-cell d-lg-none collapseBtn" > </td>`);
-                        t.Item.repCon.append(`<td class="d-sm-table-cell d-md-table-cell d-lg-none " style="position:relative;"> <i class="fas fa-chevron-down collapseBtn" style=" position: absolute; right: 5px; bottom: 15px; right: 285px;"> </i></td>`);
+                        t.Item.repCon.append(`<td class="d-sm-table-cell d-md-table-cell d-lg-none " style="position:relative;"> <i class="fas fa-chevron-down collapseBtn" style="position: relative;right: 5px;bottom: 15px;right: 0;/* border: 0; */bottom: 0;"> </i></td>`);
                         debugger
 
                         let editConf = {
