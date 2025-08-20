@@ -15,13 +15,13 @@
          
             <div class="row">
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" aria-label=".form-control-sm example" id="RecCode" argumentid="RecCode" groupid="schSalesContractDetails" placeholder="Enter Rec Code">
                         <label for="RecCode">RecCode</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" aria-label=".form-control-sm example" id="LPONumber" argumentid="LPONumber" groupid="schSalesContractDetails" placeholder="Enter LPO Number">
                         <label for="LPONumber">LPONumber</label>
                     </div>
@@ -55,23 +55,7 @@
 
                 </div>
                 <div class="col-sm-6 col-lg-2">
-<%--                    <div class="form-floating mb-3">
-                        <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="StateId" groupid="schSalesContractDetails" argumentid="StateId" name="D4">
-                            <option value="" selected hidden>Status</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCCreatedState">Created - Reservation</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCContractClosed" style="color: Green">Contract Closed - Payment Cleared</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCContractCancelled">Contract Cancelled</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCPendingPaymentCarOut">Pending Payment - Car Out</option>
-                            <option value="">-----------------------------</option>
-                            <option value="RRCPendingPaymentCarIn">Pending Payment - Car In</option>
-                            <option value="">-----------------------------</option>
-                        </select>
-                        <label for="StateId">State</label>
-                    </div>--%>
+
 
                     <div class="custom-floating">
                         <select class="form-select" id="customSelectStateId" aria-label="Custom floating label select" groupid="schSalesContractDetails" argumentid="StateId" name="D4">
@@ -93,7 +77,7 @@
 
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="SalesShUc_CarNumber" argumentid="CarNumber" groupid="schSalesContractDetails" placeholder="Enter Car Number">
                         <label for="SalesShUc_CarNumber">CarNumber</label>
                     </div>
@@ -102,13 +86,13 @@
 
             <div class="row mt-2">
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="ChassisNo" argumentid="ChassisNo" groupid="schSalesContractDetails" placeholder="Enter Chassis No">
                         <label for="ChassisNo">ChassisNo</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-<%--                    <div class="form-floating mb-3">
+<%--                    <div class="form-floating ">
                         <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="BrandId" groupid="schSalesContractDetails" argumentid="BrandId" childcombo="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'2'}]}" name="D12">
                             <option value="" selected="selected">Brand</option>
                         </select>
@@ -126,7 +110,7 @@
                 </div>
                 
                 <div class="col-sm-6 col-lg-2">
-<%--                    <div class="form-floating mb-3">
+<%--                    <div class="form-floating ">
                         <select class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ModelId" groupid="schSalesContractDetails" argumentid="ModelId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'3'},{SPParamName:'SubParentTypeId',Name:'BrandId'}]}" name="D10">
                             <option value="" selected="selected">Model</option>
                         </select>
@@ -143,7 +127,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-<%--                    <div class="form-floating mb-3">
+<%--                    <div class="form-floating ">
                         <select loadon="FirstVisible" class="form-select form-select-sm dropdownlist" aria-label="Small select example" id="ColorId"
                                 groupid="schSalesContractDetails" argumentid="ColorId" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'6'}]}" name="D8">
                             <option value="" selected="selected">Color</option>
@@ -160,13 +144,13 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="CustomerName" argumentid="CustomerName" groupid="schSalesContractDetails" placeholder="Enter Customer Name">
                         <label for="CustomerName">CustomerName</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="NationalIDNo" argumentid="NationalIDNo" groupid="schSalesContractDetails" placeholder="Enter National ID">
                         <label for="NationalIDNo">NationalIDNo</label>
                     </div>
@@ -175,19 +159,19 @@
 
             <div class="row mt-2">
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="MobileTelephone1" argumentid="MobileTelephone1" groupid="schSalesContractDetails" placeholder="Enter Mobile">
                         <label for="MobileTelephone1">MobileTelephone1</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="CarOwnerNationalIdNumber" argumentid="CarOwnerNationalIdNumber" groupid="schSalesContractDetails" maxlength="12" placeholder="Enter Owner National ID">
                         <label for="CarOwnerNationalIdNumber">CarOwnerIdNumber</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating ">
                         <input type="text" class="form-control form-control-sm CommonEmpty" id="ReceiptId" argumentid="ReceiptId" groupid="schSalesContractDetails" maxlength="12" placeholder="Enter Receipt ID">
                         <label for="ReceiptId">ReceiptId</label>
                     </div>

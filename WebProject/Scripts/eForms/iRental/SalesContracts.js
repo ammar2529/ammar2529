@@ -393,11 +393,11 @@ Sales.SalesContracts.grdSalesContractsPaymentDetails =
 
 
                         var a = $('.container.SalesPaymentDetailsPannel')
-                            $('[argumentid="RecCodePanel"]', a).text(RecCode);
-                            $('[argumentid="CarNumberPanel"]', a).text(CarNumber);
-                            $('[argumentid="CustomerNamePanel"]', a).text(CustomerName);
-                            $('[argumentid="AmountDuePanel"]', a).text(AmountDue.toFixed(3));
-                            $('[argumentid="PaymentAmountPanel"]', a).text(PaymentAmount.toFixed(3));
+                            $('[argumentid="RecCodePanel"]', a).val(RecCode);
+                        $('[argumentid="CarNumberPanel"]', a).val(CarNumber);
+                        $('[argumentid="CustomerNamePanel"]', a).val(CustomerName);
+                        $('[argumentid="AmountDuePanel"]', a).val(AmountDue.toFixed(3));
+                        $('[argumentid="PaymentAmountPanel"]', a).val(PaymentAmount.toFixed(3));
 
 
 

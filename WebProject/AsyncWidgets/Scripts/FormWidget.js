@@ -222,6 +222,7 @@ AsyncWidgets.Widgets.Form = Ext.extend(AsyncWidgets.widgetContainer, {
             let lf = trow.offset().left, rw = trow.width();
             cf.top = trow.offset().top;
             cf.left = lf;
+            
             cf.width = rw - 2;
         }
 

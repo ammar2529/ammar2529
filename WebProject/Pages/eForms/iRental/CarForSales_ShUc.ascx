@@ -78,8 +78,8 @@
                        <label for="TypeId">Type</label>
                    </div>
                </div>
-
-                <div class="row mt-2">
+                </div>
+                <div class="row ">
                 <div class="col-sm-6 col-lg-2">
                    <div class="custom-floating">
                        <select loadon="FirstVisible" class="form-select" id="CFSCarLocationId" aria-label="Custom floating label select" groupid="schCarForSalesDetails" argumentid="CarLocationId"
