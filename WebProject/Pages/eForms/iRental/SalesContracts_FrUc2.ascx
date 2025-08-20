@@ -119,9 +119,9 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 ">
 
                                 <div class="custom-floating">
-                                    <select class="form-select required financeCompany CommonDisableClass" id="customSelectCompany" aria-label="Custom floating label select" loadon="FirstVisible"
+                                    <select class="form-select  financeCompany CommonDisableClass" id="customSelectCompany" aria-label="Custom floating label select" loadon="FirstVisible"
                                         groupid="SalesContractsForm" argumentid="FinanceCompany" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'36'}]}"
-                                        requirederr='*'>
+                                        >
                                         <option value="" selected></option>
 
                                     </select>

@@ -114,3 +114,24 @@ select:focus {
         font-weight: 400;
         color: #d86018;
     }
+/* When the select has the required class and the label is associated with it */
+.custom-floating select.required + span + label {
+    top: 70%;
+}
+.custom-floating select + span + label {
+    top: 70%;
+}
+.custom-floating select + span {
+    display: none
+}
+.custom-floating select.required + span {
+    display: block
+}
+.custom-floating select:read-only + span + label {
+    top: 90%
+}
+/* When select has required class and a value is selected */
+/*.custom-floating select.required + span[style="display:none"] + label {
+    background: red;
+    top: 90%;
+}*/
