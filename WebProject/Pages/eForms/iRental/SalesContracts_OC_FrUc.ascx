@@ -40,7 +40,7 @@
                     <div class="row justify-content-center">
                         <!-- Save Button -->
                         <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mb-2">
-                            <button type="button" class="btn btn-primary SaveBtn DataAction w-100" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts_OtherCharges',HideOnSuccess:true}">
+                            <button type="button" class="btn btn-primary SaveBtn DataAction w-100" conf="{ActorId:'DataHelper',ActionId:'DataAction',Command:'UPD_iRental_SalesContracts_AdditionalAmount',HideOnSuccess:true}">
                                 Save
                             </button>
                         </div>

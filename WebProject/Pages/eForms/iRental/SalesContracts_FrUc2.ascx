@@ -1263,7 +1263,7 @@
 
                                                 <AW:DataGrid ID="grdSalesAdditionalAmount" LoadOnInit="true" ShowOnLoad="false" runat="server" Hidden="true" Columns="1"
                                                     EmptyHeight="201px" AllowNew="true" SelectableRow="true"
-                                                    PageSize="10" DataSource="SEL_iRental_SalesContracts_OtherCharges" ContainerMargin="2px" GridTemplate="jQueryUI"
+                                                    PageSize="10" DataSource="SEL_iRental_SalesContracts_AdditionalAmount" ContainerMargin="2px" GridTemplate="jQueryUI"
                                                     GridHeadText="Additional Amount" GridButtons="{\'delete\':{conf:{Command:\'UPD_iRental_SalesContracts_OtherCharges\',KeysCol:\'RecId\'}}}">
 
                                                     <GridConfig>
