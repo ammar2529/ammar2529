@@ -94,11 +94,11 @@
                             <div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input CommonDisableClass cash" type="radio" id="receipt" checked="checked" value="0" name="PaymentType" argumentid="PaymentType" groupid="Sales_Payments">
-                                    <label class="form-check-label" for="receipt">Cash</label>
+                                    <label class="form-check-label" for="receipt">Receipt</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input CommonDisableClass finance" type="radio" id="return" value="1" name="PaymentType" argumentid="PaymentType" groupid="Sales_Payments">
-                                    <label class="form-check-label" for="return">Finance</label>
+                                    <label class="form-check-label" for="return">Return</label>
                                 </div>
                             </div>
                         </div>
