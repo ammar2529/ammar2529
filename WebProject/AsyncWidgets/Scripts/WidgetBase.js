@@ -979,6 +979,7 @@ AsyncWidgets.widgetContainer = Ext.extend(Ext.util.Observable, {
         }
        // $(this.el).mask('Please wait while loading ... ');
         showOverlay(); 
+        
         this.callWS(this.State.FacadePath + "/" + facade,
             ['Controller', this.State.Controller,
             'WidgetState', encJSON(this.State).replace(/"/g, '\\\"')
