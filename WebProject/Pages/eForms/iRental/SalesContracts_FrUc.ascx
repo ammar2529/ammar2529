@@ -655,7 +655,7 @@
                                     <nobr>Salesman:</nobr>
                                 </td>
                                 <td style="width: 30%">
-                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  " style="width: 155px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
+                                    <select loadon="FirstVisible" valtype="value" class="dropdownlist CommonDisableClass  required" style="width: 155px;" groupid="SalesContractsForm" argumentid="Salesman" storeinfo="{Command:'FX_SEL_Common_LOV_AutoFill',TextCol:'Name',ValCol:'ChildId',Params:[{Name:'ParentTypeId',Value:'39'}]}">
                                         <option value="" selected="selected">Select Salesman</option>
                                     </select>
                                 </td>
