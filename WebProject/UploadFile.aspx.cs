@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Web;
@@ -27,7 +28,10 @@ namespace WebProject
         public static string UploadFiles()
         {
             string firstError = "";
-            string uploadPath = @"E:\Uploads"; // ✅ Physical path instead of virtual
+            string uploadPath = ConfigurationManager.AppSettings["SalesUploadPath"]; // ✅ Physical path instead of virtual
+            if (string.IsNullOrEmpty(uploadPath)) {
+                return @"Upload path not configured";
+            }
             try
             {
                 string UserID = HttpContext.Current.Session["UserId"].ToString();
