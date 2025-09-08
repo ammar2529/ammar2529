@@ -40,11 +40,17 @@ namespace WebProject
                 var savePath = uploadPath;
 
                 // Ensure directory exists
+                //if (!Directory.Exists(savePath))
+                //{
+                //    Directory.CreateDirectory(savePath);
+                //}
+                // Ensure directory exists
                 if (!Directory.Exists(savePath))
                 {
-                    Directory.CreateDirectory(savePath);
-                }
 
+                    return $@"{{""Status"":""Error"",""Response"":{{""message"":""{"Unable to upload the file please contact admin"}""}}}}";
+
+                }
                 if (files.Count > 0)
                 {
                     string FileGuid = httpRequest.Form["FileGuid"];

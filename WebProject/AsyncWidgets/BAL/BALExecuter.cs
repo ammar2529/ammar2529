@@ -534,6 +534,13 @@ namespace WebProject.AsyncWidgets.BAL
             else
                 ParamDic.AddQueryParam("__UserId", new AsyncWidgets.DAL.QueryParameter(Session["EForms4UserId"].ToString()));
 
+            if (Session["SystemAdmin"] != null)
+            {
+                var sysAdmin = ((Boolean)Session["SystemAdmin"]) ? "1" : "0";
+
+                ParamDic.AddQueryParam("__SystemAdmin", new AsyncWidgets.DAL.QueryParameter(sysAdmin));
+            }
+
             return ParamDic;
         }
         public Dictionary<string, ParamDictionary<string, AsyncWidgets.DAL.QueryParameter>> GetAllFormParams()

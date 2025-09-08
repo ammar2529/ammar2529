@@ -1304,8 +1304,13 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             },
             success: function (response)
             {
+                debugger
                 objRes = JSON.parse(response)
-                
+
+                if (objRes.Status === 'Error') {
+                    $.showMessage(objRes.Response.message);
+                    return;
+                }
                 var rows = objRes.Response.Rows;
                 for (var i = 0; i < rows.length; i++)
                 {
@@ -1321,33 +1326,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
 
                 var RecId = $('[argumentid="RecId"]', t.el).val();
 
-                //var params = {
-                //    Command: 'UPD_iRental_SalesContracts',
-                //    RecId,
-                //    FileGuid,
-                //    Action: 'update'
-                //   };
 
-                //ServerCall(params, function (res) {
-                //    debugger
-                //    var res = decJSON(res)
-
-
-                //    if (res.status === 'OK') {
-                //        if (res.Response.Rows.length > 0) {
-
-                            
-
-                //        }
-
-
-                //    }
-
-
-
-
-
-                //});
 
                 AsyncWidgets.WidgetScripts.frmSalesContracts.GenerateUploadFiles(objRes, t);
                 $.showMessage(msg);
@@ -1357,6 +1336,7 @@ AsyncWidgets.WidgetScripts.frmSalesContracts.BindUploadHandlers = function (t)
             },
             error: function (error)
             {
+                debugger
                 $(".message", t.el).html("Error uploading file(s): " + error.statusText);
             }
         }); //end of Ajax
