@@ -138,7 +138,8 @@ namespace WebProject.AsyncWidgets.BAL
                 ctx.Session["UserId"] = UserName;
                 ctx.Session["Name"] = dsUser.Tables[0].Rows[0]["Name"].ToString();
                 Session["Roles"] = dsUser.Tables[0].Rows[0]["Roles"].ToString();
-                Session["SystemAdmin"] = dsUser.Tables[0].Rows[0]["Roles"].ToString().IndexOf("System_Admin") > -1;
+                //Session["SystemAdmin"] = dsUser.Tables[0].Rows[0]["Roles"].ToString().IndexOf("System_Admin") > -1;
+                Session["SalesContractsAdmin"] = dsUser.Tables[0].Rows[0]["Roles"].ToString().IndexOf("Sales_Contracts_Admin") > -1;
                 Session["UserConf"] = string.Format("{{OrgId:{0},UnitId:{1},ShowEmpInfo:{2},Roles:'{3}' }}", dsUser.Tables[0].Rows[0]["OrgId"].ToString(), dsUser.Tables[0].Rows[0]["UnitId"].ToString(), dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString(), dsUser.Tables[0].Rows[0]["Roles"].ToString());
                 Trace.WriteLine($"User logged in at {DateTime.Now}, sessionid: {Session.SessionID},userid: {Session["userid"]}");
                 return string.Format("{{Authenticated:{0},Name:'{1}',Roles:'{2}',Conf:{{OrgId:{3},UnitId:{4},ShowEmpInfo:{5},Roles:'{2}' }} }}", "true", dsUser.Tables[0].Rows[0]["Name"].ToString(), dsUser.Tables[0].Rows[0]["Roles"].ToString(), dsUser.Tables[0].Rows[0]["OrgId"].ToString(), dsUser.Tables[0].Rows[0]["UnitId"].ToString(), dsUser.Tables[0].Rows[0]["ShowEmpInfo"].ToString());

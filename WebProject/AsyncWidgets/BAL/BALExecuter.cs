@@ -533,12 +533,20 @@ namespace WebProject.AsyncWidgets.BAL
                 ParamDic.AddQueryParam("__UserId", new AsyncWidgets.DAL.QueryParameter("Anonymous"));
             else
                 ParamDic.AddQueryParam("__UserId", new AsyncWidgets.DAL.QueryParameter(Session["EForms4UserId"].ToString()));
+            //if (Session["SystemAdmin"] != null)
+            //{
 
-            if (Session["SystemAdmin"] != null)
+            //    var sysAdmin = ((Boolean)Session["SystemAdmin"]) ? "1" : "0";
+
+            //    ParamDic.AddQueryParam("__SystemAdmin", new AsyncWidgets.DAL.QueryParameter(sysAdmin));
+            //}
+
+            if (Session["SalesContractsAdmin"] != null)
             {
-                var sysAdmin = ((Boolean)Session["SystemAdmin"]) ? "1" : "0";
 
-                ParamDic.AddQueryParam("__SystemAdmin", new AsyncWidgets.DAL.QueryParameter(sysAdmin));
+                var sysAdmin = ((Boolean)Session["SalesContractsAdmin"]) ? "1" : "0";
+
+                ParamDic.AddQueryParam("__SalesContractsAdmin", new AsyncWidgets.DAL.QueryParameter(sysAdmin));
             }
 
             return ParamDic;
