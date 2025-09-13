@@ -81,12 +81,54 @@
          
             <AW:Form ID="frmLogout" Hidden="true" runat="server" AsyncForm="~/Pages/Common/Logout.ascx" />
 
-            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false" runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx"/>
-                   <%--     <Scripts>
-                      <script></script>
+            <AW:Form ID="frmInbox" Hidden="true" LoadOnInit="false" ShowOnLoad="false"  runat="server" DataSource="SEL_Employee_DB_Inbox"  AsyncForm="~/Pages/Common/Inbox.ascx" >
+                        <Scripts>
+                      <script type="text/javascript">
+                          var fn = function () {
+                              console.log("inside fnx");
+                              t.on('show', function () {
+                                  console.log("calling search");
+                                  t.loadValues();
+                                  console.log("called search");
+                              });
+
+
+                              $('.SimpleTab li', t.el).click(function () {
+                                  var li = $(this);
+                                  console.log('Tab clicked:', li.attr('tabid'));  // Debug log
+
+                                  if (!!$(this).parent().attr('disabled')) return;
+                                  if (li.parent().children('li.active').attr('tabid') == li.attr('tabid')) return false;
+
+                                  // Outer table select kiya directly
+                                  var outerTable = li.closest('.EmpInfo');
+                                  var contentRows = outerTable.find('tr[tabid]');
+
+                                  // Hide all content rows
+                                  contentRows.hide();
+
+                                  // Show clicked tab's row
+                                  var targetRow = outerTable.find('tr[tabid="' + li.attr('tabid') + '"]');
+                                  targetRow.show();
+
+                                  // Update active class
+                                  li.parent().children('li.active').removeClass('active');
+                                  li.addClass('active');
+
+                                  // Update hidden input
+                                  $('.tabid', t.el).val(li.attr('tabid'));
+
+                                  console.log('Showing tab:', li.attr('tabid'));  // Debug log
+
+                                  return false;
+                              });
+                          };
+
+
+                      </script>
                         </Scripts>
               
-            </AW:Form>--%>  
+            </AW:Form>  
            
 
             <AW:Form ID="frmChangePassword" Hidden="true" LoadOnInit="false" ShowOnLoad="true" runat="server" AsyncForm="~/Pages/Common/ChangePassword.ascx" >
